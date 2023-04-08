@@ -1,4 +1,8 @@
 # Olivier’s Theme
+*(To see a lot of samples, see ➙ [this page](https://www.craft.do/s/lxIz4vNEeoXAqc))*
+
+
+
 An advanced interface theme for styling [*Obsidian*](https://obsidian.md/)’s interface. Its main points are :
 
 - legibility — achieved through…
