@@ -3,6 +3,7 @@
 
 			01.04.2023	VERSION 1 !
 							Les settings ont été traduits en anglais.							1.0.0
+			19.04.2023	Corrected the popover “preview” of a non existing note					1.0.1
 *******************************************************************/
 
 /* Les sections de ce document */
@@ -3426,12 +3427,6 @@ ul > li::marker,
 	font-weight:	300;
 }
 
-/*	le popover avec les fiches vides: rendons le texte plus lisible	*/
-.popover.hover-popover.mod-empty {
-	color:	var(--text-on-accent);
-	background:	var(--color-accent-1);
-}
-
 /*	les pastilles indicatives sur la feuille de publication	*/
 .file-tree .mod-deleted .tree-item-flair,
 .file-tree .mod-to-delete .tree-item-flair {
@@ -4359,12 +4354,6 @@ a:hover,
 	background-color:	var(--link-color);
 }
 
-/* ---------- OpSpl Lien vers une image inexistante  */
-.file-embed.mod-generic, .file-embed.mod-empty {
-	color:		var(--text-on-accent);
-	background:	var(--link-unresolved-color);
-}
-
 /* ---------- OpSpl Lien inexistant survolé */
 .markdown-rendered .internal-link.is-unresolved:hover,
 .markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
@@ -4372,12 +4361,32 @@ a:hover,
 	color:		var(--OT-link-color-hover);
 	background:	var(--link-unresolved-color);
 }
+
+.is-loaded.file-embed.mod-empty {
+	color:		var(--OT-link-color-hover);
+	background:	var(--link-unresolved-color);
+}
+
+/*	le popover avec les fiches vides: rendons le texte plus lisible	*/
+.popover.hover-popover.mod-empty {
+    color: 				var(--link-unresolved-color);
+    background-color:	var(--text-on-accent);
+//	color:		var(--text-on-accent);
+//	background:	var(--color-accent-1);
+}
+
+/* ---------- OpSpl Lien vers une image inexistante  */
+.file-embed.mod-generic,
+.file-embed.mod-empty {
+	color:		var(--text-on-accent);
+	background:	var(--link-unresolved-color);
+}
 /* ---------- OpSpl Lien vers une image inexistante survolé  */
 @media (hover: hover) {
   .file-embed.mod-generic:hover,
   .file-embed.mod-empty:hover {
     color: 				var(--link-unresolved-color);
-    background-color:	var(--text-on-hover);
+    background-color:	var(--text-on-accent);
   }
 }
 
