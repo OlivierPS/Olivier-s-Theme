@@ -1,5 +1,6 @@
 # Olivier’s Theme
 *(To see a lot of samples, see ➙ [this page](https://www.craft.do/s/lxIz4vNEeoXAqc))*
+*(→ [full User Guide](https://www.craft.do/s/eBDEU8fdQxIUU3))*
 
 
 
