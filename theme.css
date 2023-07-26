@@ -6,61 +6,13 @@
 			19.04.2023	Corrected the popover “preview” of a non existing note					1.0.1
 			20.04.2023	Added a class toggle to optionally set the paper background also in
 						Live Preview mode														1.1.0
+			26.07.2023	Corrected the vertical spacing around headings following the introduction
+						of the “--heading-spacing” variable;
+						Some sanitising of the code
+						Little tweaks of the vertical spacing
+						Added code to compact somehow the Dataview tables						1.2.0
 *******************************************************************/
 
-/* Les sections de ce document */
-/*
-- définition des couleurs 			root
-- OpSpl Defaults					body -- les valeurs de départ des variables réglées par “Style Settings”
-- OpSpl Settings					les définitions “@settings” pour le plugin “Style settings”
-
-- OpSpl Color Schemes				les définitions des couleurs générales (= tout ce qui n’est pas “texte”)
-									.theme-light.color-scheme… et .theme-dark.color-scheme…
-
-- OpSpl Accent Colors				les couleurs d’accentuation (accent-color)
-
-- OpSpl Text Color Themes			les définitions de couleurs pour le texte
-									.theme-light.text… et .theme-dark.text…
-
-- OpSpl Highlight Colors			les couleurs du highlight (= Stabilo)
-
-- OpSpl Edit background colors
-- OpSpl Edit text colors
-
-- OpSpl Déclarations générales		body -- la mise en place des variables «à mon goût»
-- OpSpl EDITING mode				tout ce qui concerne le mode "Édition"
-	- OpSpl Icon in edit mode
-	- OpSpl line length in edit mode
-	- OpSpl Editor font size and line height
-	- OpSpl Lien inexistant survolé
-	- OpSpl Headings in editing mode
-	- OpSpl Font in editing mode
-- OpSpl fonte “monospaced”
-- OpSpl OpSpl autres ajustements		est-ce que j’utilise bien une manière «canonique» de faire?
-- OpSpl sidebars						est-ce que j’utilise bien une manière «canonique» de faire?
-- OpSpl READING mode
-	- OpSpl Paper background
-	- OpSpl Tables
-	- OpSpl Autres réglages liés à l’ “editing mode”
-- OpSpl En-tête des panneaux
-- OpSpl boutons
-- OpSpl Settings pannel
-- OpSpl TRANSCLUDES					à revoir!
-- OpSpl Images, etc.
-- OpSpl le nom des PDFs inclus		à revoir!
-- OpSpl Other refinements			à revoir
-- OpSpl Contextual typography
-- OpSpl Blockquotes
-- OpSpl Red Cursor
-- OpSpl Headings to my taste
-- OpSpl Horizontal Rule
-- OpSpl Kanban
-- OpSpl Links						toutes sortes d’ajustements pour toutes les variétés de liens
-- OpSpl Listes						ajustements pour les listes
-- OpSpl Zoom-image					à revoir
-- OpSpl Status bar
-- OpSpl Autres éléments d’interface
-*/
 
 /* —————————————————————————————— Définition des couleurs —————————————————————————————— */
 :root
@@ -175,6 +127,7 @@ body {
 	--file-header-font-weight:		var(--font-semibold);
 	--file-header-justify:			left;
 	--file-line-width:				var(--OT-readingMode-line-width);
+	--heading-spacing:				0;							/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
     --img-max-height:				33rem;						/* to prevent images with portrait proportions from overwhelming text; put "100%" if you don’t like this idea */
     --inline-title-font:			var(--font-monospace);
 	--inline-title-line-height:		0em;
@@ -185,6 +138,7 @@ body {
 	--line-height-normal:			var(--OT-readingMode-line-height);
 	--list-bullet-size:				0.4em;
 	--list-indent:					1.3em;
+	--p-spacing:					0.5em;
 	--popover-font-size:			calc(var(--font-text-size) * 0.9);
 	--popover-height:				40vh;
 	--popover-max-height:			70vh;
@@ -2175,6 +2129,7 @@ body {
 /* -------------------- ↑ OpSpl Text Color Themes -------------------- ↑ */
 
 /* —————————————————————————————— OpSpl Highlight Colors (Stabilo) —————————————————————————————— */
+
 .highlight-color-default {
 /*	--stabilo-mark:	rgb(var(--stabilo-yellow-rgb)) !important;
 	--stabilo-text:		#987B08;	*/
@@ -2894,12 +2849,12 @@ body {
 /*	Vertical spacing of paragraphs: I prefer a more compact vertical spacing.
 	This also permits to show more text on a laptop */
 p {
-	margin-block-start:	0.5em;
+/*	margin-block-start:	0.5em;
     margin-block-end:	0;
     margin-inline-start:0px;
     margin-inline-end:	0px;
 	padding-top:		0;
-	padding-bottom:		0;
+	padding-bottom:		0;	*/
 }
 
 /* ----- OpSpl Checkbox -----
@@ -3278,7 +3233,7 @@ ul > li::marker,
 /*	------------------------- ↑ icône en mode “édition” ↑ -------------------------	*/
 
 
-/* la couleur des puces et des numéros de listes	*/
+/* la couleur des puces et des numéros de listes: en “edit mode”, je leur donne la couleur des liens	*/
 .markdown-source-view.mod-cm6 .cm-scroller {
 	--list-marker-color:	var(--link-color);
 }
@@ -3363,7 +3318,7 @@ ul > li::marker,
 }
 /* -------------------- ↑ OpSpl Headings in editing mode ↑ -------------------- */
 
-/* ---------- OpSpl Font in editing mode */
+/* ---------- OpSpl Font in edit mode */
 .cm-list-1,
 .cm-list-2,
 .cm-list-3,
@@ -3391,22 +3346,28 @@ ul > li::marker,
 	line-height:	1.1em;
 }
 
+/* ---------- texte des tables en “edit mode” ----------  */
+.cm-s-obsidian .HyperMD-table-row {
+	font-size:		var(--OT-editMode-tableText-size)	!important;
+}
 
 
-/* —————————————————————————————— OpSpl autres ajustements —————————————————————————————— */
+/* —————————————————————————————— OpSpl Autres ajustements —————————————————————————————— */
 
 /* en mode édition, dans les tables, je laisse les en-têtes de colonnes à la même couleur que le texte; c’est sutout en fond noir que c’est important */
 .cm-s-obsidian .HyperMD-table-row-0 {
 	color: inherit;
 }
-/* Numéros et puces des listes, en mode “edit” */
-.cm-s-obsidian span.cm-formatting-list {
-	color: 		var(--list-marker-color);
-  	font-weight:	600;
-}
 
-.markdown-source-view.mod-cm6 .cm-formatting-list-ul {
-	vertical-align:	-0.1em;
+/* Numéros et puces des listes, en “edit mode” */
+.cm-s-obsidian span.cm-formatting-list {
+  	font-weight:	700;	/*	je force à un niveau qui me convient	*/
+}
+.markdown-source-view.mod-cm6 .cm-formatting-list-ul {	/*	les astérisques	*/
+	vertical-align:	-0.2em;
+}
+.list-bullet {						/*	les puces sont ajustées différemment	*/
+	vertical-align: 0.15em;
 }
 
 /*	les astérisques indiquant le “emphasised” et le strong */
@@ -3448,7 +3409,7 @@ ul > li::marker,
     background-color:	var(--background-modifier-hover);
 }
 
-/* —————————————————————————————— OpSpl sidebars —————————————————————————————— */
+/* —————————————————————————————— OpSpl Sidebars —————————————————————————————— */
 /* Font size of text in sidebars. */
 .nav-file-title,
 .tree-item-self,
@@ -3537,7 +3498,7 @@ ul > li::marker,
 	color:	var(--text-on-accent);
 }
 
-/* -------------------- ↑ OpSpl sidebars -------------------- ↑ */
+/* -------------------- ↑ OpSpl Sidebars -------------------- ↑ */
 
 
 /* —————————————————————————————— OpSpl READING mode —————————————————————————————— */
@@ -3680,12 +3641,8 @@ ul > li::marker,
 }
 /* -------------------- ↑ OpSpl Paper background -------------------- ↑ */
 
-/*	---------------------------- OpSpl Tables ---------------------------- */
-	/* texte des tables en mode “édition” */
-.cm-s-obsidian .HyperMD-table-row {
-	font-size:		var(--OT-editMode-tableText-size)	!important;
-}
 
+/*	---------------------------- OpSpl Tables ---------------------------- */
 	/*	la table dans son entier; quelques ajustements que je trouve judicieux, qui font partie de mon “par défaut”	*/
 .cm-embed-block.markdown-rendered .block-language-dataview,
 .markdown-rendered table,
@@ -3749,6 +3706,18 @@ ul > li::marker,
 .markdown-rendered tbody > tr > td {
 	padding-left:	0.6em;
 	padding-right:	0.6em;
+}
+
+
+/*	An adaptation to compact somehow the lines in the tables generated by the Dataview plugin	*/
+.dataview-result-list-li,
+.dataview-result-list-ul {
+	//color:			red;
+	line-height:	1.1em !important;
+	margin-top:		0px !important;
+	margin-bottom:	0px !important;
+	padding-top:	0px !important;
+	padding-bottom:	0px !important;
 }
 
 /*	-------------------- ↑ OpSpl Tables -------------------- ↑ */
@@ -3860,7 +3829,7 @@ button:hover {
 	background-color:	var(--interactive-accent-hover);
 }
 
-/*	-------------------- ↑ boutons -------------------- ↑ */
+/*	-------------------- ↑ OpSpl boutons -------------------- ↑ */
 
 
 /* —————————————————————————————— OpSpl Settings pannel —————————————————————————————— */
@@ -4040,35 +4009,6 @@ body span[alt*="+grid"] {
 /* -------------------- ↑ Other refinements -------------------- ↑ */
 
 
-/* —————————————————————————————— OpSpl Contextual typography —————————————————————————————— */
-/*	Ceci fonctionne grâce au plugin “Contextual Typography”.
-	Il est donc indispensable de le charger et de l’activer!	*/
-/* p suivant un h4, un h5 ou un h6: on supprime l’espace au-dessus	*/
-.markdown-preview-view div[data-tag-name="h4"] + div > p,
-.markdown-preview-view div[data-tag-name="h5"] + div > p,
-.markdown-preview-view div[data-tag-name="h6"] + div > p {
-	margin-top: 0rem;
-}
-
-/* Titre de niveau 1 au milieu de la fiche, c’est-à-dire suivant
-	une ligne horizontale, ou un paragraphe, ou une liste non-numérotée,
-	ou une liste numérotée */
-.markdown-preview-view div[data-tag-name="hr"] + div > h1,
-.markdown-preview-view div[data-tag-name="p"] + div > h1,
-.markdown-preview-view div[data-tag-name="ul"] + div > h1,
-.markdown-preview-view div[data-tag-name="ol"] + div > h1 {
-	margin-top:	3rem;
-}
-
-/* Titres de niveau 2 ou 3 suivant immédiatement un titre de niveau supérieur */
-.markdown-preview-view div[data-tag-name="h1"] + div > h2,
-.markdown-preview-view div[data-tag-name="h1"] + div > h3,
-.markdown-preview-view div[data-tag-name="h2"] + div > h3 {
-	margin-top: 0rem;
-}
-/* -------------------- ↑ Contextual typography ↑ -------------------- */
-
-
 /*	—————————————————————————————— OpSpl Blockquotes —————————————————————————————— */
 /* Tout ce qui concerne les citations:
 	* le “blockquote”
@@ -4113,7 +4053,8 @@ body span[alt*="+grid"] {
 .citation-source:before { /* Devant l’auteur de la citation: un tiret cadratin suivi d’un espace demi-cadratin	*/
 	content:	"—\2002";
 }
-/* -------------------- ↑ Blockquotes ↑ -------------------- */
+/* -------------------- ↑ OpSpl Blockquotes ↑ -------------------- */
+
 
 /* —————————————————————————————— OpSpl Red Cursor  —————————————————————————————— */
 body .markdown-source-view.mod-cm6 .cm-content,
@@ -4121,6 +4062,36 @@ body.fancy-cursor .markdown-source-view.mod-cm6 .cm-content,body.fancy-cursor .m
 .fancy-cursor input.prompt-input {
     caret-color:	red
 }
+/* -------------------- ↑ OpSpl Red Cursor ↑ -------------------- */
+
+
+/* —————————————————————————————— OpSpl Contextual typography —————————————————————————————— */
+/*	Ceci fonctionne grâce au plugin “Contextual Typography”.
+	Il est donc indispensable de le charger et de l’activer!	*/
+/* p suivant un h4, un h5 ou un h6: on supprime l’espace au-dessus	*/
+.markdown-preview-view div[data-tag-name="h4"] + div > p,
+.markdown-preview-view div[data-tag-name="h5"] + div > p,
+.markdown-preview-view div[data-tag-name="h6"] + div > p {
+	margin-top: 0rem;
+}
+
+/* Heading 1 au milieu de la fiche, c’est-à-dire suivant
+	une ligne horizontale, ou un paragraphe, ou une liste non-numéroté,
+	ou une liste numérotée */
+.markdown-preview-view div[data-tag-name="hr"] + div > h1,
+.markdown-preview-view div[data-tag-name="p"] + div > h1,
+.markdown-preview-view div[data-tag-name="ul"] + div > h1,
+.markdown-preview-view div[data-tag-name="ol"] + div > h1 {
+	--heading-spacing:	3rem;
+}
+
+/* Titres de niveau 2 ou 3 suivant immédiatement un titre de niveau supérieur */
+.markdown-preview-view div[data-tag-name="h1"] + div > h2,
+.markdown-preview-view div[data-tag-name="h1"] + div > h3,
+.markdown-preview-view div[data-tag-name="h2"] + div > h3 {
+	margin-top: 0rem;
+}
+/* -------------------- ↑ OpSpl Contextual typography ↑ -------------------- */
 
 
 /* —————————————————————————————— OpSpl Headings to my taste —————————————————————————————— */
@@ -4223,105 +4194,73 @@ body.headings-scaling-major-third {
   --h6-size: 1.00em;
 }
 
-.markdown-preview-view h1,
-.markdown-preview-view h2,
-.markdown-preview-view h3,
-.markdown-preview-view h4,
-.markdown-preview-view h5,
-.markdown-preview-view h6
-{
+.markdown-preview-view :is(h1,h2,h3,h4,h5,h6) {
 	line-height:	1.2;
 }
-
-.markdown-preview-view h1,
-.markdown-preview-view h2
-{
+	/*	un filet sous les H2 et H2	*/
+.markdown-preview-view :is(h1,h2) {
 	border-bottom: 	.12em solid;
 }
 
-/*	Au-dessus des titres de niveau 1, je supprime l’espace vertical, car ils viennent, en principe, au haut de la fiche.
-	Pour les autres situations, c’est réglé à l’aide du plugin “Contextual typography”, ci-dessous.
+/*	Au-dessus des titres de niveau 1, je ne met pas d’espace vertical, car ils viennent, en principe, au haut de la fiche.
+	Pour les autres situations, c’est réglé à l’aide du plugin “Contextual typography”, ci-dessus.
 */
 .cm-header-1,
 .markdown-preview-section h1,
 markdown-rendered h1 {
 	letter-spacing:		0.01em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
-	margin-block-start:	0em;
-	margin-block-end:	1em;
+	margin-bottom:		1em;
 }
+
 
 .cm-header-2,
 .markdown-preview-section h2,
 markdown-rendered h2 {
 	letter-spacing:		0.02em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
 	line-height:		1.0em;		/* vu qu’on est en petites capitales, cela n’a pas de sens que les lignes soient plus écartées que tant */
-	margin-block-start:	1.618em;
-	margin-block-end:	1em;
+	--heading-spacing:	1.618em;
+	margin-bottom:		1.0em;
 }
 
 .cm-header-3,
 .markdown-preview-section h3,
 markdown-rendered h3 {
-	margin-block-start:	1.618em;
-	margin-block-end:	0.1em;
+	--heading-spacing:	1.618em;
+	margin-bottom:		0.4rem;
 }
 
 .cm-header-4,
 .markdown-preview-section h4,
 markdown-rendered h4 {
-	margin-block-start:	1em;
-	margin-block-end:	0em;
+	--heading-spacing:	1em;
+	margin-bottom:		0.2rem;
 }
 
 .cm-header-5,
 .markdown-preview-section h5,
 markdown-rendered h5 {
-	margin-block-start:	1em;
-	margin-block-end:	0em;
+	--heading-spacing:	1em;
+	margin-bottom:		0.2rem;
 }
 
 .cm-header-6,
 .markdown-preview-section h6,
 markdown-rendered h6 {
-	margin-block-start:	1em;
-	margin-block-end:	0em;
+	--heading-spacing:	1em;
+	margin-bottom:		0.1rem;
 }
 
-/********************************************************************
-	Contextual typography
-	---------------------
-	Ceci fonctionne grâce au plugin “Contextual Typography”.
-	Il est donc indispensable de le charger et de l’activer!
-*/
-
-/* p suivant un h4, un h5 ou un h6: on supprime l’espace au-dessus	*/
-.markdown-preview-view div[data-tag-name="h4"] + div > p,
-.markdown-preview-view div[data-tag-name="h5"] + div > p,
-.markdown-preview-view div[data-tag-name="h6"] + div > p {
-	margin-block-start: 0em;
-}
-
-/* Heading 1 au milieu de la fiche, c’est-à-dire suivant
-	une ligne horizontale, ou un paragraphe, ou une liste non-numéroté,
-	ou une liste numérotée */
-.markdown-preview-view div[data-tag-name="hr"] + div > h1,
-.markdown-preview-view div[data-tag-name="p"] + div > h1,
-.markdown-preview-view div[data-tag-name="ul"] + div > h1,
-.markdown-preview-view div[data-tag-name="ol"] + div > h1 {
-	margin-block-start:	3em;
-	/*	color:		red;	*/
-}
 /* -------------------- ↑ Headings to my taste.css ↑ -------------------- */
 
 /* —————————————————————————————— OpSpl Horizontal Rule —————————————————————————————— */
 .markdown-rendered hr {
-  margin-block-start:	0.5em;
-  margin-block-end:		0.5em;
-  border:				none;
-  height:				0;
-  border-bottom:		2px solid;
-  border-width:			2px;
-  border-image:			linear-gradient(to right, transparent 0%, var(--text-normal) 20%, var(--text-normal) 40%, var(--text-normal) 60%, var(--text-normal) 80%, transparent 100%) 1;
+  margin-top:		0.75em;
+  margin-bottom:	0.75em;
+  border:			none;
+  height:			0;
+  border-bottom:	2px solid;
+  border-width:		2px;
+  border-image:		linear-gradient(to right, transparent 0%, var(--text-normal) 20%, var(--text-normal) 40%, var(--text-normal) 60%, var(--text-normal) 80%, transparent 100%) 1;
 }
 
 /* 	Quand des headings de niveau 3 à 6 suivent directement une ligne horizontale,
@@ -4451,8 +4390,8 @@ a:hover,
 
 /* —————————————————————————————— OpSpl Listes —————————————————————————————— */
 ol, ul {
-	margin-block-start: 0rem !important;
-    margin-block-end:	0rem !important;
+	margin-top: 0rem !important;
+    margin-bottom:	0rem !important;
 }
 
 li:first-child {
