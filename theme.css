@@ -11,6 +11,7 @@
 						Some sanitising of the code
 						Little tweaks of the vertical spacing
 						Added code to compact somehow the Dataview tables						1.2.0
+						Styled the Properties YAML block in line with the theme					1.3.0
 *******************************************************************/
 
 
@@ -78,6 +79,8 @@ body {
 	--OT-button-text:							var(--text-on-accent);
 	--OT-dropdown-text:							var(--text-normal);
 	--OT-menu-text-color:						var(--OT-sidebar-icon-color);		/*	le texte des menus	*/
+	--OT-metadata-background:					var(--background-secondary);		/*	rien ne m’empêche de l’ajuster, au besoin, palette par palette	*/
+	--OT-metadata-title-color-faint:			var(--text-faint);
 	--OT-nav-folder-title-color:           		var(--text-normal);
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
 	--OT-ribbon-icon-color-sidebar-is-open:		var(--icon-color);
@@ -138,6 +141,8 @@ body {
 	--line-height-normal:			var(--OT-readingMode-line-height);
 	--list-bullet-size:				0.4em;
 	--list-indent:					1.3em;
+	--metadata-border-radius:		7px;
+	--metadata-padding:				0;
 	--p-spacing:					0.5em;
 	--popover-font-size:			calc(var(--font-text-size) * 0.9);
 	--popover-height:				40vh;
@@ -253,6 +258,7 @@ body {
 
 	--icon-color:									var(--color-base-00);
 	--OT-dropdown-text:								var(--nav-item-color);
+	--OT-metadata-title-color-faint: 				#84AAAE;
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-20);
 	--OT-setting-item-description:					#0BA5B3;
 	--OT-tree-item-flair-background:				#087983;
@@ -354,8 +360,8 @@ body {
 	--OT-table-row-alt-background:	#E7FDEF;
 }
 .theme-light.generalPalette-icy {
-	--color-base-20:	#f8fbff;
 	--color-base-00:	#fdfeff;
+	--color-base-20:	#f8fbff;
 	--color-base-30:	#87c1fb;
 	--color-base-35:	#a6d1fc;
 	--color-base-40:	#0870d9;
@@ -375,6 +381,8 @@ body {
 	--h1-color:						#06509A;
 	--h3-color:						#0872DC;
 	--h5-color:						#3194F7;
+	--OT-metadata-background:		#F4F5F6;
+	--OT-metadata-title-color-faint: 	#90B8E1;
 	--OT-table-header-background:	#E2EEFE;
 	--OT-table-row-alt-background:	#F4F9FF;
 }
@@ -402,6 +410,7 @@ body {
 	--h3-color:			#6B523B;
 	--h5-color:			#44607C;
 
+	--OT-metadata-title-color-faint: 	#B1A295;
 	--OT-table-header-background:	#EEE8DC;
 	--OT-table-row-alt-background:	#F6EFE2;
 }
@@ -431,6 +440,7 @@ body {
 	--icon-color:							#143248;
 	--tab-text-color-focused-active:		var(--color-base-50);
 	--OT-dropdown-text:						var(--nav-item-color);
+	--OT-metadata-background:				#F1F6EB;
 	--OT-ribbon-icon-color-sidebar-is-open:	#BBD7EC;
 	--OT-sidebar-icon-color:				#BBD7EC;
 	--OT-style-settings-collapse-indicator:	#143248;
@@ -492,6 +502,7 @@ body {
 
 	--tab-text-color-focused:	var(--nav-item-color);
 
+	--OT-metadata-title-color-faint: 	#C3BBAF;
 	--OT-table-header-background:	#F6DFB6;
 	--OT-table-row-alt-background:	#FFF4E2;
 }
@@ -522,8 +533,8 @@ body {
 	--OT-table-row-alt-background:	#E7F4EB;
 }
 .theme-light.generalPalette-red {
-	--color-base-20:	#FEE2E2;
 	--color-base-00:	#FCE5E5;
+	--color-base-20:	#FEE2E2;
 	--color-base-30:	#FCA5A5;
 	--color-base-35:	#FCA5A5;
 	--color-base-40:	#FCA5A5;
@@ -547,6 +558,8 @@ body {
 
 	--code-normal:		#C00D06;
 
+	--OT-metadata-background:		#F3DDDC;
+	--OT-metadata-title-color-faint: 	#886A6A;
 	--OT-table-header-background:	#FDD2D2;
 	--OT-table-row-alt-background:	#FDD3D3;
 }
@@ -579,8 +592,8 @@ body {
 	--OT-table-header-color:		var(--solarized-base2);
 }
 .theme-light.generalPalette-stone {
-	--color-base-20:	#D6D3D1;
 	--color-base-00:	#E7E5E4;
+	--color-base-20:	#D6D3D1;
 	--color-base-30:	#A8A29E;
 	--color-base-35:	#E7E5E4;
 	--color-base-40:	#A8A29E;
@@ -601,12 +614,13 @@ body {
 	--h3-color:			#2D379E;
 	--h5-color:			#9293AD;
 
+	--OT-metadata-background:		#DFDDDC;
 	--OT-table-header-background:	#CFCCCA;
 	--OT-table-row-alt-background:	#E2E0DF;
 }
 .theme-light.generalPalette-violet {
-	--color-base-20:	#D7B4FA;
 	--color-base-00:	#F1E4FD;
+	--color-base-20:	#D7B4FA;
 	--color-base-30:	#720FD3;
 	--color-base-35:	#A897B9;
 	--color-base-40:	#720FD3;
@@ -628,6 +642,7 @@ body {
 	--h3-color:			#5E3B93;
 	--h5-color:			#9283B1;
 
+	--OT-metadata-background:		#F9DEFF;
 	--OT-table-header-background:	#DBBDFB;
 	--OT-table-row-alt-background:	#E8D6FC;
 }
@@ -710,6 +725,7 @@ body {
 	--stabilo-text:			var(--color-base-00) !important;
 	--stabilo-mark:			#D1BA62;
 
+	--OT-metadata-background:		#151515;
 	--OT-table-header-background:	#1F1F20;
 	--OT-table-row-alt-background:	#101013;
 }
@@ -741,6 +757,7 @@ body {
 	--stabilo-text:		var(--color-base-00) !important;
 	--stabilo-mark:		#054789;
 
+	--OT-metadata-title-color-faint: 	#2B508B;
 	--OT-table-header-background:	#031A3B;
 	--OT-table-row-alt-background:	#031C3F;	/*	#02152F;	*/
 }
@@ -800,6 +817,7 @@ body {
 	--stabilo-text:		#24514C !important;
 	--stabilo-mark:		var(--stabilo-vert-foncé);
 
+	--OT-metadata-title-color-faint: 	#3A7F53;
 	--OT-table-header-background:	#072512;
 	--OT-table-row-alt-background:	#051C0E;
 }
@@ -832,6 +850,7 @@ body {
 	--stabilo-text:		var(--text-normal) !important;
 	--stabilo-mark:		#187BFF;
 
+	--OT-metadata-title-color-faint: 	#004CB1;
 	--OT-table-header-background:	#002558;
 	--OT-table-row-alt-background:	#001C41;
 }
@@ -867,6 +886,7 @@ body {
 	--checklist-done-color:	#497C87;
 	--code-normal:			hsl(224, 37%, 80%);
 
+	--OT-metadata-title-color-faint: 	#697085;
 	--OT-table-header-background:	#363842;
 	--OT-table-row-alt-background:	#292B33;
 }
@@ -901,6 +921,7 @@ body {
 	--stabilo-text:				var(--nav-item-color) !important;
 	--stabilo-mark:				#255C84;
 
+	--OT-metadata-title-color-faint: 	#6E7071;
 	--OT-table-header-background:	#10293B;
 	--OT-table-row-alt-background:	#122D41;
 }
@@ -929,14 +950,15 @@ body {
 	--stabilo-mark:		#909246 ;
 	--stabilo-text:		#24514C !important;
 
+	--OT-metadata-title-color-faint: 	#737363;
 	--OT-table-header-background:	#2A2B14;
 	--OT-table-row-alt-background:	#2E2F16;
 }
 
 .theme-dark.darkPalette-parchment,
 .theme-dark.generalPalette-parchment.darkPalette-default {
-	--color-base-20:	#623B11;
 	--color-base-00:	#4E2F0D;
+	--color-base-20:	#623B11;
 	--color-base-30:	#B97020;
 	--color-base-35:	#A7661D;
 	--color-base-40:	#B97020;
@@ -958,6 +980,7 @@ body {
 	--stabilo-text:					var(--color-base-20) !important;
 	--text-on-accent:				var(--color-base-70);
 
+	--OT-metadata-title-color-faint: 	#895317;
 	--OT-table-header-background:	#3E250A;
 	--OT-table-row-alt-background:	#462A0C;
 }
@@ -991,6 +1014,7 @@ body {
 	--stabilo-text:					var(--color-base-00) !important;
 	--stabilo-mark:					#F84F6D;
 
+	--OT-metadata-title-color-faint: 	#7C0014;
 	--OT-table-header-background:	#34030C;
 	--OT-table-row-alt-background:	#36010C;
 }
@@ -1018,6 +1042,7 @@ body {
 	--OT-tooltips-text-color:	var(--color-base-20);
 	--text-on-hover:			var(--color-base-20);
 
+	--OT-metadata-title-color-faint: 	var(--solarized-base01);
 	--OT-table-header-background:	var(--solarized-base02);
 	--OT-table-row-alt-background:	var(--solarized-base02);
 	--OT-table-header-color:		var(--solarized-base2);
@@ -1028,8 +1053,8 @@ body {
 
 .theme-dark.darkPalette-stone,
 .theme-dark.generalPalette-stone.darkPalette-default{
-	--color-base-20:	#44403C;
 	--color-base-00:	#1C1917;
+	--color-base-20:	#44403C;
 	--color-base-30:	#57534E;
 	--color-base-35:	#ACA6A0;
 	--color-base-40:	#57534E;
@@ -1053,13 +1078,15 @@ body {
 	--stabilo-mark:		#755F48;
 	--stabilo-text:		#DFCFBE	!important;
 
+	--OT-metadata-background:		#2D2825;
+	--OT-metadata-title-color-faint: 	#574E48;
 	--OT-table-header-background:	#0F0E0D;
 	--OT-table-row-alt-background:	#191615;
 }
 
 .theme-dark.darkPalette-victorian {
-	--color-base-20:	#006615;
 	--color-base-00:	#6197B5;
+	--color-base-20:	#006615;
 	--color-base-30:	#F2B630;
 	--color-base-35:	#3686AA;
 	--color-base-40:	#E6F2CC;
@@ -1086,6 +1113,8 @@ body {
 	--OT-setting-item-name:		var(--color-base-50);
 	--OT-view-header-title-focus-color:	#E6F2CC;
 
+	--OT-metadata-background:		#5C90AC;
+	--OT-metadata-title-color-faint: 	#78BADF;
 	--OT-table-header-background:	#4E87A6;
 	--OT-table-row-alt-background:	#558FB0;
 }
@@ -1121,8 +1150,8 @@ body {
 
 .theme-dark.darkPalette-yellow,
 .theme-dark.generalPalette-yellow.darkPalette-default{
-	--color-base-20:	#1A1A1A;
 	--color-base-00:	#0D0D0D;
+	--color-base-20:	#1A1A1A;
 	--color-base-30:	#B89403;/*	#D9AF04;	*/
 	--color-base-35:	#333333;
 	--color-base-40:	#D9AF04;
@@ -1142,6 +1171,7 @@ body {
 	--checklist-done-color:		#8E7202;
 	--stabilo-text:				#424012 !important;
 
+	--OT-metadata-title-color-faint: 	#4D4D4D;
 	--OT-table-header-background:	#2E2501;
 	--OT-table-row-alt-background:	#1A1500;
 }
@@ -4249,8 +4279,8 @@ markdown-rendered h6 {
 	--heading-spacing:	1em;
 	margin-bottom:		0.1rem;
 }
-
 /* -------------------- ↑ Headings to my taste.css ↑ -------------------- */
+
 
 /* —————————————————————————————— OpSpl Horizontal Rule —————————————————————————————— */
 .markdown-rendered hr {
@@ -4273,7 +4303,7 @@ markdown-rendered h6 {
 	margin-top:		0.0em;
 	padding-top:	0.0em;
 }
-/* -------------------- ↑ horizontal rule ↑ -------------------- */
+/* -------------------- ↑ OpSpl horizontal rule ↑ -------------------- */
 
 
 /* —————————————————————————————— OpSpl Kanban —————————————————————————————— */
@@ -4315,6 +4345,7 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	font-family:	var(--OT-kanban-font), "P22 Eaglefeather", "Tekton Pro", "Palatino Sans Com", "Arial Narrow", "Helvetica Neue",sans-serif !important;
 	}
 /* -------------------- ↑ OpSpl Kanban -------------------- ↑ */
+
 
 /* —————————————————————————————— OpSpl Links —————————————————————————————— */
 /* ---------- no underline */
@@ -4388,6 +4419,7 @@ a:hover,
 }
 /* -------------------- ↑ OpSpl Links ↑ -------------------- */
 
+
 /* —————————————————————————————— OpSpl Listes —————————————————————————————— */
 ol, ul {
 	margin-top: 0rem !important;
@@ -4413,6 +4445,7 @@ li:last-child {
 }
 /* -------------------- ↑ OpSpl Listes -------------------- ↑ */
 
+
 /* —————————————————————————————— OpSpl Zoom-image —————————————————————————————— */
 .markdown-preview-view .internal-embed img {
 	cursor:zoom-in;}
@@ -4437,6 +4470,7 @@ li:last-child {
 	background: var(--background-primary);
 }
 /* -------------------- ↑ OpSpl Zoom-image.css ↑ -------------------- */
+
 
 /* —————————————————————————————— OpSpl Tooltips and Notices —————————————————————————————— */
 /*	D’origine, le texte a toujours une valeur claire, laquelle ne contraste pas suffisamment lorsqu’on a un fond clair.	*/
@@ -4496,6 +4530,45 @@ li:last-child {
 /* -------------------- ↑ OpSpl Metadata Menu plugin ↑ -------------------- */
 
 
+/*	—————————————————————————————— OpSpl “MetaTable” plugin ——————————————————————————————	*/
+.obsidian-metatable {
+	--metatable-text-primary:	var(--OT-text-muted);
+	--metatable-tag-color:		var(--text-on-accent);
+	--line-height-normal:		0.9em;
+}
+.obsidian-metatable::part(root) {
+	margin-top:			0;
+	margin-bottom:		1em;
+}
+.obsidian-metatable::part(set) {
+	margin:				0;
+	padding:			0;
+}
+.obsidian-metatable::part(member) {
+	line-height:		1.1rem;
+}
+.obsidian-metatable::part(key) {
+	text-align:		right;
+	padding-right:	1rem;
+}
+/*	-------------------- ↑ OpSpl “MetaTable” plugin ↑ --------------------	*/
+
+
+/* —————————————————————————————— OpSpl YAML Properties —————————————————————————————— */
+/*	Quand le bloc est collabé, le titre peut être rendu plus discret	*/
+.metadata-properties-heading.is-collapsed .metadata-properties-title {
+	color:	var(--OT-metadata-title-color-faint);
+}
+.metadata-properties-title {
+	margin-bottom:	0;
+}
+.metadata-content {
+	background-color:	var(--OT-metadata-background);
+	border-radius:		var(--metadata-border-radius);
+}
+/*	-------------------- ↑ OpSpl YAML Properties ↑ --------------------	*/
+
+
 /* —————————————————————————————— OpSpl Canvas —————————————————————————————— */
 .canvas-card-menu .canvas-card-menu-button,
 .canvas-controls button,
@@ -4518,8 +4591,8 @@ button.canvas-menu-item {
 .canvas-node-content.markdown-embed {
 	background-image:	none !important;
 }
-
 /* -------------------- ↑ OpSpl Canvas ↑ -------------------- */
+
 
 /* —————————————————————————————— OpSpl Projects plugin —————————————————————————————— */
 .active.svelte-3t9vh7 {
@@ -4762,30 +4835,6 @@ button.another-quick-switcher__command_button {
 .better-command-palette .better-command-palette-title {
   color: var(--text-normal);
 }
-
-/*	----- Pour le plugin “MetaTable” -----	*/
-.obsidian-metatable {
-	--metatable-text-primary:	var(--OT-text-muted);
-	--metatable-tag-color:		var(--text-on-accent);
-	--line-height-normal:		0.9em;
-}
-.obsidian-metatable::part(root) {
-	margin-top:			0;
-	margin-bottom:		1em;
-}
-.obsidian-metatable::part(set) {
-	margin:				0;
-	padding:			0;
-}
-.obsidian-metatable::part(member) {
-	line-height:		1.1rem;
-}
-.obsidian-metatable::part(key) {
-	text-align:		right;
-	padding-right:	1rem;
-}
-/*	----- ↑ plugin “MetaTable” ↑ -----	*/
-
 
 /* ==================================================================================== */
 /* —————————————————————————————— OpSpl Settings —————————————————————————————— */
