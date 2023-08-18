@@ -12,6 +12,8 @@
 						Little tweaks of the vertical spacing
 						Added code to compact somehow the Dataview tables						1.2.0
 						Styled the Properties YAML block in line with the theme					1.3.0
+			18.08.2023	Text selection with amber ink in dark mode
+						background-modifier-hover (in relation with properties input)			1.3.1
 *******************************************************************/
 
 
@@ -165,7 +167,7 @@ body {
 
 	--background-modifier-form-field:	var(--color-base-00) !important;
 	--background-modifier-active-hover:	var(--color-accent-2);
-	--background-modifier-hover:		var(--color-accent-2)	!important;
+	--background-modifier-hover:		var(--color-accent-1)	!important;
 	--background-modifier-message:		var(--color-accent-1) !important;	/*	le fond des “tooltips”																*/
 	--checkbox-border-color-hover:		var(--color-accent-2);
 	--checkbox-border-color:			var(--text-normal);
@@ -2696,7 +2698,7 @@ body {
 .theme-dark.inkColor-darkMode-amber .markdown-source-view .cm-line,
 .theme-dark.inkColor-darkMode-amber .cm-s-obsidian .cm-line {
 	color:	#D97706;
-	/*	--text-selection:	#6261FB;	*/
+	--text-selection:	#022348;
 }
 
 .theme-dark.inkColor-darkMode-black .CodeMirror pre.CodeMirror-line,
