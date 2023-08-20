@@ -12,8 +12,10 @@
 						Little tweaks of the vertical spacing
 						Added code to compact somehow the Dataview tables						1.2.0
 						Styled the Properties YAML block in line with the theme					1.3.0
+			17.08.2023	Text selection with amber ink in dark mode
 			18.08.2023	Text selection with amber ink in dark mode
 						background-modifier-hover (in relation with properties input)			1.3.1
+			20.08.2023	Refined the Properties editor pane in the sidebar						1.3.2
 *******************************************************************/
 
 
@@ -144,8 +146,14 @@ body {
 	--list-bullet-size:				0.4em;
 	--list-indent:					1.3em;
 	--metadata-border-radius:		7px;
+	--metadata-input-text-color:	var(--OT-text-muted);
 	--metadata-padding:				0;
 	--p-spacing:					0.5em;
+	--pill-background-hover:		var(--interactive-accent-hover);
+	--pill-background:				var(--interactive-accent-hover);
+	--pill-color-hover:				var(--text-on-hover);
+	--pill-radius: 					0.6em;
+	--pill-remove-color:			var(--text-on-hover);
 	--popover-font-size:			calc(var(--font-text-size) * 0.9);
 	--popover-height:				40vh;
 	--popover-max-height:			70vh;
@@ -167,7 +175,7 @@ body {
 
 	--background-modifier-form-field:	var(--color-base-00) !important;
 	--background-modifier-active-hover:	var(--color-accent-2);
-	--background-modifier-hover:		var(--color-accent-1)	!important;
+	--background-modifier-hover:		var(--color-accent-2)	!important;
 	--background-modifier-message:		var(--color-accent-1) !important;	/*	le fond des “tooltips”																*/
 	--checkbox-border-color-hover:		var(--color-accent-2);
 	--checkbox-border-color:			var(--text-normal);
@@ -4567,6 +4575,65 @@ li:last-child {
 .metadata-content {
 	background-color:	var(--OT-metadata-background);
 	border-radius:		var(--metadata-border-radius);
+}
+
+.multi-select-input:empty:before,
+.multi-select-container,
+.multi-select-container:focus,
+.multi-select-input {
+	color:	var(--text-on-hover);
+}
+
+.multi-select-pill-content {
+	--pill-padding-x:	0.5em;
+	color:	var(--text-on-hover);
+}
+.metadata-property input[type='text']:active,
+.metadata-property input[type='date']:active,
+.metadata-property input[type='datetime-local']:active,
+.metadata-property input[type='number']:active,
+.metadata-property .multi-select-container:active,
+.metadata-property input[type='text']:focus,
+.metadata-property input[type='date']:focus,
+.metadata-property input[type='datetime-local']:focus,
+.metadata-property input[type='number']:focus,
+.metadata-property .multi-select-container:focus {
+	color:				var(--OT-text-on-hover);
+	background-color:	var(--background-modifier-hover);
+}
+.metadata-property input[type='text']:hover,
+.metadata-property input[type='date']:hover,
+.metadata-property input[type='datetime-local']:hover,
+.metadata-property input[type='number']:hover,
+.metadata-property .multi-select-container:hover {
+	color:				var(--text-on-hover);
+	background-color:	var(--interactive-accent-hover);
+}
+.metadata-input-longtext:focus-within {
+	color:				var(--text-on-hover);
+}
+
+/*	Le bouton pour ajouter une property (métadonnée)	*/
+@media (hover: hover) {
+  .text-icon-button:hover {
+    box-shadow: none;
+    opacity: var(--icon-opacity-hover);
+    background-color: var(--background-modifier-hover);
+    color: var(--text-on-hover);
+  }
+  .text-icon-button:hover .text-button-icon {
+    color: var(--icon-color-hover);
+  }
+  .text-icon-button.has-active-menu,
+  .text-icon-button:active {
+    opacity: var(--icon-opacity-hover);
+    background-color: var(--background-modifier-hover);
+    color: var(--text-normal);
+  }
+  .text-icon-button.has-active-menu .text-button-icon,
+  .text-icon-button:active .text-button-icon {
+    color: var(--icon-color-focused);
+  }
 }
 /*	-------------------- ↑ OpSpl YAML Properties ↑ --------------------	*/
 
