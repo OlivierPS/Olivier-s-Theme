@@ -16,6 +16,7 @@
 			18.08.2023	Text selection with amber ink in dark mode
 						background-modifier-hover (in relation with properties input)			1.3.1
 			20.08.2023	Refined the Properties editor pane in the sidebar						1.3.2
+			2023-09-10.	Change colors of H1 and H2 in Solarized palette							1.3.3
 *******************************************************************/
 
 
@@ -593,7 +594,7 @@ body {
 
 	--color-base-100:	var(--solarized-blue);
 	--link-color:		var(--solarized-cyan);
-	--h1-color:			var(--solarized-base02);
+	/*	--h1-color:			var(--solarized-base02);	*/
 	--h3-color:			var(--solarized-violet);
 	--h5-color:			var(--solarized-base1);
 
@@ -4151,12 +4152,12 @@ body {
 	--h5-size:		clamp(1.266em, calc(1rem + 3vw), 		1.44em);
 	--h6-size:		clamp(1.125em, calc(1rem + 3vw), 		1.2em);
 
-    --h1-weight:	600;		/* semibold is enough and more readable		*/
-    --h2-weight:	500;		/* bolder is not necessary…					*/
-    --h3-weight:	500;		/* semibold is enough and more readable		*/
-    --h4-weight:	500;		/* to make them really stand up	as headings	*/
-    --h5-weight:	600;		/* to make them really stand up	as headings	*/
-    --h6-weight:	700;		/* to make them really stand up	as headings	*/
+    --h1-weight:	600;
+    --h2-weight:	500;
+    --h3-weight:	500;
+    --h4-weight:	500;
+    --h5-weight:	600;
+    --h6-weight:	500;
 
 	--h1-variant:	normal;
 	--h2-variant:	small-caps;
