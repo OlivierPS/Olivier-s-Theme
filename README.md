@@ -110,3 +110,16 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 - Mathew Meyers ([mgmyers](https://github.com/mgmeyers)) for the *Style Settings* and *Contextual Typography* plugins.
 - Stephan Ango ([kepano](https://github.com/kepano)) who streamlined and improved — as far as I know — the original *Obsidian* CSS. Everything was made easier by the addition of a sound system of variables in version 0.16. Before that, it was… dreadful to figure things out. I practically restarted the project from scratch with the new version.
 - **Numerous**, countless individuals whose work has been an inspiration. As anyone else, I browsed the *Obsidian* forum a lot and I didn’t diligently take note of every author of every bit of valuable insight, hint or information. So, in the end, I’m grateful to the friendly and smart *Obsidian* community as a whole.
+
+
+
+## Updates
+
+#### 23.03.2024 Version 1.5.0
+
+* When case sensitive search is active, the indicator is now visible. It used to disappear.
+* The labels of the sliding panes are now turned in a more logical direction.
+* Some adjustments for the “Metafolders” plugin :
+	* The font size are set according to the theme’s  setting for the sidebars.
+	* When hovered, the filenames and paths are more legible.
+* In the calendar pane of the “Calendar” plugin, the weekend days are displayed against a light background.
