@@ -19,6 +19,11 @@
 			10.09.2023	Changed colors of H1 and H2 in Solarized palette						1.3.3
 			04.02.2024	Added a different shade of blue for the text:	dark Blue
 						Corrected some errors with the edit mode indicator						1.4.0
+			23.03.2024	When case sensitive search is active, the indicator is now visible.		1.5.0
+						The labels of the sliding panes are now turned in a more logical direction.
+						Some adjustments for the “Metafolders” plugin.
+						The days of the weekend are displayed on a colored background in the
+							calendar pane of the “Calendar” plugin.
 *******************************************************************/
 
 
@@ -4996,6 +5001,45 @@ button.another-quick-switcher__command_button {
 .better-command-palette .better-command-palette-title {
   color: var(--text-normal);
 }
+
+/*	pour que l’indicateur de la rechercher “case sensitive” soit visible quand ce mode est actif	*/
+.input-right-decorator.clickable-icon.is-active {
+	background-color:	var(--checkbox-color);
+}
+
+
+/*	When tabs are displayed as sliding panes, I find it more logical to have the labels starting from the bottom and readable by tilting the head towards them, not away from them!	*/
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header-inner-title {
+    transform: rotate(180deg);
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+}
+
+
+/*	-------------------- Adjustments for the  “Metafolders” plugin	-------------------- */
+.file-node__content-text {
+	/*	line-height: var(--line-height-tight);	*/
+	font-size: var(--OT-sidebars-font-size);	/*	font size set by the theme’s setting for sidebars	*/
+}
+
+.file-node__path {
+	font-size: calc(var(--OT-sidebars-font-size) * 0.9); /*	font size defined os 90% of the theme’s setting for sidebars	*/
+}
+
+/*	les entrées avec les noms de fichiers et les paths, quand elles sont survolées	*/
+.file-node__container_highlight,
+.file-node__container_highlight .file-node__path {
+	color:		var(--nav-item-color-active);
+}
+/*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
+
+
+/*	Pour colorer le fond des week-ends dans le plugin “Calendar”	*/
+.calendar {
+  --color-background-weekend: var(--color-accent-1);
+}
+
+
 
 /* ==================================================================================== */
 /* —————————————————————————————— OpSpl Settings —————————————————————————————— */
