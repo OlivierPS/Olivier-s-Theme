@@ -115,6 +115,19 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 24.03.2024 Version 1.6.0
+
+I’ve found — at last ! — an elegant way to style lists how I’ve alway wanted :
+
+* They are slightly more compact than body text.
+* The typesize of level 2 items is slightly smaller than body text.
+* The typsize of levels 3 and higher is slightly smaller than level 2.
+* There’s a slight extra-space below list blocks so as to maintain a logical relation between the list items and the surrounding text. They are closer to what’s above them than to what’s below.
+
+
+
+----------------------------------------------
+
 #### 23.03.2024 Version 1.5.0
 
 * When case sensitive search is active, the indicator is now visible. It used to disappear.
