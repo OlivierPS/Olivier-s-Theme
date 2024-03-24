@@ -24,6 +24,12 @@
 						Some adjustments for the “Metafolders” plugin.
 						The days of the weekend are displayed on a colored background in the
 							calendar pane of the “Calendar” plugin.
+			24.03.2024	Changed the styling of the lists:										1.6.0
+							* slightly more compact
+							* better vertical spacing: there’s some space below list segments,
+								so they are more visually coherent
+							* level 2 and level 3 are set in a slightly smaller typesize than
+								the body text
 *******************************************************************/
 
 
@@ -126,6 +132,12 @@ body {
 	--h4-color:		var(--text-normal);
 	--h5-color:		var(--text-normal);
 	--h6-color:		var(--h5-color);		/* ma logique: les deux derniers niveaux de headings ont la même couleur	*/
+
+	--list-spacing:			0rem;		/*	reset, afin de pouvoir décider de mes réglages persos ci-dessous	*/
+	--list-spacing-below:	0.8rem;		/*	en-dessous du bloc constituant une liste	*/
+    --list-spacing-1: 		0.3rem;		/*	pas utilisé; mais au cas où…	*/
+    --list-spacing-2: 		0.3rem;		/*	en-dessous du dernier item du 2ème niveau de liste	*/
+    --list-spacing-3: 		0.2rem;		/*	en-dessous du dernier item du 3ème niveau de liste	*/
 
 	/*	correction des affectations spéciales du mode “Dark” par *Obsidian*; je préfère garder la même logique qu’en mode “Light”
 		et adapter ce qu’il faut au niveau de la définition de la palette de couleur. C’est déjà assez compliqué comme ça…	*/
@@ -2915,9 +2927,10 @@ body {
 
 /*	Vertical spacing of paragraphs: I prefer a more compact vertical spacing.
 	This also permits to show more text on a laptop */
-p {
-/*	margin-block-start:	0.5em;
+p,
+.markdown-rendered p {
     margin-block-end:	0;
+/*	margin-block-start:	0.5em;
     margin-inline-start:0px;
     margin-inline-end:	0px;
 	padding-top:		0;
@@ -4527,30 +4540,35 @@ a:hover,
 /* -------------------- ↑ OpSpl Links ↑ -------------------- */
 
 
-/* —————————————————————————————— OpSpl Listes —————————————————————————————— */
-ol, ul {
-	margin-top: 0rem !important;
-    margin-bottom:	0rem !important;
+/* —————————————————————————————— OpSpl Listes — Espacement vertical —————————————————————————————— */
+ol, ul,
+.markdown-rendered ul, .markdown-rendered ol {
+	margin-block-start:	var(--list-spacing-1);
+	line-height:	calc(var(--OT-readingMode-line-height) * 0.95);
 }
 
-li:first-child {
-	margin-top:		0.2rem !important;
+div > * > li:last-child {			/* All level 1 last items */
+    margin-bottom:	var(--list-spacing-below);
 }
 
-li:last-child {
-	margin-bottom:	0.5rem !important;
+div > * > li > * > li {			/* All level 2 items */
+	font-size:	0.97em;
 }
 
-.cm-s-obsidian .HyperMD-list-line {
-	margin-top:			0.6rem !important;
-	margin-block-start:	0.4rem !important;
-	margin-bottom:		0.6rem !important;
-	margin-block-end:	0.4rem !important;
-	padding-top:		0.2rem !important;
-	padding-bottom:		0.2rem !important;
-/*		letter-spacing: 	0.5 !important;	*/
+div > * > li > * > li > * > li {	/* All level 3 items */
+	font-size:		0.94em;
 }
-/* -------------------- ↑ OpSpl Listes -------------------- ↑ */
+
+
+div > * > li > * > li:last-child {			/* All level 2 last items */
+    margin-bottom:	var(--list-spacing-2);
+}
+
+div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
+   margin-bottom:	var(--list-spacing-3);
+}
+
+/* -------------------- ↑ OpSpl Listes — Espacement vertical -------------------- ↑ */
 
 
 /* —————————————————————————————— OpSpl Zoom-image —————————————————————————————— */
