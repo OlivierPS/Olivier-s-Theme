@@ -30,6 +30,10 @@
 								so they are more visually coherent
 							* level 2 and level 3 are set in a slightly smaller typesize than
 								the body text
+			06.04.2024	Improvement to the metadata/properties block							1.7.0
+						Invisible (hopefully…) cleaning of the coding. Now that many more
+						variables are available than when I started the project, I don’t need
+						anymore some of the tricks I had to resort to.
 *******************************************************************/
 
 
@@ -100,30 +104,28 @@ body {
 
 
 	/* D’autres variables de mon cru, utilisée ailleurs -- ou pas, car ça reste à éventuellement mettre en place	*/
-	--OT-button-text:							var(--text-on-accent);
-	--OT-dropdown-text:							var(--text-normal);
-	--OT-menu-text-color:						var(--OT-sidebar-icon-color);		/*	le texte des menus	*/
-	--OT-metadata-background:					var(--background-secondary);		/*	rien ne m’empêche de l’ajuster, au besoin, palette par palette	*/
-	--OT-metadata-title-color-faint:			var(--text-faint);
-	--OT-nav-folder-title-color:           		var(--text-normal);
+	--OT-dropdown-text:								var(--text-normal);
+	--OT-menu-text-color:							var(--OT-sidebar-icon-color);	/*	le texte des menus	*/
+	--OT-metadata-title-color-faint:				var(--text-faint);
+	--OT-nav-folder-title-color:           			var(--text-normal);
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
-	--OT-ribbon-icon-color-sidebar-is-open:		var(--icon-color);
-	--OT-setting-item-name:                		var(--text-normal);
-	--OT-setting-item-description:				var(--text-muted);
-	--OT-sidebar-icon-color:					var(--icon-color);
-	--OT-style-settings-collapse-indicator:		var(--text-faint);
-	--OT-text-muted:							var(--text-muted);		/*	afin de me ménager une possibilité d’adaptation, là où le “muted” d’origine soit ne fonctionne pas, soit n’est pas adapté	*/
-	--OT-text-in-sidebar:						var(--nav-item-color);
-	--OT-table-background:						var(--color-base-00);
-	--OT-table-header-background:				var(--table-background);
-	--OT-table-header-color:					var(--table-header-color);
-	--OT-table-row-alt-background:				var(--color-base-20);
-	--OT-tooltips-text-color:					var(--text-on-accent);
-	--OT-search-result-file-title-expanded:		var(--text-normal);		/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
-	--OT-tree-item-flair-background:			var(--color-accent-2);
-	--OT-vertical-tab-header-group-title:		var(--text-faint);
-	--OT-view-header-title-focus-color: 		var(--h1-color);
-	--OT-view-header-title-no-focus-color: 		var(--text-faint);
+	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
+	--OT-setting-item-name:                			var(--text-normal);
+	--OT-setting-item-description:					var(--text-muted);
+	--OT-sidebar-icon-color:						var(--icon-color);
+	--OT-style-settings-collapse-indicator:			var(--text-faint);
+	--OT-text-muted:								var(--text-muted);				/*	afin de me ménager une possibilité d’adaptation, là où le “muted” d’origine soit ne fonctionne pas, soit n’est pas adapté	*/
+	--OT-text-in-sidebar:							var(--nav-item-color);
+	--OT-table-background:							var(--color-base-00);
+	--OT-table-header-background:					var(--table-background);
+	--OT-table-header-color:						var(--table-header-color);
+	--OT-table-row-alt-background:					var(--color-base-20);
+	--OT-tooltips-text-color:						var(--text-on-accent);
+	--OT-search-result-file-title-expanded:			var(--text-normal);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
+	--OT-tree-item-flair-background:				var(--color-accent-2);
+	--OT-vertical-tab-header-group-title:			var(--text-faint);
+	--OT-view-header-title-focus-color: 			var(--h1-color);
+	--OT-view-header-title-no-focus-color: 			var(--text-faint);
 
 	/* J’initialise ici quelques variables dans «ma logique à moi»	*/
 	--h1-color:		var(--text-normal);
@@ -139,13 +141,6 @@ body {
     --list-spacing-2: 		0.3rem;		/*	en-dessous du dernier item du 2ème niveau de liste	*/
     --list-spacing-3: 		0.2rem;		/*	en-dessous du dernier item du 3ème niveau de liste	*/
 
-	/*	correction des affectations spéciales du mode “Dark” par *Obsidian*; je préfère garder la même logique qu’en mode “Light”
-		et adapter ce qu’il faut au niveau de la définition de la palette de couleur. C’est déjà assez compliqué comme ça…	*/
-	--background-modifier-form-field:	var(--color-base-00) !important;
-	--background-secondary-alt:			var(--color-base-05) !important;
-	--interactive-hover:				var(--color-base-10) !important;
-	--interactive-normal:				var(--color-base-00) !important;
-
 	/* ————— font family in Edit Mode ————— */
 	--editor-font-family:			var(--OT-editMode-font),
     								"Comic Sans MS",
@@ -153,7 +148,6 @@ body {
 
 	/* Quelques mises au point de mon cru, caractérisant le thème */
 	--blockquote-background-color:	snow;
-	--bold-weight:					600;
 	--border-width:					1.5px;
 	--checkbox-size:				var(--OT-readingMode-text-size);
 	--file-header-font-size:		calc(var(--OT-readingMode-text-size) * 1.1 );
@@ -172,36 +166,35 @@ body {
 	--list-bullet-size:				0.4em;
 	--list-indent:					1.3em;
 	--metadata-border-radius:		7px;
-	--metadata-input-text-color:	var(--OT-text-muted);
+	--metadata-label-font-weight:	var(--font-semibold);
 	--metadata-padding:				0;
+	--metadata-property-padding:	0em 0em 0em 0.3em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
 	--p-spacing:					0.5em;
-	--pill-background-hover:		var(--interactive-accent-hover);
+/*	--pill-background-hover:		var(--interactive-accent-hover);
 	--pill-background:				var(--interactive-accent-hover);
 	--pill-color-hover:				var(--text-on-hover);
 	--pill-radius: 					0.6em;
-	--pill-remove-color:			var(--text-on-hover);
+	--pill-remove-color:			var(--text-on-hover);				*/
 	--popover-font-size:			calc(var(--font-text-size) * 0.9);
 	--popover-height:				40vh;
 	--popover-max-height:			70vh;
 	--popover-width:				46rem;
 	--status-bar-border-width:		1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
 	--table-header-weight:			var(--font-bold);
-	--text-accent:					var(--color-accent-2);		/*	je m’assure que cet élément soit bien visible	*/
-	--text-on-hover:				var(--text-on-accent);
 	--vault-name-font-size:			calc(var(--OT-sidebars-font-size) * 1.3);
 	--vault-name-font-weight:		var(--font-bold);
 
 	/* COULEURS	——————————————————————————————————————————————————————————————————————	*/
 
 	/* re-définition des variantes de la couleur “accent” */
-	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 25%))	!important;
-	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 12.5%))	!important;
+	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 12.5%))	!important;
+	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 25%))	!important;
 
 	--color-base-10:				var(--color-accent-1) !important;	/*	le fond des boutons survolés; parfois, c’est --color-accent-2 qui convient			*/
 
-	--background-modifier-form-field:	var(--color-base-00) !important;
+/*		--background-modifier-form-field:	var(--color-base-00) !important;	*/
 	--background-modifier-active-hover:	var(--color-accent-2);
-	--background-modifier-hover:		var(--color-accent-2)	!important;
+	--background-modifier-hover:		var(--color-accent-1)	/*!important*/;
 	--background-modifier-message:		var(--color-accent-1) !important;	/*	le fond des “tooltips”																*/
 	--checkbox-border-color-hover:		var(--color-accent-2);
 	--checkbox-border-color:			var(--text-normal);
@@ -225,6 +218,13 @@ body {
 	--link-external-color:				var(--link-color);
 	--link-unresolved-color:			var(--color-red) ;
 	--list-marker-color:				var(--text-normal);
+	--metadata-background: 				var(--background-secondary-alt);
+	--metadata-input-background-active:	var(--background-modifier-form-field);
+	--metadata-label-background-active:	var(--background-modifier-form-field);
+/*
+	--metadata-input-text-color:		var(--OT-text-muted);
+	--metadata-input-background-active:	var(--color-accent-2);
+	--metadata-input-text-color:		var(--text-on-accent);		*/
 	--nav-item-background-selected:		hsla(var(--color-accent-hsl), 0.2);
 	--nav-item-color-active:			var(--text-on-accent);
 	--nav-item-color-highlighted:		var(--text-accent-hover);
@@ -235,10 +235,10 @@ body {
 	--stabilo-text:						var(--text-normal);
 	--tab-text-color-focused-active:	var(--nav-item-color);				/*	c’est le nom des fiches dans un tab qui n’est pas le tab courant	*/
 	--tab-text-color-focused:			var(--nav-item-color);
-	--tag-background:					var(--interactive-accent);
+/*	--tag-background:					var(--interactive-accent);
 	--tag-background-hover:				var(--interactive-accent-hover);
 	--tag-color:						var(--text-on-accent);
-	--tag-color-hover:					var(--text-on-accent);
+	--tag-color-hover:					var(--text-on-accent);*/
 	--table-header-color:				var(--h3-color);
 	--text-accent-hover:				var(--link-color);
 	--text-accent:						var(--color-accent-2);
@@ -269,23 +269,25 @@ body {
 
 /* —————————————————————————————— OpSpl Color Schemes —————————————————————————————— */
 .theme-light.generalPalette-artDeco {
-	--color-base-20:	#B69DF2;
-	--color-base-00:	#EFEBFC;
-	--color-base-30:	#62E9F5;
-	--color-base-35:	#000000;
-	--color-base-40:	#D400D4;
-	--color-base-50:	#000000;
-	--color-base-05:	#C3BED0;
-	--nav-item-color:	#E6DFFA;
-	--color-base-70:	#FCF2FF;
+	--color-base-00:			#EFEBFC;
+	--color-base-20:			#B69DF2;
+	--color-base-35:			#000000;
+	--color-base-40:			#D400D4;
+	--color-base-50:			#000000;
+	--color-base-05:			#C3BED0;
+	--nav-item-color:			#E6DFFA;
+	--text-muted:			#FCF2FF;
+	--background-secondary-alt:	#BBA4F3;
 
-	--blockquote-background-color:	#EACEF2;
+	--background-modifier-border:		#62E9F5;
+	--background-modifier-form-field:	#DCD0F9;
+	--blockquote-background-color:		#EACEF2;
 
 	--accent-h:			18	!important;
 	--accent-s:			77%	!important;
 	--accent-l:			38%	!important;
 
-	--color-base-100:	#2E6E74;
+	--text-normal:		#2E6E74;
 	--OT-text-muted:	#3C9199;
 	--link-color:		#572E74;
 	--h1-color:			#2C686E;
@@ -311,23 +313,25 @@ body {
 .theme-light.generalPalette-beige {
 	--color-base-00:	#F6F2EE;
 	--color-base-20:	#EEE5DD;
-	--color-base-30:	#D7C3B2;
 	--color-base-35:	#EDE4DD;
 	--color-base-40:	#A87D58;
 	--color-base-05:	#D5CDC6;
 	--nav-item-color:	#A87D58;
 	--color-base-50:	#B89982;
 
-	--blockquote-background-color:	#EDE4DD;
-	--color-base-70:				#AE8768;
-	--table-row-alt-background:		#EAE1D8;
+	--background-secondary-alt:			#E6DDD5;
+	--background-modifier-form-field:	#F6EDE5;
+	--background-modifier-border:		#D7C3B2;
+	--blockquote-background-color:		#EDE4DD;
+	--text-muted:					#AE8768;
+	--table-row-alt-background:			#EAE1D8;
 
 	/* Obsidian violet:	*/
 	--accent-h:			238	!important;
 	--accent-s:			31%	!important;
 	--accent-l:			30%	!important;
 
-	--color-base-100:	#6A4F38;
+	--text-normal:	#6A4F38;
 	--link-color:		#58A8A5;
 	--h1-color:			#96704F;
 	--h3-color:			#9F7653;
@@ -339,24 +343,26 @@ body {
 	--OT-table-row-alt-background:	#F0E9E2;
 }
 .theme-light.generalPalette-blue {
-	--color-base-20:	#C2DBFF;
 	--color-base-00:	#E2EEFF;
-	--color-base-30:	#A5BCDB;
+	--color-base-20:	#C2DBFF;
 	--color-base-35:	#CFDDF2;
 	--color-base-40:	#0870d9;
 	--color-base-05:	#F2F7FE;
 	--color-base-50:	#7591CB;
 	--nav-item-color:	#0760BA;
+	--background-secondary-alt:	#BCD4F6;
 
-	--blockquote-background-color:	#C0DAFF;
-	--color-base-70:				#06509A;
-	--table-row-alt-background:		#D9E8FF;
+	--background-modifier-border:		#A5BCDB;
+	--background-modifier-form-field:	#D9E9FF;
+	--blockquote-background-color:		#C0DAFF;
+	--text-muted:						#06509A;
+	--table-row-alt-background:			#D9E8FF;
 
 	--accent-h:			215		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			30%		!important;
 
-	--color-base-100:	#0761BB;
+	--text-normal:	#0761BB;
 	--link-color:		#4E9706;
 	--h1-color:			#053F79;
 	--h3-color:			#06509A;
@@ -368,25 +374,34 @@ body {
 .theme-light.generalPalette-OBSIDIAN {
 	--OT-table-header-background:	#EEEEEE;
 }
+.theme-light.generalPalette-WIP {
+	--background-primary:			#FFFFF0;	/*	ivory; autre possibilité: FDFDEF	*/
+	--background-secondary:			#fdf5e6;
+
+	--text-normal:					#212A70;
+	--text-muted:					#7085CE;
+	--link-color:					#007664;
+	--OT-table-header-background:	#EEEEEE;
+}
 .theme-light.generalPalette-green {
-	--color-base-20:	#DCFCE7;
 	--color-base-00:	#F0FDF4;
-	--color-base-30:	#86EFAC;
+	--color-base-20:	#DCFCE7;
 	--color-base-35:	#defce9;
 	--color-base-40:	#70ec9d;
-	--color-base-05:	#f2fdf5;
 	--color-base-50:	#75857B;
 	--nav-item-color:	#085C27;
 
+	--background-secondary-alt:		#D5F3DF;
+	--background-modifier-border:	#86EFAC;
 	--blockquote-background-color:	#DFFAE7;
-	--color-base-70:				#10AF4B;
+	--text-muted:					#10AF4B;
 	--table-row-alt-background:		#E8F9EE;
 
 	--accent-h:			142	!important;
 	--accent-s:			83%	!important;
 	--accent-l:			33%	!important;
 
-	--color-base-100:	var(--favorite-blue);
+	--text-normal:	var(--favorite-blue);
 	--link-color:		#537622;
 	--h1-color:			#202770;
 	--h3-color:			#252C73;
@@ -398,21 +413,22 @@ body {
 .theme-light.generalPalette-icy {
 	--color-base-00:	#fdfeff;
 	--color-base-20:	#f8fbff;
-	--color-base-30:	#87c1fb;
 	--color-base-35:	#a6d1fc;
 	--color-base-40:	#0870d9;
-	--color-base-05:	#EBEEF2;
 	--color-base-50:	#6687C7;
 	--nav-item-color:	#0760BA;
 
-	--blockquote-background-color:		#EEF4FF;
-	--color-base-70:	#537CC3;
+	--background-secondary-alt:		#E7FDFF;
+	--background-modifier-border:	#87c1fb;
+	--background-modifier-form-field:	#F3FCFF;
+	--blockquote-background-color:	#EEF4FF;
+	--text-muted:				#537CC3;
 
 	--accent-h:			214		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			40%		!important;
 
-	--color-base-100:				#0761BB;
+	--text-normal:				#0761BB;
 	--link-color:					#57A706;
 	--h1-color:						#06509A;
 	--h3-color:						#0872DC;
@@ -423,24 +439,26 @@ body {
 	--OT-table-row-alt-background:	#F4F9FF;
 }
 .theme-light.generalPalette-lightBeige {
-	--color-base-20:	#F7F0E4;
 	--color-base-00:	#FAFAF4;
-	--color-base-30:	#71573E;
+	--color-base-20:	#F7F0E4;
 	--color-base-35:	#daba82;
 	--color-base-40:	#c3913a;
 	--color-base-05:	#E5DFD4;
 	--nav-item-color:	#7D6754;
 	--color-base-50:	#8E7E70;
-	--color-base-70:	#BD8C38;
+	--text-muted:	#BD8C38;
+	--background-secondary-alt:	#EEE8DC;
 
 	--accent-h:			180	!important;
 	--accent-s:			50%	!important;
 	--accent-l:			30%	!important;
 
-	--blockquote-background-color:	#F7F0E4;
-	--stabilo-mark:		#E9DDD1;
+	--background-modifier-border:		#71573E;
+	--background-modifier-form-field:	#F8F1E6;
+	--blockquote-background-color:		#F7F0E4;
+	--stabilo-mark:						#E9DDD1;
 
-	--color-base-100:	#71573E;
+	--text-normal:	#71573E;
 	--link-color:		#507192;
 	--h1-color:			#9D7956;
 	--h3-color:			#6B523B;
@@ -452,25 +470,27 @@ body {
 }
 .theme-light.generalPalette-metallicBlue {
 	--color-base-00:				#fafff3;
-	--color-base-05:				#5e7384;
 	--color-base-20:				#143248;
-	--color-base-30:				#225378;
 	--color-base-35:				#dbefff;
 	--color-base-40:				#3d8cc8;
 	--color-base-50:				var(--light-blue)
-	--color-base-70:				#599dd0;
+
 	--nav-item-color:				#BBD7EC;
+	--background-secondary-alt:		#244055;
+	--background-modifier-border:	#225378;
 	--blockquote-background-color:	#FDF8D6;
 	--OT-nav-folder-title-color:	#4492CB;
 	--accent-h:						325	!important;
 	--accent-s:						80%	!important;
 	--accent-l:						30%	!important;
 
-	--color-base-100:	#255C84;
-	--link-color:		#267020;
-	--h1-color:			var(--text-normal);
-	--h3-color:			var(--text-normal);
-	--h5-color:			var(--text-normal);
+	--text-normal:	#255C84;
+	--text-muted:	#337FB6;
+	--link-color:	#267020;
+	--metadata-input-text-color:	var(--text-muted);
+	--h1-color:		var(--text-normal);
+	--h3-color:		var(--text-normal);
+	--h5-color:		var(--text-normal);
 
 	/* particularités	*/
 	--icon-color:							#143248;
@@ -488,23 +508,25 @@ body {
 	--OT-table-row-alt-background:	#FBFCFD;
 }
 .theme-light.generalPalette-paradiso {
-	--color-base-20:	#E1E2C2;
 	--color-base-00:	#F1EFE3;
-	--color-base-30:	rgb(169, 214, 180);
+	--color-base-20:	#E1E2C2;
 	--color-base-35:	rgb(212, 212, 212);
 	--color-base-40:	rgb(195, 224, 190);
 	--color-base-05:	#A7A790;
 	--nav-item-color:	#636430;
 
-	--blockquote-background-color:	#ECEDD9;
-	--color-base-70:				#636430;
+	--background-secondary-alt:			#D9D9BB;
+	--background-modifier-form-field:	#F2F3D1;
+	--background-modifier-border:		rgb(169, 214, 180);
+	--blockquote-background-color:		#ECEDD9;
+	--text-muted:						#636430;
 
 
 	--accent-h:			242	!important;
 	--accent-s:			36%	!important;
 	--accent-l:			30%	!important;
 
-	--color-base-100:	#4C4D25;
+	--text-normal:	#4C4D25;
 	--link-color:		#5351A9;
 	--h1-color:			#484923;
 	--h3-color:			#35361A;
@@ -514,27 +536,29 @@ body {
 	--OT-table-row-alt-background:	#EDEDDB;
 }
 .theme-light.generalPalette-parchment {
-	--color-base-20:	#E4CDA7;
 	--color-base-00:	#FFEED1;
-	--color-base-30:	#C3B091;
+	--color-base-20:	#E4CDA7;
 	--color-base-35:	#FFEED1;
 	--color-base-40:	#706553;
 	--color-base-05:	#544C3E;
 	--nav-item-color:	#6F5B3E;
 	--color-base-50:	#B68D40;
-	--color-base-70:	#B68D40;b
+	--text-muted:	#B68D40;b
 
 	--accent-h:	39	!important;
 	--accent-s:	59%	!important;
 	--accent-l:	40%	!important;
 
+	--background-secondary-alt:		#ECD5AD;
+	--background-modifier-form-field:#FDE4BA;
+	--background-modifier-border:	#C3B091;
 	--blockquote-background-color:	#F2E1C6;
 
-	--color-base-100:	#6F5B3E;
-	--link-color:		#6089D6;
-	--h1-color:			#B68D40;
-	--h3-color:			#B68D40;
-	--h5-color:			#AEA188;
+	--text-normal:	#6F5B3E;
+	--link-color:	#6089D6;
+	--h1-color:		#B68D40;
+	--h3-color:		#B68D40;
+	--h5-color:		#AEA188;
 
 	--tab-text-color-focused:	var(--nav-item-color);
 
@@ -543,23 +567,23 @@ body {
 	--OT-table-row-alt-background:	#FFF4E2;
 }
 .theme-light.generalPalette-pistachio {
-	--color-base-20:	#DFF0E4;
 	--color-base-00:	#F0F8F2;
-	--color-base-30:	rgb(169, 214, 180);
+	--color-base-20:	#DFF0E4;
 	--color-base-35:	rgb(212, 212, 212);
 	--color-base-40:	rgb(195, 224, 190);
-	--color-base-05:	#B2CCB9;
 	--color-base-50:	#6BB782;
 	--nav-item-color:	#309A53;
 
+	--background-secondary-alt:		#D7E7DC;
+	--background-modifier-border:	rgb(169, 214, 180);
 	--blockquote-background-color:	#E4F6EA;
-	--color-base-70:				#38B461;
+	--text-muted:				#38B461;
 
 	--accent-h:			137	!important;
 	--accent-s:			34%	!important;
 	--accent-l:			35%	!important;
 
-	--color-base-100:	#288045	;
+	--text-normal:	#288045	;
 	--link-color:		#712880	;
 	--h1-color:			#2C6620	;
 	--h3-color:			#007759	;
@@ -571,22 +595,23 @@ body {
 .theme-light.generalPalette-red {
 	--color-base-00:	#FCE5E5;
 	--color-base-20:	#FEE2E2;
-	--color-base-30:	#FCA5A5;
 	--color-base-35:	#FCA5A5;
 	--color-base-40:	#FCA5A5;
-	--color-base-05:	#5F0808;
 	--color-base-50:	#FA6B66;
 	--nav-item-color:	#C00D06;
 
+	--background-secondary-alt:		#F5DADA;
+	--background-modifier-form-field:	#FEEAEA;
+	--background-modifier-border:	#FCA5A5;
 	--blockquote-background-color:	#FBDCDC;
-	--color-base-70:				#760804;
+	--text-muted:				#760804;
 
 	--accent-h:			254	!important;
 	--accent-s:			80%	!important;
 	--accent-l:			40%	!important;
 
 	--checklist-done-color:	#F38B8B;
-	--color-base-100:	#5D0603;
+	--text-normal:	#5D0603;
 	--link-color:		var(--obsidian-violet);
 	--h1-color:			#6A0804;
 	--h3-color:			#823B3B;
@@ -602,22 +627,23 @@ body {
 .theme-light.generalPalette-solarized {
 	--color-base-20:	var(--solarized-base2);
 	--color-base-00:	var(--solarized-base3);
-	--color-base-30:	var(--solarized-base1);
 	--color-base-35:	var(--solarized-base1);
 	--color-base-40:	var(--solarized-yellow);
-	--color-base-05:	var(--solarized-base1);
 	--color-base-50:	var(--solarized-base0);
 	--nav-item-color:	var(--solarized-violet);
 
+	--background-secondary-alt:		var(--solarized-base3);
+	--background-modifier-form-field:var(--solarized-base2);
+	--background-modifier-border:	var(--solarized-base1);
 	--blockquote-background-color:	var(--solarized-base2);
-	--color-base-70:				var(--solarized-base00);
+	--text-muted:				var(--solarized-base00);
 
 	/* Obsidian violet:	*/
 	--accent-h:			175	!important;
 	--accent-s:			59%	!important;
 	--accent-l:			33%	!important;
 
-	--color-base-100:	var(--solarized-blue);
+	--text-normal:	var(--solarized-blue);
 	--link-color:		var(--solarized-cyan);
 	/*	--h1-color:			var(--solarized-base02);	*/
 	--h3-color:			var(--solarized-violet);
@@ -630,25 +656,26 @@ body {
 .theme-light.generalPalette-stone {
 	--color-base-00:	#E7E5E4;
 	--color-base-20:	#D6D3D1;
-	--color-base-30:	#A8A29E;
 	--color-base-35:	#E7E5E4;
 	--color-base-40:	#A8A29E;
-	--color-base-05:	#292524;
 	--nav-item-color:	#44403C;
 	--color-base-50:	#78716C;
-	--color-base-70:	#78716C;
 
 	--accent-h:	254	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	50%	!important;
 
+	--background-secondary-alt:		#DEDBD9;
+	--background-modifier-form-field:#E7E4E2;
+	--background-modifier-border:	#A8A29E;
 	--blockquote-background-color:	#D6D3D1;
 
-	--color-base-100:	var(--favorite-blue);
-	--link-color:		#297622;
-	--h1-color:			#1E256A;
-	--h3-color:			#2D379E;
-	--h5-color:			#9293AD;
+	--text-normal:	var(--favorite-blue);
+	--text-muted:	#78716C;
+	--link-color:	#297622;
+	--h1-color:		#1E256A;
+	--h3-color:		#2D379E;
+	--h5-color:		#9293AD;
 
 	--OT-metadata-background:		#DFDDDC;
 	--OT-table-header-background:	#CFCCCA;
@@ -657,22 +684,23 @@ body {
 .theme-light.generalPalette-violet {
 	--color-base-00:	#F1E4FD;
 	--color-base-20:	#D7B4FA;
-	--color-base-30:	#720FD3;
 	--color-base-35:	#A897B9;
 	--color-base-40:	#720FD3;
-	--color-base-05:	#C0ADD3;
 	--color-base-50:	#A457F2;
 	--nav-item-color:	#7111D2;
 
+	--background-secondary-alt:		#D0AEF1;
+	--background-modifier-form-field:#EAD8FC;
+	--background-modifier-border:	#720FD3;
 	--blockquote-background-color:	#E1C7FB;
-	--color-base-70:				#973FF0;
+	--text-muted:				#973FF0;
 
 	/* Obsidian violet:	*/
 	--accent-h:			254	!important;
 	--accent-s:			80%	!important;
 	--accent-l:			30%	!important;
 
-	--color-base-100:	#4B0B8B;
+	--text-normal:	#4B0B8B;
 	--link-color:		var(--obsidian-violet);
 	--h1-color:			#470A84;
 	--h3-color:			#5E3B93;
@@ -683,17 +711,18 @@ body {
 	--OT-table-row-alt-background:	#E8D6FC;
 }
 .theme-light.generalPalette-yellow {
-	--color-base-20:	#FEF3C7;
 	--color-base-00:	#FFF8DA;
-	--color-base-30:	#FCD34D;
+	--color-base-20:	#FEF3C7;
 	--color-base-35:	#fdeda9;
 	--color-base-40:	#fbcd15;
-	--color-base-05:	#F2EEE0;
 	--color-base-50:	#B28F03;
 	--nav-item-color:	#907403;
 
+	--background-secondary-alt:		#F5EBC0;
+	--background-modifier-form-field:#FFFAE6;
+	--background-modifier-border:	#FCD34D;
 	--blockquote-background-color:	#FEF3C7;
-	--color-base-70:				#3945C5;
+	--text-muted:				#3945C5;
 
 	--accent-h:			48	!important;
 	--accent-s:			96%	!important;
@@ -701,7 +730,7 @@ body {
 
 	--text-selection:	hsl(var(--accent-h), var(--accent-s), 70%);
 
-	--color-base-100:	var(--favorite-blue);
+	--text-normal:	var(--favorite-blue);
 	--OT-text-muted:	#B28F03;
 	--link-color:		#537622;
 	--h1-color:			#6F5902;
@@ -725,21 +754,21 @@ body {
 .theme-dark.generalPalette-lightBeige.darkPalette-default {
 	--color-base-20:	#2F1E02;
 	--color-base-00:	#2A1B02;
-	--color-base-30:	#784D05;
 	--color-base-35:	#4A413B;
 	--color-base-40:	#603D04;
 	--color-base-05:	#4A413B;
 	--nav-item-color:	#DA8B09;
 	--color-base-50:	#784D05;
-	--color-base-70:	#F39B0A;
+	--text-muted:	#F39B0A;
 
 	--accent-h:	37	!important;
 	--accent-s:	92%	!important;
 	--accent-l:	10%	!important;
 
+	--background-modifier-border:	#784D05;
 	--blockquote-background-color:	#472E03;
 
-	--color-base-100:	#F39B0A;
+	--text-normal:	#F39B0A;
 	--link-color:		#0A62F3;
 	--h1-color:			#F5AF66;
 	--h3-color:			#F7AF39;
@@ -770,22 +799,22 @@ body {
 .theme-dark.generalPalette-blue.darkPalette-default {
 	--color-base-20:	#021a32;
 	--color-base-00:	#011427;
-	--color-base-30:	#064D94;
 	--color-base-35:	#043363;
 	--color-base-40:	#03264a;
 	--color-base-05:	#010A14;
 	--nav-item-color:	#0868CA;	/*	#0760BA;	*/
 	--color-base-50:	#306ABD;
-	--color-base-70:	#527AC2;
+	--text-muted:	#527AC2;
 	/*	--color-base-10:	var(--color-base-35);	*/
 
 	--accent-h:			210	!important;
 	--accent-s:			93%	!important;
 	--accent-l:			38%	!important;
 
+	--background-modifier-border:	#064D94;
 	--blockquote-background-color:	#032d57;
 
-	--color-base-100:	#3B6EBE !important;
+	--text-normal:	#3B6EBE !important;
 	--link-color:		#069406	!important;
 	--h1-color:			#6385C6	!important;
 	--h3-color:			#0656A6	!important;
@@ -802,21 +831,21 @@ body {
 .theme-dark.generalPalette-beige.darkPalette-default {
 	--color-base-20:	#351D09;
 	--color-base-00:	#1F1105;
-	--color-base-30:	#6E4D3D;
 	--color-base-35:	#7B6054;
 	--color-base-40:	#512C0E;
 	--color-base-05:	#190E04;
 	--nav-item-color:	#B76320;
 	--color-base-50:	#CC6F24;
-	--color-base-70:	#DE8945;
+	--text-muted:	#DE8945;
 
 	--accent-h:	207	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	20%	!important;
 
+	--background-modifier-border:	#6E4D3D;
 	--blockquote-background-color:	#351D09;
 
-	--color-base-100:	#E6A571;
+	--text-normal:	#E6A571;
 	--link-color:		#1D67A1;
 	--h1-color:			var(--text-normal);
 	--h3-color:			var(--text-normal);
@@ -832,21 +861,21 @@ body {
 .theme-dark.generalPalette-green.darkPalette-default {
 	--color-base-20:	#082D15;
 	--color-base-00:	#04170B;
-	--color-base-30:	#136E34;
 	--color-base-35:	#0F582A;
 	--color-base-40:	#0B4320;
 	--color-base-05:	#000101;
 	--nav-item-color:	#22C55E;
 	--color-base-50:	#27DA69;
-	--color-base-70:	#27DA69;
+	--text-muted:	#27DA69;
 
 	--accent-h:	142	!important;
 	--accent-s:	70%	!important;
 	--accent-l:	30%	!important;
 
+	--background-modifier-border:	#136E34;
 	--blockquote-background-color:	#082D16;
 
-	--color-base-100:	#69E596;
+	--text-normal:	#69E596;
 	--link-color:		#FFCC00;
 	--code-background:	#0B3E1D;
 	--code-normal:		#24C95E;
@@ -862,23 +891,23 @@ body {
 .theme-dark.generalPalette-icy.darkPalette-default {
 	--color-base-20:	#00204B;
 	--color-base-00:	#001736;
-	--color-base-30:	#005AD3;
 	--color-base-35:	#00204B;
 	--color-base-40:	#000E22;
 	--color-base-05:	#00060D;
 	--nav-item-color:	#036FFF;
 	--color-base-50:	#0066EE;
-	--color-base-70:	#7EB5FF;
+	--text-muted:	#7EB5FF;
 
 	--accent-h:	214	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	30%	!important;
 
+	--background-modifier-border:	#005AD3;
 	--blockquote-background-color:	#00204B;
 	--code-background:				#003174;
 	--code-normal:					#4192FF;
 
-	--color-base-100:	#92C1FF;
+	--text-normal:	#92C1FF;
 	--link-color:		#00DA0F;
 	--h1-color:			#036FFF;
 	--h3-color:			#69AAFF;
@@ -894,21 +923,21 @@ body {
 .theme-dark.darkPalette-LYT {
 	--color-base-20:	#232429;
 	--color-base-00:	#2E3039;
-	--color-base-30:	hsl(224, 26%, 70%);
 	--color-base-35:	#232429;
 	--color-base-40:	#F3EE5E;
 	--color-base-05:	black;
 	--nav-item-color:	#hsl(224, 17%, 68%);
 	--color-base-50:	#B9C3DF;
-	--color-base-70:	hsl(224, 17%, 68%);
+	--text-muted:	hsl(224, 17%, 68%);
 
 	--accent-h:	264	!important;
 	--accent-s:	46%	!important;
 	--accent-l:	61%	!important;
 
+	--background-modifier-border:	hsl(224, 26%, 70%);
 	--blockquote-background-color:	#232429;
 
-    --color-base-100: rgb(114, 195, 213);
+    --text-normal: rgb(114, 195, 213);
 	--link-color:		hsl(334, 100%, 75%);
     --h1-color: hsl(59, 81%, 47%);
     --h2-color: hsl(260, 100%, 79%);
@@ -931,21 +960,21 @@ body {
 .theme-dark.generalPalette-metallicBlue.darkPalette-default {
 	--color-base-20:	#112A3D;
 	--color-base-00:	#143248;
-	--color-base-30:	#23567D;
 	--color-base-35:	#334455;
 	--color-base-40:	#334455;
 	--color-base-05:	#07121B;
 	--nav-item-color:	#DEDFE1;
 	--color-base-50:	#EDEDEE;
-	--color-base-70:	#CFD0D3;
+	--text-muted:	#CFD0D3;
 
 	--accent-h:	206	!important;
 	--accent-s:	57%	!important;
 	--accent-l:	18%	!important;
 
+	--background-modifier-border:	#23567D;
 	--blockquote-background-color:	#334455;
 
-	--color-base-100:	#B8BBBE;
+	--text-normal:	#B8BBBE;
 	--link-color:		#DC7FB5;
 	--h1-color:			white;
 	--h3-color:			#C9CBCE;
@@ -967,21 +996,21 @@ body {
 .theme-dark.generalPalette-pistachio.darkPalette-default {
 	--color-base-20:	#4C4D25;
 	--color-base-00:	#35361A;
-	--color-base-30:	#82843F;
 	--color-base-35:	#909246;
 	--color-base-40:	#35361A;
 	--color-base-05:	#1F1F0F;
 	--nav-item-color:	#BFC17D;
 	--color-base-50:	#CACC94;
-	--color-base-70:	#BFC17D;
+	--text-muted:	#BFC17D;
 
 	--accent-h:	62	!important;
 	--accent-s:	50%	!important;
 	--accent-l:	30%	!important;
 
+	--background-modifier-border:	#82843F;
 	--blockquote-background-color:	#636430;
 
-	--color-base-100:	#E1E2C2;
+	--text-normal:	#E1E2C2;
 	--link-color:		#FFCC00;
 	--stabilo-mark:		#909246 ;
 	--stabilo-text:		#24514C !important;
@@ -995,26 +1024,26 @@ body {
 .theme-dark.generalPalette-parchment.darkPalette-default {
 	--color-base-00:	#4E2F0D;
 	--color-base-20:	#623B11;
-	--color-base-30:	#B97020;
 	--color-base-35:	#A7661D;
 	--color-base-40:	#B97020;
 	--color-base-05:	#2E1C08;
 	--nav-item-color:	#ECC090;
 	--color-base-50:	#EFCAA2;
-	--color-base-70:	#ECC090;
+	--text-muted:	#ECC090;
 
 	--accent-h:	31	!important;
 	--accent-s:	55%	!important;
 	--accent-l:	20%	!important;
 
+	--background-modifier-border:	#B97020;
 	--blockquote-background-color:	#9E6729;
 	--code-background:				#734614;
-	--color-base-100:				#F5DEC4;
+	--text-normal:				#F5DEC4;
 	--link-color:					#C4DBF5;
 	--link-unresolved-color:		#F6C8F4;
 	--stabilo-mark:					#E3A35C;
 	--stabilo-text:					var(--color-base-20) !important;
-	--text-on-accent:				var(--color-base-70);
+	--text-on-accent:				var(--text-muted);
 
 	--OT-metadata-title-color-faint: 	#895317;
 	--OT-table-header-background:	#3E250A;
@@ -1025,21 +1054,21 @@ body {
 .theme-dark.generalPalette-red.darkPalette-default {
 	--color-base-20:	#35020B;
 	--color-base-00:	#1E0106;
-	--color-base-30:	#5F0413; /*	#4F0310;	*/
 	--color-base-35:	#B91C1C;
 	--color-base-40:	#4F0310;
 	--color-base-05:	#170105;
 	--nav-item-color:	#C09B9C;
 	--color-base-50:	#9F5357;
-	--color-base-70:	#A66569;
 
 	--accent-h:	350	!important;
 	--accent-s:	92%	!important;
 	--accent-l:	20%	!important;
 
+	--background-modifier-border:	#5F0413; /*	#4F0310;	*/
 	--blockquote-background-color:	#46030E;
 	--checklist-done-color:			#B00724; /*	#5E0413;	*/
-	--color-base-100:				#C00827;
+	--text-normal:					#C00827;
+	--text-muted:					#A66569;
 	--link-color:					#0772A7;
 	--link-unresolved-color:		#FA899D;
 	--h1-color:						var(--text-normal);
@@ -1059,21 +1088,21 @@ body {
 .theme-dark.generalPalette-solarized.darkPalette-default {
 	--color-base-20:	var(--solarized-base02);
 	--color-base-00:	var(--solarized-base03);
-	--color-base-30:	var(--solarized-base02);
 	--color-base-35:	var(--solarized-base01);
 	--color-base-40:	var(--solarized-base02);
 	--color-base-05:	var(--solarized-base03);
 	--nav-item-color:	var(--solarized-base2);
 	--color-base-50:	var(--solarized-base2);
-	--color-base-70:	var(--solarized-base1);
+	--text-muted:	var(--solarized-base1);
 
 	--accent-h:	205	!important;
 	--accent-s:	71%	!important;
 	--accent-l:	48%	!important;
 
+	--background-modifier-border:	var(--solarized-base02);
 	--blockquote-background-color:	var(--solarized-base01);
 
-	--color-base-100:			var(--solarized-base3);
+	--text-normal:			var(--solarized-base3);
 	--link-color:				var(--solarized-blue);
 	--OT-tooltips-text-color:	var(--color-base-20);
 	--text-on-hover:			var(--color-base-20);
@@ -1091,21 +1120,21 @@ body {
 .theme-dark.generalPalette-stone.darkPalette-default{
 	--color-base-00:	#1C1917;
 	--color-base-20:	#44403C;
-	--color-base-30:	#57534E;
 	--color-base-35:	#ACA6A0;
 	--color-base-40:	#57534E;
 	--color-base-05:	#1C1917;
 	--nav-item-color:	#A8A29E;
 	--color-base-50:	#D6D3D1;
-	--color-base-70:	#A8A29E;
+	--text-muted:	#A8A29E;
 
 	--accent-h:	30	!important;
 	--accent-s:	6%	!important;
 	--accent-l:	25%	!important;
 
+	--background-modifier-border:	#57534E;
 	--code-background:	#393632;
 	--code-normal:		#D2BAA3;
-	--color-base-100:	#A8A29E;
+	--text-normal:	#A8A29E;
 	--blockquote-background-color:	#23211F;
 	--link-color:		#747CD7;
 	--h1-color:			#D6D3D1;
@@ -1123,21 +1152,21 @@ body {
 .theme-dark.darkPalette-victorian {
 	--color-base-00:	#6197B5;
 	--color-base-20:	#006615;
-	--color-base-30:	#F2B630;
 	--color-base-35:	#3686AA;
 	--color-base-40:	#E6F2CC;
 	--color-base-05:	#B8B8AC;
 	--nav-item-color:	#E6F2CC;
 	--color-base-50:	#F2B630;
 
+	--background-modifier-border:	#F2B630;
 	--blockquote-background-color:	#FCEEDC;
-	--color-base-70:				#E6F2CC;
+	--text-muted:				#E6F2CC;
 
 	--accent-h:			132	!important;
 	--accent-s:			100%	!important;
 	--accent-l:			10%	!important;
 
-	--color-base-100:	#E6F2CC;
+	--text-normal:	#E6F2CC;
 	--link-color:		#CCD3F2;
 	--h1-color:			#F2B630;
 	--h3-color:			#C8E28F;
@@ -1159,23 +1188,23 @@ body {
 .theme-dark.generalPalette-violet.darkPalette-default{
 	--color-base-20:	#200C40;
 	--color-base-00:	#16082A;
-	--color-base-30:	#2B1155;
 	--color-base-35:	#4C1D95;
 	--color-base-40:	#2B1155;
 	--color-base-05:	#0B0415;
 	--nav-item-color:	#9160E1;
 	--color-base-50:	#6D29D5;
-	--color-base-70:	#8A54DE;
+	--text-muted:	#8A54DE;
 
 	--accent-h:	84	!important;
 	--accent-s:	40%	!important;
 	--accent-l:	50%	!important;
 
+	--background-modifier-border:	#2B1155;
 	--blockquote-background-color:	#200C40;
 	--code-background:				#311262;
 	--code-normal:					#C1A4EE;
 
-	--color-base-100:				#A982E8;
+	--text-normal:				#A982E8;
 	--link-color:					#C1E882;
 	--stabilo-mark:					#CDB6F1;
 	--stabilo-text:					#200C40	!important;
@@ -1188,21 +1217,21 @@ body {
 .theme-dark.generalPalette-yellow.darkPalette-default{
 	--color-base-00:	#0D0D0D;
 	--color-base-20:	#1A1A1A;
-	--color-base-30:	#B89403;/*	#D9AF04;	*/
 	--color-base-35:	#333333;
 	--color-base-40:	#D9AF04;
 	--color-base-05:	#0D0D0D;
 	--nav-item-color:	#C8A204;/*	#D9AF04;	*/
 	--color-base-50:	#D1A803;/*	#F2C304;	*/
-	--color-base-70:	#D1A803;/*	#F2C304;	*/
+	--text-muted:	#D1A803;/*	#F2C304;	*/
 
 	--accent-h:	48	!important;
 	--accent-s:	97%	!important;
 	--accent-l:	20%	!important;
 
+	--background-modifier-border:	#B89403;/*	#D9AF04;	*/
 	--blockquote-background-color:	#262626;
 
-	--color-base-100:			#C09A03;
+	--text-normal:			#C09A03;
 	--link-color:				#607FFC;
 	--checklist-done-color:		#8E7202;
 	--stabilo-text:				#424012 !important;
@@ -1445,10 +1474,10 @@ body {
 }
 .theme-light.generalPalette-stone.accentColor-lightMode-alternative-2 {
 	--accent-h:	74	!important;
-	--accent-s:	80%	!important;
+	--accent-s:	60%	!important;
 	--accent-l:	25%	!important;
-	--text-on-hover:			var(--nav-item-color);
-	--OT-tooltips-text-color:	var(--nav-item-color);
+/*		--text-on-hover:			var(--nav-item-color);	*/
+/*		--OT-tooltips-text-color:	var(--nav-item-color);	*/
 }
 
 .theme-light.generalPalette-violet.accentColor-lightMode-shade {
@@ -1460,7 +1489,7 @@ body {
 	--accent-h:			180	!important;
 	--accent-s:			80%	!important;
 	--accent-l:			35%	!important;
-	--OT-tooltips-text-color:			var(--color-base-30);
+	--OT-tooltips-text-color:			var(--background-modifier-border);
 	--background-modifier-active-hover:	var(--color-accent-2);
 	--interactive-accent-hover:			var(--color-accent-2);
 }
@@ -1487,6 +1516,22 @@ body {
 	--accent-h:			318	!important;
 	--accent-s:			50%	!important;
 	--accent-l:			20%	!important;
+}
+
+.theme-light.generalPalette-WIP.accentColor-lightMode-shade {
+	--accent-h:			240	!important;
+	--accent-s:			50%	!important;
+	--accent-l:			40%	!important;
+}
+.theme-light.generalPalette-WIP.accentColor-lightMode-alternative-1 {
+	--accent-h:			212	!important;
+	--accent-s:			60%	!important;
+	--accent-l:			40%	!important;
+}
+.theme-light.generalPalette-WIP.accentColor-lightMode-alternative-2 {
+	--accent-h:			300	!important;
+	--accent-s:			50%	!important;
+	--accent-l:			40%	!important;
 }
 
 /*	----------------------------------------	*/
@@ -1748,7 +1793,6 @@ body {
 	--accent-s:			100%	!important;
 	--accent-l:			30%	!important;
 	--text-on-accent:	var(--color-base-20);
-	--OT-button-text:	var(--text-on-accent);
 	--OT-tooltips-text-color:	var(--color-base-35);
 }
 .theme-dark.generalPalette-Victorian-1.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -1807,200 +1851,203 @@ body {
 /* -------------------- ↑ OpSpl Accent Colors -------------------- ↑ */
 
 /* —————————————————————————————— OpSpl Text Color Themes —————————————————————————————— */
-.theme-light.textColor-lightMode-default,
-.theme-light.textColor-lightMode-black {
+.theme-light.textColor-lightMode-default {
 }
 .theme-light.textColor-lightMode-amber {
-	--color-base-100:	#D97706;
+	--text-normal:	#D97706;
 	--link-color:		#0769D9;
 	--h1-color:			#D97706;
 	--h3-color:			#B45309;
 	--h5-color:			#F59E0B;
 }
+.theme-light.textColor-lightMode-black {
+	--text-normal:	black;
+	--link-color:		var(--obsidian-violet);
+}
 .theme-light.textColor-lightMode-blue {
-	--color-base-100:	var(--blue)	;
+	--text-normal:	var(--blue)	;
 	--link-color:		#646D10	;
 	--h1-color:			#231697	;
 	--h3-color:			#4433e1	;
 	--h5-color:			#5b4ce5	;
 }
 .theme-light.textColor-lightMode-brown {
-	--color-base-100:	#542200;
+	--text-normal:	#542200;
 	--link-color:		#005087;
 	--h1-color:			#763000;
 	--h3-color:			#542200;
 	--h5-color:			#8C706A;
 }
 .theme-light.textColor-lightMode-cyan {
-	--color-base-100:	#2D9EC6;
+	--text-normal:	#2D9EC6;
 	--link-color:		#C62D9E;
 	--h1-color:			#20728F;
 	--h3-color:			#2788AA;
 	--h5-color:			#79C5E0;
 }
 .theme-light.textColor-lightMode-egg {
-	--color-base-100:	#FCE69F;
+	--text-normal:	#FCE69F;
 	--link-color:		#6068EF;
 	--h1-color:			#FCE69F;
 	--h3-color:			#FCE69F;
 	--h5-color:			#FCE69F;
 }
 .theme-light.textColor-lightMode-emerald {
-	--color-base-100:	#009B77;
+	--text-normal:	#009B77;
 	--link-color:		#9B0071;
 	--h1-color:			#00795D;
 	--h3-color:			#005743;
 	--h5-color:			#004636;
 }
 .theme-light.textColor-lightMode-favoriteBlue {
-	--color-base-100:	var(--favorite-blue);
+	--text-normal:	var(--favorite-blue);
 	--link-color:		#527522;
 	--h1-color:			#202770;
 	--h3-color:			#202770;
 	--h5-color:			#8182A2;
 }
 .theme-light.textColor-lightMode-darkBlue {
-	--color-base-100:	var(--dark-blue);
+	--text-normal:	var(--dark-blue);
 	--link-color:		#527522;
 	--h1-color:			#202770;
 	--h3-color:			#202770;
 	--h5-color:			#8182A2;
 }
 .theme-light.textColor-lightMode-fuchsia {
-	--color-base-100:	#F400A0;
+	--text-normal:	#F400A0;
 	--link-color:		#00A0F4;
 	--h1-color:			#D2008A;
 	--h3-color:			#FF06A9;
 	--h5-color:			#9F0068;
 }
 .theme-light.textColor-lightMode-green {
-	--color-base-100:	#0F7635;
+	--text-normal:	#0F7635;
 	--link-color:		#C11983;
 	--h1-color:			#0B5827;
 	--h3-color:			#11853C;
 	--h5-color:			#073A1A;
 }
 .theme-light.textColor-lightMode-indigo {
-	--color-base-100:	#4b0082;
+	--text-normal:	#4b0082;
 	--link-color:		#378200;
 	--h1-color:			#5F00A4;
 	--h3-color:			#410071;
 	--h5-color:			#2E004F;
 }
 .theme-light.textColor-lightMode-lightBlue {
-	--color-base-100:	var(--light-blue);
+	--text-normal:	var(--light-blue);
 	--link-color:		#A6E1A6;
 	--h1-color:			#8DB2D8;
 	--h3-color:			#99BADD;
 	--h5-color:			#B3CCE5;
 }
 .theme-light.textColor-lightMode-lime {
-	--color-base-100:	#00EE00;
+	--text-normal:	#00EE00;
 	--link-color:		#EE00EE;
 	--h1-color:			#00CC00;
 	--h3-color:			#00DD00;
 	--h5-color:			#008800;
 }
 .theme-light.textColor-lightMode-orange {
-	--color-base-100:	#E65C1C;
+	--text-normal:	#E65C1C;
 	--link-color:		#1CA6E6;
 	--h1-color:			#D95518;
 	--h3-color:			#E8672B;
 	--h5-color:			#9C3D11;
 }
 .theme-light.textColor-lightMode-pink {
-	--color-base-100:	#F953A7;
+	--text-normal:	#F953A7;
 	--link-color:		#53A7F9;
 	--h1-color:			#F71185;
 	--h3-color:			#F9429E;
 	--h5-color:			#AD065A;
 }
 .theme-light.textColor-lightMode-purple {
-	--color-base-100:	#5300A4;
+	--text-normal:	#5300A4;
 	--link-color:		#408200;
 	--h1-color:			#5300A4;
 	--h3-color:			#4B0093;
 	--h5-color:			#988EB2;
 }
 .theme-light.textColor-lightMode-red {
-	--color-base-100:	#DA032A;
+	--text-normal:	#DA032A;
 	--link-color:		#0395DA;
 	--h1-color:			#C90327;
 	--h3-color:			#F20D36;
 	--h5-color:			#A80220;
 }
 .theme-light.textColor-lightMode-rose {
-	--color-base-100:	#FA74B8;
+	--text-normal:	#FA74B8;
 	--link-color:		#53A7F9;
 	--h1-color:			#F964B0;
 	--h3-color:			#F953A7;
 	--h5-color:			#BD0763;
 }
 .theme-light.textColor-lightMode-royalBlue {
-	--color-base-100:	var(--royal-blue);
+	--text-normal:	var(--royal-blue);
 	--link-color:		#51A300;
 	--h1-color:			#0000B4;
 	--h3-color:			#000081;
 	--h5-color:			#38386A;
 }
 .theme-light.textColor-lightMode-silver {
-	--color-base-100:	silver;
+	--text-normal:	silver;
 	--link-color:		#BAA8F5;
 	--h1-color:			#C5C5C5;
 	--h3-color:			#D6D6D6;
 	--h5-color:			#8A8A8A;
 }
 .theme-light.textColor-lightMode-skyBlue {
-	--color-base-100:	var(--sky-blue);
+	--text-normal:	var(--sky-blue);
 	--link-color: 		#FF5024;
 	--h1-color:			#02CCFF;
 	--h3-color:			#35D6FF;
 	--h5-color:			#00A5CE;
 }
 .theme-light.textColor-lightMode-solarized {
-	--color-base-100:	var(--solarized-base00);
+	--text-normal:	var(--solarized-base00);
 	--link-color:		var(--solarized-violet);
 	--h1-color:			var(--solarized-yellow);
 	--h3-color:			var(--solarized-cyan);
 	--h5-color:			var(--solarized-base1);
 }
 .theme-light.textColor-lightMode-teal {
-	--color-base-100:	#0C8C81;
+	--text-normal:	#0C8C81;
 	--link-color:		#880D94;
 	--h1-color:			#0B7D73;
 	--h3-color:			#11877D;
 	--h5-color:			#75ABA4;
 }
 .theme-light.textColor-lightMode-terminalGreen {
-	--color-base-100:	#22C55E;
+	--text-normal:	#22C55E;
 	--link-color:		#C52289;
 	--h1-color:			#22C55E;
 	--h3-color:			#1DA850;
 	--h5-color:			#136D34;
 }
 .theme-light.textColor-lightMode-violet {
-	--color-base-100:	#7f00ff	;
+	--text-normal:	#7f00ff	;
 	--link-color:		#4D9900	;
 	--h1-color:			#6E00DD	;
 	--h3-color:			#7700EE	;
 	--h5-color:			#806A96	;
 }
 .theme-light.textColor-lightMode-yellow {
-	--color-base-100:	#FBCD15;
+	--text-normal:	#FBCD15;
 	--link-color:		#1441FA;
 	--h1-color:			#CA8A04;
 	--h3-color:			#CA8A04;
 	--h5-color:			#FECF86;
 }
 .theme-light.textColor-lightMode-white {
-	--color-base-100:	white;
+	--text-normal:	white;
 	--link-color:		#BAA8F5;
 	--h1-color:			#C5C5C5;
 	--h3-color:			#D6D6D6;
 	--h5-color:			#8A8A8A;
 }
 .theme-light.textColor-lightMode-zinc {
-	--color-base-100:	#909096;
+	--text-normal:	#909096;
 	--link-color:		var(--obsidian-violet);
 	--h1-color:			#88888E;
 	--h3-color:			#88888E;
@@ -2011,189 +2058,189 @@ body {
 .theme-dark.textColor-darkMode-default {
 }
 .theme-dark.textColor-darkMode-amber {
-	--color-base-100:	#D97706 !important;
+	--text-normal:	#D97706 !important;
 	--link-color:		#0769D9 !important;
 	--h1-color:			#D97706 !important;
 	--h3-color:			#B45309 !important;
 	--h5-color:			#F59E0B !important;
 }
 .theme-dark.textColor-darkMode-black {
-	--color-base-100:	black !important;
+	--text-normal:	black !important;
 	--link-color:		#0769D9 !important;
 }
 .theme-dark.textColor-darkMode-blue {
-	--color-base-100:	var(--blue)	 !important;
+	--text-normal:	var(--blue)	 !important;
 	--link-color:		#646D10	 !important;
 	--h1-color:			#231697	 !important;
 	--h3-color:			#4433e1	 !important;
 	--h5-color:			#5b4ce5	 !important;
 }
 .theme-dark.textColor-darkMode-brown {
-	--color-base-100:	#542200 !important;
+	--text-normal:	#542200 !important;
 	--link-color:		#005087 !important;
 	--h1-color:			#763000 !important;
 	--h3-color:			#542200 !important;
 	--h5-color:			#8C706A !important;
 }
 .theme-dark.textColor-darkMode-cyan {
-	--color-base-100:	#2D9EC6 !important;
+	--text-normal:	#2D9EC6 !important;
 	--link-color:		#C62D9E !important;
 	--h1-color:			#20728F !important;
 	--h3-color:			#2788AA !important;
 	--h5-color:			#79C5E0 !important;
 }
 .theme-dark.textColor-darkMode-egg {
-	--color-base-100:	#FCE69F !important;
+	--text-normal:	#FCE69F !important;
 	--link-color:		#6068EF !important;
 	--h1-color:			#FCE69F !important;
 	--h3-color:			#FCE69F !important;
 	--h5-color:			#FCE69F !important;
 }
 .theme-dark.textColor-darkMode-emerald {
-	--color-base-100:	#009B77 !important;
+	--text-normal:	#009B77 !important;
 	--link-color:		#9B0071 !important;
 	--h1-color:			#00795D !important;
 	--h3-color:			#005743 !important;
 	--h5-color:			#004636 !important;
 }
 .theme-dark.textColor-darkMode-favoriteBlue {
-	--color-base-100:	var(--favorite-blue) !important;
+	--text-normal:	var(--favorite-blue) !important;
 	--link-color:		#527522 !important;
 	--h1-color:			#202770 !important;
 	--h3-color:			#202770 !important;
 	--h5-color:			#8182A2 !important;
 }
 .theme-dark.textColor-darkMode-fuchsia {
-	--color-base-100:	#F400A0 !important;
+	--text-normal:	#F400A0 !important;
 	--link-color:		#00A0F4 !important;
 	--h1-color:			#D2008A !important;
 	--h3-color:			#FF06A9 !important;
 	--h5-color:			#9F0068 !important;
 }
 .theme-dark.textColor-darkMode-green {
-	--color-base-100:	#0F7635 !important;
+	--text-normal:	#0F7635 !important;
 	--link-color:		#C11983 !important;
 	--h1-color:			#0B5827 !important;
 	--h3-color:			#11853C !important;
 	--h5-color:			#073A1A !important;
 }
 .theme-dark.textColor-darkMode-indigo {
-	--color-base-100:	#4b0082 !important;
+	--text-normal:	#4b0082 !important;
 	--link-color:		#378200 !important;
 	--h1-color:			#5F00A4 !important;
 	--h3-color:			#410071 !important;
 	--h5-color:			#2E004F !important;
 }
 .theme-dark.textColor-darkMode-lightBlue {
-	--color-base-100:	#00CCFF !important;
+	--text-normal:	#00CCFF !important;
 	--link-color:		#FFB300 !important;
 	--h1-color:			#00B1DD !important;
 	--h3-color:			#11CFFF !important;
 	--h5-color:			#007A99 !important;
 }
 .theme-dark.textColor-darkMode-lime {
-	--color-base-100:	#00EE00 !important;
+	--text-normal:	#00EE00 !important;
 	--link-color:		#EE00EE !important;
 	--h1-color:			#00CC00 !important;
 	--h3-color:			#00DD00 !important;
 	--h5-color:			#008800 !important;
 }
 .theme-dark.textColor-darkMode-orange {
-	--color-base-100:	#E65C1C !important;
+	--text-normal:	#E65C1C !important;
 	--link-color:		#1CA6E6 !important;
 	--h1-color:			#D95518 !important;
 	--h3-color:			#E8672B !important;
 	--h5-color:			#9C3D11 !important;
 }
 .theme-dark.textColor-darkMode-pink {
-	--color-base-100:	#F953A7 !important;
+	--text-normal:	#F953A7 !important;
 	--link-color:		#53A7F9 !important;
 	--h1-color:			#F71185 !important;
 	--h3-color:			#F9429E !important;
 	--h5-color:			#AD065A !important;
 }
 .theme-dark.textColor-darkMode-purple {
-	--color-base-100:	#5300A4 !important;
+	--text-normal:	#5300A4 !important;
 	--link-color:		#408200 !important;
 	--h1-color:			#5300A4 !important;
 	--h3-color:			#4B0093 !important;
 	--h5-color:			#988EB2 !important;
 }
 .theme-dark.textColor-darkMode-red {
-	--color-base-100:	#DA032A !important;
+	--text-normal:	#DA032A !important;
 	--link-color:		#0395DA !important;
 	--h1-color:			#C90327 !important;
 	--h3-color:			#F20D36 !important;
 	--h5-color:			#A80220 !important;
 }
 .theme-dark.textColor-darkMode-rose {
-	--color-base-100:	#FA74B8 !important;
+	--text-normal:	#FA74B8 !important;
 	--link-color:		#53A7F9 !important;
 	--h1-color:			#F964B0 !important;
 	--h3-color:			#F953A7 !important;
 	--h5-color:			#BD0763 !important;
 }
 .theme-dark.textColor-darkMode-royalBlue {
-	--color-base-100:	var(--royal-blue) !important;
+	--text-normal:	var(--royal-blue) !important;
 	--link-color:		#51A300 !important;
 	--h1-color:			#0000B4 !important;
 	--h3-color:			#000081 !important;
 	--h5-color:			#38386A !important;
 }
 .theme-dark.textColor-darkMode-silver {
-	--color-base-100:	silver !important;
+	--text-normal:	silver !important;
 	--link-color:		#BAA8F5 !important;
 	--h1-color:			#C5C5C5 !important;
 	--h3-color:			#D6D6D6 !important;
 	--h5-color:			#8A8A8A !important;
 }
 .theme-dark.textColor-darkMode-sky {
-	--color-base-100:	var(--sky-blue) !important;
+	--text-normal:	var(--sky-blue) !important;
 	--link-color: 		#FF5024 !important;
 	--h1-color:			#02CCFF !important;
 	--h3-color:			#35D6FF !important;
 	--h5-color:			#00A5CE !important;
 }
 .theme-dark.textColor-darkMode-solarized {
-	--color-base-100:	var(--solarized-base00) !important;
+	--text-normal:	var(--solarized-base00) !important;
 	--link-color:		var(--solarized-violet) !important;
 	--h1-color:			var(--solarized-yellow) !important;
 	--h3-color:			var(--solarized-cyan) !important;
 	--h5-color:			var(--solarized-base1) !important;
 }
 .theme-dark.textColor-darkMode-teal {
-	--color-base-100:	#0C8C81 !important;
+	--text-normal:	#0C8C81 !important;
 	--link-color:		#880D94 !important;
 	--h1-color:			#0B7D73 !important;
 	--h3-color:			#11877D !important;
 	--h5-color:			#75ABA4 !important;
 }
 .theme-dark.textColor-darkMode-terminalGreen {
-	--color-base-100:	#22C55E !important;
+	--text-normal:	#22C55E !important;
 	--link-color:		#C52289 !important;
 	--h1-color:			#22C55E !important;
 	--h3-color:			#1DA850 !important;
 	--h5-color:			#136D34 !important;
 }
 .theme-dark.textColor-darkMode-violet {
-	--color-base-100:	#7f00ff	 !important;
+	--text-normal:	#7f00ff	 !important;
 	--link-color:		#4D9900	 !important;
 	--h1-color:			#6E00DD	 !important;
 	--h3-color:			#7700EE	 !important;
 	--h5-color:			#806A96	 !important;
 }
 .theme-dark.textColor-darkMode-yellow {
-	--color-base-100:	#FBCD15 !important;
+	--text-normal:	#FBCD15 !important;
 	--link-color:		#1441FA !important;
 	--h1-color:			#CA8A04 !important;
 	--h3-color:			#CA8A04 !important;
 	--h5-color:			#FECF86 !important;
 }
 .theme-dark.textColor-darkMode-white {
-	--color-base-100:	white !important;
+	--text-normal:	white !important;
 }
 .theme-dark.textColor-darkMode-zinc {
-	--color-base-100:	#909096 !important;
+	--text-normal:	#909096 !important;
 	--link-color:		var(--obsidian-violet) !important;
 	--h1-color:			#88888E !important;
 	--h3-color:			#88888E !important;
@@ -2282,7 +2329,7 @@ body {
 }
 .theme-dark.highlight-color-dark-strongBlue {
 	--stabilo-mark:	var(--stabilo-bleu-foncé) !important;
-	--stabilo-text:	var(--color-base-100) !important;
+	--stabilo-text:	var(--text-normal) !important;
 }
 .theme-dark.highlight-color-dark-strongYellow {
 	--stabilo-mark:	var(--stabilo-jaune-foncé) !important;
@@ -2302,7 +2349,7 @@ body {
 }
 .theme-dark.highlight-color-dark-strongViolet {
 	--stabilo-mark:	var(--stabilo-violet-foncé) !important;
-	--stabilo-text:	var(--color-base-100) !important;
+	--stabilo-text:	var(--text-normal) !important;
 }
 
 /*	------------------------- quelques exceptions -------------------------	*/
@@ -2943,18 +2990,8 @@ input[type=checkbox] {
   border: 2px solid var(--checkbox-border-color);
 }
 
-/* ----- formatage des puces et numéros des listes, en général (pour le mode “editing”, c’est spécifié plus loin) -----	*/
-ol > li::marker,
-ul > li::marker,
-.cm-s-obsidian .cm-formatting-list {
-	color: 					var(--list-marker-color);
-	font-weight:			var(--bold-weight);
-	font-variant-numeric:	tabular-nums;
-	}
-
-
 /* —————————————————————————————— OpSpl Editing mode —————————————————————————————— */
-/* ---------- OpSpl Icon in edit mode ----------
+/* ---------- icône indiquant le mode “édition”, en haut à gauche du panneau d’édition ----------
 	Let’s display an icon in the top left corner of the edit panel */
 .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#222976	*/
@@ -3380,13 +3417,9 @@ ul > li::marker,
 	background-color: transparent;
 }
 
-/*	------------------------- ↑ icône en mode “édition” ↑ -------------------------	*/
+/*	------------------------- ↑ icône indiquant le mode “édition”, en haut à gauche du panneau d’édition ↑ -------------------------	*/
 
 
-/* la couleur des puces et des numéros de listes: en “edit mode”, je leur donne la couleur des liens	*/
-.markdown-source-view.mod-cm6 .cm-scroller {
-	--list-marker-color:	var(--link-color);
-}
 
 /* ---------- OpSpl Line length in edit mode ---------- */
 /* Le 23.09.2022, je suis allé voir dans “App.css” et j’ai copié les sections qui me paraissaient concerner cette variable */
@@ -3507,17 +3540,6 @@ ul > li::marker,
 /* en mode édition, dans les tables, je laisse les en-têtes de colonnes à la même couleur que le texte; c’est sutout en fond noir que c’est important */
 .cm-s-obsidian .HyperMD-table-row-0 {
 	color: inherit;
-}
-
-/* Numéros et puces des listes, en “edit mode” */
-.cm-s-obsidian span.cm-formatting-list {
-  	font-weight:	700;	/*	je force à un niveau qui me convient	*/
-}
-.markdown-source-view.mod-cm6 .cm-formatting-list-ul {	/*	les astérisques	*/
-	vertical-align:	-0.2em;
-}
-.list-bullet {						/*	les puces sont ajustées différemment	*/
-	vertical-align: 0.15em;
 }
 
 /*	les astérisques indiquant le “emphasised” et le strong */
@@ -3912,7 +3934,6 @@ body.is-focused .workspace-ribbon.mod-left:before {
     letter-spacing:		0.02em	!important;		/* à cause du “bold”	*/
 }
 
-
 .is-focused .workspace-leaf.mod-active .view-header-title,	/*	Le titre du panneau qui a le focus	*/
 .is-focused .workspace-tab-header-status-icon {				/*	le “pin” d’un panneau “pinned”		*/
     color: 				var(--OT-view-header-title-focus-color);
@@ -3961,15 +3982,12 @@ body.is-focused .workspace-ribbon.mod-left:before {
 
 
 /* —————————————————————————————— OpSpl boutons —————————————————————————————— */
-/*	le texte des boutons doit être lisible indépendamment du choix de la couleur du texte des fiches	*/
-button.mod-cta {
-	color:	var(--OT-button-text);
-}
 .dropdown {
-	color:				var(--OT-dropdown-text);
-	background-color:	var(--color-base-20);
+	background-color:	var(--color-base-20);		/*	Normalement, Obsidian prend `--interactive-normal`, qui prend la couleur
+														`--color-base-00`. Mon choix rend les boutons plus en accord avec le thème,
+														me semble-t-il.	*/
+	color:				var(--OT-dropdown-text);	/*	Le défaut `--text-normal` fonctionne mal, dès lors que les boutons sont colorés.	*/
 }
-
 /* Les boutons, quand ils sont survolés; je fais en sorte qu’ils aient tous la même couleur et que le texte soit aussi lisible que possible */
 select:hover,
 .dropdown:hover,
@@ -3979,6 +3997,14 @@ button:hover {
 	background-color:	var(--interactive-accent-hover);
 }
 
+/*	survol des boutons	*/
+@media (hover: hover) {
+	button:hover {
+	/*    background-color: var(--interactive-hover);
+		box-shadow: var(--input-shadow-hover);*/
+		color:	var(--text-on-accent);
+	}
+}
 /*	-------------------- ↑ OpSpl boutons -------------------- ↑ */
 
 
@@ -4540,7 +4566,33 @@ a:hover,
 /* -------------------- ↑ OpSpl Links ↑ -------------------- */
 
 
-/* —————————————————————————————— OpSpl Listes — Espacement vertical —————————————————————————————— */
+/* —————————————————————————————— OpSpl Listes —————————————————————————————— */
+/* ----- formatage des puces et numéros des listes, en général -----	*/
+ol > li::marker,
+ul > li::marker,
+.cm-s-obsidian .cm-formatting-list {
+	color: 					var(--list-marker-color);
+	font-weight:			var(--bold-weight);
+	font-variant-numeric:	tabular-nums;
+	}
+
+/* la couleur des puces et des numéros de listes: en “edit mode”, je leur donne la couleur des liens	*/
+.markdown-source-view.mod-cm6 .cm-scroller {
+	--list-marker-color:	var(--link-color);
+}
+
+/* Numéros et puces des listes, en “edit mode” */
+.cm-s-obsidian span.cm-formatting-list {
+  	font-weight:	700;	/*	je force à un niveau qui me convient	*/
+}
+.markdown-source-view.mod-cm6 .cm-formatting-list-ul {	/*	les astérisques	*/
+	vertical-align:	-0.2em;
+}
+.list-bullet {						/*	les puces sont ajustées différemment	*/
+	vertical-align: 0.15em;
+}
+
+/*	----- Espacement vertical -----	*/
 ol, ul,
 .markdown-rendered ul, .markdown-rendered ol {
 	margin-block-start:	var(--list-spacing-1);
@@ -4648,109 +4700,45 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /* -------------------- ↑ OpSpl Status bar ↑ -------------------- */
 
 
-/* —————————————————————————————— OpSpl Metadata Menu plugin —————————————————————————————— */
-.value-container.value-checked {
-	color:	var(--text-on-accent);
-}
-/* -------------------- ↑ OpSpl Metadata Menu plugin ↑ -------------------- */
-
-
-/*	—————————————————————————————— OpSpl “MetaTable” plugin ——————————————————————————————	*/
-.obsidian-metatable {
-	--metatable-text-primary:	var(--OT-text-muted);
-	--metatable-tag-color:		var(--text-on-accent);
-	--line-height-normal:		0.9em;
-}
-.obsidian-metatable::part(root) {
-	margin-top:			0;
-	margin-bottom:		1em;
-}
-.obsidian-metatable::part(set) {
-	margin:				0;
-	padding:			0;
-}
-.obsidian-metatable::part(member) {
-	line-height:		1.1rem;
-}
-.obsidian-metatable::part(key) {
-	text-align:		right;
-	padding-right:	1rem;
-}
-/*	-------------------- ↑ OpSpl “MetaTable” plugin ↑ --------------------	*/
-
-
-/* —————————————————————————————— OpSpl YAML Properties —————————————————————————————— */
-/*	Quand le bloc est collabé, le titre peut être rendu plus discret	*/
-.metadata-properties-heading.is-collapsed .metadata-properties-title {
-	color:	var(--OT-metadata-title-color-faint);
-}
+/* —————————————————————————————— OpSpl Metadata/YAML Properties —————————————————————————————— */
 .metadata-properties-title {
-	margin-bottom:	0;
+	color:	var(--text-muted);
 }
-.metadata-content {
-	background-color:	var(--OT-metadata-background);
-	border-radius:		var(--metadata-border-radius);
-}
-
-.multi-select-input:empty:before,
-.multi-select-container,
-.multi-select-container:focus,
-.multi-select-input {
-	color:	var(--text-on-hover);
-}
-
-.multi-select-pill-content {
-	--pill-padding-x:	0.5em;
-	color:	var(--text-on-hover);
-}
-.metadata-property input[type='text']:active,
-.metadata-property input[type='date']:active,
-.metadata-property input[type='datetime-local']:active,
-.metadata-property input[type='number']:active,
-.metadata-property .multi-select-container:active,
-.metadata-property input[type='text']:focus,
-.metadata-property input[type='date']:focus,
-.metadata-property input[type='datetime-local']:focus,
-.metadata-property input[type='number']:focus,
-.metadata-property .multi-select-container:focus {
-	color:				var(--OT-text-on-hover);
-	background-color:	var(--background-modifier-hover);
-}
-.metadata-property input[type='text']:hover,
-.metadata-property input[type='date']:hover,
-.metadata-property input[type='datetime-local']:hover,
-.metadata-property input[type='number']:hover,
-.metadata-property .multi-select-container:hover {
-	color:				var(--text-on-hover);
-	background-color:	var(--interactive-accent-hover);
-}
-.metadata-input-longtext:focus-within {
-	color:				var(--text-on-hover);
-}
-
-/*	Le bouton pour ajouter une property (métadonnée)	*/
+/*	icon at the left of the property label, hovered	*/
 @media (hover: hover) {
-  .text-icon-button:hover {
-    box-shadow: none;
-    opacity: var(--icon-opacity-hover);
-    background-color: var(--background-modifier-hover);
-    color: var(--text-on-hover);
-  }
-  .text-icon-button:hover .text-button-icon {
-    color: var(--icon-color-hover);
-  }
-  .text-icon-button.has-active-menu,
-  .text-icon-button:active {
-    opacity: var(--icon-opacity-hover);
-    background-color: var(--background-modifier-hover);
-    color: var(--text-normal);
-  }
-  .text-icon-button.has-active-menu .text-button-icon,
-  .text-icon-button:active .text-button-icon {
-    color: var(--icon-color-focused);
+  .metadata-property-icon:hover .svg-icon {
+    color:		var(--icon-color-focused);
+    background:	var(--interactive-accent);
   }
 }
-/*	-------------------- ↑ OpSpl YAML Properties ↑ --------------------	*/
+/*	Let’s  hide the “Add property” button in the metadata at the top of the editor.
+	It takes room and I find it redundant with the button in the Properties sidepannel */
+.mod-root .metadata-add-button {
+	display: none;
+}
+/*
+.metadata-container .internal-link {
+	color:	white;
+}
+*/
+/*	-------------------- ↑ OpSpl Metadata/YAML Properties ↑ --------------------	*/
+
+
+/* —————————————————————————————— OpSpl Metadata Menu plugin —————————————————————————————— */
+/*	le bouton à gauche des valeurs dans les métadonnées	*/
+.field-btn-container button.property-metadata-menu {
+	color:		var(--text-on-accent);
+    background:	var(--interactive-accent);
+}
+.field-btn-container button.property-metadata-menu:hover {
+	color:		var(--text-on-accent);
+	background:	var(--color-accent-1);
+}
+/*
+.value-container.value-checked {
+		color:	var(--text-on-accent);
+}	*/
+/* -------------------- ↑ OpSpl Metadata Menu plugin ↑ -------------------- */
 
 
 /* —————————————————————————————— OpSpl Canvas —————————————————————————————— */
@@ -4769,7 +4757,7 @@ button.canvas-menu-item {
 }
 
 .canvas-node-container {
-	border:				2px solid var(--color-base-30);
+	border:				2px solid var(--background-modifier-border);
 }
 
 .canvas-node-content.markdown-embed {
@@ -4797,24 +4785,6 @@ button.canvas-menu-item {
 	color:	var(--text-normal);		/* au lieu de `--text-muted` */
 }
 
-/* Les boutons dans le menu du plugin “MySnippets” */
-.MS-OpenSnippet,
-.MySnippetsButton{
-	background:	var(--background-primary-alt)	!important;
-}
-
-.MS-OpenSnippet:hover,
-.MySnippetsButton:hover{
-	background:	var(--interactive-accent)	!important;
-}
-
-.menu-item {
-	color:	var(--OT-menu-text-color);
-}
-
-.menu-item-icon {
-	color:	var(--OT-menu-text-color);
-}
 
 /*	Pour la sélection dans le menu local des fiches des kanbans. */
 .menu-item.selected:not(.is-disabled):not(.is-label) {
@@ -4831,13 +4801,6 @@ button.canvas-menu-item {
 	font-variant:	small-caps;
 	color:		var(--OT-vertical-tab-header-group-title);
 	font-size:	1.3em;
-}
-
-/* In edit mode, I find it makes sense to display the metadata slighly smaller than body text and more compact */
-.cm-hmd-frontmatter,
-.cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def {
-	font-size:		calc(0.9 * var(--OT-editMode-font-size));
-	color:			var(--OT-text-muted);
 }
 
 /* ---------- classe KBD, pour documenter les raccourcis clavier ---------- */
@@ -4904,7 +4867,7 @@ input[type='number']::placeholder {
 /*	-------------------- ↑ palette des commandes ↑ --------------------	*/
 
 .tree-item-flair {
-	background-color:	var(--color-base-30);
+	background-color:	var(--background-modifier-border);
 	color:				var(--text-on-accent);
 	padding:			var(--size-4-1);
 }
@@ -5323,6 +5286,10 @@ settings:
 					label:		Yellow
 					label.fr:	Jaune
 					value:		generalPalette-yellow
+				-
+					label:		WIP
+					label.fr:	Travail EN COURS
+					value:		generalPalette-WIP
 	-
 			id:			OT-accentColor-lightMode
 			title:		Accent color
