@@ -115,9 +115,17 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 06.04.2024 Version 1.7.0
+
+I’ve made improvements to the block displaying Properties / Metadata.
+
+I have reviewed and simplified the code. When I began the project, there were few variables and no documentation. Consequently, I had to figure out most of the inner workings and I had to employ a few “tricks” to meet my goals. With the abundance of variables and improved documentation now available, I can streamline the code. I hope no issues have arisen during this process.
+
+----------------------------------------------
+
 #### 24.03.2024 Version 1.6.0
 
-I’ve found — at last ! — an elegant way to style lists how I’ve alway wanted :
+I’ve found — at last ! — an elegant way to style lists the way I’ve always wanted :
 
 * They are slightly more compact than body text.
 * The typesize of level 2 items is slightly smaller than body text.
