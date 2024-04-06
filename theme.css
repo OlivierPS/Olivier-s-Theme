@@ -5286,10 +5286,6 @@ settings:
 					label:		Yellow
 					label.fr:	Jaune
 					value:		generalPalette-yellow
-				-
-					label:		WIP
-					label.fr:	Travail EN COURS
-					value:		generalPalette-WIP
 	-
 			id:			OT-accentColor-lightMode
 			title:		Accent color
