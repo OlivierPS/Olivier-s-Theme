@@ -34,6 +34,7 @@
 						Invisible (hopefully…) cleaning of the coding. Now that many more
 						variables are available than when I started the project, I don’t need
 						anymore some of the tricks I had to resort to.
+			24.04.2024	Improved the legibility of the sidebar text in Metallic Blue palette	1.7.1
 *******************************************************************/
 
 
@@ -208,7 +209,7 @@ body {
 	--heading-formatting:				var(--icon-color);
 /*	--icon-color:						var(--color-base-60);					*/
 	--icon-color-active:				var(--text-on-accent);
-	--icon-color-focused:				var(--text-on-accent);
+	--icon-color-focused:				var(--text-on-accent);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
 	--icon-color-hover:					var(--text-on-accent);
 	--inline-title-color:				var(--text-faint);
 	--interactive-accent-hover:			var(--color-base-10);
@@ -233,7 +234,7 @@ body {
 	--OT-link-color-hover:				var(--color-base-00);
 	--stabilo-mark:						var(--stabilo-jaune-foncé);
 	--stabilo-text:						var(--text-normal);
-	--tab-text-color-focused-active:	var(--nav-item-color);				/*	c’est le nom des fiches dans un tab qui n’est pas le tab courant	*/
+	--tab-text-color-focused-active:	var(--nav-item-color);
 	--tab-text-color-focused:			var(--nav-item-color);
 /*	--tag-background:					var(--interactive-accent);
 	--tag-background-hover:				var(--interactive-accent-hover);
@@ -475,7 +476,6 @@ body {
 	--color-base-40:				#3d8cc8;
 	--color-base-50:				var(--light-blue)
 
-	--nav-item-color:				#BBD7EC;
 	--background-secondary-alt:		#244055;
 	--background-modifier-border:	#225378;
 	--blockquote-background-color:	#FDF8D6;
@@ -493,8 +493,10 @@ body {
 	--h5-color:		var(--text-normal);
 
 	/* particularités	*/
+	--nav-item-color:						#C8DFF0;
 	--icon-color:							#143248;
 	--tab-text-color-focused-active:		var(--color-base-50);
+
 	--OT-dropdown-text:						var(--nav-item-color);
 	--OT-metadata-background:				#F1F6EB;
 	--OT-ribbon-icon-color-sidebar-is-open:	#BBD7EC;
@@ -4707,7 +4709,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /*	icon at the left of the property label, hovered	*/
 @media (hover: hover) {
   .metadata-property-icon:hover .svg-icon {
-    color:		var(--icon-color-focused);
+    color:		var(--text-on-accent);
     background:	var(--interactive-accent);
   }
 }
