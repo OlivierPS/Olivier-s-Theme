@@ -115,6 +115,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19.05.2024 Version 1.8.1
+
+I’ve corrected the colors of the calendar table provided by the “Calendar” plugin. The accent colors are coordinated with the… accent colors !
+
+
+
+----------------------------------------------
+
 #### 19.05.2024 Version 1.8.0
 
 When I started this project, there wheren’t any variables for styling tables. Since variables arrived, the code was begging to be streamlined and refined. It’s done.

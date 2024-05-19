@@ -36,6 +36,7 @@
 						anymore some of the tricks I had to resort to.
 			24.04.2024	Improved the legibility of the sidebar text in Metallic Blue palette	1.7.1
 			18.05.2024	Refined the code for tables, since there are now ad hoc variables		1.8.0
+			19.05.2024	Corrected the colors of the calendar table of the "Calendar" plugin		1.8.1
 *******************************************************************/
 
 
@@ -105,6 +106,8 @@ body {
 
 
 	/* D’autres variables de mon cru, utilisée ailleurs -- ou pas, car ça reste à éventuellement mettre en place	*/
+	--OT-calendar-day-color:						var(--text-normal);
+	--OT-calendar-today-color:						var(--color-accent-1);
 	--OT-dropdown-text:								var(--text-normal);
 	--OT-menu-text-color:							var(--OT-sidebar-icon-color);	/*	le texte des menus	*/
 	--OT-metadata-title-color-faint:				var(--text-faint);
@@ -195,6 +198,8 @@ body {
 	/* re-définition des variantes de la couleur “accent” */
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 12.5%))	!important;
 	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 25%))	!important;
+	/*	additional accent color, sometimes useful	*/
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 33%));
 
 	--color-base-10:				var(--color-accent-1) !important;	/*	le fond des boutons survolés; parfois, c’est --color-accent-2 qui convient			*/
 
@@ -498,8 +503,11 @@ body {
 	/* particularités	*/
 	--nav-item-color:						#C8DFF0;
 	--icon-color:							#143248;
+	--status-bar-border-color:				#fafff3;
+	--status-bar-text-color:				ivory;
 	--tab-text-color-focused-active:		var(--text-normal);
 
+	--OT-calendar-day-color:				var(--nav-item-color);
 	--OT-dropdown-text:						var(--nav-item-color);
 	--OT-metadata-background:				#F1F6EB;
 	--OT-ribbon-icon-color-sidebar-is-open:	#BBD7EC;
@@ -4957,7 +4965,7 @@ button.another-quick-switcher__command_button {
 }
 
 
-/*	-------------------- Adjustments for the  “Metafolders” plugin	-------------------- */
+/*	———————————————————— Adjustments for the  “Metafolders” plugin	———————————————————— */
 .file-node__content-text {
 	/*	line-height: var(--line-height-tight);	*/
 	font-size: var(--OT-sidebars-font-size);	/*	font size set by the theme’s setting for sidebars	*/
@@ -4974,12 +4982,22 @@ button.another-quick-switcher__command_button {
 }
 /*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
 
-
-/*	Pour colorer le fond des week-ends dans le plugin “Calendar”	*/
-.calendar {
-  --color-background-weekend: var(--color-accent-1);
+/*	———————————————————— Adjustments for the  “Calendar” plugin	———————————————————— */
+#calendar-container .calendar {
+	padding:					0 var(--size-4-4) var(--size-4-1);
+	--color-background-weekend: var(--color-accent-3);
+	--color-text-day:			var(--OT-calendar-day-color);
+	--color-text-today:			var(--OT-calendar-today-color);
 }
 
+#calendar-container .today {
+	background-color:	var(--OT-table-background) !important;
+}
+
+#calendar-container .adjacent-month {
+	opacity:	0.5;
+}
+/*	-------------------- ↑ Adjustments for the  “Calendar” plugin ↑	-------------------- */
 
 
 /* ==================================================================================== */
