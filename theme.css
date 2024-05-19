@@ -35,6 +35,7 @@
 						variables are available than when I started the project, I don’t need
 						anymore some of the tricks I had to resort to.
 			24.04.2024	Improved the legibility of the sidebar text in Metallic Blue palette	1.7.1
+			18.05.2024	Refined the code for tables, since there are now ad hoc variables		1.8.0
 *******************************************************************/
 
 
@@ -48,7 +49,6 @@
 	--light-blue:			#A6C3E1;
 	--royal-blue:			#0000a3;
 	--sky-blue:				#24D3FF;
-
 
 	--stabilo-bleu-clair:	#BBE4F3;
 	--stabilo-bleu-foncé:	#39AFDC;
@@ -118,9 +118,6 @@ body {
 	--OT-text-muted:								var(--text-muted);				/*	afin de me ménager une possibilité d’adaptation, là où le “muted” d’origine soit ne fonctionne pas, soit n’est pas adapté	*/
 	--OT-text-in-sidebar:							var(--nav-item-color);
 	--OT-table-background:							var(--color-base-00);
-	--OT-table-header-background:					var(--table-background);
-	--OT-table-header-color:						var(--table-header-color);
-	--OT-table-row-alt-background:					var(--color-base-20);
 	--OT-tooltips-text-color:						var(--text-on-accent);
 	--OT-search-result-file-title-expanded:			var(--text-normal);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
 	--OT-tree-item-flair-background:				var(--color-accent-2);
@@ -150,6 +147,7 @@ body {
 	/* Quelques mises au point de mon cru, caractérisant le thème */
 	--blockquote-background-color:	snow;
 	--border-width:					1.5px;
+	--caret-color:					red;
 	--checkbox-size:				var(--OT-readingMode-text-size);
 	--file-header-font-size:		calc(var(--OT-readingMode-text-size) * 1.1 );
 	--file-header-font-weight:		var(--font-semibold);
@@ -181,12 +179,19 @@ body {
 	--popover-max-height:			70vh;
 	--popover-width:				46rem;
 	--status-bar-border-width:		1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
+
+/*		--table-background:				white;	*/
+/*		--table-column-alt-background:	inherit;	*/
+	--table-header-background-hover:	var(--table-header-background);
+	--table-header-color:				var(--h3-color);
 	--table-header-weight:			var(--font-bold);
+	--table-text-size:				var(--font-smaller);
+
 	--vault-name-font-size:			calc(var(--OT-sidebars-font-size) * 1.3);
 	--vault-name-font-weight:		var(--font-bold);
 
-	/* COULEURS	——————————————————————————————————————————————————————————————————————	*/
 
+	/* COULEURS	——————————————————————————————————————————————————————————————————————	*/
 	/* re-définition des variantes de la couleur “accent” */
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 12.5%))	!important;
 	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 25%))	!important;
@@ -240,7 +245,6 @@ body {
 	--tag-background-hover:				var(--interactive-accent-hover);
 	--tag-color:						var(--text-on-accent);
 	--tag-color-hover:					var(--text-on-accent);*/
-	--table-header-color:				var(--h3-color);
 	--text-accent-hover:				var(--link-color);
 	--text-accent:						var(--color-accent-2);
 	--text-error-hover:					var(--text-accent-hover);
@@ -304,8 +308,8 @@ body {
 	--OT-vertical-tab-header-group-title:			var(--nav-item-color);
 	--OT-view-header-title-focus-color:				var(--color-base-20);
 	--OT-view-header-title-no-focus-color:			var(--color-base-05);
-	--OT-table-row-alt-background:					#EAE3FB;
-	--OT-table-header-background:					#DBD0F9;
+	--OT-table-background:					#EAE3FB;
+	--OT-table-header-background:						#DBD0F9;
 
 	--tab-text-color-active:						var(--color-base-20);
 	--tab-text-color-focused-active:				var(--color-base-20);
@@ -324,8 +328,7 @@ body {
 	--background-modifier-form-field:	#F6EDE5;
 	--background-modifier-border:		#D7C3B2;
 	--blockquote-background-color:		#EDE4DD;
-	--text-muted:					#AE8768;
-	--table-row-alt-background:			#EAE1D8;
+	--text-muted:						#AE8768;
 
 	/* Obsidian violet:	*/
 	--accent-h:			238	!important;
@@ -340,8 +343,8 @@ body {
 
 	--stabilo-mark:		#E9DDD1;
 
-	--OT-table-header-background:	none;/*	#E6DDD5;	*/
-	--OT-table-row-alt-background:	#F0E9E2;
+	--OT-table-header-background:	#EAE1D8;
+	--OT-table-alt-background:	#EEE6DF;
 }
 .theme-light.generalPalette-blue {
 	--color-base-00:	#E2EEFF;
@@ -357,7 +360,7 @@ body {
 	--background-modifier-form-field:	#D9E9FF;
 	--blockquote-background-color:		#C0DAFF;
 	--text-muted:						#06509A;
-	--table-row-alt-background:			#D9E8FF;
+	--OT-table-alt-background:			#D9E8FF;
 
 	--accent-h:			215		!important;
 	--accent-s:			100%	!important;
@@ -370,7 +373,7 @@ body {
 	--h5-color:			#1083F6;
 
 	--OT-table-header-background:	#C7DEFF;
-	--OT-table-row-alt-background:	#D9E8FF;
+	--OT-table-background:	#D9E8FF;
 }
 .theme-light.generalPalette-OBSIDIAN {
 	--OT-table-header-background:	#EEEEEE;
@@ -379,9 +382,9 @@ body {
 	--background-primary:			#FFFFF0;	/*	ivory; autre possibilité: FDFDEF	*/
 	--background-secondary:			#fdf5e6;
 
-	--text-normal:					#212A70;
-	--text-muted:					#7085CE;
-	--link-color:					#007664;
+	--text-normal:				#212A70;
+	--text-muted:				#7085CE;
+	--link-color:				#007664;
 	--OT-table-header-background:	#EEEEEE;
 }
 .theme-light.generalPalette-green {
@@ -396,7 +399,7 @@ body {
 	--background-modifier-border:	#86EFAC;
 	--blockquote-background-color:	#DFFAE7;
 	--text-muted:					#10AF4B;
-	--table-row-alt-background:		#E8F9EE;
+	--OT-table-alt-background:		#E8F9EE;
 
 	--accent-h:			142	!important;
 	--accent-s:			83%	!important;
@@ -409,7 +412,7 @@ body {
 	--h5-color:			#797B9D;
 
 	--OT-table-header-background:	#DDFCE8;
-	--OT-table-row-alt-background:	#E7FDEF;
+	--OT-table-background:	#E7FDEF;
 }
 .theme-light.generalPalette-icy {
 	--color-base-00:	#fdfeff;
@@ -437,7 +440,7 @@ body {
 	--OT-metadata-background:		#F4F5F6;
 	--OT-metadata-title-color-faint: 	#90B8E1;
 	--OT-table-header-background:	#E2EEFE;
-	--OT-table-row-alt-background:	#F4F9FF;
+	--OT-table-background:	#F4F9FF;
 }
 .theme-light.generalPalette-lightBeige {
 	--color-base-00:	#FAFAF4;
@@ -467,7 +470,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#B1A295;
 	--OT-table-header-background:	#EEE8DC;
-	--OT-table-row-alt-background:	#F6EFE2;
+	--OT-table-alt-background:	#f9f5ec;	/*	#fffefa;	*/
 }
 .theme-light.generalPalette-metallicBlue {
 	--color-base-00:				#fafff3;
@@ -495,7 +498,7 @@ body {
 	/* particularités	*/
 	--nav-item-color:						#C8DFF0;
 	--icon-color:							#143248;
-	--tab-text-color-focused-active:		var(--color-base-50);
+	--tab-text-color-focused-active:		var(--text-normal);
 
 	--OT-dropdown-text:						var(--nav-item-color);
 	--OT-metadata-background:				#F1F6EB;
@@ -507,7 +510,7 @@ body {
 	--OT-vertical-tab-header-group-title:	#82B0D8;
 
 	--OT-table-header-background:	#ACC7E2;
-	--OT-table-row-alt-background:	#FBFCFD;
+	--OT-table-background:	#FBFCFD;
 }
 .theme-light.generalPalette-paradiso {
 	--color-base-00:	#F1EFE3;
@@ -535,7 +538,7 @@ body {
 	--h5-color:			#A7A951;
 
 	--OT-table-header-background:	#E5E6CC;
-	--OT-table-row-alt-background:	#EDEDDB;
+	--OT-table-background:	#EDEDDB;
 }
 .theme-light.generalPalette-parchment {
 	--color-base-00:	#FFEED1;
@@ -545,7 +548,7 @@ body {
 	--color-base-05:	#544C3E;
 	--nav-item-color:	#6F5B3E;
 	--color-base-50:	#B68D40;
-	--text-muted:	#B68D40;b
+	--text-muted:	#B68D40;
 
 	--accent-h:	39	!important;
 	--accent-s:	59%	!important;
@@ -566,7 +569,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#C3BBAF;
 	--OT-table-header-background:	#F6DFB6;
-	--OT-table-row-alt-background:	#FFF4E2;
+	--OT-table-background:	#FFF4E2;
 }
 .theme-light.generalPalette-pistachio {
 	--color-base-00:	#F0F8F2;
@@ -592,7 +595,7 @@ body {
 	--h5-color:			#4DB438	;
 
 	--OT-table-header-background:	#D3EBDA;
-	--OT-table-row-alt-background:	#E7F4EB;
+	--OT-table-background:	#E7F4EB;
 }
 .theme-light.generalPalette-red {
 	--color-base-00:	#FCE5E5;
@@ -624,7 +627,7 @@ body {
 	--OT-metadata-background:		#F3DDDC;
 	--OT-metadata-title-color-faint: 	#886A6A;
 	--OT-table-header-background:	#FDD2D2;
-	--OT-table-row-alt-background:	#FDD3D3;
+	--OT-table-background:	#FDD3D3;
 }
 .theme-light.generalPalette-solarized {
 	--color-base-20:	var(--solarized-base2);
@@ -652,8 +655,8 @@ body {
 	--h5-color:			var(--solarized-base1);
 
 	--OT-table-header-background:	var(--solarized-base1);
-	--OT-table-row-alt-background:	var(--solarized-base2);
-	--OT-table-header-color:		var(--solarized-base2);
+	--OT-table-background:	var(--solarized-base2);
+	--table-header-color:		var(--solarized-base2);
 }
 .theme-light.generalPalette-stone {
 	--color-base-00:	#E7E5E4;
@@ -681,7 +684,7 @@ body {
 
 	--OT-metadata-background:		#DFDDDC;
 	--OT-table-header-background:	#CFCCCA;
-	--OT-table-row-alt-background:	#E2E0DF;
+	--OT-table-background:	#E2E0DF;
 }
 .theme-light.generalPalette-violet {
 	--color-base-00:	#F1E4FD;
@@ -710,7 +713,7 @@ body {
 
 	--OT-metadata-background:		#F9DEFF;
 	--OT-table-header-background:	#DBBDFB;
-	--OT-table-row-alt-background:	#E8D6FC;
+	--OT-table-background:	#E8D6FC;
 }
 .theme-light.generalPalette-yellow {
 	--color-base-00:	#FFF8DA;
@@ -738,7 +741,7 @@ body {
 	--h1-color:			#6F5902;
 
 	--OT-table-header-background:	#FEEFB6;
-	--OT-table-row-alt-background:	#FDEFB3;
+	--OT-table-background:	#FDEFB3;
 	--text-on-accent:	#FFF8DA !important;	/*	c’est la couleur du texte qui apparaît généralement sur --color-accent-1 (ou 2)		*/
 
 }
@@ -749,7 +752,7 @@ body {
 .theme-dark.generalPalette-OBSIDIAN.darkPalette-default {
 	--blockquote-background-color:	#484848;
 	--OT-table-header-background:	#151515;
-	--OT-table-row-alt-background:	#262626;
+	--OT-table-background:	#262626;
 }
 
 .theme-dark.darkPalette-beige,
@@ -779,7 +782,7 @@ body {
 	--stabilo-text:		var(--color-base-00) !important;
 
 	--OT-table-header-background:	#3A2503;
-	--OT-table-row-alt-background:	#221602;
+	--OT-table-background:	#221602;
 }
 
 .theme-dark.darkPalette-black,
@@ -794,7 +797,7 @@ body {
 
 	--OT-metadata-background:		#151515;
 	--OT-table-header-background:	#1F1F20;
-	--OT-table-row-alt-background:	#101013;
+	--OT-table-background:	#101013;
 }
 
 .theme-dark.darkPalette-blue,
@@ -826,7 +829,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#2B508B;
 	--OT-table-header-background:	#031A3B;
-	--OT-table-row-alt-background:	#031C3F;	/*	#02152F;	*/
+	--OT-table-background:	#031C3F;	/*	#02152F;	*/
 }
 
 .theme-dark.darkPalette-brown,
@@ -856,7 +859,7 @@ body {
 	--stabilo-mark:		#916847;
 
 	--OT-table-header-background:	#371E00;
-	--OT-table-row-alt-background:	#291606;
+	--OT-table-background:	#291606;
 }
 
 .theme-dark.darkPalette-green,
@@ -886,7 +889,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#3A7F53;
 	--OT-table-header-background:	#072512;
-	--OT-table-row-alt-background:	#051C0E;
+	--OT-table-background:	#051C0E;
 }
 
 .theme-dark.darkPalette-icy,
@@ -919,7 +922,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#004CB1;
 	--OT-table-header-background:	#002558;
-	--OT-table-row-alt-background:	#001C41;
+	--OT-table-background:	#001C41;
 }
 
 .theme-dark.darkPalette-LYT {
@@ -955,7 +958,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#697085;
 	--OT-table-header-background:	#363842;
-	--OT-table-row-alt-background:	#292B33;
+	--OT-table-background:	#292B33;
 }
 
 .theme-dark.darkPalette-metallicBlue,
@@ -990,7 +993,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#6E7071;
 	--OT-table-header-background:	#10293B;
-	--OT-table-row-alt-background:	#122D41;
+	--OT-table-background:	#122D41;
 }
 
 .theme-dark.darkPalette-oliveGreen,
@@ -1019,7 +1022,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#737363;
 	--OT-table-header-background:	#2A2B14;
-	--OT-table-row-alt-background:	#2E2F16;
+	--OT-table-background:	#2E2F16;
 }
 
 .theme-dark.darkPalette-parchment,
@@ -1049,7 +1052,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#895317;
 	--OT-table-header-background:	#3E250A;
-	--OT-table-row-alt-background:	#462A0C;
+	--OT-table-background:	#462A0C;
 }
 
 .theme-dark.darkPalette-red,
@@ -1083,7 +1086,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#7C0014;
 	--OT-table-header-background:	#34030C;
-	--OT-table-row-alt-background:	#36010C;
+	--OT-table-background:	#36010C;
 }
 
 .theme-dark.darkPalette-solarized,
@@ -1111,8 +1114,8 @@ body {
 
 	--OT-metadata-title-color-faint: 	var(--solarized-base01);
 	--OT-table-header-background:	var(--solarized-base02);
-	--OT-table-row-alt-background:	var(--solarized-base02);
-	--OT-table-header-color:		var(--solarized-base2);
+	--OT-table-background:	var(--solarized-base02);
+	--table-header-color:		var(--solarized-base2);
 	--table-text-color:				var(--solarized-base1);
 	--stabilo-mark:					var(--solarized-base1);
 	--stabilo-text:					var(--solarized-base3) !important;
@@ -1148,7 +1151,7 @@ body {
 	--OT-metadata-background:		#2D2825;
 	--OT-metadata-title-color-faint: 	#574E48;
 	--OT-table-header-background:	#0F0E0D;
-	--OT-table-row-alt-background:	#191615;
+	--OT-table-background:	#191615;
 }
 
 .theme-dark.darkPalette-victorian {
@@ -1183,7 +1186,7 @@ body {
 	--OT-metadata-background:		#5C90AC;
 	--OT-metadata-title-color-faint: 	#78BADF;
 	--OT-table-header-background:	#4E87A6;
-	--OT-table-row-alt-background:	#558FB0;
+	--OT-table-background:	#558FB0;
 }
 
 .theme-dark.darkPalette-violet,
@@ -1212,7 +1215,7 @@ body {
 	--stabilo-text:					#200C40	!important;
 
 	--OT-table-header-background:	#270F4E;
-	--OT-table-row-alt-background:	#1D0B39;
+	--OT-table-background:	#1D0B39;
 }
 
 .theme-dark.darkPalette-yellow,
@@ -1240,7 +1243,7 @@ body {
 
 	--OT-metadata-title-color-faint: 	#4D4D4D;
 	--OT-table-header-background:	#2E2501;
-	--OT-table-row-alt-background:	#1A1500;
+	--OT-table-background:	#1A1500;
 }
 /* -------------------- ↑ OpSpl Color Schemes -------------------- ↑ */
 
@@ -3421,25 +3424,15 @@ input[type=checkbox] {
 
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à gauche du panneau d’édition ↑ -------------------------	*/
 
-
-
 /* ---------- OpSpl Line length in edit mode ---------- */
-/* Le 23.09.2022, je suis allé voir dans “App.css” et j’ai copié les sections qui me paraissaient concerner cette variable */
-.markdown-source-view.is-readable-line-width .CodeMirror {
+/* Le 18.05.2024, j’ai collectionné les lignes relevantes dans “App.css”. */
+.browser-content .error-notice,
+.browser-content .reader-mode-content.is-readable-line-width .markdown-preview-sizer,
+.document-replace,
+.document-search,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+.release-notes-view .is-readable-line-width {
 	max-width:		var(--OT-editMode-line-width);
-	margin-left:	auto;
-	margin-right:	auto;
-}
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
-	max-width:		var(--OT-editMode-line-width);
-	margin-left:	auto;
-	margin-right:	auto;
-}
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-content {
-	max-width:	var(--OT-editMode-line-width);
-}
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
-	max-width:	var(--OT-editMode-line-width);
 }
 
 /*	---------- OpSpl Editor font size and line height ----------
@@ -3531,18 +3524,9 @@ input[type=checkbox] {
 	line-height:	1.1em;
 }
 
-/* ---------- texte des tables en “edit mode” ----------  */
-.cm-s-obsidian .HyperMD-table-row {
-	font-size:		var(--OT-editMode-tableText-size)	!important;
-}
 
 
 /* —————————————————————————————— OpSpl Autres ajustements —————————————————————————————— */
-
-/* en mode édition, dans les tables, je laisse les en-têtes de colonnes à la même couleur que le texte; c’est sutout en fond noir que c’est important */
-.cm-s-obsidian .HyperMD-table-row-0 {
-	color: inherit;
-}
 
 /*	les astérisques indiquant le “emphasised” et le strong */
 .cm-formatting-em.cm-em,
@@ -3816,55 +3800,59 @@ input[type=checkbox] {
 /* -------------------- ↑ OpSpl Paper background -------------------- ↑ */
 
 
-/*	---------------------------- OpSpl Tables ---------------------------- */
-	/*	la table dans son entier; quelques ajustements que je trouve judicieux, qui font partie de mon “par défaut”	*/
+/*	—————————————————————————————— OpSpl Tables —————————————————————————————— */
+/*	la table dans son entier; quelques ajustements que je trouve judicieux, qui font partie de mon “par défaut”	*/
 .cm-embed-block.markdown-rendered .block-language-dataview,
 .markdown-rendered table,
 .markdown-rendered .table-view-table {
-	text-align:			left;				/* pour être cohérent avec le fonctionnement de Markdown					*/
-	margin-top:			0.5em;
-	margin-bottom:		1.2em;
-	border-collapse:	collapse;
-	--table-text-size:	var(--font-smaller);
-/*		border:				0.13rem solid var(--table-border-color);	*/
-	table-layout:		auto;
-	width:				100%;
+	margin-block-start:	calc(var(--p-spacing) * 1.1);
+	margin-block-end:	calc(var(--p-spacing) * 1.5);
 	}
+
+.markdown-rendered th {
+	vertical-align:	bottom;
+}
+
+/* texte des tables en “edit mode, RAW”	*/
+.cm-s-obsidian .HyperMD-table-row {
+	font-size:		var(--OT-editMode-tableText-size);
+}
+/* current table cell being edited in Liveview editing mode */
+td .cm-editor .cm-line {
+    font-size:	var(--OT-editMode-tableText-size);
+}
 
 .OT-tables-custom .cm-embed-block.markdown-rendered .block-language-dataview,
 .OT-tables-custom .markdown-rendered table,
 .OT-tables-custom .markdown-rendered .table-view-table {
-	--table-row-alt-background:		transparent;
-	vertical-align:					top;
 	border:							calc(var(--table-border-width) * 2) solid;
+}
+
+.OT-tables-custom .markdown-rendered td,
+.OT-tables-custom .markdown-rendered th,
+.OT-tables-tinted-rows .markdown-rendered td,
+.OT-tables-tinted-rows .markdown-rendered th {
+	border:	1px dotted;
 }
 
 /*	la ligne d’en-tête, dans mes deux styles améliorés	*/
 .OT-tables-custom .markdown-rendered thead tr,
 .OT-tables-tinted-rows .markdown-rendered thead tr {
-	--table-header-size:		1em;
-	color:						var(--OT-table-header-color);
-	background:					var(--OT-table-header-background);
+	--table-header-size:				1em;
+	--table-header-background:			var(--OT-table-header-background);
+	--table-header-background-hover:	var(--table-header-background);
+	--table-header-border-width:		0;
 	font-style:					italic;
 	letter-spacing:				0.02em;
-	vertical-align:				bottom;
-	border-bottom:				1.5px solid var(--OT-table-header-background);
-}
-
-.OT-tables-custom .cm-embed-block.markdown-rendered .block-language-dataview td,
-.OT-tables-custom .markdown-rendered table td,
-.OT-tables-custom .markdown-rendered .table-view-table td,
-.OT-tables-tinted-rows .cm-embed-block.markdown-rendered .block-language-dataview td,
-.OT-tables-tinted-rows .markdown-rendered table td,
-.OT-tables-tinted-rows .markdown-rendered .table-view-table td {
-	vertical-align:	top;
+	border-bottom:				1.5px solid var(--table-header-background);
 }
 
 .OT-tables-tinted-rows .cm-embed-block.markdown-rendered .block-language-dataview,
 .OT-tables-tinted-rows .markdown-rendered table,
 .OT-tables-tinted-rows .markdown-rendered .table-view-table {
 	--table-row-alt-background:		var(--OT-table-background);
-	--table-background:				var(--OT-table-row-alt-background);
+	--table-background:				var(--OT-table-alt-background);
+	--table-row-background-hover:	var(--OT-table-alt-background);
 	vertical-align:					top;
 	border:							calc(var(--table-border-width) * 2) solid;
 }
@@ -3875,25 +3863,6 @@ input[type=checkbox] {
 	border-bottom:	none;
 	border-top:		none;
 }
-
-.markdown-rendered thead > tr > th,
-.markdown-rendered tbody > tr > td {
-	padding-left:	0.6em;
-	padding-right:	0.6em;
-}
-
-
-/*	An adaptation to compact somehow the lines in the tables generated by the Dataview plugin	*/
-.dataview-result-list-li,
-.dataview-result-list-ul {
-	//color:			red;
-	line-height:	1.1em !important;
-	margin-top:		0px !important;
-	margin-bottom:	0px !important;
-	padding-top:	0px !important;
-	padding-bottom:	0px !important;
-}
-
 /*	-------------------- ↑ OpSpl Tables -------------------- ↑ */
 
 
@@ -3979,7 +3948,6 @@ body.is-focused .workspace-ribbon.mod-left:before {
 .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button {
 	    color: var(--text-on-accent);
 }
-
 /* -------------------- ↑ OpSpl En-tête des panneaux ↑ -------------------- */
 
 
@@ -4234,15 +4202,6 @@ body span[alt*="+grid"] {
 /* -------------------- ↑ OpSpl Blockquotes ↑ -------------------- */
 
 
-/* —————————————————————————————— OpSpl Red Cursor  —————————————————————————————— */
-body .markdown-source-view.mod-cm6 .cm-content,
-body.fancy-cursor .markdown-source-view.mod-cm6 .cm-content,body.fancy-cursor .mod-cm6 .cm-line,
-.fancy-cursor input.prompt-input {
-    caret-color:	red
-}
-/* -------------------- ↑ OpSpl Red Cursor ↑ -------------------- */
-
-
 /* —————————————————————————————— OpSpl Contextual typography —————————————————————————————— */
 /*	Ceci fonctionne grâce au plugin “Contextual Typography”.
 	Il est donc indispensable de le charger et de l’activer!	*/
@@ -4442,7 +4401,7 @@ markdown-rendered h6 {
 }
 
 /* 	Quand des headings de niveau 3 à 6 suivent directement une ligne horizontale,
-	je préfère qu’ils soient plus proches de la ligne. Si j’utilise une ligne à cet endroi-là,
+	je préfère qu’ils soient plus proches de la ligne. Si j’utilise une ligne à cet endroit-là,
 	c’est justement pour avoir une variante de la séparation visuelle. */
 .markdown-preview-view div[data-tag-name="hr"] + div > h3,
 .markdown-preview-view div[data-tag-name="hr"] + div > h4,
@@ -4621,7 +4580,6 @@ div > * > li > * > li:last-child {			/* All level 2 last items */
 div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
    margin-bottom:	var(--list-spacing-3);
 }
-
 /* -------------------- ↑ OpSpl Listes — Espacement vertical -------------------- ↑ */
 
 
@@ -4736,10 +4694,10 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	color:		var(--text-on-accent);
 	background:	var(--color-accent-1);
 }
-/*
+
 .value-container.value-checked {
 		color:	var(--text-on-accent);
-}	*/
+}
 /* -------------------- ↑ OpSpl Metadata Menu plugin ↑ -------------------- */
 
 

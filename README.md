@@ -115,6 +115,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19.05.2024 Version 1.8.0
+
+When I started this project, there wheren’t any variables for styling tables. Since variables arrived, the code was begging to be streamlined and refined. It’s done.
+
+Of course, I couldn’t help tweeking small things like white space above and below tables and some colors here and there.
+
+----------------------------------------------
+
 #### 06.04.2024 Version 1.7.0
 
 I’ve made improvements to the block displaying Properties / Metadata.
