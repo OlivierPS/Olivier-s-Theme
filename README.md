@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 27.05.2024 Version 1.8.3
+
+Further improvements to the code and fine tuning of some colors.
+
+----------------------------------------------
+
 #### 26.05.2024 Version 1.8.2
 
 There’s  been some changes in the *Obsidian* base CSS that rendered useless the theme’s  code for line length both in Edit and in Reading modes. Corrected.
