@@ -37,6 +37,64 @@
 			24.04.2024	Improved the legibility of the sidebar text in Metallic Blue palette	1.7.1
 			18.05.2024	Refined the code for tables, since there are now ad hoc variables		1.8.0
 			19.05.2024	Corrected the colors of the calendar table of the "Calendar" plugin		1.8.1
+			26.05.2024	Reorganised the code and added bookmarks								1.8.2
+						Corrected line length definitions to newest Obsidian definitions
+						Some fine tuning
+
+----------------------------------------------
+Bookmarks:	OpSpl01:	Déclarations générales
+			OpSpl02:	Initialisation des variables originelles
+			OpSpl03:	Définitions des couleurs de base
+			OpSpl04:	Définition des palettes pour le mode “light”
+			OpSpl05:	Définition des palettes pour le mode “dark”
+			OpSpl06:	Définition des “Accent Colors”, pour les palettes “light”
+			OpSpl07:	Définition des “Accent Colors”, pour les palettes “dark”
+			OpSpl08:	Définition des couleurs du texte normal et des H1, H3 et H5
+			OpSpl09:	Définition des couleurs pour le “highlight”
+			OpSpl10:	Définition des couleurs pour le fond du panneau d’édition
+			OpSpl11:	Définition de la couleur du texte en mode d’édition
+			OpSpl12:	Définition de l’icône en haut à gauche d’un panneau d’édition
+			OpSpl13:	basic typography of the EDIT mode: font size, line length and line height
+			OpSpl14:	Les headings en mode d’édition
+			OpSpl15:	La fonte du mode d’édition
+						La fonte “monospaced”
+			OpSpl16:	Autres ajustements:
+							les astérisques indiquant le “emphasised” et le strong
+							le texte “emphasized”
+							les hashtags des headers
+							les pastilles indicatives sur la feuille de publication
+							les petits boutons sur la feuille de publication
+			OpSpl17:	Les sidebars
+			OpSpl18:		Adaptations pour le plugin “File Info”
+							autres adaptations
+			OpSpl19:	Reading Mode
+							paper background
+			OpSpl20		Tables
+			OpSpl21		En-tête des panneaux
+			OpSpl22		Boutons
+			OpSpl23		Settings pannel
+			OpSpl24		Transcludes
+			OpSpl25		Images
+			OpSpl26		PDFs
+			OpSpl27		Other refinements
+			OpSpl28		Blockquotes
+			OpSpl29		Contextual typography
+			OpSpl30		Headings to my taste
+			OpSpl31		Horizontal rule
+			OpSpl32		Kanban
+			OpSpl33		Links
+			OpSpl34		Lists
+			OpSpl35		Zoom-image
+			OpSpl36		Status bar
+			OpSpl37		Metadata Menu plugin
+			OpSpl38		Canvas
+			OpSpl39		<kbd>
+			OpSpl40		Calendar plugin
+			OpSpl41		Metafolders plugin
+						Autres éléments d’interface
+
+			OpSpl100	Definitions for the Style settings plugin
+
 *******************************************************************/
 
 
@@ -83,7 +141,7 @@
 }
 /* -------------------- ↑ définition des couleurs ↑ --------------------	*/
 
-
+/*	Bookmark	OpSpl01	*/
 /* —————————————————————————————— OpSpl Déclarations générales —————————————————————————————— */
 body {
 	/* OpSpl Defaults
@@ -103,7 +161,6 @@ body {
 
 	--OT-kanban-font:			"Uberhand Pro";
 	--OT-kanban-font-size:		17px;
-
 
 	/* D’autres variables de mon cru, utilisée ailleurs -- ou pas, car ça reste à éventuellement mettre en place	*/
 	--OT-calendar-day-color:						var(--text-normal);
@@ -128,6 +185,7 @@ body {
 	--OT-view-header-title-focus-color: 			var(--h1-color);
 	--OT-view-header-title-no-focus-color: 			var(--text-faint);
 
+/*	Bookmark	OpSpl02	*/
 	/* J’initialise ici quelques variables dans «ma logique à moi»	*/
 	--h1-color:		var(--text-normal);
 	--h2-color:		var(--h1-color);		/* ma logique: les deux premiers niveaux de headings ont la même couleur	*/
@@ -192,8 +250,10 @@ body {
 
 	--vault-name-font-size:			calc(var(--OT-sidebars-font-size) * 1.3);
 	--vault-name-font-weight:		var(--font-bold);
+	--vault-profile-color:			var(--nav-item-color);
+	--vault-profile-font-size:		var(--font-ui-large);
 
-
+/*	Bookmark	OpSpl03	*/
 	/* COULEURS	——————————————————————————————————————————————————————————————————————	*/
 	/* re-définition des variantes de la couleur “accent” */
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 12.5%))	!important;
@@ -276,7 +336,7 @@ body {
 
 /* -------------------- ↑ OpSpl Déclarations générales -------------------- ↑ */
 
-
+/*	Bookmark	OpSpl04	*/
 /* —————————————————————————————— OpSpl Color Schemes —————————————————————————————— */
 .theme-light.generalPalette-artDeco {
 	--color-base-00:			#EFEBFC;
@@ -341,10 +401,10 @@ body {
 	--accent-l:			30%	!important;
 
 	--text-normal:	#6A4F38;
-	--link-color:		#58A8A5;
-	--h1-color:			#96704F;
-	--h3-color:			#9F7653;
-	--h5-color:			#BEA18D;
+	--link-color:	#58A8A5;
+	--h1-color:		#96704F;
+	--h3-color:		#9F7653;
+	--h5-color:		#BEA18D;
 
 	--stabilo-mark:		#E9DDD1;
 
@@ -494,6 +554,7 @@ body {
 
 	--text-normal:	#255C84;
 	--text-muted:	#337FB6;
+	--text-faint:	red;
 	--link-color:	#267020;
 	--metadata-input-text-color:	var(--text-muted);
 	--h1-color:		var(--text-normal);
@@ -754,8 +815,10 @@ body {
 
 }
 
-/*	-------------------- ↓ mode “Dark” ↓ --------------------	*/
 
+
+/*	Bookmark	OpSpl05	*/
+/*	-------------------- ↓ mode “Dark” ↓ --------------------	*/
 .theme-dark.darkPalette-OBSIDIAN,
 .theme-dark.generalPalette-OBSIDIAN.darkPalette-default {
 	--blockquote-background-color:	#484848;
@@ -1255,6 +1318,7 @@ body {
 }
 /* -------------------- ↑ OpSpl Color Schemes -------------------- ↑ */
 
+/*	Bookmark	OpSpl06	*/
 /* —————————————————————————————— OpSpl Accent Colors —————————————————————————————— */
 .theme-light.generalPalette-artDeco.accentColor-lightMode-shade {
 	--accent-h:			258	!important;
@@ -1547,8 +1611,7 @@ body {
 	--accent-l:			40%	!important;
 }
 
-/*	----------------------------------------	*/
-
+/*	Bookmark	OpSpl07	*/
 .theme-dark.generalPalette-beige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.generalPalette-lightBeige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-beige.accentColor-darkMode-shade {
@@ -1863,15 +1926,17 @@ body {
 }
 /* -------------------- ↑ OpSpl Accent Colors -------------------- ↑ */
 
+
+/*	Bookmark	OpSpl08	*/
 /* —————————————————————————————— OpSpl Text Color Themes —————————————————————————————— */
 .theme-light.textColor-lightMode-default {
 }
 .theme-light.textColor-lightMode-amber {
 	--text-normal:	#D97706;
-	--link-color:		#0769D9;
-	--h1-color:			#D97706;
-	--h3-color:			#B45309;
-	--h5-color:			#F59E0B;
+	--link-color:	#0769D9;
+	--h1-color:		#D97706;
+	--h3-color:		#B45309;
+	--h5-color:		#F59E0B;
 }
 .theme-light.textColor-lightMode-black {
 	--text-normal:	black;
@@ -2261,8 +2326,10 @@ body {
 }
 /* -------------------- ↑ OpSpl Text Color Themes -------------------- ↑ */
 
-/* —————————————————————————————— OpSpl Highlight Colors (Stabilo) —————————————————————————————— */
 
+
+/*	Bookmark	OpSpl09	*/
+/* —————————————————————————————— OpSpl Highlight Colors (Stabilo) —————————————————————————————— */
 .highlight-color-default {
 /*	--stabilo-mark:	rgb(var(--stabilo-yellow-rgb)) !important;
 	--stabilo-text:		#987B08;	*/
@@ -2370,6 +2437,8 @@ body {
 
 /* -------------------- ↑ OpSpl Highlight Colors -------------------- ↑ */
 
+
+/*	Bookmark	OpSpl10	*/
 /* —————————————————————————————— OpSpl Edit background colors —————————————————————————————— */
 .theme-light.editingBackgroundColor-lightMode-default .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-default .markdown-source-view .cm-line,
@@ -2601,6 +2670,9 @@ body {
 }
 /* -------------------- ↑ OpSpl Edit background colors -------------------- ↑ */
 
+
+
+/*	Bookmark	OpSpl11	*/
 /* —————————————————————————————— OpSpl Edit text colors —————————————————————————————— */
 .theme-light.inkColor-lightMode-default .CodeMirror pre.CodeMirror-line,
 .theme-light.inkColor-lightMode-default .markdown-source-view .cm-line,
@@ -3003,6 +3075,8 @@ input[type=checkbox] {
   border: 2px solid var(--checkbox-border-color);
 }
 
+
+/*	Bookmark	OpSpl12	*/
 /* —————————————————————————————— OpSpl Editing mode —————————————————————————————— */
 /* ---------- icône indiquant le mode “édition”, en haut à gauche du panneau d’édition ----------
 	Let’s display an icon in the top left corner of the edit panel */
@@ -3429,32 +3503,22 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
 }
-
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à gauche du panneau d’édition ↑ -------------------------	*/
 
-/* ---------- OpSpl Line length in edit mode ---------- */
-/* Le 18.05.2024, j’ai collectionné les lignes relevantes dans “App.css”. */
-.browser-content .error-notice,
-.browser-content .reader-mode-content.is-readable-line-width .markdown-preview-sizer,
-.document-replace,
-.document-search,
-.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
-.release-notes-view .is-readable-line-width {
+
+
+/*	Bookmark	OpSpl13	*/
+/* ---------- basic typography of the EDIT mode ---------- */
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
 	max-width:		var(--OT-editMode-line-width);
+	font-size:		var(--OT-editMode-font-size);
+    line-height:	var(--OT-editMode-line-height);
 }
 
-/*	---------- OpSpl Editor font size and line height ----------
-	J’ai dupliqué les lignes que j’ai repérées dans “Minimal theme” utilisant la variable
-	“--font-editor”. */
-.cm-s-obsidian,
-.cm-s-obsidian .cm-formatting-hashtag,
-.cm-s-obsidian span.cm-formatting-task,
-.markdown-source-view,
-.markdown-source-view.mod-cm6 .cm-scroller{
-    font-size:		var(--OT-editMode-font-size);
-    line-height:	var(--OT-editMode-line-height);
-	}
-
+/*	---------- OpSpl Editor font size and line height ----------	*/
+/*	Bookmark	OpSpl14	*/
 /* -------------------- OpSpl Headings in editing mode -------------------- */
 /* ----- font-family */
 .cm-s-obsidian .cm-header-1,
@@ -3504,6 +3568,7 @@ input[type=checkbox] {
 }
 /* -------------------- ↑ OpSpl Headings in editing mode ↑ -------------------- */
 
+/*	Bookmark	OpSpl15	*/
 /* ---------- OpSpl Font in edit mode */
 .cm-list-1,
 .cm-list-2,
@@ -3534,6 +3599,7 @@ input[type=checkbox] {
 
 
 
+/*	Bookmark	OpSpl16	*/
 /* —————————————————————————————— OpSpl Autres ajustements —————————————————————————————— */
 
 /*	les astérisques indiquant le “emphasised” et le strong */
@@ -3556,6 +3622,10 @@ input[type=checkbox] {
 	font-weight:	300;
 }
 
+.tree-item-flair {
+	background-color:	var(--OT-tree-item-flair-background);
+}
+
 /*	les pastilles indicatives sur la feuille de publication	*/
 .file-tree .mod-deleted .tree-item-flair,
 .file-tree .mod-to-delete .tree-item-flair {
@@ -3575,6 +3645,8 @@ input[type=checkbox] {
     background-color:	var(--background-modifier-hover);
 }
 
+
+/*	Bookmark	OpSpl17	*/
 /* —————————————————————————————— OpSpl Sidebars —————————————————————————————— */
 /* Font size of text in sidebars. */
 .nav-file-title,
@@ -3620,6 +3692,8 @@ input[type=checkbox] {
 	border-bottom:	1px dotted var(--nav-item-color);
 }
 
+
+/*	Bookmark	OpSpl18	*/
 /* pour le plugin “File Info” */
 .tlfFileInfoButton {
 	font-size:	var(--OT-sidebars-font-size);
@@ -3664,9 +3738,33 @@ input[type=checkbox] {
 	color:	var(--text-on-accent);
 }
 
+.nav-file-title {
+	border-bottom:	1px dotted var(--nav-item-color);
+}
+
+.tree-item-flair {
+	background-color:	var(--background-modifier-border);
+	color:				var(--text-on-accent);
+	padding:			var(--size-4-1);
+}
+
+.tree-item-self:hover .tree-item-flair {
+  color: 			var(--text-on-accent);
+  background-color:	var(--background-modifier-active-hover);
+	}
+
+.nav-file-tag {
+	color:	var(--text-on-accent);
+}
+
+/* amélioration de la lisibilité de la liste des backlinks */
+.search-result-file-match {
+	color:	var(--text-normal);		/* au lieu de `--text-muted` */
+}
 /* -------------------- ↑ OpSpl Sidebars -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl19	*/
 /* —————————————————————————————— OpSpl READING mode —————————————————————————————— */
 
 /* Une petite ligne de rien du tout, mais qui change beaucoup de choses! */
@@ -3808,6 +3906,7 @@ input[type=checkbox] {
 /* -------------------- ↑ OpSpl Paper background -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl20	*/
 /*	—————————————————————————————— OpSpl Tables —————————————————————————————— */
 /*	la table dans son entier; quelques ajustements que je trouve judicieux, qui font partie de mon “par défaut”	*/
 .cm-embed-block.markdown-rendered .block-language-dataview,
@@ -3874,6 +3973,7 @@ td .cm-editor .cm-line {
 /*	-------------------- ↑ OpSpl Tables -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl21	*/
 /* —————————————————————————————— OpSpl En-tête des panneaux —————————————————————————————— */
 /* Suppression du “breadcrumb” dans la title bar (titre des panneaux),
 	car, sur les écrans de portables, il prend trop de place.
@@ -3959,6 +4059,7 @@ body.is-focused .workspace-ribbon.mod-left:before {
 /* -------------------- ↑ OpSpl En-tête des panneaux ↑ -------------------- */
 
 
+/*	Bookmark	OpSpl22	*/
 /* —————————————————————————————— OpSpl boutons —————————————————————————————— */
 .dropdown {
 	background-color:	var(--color-base-20);		/*	Normalement, Obsidian prend `--interactive-normal`, qui prend la couleur
@@ -3986,6 +4087,7 @@ button:hover {
 /*	-------------------- ↑ OpSpl boutons -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl23	*/
 /* —————————————————————————————— OpSpl Settings pannel —————————————————————————————— */
 .vertical-tab-nav-item,
 .horizontal-tab-nav-item {
@@ -4023,8 +4125,36 @@ button:hover {
 .setting-item-description {
 	color:	var(--OT-text-in-sidebar);
 }*/
+
+/* Les petits titres introduisant les différentes sections dans le panneau “settings”.
+	(et dans d’autres “modal dialogues”, je pense)*/
+.vertical-tab-header-group-title {
+	font-variant:	small-caps;
+	color:		var(--OT-vertical-tab-header-group-title);
+	font-size:	1.3em;
+}
+
+/*	-------------------- suppression du réglage de la couleur “accent” dans les settings --------------------	*/
+.mod-settings .vertical-tab-content > .setting-item:nth-child(2) > .setting-item-control > input[type=color] {
+  visibility: hidden;
+  width: 300px;
+}
+.mod-settings .vertical-tab-content > .setting-item:nth-child(2) > .setting-item-control .lucide-rotate-ccw {
+  display: none;
+}
+.mod-settings .vertical-tab-content > .setting-item:nth-child(2) > .setting-item-control > input[type=color]::before {
+  visibility: visible;
+  content: "The accent color is overridden by the theme. Use the Style Settings Plugin to customize theme colors.";
+  color: var(--text-error);
+  font-family: var(--font-interface);
+  font-size: var(--font-ui-smaller);
+  line-height: 1.3;
+  position: relative;
+}
 /*	-------------------- ↑ Settings pannel -------------------- ↑ */
 
+
+/*	Bookmark	OpSpl24	*/
 /* —————————————————————————————— OpSpl TRANSCLUDES —————————————————————————————— */
 /* Remove the border, padding, and margin for the transcludes/embeds */
 .markdown-preview-view .markdown-embed,
@@ -4053,6 +4183,7 @@ button:hover {
 /* -------------------- ↑ Transcludes -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl25	*/
 /* —————————————————————————————— OpSpl Images, etc. —————————————————————————————— */
 .markdown-preview-view img:not([width]),
 .markdown-preview-view audio,
@@ -4119,6 +4250,7 @@ body span[alt*="+grid"] {
 /* -------------------- ↑ Images, etc. -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl26	*/
 /* —————————————————————————————— OpSpl le nom des PDFs inclus —————————————————————————————— */
 .file-embed-title {
 	/*	font-size:		var(--font-size-normal);	*/
@@ -4133,6 +4265,7 @@ body span[alt*="+grid"] {
 /* -------------------- ↑ PDF -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl27	*/
 /* —————————————————————————————— OpSpl Other refinements —————————————————————————————— */
 
 /* Add a tiny bit of padding to the link brackets and parenthesis */
@@ -4160,9 +4293,26 @@ body span[alt*="+grid"] {
   cursor: 			text;
   padding-left: 	15px;
 }
+
+/*	le popover avec les fiches vides: rendons le texte plus lisible	*/
+.popover.hover-popover.mod-empty {
+    color: 				var(--link-unresolved-color);
+    background-color:	var(--text-on-accent);
+//	color:		var(--text-on-accent);
+//	background:	var(--color-accent-1);
+}
+
+/* —————————————————————————————— OpSpl Tooltips and Notices —————————————————————————————— */
+/*	D’origine, le texte a toujours une valeur claire, laquelle ne contraste pas suffisamment lorsqu’on a un fond clair.	*/
+.notice,
+.tooltip {
+	color:	var(--OT-tooltips-text-color);
+}
+
 /* -------------------- ↑ Other refinements -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl28	*/
 /*	—————————————————————————————— OpSpl Blockquotes —————————————————————————————— */
 /* Tout ce qui concerne les citations:
 	* le “blockquote”
@@ -4210,6 +4360,7 @@ body span[alt*="+grid"] {
 /* -------------------- ↑ OpSpl Blockquotes ↑ -------------------- */
 
 
+/*	Bookmark	OpSpl29	*/
 /* —————————————————————————————— OpSpl Contextual typography —————————————————————————————— */
 /*	Ceci fonctionne grâce au plugin “Contextual Typography”.
 	Il est donc indispensable de le charger et de l’activer!	*/
@@ -4239,6 +4390,7 @@ body span[alt*="+grid"] {
 /* -------------------- ↑ OpSpl Contextual typography ↑ -------------------- */
 
 
+/*	Bookmark	OpSpl30	*/
 /* —————————————————————————————— OpSpl Headings to my taste —————————————————————————————— */
 /*	Pour mettre les headings à mon goût:
 
@@ -4397,6 +4549,7 @@ markdown-rendered h6 {
 /* -------------------- ↑ Headings to my taste.css ↑ -------------------- */
 
 
+/*	Bookmark	OpSpl31	*/
 /* —————————————————————————————— OpSpl Horizontal Rule —————————————————————————————— */
 .markdown-rendered hr {
   margin-top:		0.75em;
@@ -4421,6 +4574,7 @@ markdown-rendered h6 {
 /* -------------------- ↑ OpSpl horizontal rule ↑ -------------------- */
 
 
+/*	Bookmark	OpSpl32	*/
 /* —————————————————————————————— OpSpl Kanban —————————————————————————————— */
 body .kanban-plugin{
 	background-image:	none !important;
@@ -4459,9 +4613,15 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
     box-shadow:		none;
 	font-family:	var(--OT-kanban-font), "P22 Eaglefeather", "Tekton Pro", "Palatino Sans Com", "Arial Narrow", "Helvetica Neue",sans-serif !important;
 	}
+
+/*	Pour la sélection dans le menu local des fiches des kanbans. */
+.menu-item.selected:not(.is-disabled):not(.is-label) {
+	color:	var(--text-on-accent);
+}
 /* -------------------- ↑ OpSpl Kanban -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl33	*/
 /* —————————————————————————————— OpSpl Links —————————————————————————————— */
 /* ---------- no underline */
  body {
@@ -4501,14 +4661,6 @@ a:hover,
 	background:	var(--link-unresolved-color);
 }
 
-/*	le popover avec les fiches vides: rendons le texte plus lisible	*/
-.popover.hover-popover.mod-empty {
-    color: 				var(--link-unresolved-color);
-    background-color:	var(--text-on-accent);
-//	color:		var(--text-on-accent);
-//	background:	var(--color-accent-1);
-}
-
 /* ---------- OpSpl Lien vers une image inexistante  */
 .file-embed.mod-generic,
 .file-embed.mod-empty {
@@ -4535,6 +4687,7 @@ a:hover,
 /* -------------------- ↑ OpSpl Links ↑ -------------------- */
 
 
+/*	Bookmark	OpSpl34	*/
 /* —————————————————————————————— OpSpl Listes —————————————————————————————— */
 /* ----- formatage des puces et numéros des listes, en général -----	*/
 ol > li::marker,
@@ -4591,6 +4744,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /* -------------------- ↑ OpSpl Listes — Espacement vertical -------------------- ↑ */
 
 
+/*	Bookmark	OpSpl35	*/
 /* —————————————————————————————— OpSpl Zoom-image —————————————————————————————— */
 .markdown-preview-view .internal-embed img {
 	cursor:zoom-in;}
@@ -4617,15 +4771,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /* -------------------- ↑ OpSpl Zoom-image.css ↑ -------------------- */
 
 
-/* —————————————————————————————— OpSpl Tooltips and Notices —————————————————————————————— */
-/*	D’origine, le texte a toujours une valeur claire, laquelle ne contraste pas suffisamment lorsqu’on a un fond clair.	*/
-.notice,
-.tooltip {
-	color:	var(--OT-tooltips-text-color);
-}
-/* -------------------- ↑ OpSpl Tooltips and Notices ↑ -------------------- */
-
-
+/*	Bookmark	OpSpl36	*/
 /* —————————————————————————————— OpSpl Status bar —————————————————————————————— */
 .theme-dark .status-bar,
 .theme-light .status-bar {
@@ -4692,6 +4838,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /*	-------------------- ↑ OpSpl Metadata/YAML Properties ↑ --------------------	*/
 
 
+/*	Bookmark	OpSpl37	*/
 /* —————————————————————————————— OpSpl Metadata Menu plugin —————————————————————————————— */
 /*	le bouton à gauche des valeurs dans les métadonnées	*/
 .field-btn-container button.property-metadata-menu {
@@ -4709,6 +4856,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /* -------------------- ↑ OpSpl Metadata Menu plugin ↑ -------------------- */
 
 
+/*	Bookmark	OpSpl38	*/
 /* —————————————————————————————— OpSpl Canvas —————————————————————————————— */
 .canvas-card-menu .canvas-card-menu-button,
 .canvas-controls button,
@@ -4734,43 +4882,7 @@ button.canvas-menu-item {
 /* -------------------- ↑ OpSpl Canvas ↑ -------------------- */
 
 
-/* —————————————————————————————— OpSpl Projects plugin —————————————————————————————— */
-.active.svelte-3t9vh7 {
-	color:	var(--text-on-accent);
-}
-/* -------------------- ↑ OpSpl Projects plugin ↑ -------------------- */
-
-
-
-/* —————————————————————————————— OpSpl Autres éléments d’interface —————————————————————————————— */
-
-.nav-file-title {
-	border-bottom:	1px dotted var(--nav-item-color);
-}
-
-/* amélioration de la lisibilité de la liste des backlinks */
-.search-result-file-match {
-	color:	var(--text-normal);		/* au lieu de `--text-muted` */
-}
-
-
-/*	Pour la sélection dans le menu local des fiches des kanbans. */
-.menu-item.selected:not(.is-disabled):not(.is-label) {
-	color:	var(--text-on-accent);
-}
-
-.clickable-icon:hover {
-	color:	var(--text-on-accent) !important;
-}
-
-/* Les petits titres introduisant les différentes sections dans le panneau “settings”.
-	(et dans d’autres “modal dialogus”, je pense)*/
-.vertical-tab-header-group-title {
-	font-variant:	small-caps;
-	color:		var(--OT-vertical-tab-header-group-title);
-	font-size:	1.3em;
-}
-
+/*	Bookmark	OpSpl39	*/
 /* ---------- classe KBD, pour documenter les raccourcis clavier ---------- */
 kbd {
     font-family:	"IBM Plex Mono","Frutiger Neue LT Pro", "Avenir Next","Helvetica Neue";
@@ -4780,30 +4892,55 @@ kbd {
 	border:		1px	solid var(--text-normal);
 }
 
-/*	-------------------- suppression du réglage de la couleur “accent” dans les settings --------------------	*/
-.mod-settings .vertical-tab-content > .setting-item:nth-child(2) > .setting-item-control > input[type=color] {
-  visibility: hidden;
-  width: 300px;
+
+/*	Bookmark	OpSpl40	*/
+/*	———————————————————— Adjustments for the  “Calendar” plugin	———————————————————— */
+#calendar-container .calendar {
+	padding:					0 var(--size-4-4) var(--size-4-1);
+	--color-background-weekend: var(--color-accent-3);
+	--color-text-day:			var(--OT-calendar-day-color);
+	--color-text-today:			var(--OT-calendar-today-color);
 }
-.mod-settings .vertical-tab-content > .setting-item:nth-child(2) > .setting-item-control .lucide-rotate-ccw {
-  display: none;
+
+#calendar-container .today {
+	background-color:	var(--OT-table-background) !important;
 }
-.mod-settings .vertical-tab-content > .setting-item:nth-child(2) > .setting-item-control > input[type=color]::before {
-  visibility: visible;
-  content: "The accent color is overridden by the theme. Use the Style Settings Plugin to customize theme colors.";
-  color: var(--text-error);
-  font-family: var(--font-interface);
-  font-size: var(--font-ui-smaller);
-  line-height: 1.3;
-  position: relative;
+
+#calendar-container .adjacent-month {
+	opacity:	0.5;
+}
+/*	-------------------- ↑ Adjustments for the  “Calendar” plugin ↑	-------------------- */
+
+
+/*	Bookmark	OpSpl41	*/
+/*	———————————————————— Adjustments for the  “Metafolders” plugin	———————————————————— */
+.file-node__content-text {
+	/*	line-height: var(--line-height-tight);	*/
+	font-size: var(--OT-sidebars-font-size);	/*	font size set by the theme’s setting for sidebars	*/
+}
+
+.file-node__path {
+	font-size: calc(var(--OT-sidebars-font-size) * 0.9); /*	font size defined os 90% of the theme’s setting for sidebars	*/
+}
+
+/*	les entrées avec les noms de fichiers et les paths, quand elles sont survolées	*/
+.file-node__container_highlight,
+.file-node__container_highlight .file-node__path {
+	color:		var(--nav-item-color-active);
+}
+/*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
+
+/* —————————————————————————————— OpSpl Autres éléments d’interface —————————————————————————————— */
+.clickable-icon {
+	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
+}
+.clickable-icon:hover {
+	color:	var(--text-on-accent) !important;
 }
 
 /* ————————————————————————————————————————————————————————————	*/
 /* ———————————————————— À ranger ——————————————————————————————	*/
 /* ————————————————————————————————————————————————————————————	*/
-.clickable-icon {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
-}
 
 textarea::placeholder,
 input[type='text']::placeholder,
@@ -4833,21 +4970,6 @@ input[type='number']::placeholder {
 	background-color:	var(--interactive-accent-hover);
 }
 /*	-------------------- ↑ palette des commandes ↑ --------------------	*/
-
-.tree-item-flair {
-	background-color:	var(--background-modifier-border);
-	color:				var(--text-on-accent);
-	padding:			var(--size-4-1);
-}
-
-.tree-item-self:hover .tree-item-flair {
-  color: 			var(--text-on-accent);
-  background-color:	var(--background-modifier-active-hover);
-	}
-
-.nav-file-tag {
-	color:	var(--text-on-accent);
-}
 
 /* correction d’une erreur dans le plugin “another quick switcher”	*/
 .another-quick-switcher__create_button {
@@ -4903,10 +5025,6 @@ input[type='number']::placeholder {
 
 .workspace-split.mod-horizontal.mod-right-split .empty-state-container {
 	color:	var(--nav-item-color);
-}
-
-.tree-item-flair {
-	background-color:	var(--OT-tree-item-flair-background);
 }
 
 .setting-hotkey {
@@ -4965,41 +5083,7 @@ button.another-quick-switcher__command_button {
 }
 
 
-/*	———————————————————— Adjustments for the  “Metafolders” plugin	———————————————————— */
-.file-node__content-text {
-	/*	line-height: var(--line-height-tight);	*/
-	font-size: var(--OT-sidebars-font-size);	/*	font size set by the theme’s setting for sidebars	*/
-}
-
-.file-node__path {
-	font-size: calc(var(--OT-sidebars-font-size) * 0.9); /*	font size defined os 90% of the theme’s setting for sidebars	*/
-}
-
-/*	les entrées avec les noms de fichiers et les paths, quand elles sont survolées	*/
-.file-node__container_highlight,
-.file-node__container_highlight .file-node__path {
-	color:		var(--nav-item-color-active);
-}
-/*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
-
-/*	———————————————————— Adjustments for the  “Calendar” plugin	———————————————————— */
-#calendar-container .calendar {
-	padding:					0 var(--size-4-4) var(--size-4-1);
-	--color-background-weekend: var(--color-accent-3);
-	--color-text-day:			var(--OT-calendar-day-color);
-	--color-text-today:			var(--OT-calendar-today-color);
-}
-
-#calendar-container .today {
-	background-color:	var(--OT-table-background) !important;
-}
-
-#calendar-container .adjacent-month {
-	opacity:	0.5;
-}
-/*	-------------------- ↑ Adjustments for the  “Calendar” plugin ↑	-------------------- */
-
-
+/*	Bookmark OpSpl100	*/
 /* ==================================================================================== */
 /* —————————————————————————————— OpSpl Settings —————————————————————————————— */
 /* @settings

@@ -115,6 +115,18 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 26.05.2024 Version 1.8.2
+
+There’s  been some changes in the *Obsidian* base CSS that rendered useless the theme’s  code for line length both in Edit and in Reading modes. Corrected.
+
+Improved the general coding.
+
+Some minor tuning.
+
+
+
+----------------------------------------------
+
 #### 19.05.2024 Version 1.8.1
 
 I’ve corrected the colors of the calendar table provided by the “Calendar” plugin. The accent colors are coordinated with the… accent colors !
