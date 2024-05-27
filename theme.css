@@ -41,6 +41,7 @@
 						Corrected line length definitions to newest Obsidian definitions
 						Some fine tuning
 			27.05.2024	Further improvements to the code; some colors corrected					1.8.3
+						Corrected some colors (buttons hovering)								1.8.4
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -259,7 +260,7 @@ body {
 	--inline-title-style:				normal;
 	--inline-title-variant:				normal;
 	--inline-title-weight:				400;
-	--interactive-accent-hover:			var(--color-base-10);
+	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
 	--interactive-accent:				var(--color-accent-2);
 	--interactive-hover:				var(--color-accent-3);
 	--line-height-normal:				var(--OT-readingMode-line-height);
@@ -275,7 +276,7 @@ body {
 	--metadata-background: 				var(--background-primary);
 	--metadata-border-radius:			7px;
 /*		--metadata-input-text-color:		var(--text-on-accent);	*/
-	--metadata-input-background-hover:	var(--color-accent-3);
+	--metadata-input-background-hover:	hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
 /*		--metadata-label-background-active:	var(--background-modifier-form-field);	*/
 	--metadata-label-font-weight:		var(--font-semibold);
 /*		--metadata-input-text-color:		var(--OT-text-muted-on-secondary);	*/
