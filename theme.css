@@ -42,6 +42,7 @@
 						Some fine tuning
 			27.05.2024	Further improvements to the code; some colors corrected					1.8.3
 						Corrected some colors (buttons hovering)								1.8.4
+			28.05.2024	Fine tuning																1.8.5
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -327,7 +328,7 @@ body {
 	--text-accent-hover:				var(--link-color);
 	--text-accent:						var(--color-accent-2);
 	--text-error-hover:					var(--text-accent-hover);
-	--text-on-accent:					var(--color-base-00);
+	--text-on-accent:					var(--background-primary);
 	--text-on-hover:					var(--text-on-accent);
 
 /*	--titlebar-text-color-highlighted:	var(--color-base-10);					*/
@@ -551,6 +552,7 @@ body {
 	--OT-stabilo-mark:						#E9DDD1;
 
 	--text-normal:	#71573E;
+	--text-on-accent:	var(--nav-item-color);
 	--link-color:		#507192;
 	--h1-color:			#9D7956;
 	--h3-color:			#6B523B;
@@ -837,7 +839,7 @@ body {
 
 	--OT-table-header-background:	#FEEFB6;
 	--OT-table-background:	#FDEFB3;
-	--text-on-accent:		#816E1D !important;	/*	c’est la couleur du texte qui apparaît généralement sur --color-accent-1 (ou 2)		*/
+	--text-on-accent:		#816E1D;
 
 }
 
@@ -1479,7 +1481,7 @@ body {
 	--accent-h:			85	!important;
 	--accent-s:			80%	!important;
 	--accent-l:			30%	!important;
-	--text-on-accent:		var(--color-base-20);
+	--text-on-accent:		var(--background-secondary);
 }
 
 .theme-light.generalPalette-parchment.accentColor-lightMode-shade {
@@ -1606,7 +1608,7 @@ body {
 	--accent-h:			48	!important;
 	--accent-s:			96%	!important;
 	--accent-l:			35%	!important;
-	--text-on-accent:		var(--color-base-00);
+	--text-on-accent:		var(--background-primary);
  	--link-color-hover:		var(--text-accent-hover);
 	--OT-tooltips-text-color:			var(--nav-item-color);
 }
@@ -1825,7 +1827,7 @@ body {
 	--accent-h:	121	!important;
 	--accent-s:	50%	!important;
 	--accent-l:	30%	!important;
-	--text-on-accent:		var(--color-base-05);
+	--text-on-accent:		var(--background-secondary-alt);
 }
 
 .theme-dark.generalPalette-red.darkPalette-default.accentColor-darkMode-shade,
@@ -1894,7 +1896,7 @@ body {
 	--accent-h:			132	!important;
 	--accent-s:			100%	!important;
 	--accent-l:			30%	!important;
-	--text-on-accent:	var(--color-base-20);
+	--text-on-accent:	var(--background-secondary);
 	--OT-tooltips-text-color:	var(--color-base-35);
 }
 .theme-dark.generalPalette-Victorian-1.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -1908,7 +1910,7 @@ body {
 	--accent-h:			41	!important;
 	--accent-s:			88%	!important;
 	--accent-l:			57%	!important;
-	--text-on-accent:	var(--color-base-20);
+	--text-on-accent:	var(--background-secondary);
 }
 
 .theme-dark.generalPalette-violet.darkPalette-default.accentColor-darkMode-shade,

@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 28.05.2024 Version 1.8.5
+
+Fine tuning of some colors.
+
+----------------------------------------------
+
 #### 27.05.2024 Version 1.8.3, then 1.8.4
 
 Further improvements to the code and fine tuning of some colors.
