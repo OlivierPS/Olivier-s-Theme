@@ -170,7 +170,7 @@ body {
 	--OT-kanban-font-size:		17px;
 
 	/* D’autres variables de mon cru, utilisée ailleurs -- ou pas, car ça reste à éventuellement mettre en place	*/
-	--OT-button-text-normal:						var(--color-accent-2);
+	--OT-button-text-normal:						var(--nav-item-color);
 	--OT-button-background-normal:					var(--background-secondary);
 	--OT-button-text-hover:							var(--OT-button-background-normal);
 	--OT-button-background-hover:					var(--OT-button-text-normal);
@@ -336,7 +336,7 @@ body {
 	--text-accent-hover:				var(--link-color);
 	--text-accent:						var(--color-accent-2);
 	--text-error-hover:					var(--text-accent-hover);
-	--text-on-accent:					var(--background-primary);
+	--text-on-accent:					var(--background-secondary)	!important;
 	--text-on-hover:					var(--text-on-accent);
 
 /*	--titlebar-text-color-highlighted:	var(--color-base-10);					*/
