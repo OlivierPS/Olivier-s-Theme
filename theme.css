@@ -43,6 +43,7 @@
 			27.05.2024	Further improvements to the code; some colors corrected					1.8.3
 						Corrected some colors (buttons hovering)								1.8.4
 			28.05.2024	Fine tuning																1.8.5
+			29.05.2024	Improved the logic of the colors of the sidebar navigation				1.8.6
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -168,11 +169,16 @@ body {
 	--OT-kanban-font-size:		17px;
 
 	/* D’autres variables de mon cru, utilisée ailleurs -- ou pas, car ça reste à éventuellement mettre en place	*/
+	--OT-button-text-normal:						var(--color-accent-2);
+	--OT-button-background-normal:					var(--background-secondary);
+	--OT-button-text-hover:							var(--OT-button-background-normal);
+	--OT-button-background-hover:					var(--OT-button-text-normal);
+	--OT-button-text-active:						var(--nav-item-color);
+	--OT-button-background-active:					var(--color-accent-1);
 	--OT-calendar-day-color:						var(--text-normal);
 	--OT-calendar-today-color:						var(--color-accent-1);
 	--OT-clickable-icon-active-background:			var(--color-accent-3);
 	--OT-clickable-icon-active-background-hover:	var(--color-accent-1);
-	--OT-dropdown-text:								var(--text-normal);
 	--OT-link-color-hover:							var(--color-base-00);
 	--OT-menu-text-color:							var(--OT-sidebar-icon-color);	/*	le texte des menus	*/
 	--OT-metadata-title-color-faint:				var(--text-faint);
@@ -189,7 +195,6 @@ body {
 	--OT-text-normal-on-secondary:					var(--text-normal);
 	--OT-text-faint-on-secondary:					var(--text-faint);
 	--OT-text-muted-on-secondary:					var(--text-muted);
-	--OT-text-in-sidebar:							var(--nav-item-color);
 	--OT-table-background:							var(--color-base-00);
 	--OT-tooltips-text-color:						var(--text-on-accent);
 	--OT-search-result-file-title-expanded:			var(--text-normal);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
@@ -236,7 +241,8 @@ body {
 	--checklist-done-color:				var(--text-faint);
 	--code-background:					var(--blockquote-background-color);
 	--code-normal:						var(--text-normal);
-	--dropdown-background-hover:		var(--color-accent-3);
+	--dropdown-background:				var(--OT-button-background-normal);
+/*		--dropdown-background-hover:		var(--color-accent-3);	*/
 	--file-header-border:				var(--border-width) solid var(--color-base-35);
 	--graph-line:						var(--text-normal);
 	--heading-formatting:				var(--icon-color);
@@ -285,12 +291,13 @@ body {
 /*	--metadata-input-text-color:		var(--text-on-accent);		*/
 	--metadata-padding:					0;
 	--metadata-property-padding:		0em 0em 0em 0.3em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
-
+	--nav-item-color-hover:				var(--background-secondary);
+	--nav-item-color-active:			var(--background-secondary);
+	--nav-item-color-selected:			var(--background-secondary)				/*	var(--text-normal);	*/
+	--nav-item-color-highlighted:		red;									/*	var(--text-accent-hover);	*/
+	--nav-item-background-hover:		var(--color-accent-2);					/*	var(--background-modifier-hover);	*/
+	--nav-item-background-active:		var(--OT-button-background-active);		/*	var(--background-modifier-hover);	*/
 	--nav-item-background-selected:		hsla(var(--color-accent-hsl), 0.2);
-	--nav-item-color-active:			var(--text-on-accent);
-	--nav-item-color-highlighted:		var(--text-accent-hover);
-	--nav-item-color-hover:				var(--text-on-accent);
-	--nav-item-color-selected:			var(--text-normal);
 	--nav-item-padding:					var(--OT-nav-item-vertical-padding)
 										var(--size-4-2)
 										var(--OT-nav-item-vertical-padding)
@@ -389,7 +396,6 @@ body {
 	--h5-color:			#4FB0B9;
 
 	--icon-color:									var(--color-base-00);
-	--OT-dropdown-text:								var(--nav-item-color);
 	--OT-metadata-title-color-faint: 				#84AAAE;
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-20);
 	--OT-setting-item-description:					#0BA5B3;
@@ -522,6 +528,7 @@ body {
 	--accent-l:			40%		!important;
 
 	--text-normal:				#0761BB;
+	--text-on-accent:				var(--nav-item-color);
 	--link-color:					#57A706;
 	--h1-color:						#06509A;
 	--h3-color:						#0872DC;
@@ -596,13 +603,12 @@ body {
 	--tab-text-color-focused-active:		var(--text-normal);
 
 	--OT-calendar-day-color:				var(--nav-item-color);
-	--OT-dropdown-text:						var(--nav-item-color);
 	--OT-metadata-background:				#F1F6EB;
 	--OT-ribbon-icon-color-sidebar-is-open:	#BBD7EC;
 	--OT-sidebar-icon-color:				#BBD7EC;
 	--OT-style-settings-collapse-indicator:	#143248;
 	--OT-search-result-file-title-expanded:	var(--color-base-00);		/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
-	--OT-text-in-sidebar:					#00A4FF;
+	--nav-item-color:					#00A4FF;
 	--OT-text-normal-on-secondary:			var(--background-primary);
 	--OT-vertical-tab-header-group-title:	#82B0D8;
 
@@ -3699,6 +3705,11 @@ input[type=checkbox] {
 .suggestion-container{
 	color:	var(--OT-text-normal-on-secondary);
 }
+body:not(.is-grabbing) .tree-item-self.is-active:hover,
+.tree-item-self.is-active:hover {							/*	pour que ce qui est sélectionné soit visiblement survolé	*/
+	color:				var(--nav-item-color-active);
+	background-color:	var(--nav-item-background-hover);
+}
 /* ------------------------------ ↑ OpSpl Sidebars ↑ ------------------------------ */
 
 /*	Bookmark	OpSpl18	*/
@@ -4068,16 +4079,84 @@ body.is-focused .workspace-ribbon.mod-left:before {
 /* —————————————————————————————— OpSpl Buttons —————————————————————————————— */
 @media (hover: hover) {
   button:hover {
-	color:				var(--text-on-accent);
-    background-color:	var(--interactive-hover);
+	color:				var(--OT-button-text-hover);
+    background-color:	var(--OT-button-background-hover);
   }
 }
 @media (hover: hover) {
   select:hover,
   .dropdown:hover {
-  		color:	var(--text-on-accent);
-/*	    background-color: var(--dropdown-background-hover);	*/
+  		color:				var(--OT-button-text-hover);
+	    background-color:	var(--OT-button-background-hover)/*	var(--dropdown-background-hover);	*/
   }
+}
+.markdown-source-view.mod-cm6 .cm-table-widget .table-row-btn,
+.markdown-source-view.mod-cm6 .cm-table-widget .table-col-btn {
+  		color:				var(--OT-button-text-normal);		/*	text-faint	*/
+	    background-color:	var(--OT-button-background-normal);	/*	var(--table-add-button-background);	*/
+}
+.markdown-source-view.mod-cm6 .edit-block-button {
+ 		color:				var(--OT-button-text-normal);		/*	text-muted	*/
+	    background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+}
+@media (hover: hover) {
+  .markdown-source-view.mod-cm6 .edit-block-button:hover {
+  		color:				var(--OT-button-text-hover);
+	    background-color:	var(--OT-button-background-hover);/*	var(--background-modifier-hover);	*/
+  }
+}
+.setting-add-hotkey-button,
+.setting-restore-hotkey-button {
+  		color:				var(--OT-button-text-hover);		/*	text faint	*/
+	    background-color:	var(--OT-button-background-hover);	/*	nothing	*/
+}
+.mod-community-modal .modal-sidebar button.clickable-icon {
+ 		color:				var(--OT-button-text-normal);		/*	text-normal	*/
+	    background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+}
+.titlebar-button-container .mod-back,
+.titlebar-button-container .mod-forward {
+		color:				var(--OT-button-text-normal);		/*	icon-color	*/
+	    background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+}
+@media (hover: hover) {
+  .titlebar-button-container .mod-back:hover,
+  .titlebar-button-container .mod-forward:hover {
+		color:				var(--OT-button-text-hover);		/*	icon-color-hover	*/
+	    background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+  }
+}
+@media (hover: hover) {
+  .titlebar-button:hover {
+		color:				var(--OT-button-text-hover);		/*	nothing	*/
+	    background-color:	var(--OT-button-background-normal);	/*	background-modifier-hover	*/
+  }
+  .titlebar-button.mod-close:hover {
+		color:				var(--OT-button-text-hover);		/*	nothing	*/
+	    background-color:	var(--OT-button-background-normal);	/*	background-modifier-error	*/
+  }
+}
+@media (hover: hover) {
+  .workspace-tab-header.is-active .workspace-tab-header-status-icon:hover,
+  .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+		color:				var(--OT-button-text-hover);		/*	nothing	*/
+	    background-color:	var(--OT-button-background-normal);	/*	background-modifier-hover	*/
+  }
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-linked:hover,
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-linked:hover,
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-pinned:hover,
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-pinned:hover {
+		color:				var(--OT-button-text-hover);		/*	nothing	*/
+	    background-color:	var(--OT-button-background-normal);	/*	background-modifier-active-hover	*/
+  }
+}
+.setting-hotkey {
+  	color:				var(--OT-button-text-normal);		/*	nothing	*/
+	background-color:	var(--OT-button-background-normal);	/*	background-modifier-hover	*/
+}
+.setting-hotkey.mod-active {
+	color:				var(--OT-button-text-active);		/*	text-on-accent	*/
+	background-color:	var(--OT-button-background-active);	/*	interactive-accent	*/
 }
 /*	-------------------- ↑ OpSpl Buttons -------------------- ↑ */
 
@@ -4117,6 +4196,57 @@ body.is-focused .workspace-ribbon.mod-left:before {
     background-color: var(--OT-clickable-icon-active-background-hover);
   }
 }
+button {
+	color:				var(--OT-button-text-normal);		/*	text-normal	*/
+	background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+}
+button:not(.clickable-icon) {
+	background-color:	var(--OT-button-background-normal);	/*	interactive-normal	*/
+}
+@media (hover: hover) {
+  button:hover {
+  	color:				var(--OT-button-text-hover);		/*	nothing	*/
+	background-color:	var(--OT-button-background-hover);	/*	interactive-hover	*/
+  }
+}
+button.mod-cta {
+	color:				var(--OT-button-text-normal);		/*	text-on-accent	*/
+	background-color:	var(--OT-button-background-normal);	/*	interactive-accent	*/
+}
+@media (hover: hover) {
+  button.mod-cta:hover {
+  	color:				var(--OT-button-text-hover);		/*	nothing	*/
+	background-color:	var(--OT-button-background-hover);	/*	interactive-accent-hover	*/
+  }
+}
+button.mod-muted {
+	color:				var(--OT-button-text-normal);		/*	text-muted	*/
+	background-color:	lime;	/*	var(--OT-button-background-normal);	*/	/*	background-secondary	*/
+}
+@media (hover: hover) {
+  button.mod-muted:hover {
+  	color:				var(--OT-button-text-hover);		/*	nothing	*/
+	background-color:	var(--OT-button-background-hover);	/*	background-secondary	*/
+  }
+}
+.document-search-button {
+  	color:				var(--OT-button-text-normal);		/*	text-muted	*/
+	background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+}
+.document-search-close-button {
+  	color:				var(--OT-button-text-normal);		/*	text-muted	*/
+/*	background-color:	var(--OT-button-background-normal);		nothing	*/
+}
+@media (hover: hover) {
+  .document-search-close-button:hover {
+  	color:				var(--OT-button-text-hover);		/*	text-normal	*/
+	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
+  }
+}
+.clickable-icon {
+  	color:				var(--OT-button-text-normal);		/*	icon-color	*/
+	background-color:	var(--OT-button-background-normal);	/*	transparent	*/
+}
 /*	-------------------- ↑ OpSpl icons -------------------- ↑ */
 
 
@@ -4124,7 +4254,7 @@ body.is-focused .workspace-ribbon.mod-left:before {
 /* —————————————————————————————— OpSpl Settings pannel —————————————————————————————— */
 .vertical-tab-nav-item,
 .horizontal-tab-nav-item {
-	color:			var(--OT-text-in-sidebar);
+	color:			var(--nav-item-color);
 	margin-top:		0;
 	margin-bottom:	0;
 }
@@ -4144,7 +4274,7 @@ body.is-focused .workspace-ribbon.mod-left:before {
 }
 /*
 .setting-item-description {
-	color:	var(--OT-text-in-sidebar);
+	color:	var(--nav-item-color);
 }*/
 
 /* Les petits titres introduisant les différentes sections dans le panneau “settings”.
@@ -5018,11 +5148,6 @@ input[type='number']::placeholder {
 .workspace-split.mod-horizontal.mod-right-split .empty-state-container {
 	color:	var(--nav-item-color);
 }
-
-.setting-hotkey {
-	color:	var(--text-on-accent);
-}
-
 /* ———————————————————————————————————————————————————————————————————————————————————————————————	*/
 
 

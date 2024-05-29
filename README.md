@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 29.05.2024 Version 1.8.6
+
+Improved the logic of the colors of the buttons and of the sidebar navigation.
+
+----------------------------------------------
+
 #### 28.05.2024 Version 1.8.5
 
 Fine tuning of some colors.
