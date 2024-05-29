@@ -43,7 +43,8 @@
 			27.05.2024	Further improvements to the code; some colors corrected					1.8.3
 						Corrected some colors (buttons hovering)								1.8.4
 			28.05.2024	Fine tuning																1.8.5
-			29.05.2024	Improved the logic of the colors of the sidebar navigation				1.8.6
+			29.05.2024	Improved the logic of the colors of the buttons and sidebar navigation	1.8.6
+						Next steps of the same work												1.8.7
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -174,7 +175,7 @@ body {
 	--OT-button-text-hover:							var(--OT-button-background-normal);
 	--OT-button-background-hover:					var(--OT-button-text-normal);
 	--OT-button-text-active:						var(--nav-item-color);
-	--OT-button-background-active:					var(--color-accent-1);
+	--OT-button-background-active:					var(--color-accent-3);
 	--OT-calendar-day-color:						var(--text-normal);
 	--OT-calendar-today-color:						var(--color-accent-1);
 	--OT-clickable-icon-active-background:			var(--color-accent-3);
@@ -255,10 +256,10 @@ body {
 	--file-header-justify:				left;
 	--file-line-width:					var(--OT-readingMode-line-width);
 	--heading-spacing:					0;							/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
-/*	--icon-color:						var(--color-base-60);					*/
-	--icon-color-active:				var(--text-on-accent);
-	--icon-color-focused:				var(--text-on-accent);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
+/*	--icon-color:						var(--text-muted); (valeur originelle)					*/
 	--icon-color-hover:					var(--text-on-accent);
+	--icon-color-active:				var(--background-secondary);
+	--icon-color-focused:				var(--text-on-accent);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
     --img-max-height:					33rem;						/* to prevent images with portrait proportions from overwhelming text; put "100%" if you don’t like this idea */
   	--inline-title-color:				var(--text-faint);
 	--inline-title-font:				var(--font-monospace);
@@ -3710,6 +3711,14 @@ body:not(.is-grabbing) .tree-item-self.is-active:hover,
 	color:				var(--nav-item-color-active);
 	background-color:	var(--nav-item-background-hover);
 }
+body:not(.is-grabbing) .nav-file-title.is-active:hover,
+body:not(.is-grabbing) .nav-folder-title.is-active:hover {
+	background-color:	var(--OT-clickable-icon-active-background-hover);	/*	--nav-item-background-active	*/
+}
+
+.nav-file-title {
+	border-bottom:	1px dotted var(--nav-item-color);
+}
 /* ------------------------------ ↑ OpSpl Sidebars ↑ ------------------------------ */
 
 /*	Bookmark	OpSpl18	*/
@@ -3759,9 +3768,6 @@ body:not(.is-grabbing) .tree-item-self.is-active:hover,
 	color:	var(--text-on-accent);
 } */
 
-.nav-file-title {
-	border-bottom:	1px dotted var(--nav-item-color);
-}
 
 
 .tree-item-self:hover .tree-item-flair {
@@ -5186,9 +5192,9 @@ button.another-quick-switcher__command_button {
   color: var(--text-normal);
 }
 
-/*	pour que l’indicateur de la rechercher “case sensitive” soit visible quand ce mode est actif	*/
+/*	pour que l’indicateur de la recherche “case sensitive” soit visible quand ce mode est actif	*/
 .input-right-decorator.clickable-icon.is-active {
-	background-color:	var(--checkbox-color);
+	background-color:	var(--OT-button-background-active);
 }
 
 
