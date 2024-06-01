@@ -115,6 +115,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 01.06.2024 Version 1.8.8
+I keep reorganizing the source code in order to facilitate the maintenance.
+
+----------------------------------------------
 #### 29.05.2024 Version 1.8.6 and 1.8.7
 
 Improved the logic of the colors of the buttons and of the sidebar navigation.
