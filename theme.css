@@ -774,40 +774,50 @@ body {
 	--OT-table-background:	#E7F4EB;
 }
 .theme-light.generalPalette-red {
+/*	Base colors	*/
 	--color-base-00:	#FCE5E5;
 	--color-base-20:	#FEE2E2;
 	--color-base-35:	#FCA5A5;
 	--color-base-40:	#FCA5A5;
 	--color-base-50:	#FA6B66;
-	--OT-text-in-sidebar:	#C00D06;
 
+/*	Surface colors	*/
 	--background-secondary-alt:		#F5DADA;
+	--background-modifier-border:		#FCA5A5;
 	--background-modifier-form-field:	#FEEAEA;
-	--background-modifier-border:	#FCA5A5;
-	--blockquote-background-color:	#FBDCDC;
-	--text-muted:				#760804;
 
+/*	Accent color	*/
 	--accent-h:			254	!important;
 	--accent-s:			80%	!important;
 	--accent-l:			40%	!important;
 
-	--checklist-done-color:	#F38B8B;
+
+/*	Text colors	*/
 	--text-normal:	#5D0603;
+	--text-muted:		#760804;
+	--text-on-accent:	#FF0032;
 	--link-color:		var(--obsidian-violet);
 	--h1-color:			#6A0804;
 	--h3-color:			#823B3B;
 	--h5-color:			#AE8F8F;
 
+
+/*	Functional variables*/
+	--blockquote-background-color:	#FBDCDC;
+	--checklist-done-color:			#F38B8B;
 	--code-normal:		#C00D06;
 
 	--OT-metadata-background:		#F3DDDC;
 	--OT-metadata-title-color-faint: 	#886A6A;
+	--OT-table-background:			#FDD3D3;
 	--OT-table-header-background:	#FDD2D2;
-	--OT-table-background:	#FDD3D3;
-}
+	--OT-text-in-sidebar:			#C00D06;
+	--OT-tooltips-text-color:		var(--color-base-00);
+}/*	↑ generalPalette-red	*/
+
 .theme-light.generalPalette-solarized {
-	--color-base-20:	var(--solarized-base2);
 	--color-base-00:	var(--solarized-base3);
+	--color-base-20:	var(--solarized-base2);
 	--color-base-35:	var(--solarized-base1);
 	--color-base-40:	var(--solarized-yellow);
 	--color-base-50:	var(--solarized-base0);
