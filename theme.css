@@ -47,6 +47,8 @@
 						Next steps of the same work												1.8.7
 			01.06.2024	Organisation of the variables reviewed in the source code.
 						No functional changes.													1.8.8
+			02.06.2024	Improvements to the logic of the clickable icons and sidebar tabs		1.9.0
+						Tuning of some colors
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -172,30 +174,34 @@ body {
 	--OT-kanban-font:			"Uberhand Pro";
 	--OT-kanban-font-size:		17px;
 	/*	---------- Other theme’s variables	*/
-	--OT-button-text-normal:						var(--nav-item-color);
+	--OT-button-text-normal:						var(--OT-text-in-sidebar);
 	--OT-button-background-normal:					var(--background-secondary);
 	--OT-button-text-hover:							var(--OT-button-background-normal);
 	--OT-button-background-hover:					var(--OT-button-text-normal);
-	--OT-button-text-active:						var(--nav-item-color);
+	--OT-button-text-active:						var(--OT-text-in-sidebar);
 	--OT-button-background-active:					var(--color-accent-3);
 	--OT-calendar-day-color:						var(--text-normal);
 	--OT-calendar-today-color:						var(--color-accent-1);
-	--OT-clickable-icon-active-background:			var(--color-accent-3);
-	--OT-clickable-icon-active-background-hover:	var(--color-accent-1);
+	--OT-clickable-icon-background-active:			var(--color-accent-3);
+	--OT-clickable-icon-background-hover:			var(--color-accent-2);
+	--OT-clickable-icon-in-header:					var(--color-accent-1);
 	--OT-link-color-hover:							var(--color-base-00);
-	--OT-menu-text-color:							var(--OT-sidebar-icon-color);	/*	le texte des menus	*/
+	--OT-menu-text-color:							var(--text-muted);
 	--OT-metadata-title-color-faint:				var(--text-faint);
+	--OT-metadata-property-icon:					var(--icon-color);
+	--OT-metadata-property-icon-hover:				var(--icon-color-hover);
 	--OT-nav-folder-title-color:           			var(--text-normal);
 	--OT-nav-item-vertical-padding:					var(--size-4-1);
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
 	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
 	--OT-setting-item-name:                			var(--text-normal);
 	--OT-setting-item-description:					var(--text-muted);
-	--OT-sidebar-icon-color:						var(--icon-color);
+	--OT-sidebarTab-background-active:				var(--color-accent-3);
+	--OT-sidebarTab-background-active-hover:		var(--color-accent-2);
 	--OT-stabilo-mark:								var(--stabilo-jaune-foncé);
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-style-settings-collapse-indicator:			var(--text-faint);
-	--OT-text-normal-on-secondary:					var(--text-normal);
+	--OT-text-in-sidebar:							var(--text-normal);
 	--OT-text-faint-on-secondary:					var(--text-faint);
 	--OT-text-muted-on-secondary:					var(--text-muted);
 	--OT-table-background:							var(--color-base-00);
@@ -205,7 +211,7 @@ body {
 	--OT-vertical-tab-header-group-title:			var(--text-faint);
 	--OT-view-header-title-focus-color: 			var(--h1-color);
 	--OT-view-header-title-no-focus-color: 			var(--text-faint);
-
+	--OT-workspace-tab-header-inner-title-color:	var(--tab-text-color-focused-active-current);
 
 /*	Bookmark	OpSpl02	*/
 /*	---------- INITIALISATION DES VARIABLES GLOBALES ----------	*/
@@ -263,28 +269,31 @@ body {
 	--list-marker-color:	var(--text-normal);
 
 /*	--metadata-input-text-color:		var(--text-on-accent);	*/
+	--metadata-input-background-active:		var(--background-primary-alt);
 	--metadata-input-background-hover:	hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
 /*	--metadata-label-background-active:	var(--background-modifier-form-field);	*/
 	--metadata-background: 				var(--background-primary);
 /*	--metadata-input-background-active:	var(--color-accent-2);	*/
 /*	--metadata-input-text-color:		var(--text-on-accent);		*/
 
+	--nav-item-color:				var(--OT-text-in-sidebar);
 	--nav-item-color-hover:			var(--background-secondary);
-	--nav-item-color-active:		var(--background-secondary);
+	--nav-item-color-active:		var(--text-on-accent);
 	--nav-item-color-selected:		var(--background-secondary)				/*	var(--text-normal);	*/
 	--nav-item-color-highlighted:	red;									/*	var(--text-accent-hover);	*/
 	--nav-item-background-hover:	var(--color-accent-2);					/*	var(--background-modifier-hover);	*/
 	--nav-item-background-active:	var(--OT-button-background-active);		/*	var(--background-modifier-hover);	*/
 	--nav-item-background-selected:	hsla(var(--color-accent-hsl), 0.2);
 
-/*	--pill-background-hover:		var(--interactive-accent-hover);	*/
-/*	--pill-background:				var(--interactive-accent-hover);	*/
-/*	--pill-color-hover:				var(--text-on-hover);	*/
-/*	--pill-remove-color:			var(--text-on-hover);				*/
+	--pill-color:				var(--text-on-accent);
+	--pill-background:			var(--background-secondary-alt);
+	--pill-color-hover:			var(--OT-button-text-hover);
+	--pill-background-hover:	var(--OT-button-background-hover);
+/*	--pill-remove-color:		var(--text-on-hover);				*/
 
 	--tab-text-color:					var(--OT-text-faint-on-secondary);
-	--tab-text-color-focused-active:	var(--nav-item-color);
-	--tab-text-color-focused:			var(--nav-item-color);
+	--tab-text-color-focused-active:	var(--OT-text-in-sidebar);
+	--tab-text-color-focused:			var(--OT-text-in-sidebar);
 
 /*	--table-background:					white;	*/
 /*	--table-column-alt-background:		inherit;	*/
@@ -297,7 +306,7 @@ body {
 /*	--tag-background-hover:	var(--interactive-accent-hover);*/
 
 	--vault-name-color:		var(--h1-color);
-	--vault-profile-color:	var(--nav-item-color);
+	--vault-profile-color:	var(--OT-text-in-sidebar);
 
 /*	Bookmark	OpSpl03	*/
 	/*	----- Text colors -----
@@ -305,7 +314,7 @@ body {
 	--text-accent-hover:	var(--link-color);
 	--text-accent:			var(--color-accent-2);
 	--text-error-hover:		var(--text-accent-hover);
-	--text-on-accent:		var(--background-secondary)	!important;
+	--text-on-accent:		var(--background-secondary);
 	--text-on-hover:		var(--text-on-accent);
 
  	--link-color-hover:			var(--text-accent-hover);
@@ -365,7 +374,9 @@ body {
 									var(--size-4-6);
 	--nav-item-size:				var(--OT-sidebars-font-size);
 
-/*	--pill-radius: 					0.6em;					*/
+/*		--pill-padding-x:				0.2rem;	*/
+/*		--pill-radius: 					0;	*/
+
 	--p-spacing:					0.5em;
 
 	--popover-font-size:			calc(var(--font-text-size) * 0.9);
@@ -408,7 +419,7 @@ body {
 	--color-base-40:			#D400D4;
 	--color-base-50:			#000000;
 	--color-base-05:			#C3BED0;
-	--nav-item-color:			#E6DFFA;
+	--OT-text-in-sidebar:			#E6DFFA;
 	--text-muted:				#FCF2FF;
 	--background-secondary-alt:	#BBA4F3;
 
@@ -432,7 +443,7 @@ body {
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-20);
 	--OT-setting-item-description:					#0BA5B3;
 	--OT-tree-item-flair-background:				#087983;
-	--OT-vertical-tab-header-group-title:			var(--nav-item-color);
+	--OT-vertical-tab-header-group-title:			var(--OT-text-in-sidebar);
 	--OT-view-header-title-focus-color:				var(--color-base-20);
 	--OT-view-header-title-no-focus-color:			var(--color-base-05);
 	--OT-table-background:					#EAE3FB;
@@ -448,7 +459,7 @@ body {
 	--color-base-35:	#EDE4DD;
 	--color-base-40:	#A87D58;
 	--color-base-05:	#D5CDC6;
-	--nav-item-color:	#A87D58;
+	--OT-text-in-sidebar:	#A87D58;
 	--color-base-50:	#B89982;
 
 	--background-secondary-alt:			#E6DDD5;
@@ -480,7 +491,7 @@ body {
 	--color-base-40:	#0870d9;
 	--color-base-05:	#F2F7FE;
 	--color-base-50:	#7591CB;
-	--nav-item-color:	#0760BA;
+	--OT-text-in-sidebar:	#0760BA;
 	--background-secondary-alt:	#BCD4F6;
 
 	--background-modifier-border:		#A5BCDB;
@@ -501,6 +512,8 @@ body {
 
 	--OT-table-header-background:	#C7DEFF;
 	--OT-table-background:	#D9E8FF;
+/*	--OT-workspace-tab-header-inner-title-color:	var(--OT-button-text-hover);*/
+
 }
 .theme-light.generalPalette-OBSIDIAN {
 	--OT-table-header-background:	#EEEEEE;
@@ -515,68 +528,85 @@ body {
 	--OT-table-header-background:	#EEEEEE;
 }
 .theme-light.generalPalette-green {
+/*	Base colors	*/
 	--color-base-00:	#F0FDF4;
 	--color-base-20:	#DCFCE7;
 	--color-base-35:	#defce9;
 	--color-base-40:	#70ec9d;
 	--color-base-50:	#75857B;
-	--nav-item-color:	#085C27;
 
+/*	Surface colors	*/
 	--background-secondary-alt:		#D5F3DF;
 	--background-modifier-border:	#86EFAC;
-	--blockquote-background-color:	#DFFAE7;
-	--text-muted:					#10AF4B;
-	--OT-table-alt-background:		#E8F9EE;
 
-	--accent-h:			142	!important;
-	--accent-s:			83%	!important;
-	--accent-l:			33%	!important;
+/*	Accent color	*/
+	--accent-h:	142	!important;
+	--accent-s:	83%	!important;
+	--accent-l:	25%	!important;
 
-	--text-normal:	var(--favorite-blue);
+/*	Text colors	*/
+	--text-normal:		var(--favorite-blue);
+	--text-muted:		#10AF4B;
+	--text-on-accent:	var(--favorite-blue);
 	--link-color:		#537622;
-	--h1-color:			#202770;
-	--h3-color:			#252C73;
-	--h5-color:			#797B9D;
 
+/*	Functional variables*/
+	--blockquote-background-color:	#DFFAE7;
+	--h1-color:						#202770;
+	--h3-color:						#252C73;
+	--h5-color:						#797B9D;
+	--OT-table-alt-background:		#E8F9EE;
+	--OT-table-background:			#E7FDEF;
 	--OT-table-header-background:	#DDFCE8;
-	--OT-table-background:	#E7FDEF;
-}
+	--OT-text-in-sidebar:			#085C27;
+}/*	↑ generalPalette-green ↑	*/
+
 .theme-light.generalPalette-icy {
+/*	Base colors	*/
 	--color-base-00:	#fdfeff;
 	--color-base-20:	#f8fbff;
 	--color-base-35:	#a6d1fc;
 	--color-base-40:	#0870d9;
 	--color-base-50:	#6687C7;
-	--nav-item-color:	#0760BA;
 
-	--background-secondary-alt:		#E7FDFF;
-	--background-modifier-border:	#87c1fb;
+/*	Surface colors	*/
+	--background-secondary-alt:			#E7FDFF;
+	--background-modifier-border:		#87c1fb;
 	--background-modifier-form-field:	#F3FCFF;
+	--text-muted:						#537CC3;
+
+/*	Accent color	*/
+	--accent-h:	214		!important;
+	--accent-s:	100%	!important;
+	--accent-l:	40%		!important;
+
+/*	Text colors	*/
+	--text-normal:			#0761BB;
+	--text-on-accent:		var(--color-base-20);
+	--link-color:			#57A706;
+	--h1-color:				#06509A;
+	--h3-color:				#0872DC;
+	--h5-color:				#3194F7;
+	--OT-text-in-sidebar:	#0760BA;
+
+/*	Functional variables*/
 	--blockquote-background-color:	#EEF4FF;
-	--text-muted:				#537CC3;
-
-	--accent-h:			214		!important;
-	--accent-s:			100%	!important;
-	--accent-l:			40%		!important;
-
-	--text-normal:					#0761BB;
-	--text-on-accent:				var(--nav-item-color);
-	--link-color:					#57A706;
-	--h1-color:						#06509A;
-	--h3-color:						#0872DC;
-	--h5-color:						#3194F7;
+	--icon-color-focused:			var(--background-primary);
+	--icon-color-hover:				var(--color-base-20);
 	--OT-metadata-background:		#F4F5F6;
 	--OT-metadata-title-color-faint:#90B8E1;
+	--OT-table-background:			#F4F9FF;
 	--OT-table-header-background:	#E2EEFE;
-	--OT-table-background:	#F4F9FF;
-}
+	--OT-tooltips-text-color:		var(--color-base-00);
+}/*	↑ generalPalette-icy ↑	*/
+
 .theme-light.generalPalette-lightBeige {
 	--color-base-00:	#FAFAF4;
 	--color-base-20:	#F7F0E4;
 	--color-base-35:	#daba82;
 	--color-base-40:	#c3913a;
 	--color-base-05:	#E5DFD4;
-	--nav-item-color:	#7D6754;
+	--OT-text-in-sidebar:	#7D6754;
 	--color-base-50:	#8E7E70;
 	--text-muted:		#BD8C38;
 	--background-secondary-alt:	#EEE8DC;
@@ -591,7 +621,7 @@ body {
 	--OT-stabilo-mark:					#E9DDD1;
 
 	--text-normal:		#71573E;
-	--text-on-accent:	var(--nav-item-color);
+	--text-on-accent:	var(--OT-text-in-sidebar);
 	--link-color:		#507192;
 	--h1-color:			#9D7956;
 	--h3-color:			#6B523B;
@@ -602,50 +632,61 @@ body {
 	--OT-table-alt-background:			#f9f5ec;	/*	#fffefa;	*/
 }
 .theme-light.generalPalette-metallicBlue {
-	--color-base-00:				#fafff3;
-	--color-base-20:				#143248;
-	--color-base-35:				#dbefff;
-	--color-base-40:				#3d8cc8;
-	--color-base-50:				var(--light-blue);
+/*	Base colors	*/
+	--color-base-00:	#fafff3;
+	--color-base-20:	#143248;
+	--color-base-35:	#dbefff;
+	--color-base-40:	#3d8cc8;
+	--color-base-50:	var(--light-blue);
 
+/*	Surface colors	*/
 	--background-secondary-alt:		#337FB6;
 	--background-modifier-border:	#225378;
-	--blockquote-background-color:	#FDF8D6;
-	--OT-nav-folder-title-color:	#4492CB;
-	--accent-h:						325	!important;
-	--accent-s:						80%	!important;
-	--accent-l:						30%	!important;
 
-	--text-normal:					#255C84;
-	--text-muted:					#337FB6;
-	--OT-text-faint-on-secondary:	#B6E1FF;
-	--OT-text-muted-on-secondary:	#C8DFF0;
-	--text-faint:					#388BC8;
-	--link-color:					#267020;
-	--metadata-input-text-color:	var(--text-muted);
-	--h1-color:						var(--text-normal);
-	--h3-color:						var(--text-normal);
-	--h5-color:						var(--text-normal);
+/*	Accent color	*/
+	--accent-h:	325	!important;
+	--accent-s:	80%	!important;
+	--accent-l:	30%	!important;
 
-	/* particularités	*/
-	--nav-item-color:						var(--OT-text-muted-on-secondary);
-	--icon-color:							#143248;
-	--status-bar-border-color:				#fafff3;
-	--status-bar-text-color:				ivory;
-	--tab-text-color-focused-active:		var(--text-normal);
+/*	Text colors	*/
+	--text-normal:	#255C84;
+	--text-muted:	#337FB6;
+	--text-faint:	#388BC8;
+	--link-color:	#267020;
 
-	--OT-calendar-day-color:				var(--nav-item-color);
+/*	Functional variables*/
+	--blockquote-background-color:			#FDF8D6;
+	--h1-color:								var(--text-normal);
+	--h3-color:								var(--text-normal);
+	--h5-color:								var(--text-normal);
+	--icon-color-focused:					var(--background-primary);
+	--icon-color:							var(--background-primary);
+	--metadata-input-background-active:		#EEFFD0;
+	--metadata-input-text-color:			var(--background-primary);
+
+	--OT-calendar-day-color:				var(--OT-text-in-sidebar);
+	--OT-clickable-icon-background-active:	var(--color-accent-3);
 	--OT-metadata-background:				#F1F6EB;
+	--OT-metadata-property-icon:			var(--background-secondary);
+	--OT-nav-folder-title-color:			#4492CB;
 	--OT-ribbon-icon-color-sidebar-is-open:	#BBD7EC;
-	--OT-sidebar-icon-color:				#BBD7EC;
-	--OT-style-settings-collapse-indicator:	#143248;
 	--OT-search-result-file-title-expanded:	var(--color-base-00);		/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
-	--nav-item-color:					#00A4FF;
+	--OT-style-settings-collapse-indicator:	#143248;
+	--OT-table-background:					#FBFCFD;
+	--OT-table-header-background:			#ACC7E2;
+	--OT-text-faint-on-secondary:			#B6E1FF;
+	--OT-text-in-sidebar:					var(--OT-text-muted-on-secondary);
+	--OT-text-muted-on-secondary:			#C8DFF0;
 	--OT-text-normal-on-secondary:			var(--background-primary);
+	--OT-tooltips-text-color:				var(--OT-text-in-sidebar);
 	--OT-vertical-tab-header-group-title:	#82B0D8;
-
-	--OT-table-header-background:	#ACC7E2;
-	--OT-table-background:	#FBFCFD;
+	--OT-workspace-tab-header-inner-title-color:	var(--text-normal);
+	--pill-color:									var(--background-secondary);
+	--status-bar-border-color:						#fafff3;
+	--status-bar-text-color:						var(--background-primary);
+	--tab-text-color-focused-active-current:		var(--background-primary);
+	--tab-text-color-focused-active:				var(--text-normal);
+	--text-on-accent:								var(--background-primary)
 }
 .theme-light.generalPalette-paradiso {
 	--color-base-00:	#F1EFE3;
@@ -653,7 +694,7 @@ body {
 	--color-base-35:	rgb(212, 212, 212);
 	--color-base-40:	rgb(195, 224, 190);
 	--color-base-05:	#A7A790;
-	--nav-item-color:	#636430;
+	--OT-text-in-sidebar:	#636430;
 
 	--background-secondary-alt:			#D9D9BB;
 	--background-modifier-form-field:	#F2F3D1;
@@ -681,7 +722,7 @@ body {
 	--color-base-35:	#FFEED1;
 	--color-base-40:	#706553;
 	--color-base-05:	#544C3E;
-	--nav-item-color:	#6F5B3E;
+	--OT-text-in-sidebar:	#6F5B3E;
 	--color-base-50:	#B68D40;
 	--text-muted:	#B68D40;
 
@@ -700,7 +741,7 @@ body {
 	--h3-color:		#B68D40;
 	--h5-color:		#AEA188;
 
-	--tab-text-color-focused:	var(--nav-item-color);
+	--tab-text-color-focused:	var(--OT-text-in-sidebar);
 
 	--OT-metadata-title-color-faint: 	#C3BBAF;
 	--OT-table-header-background:	#F6DFB6;
@@ -712,7 +753,7 @@ body {
 	--color-base-35:	rgb(212, 212, 212);
 	--color-base-40:	rgb(195, 224, 190);
 	--color-base-50:	#6BB782;
-	--nav-item-color:	#309A53;
+	--OT-text-in-sidebar:	#309A53;
 
 	--background-secondary-alt:		#D7E7DC;
 	--background-modifier-border:	rgb(169, 214, 180);
@@ -738,7 +779,7 @@ body {
 	--color-base-35:	#FCA5A5;
 	--color-base-40:	#FCA5A5;
 	--color-base-50:	#FA6B66;
-	--nav-item-color:	#C00D06;
+	--OT-text-in-sidebar:	#C00D06;
 
 	--background-secondary-alt:		#F5DADA;
 	--background-modifier-form-field:	#FEEAEA;
@@ -770,7 +811,7 @@ body {
 	--color-base-35:	var(--solarized-base1);
 	--color-base-40:	var(--solarized-yellow);
 	--color-base-50:	var(--solarized-base0);
-	--nav-item-color:	var(--solarized-violet);
+	--OT-text-in-sidebar:	var(--solarized-violet);
 
 	--background-secondary-alt:		var(--solarized-base3);
 	--background-modifier-form-field:var(--solarized-base2);
@@ -798,7 +839,7 @@ body {
 	--color-base-20:	#D6D3D1;
 	--color-base-35:	#E7E5E4;
 	--color-base-40:	#A8A29E;
-	--nav-item-color:	#44403C;
+	--OT-text-in-sidebar:	#44403C;
 	--color-base-50:	#78716C;
 
 	--accent-h:	254	!important;
@@ -827,7 +868,7 @@ body {
 	--color-base-35:	#A897B9;
 	--color-base-40:	#720FD3;
 	--color-base-50:	#A457F2;
-	--nav-item-color:	#7111D2;
+	--OT-text-in-sidebar:	#7111D2;
 
 	--background-secondary-alt:		#D0AEF1;
 	--background-modifier-form-field:#EAD8FC;
@@ -856,7 +897,7 @@ body {
 	--color-base-35:	#fdeda9;
 	--color-base-40:	#fbcd15;
 	--color-base-50:	#B28F03;
-	--nav-item-color:	#907403;
+	--OT-text-in-sidebar:	#907403;
 
 	--background-secondary-alt:		#F5EBC0;
 	--background-modifier-form-field:#FFFAE6;
@@ -899,7 +940,7 @@ body {
 	--color-base-35:	#4A413B;
 	--color-base-40:	#603D04;
 	--color-base-05:	#4A413B;
-	--nav-item-color:	#DA8B09;
+	--OT-text-in-sidebar:	#DA8B09;
 	--color-base-50:	#784D05;
 	--text-muted:	#F39B0A;
 
@@ -944,7 +985,7 @@ body {
 	--color-base-35:	#043363;
 	--color-base-40:	#03264a;
 	--color-base-05:	#010A14;
-	--nav-item-color:	#0868CA;	/*	#0760BA;	*/
+	--OT-text-in-sidebar:	#0868CA;	/*	#0760BA;	*/
 	--color-base-50:	#306ABD;
 	--text-muted:	#527AC2;
 	/*	--color-base-10:	var(--color-base-35);	*/
@@ -976,7 +1017,7 @@ body {
 	--color-base-35:	#7B6054;
 	--color-base-40:	#512C0E;
 	--color-base-05:	#190E04;
-	--nav-item-color:	#B76320;
+	--OT-text-in-sidebar:	#B76320;
 	--color-base-50:	#CC6F24;
 	--text-muted:	#DE8945;
 
@@ -1006,7 +1047,7 @@ body {
 	--color-base-35:	#0F582A;
 	--color-base-40:	#0B4320;
 	--color-base-05:	#000101;
-	--nav-item-color:	#22C55E;
+	--OT-text-in-sidebar:	#22C55E;
 	--color-base-50:	#27DA69;
 	--text-muted:	#27DA69;
 
@@ -1036,7 +1077,7 @@ body {
 	--color-base-35:	#00204B;
 	--color-base-40:	#000E22;
 	--color-base-05:	#00060D;
-	--nav-item-color:	#036FFF;
+	--OT-text-in-sidebar:	#036FFF;
 	--color-base-50:	#0066EE;
 	--text-muted:	#7EB5FF;
 
@@ -1068,7 +1109,7 @@ body {
 	--color-base-35:	#232429;
 	--color-base-40:	#F3EE5E;
 	--color-base-05:	black;
-	--nav-item-color:	#hsl(224, 17%, 68%);
+	--OT-text-in-sidebar:	#hsl(224, 17%, 68%);
 	--color-base-50:	#B9C3DF;
 	--text-muted:	hsl(224, 17%, 68%);
 
@@ -1105,7 +1146,7 @@ body {
 	--color-base-35:	#334455;
 	--color-base-40:	#334455;
 	--color-base-05:	#07121B;
-	--nav-item-color:	#DEDFE1;
+	--OT-text-in-sidebar:	#DEDFE1;
 	--color-base-50:	#EDEDEE;
 	--text-muted:	#CFD0D3;
 
@@ -1124,8 +1165,8 @@ body {
 
 	--blockquote-text-color:	var(--text-normal) !important;
 	--code-normal:				var(--text-normal);
-	--text-on-accent:			var(--nav-item-color);
-	--OT-stabilo-text:			var(--nav-item-color) !important;
+	--text-on-accent:			var(--OT-text-in-sidebar);
+	--OT-stabilo-text:			var(--OT-text-in-sidebar) !important;
 	--OT-stabilo-mark:			#255C84;
 
 	--OT-metadata-title-color-faint: 	#6E7071;
@@ -1141,7 +1182,7 @@ body {
 	--color-base-35:	#909246;
 	--color-base-40:	#35361A;
 	--color-base-05:	#1F1F0F;
-	--nav-item-color:	#BFC17D;
+	--OT-text-in-sidebar:	#BFC17D;
 	--color-base-50:	#CACC94;
 	--text-muted:	#BFC17D;
 
@@ -1169,7 +1210,7 @@ body {
 	--color-base-35:	#A7661D;
 	--color-base-40:	#B97020;
 	--color-base-05:	#2E1C08;
-	--nav-item-color:	#ECC090;
+	--OT-text-in-sidebar:	#ECC090;
 	--color-base-50:	#EFCAA2;
 	--text-muted:	#ECC090;
 
@@ -1199,7 +1240,7 @@ body {
 	--color-base-35:	#B91C1C;
 	--color-base-40:	#4F0310;
 	--color-base-05:	#170105;
-	--nav-item-color:	#C09B9C;
+	--OT-text-in-sidebar:	#C09B9C;
 	--color-base-50:	#9F5357;
 
 	--accent-h:	350	!important;
@@ -1233,7 +1274,7 @@ body {
 	--color-base-35:	var(--solarized-base01);
 	--color-base-40:	var(--solarized-base02);
 	--color-base-05:	var(--solarized-base03);
-	--nav-item-color:	var(--solarized-base2);
+	--OT-text-in-sidebar:	var(--solarized-base2);
 	--color-base-50:	var(--solarized-base2);
 	--text-muted:	var(--solarized-base1);
 
@@ -1265,7 +1306,7 @@ body {
 	--color-base-35:	#ACA6A0;
 	--color-base-40:	#57534E;
 	--color-base-05:	#1C1917;
-	--nav-item-color:	#A8A29E;
+	--OT-text-in-sidebar:	#A8A29E;
 	--color-base-50:	#D6D3D1;
 	--text-muted:	#A8A29E;
 
@@ -1297,7 +1338,7 @@ body {
 	--color-base-35:	#3686AA;
 	--color-base-40:	#E6F2CC;
 	--color-base-05:	#B8B8AC;
-	--nav-item-color:	#E6F2CC;
+	--OT-text-in-sidebar:	#E6F2CC;
 	--color-base-50:	#F2B630;
 
 	--background-modifier-border:	#F2B630;
@@ -1333,7 +1374,7 @@ body {
 	--color-base-35:	#4C1D95;
 	--color-base-40:	#2B1155;
 	--color-base-05:	#0B0415;
-	--nav-item-color:	#9160E1;
+	--OT-text-in-sidebar:	#9160E1;
 	--color-base-50:	#6D29D5;
 	--text-muted:	#8A54DE;
 
@@ -1362,7 +1403,7 @@ body {
 	--color-base-35:	#333333;
 	--color-base-40:	#D9AF04;
 	--color-base-05:	#0D0D0D;
-	--nav-item-color:	#C8A204;/*	#D9AF04;	*/
+	--OT-text-in-sidebar:	#C8A204;/*	#D9AF04;	*/
 	--color-base-50:	#D1A803;/*	#F2C304;	*/
 	--text-muted:	#D1A803;/*	#F2C304;	*/
 
@@ -1428,8 +1469,8 @@ body {
 	--accent-h:			125		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			30%		!important;
-	--text-on-accent:		var(--nav-item-color);
-	--text-on-hover:		var(--nav-item-color);
+	--text-on-accent:		var(--OT-text-in-sidebar);
+	--text-on-hover:		var(--OT-text-in-sidebar);
 }
 .theme-light.generalPalette-blue.accentColor-lightMode-alternative-2 {
 	--accent-h:			305		!important;
@@ -1457,8 +1498,8 @@ body {
 	--accent-h:			142	!important;
 	--accent-s:			83%	!important;
 	--accent-l:			33%	!important;
-	--OT-tooltips-text-color:	var(--nav-item-color);
-	--text-on-hover:			var(--nav-item-color);
+	--OT-tooltips-text-color:	var(--color-base-00);
+	--text-on-hover:			var(--OT-text-in-sidebar);
 }
 .theme-light.generalPalette-green.accentColor-lightMode-alternative-1 {
 	--accent-h:			232	!important;
@@ -1480,7 +1521,7 @@ body {
 	--accent-h:			94		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			40%		!important;
-	--text-on-accent:		var(--nav-item-color);
+	--text-on-accent:		var(--OT-text-in-sidebar);
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-alternative-2 {
 	--accent-h:			304		!important;
@@ -1492,7 +1533,7 @@ body {
 	--accent-h:			38	!important;
 	--accent-s:			54%	!important;
 	--accent-l:			50%	!important;
-	--OT-tooltips-text-color:	var(--nav-item-color);
+	--OT-tooltips-text-color:	var(--OT-text-in-sidebar);
 }
 .theme-light.generalPalette-lightBeige.accentColor-lightMode-alternative-1 {
 	--accent-h:			188	!important;
@@ -1584,7 +1625,7 @@ body {
 	--accent-h:			210 !important;		/*	22.11.2022: 164	*/
 	--accent-s:			93%	!important;		/*	22.11.2022: 80	*/
 	--accent-l:			70%	!important;		/*	22.11.2022: 50	*/
-	--text-on-accent:	var(--nav-item-color);
+	--text-on-accent:	var(--OT-text-in-sidebar);
 }
 
 .theme-light.generalPalette-solarized.accentColor-lightMode-shade {
@@ -1607,8 +1648,8 @@ body {
 	--accent-h:	30	!important;
 	--accent-s:	5%	!important;
 	--accent-l:	54%	!important;
-	--OT-tooltips-text-color:	var(--nav-item-color);
-	--text-on-accent:			var(--nav-item-color);
+	--OT-tooltips-text-color:	var(--OT-text-in-sidebar);
+	--text-on-accent:			var(--OT-text-in-sidebar);
 }
 .theme-light.generalPalette-stone.accentColor-lightMode-alternative-1 {
 	--accent-h:	254	!important;
@@ -1619,8 +1660,8 @@ body {
 	--accent-h:	74	!important;
 	--accent-s:	60%	!important;
 	--accent-l:	25%	!important;
-/*		--text-on-hover:			var(--nav-item-color);	*/
-/*		--OT-tooltips-text-color:	var(--nav-item-color);	*/
+/*		--text-on-hover:			var(--OT-text-in-sidebar);	*/
+/*		--OT-tooltips-text-color:	var(--OT-text-in-sidebar);	*/
 }
 
 .theme-light.generalPalette-violet.accentColor-lightMode-shade {
@@ -1648,7 +1689,7 @@ body {
 	--accent-l:			35%	!important;
 	--text-on-accent:		var(--background-primary);
  	--link-color-hover:		var(--text-accent-hover);
-	--OT-tooltips-text-color:			var(--nav-item-color);
+	--OT-tooltips-text-color:			var(--OT-text-in-sidebar);
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-1 {
 	--accent-h:			228	!important;
@@ -1738,7 +1779,7 @@ body {
 	--accent-h:	267	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	20%	!important;
-	--nav-item-color-active:	var(--nav-item-color);
+	--nav-item-color-active:	var(--OT-text-in-sidebar);
 }
 
 .theme-dark.generalPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-shade,
@@ -1777,7 +1818,7 @@ body {
 	--accent-h:	231	!important;
 	--accent-s:	70%	!important;
 	--accent-l:	30%	!important;
-	--text-on-accent:	var(--nav-item-color);
+	--text-on-accent:	var(--OT-text-in-sidebar);
 }
 .theme-dark.generalPalette-green.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-green.accentColor-darkMode-alternative-2 {
@@ -1886,7 +1927,7 @@ body {
 	--accent-h:	260	!important;
 	--accent-s:	70%	!important;
 	--accent-l:	10%	!important;
-	--text-on-accent:	var(--nav-item-color);
+	--text-on-accent:	var(--OT-text-in-sidebar);
 }
 
 .theme-dark.generalPalette-solarized.darkPalette-default.accentColor-darkMode-shade,
@@ -1900,14 +1941,14 @@ body {
 	--accent-h:			45	!important;
 	--accent-s:			100%	!important;
 	--accent-l:			20%	!important;
-	--text-on-accent:	var(--nav-item-color);
+	--text-on-accent:	var(--OT-text-in-sidebar);
 }
 .theme-dark.generalPalette-solarized.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-solarized.accentColor-darkMode-alternative-2 {
 	--accent-h:			205	!important;
 	--accent-s:			69%	!important;
 	--accent-l:			34%	!important;
-	--text-on-accent:	var(--nav-item-color);
+	--text-on-accent:	var(--OT-text-in-sidebar);
 }
 
 .theme-dark.generalPalette-stone.darkPalette-default.accentColor-darkMode-shade,
@@ -3735,7 +3776,7 @@ input[type=checkbox] {
 	color:	var(--OT-text-muted-on-secondary);
 }
 .suggestion-container{
-	color:	var(--OT-text-normal-on-secondary);
+	color:	var(--OT-text-in-sidebar);
 }
 body:not(.is-grabbing) .tree-item-self.is-active:hover,
 .tree-item-self.is-active:hover {							/*	pour que ce qui est sélectionné soit visiblement survolé	*/
@@ -3744,11 +3785,11 @@ body:not(.is-grabbing) .tree-item-self.is-active:hover,
 }
 body:not(.is-grabbing) .nav-file-title.is-active:hover,
 body:not(.is-grabbing) .nav-folder-title.is-active:hover {
-	background-color:	var(--OT-clickable-icon-active-background-hover);	/*	--nav-item-background-active	*/
+	background-color:	var(--OT-clickable-icon-background-hover);	/*	--nav-item-background-active	*/
 }
 
 .nav-file-title {
-	border-bottom:	1px dotted var(--nav-item-color);
+	border-bottom:	1px dotted var(--OT-text-in-sidebar);
 }
 /* ------------------------------ ↑ OpSpl Sidebars ↑ ------------------------------ */
 
@@ -4034,35 +4075,28 @@ td .cm-editor .cm-line {
 .view-header-title-parent .view-header-breadcrumb-separator {
 	display:	none;
 }
-
-/* Comme la logique des couleurs de la barre tout en haut de la fenêtre ne m’allait pas,
-	entre “focused” et “unfocused”, j’ai copié ici ce qui était dans “App.css” et je l’ai modifié */
-.sidebar-toggle-button,
-.workspace-tabs.mod-top {
-  --tab-container-background: var(--titlebar-background-focused);
-	}
-body.is-focused .titlebar,
-body.is-focused .workspace-ribbon.mod-left {
-  --titlebar-background: var(--titlebar-background);
-	}
-body.is-focused .sidebar-toggle-button,
-body.is-focused .workspace-tabs.mod-top {
-  --tab-container-background: var(--titlebar-background);
-	}
-/* Le coin, en haut à gauche, en haut du “ribbon”: */
-.workspace-ribbon.mod-left:before {
-  --titlebar-background: var(--titlebar-background-focused);
+.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+	color:	var(--icon-color-active);
 }
-body.is-focused .workspace-ribbon.mod-left:before {
-  --titlebar-background: var(--background-secondary);
+.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+	color:	var(--OT-workspace-tab-header-inner-title-color);/*	var(--tab-text-color-focused-active-current);	*/
 }
-
 /* ---------- OpSpl focused panel — mise en évidence du panneau qui a le focus */
 /* J’ai agrandi, via une variable, la taille du titre des panneaux qui n’ont pas le focus.
 	Mais je diminue l’intensité de la couleur du texte.		*/
 .view-header-title {
 	color:				var(--OT-view-header-title-no-focus-color);
     letter-spacing:		0.02em	!important;		/* à cause du “bold”	*/
+}
+.is-focused .workspace-leaf.mod-active .view-header-title,	/*	Le titre du panneau qui a le focus	*/
+.is-focused .workspace-tab-header-status-icon {				/*	le “pin” d’un panneau “pinned”		*/
+    color: 				var(--OT-view-header-title-focus-color);
+    font-variant:		small-caps;
+    font-size:			calc(var(--OT-readingMode-text-size) * 1.5);
+    font-weight:		700;
+}
+.is-focused .workspace-leaf.mod-active .view-header {
+	border-bottom:		2px solid var(--text-normal);
 }
 
 .is-focused .workspace-leaf.mod-active .view-header-title,	/*	Le titre du panneau qui a le focus	*/
@@ -4072,49 +4106,14 @@ body.is-focused .workspace-ribbon.mod-left:before {
     font-size:			calc(var(--OT-readingMode-text-size) * 1.5);
     font-weight:		700;
 }
-/*	Je pensais que c’était une bonne idée pour mettre en évidence le panneau actif. Au bout du compte,
-	ce n’est pas foncièrement utile et ce n’est pas très esthétique.
-.is-focused .workspace-leaf.mod-active .view-header {
-	border-bottom:		2px solid var(--text-normal);
-}
-*/
-/*	le “pin” dans le titre, quand le panneau n’est pas actif	*/
-.workspace-tab-header:not(.is-active) .workspace-tab-header-status-icon {
-  color: var(--tab-text-color);
-}
-
-/* Le survol des tabs	*/
-.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
-.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-title,
-.workspace-tab-header:not(.is-active):hover .workspace-tab-header-status-icon  {
-	color:				var(--text-on-accent);
-	background-color:	var(--interactive-accent);
-}
-/*
-@media (hover: hover) {
-  .horizontal-tab-nav-item:hover,
-  .vertical-tab-nav-item:hover {
-	color:				var(--text-on-accent);
-  }
-}*/
-/*	les boutons (croix)) de fermeture des tabs, quand on les survole	*/
-@media (hover: hover){
-/*.workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover,*/
-.workspace-tab-header-inner-close-button:hover,
-.modal-close-button:hover,
-.horizontal-tab-nav-item:hover,
-  .vertical-tab-nav-item:hover {
-    color: var(--text-on-accent) !important;
-	}
-}
-.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button {
-	    color: var(--text-on-accent);
+.is-focused .workspace-tab-header:hover {	/*	survol	*/
+	color:	var(--text-on-accent);
 }
 /* -------------------- ↑ OpSpl En-tête des panneaux ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl22	*/
-/* —————————————————————————————— OpSpl Buttons —————————————————————————————— */
+/* —————————————————————————————— Buttons —————————————————————————————— */
 @media (hover: hover) {
   button:hover {
 	color:				var(--OT-button-text-hover);
@@ -4199,50 +4198,24 @@ body.is-focused .workspace-ribbon.mod-left:before {
 	color:				var(--OT-button-text-active);		/*	text-on-accent	*/
 	background-color:	var(--OT-button-background-active);	/*	interactive-accent	*/
 }
-/*	-------------------- ↑ OpSpl Buttons -------------------- ↑ */
-
-/* —————————————————————————————— OpSpl icons —————————————————————————————— */
-.clickable-icon {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
-}
-.clickable-icon.is-active {
-	background-color:	var(--OT-clickable-icon-active-background);
+/*	ne pas modifier les icônes à cliquer dans le panneau des settings	*/
+.setting-item-control .clickable-icon {
+	color:	inherit;
+	background:	inherit;
 }
 @media (hover: hover) {
-  .clickable-icon:hover {
-    background-color: var(--OT-clickable-icon-active-background-hover);/*	var(--background-modifier-hover);	*/
-  }
-  .clickable-icon.has-active-menu,
-  .clickable-icon:active {
-    background-color: var(--OT-clickable-icon-active-background-hover);/*	var(--background-modifier-hover);	*/
+  .modal-close-button:hover {
+    color:				var(--OT-button-text-hover);
+    background-color:	var(--OT-button-background-hover);
   }
 }
 
-@media (hover: hover) {
-  .clickable-icon.is-active:hover {
-    background-color: var(--OT-clickable-icon-active-background-hover);
-  }
-}
-.mod-left-split .workspace-tab-header.has-active-menu,
-.mod-right-split .workspace-tab-header.has-active-menu,
-.mod-left-split .workspace-tab-header.is-active,
-.mod-right-split .workspace-tab-header.is-active {
-  background-color: var(--OT-clickable-icon-active-background);
-}
-@media (hover: hover) {
-  .mod-left-split .workspace-tab-header.has-active-menu:hover,
-  .mod-right-split .workspace-tab-header.has-active-menu:hover,
-  .mod-left-split .workspace-tab-header.is-active:hover,
-  .mod-right-split .workspace-tab-header.is-active:hover {
-    background-color: var(--OT-clickable-icon-active-background-hover);
-  }
-}
 button {
 	color:				var(--OT-button-text-normal);		/*	text-normal	*/
 	background-color:	var(--OT-button-background-normal);	/*	nothing	*/
 }
-button:not(.clickable-icon) {
-	background-color:	var(--OT-button-background-normal);	/*	interactive-normal	*/
+button:not(.clickable-icon) {	/*	boutons affichés par "Jetadata Menu" à côté des properties qu’il gère	*/
+/*	background-color:	var(--OT-button-background-normal);	/*	interactive-normal	*/
 }
 @media (hover: hover) {
   button:hover {
@@ -4284,18 +4257,71 @@ button.mod-muted {
 	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
   }
 }
+/*	-------------------- ↑ Buttons -------------------- ↑ */
+
+/* —————————————————————————————— OpSpl icons —————————————————————————————— */
+/*.clickable-icon {
+	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
+}*/
 .clickable-icon {
   	color:				var(--OT-button-text-normal);		/*	icon-color	*/
-	background-color:	var(--OT-button-background-normal);	/*	transparent	*/
+	/* background-color:	var(--OT-button-background-normal);	/*	transparent	*/
 }
-/*	-------------------- ↑ OpSpl icons -------------------- ↑ */
+.view-header .clickable-icon {
+	color:	var(--OT-clickable-icon-in-header);
+}
+.clickable-icon.is-active {
+	background-color:	var(--OT-clickable-icon-background-active);
+}
+@media (hover: hover) {
+	.clickable-icon:hover {
+  		color:				var(--icon-color-hover);
+    	background-color:	var(--OT-clickable-icon-background-hover);	/*	var(--background-modifier-hover);	*/
+  }
+  .clickable-icon.has-active-menu,
+  .clickable-icon:active {
+  		color:				var(--icon-color-hover);
+		background-color: 	var(--OT-clickable-icon-background-hover);	/*	var(--background-modifier-hover);	*/
+  }
+}
+/*
+@media (hover: hover) {
+  .clickable-icon.is-active:hover {
+    background-color: var(--OT-clickable-icon-background-hover);
+  }
+}*/
+/*	-------------------- ↑ icons -------------------- ↑ */
 
+/* —————————————————————————————— OpSpl Sidebar tabs —————————————————————————————— */
+.mod-left-split .workspace-tab-header.has-active-menu,
+.mod-right-split .workspace-tab-header.has-active-menu,
+.mod-left-split .workspace-tab-header.is-active,
+.mod-right-split .workspace-tab-header.is-active {
+	color:	lime;
+	background-color: var(--OT-sidebarTab-background-active);		/*	var(--background-modifier-hover);	*/
+}
+@media (hover: hover) {
+  .mod-left-split .workspace-tab-header.has-active-menu:hover,
+  .mod-right-split .workspace-tab-header.has-active-menu:hover,
+  .mod-left-split .workspace-tab-header.is-active:hover,
+  .mod-right-split .workspace-tab-header.is-active:hover {
+	background-color:	var(--OT-sidebarTab-background-active-hover);	/*	var(--background-modifier-hover);	*/
+  }
+}
+/*	-------------------- ↑ Sidebar tabs -------------------- ↑ */
+
+/*	———————————————————— Menu déroulant ———————————————	*/
+.menu-item,
+.menu-item-icon {
+	color:	var(--OT-button-text-normal);
+}
+/*	-------------------- ↑ Menu déroulant -------------------- ↑ */
 
 /*	Bookmark	OpSpl23	*/
 /* —————————————————————————————— OpSpl Settings pannel —————————————————————————————— */
 .vertical-tab-nav-item,
 .horizontal-tab-nav-item {
-	color:			var(--nav-item-color);
+	color:			var(--OT-text-in-sidebar);
 	margin-top:		0;
 	margin-bottom:	0;
 }
@@ -4315,7 +4341,7 @@ button.mod-muted {
 }
 /*
 .setting-item-description {
-	color:	var(--nav-item-color);
+	color:	var(--OT-text-in-sidebar);
 }*/
 
 /* Les petits titres introduisant les différentes sections dans le panneau “settings”.
@@ -4579,11 +4605,11 @@ body span[alt*="+grid"] {
 .markdown-preview-view div[data-tag-name="h2"] + div > h3 {
 	margin-top: 0rem;
 }
-/* -------------------- ↑ OpSpl Contextual typography ↑ -------------------- */
+/* -------------------- ↑ Contextual typography ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl30	*/
-/* —————————————————————————————— OpSpl Headings to my taste —————————————————————————————— */
+/* —————————————————————————————— Headings to my taste —————————————————————————————— */
 /*	Pour mettre les headings à mon goût:
 
 	* amélioration des espacements verticaux
@@ -4742,7 +4768,7 @@ markdown-rendered h6 {
 
 
 /*	Bookmark	OpSpl31	*/
-/* —————————————————————————————— OpSpl Horizontal Rule —————————————————————————————— */
+/* —————————————————————————————— Horizontal Rule —————————————————————————————— */
 .markdown-rendered hr {
   margin-top:		0.75em;
   margin-bottom:	0.75em;
@@ -4763,11 +4789,11 @@ markdown-rendered h6 {
 	margin-top:		0.0em;
 	padding-top:	0.0em;
 }
-/* -------------------- ↑ OpSpl horizontal rule ↑ -------------------- */
+/* -------------------- ↑ horizontal rule ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl32	*/
-/* —————————————————————————————— OpSpl Kanban —————————————————————————————— */
+/* —————————————————————————————— Kanban —————————————————————————————— */
 body .kanban-plugin{
 	background-image:	none !important;
 	background:			var(--background-primary);		/* je préfère au gris d’origine	*/
@@ -4810,11 +4836,11 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 .menu-item.selected:not(.is-disabled):not(.is-label) {
 	color:	var(--text-on-accent);
 }
-/* -------------------- ↑ OpSpl Kanban -------------------- ↑ */
+/* -------------------- ↑ Kanban -------------------- ↑ */
 
 
 /*	Bookmark	OpSpl33	*/
-/* —————————————————————————————— OpSpl Links —————————————————————————————— */
+/* —————————————————————————————— Links —————————————————————————————— */
 /* ---------- no underline */
  body {
  	--link-decoration:					none;		/* Depuis la version 0.16.0, c’est suffisant, en tout cas pour le mode "Preview" */
@@ -4840,7 +4866,7 @@ a:hover,
 	background-color:	var(--link-color);
 }
 
-/* ---------- OpSpl Lien inexistant survolé */
+/* ---------- Lien inexistant survolé */
 .markdown-rendered .internal-link.is-unresolved:hover,
 .markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
 	opacity:	1;
@@ -4853,13 +4879,13 @@ a:hover,
 	background:	var(--link-unresolved-color);
 }
 
-/* ---------- OpSpl Lien vers une image inexistante  */
+/* ---------- Lien vers une image inexistante  */
 .file-embed.mod-generic,
 .file-embed.mod-empty {
 	color:		var(--text-on-accent);
 	background:	var(--link-unresolved-color);
 }
-/* ---------- OpSpl Lien vers une image inexistante survolé  */
+/* ---------- Lien vers une image inexistante survolé  */
 @media (hover: hover) {
   .file-embed.mod-generic:hover,
   .file-embed.mod-empty:hover {
@@ -4876,11 +4902,11 @@ a:hover,
 	color:		var(--OT-link-color-hover) !important;
 	background:	var(--link-color) !important;
 }
-/* -------------------- ↑ OpSpl Links ↑ -------------------- */
+/* -------------------- ↑ Links ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl34	*/
-/* —————————————————————————————— OpSpl Listes —————————————————————————————— */
+/* —————————————————————————————— Listes —————————————————————————————— */
 /* ----- formatage des puces et numéros des listes, en général -----	*/
 ol > li::marker,
 ul > li::marker,
@@ -4933,11 +4959,11 @@ div > * > li > * > li:last-child {			/* All level 2 last items */
 div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
    margin-bottom:	var(--list-spacing-3);
 }
-/* -------------------- ↑ OpSpl Listes — Espacement vertical -------------------- ↑ */
+/* -------------------- ↑ Listes — Espacement vertical -------------------- ↑ */
 
 
 /*	Bookmark	OpSpl35	*/
-/* —————————————————————————————— OpSpl Zoom-image —————————————————————————————— */
+/* —————————————————————————————— Zoom-image —————————————————————————————— */
 .markdown-preview-view .internal-embed img {
 	cursor:zoom-in;}
 .markdown-preview-view .internal-embed img:active {
@@ -4960,11 +4986,11 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	bottom: 	0;
 	background: var(--background-primary);
 }
-/* -------------------- ↑ OpSpl Zoom-image.css ↑ -------------------- */
+/* -------------------- ↑ Zoom-image.css ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl36	*/
-/* —————————————————————————————— OpSpl Status bar —————————————————————————————— */
+/* —————————————————————————————— Status bar —————————————————————————————— */
 .theme-dark .status-bar,
 .theme-light .status-bar {
 	background:	transparent;/*	var(--background-primary);	*/
@@ -5003,30 +5029,40 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
     color:			var(--text-on-accent);
     background:		var(--color-accent-2);
 	}
-/* -------------------- ↑ OpSpl Status bar ↑ -------------------- */
-
-
-/* —————————————————————————————— OpSpl Metadata/YAML Properties —————————————————————————————— */
-/*	-------------------- ↑ OpSpl Metadata/YAML Properties ↑ --------------------	*/
+/* -------------------- ↑ Status bar ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl37	*/
 /*	Metadata	*/
+.metadata-property-icon {
+	color:	var(--OT-metadata-property-icon);	/*	--icon-color	*/
+}
 @media (hover: hover) {
   .metadata-property-icon:hover .svg-icon {
-    color: 				var(--icon-color);
-    background-color:	var(--background-modifier-hover);
+    color: 				var(--icon-color-hover);
+    background-color:	var(--OT-clickable-icon-background-hover);
   }
 }
-/* —————————————————————————————— OpSpl Metadata Menu plugin —————————————————————————————— */
-.field-btn-container button.property-metadata-menu:hover {
-	color:	var(--text-on-accent);
+.multi-select-pill-content {
+	margin-left:	0.6em;
 }
-/* -------------------- ↑ OpSpl Metadata Menu plugin ↑ -------------------- */
+.metadata-container .internal-link {
+	color:	var(--pill-color);	/*	var(--link-color)	*/
+}
+.metadata-container .internal-link:hover {
+	color:				var(--pill-color-hover);	/*	var(--link-color)	*/
+	background-color:	var(--pill-background-hover);
+}
+/* —————————————————————————————— Metadata Menu plugin —————————————————————————————— */
+.field-btn-container button.property-metadata-menu:hover {
+	color:				var(--icon-color-hover);
+	background-color:	var(--OT-clickable-icon-background-hover);
+}
+/* -------------------- ↑ Metadata Menu plugin ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl38	*/
-/* —————————————————————————————— OpSpl Canvas —————————————————————————————— */
+/* —————————————————————————————— Canvas —————————————————————————————— */
 .canvas-card-menu .canvas-card-menu-button,
 .canvas-controls button,
 button.canvas-menu-item {
@@ -5048,7 +5084,7 @@ button.canvas-menu-item {
 .canvas-node-content.markdown-embed {
 	background-image:	none !important;
 }
-/* -------------------- ↑ OpSpl Canvas ↑ -------------------- */
+/* -------------------- ↑ Canvas ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl39	*/
@@ -5099,7 +5135,6 @@ kbd {
 }
 /*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
 
-/* —————————————————————————————— OpSpl Autres éléments d’interface —————————————————————————————— */
 
 /* ————————————————————————————————————————————————————————————	*/
 /* ———————————————————— À ranger ——————————————————————————————	*/
@@ -5146,26 +5181,20 @@ input[type='number']::placeholder {
 /*	les deux petits boutons “import” et “export”	*/
 .style-settings-export,
 .style-settings-import {
-	color:				var(--text-on-accent);
-	background-color:	var(--interactive-accent);
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
     border-radius:		4px !important;
     padding:			1px 4px;
 }
 .style-settings-export:hover,
 .style-settings-import:hover {
-	color:				var(--text-on-hover);
-	background-color:	var(--interactive-accent-hover);
-}
-
-.nav-action-button,
-.workspace-tab-header-inner .workspace-tab-header-inner-icon,
-.workspace-tab-header-tab-list .clickable-icon,
-.workspace-tab-header-new-tab .clickable-icon {
-	color:	var(--OT-sidebar-icon-color);
+	color:				var(--OT-button-background-normal);
+	background-color:	var(--OT-button-text-normal);
 }
 
 .workspace-ribbon.mod-left.is-collapsed .clickable-icon {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
+	color:	var(--OT-clickable-icon-in-header);
+	/*	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);	*/
 }
 
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed),
@@ -5174,7 +5203,7 @@ input[type='number']::placeholder {
 }
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover,
 .side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover {
-	color:	var(--text-on-accent);
+	color:	var(--icon-color-hover);
 }
 
 .markdown-rendered mark,
@@ -5187,7 +5216,7 @@ input[type='number']::placeholder {
 }
 
 .workspace-split.mod-horizontal.mod-right-split .empty-state-container {
-	color:	var(--nav-item-color);
+	color:	var(--OT-text-in-sidebar);
 }
 /* ———————————————————————————————————————————————————————————————————————————————————————————————	*/
 

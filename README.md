@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 02.06.2024 Version 1.9.0
+Improvements to the logic of the clickable icons and sidebar tabs.  
+Correction of the dropdown menu with commands for the current pane.
+Tuning of some colors.
+
+----------------------------------------------
 #### 01.06.2024 Version 1.8.8
 I keep reorganizing the source code in order to facilitate the maintenance.
 
