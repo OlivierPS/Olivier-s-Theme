@@ -50,6 +50,7 @@
 			02.06.2024	Improvements to the logic of the clickable icons and sidebar tabs		1.9.0
 						Tuning of some colors
 			05.06.2024	Tuning of some colors													1.9.1
+			09.06.2024	Important changes to the logic of the colors							1.10.0
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -78,7 +79,7 @@ Bookmarks:	OpSpl01:	Déclarations générales
 							les pastilles indicatives sur la feuille de publication
 							les petits boutons sur la feuille de publication
 			OpSpl17:	Les sidebars
-			OpSpl17a:		Adaptations pour le panneau avec les suggestions pour la recherche
+			OpSpl17a:		Adaptations pour les panneaux de suggestions
 			OpSpl18:		Adaptations pour le plugin “File Info”
 							autres adaptations
 			OpSpl19:	Reading Mode
@@ -175,21 +176,25 @@ body {
 	--OT-kanban-font:			"Uberhand Pro";
 	--OT-kanban-font-size:		17px;
 	/*	---------- Other theme’s variables	*/
-	--OT-button-text-normal:						var(--OT-text-in-sidebar);
-	--OT-button-background-normal:					var(--background-secondary);
-	--OT-button-cta-background-normal:				var(--color-accent-3);
+	--OT-button-text-normal:						var(--OT-color-on-accent-3);
+	--OT-button-background-normal:					var(--color-accent-3);
+	--OT-button-cta-background-normal:				var(--color-accent-2);
 	--OT-button-cta-text-normal:					var(--OT-button-text-normal);
-	--OT-button-text-hover:							var(--OT-button-background-normal);
-	--OT-button-background-hover:					var(--OT-button-text-normal);
-	--OT-button-text-active:						var(--OT-text-in-sidebar);
-	--OT-button-background-active:					var(--color-accent-3);
+	--OT-button-text-hover:							var(--OT-color-on-accent-1);
+	--OT-button-background-hover:					var(--color-accent-1);
+	--OT-button-text-active:						var(--OT-color-on-accent-2);
+	--OT-button-background-active:					var(--color-accent-2);
 	--OT-calendar-day-color:						var(--text-normal);
 	--OT-calendar-today-color:						var(--color-accent-1);
 	--OT-clickable-icon-color-hover:				var(--icon-color-hover);
-	--OT-clickable-icon-color-active:				var(--OT-text-in-sidebar);
-	--OT-clickable-icon-background-active:			var(--color-accent-3);
-	--OT-clickable-icon-background-hover:			var(--color-accent-2);
-	--OT-clickable-icon-in-header:					var(--color-accent-1);
+	--OT-clickable-icon-color-active:				var(--OT-color-on-accent-2);
+	--OT-clickable-icon-background-active:			var(--color-accent-2);
+	--OT-clickable-icon-background-hover:			var(--color-accent-1);
+	--OT-clickable-icon-in-header:					var(--icon-color);
+	--OT-color-faint-on-base-20:					var(--color-base-50);
+	--OT-color-on-accent-1:							var(--color-base-00);
+	--OT-color-on-accent-2:							var(--color-base-100);
+	--OT-color-on-accent-3:							var(--color-base-100);
 	--OT-link-color-hover:							var(--color-base-00);
 	--OT-menu-text-color:							var(--text-muted);
 	--OT-metadata-title-color-faint:				var(--text-faint);
@@ -201,30 +206,30 @@ body {
 	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
 	--OT-setting-item-name:                			var(--text-normal);
 	--OT-setting-item-description:					var(--text-muted);
-	--OT-sidebarTab-background-active:				var(--color-accent-3);
-	--OT-sidebarTab-background-active-hover:		var(--color-accent-2);
+	--OT-sidebarTab-background-active:				var(--color-accent-2);
+	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-stabilo-mark:								var(--stabilo-jaune-foncé);
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-style-settings-collapse-indicator:			var(--text-faint);
-	--OT-text-in-sidebar:							var(--text-normal);
-	--OT-text-muted-in-sidebar:						var(--text-faint);
-	--OT-text-muted-in-sidebar:						var(--text-muted);
+	--OT-color-on-base-20:							var(--text-normal);
+	--OT-color-muted-on-accent-1:					var(--color-base-70);
+	--OT-color-muted-on-base-20:					var(--color-base-70);
+	--OT-tab-background-active-hover:				var(--color-accent-1);
 	--OT-table-background:							var(--color-base-00);
-	--OT-tooltips-text-color:						var(--text-on-accent);
+	--OT-tooltip-text-color:						var(--OT-color-on-accent-1);
 	--OT-search-result-file-title-expanded:			var(--text-normal);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
+	--OT-tree-item-flair-color:						var(--OT-color-on-acent-3);
 	--OT-tree-item-flair-background:				var(--color-accent-3);
-	--OT-vertical-tab-header-group-title:			var(--text-faint);
+	--OT-vertical-tab-header-group-title:			var(--color-base-50);
 	--OT-view-header-title-focus-color: 			var(--h1-color);
-	--OT-view-header-title-no-focus-color: 			var(--text-faint);
-	--OT-workspace-tab-header-inner-title-color:	var(--tab-text-color-focused-active-current);
 
 /*	Bookmark	OpSpl02	*/
 /*	---------- INITIALISATION DES VARIABLES GLOBALES ----------	*/
 
 	/*	----- Surface colors -----
 		--------------------------	*/
-	--background-modifier-active-hover:	var(--color-accent-3);
-	--background-modifier-hover:		var(--color-accent-3); /*	hsla(var(--accent-h), 100%, var(--accent-l), 0.2);	*/
+	--background-modifier-active-hover:	var(--color-accent-1);
+	--background-modifier-hover:		var(--color-accent-1); /*	hsla(var(--accent-h), 100%, var(--accent-l), 0.2);	*/
 	--background-modifier-message:		var(--color-accent-1);	/*	le fond des “tooltips”	*/
 	--background-modifier-success-rgb:	106, 245, 161;			/* pour les progress bars, je préfère une nuance de vert un peu plus claire */
 	--background-modifier-success:		rgb(106, 245, 161);
@@ -235,28 +240,27 @@ body {
 	/*	----- Interactive colors -----
 		------------------------------	*/
 	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
-	--interactive-accent:				var(--color-accent-2);
-	--interactive-hover:				var(--color-accent-3);
+	--interactive-accent:				var(--color-accent-1);
+	--interactive-hover:				var(--color-accent-1);
 
 	/*	----- Functional colors -----
 		-----------------------------	*/
 	--caret-color:					red;
 
 	--checkbox-color:				var(--text-normal);
-	--checkbox-color-hover:			var(--color-accent-2);
+	--checkbox-color-hover:			var(--color-accent-1);
 	--checkbox-border-color:		var(--text-normal);
-	--checkbox-border-color-hover:	var(--color-accent-2);
+	--checkbox-border-color-hover:	var(--color-accent-1);
 	--checklist-done-color:			var(--text-faint);
 
 	--code-normal:		var(--text-normal);
 	--code-background:	var(--blockquote-background-color);
 
-	--dropdown-background:			var(--OT-button-background-normal);
-	--dropdown-background-hover:	var(--OT-button-background-hover);
+	--dropdown-background:			var(--color-accent-3);
+	--dropdown-background-hover:	var(--color-accent-1);
 
 	--graph-line:					var(--text-normal);
 
-	--heading-formatting:			var(--icon-color);
 	--h1-color:	var(--text-normal);
 	--h2-color:	var(--h1-color);		/* ma logique: les deux premiers niveaux de headings ont la même couleur	*/
 	--h3-color:	var(--text-normal);
@@ -265,9 +269,9 @@ body {
 	--h6-color:	var(--h5-color);		/* ma logique: les deux derniers niveaux de headings ont la même couleur	*/
 
 /*	--icon-color:			var(--text-muted); (valeur originelle)					*/
-	--icon-color-hover:		var(--text-on-accent);
+	--icon-color-hover:		var(--OT-color-on-accent-1);
 	--icon-color-active:	var(--background-secondary);
-	--icon-color-focused:	var(--text-on-accent);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
+	--icon-color-focused:	var(--OT-color-on-accent-2);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
 
   	--inline-title-color:	var(--text-faint);
 
@@ -281,24 +285,23 @@ body {
 /*	--metadata-input-background-active:	var(--color-accent-2);	*/
 /*	--metadata-input-text-color:		var(--text-on-accent);		*/
 
-	--nav-item-color:				var(--OT-text-in-sidebar);
-	--nav-item-color-hover:			var(--background-secondary);
-	--nav-item-color-active:		var(--text-on-accent);
+	--nav-collapse-icon-color:		var(--OT-color-faint-on-base-20);
+	--nav-item-color-hover:			var(--OT-color-on-accent-1);
+	--nav-item-color-active:		var(--OT-color-on-accent-2);
 	--nav-item-color-selected:		var(--background-secondary)				/*	var(--text-normal);	*/
-	--nav-item-color-highlighted:	red;									/*	var(--text-accent-hover);	*/
-	--nav-item-background-hover:	var(--color-accent-2);					/*	var(--background-modifier-hover);	*/
-	--nav-item-background-active:	var(--OT-button-background-active);		/*	var(--background-modifier-hover);	*/
+/*	--nav-item-color-highlighted:	red;									var(--text-accent-hover);	*/
+	--nav-item-background-hover:	var(--color-accent-1);					/*	var(--background-modifier-hover);	*/
+	--nav-item-background-active:	var(--color-accent-2);					/*	var(--background-modifier-hover);	*/
 	--nav-item-background-selected:	hsla(var(--color-accent-hsl), 0.2);
 
-	--pill-color:				var(--text-on-accent);
+	--pill-color:				var(--OT-color-on-accent-3);
 	--pill-background:			var(--background-secondary-alt);
-	--pill-color-hover:			var(--OT-button-text-hover);
-	--pill-background-hover:	var(--OT-button-background-hover);
+	--pill-color-hover:			var(--OT-color-on-accent-1);
+	--pill-background-hover:	var(--color-accent-1);
 /*	--pill-remove-color:		var(--text-on-hover);				*/
 
-	--tab-text-color:					var(--OT-text-faint-in-sidebar);
-	--tab-text-color-focused-active:	var(--OT-text-in-sidebar);
-	--tab-text-color-focused:			var(--OT-text-in-sidebar);
+	--tab-text-color:			var(--color-base-50);
+	--tab-text-color-active:	var(--color-base-70);
 
 /*	--table-background:					white;	*/
 /*	--table-column-alt-background:		inherit;	*/
@@ -310,17 +313,21 @@ body {
 /*	--tag-color-hover:		var(--text-on-accent);*/
 /*	--tag-background-hover:	var(--interactive-accent-hover);*/
 
-	--vault-name-color:		var(--h1-color);
-	--vault-profile-color:	var(--OT-text-in-sidebar);
+	--tab-container-background:	var(--color-base-05);
+
+	--vault-name-color:				var(--OT-color-on-base-20);
+	--vault-profile-color:			var(--OT-color-on-base-20);
+	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
 
 /*	Bookmark	OpSpl03	*/
 	/*	----- Text colors -----
 		-----------------------	*/
 	--text-accent-hover:	var(--link-color);
-	--text-accent:			var(--color-accent-2);
+	--text-accent:			cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
 	--text-error-hover:		var(--text-accent-hover);
-	--text-on-accent:		var(--background-secondary);
-	--text-on-hover:		var(--text-on-accent);
+	--text-on-accent:		var(--OT-color-on-accent-1);
+	--text-on-accent-inverted:	var(--text-on-accent);		/*	dans "app.css" il est défini comme “black”. Je l’ai vu utilisé à des endroits non souhaités!	*/
+	--text-on-hover:		var(--OT-color-on-accent-1);
 
  	--link-color-hover:			var(--text-accent-hover);
 	--link-external-color:		var(--link-color);
@@ -424,7 +431,7 @@ body {
 	--color-base-40:			#D400D4;
 	--color-base-50:			#000000;
 	--color-base-05:			#C3BED0;
-	--OT-text-in-sidebar:			#E6DFFA;
+	--OT-color-on-base-20:	#E6DFFA;
 	--text-muted:				#FCF2FF;
 	--background-secondary-alt:	#BBA4F3;
 
@@ -437,7 +444,7 @@ body {
 	--accent-l:			38%	!important;
 
 	--text-normal:		#2E6E74;
-	--OT-text-muted-in-sidebar:	#3C9199;
+	--OT-color-muted-on-base-20:	#3C9199;
 	--link-color:		#572E74;
 	--h1-color:			#2C686E;
 	--h3-color:			#357F86;
@@ -448,16 +455,17 @@ body {
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-20);
 	--OT-setting-item-description:					#0BA5B3;
 	--OT-tree-item-flair-background:				#087983;
-	--OT-vertical-tab-header-group-title:			var(--OT-text-in-sidebar);
+	--OT-vertical-tab-header-group-title:			var(--OT-color-on-base-20);
 	--OT-view-header-title-focus-color:				var(--color-base-20);
-	--OT-view-header-title-no-focus-color:			var(--color-base-05);
-	--OT-table-background:					#EAE3FB;
-	--OT-table-header-background:						#DBD0F9;
+	--OT-view-header-title-no-focus-color:			var(--color-base-00);
+	--OT-table-background:							#EAE3FB;
+	--OT-table-header-background:					#DBD0F9;
 
 	--tab-text-color-active:						var(--color-base-20);
 	--tab-text-color-focused-active:				var(--color-base-20);
-	--OT-stabilo-mark:									var(--stabilo-bleu-clair);
-}
+	--OT-stabilo-mark:								var(--stabilo-bleu-clair);
+}/*	↑ generalPalette-artDeco ↑	*/
+
 .theme-light.generalPalette-beige {
 /*	Base colors	*/
 	--color-base-00:	#F6F2EE;
@@ -484,7 +492,7 @@ body {
 	--h1-color:		#96704F;
 	--h3-color:		#9F7653;
 	--h5-color:		#BEA18D;
-	--OT-text-in-sidebar:	#A87D58;
+	--OT-color-on-base-20:	#A87D58;
 
 /*	Functional variables*/
 	--blockquote-background-color:		#EDE4DD;
@@ -501,7 +509,7 @@ body {
 	--color-base-40:	#0870d9;
 	--color-base-05:	#F2F7FE;
 	--color-base-50:	#7591CB;
-	--OT-text-in-sidebar:	#0760BA;
+	--OT-color-on-base-20:	#0760BA;
 	--background-secondary-alt:	#BCD4F6;
 
 	--background-modifier-border:		#A5BCDB;
@@ -522,10 +530,9 @@ body {
 
 	--OT-table-header-background:	#C7DEFF;
 	--OT-table-background:	#D9E8FF;
-/*	--OT-workspace-tab-header-inner-title-color:	var(--OT-button-text-hover);*/
-
-}
+} /*	↑ generalPalette-blue ↑	*/
 .theme-light.generalPalette-OBSIDIAN {
+	--link-color:					var(--obsidian-violet);
 	--OT-table-header-background:	#EEEEEE;
 }
 .theme-light.generalPalette-WIP {
@@ -568,7 +575,7 @@ body {
 	--OT-table-alt-background:		#E8F9EE;
 	--OT-table-background:			#E7FDEF;
 	--OT-table-header-background:	#DDFCE8;
-	--OT-text-in-sidebar:			#085C27;
+	--OT-color-on-base-20:			#085C27;
 }/*	↑ generalPalette-green ↑	*/
 
 .theme-light.generalPalette-icy {
@@ -597,7 +604,7 @@ body {
 	--h1-color:				#06509A;
 	--h3-color:				#0872DC;
 	--h5-color:				#3194F7;
-	--OT-text-in-sidebar:	#0760BA;
+	--OT-color-on-base-20:	#0760BA;
 
 /*	Functional variables*/
 	--blockquote-background-color:	#EEF4FF;
@@ -607,7 +614,7 @@ body {
 	--OT-metadata-title-color-faint:#90B8E1;
 	--OT-table-background:			#F4F9FF;
 	--OT-table-header-background:	#E2EEFE;
-	--OT-tooltips-text-color:		var(--color-base-00);
+	--OT-tooltip-text-color:		var(--color-base-00);
 }/*	↑ generalPalette-icy ↑	*/
 
 .theme-light.generalPalette-lightBeige {
@@ -617,7 +624,7 @@ body {
 	--color-base-35:	#daba82;
 	--color-base-40:	#c3913a;
 	--color-base-50:	#8E7E70;
-	--color-base-05:	#E5DFD4;
+	--color-base-05:	#FBF0DC;
 
 /*	Surface colors	*/
 	--background-secondary-alt:			#EEE8DC;
@@ -632,7 +639,7 @@ body {
 /*	Text colors	*/
 	--text-normal:		#71573E;
 	--text-muted:		#BD8C38;
-	--text-on-accent:	var(--OT-text-in-sidebar);
+/*	--text-on-accent:	var(--OT-color-on-base-20);	*/
 	--link-color:		#507192;
 	--h1-color:			#9D7956;
 	--h3-color:			#6B523B;
@@ -641,14 +648,14 @@ body {
 
 /*	Functional variables*/
 	--blockquote-background-color:		#F7F0E4;
-	--icon-color-active:				var(--text-in-sidebar);
-	--nav-item-color-hover:				var(--text-in-sidebar);
+/*	--nav-item-color-hover:				var(--text-in-sidebar);	*/
+	--OT-color-on-accent-2:				var(--color-base-00);
 	--OT-clickable-icon-color-hover:	var(--color-base-20);
 	--OT-metadata-title-color-faint: 	#B1A295;
 	--OT-stabilo-mark:					#E9DDD1;
 	--OT-table-alt-background:			#f9f5ec;	/*	#fffefa;	*/
 	--OT-table-header-background:		#EEE8DC;
-	--OT-text-in-sidebar:	#7D6754;
+	--OT-color-on-base-20:			#7D6754;
 } /*	↑ generalPalette-lightBeige ↑	*/
 
 .theme-light.generalPalette-metallicBlue {
@@ -664,9 +671,9 @@ body {
 	--background-modifier-border:	#225378;
 
 /*	Accent color	*/
-	--accent-h:			325	!important;
+	--accent-h:			205	!important;
 	--accent-s:			80%	!important;
-	--accent-l:			30%	!important;
+	--accent-l:			40%	!important;
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 50%));		/*	additional accent color for theme’s needs	*/
 
 /*	Text colors	*/
@@ -676,49 +683,48 @@ body {
 	--link-color:	#267020;
 
 /*	Functional variables*/
-	--blockquote-background-color:			#FDF8D6;
-	--h1-color:								var(--text-normal);
-	--h3-color:								var(--text-normal);
-	--h5-color:								var(--text-normal);
-	--icon-color-focused:					var(--background-primary);
-	--icon-color:							var(--background-primary);
-	--metadata-input-background-active:		#EEFFD0;
-	--metadata-input-text-color:			var(--background-primary);
-	--nav-item-color-hover:					var(--nav-item-color);
+	--blockquote-background-color:					#FDF8D6;
+	--h1-color:										var(--text-normal);
+	--h3-color:										var(--text-normal);
+	--h5-color:										var(--text-normal);
+	--icon-color-focused:							var(--background-primary);
+	--icon-color:									var(--background-primary);
+	--metadata-input-background-active:				#EEFFD0;
+	--metadata-input-text-color:					var(--background-primary);
 
-	--OT-button-background-normal:			var(--color-accent-3);
-	--OT-calendar-day-color:				var(--OT-text-in-sidebar);
-	--OT-clickable-icon-background-active:	var(--color-accent-3);
-	--OT-metadata-background:				#F1F6EB;
-	--OT-metadata-property-icon:			var(--background-secondary);
-	--OT-nav-folder-title-color:			#4492CB;
-	--OT-ribbon-icon-color-sidebar-is-open:	#BBD7EC;
-	--OT-search-result-file-title-expanded:	var(--color-base-00);		/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
-	--OT-style-settings-collapse-indicator:	#143248;
-	--OT-table-background:					#FBFCFD;
-	--OT-table-header-background:			#ACC7E2;
-	--OT-text-faint-in-sidebar:				#B6E1FF;
-	--OT-text-in-sidebar:					var(--OT-text-muted-in-sidebar);
-	--OT-text-muted-in-sidebar:				#C8DFF0;
-	--OT-text-normal-on-secondary:			var(--background-primary);
-	--OT-tooltips-text-color:				var(--OT-text-in-sidebar);
-	--OT-vertical-tab-header-group-title:	#82B0D8;
-	--OT-workspace-tab-header-inner-title-color:	var(--text-normal);
+	--nav-item-color:								var(--color-base-30);
+/*	--nav-item-color-hover:							var(--nav-item-color);	*/
+	--OT-calendar-day-color:						var(--OT-color-on-base-20);
+	--OT-clickable-icon-in-header:					var(--color-accent-2);
+	--OT-color-on-accent-2:							var(--color-base-00);
+	--OT-metadata-background:						#F1F6EB;
+	--OT-metadata-property-icon:					var(--background-secondary);
+	--OT-nav-folder-title-color:					#4492CB;
+	--OT-ribbon-icon-color-sidebar-is-open:			#BBD7EC;
+	--OT-search-result-file-title-expanded:			var(--color-base-00);		/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
+	--OT-style-settings-collapse-indicator:			#143248;
+	--OT-table-background:							#FBFCFD;
+	--OT-table-header-background:					#ACC7E2;
+	--OT-color-muted-on-base-20:					#C8DFF0;
+	--OT-color-on-base-20:							var(--OT-color-muted-on-base-20);
+	--OT-text-normal-on-secondary:					var(--background-primary);
+	--OT-tooltip-text-color:						var(--OT-color-on-base-20);
+	--OT-vertical-tab-header-group-title:			#82B0D8;
 	--pill-color:									var(--background-secondary);
 	--status-bar-border-color:						#fafff3;
 	--status-bar-text-color:						var(--background-primary);
 	--tab-text-color-focused-active-current:		var(--background-primary);
 	--tab-text-color-focused-active:				var(--text-normal);
-	--text-on-accent:								var(--background-primary)
+/*	--text-on-accent:								var(--background-primary)	*/
 } /*	↑ generalPalette-metallicBlue ↑	*/
 
 .theme-light.generalPalette-paradiso {
-	--color-base-00:	#F1EFE3;
-	--color-base-20:	#E1E2C2;
-	--color-base-35:	rgb(212, 212, 212);
-	--color-base-40:	rgb(195, 224, 190);
-	--color-base-05:	#A7A790;
-	--OT-text-in-sidebar:	#636430;
+	--color-base-00:		#F1EFE3;
+	--color-base-20:		#E1E2C2;
+	--color-base-35:		rgb(212, 212, 212);
+	--color-base-40:		rgb(195, 224, 190);
+	--color-base-05:		#A7A790;
+	--OT-color-on-base-20:	#636430;
 
 	--background-secondary-alt:			#D9D9BB;
 	--background-modifier-form-field:	#F2F3D1;
@@ -746,7 +752,7 @@ body {
 	--color-base-35:	#FFEED1;
 	--color-base-40:	#706553;
 	--color-base-05:	#544C3E;
-	--OT-text-in-sidebar:	#6F5B3E;
+	--OT-color-on-base-20:	#6F5B3E;
 	--color-base-50:	#B68D40;
 	--text-muted:	#B68D40;
 
@@ -765,7 +771,7 @@ body {
 	--h3-color:		#B68D40;
 	--h5-color:		#AEA188;
 
-	--tab-text-color-focused:	var(--OT-text-in-sidebar);
+	--tab-text-color-focused:	var(--OT-color-on-base-20);
 
 	--OT-metadata-title-color-faint: 	#C3BBAF;
 	--OT-table-header-background:	#F6DFB6;
@@ -777,7 +783,7 @@ body {
 	--color-base-35:	rgb(212, 212, 212);
 	--color-base-40:	rgb(195, 224, 190);
 	--color-base-50:	#6BB782;
-	--OT-text-in-sidebar:	#309A53;
+	--OT-color-on-base-20:	#309A53;
 
 	--background-secondary-alt:		#D7E7DC;
 	--background-modifier-border:	rgb(169, 214, 180);
@@ -818,7 +824,7 @@ body {
 /*	Text colors	*/
 	--text-normal:		#5D0603;
 	--text-muted:		#760804;
-	--text-on-accent:	var(--color-base-20);	/*	#FF0032;	*/
+/*	--text-on-accent:	var(--color-base-20);	*/
 	--link-color:		var(--obsidian-violet);
 	--h1-color:			#6A0804;
 	--h3-color:			#823B3B;
@@ -828,14 +834,14 @@ body {
 	--blockquote-background-color:	#FBDCDC;
 	--checklist-done-color:			#F38B8B;
 	--code-normal:					#C00D06;
-	--icon-color-focused:			var(--OT-text-in-sidebar);
-	--nav-item-color-active:		var(--OT-text-in-sidebar);
+	--icon-color-focused:			var(--OT-color-on-base-20);
+	--nav-item-color-active:		var(--OT-color-on-base-20);
 	--OT-metadata-background:		#F3DDDC;
 	--OT-metadata-title-color-faint:#886A6A;
 	--OT-table-background:			#FDD3D3;
 	--OT-table-header-background:	#FDD2D2;
-	--OT-text-in-sidebar:			#C00D06;
-	--OT-tooltips-text-color:		var(--color-base-00);
+	--OT-color-on-base-20:			#C00D06;
+	--OT-tooltip-text-color:		var(--color-base-00);
 }/*	↑ generalPalette-red	*/
 
 .theme-light.generalPalette-solarized {
@@ -844,7 +850,7 @@ body {
 	--color-base-35:	var(--solarized-base1);
 	--color-base-40:	var(--solarized-yellow);
 	--color-base-50:	var(--solarized-base0);
-	--OT-text-in-sidebar:	var(--solarized-violet);
+	--OT-color-on-base-20:	var(--solarized-violet);
 
 	--background-secondary-alt:		var(--solarized-base3);
 	--background-modifier-form-field:var(--solarized-base2);
@@ -872,7 +878,7 @@ body {
 	--color-base-20:	#D6D3D1;
 	--color-base-35:	#E7E5E4;
 	--color-base-40:	#A8A29E;
-	--OT-text-in-sidebar:	#44403C;
+	--OT-color-on-base-20:	#44403C;
 	--color-base-50:	#78716C;
 
 	--accent-h:	254	!important;
@@ -901,7 +907,7 @@ body {
 	--color-base-35:	#A897B9;
 	--color-base-40:	#720FD3;
 	--color-base-50:	#A457F2;
-	--OT-text-in-sidebar:	#7111D2;
+	--OT-color-on-base-20:	#7111D2;
 
 	--background-secondary-alt:		#D0AEF1;
 	--background-modifier-form-field:#EAD8FC;
@@ -930,7 +936,7 @@ body {
 	--color-base-35:	#fdeda9;
 	--color-base-40:	#fbcd15;
 	--color-base-50:	#B28F03;
-	--OT-text-in-sidebar:	#907403;
+	--OT-color-on-base-20:	#907403;
 
 	--background-secondary-alt:		#F5EBC0;
 	--background-modifier-form-field:#FFFAE6;
@@ -945,13 +951,13 @@ body {
 	--text-selection:	hsl(var(--accent-h), var(--accent-s), 70%);
 
 	--text-normal:	var(--favorite-blue);
-	--OT-text-muted-in-sidebar:	#B28F03;
+	--OT-color-muted-on-base-20:	#B28F03;
 	--link-color:		#537622;
 	--h1-color:			#6F5902;
 
 	--OT-table-header-background:	#FEEFB6;
 	--OT-table-background:	#FDEFB3;
-	--text-on-accent:		#816E1D;
+/*	--text-on-accent:		#816E1D;	*/
 
 }
 
@@ -973,7 +979,7 @@ body {
 	--color-base-35:	#4A413B;
 	--color-base-40:	#603D04;
 	--color-base-05:	#4A413B;
-	--OT-text-in-sidebar:	#DA8B09;
+	--OT-color-on-base-20:	#DA8B09;
 	--color-base-50:	#784D05;
 	--text-muted:	#F39B0A;
 
@@ -984,13 +990,13 @@ body {
 	--background-modifier-border:	#784D05;
 	--blockquote-background-color:	#472E03;
 
-	--text-normal:	#F39B0A;
+	--text-normal:		#F39B0A;
 	--link-color:		#0A62F3;
 	--h1-color:			#F5AF66;
 	--h3-color:			#F7AF39;
 	--h5-color:			#05794D;
-	--OT-stabilo-mark:		#F39539;
-	--OT-stabilo-text:		var(--color-base-00) !important;
+	--OT-stabilo-mark:	#F39539;
+	--OT-stabilo-text:	var(--color-base-00) !important;
 
 	--OT-table-header-background:	#3A2503;
 	--OT-table-background:	#221602;
@@ -1018,7 +1024,7 @@ body {
 	--color-base-35:	#043363;
 	--color-base-40:	#03264a;
 	--color-base-05:	#010A14;
-	--OT-text-in-sidebar:	#0868CA;	/*	#0760BA;	*/
+	--OT-color-on-base-20:	#0868CA;	/*	#0760BA;	*/
 	--color-base-50:	#306ABD;
 	--text-muted:	#527AC2;
 	/*	--color-base-10:	var(--color-base-35);	*/
@@ -1050,7 +1056,7 @@ body {
 	--color-base-35:	#7B6054;
 	--color-base-40:	#512C0E;
 	--color-base-05:	#190E04;
-	--OT-text-in-sidebar:	#B76320;
+	--OT-color-on-base-20:	#B76320;
 	--color-base-50:	#CC6F24;
 	--text-muted:	#DE8945;
 
@@ -1080,7 +1086,7 @@ body {
 	--color-base-35:	#0F582A;
 	--color-base-40:	#0B4320;
 	--color-base-05:	#000101;
-	--OT-text-in-sidebar:	#22C55E;
+	--OT-color-on-base-20:	#22C55E;
 	--color-base-50:	#27DA69;
 	--text-muted:	#27DA69;
 
@@ -1110,7 +1116,7 @@ body {
 	--color-base-35:	#00204B;
 	--color-base-40:	#000E22;
 	--color-base-05:	#00060D;
-	--OT-text-in-sidebar:	#036FFF;
+	--OT-color-on-base-20:	#036FFF;
 	--color-base-50:	#0066EE;
 	--text-muted:	#7EB5FF;
 
@@ -1142,7 +1148,7 @@ body {
 	--color-base-35:	#232429;
 	--color-base-40:	#F3EE5E;
 	--color-base-05:	black;
-	--OT-text-in-sidebar:	#hsl(224, 17%, 68%);
+	--OT-color-on-base-20:	#hsl(224, 17%, 68%);
 	--color-base-50:	#B9C3DF;
 	--text-muted:	hsl(224, 17%, 68%);
 
@@ -1179,7 +1185,7 @@ body {
 	--color-base-35:	#334455;
 	--color-base-40:	#334455;
 	--color-base-05:	#07121B;
-	--OT-text-in-sidebar:	#DEDFE1;
+	--OT-color-on-base-20:	#DEDFE1;
 	--color-base-50:	#EDEDEE;
 	--text-muted:	#CFD0D3;
 
@@ -1198,8 +1204,8 @@ body {
 
 	--blockquote-text-color:	var(--text-normal) !important;
 	--code-normal:				var(--text-normal);
-	--text-on-accent:			var(--OT-text-in-sidebar);
-	--OT-stabilo-text:			var(--OT-text-in-sidebar) !important;
+/*	--text-on-accent:			var(--OT-color-on-base-20);	*/
+	--OT-stabilo-text:			var(--OT-color-on-base-20) !important;
 	--OT-stabilo-mark:			#255C84;
 
 	--OT-metadata-title-color-faint: 	#6E7071;
@@ -1215,7 +1221,7 @@ body {
 	--color-base-35:	#909246;
 	--color-base-40:	#35361A;
 	--color-base-05:	#1F1F0F;
-	--OT-text-in-sidebar:	#BFC17D;
+	--OT-color-on-base-20:	#BFC17D;
 	--color-base-50:	#CACC94;
 	--text-muted:	#BFC17D;
 
@@ -1243,7 +1249,7 @@ body {
 	--color-base-35:	#A7661D;
 	--color-base-40:	#B97020;
 	--color-base-05:	#2E1C08;
-	--OT-text-in-sidebar:	#ECC090;
+	--OT-color-on-base-20:	#ECC090;
 	--color-base-50:	#EFCAA2;
 	--text-muted:	#ECC090;
 
@@ -1259,7 +1265,7 @@ body {
 	--link-unresolved-color:		#F6C8F4;
 	--OT-stabilo-mark:					#E3A35C;
 	--OT-stabilo-text:					var(--color-base-20) !important;
-	--text-on-accent:				var(--text-muted);
+/*	--text-on-accent:				var(--text-muted);	*/
 
 	--OT-metadata-title-color-faint: 	#895317;
 	--OT-table-header-background:	#3E250A;
@@ -1273,7 +1279,7 @@ body {
 	--color-base-35:	#B91C1C;
 	--color-base-40:	#4F0310;
 	--color-base-05:	#170105;
-	--OT-text-in-sidebar:	#C09B9C;
+	--OT-color-on-base-20:	#C09B9C;
 	--color-base-50:	#9F5357;
 
 	--accent-h:	350	!important;
@@ -1307,7 +1313,7 @@ body {
 	--color-base-35:	var(--solarized-base01);
 	--color-base-40:	var(--solarized-base02);
 	--color-base-05:	var(--solarized-base03);
-	--OT-text-in-sidebar:	var(--solarized-base2);
+	--OT-color-on-base-20:	var(--solarized-base2);
 	--color-base-50:	var(--solarized-base2);
 	--text-muted:	var(--solarized-base1);
 
@@ -1320,7 +1326,7 @@ body {
 
 	--text-normal:			var(--solarized-base3);
 	--link-color:				var(--solarized-blue);
-	--OT-tooltips-text-color:	var(--color-base-20);
+	--OT-tooltip-text-color:	var(--color-base-20);
 	--text-on-hover:			var(--color-base-20);
 
 	--OT-metadata-title-color-faint: 	var(--solarized-base01);
@@ -1339,7 +1345,7 @@ body {
 	--color-base-35:	#ACA6A0;
 	--color-base-40:	#57534E;
 	--color-base-05:	#1C1917;
-	--OT-text-in-sidebar:	#A8A29E;
+	--OT-color-on-base-20:	#A8A29E;
 	--color-base-50:	#D6D3D1;
 	--text-muted:	#A8A29E;
 
@@ -1371,7 +1377,7 @@ body {
 	--color-base-35:	#3686AA;
 	--color-base-40:	#E6F2CC;
 	--color-base-05:	#B8B8AC;
-	--OT-text-in-sidebar:	#E6F2CC;
+	--OT-color-on-base-20:	#E6F2CC;
 	--color-base-50:	#F2B630;
 
 	--background-modifier-border:	#F2B630;
@@ -1387,7 +1393,7 @@ body {
 	--h1-color:			#F2B630;
 	--h3-color:			#C8E28F;
 	--h5-color:			#E5AC2D;
-	--text-on-accent:	#F8FBF8;
+/*	--text-on-accent:	#F8FBF8;	*/
 
 	--blockquote-text-color:	#001F99;
 	--code-normal:				#001F99;
@@ -1407,7 +1413,7 @@ body {
 	--color-base-35:	#4C1D95;
 	--color-base-40:	#2B1155;
 	--color-base-05:	#0B0415;
-	--OT-text-in-sidebar:	#9160E1;
+	--OT-color-on-base-20:	#9160E1;
 	--color-base-50:	#6D29D5;
 	--text-muted:	#8A54DE;
 
@@ -1436,7 +1442,7 @@ body {
 	--color-base-35:	#333333;
 	--color-base-40:	#D9AF04;
 	--color-base-05:	#0D0D0D;
-	--OT-text-in-sidebar:	#C8A204;/*	#D9AF04;	*/
+	--OT-color-on-base-20:	#C8A204;/*	#D9AF04;	*/
 	--color-base-50:	#D1A803;/*	#F2C304;	*/
 	--text-muted:	#D1A803;/*	#F2C304;	*/
 
@@ -1474,7 +1480,7 @@ body {
 	--accent-h:			185	!important;
 	--accent-s:			88%	!important;
 	--accent-l:			52%	!important;
-	--text-on-accent:	var(--color-base-40);
+/*	--text-on-accent:	var(--color-base-40);*/
 }
 
 .theme-light.generalPalette-beige.accentColor-lightMode-shade {
@@ -1502,8 +1508,8 @@ body {
 	--accent-h:			125		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			30%		!important;
-	--text-on-accent:		var(--OT-text-in-sidebar);
-	--text-on-hover:		var(--OT-text-in-sidebar);
+/*	--text-on-accent:		var(--OT-color-on-base-20);	*/
+	--text-on-hover:		var(--OT-color-on-base-20);
 }
 .theme-light.generalPalette-blue.accentColor-lightMode-alternative-2 {
 	--accent-h:			305		!important;
@@ -1531,8 +1537,8 @@ body {
 	--accent-h:			142	!important;
 	--accent-s:			83%	!important;
 	--accent-l:			33%	!important;
-	--OT-tooltips-text-color:	var(--color-base-00);
-	--text-on-hover:			var(--OT-text-in-sidebar);
+	--OT-tooltip-text-color:	var(--color-base-00);
+	--text-on-hover:			var(--OT-color-on-base-20);
 }
 .theme-light.generalPalette-green.accentColor-lightMode-alternative-1 {
 	--accent-h:			232	!important;
@@ -1554,7 +1560,7 @@ body {
 	--accent-h:			94		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			40%		!important;
-	--text-on-accent:		var(--OT-text-in-sidebar);
+/*	--text-on-accent:		var(--OT-color-on-base-20);	*/
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-alternative-2 {
 	--accent-h:			304		!important;
@@ -1566,7 +1572,6 @@ body {
 	--accent-h:			38	!important;
 	--accent-s:			54%	!important;
 	--accent-l:			50%	!important;
-	--OT-tooltips-text-color:	var(--OT-text-in-sidebar);
 }
 .theme-light.generalPalette-lightBeige.accentColor-lightMode-alternative-1 {
 	--accent-h:			188	!important;
@@ -1580,9 +1585,9 @@ body {
 }
 
 .theme-light.generalPalette-metallicBlue.accentColor-lightMode-shade {
-	--accent-h:			205	!important;
+/*	--accent-h:			205	!important;
 	--accent-s:			80%	!important;
-	--accent-l:			20%	!important;
+	--accent-l:			20%	!important;	*/
 }
 .theme-light.generalPalette-metallicBlue.accentColor-lightMode-alternative-1 {
 	--accent-h:			325	!important;
@@ -1593,7 +1598,7 @@ body {
 	--accent-h:			85	!important;
 	--accent-s:			80%	!important;
 	--accent-l:			30%	!important;
-	--text-on-accent:		var(--background-secondary);
+/*	--text-on-accent:		var(--background-secondary);	*/
 }
 
 .theme-light.generalPalette-parchment.accentColor-lightMode-shade {
@@ -1658,7 +1663,7 @@ body {
 	--accent-h:			210 !important;		/*	22.11.2022: 164	*/
 	--accent-s:			93%	!important;		/*	22.11.2022: 80	*/
 	--accent-l:			70%	!important;		/*	22.11.2022: 50	*/
-	--text-on-accent:	var(--OT-text-in-sidebar);
+/*	--text-on-accent:	var(--OT-color-on-base-20);	*/
 }
 
 .theme-light.generalPalette-solarized.accentColor-lightMode-shade {
@@ -1681,8 +1686,8 @@ body {
 	--accent-h:	30	!important;
 	--accent-s:	5%	!important;
 	--accent-l:	54%	!important;
-	--OT-tooltips-text-color:	var(--OT-text-in-sidebar);
-	--text-on-accent:			var(--OT-text-in-sidebar);
+	--OT-tooltip-text-color:	var(--OT-color-on-base-20);
+/*	--text-on-accent:			var(--OT-color-on-base-20);	*/
 }
 .theme-light.generalPalette-stone.accentColor-lightMode-alternative-1 {
 	--accent-h:	254	!important;
@@ -1693,8 +1698,8 @@ body {
 	--accent-h:	74	!important;
 	--accent-s:	60%	!important;
 	--accent-l:	25%	!important;
-/*		--text-on-hover:			var(--OT-text-in-sidebar);	*/
-/*		--OT-tooltips-text-color:	var(--OT-text-in-sidebar);	*/
+/*		--text-on-hover:			var(--OT-color-on-base-20);	*/
+/*		--OT-tooltip-text-color:	var(--OT-color-on-base-20);	*/
 }
 
 .theme-light.generalPalette-violet.accentColor-lightMode-shade {
@@ -1706,7 +1711,7 @@ body {
 	--accent-h:			180	!important;
 	--accent-s:			80%	!important;
 	--accent-l:			35%	!important;
-	--OT-tooltips-text-color:			var(--background-modifier-border);
+	--OT-tooltip-text-color:			var(--background-modifier-border);
 	--background-modifier-active-hover:	var(--color-accent-2);
 	--interactive-accent-hover:			var(--color-accent-2);
 }
@@ -1720,9 +1725,9 @@ body {
 	--accent-h:			48	!important;
 	--accent-s:			96%	!important;
 	--accent-l:			35%	!important;
-	--text-on-accent:		var(--background-primary);
+/*	--text-on-accent:		var(--background-primary);	*/
  	--link-color-hover:		var(--text-accent-hover);
-	--OT-tooltips-text-color:			var(--OT-text-in-sidebar);
+	--OT-tooltip-text-color:			var(--OT-color-on-base-20);
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-1 {
 	--accent-h:			228	!important;
@@ -1765,7 +1770,7 @@ body {
 	--accent-h:	217	!important;
 	--accent-s:	92%	!important;
 	--accent-l:	10%	!important;
-	--text-on-accent:		#F39B0A;
+/*	--text-on-accent:		#F39B0A;	*/
 }
 .theme-dark.generalPalette-beige.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.generalPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-2,
@@ -1773,7 +1778,7 @@ body {
 	--accent-h:	277	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	16%	!important;
-	--text-on-accent:	#F39B0A;
+/*	--text-on-accent:	#F39B0A;	*/
 }
 
 .theme-dark.generalPalette-blue.darkPalette-default.accentColor-darkMode-shade,
@@ -1812,7 +1817,7 @@ body {
 	--accent-h:	267	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	20%	!important;
-	--nav-item-color-active:	var(--OT-text-in-sidebar);
+	--nav-item-color-active:	var(--OT-color-on-base-20);
 }
 
 .theme-dark.generalPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-shade,
@@ -1851,7 +1856,7 @@ body {
 	--accent-h:	231	!important;
 	--accent-s:	70%	!important;
 	--accent-l:	30%	!important;
-	--text-on-accent:	var(--OT-text-in-sidebar);
+/*	--text-on-accent:	var(--OT-color-on-base-20);	*/
 }
 .theme-dark.generalPalette-green.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-green.accentColor-darkMode-alternative-2 {
@@ -1865,14 +1870,14 @@ body {
 	--accent-h:	214	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	30%	!important;
-	--text-on-accent:	#C2DCFF;
+/*	--text-on-accent:	#C2DCFF;	*/
 }
 .theme-dark.generalPalette-icy.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-icy.accentColor-darkMode-alternative-1 {
 	--accent-h:	334	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	30%	!important;
-	--text-on-accent:	#C2DCFF;
+/*	--text-on-accent:	#C2DCFF;	*/
 }
 .theme-dark.generalPalette-icy.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-icy.accentColor-darkMode-alternative-2 {
@@ -1939,7 +1944,7 @@ body {
 	--accent-h:	121	!important;
 	--accent-s:	50%	!important;
 	--accent-l:	30%	!important;
-	--text-on-accent:		var(--background-secondary-alt);
+/*	--text-on-accent:		var(--background-secondary-alt);	*/
 }
 
 .theme-dark.generalPalette-red.darkPalette-default.accentColor-darkMode-shade,
@@ -1960,7 +1965,7 @@ body {
 	--accent-h:	260	!important;
 	--accent-s:	70%	!important;
 	--accent-l:	10%	!important;
-	--text-on-accent:	var(--OT-text-in-sidebar);
+/*	--text-on-accent:	var(--OT-color-on-base-20);	*/
 }
 
 .theme-dark.generalPalette-solarized.darkPalette-default.accentColor-darkMode-shade,
@@ -1974,14 +1979,14 @@ body {
 	--accent-h:			45	!important;
 	--accent-s:			100%	!important;
 	--accent-l:			20%	!important;
-	--text-on-accent:	var(--OT-text-in-sidebar);
+/*	--text-on-accent:	var(--OT-color-on-base-20);	*/
 }
 .theme-dark.generalPalette-solarized.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-solarized.accentColor-darkMode-alternative-2 {
 	--accent-h:			205	!important;
 	--accent-s:			69%	!important;
 	--accent-l:			34%	!important;
-	--text-on-accent:	var(--OT-text-in-sidebar);
+/*	--text-on-accent:	var(--OT-color-on-base-20);	*/
 }
 
 .theme-dark.generalPalette-stone.darkPalette-default.accentColor-darkMode-shade,
@@ -2008,8 +2013,8 @@ body {
 	--accent-h:			132	!important;
 	--accent-s:			100%	!important;
 	--accent-l:			30%	!important;
-	--text-on-accent:	var(--background-secondary);
-	--OT-tooltips-text-color:	var(--color-base-35);
+/*	--text-on-accent:	var(--background-secondary);	*/
+	--OT-tooltip-text-color:	var(--color-base-35);
 }
 .theme-dark.generalPalette-Victorian-1.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-victorian.accentColor-darkMode-alternative-1 {
@@ -2022,7 +2027,7 @@ body {
 	--accent-h:			41	!important;
 	--accent-s:			88%	!important;
 	--accent-l:			57%	!important;
-	--text-on-accent:	var(--background-secondary);
+/*	--text-on-accent:	var(--background-secondary);	*/
 }
 
 .theme-dark.generalPalette-violet.darkPalette-default.accentColor-darkMode-shade,
@@ -2055,14 +2060,14 @@ body {
 	--accent-h:	228	!important;
 	--accent-s:	97%	!important;
 	--accent-l:	35%	!important;
-	--text-on-accent:	var(--color-base-40);
+/*	--text-on-accent:	var(--color-base-40);	*/
 }
 .theme-dark.generalPalette-yellow.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-yellow.accentColor-darkMode-alternative-2 {
 	--accent-h:	318	!important;
 	--accent-s:	97%	!important;
 	--accent-l:	35%	!important;
-	--text-on-accent:	var(--color-base-50);
+/*	--text-on-accent:	var(--color-base-50);	*/
 }
 /* -------------------- ↑ OpSpl Accent Colors -------------------- ↑ */
 
@@ -3764,8 +3769,11 @@ input[type=checkbox] {
 
 .tree-item-flair {
 	background-color:	var(--OT-tree-item-flair-background);
-	color:				var(--text-on-accent);
-	padding:			var(--size-4-1);
+	color:				var(--OT-tree-item-flair-color);
+}
+.search-result:not(.is-collapsed) .search-result-file-title {
+	background-color:	var(--OT-tree-item-flair-background);
+	color:				var(--OT-tree-item-flair-color);
 }
 
 /*	les pastilles indicatives sur la feuille de publication	*/
@@ -3803,22 +3811,34 @@ input[type=checkbox] {
 .filesNavigator-spacing-veryLoose {
 	--OT-nav-item-vertical-padding:	var(--size-4-2);
 }
-/*	survol d’items dans les sidebars	*/
+.sidebar-toggle-button,
+.workspace-tabs.mod-top {
+  --tab-container-background: var(--titlebar-background);
+	/*	  background-color:	cyan;	*/
+}
+/*	survol du nom du coffre, en bas de la sidebar de gauche	*/
 @media (hover: hover) {
-	body:not(.is-grabbing) .nav-file-title:hover,
-	body:not(.is-grabbing) .nav-folder-title:hover {
-		color: 				var(--nav-item-color-hover);
-		background-color:	var(--nav-item-background-hover);
+  body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher:hover {
+    color:				var(--vault-profile-color-hover);
+    background-color:	var(--background-modifier-hover);
+  }
+  body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher:hover .workspace-drawer-vault-switcher-icon {
+    color: var(--vault-profile-color-hover);
   }
 }
-/*	survol d’items dans les sidebars	*/
-body:not(.is-grabbing) .nav-file-title.is-active:hover,
-body:not(.is-grabbing) .nav-folder-title.is-active:hover{
-	color:				var(--nav-item-color-hover);
-	background-color:	var(--nav-item-background-hover);
-}
 
-/*	liste de sélection, dans la barre latérale des settings — survol	*/
+/*	l’icône de sélection du coffre, à côté du nom du coffre, dans la sidebar	*/
+body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher-icon {
+	color:	var(--OT-OT-color-faint-on-base-20);
+}
+/*	liste de sélection, dans la barre latérale des settings	*/
+body:not(.is-phone) .horizontal-tab-nav-item.is-active,
+body:not(.is-phone) .vertical-tab-nav-item.is-active {
+	  --background-modifier-hover:	var(--color-accent-1);
+	  --icon-color:			var(--OT-color-on-accent1);
+	  color:				var(--text-on-accent-2);
+	  background-color:		var(--OT-sidebarTab-background-active);
+}
 @media (hover: hover) {
 	.horizontal-tab-nav-item:hover,
 	.vertical-tab-nav-item:hover {
@@ -3828,12 +3848,21 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover{
 }
 
 /*	Bookmark	OpSpl17a	*/
-/*	panneau avec les suggestions pour la recherche	*/
+/*	panneaux de suggestions 	*/
 .search-suggest-info-text {
-	color:	var(--OT-text-muted-in-sidebar);
+	color:	var(--OT-color-muted-on-base-20);
 }
-.suggestion-container{
-	color:	var(--OT-text-in-sidebar);
+.suggestion-container{								/*	le texte général des container de sélection	*/
+	color:	var(--color-base-100);
+}
+.suggestion-item.is-selected {						/*	la sélection en inversé, le texte général	*/
+	color:	var(--OT-color-on-accent-1);
+}
+.suggestion-item.mod-complex .suggestion-note {		/*	le texte complémentaire dans les containers de sélection	*/
+	color:	var(--OT-color-muted-on-base-20);
+}
+.suggestion-item.mod-complex.is-selected .suggestion-note {	/*	le texte complémentaire dans la sélection	*/
+	color:	var(--OT-color-muted-on-accent-1);
 }
 body:not(.is-grabbing) .tree-item-self.is-active:hover,
 .tree-item-self.is-active:hover {							/*	pour que ce qui est sélectionné soit visiblement survolé	*/
@@ -3845,9 +3874,26 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 	color:				var(--OT-clickable-icon-color-hover);
 	background-color:	var(--OT-clickable-icon-background-hover);	/*	--nav-item-background-active	*/
 }
+/*	pour les suggestions pour la recherche	*/
+.search-suggest-item.mod-group:hover,
+.search-suggest-item.mod-group.is-selected {
+	background-color:	var(--nav-item-background-hover);
+}
+.suggestion-item.is-selected .clickable-icon {
+	color:	var(--OT-color-on-accent-1);
+}
+
+.suggestion-item.is-selected .clickable-icon:hover {
+	color:	var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
+}
+
+.search-empty-state {
+	color:	var(--OT-color-faint-on-base-20);
+}
 
 .nav-file-title {
-	border-bottom:	1px dotted var(--OT-text-in-sidebar);
+	border-bottom:	1px dotted var(--OT-color-on-base-20);
 }
 /* ------------------------------ ↑ OpSpl Sidebars ↑ ------------------------------ */
 
@@ -3858,7 +3904,7 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 .tlfFileInfoTextArea,
 .tlfFileInfoValue,
 .tlfFileInfoValueNumber {
-	color:		var(--OT-text-muted-in-sidebar);
+	color:		var(--OT-color-muted-on-base-20);
 	font-size:	var(--OT-sidebars-font-size);
 }
 [data-type="tlfItemView"].workspace-leaf-content {
@@ -4136,15 +4182,18 @@ td .cm-editor .cm-line {
 .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
 	color:	var(--icon-color-active);
 }
-.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-	color:	var(--OT-workspace-tab-header-inner-title-color);/*	var(--tab-text-color-focused-active-current);	*/
-}
 /* ---------- OpSpl focused panel — mise en évidence du panneau qui a le focus */
 /* J’ai agrandi, via une variable, la taille du titre des panneaux qui n’ont pas le focus.
 	Mais je diminue l’intensité de la couleur du texte.		*/
 .view-header-title {
 	color:				var(--OT-view-header-title-no-focus-color);
     letter-spacing:		0.02em	!important;		/* à cause du “bold”	*/
+}
+.mod-left-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
+.mod-right-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
+.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+	color:	var(--OT-color-on-accent-2);
 }
 .is-focused .workspace-leaf.mod-active .view-header-title,	/*	Le titre du panneau qui a le focus	*/
 .is-focused .workspace-tab-header-status-icon {				/*	le “pin” d’un panneau “pinned”		*/
@@ -4164,9 +4213,14 @@ td .cm-editor .cm-line {
     font-size:			calc(var(--OT-readingMode-text-size) * 1.5);
     font-weight:		700;
 }
-.is-focused .workspace-tab-header:hover {	/*	survol	*/
-	color:				var(--text-on-accent);
-	background-color:	var(--color-accent-3);
+.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--OT-tab-background-active-hover);
+}
+@media (hover: hover) {
+  .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
+    color: var(--icon-color-hover)	!important;		/*	parce que dans “app.css”, l’ordre des déclarations fait que cette couleur n’est pas prise en compte	*/
+  }
 }
 /* -------------------- ↑ OpSpl En-tête des panneaux ↑ -------------------- */
 
@@ -4239,18 +4293,26 @@ button:not(.clickable-icon) {
 	    background-color:	var(--OT-button-background-hover);	/*	background-modifier-error	*/
   }
 }
+.is-focused .workspace-tab-header.is-active:hover {
+  color:			var(--OT-color-on-accent-1);
+  background-color:	var(--OT-tab-background-active-hover);
+}
+.is-focused .workspace-tab-header:hover {
+  color:			var(--OT-color-on-accent-1);
+  background-color:	var(--OT-tab-background-active-hover);
+}
 @media (hover: hover) {
   .workspace-tab-header.is-active .workspace-tab-header-status-icon:hover,
   .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
-		color:				var(--OT-button-text-hover);		/*	nothing	*/
-	    background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
+		color:				var(--OT-color-on-accent-1);
+	    background-color:	var(--OT-tab-background-active-hover);
   }
   .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-linked:hover,
   .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-linked:hover,
   .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-pinned:hover,
   .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-pinned:hover {
-		color:				var(--OT-button-text-hover);		/*	nothing	*/
-	    background-color:	var(--OT-button-background-hover);	/*	background-modifier-active-hover	*/
+		color:				var(--OT-color-on-accent-1);
+	    background-color:	var(--OT-tab-background-active-hover);
   }
 }
 .setting-hotkey {
@@ -4277,7 +4339,7 @@ button {
 	color:				var(--OT-button-text-normal);		/*	text-normal	*/
 	background-color:	var(--OT-button-background-normal);	/*	nothing	*/
 }
-button:not(.clickable-icon) {	/*	boutons affichés par "Jetadata Menu" à côté des properties qu’il gère	*/
+button:not(.clickable-icon) {	/*	boutons affichés par "Metadata Menu" à côté des properties qu’il gère	*/
 /*	background-color:	var(--OT-button-background-normal);	/*	interactive-normal	*/
 }
 @media (hover: hover) {
@@ -4320,14 +4382,17 @@ button.mod-muted {
 	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
   }
 }
+.checkbox-container.is-enabled {
+	background-color:	var(--color-accent-1);
+}
+.checkbox-container {
+	background-color:	var(--color-accent-3);
+}
 /*	-------------------- ↑ Buttons -------------------- ↑ */
 
 /* —————————————————————————————— OpSpl icons —————————————————————————————— */
-/*.clickable-icon {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
-}*/
 .clickable-icon {
-  	color:				var(--OT-button-text-normal);		/*	icon-color	*/
+  	color:				var(--icon-color);		/*	icon-color	*/
 	/* background-color:	var(--OT-button-background-normal);	/*	transparent	*/
 }
 .view-header .clickable-icon {
@@ -4379,7 +4444,7 @@ button.mod-muted {
 /* —————————————————————————————— OpSpl Settings pannel —————————————————————————————— */
 .vertical-tab-nav-item,
 .horizontal-tab-nav-item {
-	color:			var(--OT-text-in-sidebar);
+	color:			var(--OT-color-on-base-20);
 	margin-top:		0;
 	margin-bottom:	0;
 }
@@ -4399,7 +4464,7 @@ button.mod-muted {
 }
 /*
 .setting-item-description {
-	color:	var(--OT-text-in-sidebar);
+	color:	var(--OT-color-on-base-20);
 }*/
 
 /* Les petits titres introduisant les différentes sections dans le panneau “settings”.
@@ -4408,6 +4473,12 @@ button.mod-muted {
 	font-variant:	small-caps;
 	color:		var(--OT-vertical-tab-header-group-title);
 	font-size:	1.3em;
+}
+body:not(.is-phone) .community-item.is-selected,
+body:not(.is-phone) .community-item.is-selected:hover {
+	color:				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
+	border-color:		var(--color-accent-1);
 }
 
 /*	-------------------- suppression du réglage de la couleur “accent” dans les settings --------------------	*/
@@ -4582,7 +4653,7 @@ body span[alt*="+grid"] {
 /*	D’origine, le texte a toujours une valeur claire, laquelle ne contraste pas suffisamment lorsqu’on a un fond clair.	*/
 .notice,
 .tooltip {
-	color:	var(--OT-tooltips-text-color);
+	color:	var(--OT-tooltip-text-color)!important;
 }
 
 /* -------------------- ↑ Other refinements -------------------- ↑ */
@@ -5111,7 +5182,14 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	color:				var(--pill-color-hover);	/*	var(--link-color)	*/
 	background-color:	var(--pill-background-hover);
 }
-/* —————————————————————————————— Metadata Menu plugin —————————————————————————————— */
+/* —————————— Metadata Menu plugin —————————— */
+/* Redefine --text-faint for Metadata Menu plugin */
+.plugin-metadata-menu  {
+  --text-faint: var(--OT-text-faint-in-sidebar);
+}
+.field-btn-container button.property-metadata-menu {
+	color:	var(--OT-color-on-accent-3);
+}
 .field-btn-container button.property-metadata-menu:hover {
 	color:				var(--icon-color-hover);
 	background-color:	var(--OT-clickable-icon-background-hover);
@@ -5132,7 +5210,7 @@ button.canvas-menu-item {
 }
 
 .canvas-node-label {
-	color:	var(--OT-text-muted-in-sidebar);		/*	was --text-faint	*/
+	color:	var(--OT-color-muted-on-base-20);		/*	was --text-faint	*/
 }
 
 .canvas-node-container {
@@ -5246,8 +5324,8 @@ input[type='number']::placeholder {
 }
 .style-settings-export:hover,
 .style-settings-import:hover {
-	color:				var(--OT-button-background-normal);
-	background-color:	var(--OT-button-text-normal);
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
 }
 
 .workspace-ribbon.mod-left.is-collapsed .clickable-icon {
@@ -5274,7 +5352,7 @@ input[type='number']::placeholder {
 }
 
 .workspace-split.mod-horizontal.mod-right-split .empty-state-container {
-	color:	var(--OT-text-in-sidebar);
+	color:	var(--OT-color-on-base-20);
 }
 /* ———————————————————————————————————————————————————————————————————————————————————————————————	*/
 
@@ -5282,7 +5360,7 @@ input[type='number']::placeholder {
 /*	Pour les plugins “OmniSearch” et “Another Quick Switcher”	*/
 .another-quick-switcher__item__directory,
 .omnisearch-result__body {
-	color:	var(--OT-text-muted-in-sidebar);
+	color:	var(--OT-color-muted-on-base-20);
 }
 
 .another-quick-switcher__item__extension {
