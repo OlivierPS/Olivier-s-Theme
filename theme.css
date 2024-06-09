@@ -51,6 +51,7 @@
 						Tuning of some colors
 			05.06.2024	Tuning of some colors													1.9.1
 			09.06.2024	Important changes to the logic of the colors							1.10.0
+						Tuning of some colors													1.10.1
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -108,6 +109,9 @@ Bookmarks:	OpSpl01:	Déclarations générales
 			OpSpl40		Calendar plugin
 			OpSpl41		Metafolders plugin
 						Autres éléments d’interface
+			OpSpl42		Prompts
+
+			OpSpl99		to be sorted…
 
 			OpSpl100	Definitions for the Style settings plugin
 
@@ -220,7 +224,7 @@ body {
 	--OT-search-result-file-title-expanded:			var(--text-normal);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
 	--OT-tree-item-flair-color:						var(--OT-color-on-acent-3);
 	--OT-tree-item-flair-background:				var(--color-accent-3);
-	--OT-vertical-tab-header-group-title:			var(--color-base-50);
+	--OT-vertical-tab-header-group-title:			var(--OT-color-muted-on-base-20);
 	--OT-view-header-title-focus-color: 			var(--h1-color);
 
 /*	Bookmark	OpSpl02	*/
@@ -229,7 +233,7 @@ body {
 	/*	----- Surface colors -----
 		--------------------------	*/
 	--background-modifier-active-hover:	var(--color-accent-1);
-	--background-modifier-hover:		var(--color-accent-1); /*	hsla(var(--accent-h), 100%, var(--accent-l), 0.2);	*/
+	--background-modifier-hover:		hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
 	--background-modifier-message:		var(--color-accent-1);	/*	le fond des “tooltips”	*/
 	--background-modifier-success-rgb:	106, 245, 161;			/* pour les progress bars, je préfère une nuance de vert un peu plus claire */
 	--background-modifier-success:		rgb(106, 245, 161);
@@ -300,20 +304,22 @@ body {
 	--pill-background-hover:	var(--color-accent-1);
 /*	--pill-remove-color:		var(--text-on-hover);				*/
 
-	--tab-text-color:			var(--color-base-50);
-	--tab-text-color-active:	var(--color-base-70);
+	--tab-text-color:							var(--OT-color-faint-on-base-20);
+	--tab-text-color-active:					var(--color-accent-2);
+	--tab-text-color-focused-active:			var(--color-accent-1);
+	--tab-text-color-focused-active-current:	var(--OT-color-on-accent-1);
 
 /*	--table-background:					white;	*/
 /*	--table-column-alt-background:		inherit;	*/
 	--table-header-background-hover:	var(--table-header-background);
 	--table-header-color:				var(--h3-color);
 
-/*	--tag-color:			var(--text-on-accent);			*/
-/*	--tag-background:		var(--interactive-accent);		*/
+	--tag-color:			var(--OT-color-on-accent-2);
+	--tag-background:		var(--color-accent-2);
 /*	--tag-color-hover:		var(--text-on-accent);*/
 /*	--tag-background-hover:	var(--interactive-accent-hover);*/
 
-	--tab-container-background:	var(--color-base-05);
+	--tab-container-background:		var(--color-base-05);
 
 	--vault-name-color:				var(--OT-color-on-base-20);
 	--vault-profile-color:			var(--OT-color-on-base-20);
@@ -472,18 +478,13 @@ body {
 	--color-base-20:	#EEE5DD;
 	--color-base-35:	#EDE4DD;
 	--color-base-40:	#A87D58;
-	--color-base-05:	#D5CDC6;
-	--color-base-50:	#B89982;
+	--color-base-05:	#F0E9E2;
+	--color-base-50:	#F6EDE5;
 
 /*	Surface colors	*/
 	--background-secondary-alt:			#E6DDD5;
 	--background-modifier-form-field:	#F6EDE5;
 	--background-modifier-border:		#D7C3B2;
-
-/*	Accent color	*/
-	--accent-h:			238	!important;
-	--accent-s:			31%	!important;
-	--accent-l:			30%	!important;
 
 /*	Text colors	*/
 	--text-normal:	#6A4F38;
@@ -492,14 +493,19 @@ body {
 	--h1-color:		#96704F;
 	--h3-color:		#9F7653;
 	--h5-color:		#BEA18D;
-	--OT-color-on-base-20:	#A87D58;
+
+	--OT-color-on-base-20:			#A87D58;
+	--OT-color-muted-on-base-20:	#D19F6E;
+	--OT-color-faint-on-base-20:	#DCB691;
+	--OT-color-muted-on-accent-1:	#FBBF84;
+	--OT-color-on-accent-2:			var(--color-base-00);
 
 /*	Functional variables*/
 	--blockquote-background-color:		#EDE4DD;
 	--OT-clickable-icon-color-hover:	var(--color-base-20);
 	--OT-stabilo-mark:					#E9DDD1;
 	--OT-table-alt-background:			#EEE6DF;
-	--OT-table-header-background:	#EAE1D8;
+	--OT-table-header-background:		#EAE1D8;
 }/*	↑ generalPalette-beige ↑	*/
 
 .theme-light.generalPalette-blue {
@@ -534,6 +540,11 @@ body {
 .theme-light.generalPalette-OBSIDIAN {
 	--link-color:					var(--obsidian-violet);
 	--OT-table-header-background:	#EEEEEE;
+
+	/*		--nav-item-color-hover:			var(--color-base-00);	*/
+	--OT-color-muted-on-accent-1:	var(--color-base-40);
+	--OT-color-on-accent-2:			var(--color-base-00);
+	--OT-color-on-accent-3:			var(--color-base-00);
 }
 .theme-light.generalPalette-WIP {
 	--background-primary:			#FFFFF0;	/*	ivory; autre possibilité: FDFDEF	*/
@@ -665,6 +676,7 @@ body {
 	--color-base-35:	#dbefff;
 	--color-base-40:	#3d8cc8;
 	--color-base-50:	var(--light-blue);
+	--color-base-05:	#1D4A6A;
 
 /*	Surface colors	*/
 	--background-secondary-alt:		#337FB6;
@@ -682,7 +694,14 @@ body {
 	--text-faint:	#388BC8;
 	--link-color:	#267020;
 
+	--OT-color-muted-on-base-20:					#C8DFF0;
+	--OT-color-on-base-20:							#CFE7F8;
+
 /*	Functional variables*/
+	--tab-text-color:			#2E6B9D;
+	--tab-text-color-active:	#153148;
+	--tab-text-color-focused:	var(--color-base-00);
+
 	--blockquote-background-color:					#FDF8D6;
 	--h1-color:										var(--text-normal);
 	--h3-color:										var(--text-normal);
@@ -692,8 +711,6 @@ body {
 	--metadata-input-background-active:				#EEFFD0;
 	--metadata-input-text-color:					var(--background-primary);
 
-	--nav-item-color:								var(--color-base-30);
-/*	--nav-item-color-hover:							var(--nav-item-color);	*/
 	--OT-calendar-day-color:						var(--OT-color-on-base-20);
 	--OT-clickable-icon-in-header:					var(--color-accent-2);
 	--OT-color-on-accent-2:							var(--color-base-00);
@@ -705,8 +722,6 @@ body {
 	--OT-style-settings-collapse-indicator:			#143248;
 	--OT-table-background:							#FBFCFD;
 	--OT-table-header-background:					#ACC7E2;
-	--OT-color-muted-on-base-20:					#C8DFF0;
-	--OT-color-on-base-20:							var(--OT-color-muted-on-base-20);
 	--OT-text-normal-on-secondary:					var(--background-primary);
 	--OT-tooltip-text-color:						var(--OT-color-on-base-20);
 	--OT-vertical-tab-header-group-title:			#82B0D8;
@@ -1486,7 +1501,7 @@ body {
 .theme-light.generalPalette-beige.accentColor-lightMode-shade {
 	--accent-h:			28	!important;
 	--accent-s:			31%	!important;
-	--accent-l:			30%	!important;
+	--accent-l:			40%	!important;
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-1 {
 	--accent-h:			238	!important;
@@ -3787,14 +3802,14 @@ input[type=checkbox] {
 }
 
 /*	les petits boutons sur la feuille de publication	*/
-@media (hover: hover)
-.publish-section-header-text:hover,
-.publish-section-header-toggle-collapsed-button:hover,
-.publish-section-header-action:hover {
-    color: 				var(--text-on-accent);
-    background-color:	var(--background-modifier-hover);
+@media (hover: hover) {
+	.publish-section-header-text:hover,
+	.publish-section-header-toggle-collapsed-button:hover,
+	.publish-section-header-action:hover {
+		color: 				var(--text-on-accent);
+		background-color:	var(--background-modifier-hover);
+	}
 }
-
 
 /*	Bookmark	OpSpl17	*/
 /* —————————————————————————————— OpSpl Sidebars —————————————————————————————— */
@@ -3834,9 +3849,9 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-p
 /*	liste de sélection, dans la barre latérale des settings	*/
 body:not(.is-phone) .horizontal-tab-nav-item.is-active,
 body:not(.is-phone) .vertical-tab-nav-item.is-active {
-	  --background-modifier-hover:	var(--color-accent-1);
-	  --icon-color:			var(--OT-color-on-accent1);
-	  color:				var(--text-on-accent-2);
+	  --background-modifier-hover:	var(--color-accent-2);
+	  --icon-color:			var(--OT-color-on-accent-2);
+	  color:				var(--OT-color-on-accent-2);
 	  background-color:		var(--OT-sidebarTab-background-active);
 }
 @media (hover: hover) {
@@ -3925,25 +3940,11 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
   	font-weight:	600;
 }
 
-.nav-folder.mod-root > .nav-folder-title:hover,
-.tree-item-self.is-clickable:hover,
-.tree-item-self:hover {
-	color:				var(--text-on-accent) !important;
-	background-color:	var(--background-modifier-active-hover);
-}
-
 /*	l’icône “pinned” dans le tab d’un fichier qui est mis dans la barre latérale	*/
 .workspace-tab-header-status-icon,
 .workspace-tab-header-inner-close-button {
 		color:	var(--tab-text-color-focused-active);
 }
-
-/*	le texte qui est affiché dans le menu local qui apparaît dans la feuille d’explications, dans l’interface de recherche;
-	plus précisément: le texte explicatif quand il est survolé par le curseur; par défaut, il a la même couleur que la barre de sélection et il disparaît.
-.search-suggest-info-text:hover {
-	color:	var(--text-on-accent);
-} */
-
 
 .tree-item-self:hover .tree-item-flair {
   color: 			var(--text-on-accent);
@@ -4268,8 +4269,8 @@ button:not(.clickable-icon) {
 	    background-color:	var(--OT-button-background-hover);	/*	nothing	*/
 }
 .mod-community-modal .modal-sidebar button.clickable-icon {
- 		color:				var(--OT-button-text-normal);		/*	text-normal	*/
-	    background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+ 		color:				var(--OT-color-on-accent-2);
+	    background-color:	var(--color-accent-2);
 }
 .titlebar-button-container .mod-back,
 .titlebar-button-container .mod-forward {
@@ -4434,10 +4435,11 @@ button.mod-muted {
 /*	-------------------- ↑ Sidebar tabs -------------------- ↑ */
 
 /*	———————————————————— Menu déroulant ———————————————	*/
-.menu-item,
-.menu-item-icon {
-	color:	var(--OT-button-text-normal);
+.menu-item.selected:not(.is-label):not(.is-disabled) {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--background-modifier-hover);
 }
+
 /*	-------------------- ↑ Menu déroulant -------------------- ↑ */
 
 /*	Bookmark	OpSpl23	*/
@@ -4644,9 +4646,7 @@ body span[alt*="+grid"] {
 /*	le popover avec les fiches vides: rendons le texte plus lisible	*/
 .popover.hover-popover.mod-empty {
     color: 				var(--link-unresolved-color);
-    background-color:	var(--text-on-accent);
-//	color:		var(--text-on-accent);
-//	background:	var(--color-accent-1);
+    background-color:	var(--OT-color-on-text-1);
 }
 
 /* —————————————————————————————— OpSpl Tooltips and Notices —————————————————————————————— */
@@ -4961,10 +4961,6 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	font-family:	var(--OT-kanban-font), "P22 Eaglefeather", "Tekton Pro", "Palatino Sans Com", "Arial Narrow", "Helvetica Neue",sans-serif !important;
 	}
 
-/*	Pour la sélection dans le menu local des fiches des kanbans. */
-.menu-item.selected:not(.is-disabled):not(.is-label) {
-	color:	var(--text-on-accent);
-}
 /* -------------------- ↑ Kanban -------------------- ↑ */
 
 
@@ -5011,7 +5007,7 @@ a:hover,
 /* ---------- Lien vers une image inexistante  */
 .file-embed.mod-generic,
 .file-embed.mod-empty {
-	color:		var(--text-on-accent);
+	color:		var(--OT-color-on-accent-1);
 	background:	var(--link-unresolved-color);
 }
 /* ---------- Lien vers une image inexistante survolé  */
@@ -5019,7 +5015,7 @@ a:hover,
   .file-embed.mod-generic:hover,
   .file-embed.mod-empty:hover {
     color: 				var(--link-unresolved-color);
-    background-color:	var(--text-on-accent);
+    background-color:	var(--OT-color-on-accent-1);
   }
 }
 
@@ -5155,7 +5151,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .theme-dark .status-bar-item:hover,
 .theme-light .status-bar-item:hover {
     /*	filter:brightness(120%)	*/
-    color:			var(--text-on-accent);
+    color:			var(--OT-color-on-accent-2);
     background:		var(--color-accent-2);
 	}
 /* -------------------- ↑ Status bar ↑ -------------------- */
@@ -5271,7 +5267,23 @@ kbd {
 }
 /*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
 
+/*	Bookmark	OpSpl42	*/
+/*	———————————————————— Prompts	———————————————————— */
+.prompt {
+	color:				var(--OT-color-on-base-20);
+	background-color:	var(--background-secondary);
+}
+/*	-------------------- ↑ Prompts ↑	-------------------- */
 
+
+/*	Bookmark	OpSpl99	*/
+
+
+
+
+
+
+/*	Bookmark	OpSpl99	*/
 /* ————————————————————————————————————————————————————————————	*/
 /* ———————————————————— À ranger ——————————————————————————————	*/
 /* ————————————————————————————————————————————————————————————	*/
@@ -5364,7 +5376,7 @@ input[type='number']::placeholder {
 }
 
 .another-quick-switcher__item__extension {
-	color:	var(--text-on-accent);
+	color:	var(--OT-color-on-accent-1);
 }
 
 .suggestion-item.is-selected,
@@ -5375,7 +5387,7 @@ input[type='number']::placeholder {
 /*		color:	var(--text-on-accent);	*/
 }
 .suggestion-item.is-selected .omnisearch-result__title {
-	color:	var(--text-on-accent);
+	color:	var(--OT-color-on-accent-1);
 }
 
 
@@ -6721,7 +6733,7 @@ settings:
 			description.fr:	Différents styles de tables. Par défaut, le modèle « Obsidian nature ».
 			type:			class-select
 			allowEmpty:		false
-			default:		OT-tables-custom
+			default:		OT-tables-tinted-rows
 			options:
 				-
 					label:		Obsidian plain

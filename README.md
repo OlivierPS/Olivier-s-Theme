@@ -115,6 +115,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 09.06.2024 Version 1.10.1
+
+Tuning of some colors.
+
+
+
+----------------------------------------------
+
 #### 09.06.2024 Version 1.10.0
 
 Important changes to the logic of the colors. I’m now ready — I think… — for easier fine tunings of the different light and dark themes and their variations.
