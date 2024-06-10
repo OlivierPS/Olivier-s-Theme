@@ -122,8 +122,8 @@ Bookmarks:	OpSpl01:	Déclarations générales
 :root
 {
 	--obsidian-violet:		#8b6cef;
-	--favorite-blue:		#0f056b;
-	--dark-blue:			#212A70;
+	--favorite-blue:			#0f056b;
+	--dark-blue:				#212A70;
 	--blue:					#2C1CBD;
 	--light-blue:			#A6C3E1;
 	--royal-blue:			#0000a3;
@@ -220,9 +220,9 @@ body {
 	--OT-color-muted-on-base-20:					var(--color-base-70);
 	--OT-tab-background-active-hover:				var(--color-accent-1);
 	--OT-table-background:							var(--color-base-00);
-	--OT-tooltip-text-color:						var(--OT-color-on-accent-1);
+	--OT-tooltip-text-color:							var(--OT-color-on-accent-1);
 	--OT-search-result-file-title-expanded:			var(--text-normal);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
-	--OT-tree-item-flair-color:						var(--OT-color-on-acent-3);
+	--OT-tree-item-flair-color:						var(--OT-color-on-accent-3);
 	--OT-tree-item-flair-background:				var(--color-accent-3);
 	--OT-vertical-tab-header-group-title:			var(--OT-color-muted-on-base-20);
 	--OT-view-header-title-focus-color: 			var(--h1-color);
@@ -307,7 +307,7 @@ body {
 	--tab-text-color:							var(--OT-color-faint-on-base-20);
 	--tab-text-color-active:					var(--color-accent-2);
 	--tab-text-color-focused-active:			var(--color-accent-1);
-	--tab-text-color-focused-active-current:	var(--OT-color-on-accent-1);
+	--tab-text-color-focused-active-current:	var(--color-base-100);
 
 /*	--table-background:					white;	*/
 /*	--table-column-alt-background:		inherit;	*/
@@ -588,7 +588,7 @@ body {
 	--OT-table-header-background:	#DDFCE8;
 	--OT-color-on-base-20:			#085C27;
 }/*	↑ generalPalette-green ↑	*/
-
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-icy {
 /*	Base colors	*/
 	--color-base-00:	#fdfeff;
@@ -610,24 +610,29 @@ body {
 
 /*	Text colors	*/
 	--text-normal:			#0761BB;
+	--text-muted:			#42A0FF;
 	--text-on-accent:		var(--color-base-20);
 	--link-color:			#57A706;
 	--h1-color:				#06509A;
 	--h3-color:				#0872DC;
 	--h5-color:				#3194F7;
 	--OT-color-on-base-20:	#0760BA;
+	--OT-color-on-accent-1:	var(--color-base-00);
+	--OT-color-muted-on-accent-1:	#97CBFF;
+	--OT-color-on-accent-2:	var(--color-base-00);
 
 /*	Functional variables*/
 	--blockquote-background-color:	#EEF4FF;
 	--icon-color-focused:			var(--background-primary);
 	--icon-color-hover:				var(--color-base-20);
+	--OT-button-text-normal:			var(--color-base-00);
 	--OT-metadata-background:		#F4F5F6;
 	--OT-metadata-title-color-faint:#90B8E1;
 	--OT-table-background:			#F4F9FF;
 	--OT-table-header-background:	#E2EEFE;
-	--OT-tooltip-text-color:		var(--color-base-00);
+	--OT-tooltip-text-color:			var(--color-base-00);
 }/*	↑ generalPalette-icy ↑	*/
-
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-lightBeige {
 /*	Base colors	*/
 	--color-base-00:	#FAFAF4;
@@ -648,27 +653,27 @@ body {
 	--accent-l:			30%	!important;
 
 /*	Text colors	*/
-	--text-normal:		#71573E;
-	--text-muted:		#BD8C38;
-/*	--text-on-accent:	var(--OT-color-on-base-20);	*/
-	--link-color:		#507192;
-	--h1-color:			#9D7956;
-	--h3-color:			#6B523B;
-	--h5-color:			#44607C;
+	--text-normal:			#71573E;
+	--text-muted:			#BD8C38;
+/*	--text-on-accent:		var(--OT-color-on-base-20);	*/
+	--OT-color-on-accent-2:	var(--color-base-100);
+	--link-color:			#507192;
+	--h1-color:				#9D7956;
+	--h3-color:				#6B523B;
+	--h5-color:				#44607C;
 
 
 /*	Functional variables*/
 	--blockquote-background-color:		#F7F0E4;
 /*	--nav-item-color-hover:				var(--text-in-sidebar);	*/
-	--OT-color-on-accent-2:				var(--color-base-00);
 	--OT-clickable-icon-color-hover:	var(--color-base-20);
 	--OT-metadata-title-color-faint: 	#B1A295;
 	--OT-stabilo-mark:					#E9DDD1;
 	--OT-table-alt-background:			#f9f5ec;	/*	#fffefa;	*/
 	--OT-table-header-background:		#EEE8DC;
-	--OT-color-on-base-20:			#7D6754;
+	--OT-color-on-base-20:				#7D6754;
 } /*	↑ generalPalette-lightBeige ↑	*/
-
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-metallicBlue {
 /*	Base colors	*/
 	--color-base-00:	#fafff3;
@@ -1748,6 +1753,10 @@ body {
 	--accent-h:			228	!important;
 	--accent-s:			50%	!important;
 	--accent-l:			30%	!important;
+	--OT-color-on-accent-1:	var(--color-base-00);
+	--OT-color-on-accent-2:	var(--color-base-00);
+	--OT-color-on-accent-3:	var(--color-base-00);
+	--OT-color-muted-on-accent-1: var(--color-base-40);
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-2 {
 	--accent-h:			318	!important;
@@ -5675,6 +5684,10 @@ settings:
 					label:		Yellow
 					label.fr:	Jaune
 					value:		generalPalette-yellow
+				-
+					label:		WIP
+					label.fr:	Travail EN COURS
+					value:		generalPalette-WIP
 	-
 			id:			OT-accentColor-lightMode
 			title:		Accent color
