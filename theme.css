@@ -53,6 +53,7 @@
 			09.06.2024	Important changes to the logic of the colors							1.10.0
 						Tuning of some colors													1.10.1
 			11.06.2024	Further refinements														1.10.2
+																								1.10.3
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -294,8 +295,7 @@ body {
 	--nav-item-color-hover:			var(--OT-color-on-accent-1);
 	--nav-item-color-active:		var(--OT-color-on-accent-2);
 	--nav-item-color-selected:		var(--background-secondary)				/*	var(--text-normal);	*/
-/*	--nav-item-color-highlighted:	red;									var(--text-accent-hover);	*/
-	--nav-item-background-hover:	var(--color-accent-1);					/*	var(--background-modifier-hover);	*/
+	--nav-item-background-hover:	lime;					/*	var(--background-modifier-hover);	*/
 	--nav-item-background-active:	var(--color-accent-2);					/*	var(--background-modifier-hover);	*/
 	--nav-item-background-selected:	hsla(var(--color-accent-hsl), 0.2);
 
@@ -313,6 +313,8 @@ body {
 /*	--table-background:					white;	*/
 /*	--table-column-alt-background:		inherit;	*/
 	--table-header-background-hover:	var(--table-header-background);
+	--table-row-background-hover:		var(--table-row-alt-background);
+	--table-row-alt-background-hover:	var(--table-background);
 	--table-header-color:				var(--h3-color);
 
 	--tag-color:			var(--OT-color-on-accent-2);
@@ -631,7 +633,7 @@ body {
 
 /*	Functional variables*/
 	--blockquote-background-color:	#EEF4FF;
-	--icon-color-focused:			var(--background-primary);
+/*	--icon-color-focused:			var(--background-primary);*/
 	--icon-color-hover:				var(--color-base-20);
 	--OT-button-text-normal:			var(--color-base-00);
 	--OT-metadata-background:		#F4F5F6;
@@ -666,7 +668,7 @@ body {
 	--color-base-100:			#71573E;
 	--text-muted:			#BD8C38;
 /*	--text-on-accent:		var(--OT-color-on-base-20);	*/
-	--OT-color-on-accent-2:	var(--color-base-100);
+	--OT-color-on-accent-2:	var(--color-base-00);
 	--link-color:			#507192;
 	--h1-color:				#9D7956;
 	--h3-color:				#6B523B;
@@ -726,7 +728,7 @@ body {
 	--h1-color:										var(--text-normal);
 	--h3-color:										var(--text-normal);
 	--h5-color:										var(--text-normal);
-	--icon-color-focused:							var(--background-primary);
+/*	--icon-color-focused:							var(--background-primary);*/
 	--icon-color:									var(--background-primary);
 	--metadata-input-background-active:				#EEFFD0;
 	--metadata-input-text-color:					var(--background-primary);
@@ -1044,7 +1046,7 @@ body {
 	--OT-stabilo-text:	var(--color-base-00) !important;
 
 	--OT-table-header-background:	#3A2503;
-	--OT-table-background:	#221602;
+	--OT-table-background:			#221602;
 }
 
 .theme-dark.darkPalette-black,
@@ -3840,8 +3842,8 @@ input[type=checkbox] {
 	.publish-section-header-text:hover,
 	.publish-section-header-toggle-collapsed-button:hover,
 	.publish-section-header-action:hover {
-		color: 				var(--text-on-accent);
-		background-color:	var(--background-modifier-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 	}
 }
 
@@ -3868,11 +3870,12 @@ input[type=checkbox] {
 /*	survol du nom du coffre, en bas de la sidebar de gauche	*/
 @media (hover: hover) {
   body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher:hover {
-    color:				var(--vault-profile-color-hover);
-    background-color:	var(--background-modifier-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
   }
   body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher:hover .workspace-drawer-vault-switcher-icon {
-    color: var(--vault-profile-color-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
   }
 }
 
@@ -3891,8 +3894,8 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 @media (hover: hover) {
 	.horizontal-tab-nav-item:hover,
 	.vertical-tab-nav-item:hover {
-		color:				var(--nav-item-color-hover);
-		background-color:	var(--nav-item-background-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
   }
 }
 
@@ -3915,26 +3918,27 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 }
 body:not(.is-grabbing) .tree-item-self.is-active:hover,
 .tree-item-self.is-active:hover {							/*	pour que ce qui est sélectionné soit visiblement survolé	*/
-	color:				var(--nav-item-color-active);
-	background-color:	var(--nav-item-background-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 body:not(.is-grabbing) .nav-file-title.is-active:hover,
 body:not(.is-grabbing) .nav-folder-title.is-active:hover {
-	color:				var(--OT-clickable-icon-color-hover);
-	background-color:	var(--OT-clickable-icon-background-hover);	/*	--nav-item-background-active	*/
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 /*	pour les suggestions pour la recherche	*/
 .search-suggest-item.mod-group:hover,
 .search-suggest-item.mod-group.is-selected {
-	background-color:	var(--nav-item-background-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 .suggestion-item.is-selected .clickable-icon {
 	color:	var(--OT-color-on-accent-1);
 }
 
 .suggestion-item.is-selected .clickable-icon:hover {
-	color:	var(--OT-color-on-accent-3);
-	background-color:	var(--color-accent-3);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 
 .search-empty-state {
@@ -3981,8 +3985,8 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 }
 
 .tree-item-self:hover .tree-item-flair {
-  color: 			var(--text-on-accent);
-  background-color:	var(--background-modifier-active-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 	}
 
 .nav-file-tag {
@@ -4240,8 +4244,8 @@ td .cm-editor .cm-line {
     font-weight:		700;
 }
 .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
-	color:				var(--OT-color-on-accent-1);
-  background-color: var(--background-modifier-hover);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 
 /*	le hovering des en-têtes, tel qu’il est défini dans “app.css” ne me plaît pas.	*/
@@ -4430,6 +4434,12 @@ button.mod-muted {
 .checkbox-container {
 	background-color:	var(--color-accent-3);
 }
+@media (hover: hover) {
+  .search-results-info .dropdown:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
+}
 /*	-------------------- ↑ Buttons -------------------- ↑ */
 
 /* —————————————————————————————— OpSpl icons —————————————————————————————— */
@@ -4446,13 +4456,13 @@ button.mod-muted {
 }
 @media (hover: hover) {
 	.clickable-icon:hover {
-		color:				var(--OT-clickable-icon-color-hover);
-    	background-color:	var(--OT-clickable-icon-background-hover);	/*	var(--background-modifier-hover);	*/
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
   }
   .clickable-icon.has-active-menu,
   .clickable-icon:active {
-		color:				var(--OT-clickable-icon-color-hover);
-		background-color: 	var(--OT-clickable-icon-background-hover);	/*	var(--background-modifier-hover);	*/
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
   }
 }
 /*	-------------------- ↑ icons -------------------- ↑ */
@@ -4470,7 +4480,8 @@ button.mod-muted {
   .mod-right-split .workspace-tab-header.has-active-menu:hover,
   .mod-left-split .workspace-tab-header.is-active:hover,
   .mod-right-split .workspace-tab-header.is-active:hover {
-	background-color:	var(--OT-sidebarTab-background-active-hover);	/*	var(--background-modifier-hover);	*/
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
   }
 }
 /*	-------------------- ↑ Sidebar tabs -------------------- ↑ */
@@ -4520,8 +4531,8 @@ button.mod-muted {
 body:not(.is-phone) .community-item.is-selected,
 body:not(.is-phone) .community-item.is-selected:hover {
 	color:				var(--OT-color-on-accent-3);
-	background-color:	var(--color-accent-3);
-	border-color:		var(--color-accent-1);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 
 /*	-------------------- suppression du réglage de la couleur “accent” dans les settings --------------------	*/

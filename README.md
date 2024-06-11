@@ -115,19 +115,15 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 09.06.2024 Version 1.10.1
-
-Tuning of some colors.
-
-
-
-----------------------------------------------
-
-#### 11.06.2024 Version 1.10.2
+#### 11.06.2024 Version 1.10.2, 1.10.3
 
 Further refinements.
 
+----------------------------------------------
 
+#### 09.06.2024 Version 1.10.1
+
+Tuning of some colors.
 
 ----------------------------------------------
 
