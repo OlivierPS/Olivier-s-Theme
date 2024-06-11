@@ -123,6 +123,14 @@ Tuning of some colors.
 
 ----------------------------------------------
 
+#### 11.06.2024 Version 1.10.2
+
+Further refinements.
+
+
+
+----------------------------------------------
+
 #### 09.06.2024 Version 1.10.0
 
 Important changes to the logic of the colors. I’m now ready — I think… — for easier fine tunings of the different light and dark themes and their variations.

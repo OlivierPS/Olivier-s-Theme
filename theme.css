@@ -52,6 +52,7 @@
 			05.06.2024	Tuning of some colors													1.9.1
 			09.06.2024	Important changes to the logic of the colors							1.10.0
 						Tuning of some colors													1.10.1
+			11.06.2024	Further refinements														1.10.2
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -307,7 +308,7 @@ body {
 	--tab-text-color:							var(--OT-color-faint-on-base-20);
 	--tab-text-color-active:					var(--color-accent-2);
 	--tab-text-color-focused-active:			var(--color-accent-1);
-	--tab-text-color-focused-active-current:	var(--color-base-100);
+	--tab-text-color-focused-active-current:	var(--color-accent-1);
 
 /*	--table-background:					white;	*/
 /*	--table-column-alt-background:		inherit;	*/
@@ -320,6 +321,8 @@ body {
 /*	--tag-background-hover:	var(--interactive-accent-hover);*/
 
 	--tab-container-background:		var(--color-base-05);
+
+	--text-normal:					var(--color-base-100);
 
 	--vault-name-color:				var(--OT-color-on-base-20);
 	--vault-profile-color:			var(--OT-color-on-base-20);
@@ -449,7 +452,7 @@ body {
 	--accent-s:			77%	!important;
 	--accent-l:			38%	!important;
 
-	--text-normal:		#2E6E74;
+	--color-base-100:		#2E6E74;
 	--OT-color-muted-on-base-20:	#3C9199;
 	--link-color:		#572E74;
 	--h1-color:			#2C686E;
@@ -472,6 +475,7 @@ body {
 	--OT-stabilo-mark:								var(--stabilo-bleu-clair);
 }/*	↑ generalPalette-artDeco ↑	*/
 
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-beige {
 /*	Base colors	*/
 	--color-base-00:	#F6F2EE;
@@ -487,7 +491,7 @@ body {
 	--background-modifier-border:		#D7C3B2;
 
 /*	Text colors	*/
-	--text-normal:	#6A4F38;
+	--color-base-100:	#6A4F38;
 	--text-muted:	#AE8768;
 	--link-color:	#58A8A5;
 	--h1-color:		#96704F;
@@ -508,6 +512,7 @@ body {
 	--OT-table-header-background:		#EAE1D8;
 }/*	↑ generalPalette-beige ↑	*/
 
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-blue {
 	--color-base-00:	#E2EEFF;
 	--color-base-20:	#C2DBFF;
@@ -528,7 +533,7 @@ body {
 	--accent-s:			100%	!important;
 	--accent-l:			30%		!important;
 
-	--text-normal:	#0761BB;
+	--color-base-100:	#0761BB;
 	--link-color:		#4E9706;
 	--h1-color:			#053F79;
 	--h3-color:			#06509A;
@@ -537,6 +542,7 @@ body {
 	--OT-table-header-background:	#C7DEFF;
 	--OT-table-background:	#D9E8FF;
 } /*	↑ generalPalette-blue ↑	*/
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-OBSIDIAN {
 	--link-color:					var(--obsidian-violet);
 	--OT-table-header-background:	#EEEEEE;
@@ -546,15 +552,17 @@ body {
 	--OT-color-on-accent-2:			var(--color-base-00);
 	--OT-color-on-accent-3:			var(--color-base-00);
 }
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-WIP {
 	--background-primary:			#FFFFF0;	/*	ivory; autre possibilité: FDFDEF	*/
 	--background-secondary:			#fdf5e6;
 
-	--text-normal:				#212A70;
+	--color-base-100:				#212A70;
 	--text-muted:				#7085CE;
 	--link-color:				#007664;
 	--OT-table-header-background:	#EEEEEE;
 }
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-green {
 /*	Base colors	*/
 	--color-base-00:	#F0FDF4;
@@ -573,7 +581,7 @@ body {
 	--accent-l:	25%	!important;
 
 /*	Text colors	*/
-	--text-normal:		var(--favorite-blue);
+	--color-base-100:		var(--favorite-blue);
 	--text-muted:		#10AF4B;
 	--text-on-accent:	var(--favorite-blue);
 	--link-color:		#537622;
@@ -609,7 +617,7 @@ body {
 	--accent-l:	40%		!important;
 
 /*	Text colors	*/
-	--text-normal:			#0761BB;
+	--color-base-100:			#0761BB;
 	--text-muted:			#42A0FF;
 	--text-on-accent:		var(--color-base-20);
 	--link-color:			#57A706;
@@ -632,7 +640,9 @@ body {
 	--OT-table-header-background:	#E2EEFE;
 	--OT-tooltip-text-color:			var(--color-base-00);
 }/*	↑ generalPalette-icy ↑	*/
+
 /*	----------------------------------------------	*/
+
 .theme-light.generalPalette-lightBeige {
 /*	Base colors	*/
 	--color-base-00:	#FAFAF4;
@@ -653,7 +663,7 @@ body {
 	--accent-l:			30%	!important;
 
 /*	Text colors	*/
-	--text-normal:			#71573E;
+	--color-base-100:			#71573E;
 	--text-muted:			#BD8C38;
 /*	--text-on-accent:		var(--OT-color-on-base-20);	*/
 	--OT-color-on-accent-2:	var(--color-base-100);
@@ -672,8 +682,13 @@ body {
 	--OT-table-alt-background:			#f9f5ec;	/*	#fffefa;	*/
 	--OT-table-header-background:		#EEE8DC;
 	--OT-color-on-base-20:				#7D6754;
+
+	--text-on-accent:					var(--color-base-100);
+
 } /*	↑ generalPalette-lightBeige ↑	*/
+
 /*	----------------------------------------------	*/
+
 .theme-light.generalPalette-metallicBlue {
 /*	Base colors	*/
 	--color-base-00:	#fafff3;
@@ -694,7 +709,7 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 50%));		/*	additional accent color for theme’s needs	*/
 
 /*	Text colors	*/
-	--text-normal:	#255C84;
+	--color-base-100:	#255C84;
 	--text-muted:	#337FB6;
 	--text-faint:	#388BC8;
 	--link-color:	#267020;
@@ -738,6 +753,7 @@ body {
 /*	--text-on-accent:								var(--background-primary)	*/
 } /*	↑ generalPalette-metallicBlue ↑	*/
 
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-paradiso {
 	--color-base-00:		#F1EFE3;
 	--color-base-20:		#E1E2C2;
@@ -757,7 +773,7 @@ body {
 	--accent-s:			36%	!important;
 	--accent-l:			30%	!important;
 
-	--text-normal:	#4C4D25;
+	--color-base-100:	#4C4D25;
 	--link-color:		#5351A9;
 	--h1-color:			#484923;
 	--h3-color:			#35361A;
@@ -766,6 +782,7 @@ body {
 	--OT-table-header-background:	#E5E6CC;
 	--OT-table-background:	#EDEDDB;
 }
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-parchment {
 	--color-base-00:	#FFEED1;
 	--color-base-20:	#E4CDA7;
@@ -785,7 +802,7 @@ body {
 	--background-modifier-border:	#C3B091;
 	--blockquote-background-color:	#F2E1C6;
 
-	--text-normal:	#6F5B3E;
+	--color-base-100:	#6F5B3E;
 	--link-color:	#6089D6;
 	--h1-color:		#B68D40;
 	--h3-color:		#B68D40;
@@ -797,6 +814,7 @@ body {
 	--OT-table-header-background:	#F6DFB6;
 	--OT-table-background:	#FFF4E2;
 }
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-pistachio {
 	--color-base-00:	#F0F8F2;
 	--color-base-20:	#DFF0E4;
@@ -814,7 +832,7 @@ body {
 	--accent-s:			34%	!important;
 	--accent-l:			35%	!important;
 
-	--text-normal:	#288045	;
+	--color-base-100:	#288045	;
 	--link-color:		#712880	;
 	--h1-color:			#2C6620	;
 	--h3-color:			#007759	;
@@ -822,7 +840,10 @@ body {
 
 	--OT-table-header-background:	#D3EBDA;
 	--OT-table-background:	#E7F4EB;
-}
+} /*	↑ generalPalette-pistachio ↑	*/
+
+/*	----------------------------------------------	*/
+
 .theme-light.generalPalette-red {
 /*	Base colors	*/
 	--color-base-00:	#FCE5E5;
@@ -842,10 +863,11 @@ body {
 	--accent-l:			40%	!important;
 
 /*	Text colors	*/
-	--text-normal:		#5D0603;
+	--color-base-100:		#5D0603;
 	--text-muted:		#760804;
 /*	--text-on-accent:	var(--color-base-20);	*/
 	--link-color:		var(--obsidian-violet);
+	--OT-color-on-accent-2:	var(--color-base-20);
 	--h1-color:			#6A0804;
 	--h3-color:			#823B3B;
 	--h5-color:			#AE8F8F;
@@ -854,16 +876,16 @@ body {
 	--blockquote-background-color:	#FBDCDC;
 	--checklist-done-color:			#F38B8B;
 	--code-normal:					#C00D06;
-	--icon-color-focused:			var(--OT-color-on-base-20);
-	--nav-item-color-active:		var(--OT-color-on-base-20);
 	--OT-metadata-background:		#F3DDDC;
 	--OT-metadata-title-color-faint:#886A6A;
 	--OT-table-background:			#FDD3D3;
 	--OT-table-header-background:	#FDD2D2;
 	--OT-color-on-base-20:			#C00D06;
 	--OT-tooltip-text-color:		var(--color-base-00);
-}/*	↑ generalPalette-red	*/
+	--tab-container-background:		#F5D9D9;
+} /*	↑ generalPalette-red	*/
 
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-solarized {
 	--color-base-00:	var(--solarized-base3);
 	--color-base-20:	var(--solarized-base2);
@@ -883,7 +905,7 @@ body {
 	--accent-s:			59%	!important;
 	--accent-l:			33%	!important;
 
-	--text-normal:	var(--solarized-blue);
+	--color-base-100:	var(--solarized-blue);
 	--link-color:		var(--solarized-cyan);
 	/*	--h1-color:			var(--solarized-base02);	*/
 	--h3-color:			var(--solarized-violet);
@@ -893,6 +915,7 @@ body {
 	--OT-table-background:	var(--solarized-base2);
 	--table-header-color:		var(--solarized-base2);
 }
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-stone {
 	--color-base-00:	#E7E5E4;
 	--color-base-20:	#D6D3D1;
@@ -910,7 +933,7 @@ body {
 	--background-modifier-border:	#A8A29E;
 	--blockquote-background-color:	#D6D3D1;
 
-	--text-normal:	var(--favorite-blue);
+	--color-base-100:	var(--favorite-blue);
 	--text-muted:	#78716C;
 	--link-color:	#297622;
 	--h1-color:		#1E256A;
@@ -921,6 +944,7 @@ body {
 	--OT-table-header-background:	#CFCCCA;
 	--OT-table-background:	#E2E0DF;
 }
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-violet {
 	--color-base-00:	#F1E4FD;
 	--color-base-20:	#D7B4FA;
@@ -940,7 +964,7 @@ body {
 	--accent-s:			80%	!important;
 	--accent-l:			30%	!important;
 
-	--text-normal:	#4B0B8B;
+	--color-base-100:	#4B0B8B;
 	--link-color:		var(--obsidian-violet);
 	--h1-color:			#470A84;
 	--h3-color:			#5E3B93;
@@ -950,6 +974,7 @@ body {
 	--OT-table-header-background:	#DBBDFB;
 	--OT-table-background:	#E8D6FC;
 }
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-yellow {
 	--color-base-00:	#FFF8DA;
 	--color-base-20:	#FEF3C7;
@@ -970,7 +995,7 @@ body {
 
 	--text-selection:	hsl(var(--accent-h), var(--accent-s), 70%);
 
-	--text-normal:	var(--favorite-blue);
+	--color-base-100:	var(--favorite-blue);
 	--OT-color-muted-on-base-20:	#B28F03;
 	--link-color:		#537622;
 	--h1-color:			#6F5902;
@@ -1010,7 +1035,7 @@ body {
 	--background-modifier-border:	#784D05;
 	--blockquote-background-color:	#472E03;
 
-	--text-normal:		#F39B0A;
+	--color-base-100:		#F39B0A;
 	--link-color:		#0A62F3;
 	--h1-color:			#F5AF66;
 	--h3-color:			#F7AF39;
@@ -1056,7 +1081,7 @@ body {
 	--background-modifier-border:	#064D94;
 	--blockquote-background-color:	#032d57;
 
-	--text-normal:	#3B6EBE !important;
+	--color-base-100:	#3B6EBE !important;
 	--link-color:		#069406	!important;
 	--h1-color:			#6385C6	!important;
 	--h3-color:			#0656A6	!important;
@@ -1087,7 +1112,7 @@ body {
 	--background-modifier-border:	#6E4D3D;
 	--blockquote-background-color:	#351D09;
 
-	--text-normal:	#E6A571;
+	--color-base-100:	#E6A571;
 	--link-color:		#1D67A1;
 	--h1-color:			var(--text-normal);
 	--h3-color:			var(--text-normal);
@@ -1117,7 +1142,7 @@ body {
 	--background-modifier-border:	#136E34;
 	--blockquote-background-color:	#082D16;
 
-	--text-normal:	#69E596;
+	--color-base-100:	#69E596;
 	--link-color:		#FFCC00;
 	--code-background:	#0B3E1D;
 	--code-normal:		#24C95E;
@@ -1149,7 +1174,7 @@ body {
 	--code-background:				#003174;
 	--code-normal:					#4192FF;
 
-	--text-normal:	#92C1FF;
+	--color-base-100:	#92C1FF;
 	--link-color:		#00DA0F;
 	--h1-color:			#036FFF;
 	--h3-color:			#69AAFF;
@@ -1179,7 +1204,7 @@ body {
 	--background-modifier-border:	hsl(224, 26%, 70%);
 	--blockquote-background-color:	#232429;
 
-    --text-normal: rgb(114, 195, 213);
+    --color-base-100: rgb(114, 195, 213);
 	--link-color:		hsl(334, 100%, 75%);
     --h1-color: hsl(59, 81%, 47%);
     --h2-color: hsl(260, 100%, 79%);
@@ -1216,7 +1241,7 @@ body {
 	--background-modifier-border:	#23567D;
 	--blockquote-background-color:	#334455;
 
-	--text-normal:	#B8BBBE;
+	--color-base-100:	#B8BBBE;
 	--link-color:		#DC7FB5;
 	--h1-color:			white;
 	--h3-color:			#C9CBCE;
@@ -1252,7 +1277,7 @@ body {
 	--background-modifier-border:	#82843F;
 	--blockquote-background-color:	#636430;
 
-	--text-normal:	#E1E2C2;
+	--color-base-100:	#E1E2C2;
 	--link-color:		#FFCC00;
 	--OT-stabilo-mark:		#909246 ;
 	--OT-stabilo-text:		#24514C !important;
@@ -1280,7 +1305,7 @@ body {
 	--background-modifier-border:	#B97020;
 	--blockquote-background-color:	#9E6729;
 	--code-background:				#734614;
-	--text-normal:				#F5DEC4;
+	--color-base-100:				#F5DEC4;
 	--link-color:					#C4DBF5;
 	--link-unresolved-color:		#F6C8F4;
 	--OT-stabilo-mark:					#E3A35C;
@@ -1309,7 +1334,7 @@ body {
 	--background-modifier-border:	#5F0413; /*	#4F0310;	*/
 	--blockquote-background-color:	#46030E;
 	--checklist-done-color:			#B00724; /*	#5E0413;	*/
-	--text-normal:					#C00827;
+	--color-base-100:					#C00827;
 	--text-muted:					#A66569;
 	--link-color:					#0772A7;
 	--link-unresolved-color:		#FA899D;
@@ -1344,7 +1369,7 @@ body {
 	--background-modifier-border:	var(--solarized-base02);
 	--blockquote-background-color:	var(--solarized-base01);
 
-	--text-normal:			var(--solarized-base3);
+	--color-base-100:			var(--solarized-base3);
 	--link-color:				var(--solarized-blue);
 	--OT-tooltip-text-color:	var(--color-base-20);
 	--text-on-hover:			var(--color-base-20);
@@ -1376,7 +1401,7 @@ body {
 	--background-modifier-border:	#57534E;
 	--code-background:	#393632;
 	--code-normal:		#D2BAA3;
-	--text-normal:	#A8A29E;
+	--color-base-100:	#A8A29E;
 	--blockquote-background-color:	#23211F;
 	--link-color:		#747CD7;
 	--h1-color:			#D6D3D1;
@@ -1408,7 +1433,7 @@ body {
 	--accent-s:			100%	!important;
 	--accent-l:			10%	!important;
 
-	--text-normal:	#E6F2CC;
+	--color-base-100:	#E6F2CC;
 	--link-color:		#CCD3F2;
 	--h1-color:			#F2B630;
 	--h3-color:			#C8E28F;
@@ -1446,7 +1471,7 @@ body {
 	--code-background:				#311262;
 	--code-normal:					#C1A4EE;
 
-	--text-normal:				#A982E8;
+	--color-base-100:				#A982E8;
 	--link-color:					#C1E882;
 	--OT-stabilo-mark:					#CDB6F1;
 	--OT-stabilo-text:					#200C40	!important;
@@ -1473,7 +1498,7 @@ body {
 	--background-modifier-border:	#B89403;/*	#D9AF04;	*/
 	--blockquote-background-color:	#262626;
 
-	--text-normal:			#C09A03;
+	--color-base-100:			#C09A03;
 	--link-color:				#607FFC;
 	--checklist-done-color:		#8E7202;
 	--OT-stabilo-text:				#424012 !important;
@@ -4189,9 +4214,10 @@ td .cm-editor .cm-line {
 .view-header-title-parent .view-header-breadcrumb-separator {
 	display:	none;
 }
-.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+/*.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
 	color:	var(--icon-color-active);
-}
+}*/
+
 /* ---------- OpSpl focused panel — mise en évidence du panneau qui a le focus */
 /* J’ai agrandi, via une variable, la taille du titre des panneaux qui n’ont pas le focus.
 	Mais je diminue l’intensité de la couleur du texte.		*/
@@ -4199,23 +4225,13 @@ td .cm-editor .cm-line {
 	color:				var(--OT-view-header-title-no-focus-color);
     letter-spacing:		0.02em	!important;		/* à cause du “bold”	*/
 }
-.mod-left-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
-.mod-right-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
-.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
-	color:	var(--OT-color-on-accent-2);
-}
-.is-focused .workspace-leaf.mod-active .view-header-title,	/*	Le titre du panneau qui a le focus	*/
-.is-focused .workspace-tab-header-status-icon {				/*	le “pin” d’un panneau “pinned”		*/
-    color: 				var(--OT-view-header-title-focus-color);
-    font-variant:		small-caps;
-    font-size:			calc(var(--OT-readingMode-text-size) * 1.5);
-    font-weight:		700;
-}
 .is-focused .workspace-leaf.mod-active .view-header {
 	border-bottom:		2px solid var(--text-normal);
 }
 
+.mod-root .workspace-tab-header-status-icon {
+  color: var(--tab-text-color);
+}
 .is-focused .workspace-leaf.mod-active .view-header-title,	/*	Le titre du panneau qui a le focus	*/
 .is-focused .workspace-tab-header-status-icon {				/*	le “pin” d’un panneau “pinned”		*/
     color: 				var(--OT-view-header-title-focus-color);
@@ -4225,13 +4241,51 @@ td .cm-editor .cm-line {
 }
 .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
 	color:				var(--OT-color-on-accent-1);
-	background-color:	var(--OT-tab-background-active-hover);
+  background-color: var(--background-modifier-hover);
 }
+
+/*	le hovering des en-têtes, tel qu’il est défini dans “app.css” ne me plaît pas.	*/
 @media (hover: hover) {
-  .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
-    color: var(--icon-color-hover)	!important;		/*	parce que dans “app.css”, l’ordre des déclarations fait que cette couleur n’est pas prise en compte	*/
+  .workspace-tab-header.is-active .workspace-tab-header-status-icon:hover,
+  .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-linked:hover,
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-linked:hover,
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-pinned:hover,
+  .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-pinned:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
   }
 }
+@media (hover: hover) {
+  .workspace-tab-header-inner-close-button:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
+}
+@media (hover: hover) {
+  .workspace-tab-header:hover .workspace-tab-header-inner-close-button:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
+}
+@media (hover: hover) {
+  .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
+}
+
+
+/*
+.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color:	var(--tab-text-color-focused-active-current);
+}*/
+
+
 /* -------------------- ↑ OpSpl En-tête des panneaux ↑ -------------------- */
 
 
@@ -4301,28 +4355,6 @@ button:not(.clickable-icon) {
   .titlebar-button.mod-close:hover {
 		color:				var(--OT-button-text-hover);		/*	nothing	*/
 	    background-color:	var(--OT-button-background-hover);	/*	background-modifier-error	*/
-  }
-}
-.is-focused .workspace-tab-header.is-active:hover {
-  color:			var(--OT-color-on-accent-1);
-  background-color:	var(--OT-tab-background-active-hover);
-}
-.is-focused .workspace-tab-header:hover {
-  color:			var(--OT-color-on-accent-1);
-  background-color:	var(--OT-tab-background-active-hover);
-}
-@media (hover: hover) {
-  .workspace-tab-header.is-active .workspace-tab-header-status-icon:hover,
-  .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
-		color:				var(--OT-color-on-accent-1);
-	    background-color:	var(--OT-tab-background-active-hover);
-  }
-  .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-linked:hover,
-  .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-linked:hover,
-  .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon.mod-pinned:hover,
-  .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button.mod-pinned:hover {
-		color:				var(--OT-color-on-accent-1);
-	    background-color:	var(--OT-tab-background-active-hover);
   }
 }
 .setting-hotkey {
@@ -5684,10 +5716,6 @@ settings:
 					label:		Yellow
 					label.fr:	Jaune
 					value:		generalPalette-yellow
-				-
-					label:		WIP
-					label.fr:	Travail EN COURS
-					value:		generalPalette-WIP
 	-
 			id:			OT-accentColor-lightMode
 			title:		Accent color
