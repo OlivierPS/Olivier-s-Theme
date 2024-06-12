@@ -975,34 +975,39 @@ body {
 }
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-yellow {
+/*	Base colors	*/
 	--color-base-00:	#FFF8DA;
 	--color-base-20:	#FEF3C7;
 	--color-base-35:	#fdeda9;
 	--color-base-40:	#fbcd15;
 	--color-base-50:	#B28F03;
-	--OT-color-on-base-20:	#907403;
+	--color-base-05:	#FEEFB6;
 
+/*	Surface colors	*/
 	--background-secondary-alt:		#F5EBC0;
+	--background-modifier-border:		#FCD34D;
 	--background-modifier-form-field:#FFFAE6;
-	--background-modifier-border:	#FCD34D;
-	--blockquote-background-color:	#FEF3C7;
-	--text-muted:				#3945C5;
 
+/*	Accent color	*/
 	--accent-h:			48	!important;
 	--accent-s:			96%	!important;
 	--accent-l:			20%	!important;
 
-	--text-selection:	hsl(var(--accent-h), var(--accent-s), 70%);
-
+/*	Text colors	*/
 	--color-base-100:	var(--favorite-blue);
-	--OT-color-muted-on-base-20:	#B28F03;
+	--text-muted:		#3945C5;
 	--link-color:		#537622;
 	--h1-color:			#6F5902;
 
-	--OT-table-header-background:	#FEEFB6;
-	--OT-table-background:	#FDEFB3;
-/*	--text-on-accent:		#816E1D;	*/
+	--blockquote-background-color:	#FEF3C7;
 
+/*	Adaptations for the current palette	*/
+	--OT-color-muted-on-base-20:	#B28F03;
+	--OT-color-on-accent-1:			var(--color-base-100);
+	--OT-color-muted-on-accent-1:	#A18103;
+	--OT-color-on-base-20:			#907403;
+	--OT-table-header-background:	#FEEFB6;
+	--text-selection:				hsl(var(--accent-h), var(--accent-s), 70%);
 }
 
 
@@ -1768,7 +1773,7 @@ body {
 .theme-light.generalPalette-yellow.accentColor-lightMode-shade {
 	--accent-h:			48	!important;
 	--accent-s:			96%	!important;
-	--accent-l:			35%	!important;
+	--accent-l:			50%	!important;
 /*	--text-on-accent:		var(--background-primary);	*/
  	--link-color-hover:		var(--text-accent-hover);
 	--OT-tooltip-text-color:			var(--OT-color-on-base-20);
