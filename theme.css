@@ -54,6 +54,7 @@
 						Tuning of some colors													1.10.1
 			11.06.2024	Further refinements														1.10.2
 																								1.10.3
+			12.06.2024	Further refinements														1.10.4
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -303,7 +304,8 @@ body {
 	--pill-background:			var(--background-secondary-alt);
 	--pill-color-hover:			var(--OT-color-on-accent-1);
 	--pill-background-hover:	var(--color-accent-1);
-/*	--pill-remove-color:		var(--text-on-hover);				*/
+	--pill-color-remove:		var(--OT-color-on-accent-3);
+	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
 
 	--tab-text-color:							var(--OT-color-faint-on-base-20);
 	--tab-text-color-active:					var(--color-accent-2);
@@ -319,8 +321,8 @@ body {
 
 	--tag-color:			var(--OT-color-on-accent-2);
 	--tag-background:		var(--color-accent-2);
-/*	--tag-color-hover:		var(--text-on-accent);*/
-/*	--tag-background-hover:	var(--interactive-accent-hover);*/
+	--tag-color-hover:		var(--OT-color-on-accent-1);
+	--tag-background-hover:	var(--color-accent-1);
 
 	--tab-container-background:		var(--color-base-05);
 
@@ -547,9 +549,8 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-OBSIDIAN {
 	--link-color:					var(--obsidian-violet);
-	--OT-table-header-background:	#EEEEEE;
+	--OT-table-header-background:	#eee;
 
-	/*		--nav-item-color-hover:			var(--color-base-00);	*/
 	--OT-color-muted-on-accent-1:	var(--color-base-40);
 	--OT-color-on-accent-2:			var(--color-base-00);
 	--OT-color-on-accent-3:			var(--color-base-00);
@@ -606,12 +607,12 @@ body {
 	--color-base-35:	#a6d1fc;
 	--color-base-40:	#0870d9;
 	--color-base-50:	#6687C7;
+	--color-base-05:	#E7F1FF;
 
 /*	Surface colors	*/
 	--background-secondary-alt:			#E7FDFF;
 	--background-modifier-border:		#87c1fb;
 	--background-modifier-form-field:	#F3FCFF;
-	--text-muted:						#537CC3;
 
 /*	Accent color	*/
 	--accent-h:	214		!important;
@@ -619,28 +620,29 @@ body {
 	--accent-l:	40%		!important;
 
 /*	Text colors	*/
-	--color-base-100:			#0761BB;
+	--color-base-100:		#0761BB;
 	--text-muted:			#42A0FF;
-	--text-on-accent:		var(--color-base-20);
 	--link-color:			#57A706;
 	--h1-color:				#06509A;
 	--h3-color:				#0872DC;
 	--h5-color:				#3194F7;
-	--OT-color-on-base-20:	#0760BA;
-	--OT-color-on-accent-1:	var(--color-base-00);
-	--OT-color-muted-on-accent-1:	#97CBFF;
-	--OT-color-on-accent-2:	var(--color-base-00);
 
 /*	Functional variables*/
 	--blockquote-background-color:	#EEF4FF;
-/*	--icon-color-focused:			var(--background-primary);*/
-	--icon-color-hover:				var(--color-base-20);
-	--OT-button-text-normal:			var(--color-base-00);
+
+/*	Adaptations for the current palette	*/
+	--icon-color-hover:				yellow;	/*	var(--color-base-20);	*/
+	--OT-button-text-normal:		var(--color-base-00);
+	--OT-color-muted-on-accent-1:	#97CBFF;
+	--OT-color-on-accent-1:			var(--color-base-00);
+	--OT-color-on-accent-2:			var(--color-base-00);
+	--OT-color-on-base-20:			#0760BA;
 	--OT-metadata-background:		#F4F5F6;
 	--OT-metadata-title-color-faint:#90B8E1;
 	--OT-table-background:			#F4F9FF;
 	--OT-table-header-background:	#E2EEFE;
-	--OT-tooltip-text-color:			var(--color-base-00);
+	--OT-tooltip-text-color:		var(--color-base-00);
+/*	--icon-color-focused:			var(--background-primary);*/
 }/*	↑ generalPalette-icy ↑	*/
 
 /*	----------------------------------------------	*/
@@ -665,10 +667,8 @@ body {
 	--accent-l:			30%	!important;
 
 /*	Text colors	*/
-	--color-base-100:			#71573E;
+	--color-base-100:		#71573E;	/*	--text-normal	*/
 	--text-muted:			#BD8C38;
-/*	--text-on-accent:		var(--OT-color-on-base-20);	*/
-	--OT-color-on-accent-2:	var(--color-base-00);
 	--link-color:			#507192;
 	--h1-color:				#9D7956;
 	--h3-color:				#6B523B;
@@ -677,16 +677,16 @@ body {
 
 /*	Functional variables*/
 	--blockquote-background-color:		#F7F0E4;
-/*	--nav-item-color-hover:				var(--text-in-sidebar);	*/
+
+/*	Adaptations for the current palette	*/
 	--OT-clickable-icon-color-hover:	var(--color-base-20);
+	--OT-color-muted-on-base-20:		var(--color-base-40);
+	--OT-color-on-accent-2:				var(--color-base-00);
+	--OT-color-on-base-20:				#7D6754;
 	--OT-metadata-title-color-faint: 	#B1A295;
 	--OT-stabilo-mark:					#E9DDD1;
-	--OT-table-alt-background:			#f9f5ec;	/*	#fffefa;	*/
+	--OT-table-alt-background:			#f9f5ec;
 	--OT-table-header-background:		#EEE8DC;
-	--OT-color-on-base-20:				#7D6754;
-
-	--text-on-accent:					var(--color-base-100);
-
 } /*	↑ generalPalette-lightBeige ↑	*/
 
 /*	----------------------------------------------	*/
@@ -750,9 +750,6 @@ body {
 	--pill-color:									var(--background-secondary);
 	--status-bar-border-color:						#fafff3;
 	--status-bar-text-color:						var(--background-primary);
-	--tab-text-color-focused-active-current:		var(--background-primary);
-	--tab-text-color-focused-active:				var(--text-normal);
-/*	--text-on-accent:								var(--background-primary)	*/
 } /*	↑ generalPalette-metallicBlue ↑	*/
 
 /*	----------------------------------------------	*/
@@ -3916,6 +3913,27 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 .suggestion-item.mod-complex.is-selected .suggestion-note {	/*	le texte complémentaire dans la sélection	*/
 	color:	var(--OT-color-muted-on-accent-1);
 }
+@media (hover: hover) {
+  body:not(.is-grabbing) .tree-item-self.is-clickable:hover {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
+}
+@media (hover: hover) {
+  body:not(.is-grabbing) .nav-file-title:hover,
+  body:not(.is-grabbing) .nav-folder-title:hover {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
+}
+.sync-history-list-item .version-group-container .version-group-item:hover {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+}
+.tree-item-self.is-clickable.mobile-tap {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+}
 body:not(.is-grabbing) .tree-item-self.is-active:hover,
 .tree-item-self.is-active:hover {							/*	pour que ce qui est sélectionné soit visiblement survolé	*/
 		color: 				var(--OT-color-on-accent-1);
@@ -3990,7 +4008,8 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 	}
 
 .nav-file-tag {
-	color:	var(--text-on-accent);
+		color: 				var(--OT-color-on-accent-2);
+		background-color:	var(--color-accent-2);
 }
 
 /* amélioration de la lisibilité de la liste des backlinks */
@@ -4528,11 +4547,23 @@ button.mod-muted {
 	color:		var(--OT-vertical-tab-header-group-title);
 	font-size:	1.3em;
 }
+
 body:not(.is-phone) .community-item.is-selected,
 body:not(.is-phone) .community-item.is-selected:hover {
-	color:				var(--OT-color-on-accent-3);
-		color: 				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
+	color: 				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
+}
+body:not(.is-phone) .community-item.is-selected .community-item-author,
+body:not(.is-phone) .community-item.is-selected:hover .community-item-author,
+body:not(.is-phone) .community-item.is-selected .community-item-repo,
+body:not(.is-phone) .community-item.is-selected:hover .community-item-repo,
+body:not(.is-phone) .community-item.is-selected .community-item-downloads,
+body:not(.is-phone) .community-item.is-selected:hover .community-item-downloads,
+body:not(.is-phone) .community-item.is-selected .community-item-updated,
+body:not(.is-phone) .community-item.is-selected:hover .community-item-updated {
+	color:	var(--text-on-accent);
+	color: 	var(--OT-color-on-accent-3);
+	opacity: 0.8;
 }
 
 /*	-------------------- suppression du réglage de la couleur “accent” dans les settings --------------------	*/

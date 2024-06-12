@@ -1,6 +1,6 @@
 # Olivier’s Theme
-*(→ [full User Guide](https://www.craft.do/s/eBDEU8fdQxIUU3))*  
-*(→ [more samples](https://www.craft.do/s/lxIz4vNEeoXAqc))*  
+*(→ [full User Guide](https://www.craft.do/s/eBDEU8fdQxIUU3))*
+*(→ [more samples](https://www.craft.do/s/lxIz4vNEeoXAqc))*
 *(→ [updates' description](https://www.craft.me/s/YhSmt2Uz68ERCj))*
 
 
@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 12.06.2024 Version 1.10.4
+
+Further refinements.
+
+----------------------------------------------
+
 #### 11.06.2024 Version 1.10.2, 1.10.3
 
 Further refinements.
@@ -141,7 +147,7 @@ Tuning of some colors.
 
 ----------------------------------------------
 #### 02.06.2024 Version 1.9.0
-Improvements to the logic of the clickable icons and sidebar tabs.  
+Improvements to the logic of the clickable icons and sidebar tabs.
 Correction of the dropdown menu with commands for the current pane.
 Tuning of some colors.
 
