@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 13.06.2024 Version 1.10.5
+
+Further refinements.
+
+----------------------------------------------
+
 #### 12.06.2024 Version 1.10.4
 
 Further refinements.

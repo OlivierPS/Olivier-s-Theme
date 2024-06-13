@@ -55,6 +55,7 @@
 			11.06.2024	Further refinements														1.10.2
 																								1.10.3
 			12.06.2024	Further refinements														1.10.4
+			13.06.2024	Further refinements														1.10.5
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -125,8 +126,8 @@ Bookmarks:	OpSpl01:	Déclarations générales
 :root
 {
 	--obsidian-violet:		#8b6cef;
-	--favorite-blue:			#0f056b;
-	--dark-blue:				#212A70;
+	--favorite-blue:		#0f056b;
+	--dark-blue:			#212A70;
 	--blue:					#2C1CBD;
 	--light-blue:			#A6C3E1;
 	--royal-blue:			#0000a3;
@@ -183,50 +184,51 @@ body {
 	--OT-kanban-font:			"Uberhand Pro";
 	--OT-kanban-font-size:		17px;
 	/*	---------- Other theme’s variables	*/
-	--OT-button-text-normal:						var(--OT-color-on-accent-3);
+	--OT-button-background-active:					var(--color-accent-2);
+	--OT-button-background-hover:					var(--color-accent-1);
 	--OT-button-background-normal:					var(--color-accent-3);
 	--OT-button-cta-background-normal:				var(--color-accent-2);
 	--OT-button-cta-text-normal:					var(--OT-button-text-normal);
-	--OT-button-text-hover:							var(--OT-color-on-accent-1);
-	--OT-button-background-hover:					var(--color-accent-1);
 	--OT-button-text-active:						var(--OT-color-on-accent-2);
-	--OT-button-background-active:					var(--color-accent-2);
-	--OT-calendar-day-color:						var(--text-normal);
-	--OT-calendar-today-color:						var(--color-accent-1);
-	--OT-clickable-icon-color-hover:				var(--icon-color-hover);
-	--OT-clickable-icon-color-active:				var(--OT-color-on-accent-2);
+	--OT-button-text-hover:							var(--OT-color-on-accent-1);
+	--OT-button-text-normal:						var(--OT-color-on-accent-3);
+	--OT-calendar-day-color:						var(--color-base-100);
+	--OT-calendar-today-color:						var(--text-normal);
 	--OT-clickable-icon-background-active:			var(--color-accent-2);
 	--OT-clickable-icon-background-hover:			var(--color-accent-1);
-	--OT-clickable-icon-in-header:					var(--icon-color);
+	--OT-clickable-icon-color-active:				var(--OT-color-on-accent-2);
+	--OT-clickable-icon-color-hover:				var(--color-base-70);
+	--OT-clickable-icon-in-header:					var(--color-base-70);
 	--OT-color-faint-on-base-20:					var(--color-base-50);
+	--OT-color-muted-on-accent-1:					var(--color-base-70);
+	--OT-color-muted-on-base-20:					var(--color-base-70);
 	--OT-color-on-accent-1:							var(--color-base-00);
 	--OT-color-on-accent-2:							var(--color-base-100);
 	--OT-color-on-accent-3:							var(--color-base-100);
+	--OT-color-on-base-20:							var(--color-base-100);
 	--OT-link-color-hover:							var(--color-base-00);
-	--OT-menu-text-color:							var(--text-muted);
-	--OT-metadata-title-color-faint:				var(--text-faint);
-	--OT-metadata-property-icon:					var(--icon-color);
-	--OT-metadata-property-icon-hover:				var(--icon-color-hover);
-	--OT-nav-folder-title-color:					var(--text-normal);
+	--OT-menu-text-color:							var(--color-base-70);
+	--OT-metadata-property-icon-hover:				var(--color-base-70);
+	--OT-metadata-property-icon:					var(--color-base-70);
+	--OT-metadata-title-color-faint:				var(--color-base-50);
+	--OT-nav-folder-title-color:					var(--color-base-100);
 	--OT-nav-item-vertical-padding:					var(--size-4-1);
-	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
-	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
-	--OT-setting-item-name:                			var(--text-normal);
-	--OT-setting-item-description:					var(--text-muted);
-	--OT-sidebarTab-background-active:				var(--color-accent-2);
+	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-70);
+	--OT-ribbon-icon-color-sidebar-is-open:			var(--color-base-70);
+	--OT-search-result-file-title-expanded:			var(--color-base-100);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
+	--OT-setting-item-description:					var(--color-base-70);
+	--OT-setting-item-name:                			var(--color-base-100);
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
+	--OT-sidebarTab-background-active:				var(--color-accent-2);
 	--OT-stabilo-mark:								var(--stabilo-jaune-foncé);
 	--OT-stabilo-text:								var(--text-normal);
-	--OT-style-settings-collapse-indicator:			var(--text-faint);
-	--OT-color-on-base-20:							var(--text-normal);
-	--OT-color-muted-on-accent-1:					var(--color-base-70);
-	--OT-color-muted-on-base-20:					var(--color-base-70);
+	--OT-style-settings-collapse-indicator:			var(--color-base-50);
 	--OT-tab-background-active-hover:				var(--color-accent-1);
-	--OT-table-background:							var(--color-base-00);
-	--OT-tooltip-text-color:							var(--OT-color-on-accent-1);
-	--OT-search-result-file-title-expanded:			var(--text-normal);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
-	--OT-tree-item-flair-color:						var(--OT-color-on-accent-3);
+	--OT-table-background:							var(--color-base-20);
+	--OT-table-alt-background:						var(--color-base-00);
+	--OT-tooltip-text-color:						var(--OT-color-on-accent-1);
 	--OT-tree-item-flair-background:				var(--color-accent-3);
+	--OT-tree-item-flair-color:						var(--OT-color-on-accent-3);
 	--OT-vertical-tab-header-group-title:			var(--OT-color-muted-on-base-20);
 	--OT-view-header-title-focus-color: 			var(--h1-color);
 
@@ -258,15 +260,15 @@ body {
 	--checkbox-color-hover:			var(--color-accent-1);
 	--checkbox-border-color:		var(--text-normal);
 	--checkbox-border-color-hover:	var(--color-accent-1);
-	--checklist-done-color:			var(--text-faint);
+	--checklist-done-color:			var(--color-base-50);
 
-	--code-normal:		var(--text-normal);
-	--code-background:	var(--blockquote-background-color);
+	--code-normal:					var(--text-normal);
+	--code-background:				var(--blockquote-background-color);
 
 	--dropdown-background:			var(--color-accent-3);
 	--dropdown-background-hover:	var(--color-accent-1);
 
-	--graph-line:					var(--text-normal);
+	--graph-line:					var(--color-base-100);
 
 	--h1-color:	var(--text-normal);
 	--h2-color:	var(--h1-color);		/* ma logique: les deux premiers niveaux de headings ont la même couleur	*/
@@ -275,49 +277,49 @@ body {
 	--h5-color:	var(--text-normal);
 	--h6-color:	var(--h5-color);		/* ma logique: les deux derniers niveaux de headings ont la même couleur	*/
 
-/*	--icon-color:			var(--text-muted); (valeur originelle)					*/
 	--icon-color-hover:		var(--OT-color-on-accent-1);
-	--icon-color-active:	var(--background-secondary);
+	--icon-color-active:	var(--color-base-20);
 	--icon-color-focused:	var(--OT-color-on-accent-2);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
 
-  	--inline-title-color:	var(--text-faint);
+  	--inline-title-color:	var(--color-base-50);
 
 	--list-marker-color:	var(--text-normal);
 
 /*	--metadata-input-text-color:		var(--text-on-accent);	*/
-	--metadata-input-background-active:		var(--background-primary-alt);
+	--metadata-input-background-active:	var(--color-base-10);
 	--metadata-input-background-hover:	hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
 /*	--metadata-label-background-active:	var(--background-modifier-form-field);	*/
-	--metadata-background: 				var(--background-primary);
+	--metadata-background: 				var(--color-base-00);
 /*	--metadata-input-background-active:	var(--color-accent-2);	*/
 /*	--metadata-input-text-color:		var(--text-on-accent);		*/
 
 	--nav-collapse-icon-color:		var(--OT-color-faint-on-base-20);
 	--nav-item-color-hover:			var(--OT-color-on-accent-1);
 	--nav-item-color-active:		var(--OT-color-on-accent-2);
-	--nav-item-color-selected:		var(--background-secondary)				/*	var(--text-normal);	*/
+	--nav-item-color-selected:		var(--color-base-20)				/*	var(--text-normal);	*/
 	--nav-item-background-hover:	lime;					/*	var(--background-modifier-hover);	*/
 	--nav-item-background-active:	var(--color-accent-2);					/*	var(--background-modifier-hover);	*/
 	--nav-item-background-selected:	hsla(var(--color-accent-hsl), 0.2);
 
 	--pill-color:				var(--OT-color-on-accent-3);
-	--pill-background:			var(--background-secondary-alt);
+	--pill-background:			var(--color-base-05);
 	--pill-color-hover:			var(--OT-color-on-accent-1);
 	--pill-background-hover:	var(--color-accent-1);
 	--pill-color-remove:		var(--OT-color-on-accent-3);
 	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
 
 	--tab-text-color:							var(--OT-color-faint-on-base-20);
-	--tab-text-color-active:					var(--color-accent-2);
-	--tab-text-color-focused-active:			var(--color-accent-1);
-	--tab-text-color-focused-active-current:	var(--color-accent-1);
+	--tab-text-color-active:					var(--color-base-70);
+	--tab-text-color-focused-active:			var(--color-base-50);
+	--tab-text-color-focused-active-current:	var(--color-base-100);
 
-/*	--table-background:					white;	*/
-/*	--table-column-alt-background:		inherit;	*/
-	--table-header-background-hover:	var(--table-header-background);
-	--table-row-background-hover:		var(--table-row-alt-background);
-	--table-row-alt-background-hover:	var(--table-background);
+	--table-background:					var(--OT-table-background);
+	--table-column-alt-background:		undefined;
+	--table-header-background-hover:	transparent;	/*	var(--table-header-background);	*/
 	--table-header-color:				var(--h3-color);
+	--table-row-alt-background-hover:	transparent;	/*	var(--table-background);	*/
+/*	--table-row-alt-background:			pink;	*/
+	--table-row-background-hover:		transparent;	/*	var(--table-row-alt-background);	*/
 
 	--tag-color:			var(--OT-color-on-accent-2);
 	--tag-background:		var(--color-accent-2);
@@ -326,8 +328,6 @@ body {
 
 	--tab-container-background:		var(--color-base-05);
 
-	--text-normal:					var(--color-base-100);
-
 	--vault-name-color:				var(--OT-color-on-base-20);
 	--vault-profile-color:			var(--OT-color-on-base-20);
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
@@ -335,12 +335,12 @@ body {
 /*	Bookmark	OpSpl03	*/
 	/*	----- Text colors -----
 		-----------------------	*/
-	--text-accent-hover:	var(--link-color);
-	--text-accent:			cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
-	--text-error-hover:		var(--text-accent-hover);
-	--text-on-accent:		var(--OT-color-on-accent-1);
+	--text-accent-hover:		var(--link-color);
+	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
+	--text-error-hover:			var(--color-red);
+	--text-on-accent:			var(--OT-color-on-accent-1);
 	--text-on-accent-inverted:	var(--text-on-accent);		/*	dans "app.css" il est défini comme “black”. Je l’ai vu utilisé à des endroits non souhaités!	*/
-	--text-on-hover:		var(--OT-color-on-accent-1);
+	--text-on-hover:			var(--OT-color-on-accent-1);
 
  	--link-color-hover:			var(--text-accent-hover);
 	--link-external-color:		var(--link-color);
@@ -984,9 +984,9 @@ body {
 	--color-base-05:	#FEEFB6;
 
 /*	Surface colors	*/
-	--background-secondary-alt:		#F5EBC0;
+	--background-secondary-alt:			#F5EBC0;
 	--background-modifier-border:		#FCD34D;
-	--background-modifier-form-field:#FFFAE6;
+	--background-modifier-form-field:	#FFFAE6;
 
 /*	Accent color	*/
 	--accent-h:			48	!important;
@@ -1008,7 +1008,7 @@ body {
 	--OT-color-on-base-20:			#907403;
 	--OT-table-header-background:	#FEEFB6;
 	--text-selection:				hsl(var(--accent-h), var(--accent-s), 70%);
-}
+} /*	↑ genaralPalette-yellow ↑	*/
 
 
 
@@ -3909,9 +3909,6 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 .suggestion-container{								/*	le texte général des container de sélection	*/
 	color:	var(--color-base-100);
 }
-.suggestion-item.is-selected {						/*	la sélection en inversé, le texte général	*/
-	color:	var(--OT-color-on-accent-1);
-}
 .suggestion-item.mod-complex .suggestion-note {		/*	le texte complémentaire dans les containers de sélection	*/
 	color:	var(--OT-color-muted-on-base-20);
 }
@@ -4217,11 +4214,12 @@ td .cm-editor .cm-line {
 .OT-tables-tinted-rows .cm-embed-block.markdown-rendered .block-language-dataview,
 .OT-tables-tinted-rows .markdown-rendered table,
 .OT-tables-tinted-rows .markdown-rendered .table-view-table {
-	--table-row-alt-background:		var(--OT-table-background);
-	--table-background:				var(--OT-table-alt-background);
-	--table-row-background-hover:	var(--OT-table-alt-background);
-	vertical-align:					top;
-	border:							calc(var(--table-border-width) * 2) solid;
+	--table-row-alt-background:			var(--OT-table-background);
+	--table-background:					var(--OT-table-alt-background);
+	--table-row-background-hover:		transparent;	/*	var(--OT-table-alt-background);	*/
+	--table-row-alt-background-hover:	transparent;	/*	var(--OT-table-alt-background);	*/
+	vertical-align:						top;
+	border:								calc(var(--table-border-width) * 2) solid;
 }
 
 .OT-tables-tinted-rows .cm-embed-block.markdown-rendered .block-language-dataview td,
@@ -5464,7 +5462,8 @@ input[type='number']::placeholder {
 }
 
 .another-quick-switcher__item__extension {
-	color:	var(--OT-color-on-accent-1);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 
 .suggestion-item.is-selected,
@@ -5472,16 +5471,18 @@ input[type='number']::placeholder {
 .suggestion-item.is-selected .another-quick-switcher__item__description__tag,
 .suggestion-item.is-selected .omnisearch-result__body
 {
-/*		color:	var(--text-on-accent);	*/
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 .suggestion-item.is-selected .omnisearch-result__title {
-	color:	var(--OT-color-on-accent-1);
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 
 
 /*	----- Pour le plugin “Better Command Palette” -----	*/
 .better-command-palette .better-command-palette-title {
-  color: var(--text-normal);
+  color: var(--color-base-100);
 }
 
 /*	pour que l’indicateur de la recherche “case sensitive” soit visible quand ce mode est actif	*/
