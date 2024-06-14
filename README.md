@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 14.06.2024 Version 1.10.6
+
+Metallic Blue, light → OK
+
+----------------------------------------------
+
 #### 13.06.2024 Version 1.10.5
 
 Further refinements.
