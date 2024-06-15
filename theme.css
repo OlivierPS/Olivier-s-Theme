@@ -57,6 +57,7 @@
 			12.06.2024	Further refinements														1.10.4
 			13.06.2024	Further refinements														1.10.5
 			14.06.2024	Metallic Blue, light → OK												1.10.6
+			15.06.2024	Blue, light → OK														1.10.7
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -219,6 +220,7 @@ body {
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-70);
 	--OT-ribbon-icon-color-sidebar-is-open:			var(--color-base-70);
 	--OT-search-result-file-title-expanded:			var(--color-base-100);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
+	--OT-search-settings-item-name:					var(--OT-setting-item-name);
 	--OT-setting-item-description:					var(--color-base-70);
 	--OT-setting-item-name:                			var(--color-base-100);
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
@@ -268,6 +270,9 @@ body {
 	--code-normal:					var(--text-normal);
 	--code-background:				var(--blockquote-background-color);
 
+	--collapse-icon-color:				var(--h1-color);
+	--collapse-icon-color-collapsed:	var(--link-color);
+
 	--dropdown-background:			var(--color-accent-3);
 	--dropdown-background-hover:	var(--color-accent-1);
 
@@ -280,6 +285,7 @@ body {
 	--h5-color:	var(--text-normal);
 	--h6-color:	var(--h5-color);		/* ma logique: les deux derniers niveaux de headings ont la même couleur	*/
 
+	--icon-color:			var(--color-base-70);
 	--icon-color-hover:		var(--OT-color-on-accent-1);
 	--icon-color-active:	var(--color-base-20);
 	--icon-color-focused:	var(--OT-color-on-accent-2);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
@@ -291,7 +297,7 @@ body {
 /*	--metadata-input-text-color:		var(--text-on-accent);	*/
 	--metadata-input-background-active:	var(--color-base-10);
 	--metadata-input-background-hover:	hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
-/*	--metadata-label-background-active:	var(--background-modifier-form-field);	*/
+	--metadata-label-background-active:	var(--background-modifier-form-field);
 	--metadata-background: 				var(--color-base-00);
 /*	--metadata-input-background-active:	var(--color-accent-2);	*/
 /*	--metadata-input-text-color:		var(--text-on-accent);		*/
@@ -313,10 +319,16 @@ body {
 	--pill-color-remove:		var(--OT-color-on-accent-2);
 	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
 
+	--status-bar-background:	var(--color-base-05);
+	--status-bar-text-color:	var(--OT-color-muted-on-base-20);
+
 	--tab-text-color:							var(--OT-color-faint-on-base-20);
 	--tab-text-color-active:					var(--color-base-70);
+	--tab-text-color-focused:					var(--color-base-70);
 	--tab-text-color-focused-active:			var(--color-base-50);
-	--tab-text-color-focused-active-current:	var(--color-base-100);
+	--tab-text-color-focused-active-current:	var(--color-red);	/*	var(--color-base-100);	*/
+
+	--tab-stacked-text-transform:	rotate(180deg);
 
 	--table-background:					var(--OT-table-background);
 	--table-column-alt-background:		undefined;
@@ -341,8 +353,7 @@ body {
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
 
 /*	Bookmark	OpSpl03	*/
-	/*	----- Text colors -----
-		-----------------------	*/
+	/*	----- Text colors -----	*/
 	--text-accent-hover:		var(--link-color);
 	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
 	--text-error-hover:			var(--color-red);
@@ -494,34 +505,37 @@ body {
 	--color-base-20:	#EEE5DD;
 	--color-base-35:	#EDE4DD;
 	--color-base-40:	#A87D58;
+	--color-base-50:	#B2A498;
 	--color-base-05:	#F0E9E2;
-	--color-base-50:	#F6EDE5;
 
 /*	Surface colors	*/
 	--background-secondary-alt:			#E6DDD5;
 	--background-modifier-form-field:	#F6EDE5;
 	--background-modifier-border:		#D7C3B2;
 
+
 /*	Text colors	*/
 	--color-base-100:	#6A4F38;
-	--text-muted:	#AE8768;
-	--link-color:	#58A8A5;
-	--h1-color:		#96704F;
-	--h3-color:		#9F7653;
-	--h5-color:		#BEA18D;
-
-	--OT-color-on-base-20:			#A87D58;
-	--OT-color-muted-on-base-20:	#D19F6E;
-	--OT-color-faint-on-base-20:	#DCB691;
-	--OT-color-muted-on-accent-1:	#FBBF84;
-	--OT-color-on-accent-2:			var(--color-base-00);
+	--text-muted:		#AE8768;
+	--link-color:		#58A8A5;
+	--h1-color:			#96704F;
+	--h3-color:			#9F7653;
+	--h5-color:			#BEA18D;
+	--checklist-done-color:	#C0C0C0;
 
 /*	Functional variables*/
 	--blockquote-background-color:		#EDE4DD;
+
 	--OT-clickable-icon-color-hover:	var(--color-base-20);
+	--OT-color-faint-on-base-20:		#DCB691;
+	--OT-color-muted-on-accent-1:		#FBBF84;
+	--OT-color-muted-on-base-20:		#D19F6E;
+	--OT-color-on-accent-2:				var(--color-base-00);
+	--OT-color-on-base-20:				#A87D58;
 	--OT-stabilo-mark:					#E9DDD1;
-	--OT-table-alt-background:			#EEE6DF;
-	--OT-table-header-background:		#EAE1D8;
+	--OT-table-alt-background:			#f8f5f1;
+	--OT-table-header-background:		#E6DDD5;
+	--tab-text-color-focused-active:	var(--color-base-70);
 }/*	↑ generalPalette-beige ↑	*/
 
 /*	----------------------------------------------	*/
@@ -530,29 +544,32 @@ body {
 	--color-base-20:	#C2DBFF;
 	--color-base-35:	#CFDDF2;
 	--color-base-40:	#0870d9;
-	--color-base-05:	#F2F7FE;
 	--color-base-50:	#7591CB;
-	--OT-color-on-base-20:	#0760BA;
-	--background-secondary-alt:	#BCD4F6;
+	--color-base-05:	#CAE0FF;
 
+	--background-secondary-alt:	#BCD4F6;
 	--background-modifier-border:		#A5BCDB;
 	--background-modifier-form-field:	#D9E9FF;
-	--blockquote-background-color:		#C0DAFF;
-	--text-muted:						#06509A;
-	--OT-table-alt-background:			#D9E8FF;
-
+/*
 	--accent-h:			215		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			30%		!important;
-
+*/
 	--color-base-100:	#0761BB;
+	--text-muted:		#76A8D9;
 	--link-color:		#4E9706;
 	--h1-color:			#053F79;
 	--h3-color:			#06509A;
 	--h5-color:			#1083F6;
 
-	--OT-table-header-background:	#C7DEFF;
-	--OT-table-background:	#D9E8FF;
+	--blockquote-background-color:		#C0DAFF;
+
+	--OT-color-muted-on-accent-1:	#C3D9EF;
+	--OT-color-on-accent-2:            var(--color-base-00);
+	--OT-color-on-base-20:			#0760BA;
+	--OT-table-alt-background:		#e1edff;
+	--OT-table-background:			#D9E8FF;
+	--OT-table-header-background:	#CEE9FF;
 } /*	↑ generalPalette-blue ↑	*/
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-OBSIDIAN {
@@ -565,8 +582,8 @@ body {
 }
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-WIP {
-	--background-primary:			#FFFFF0;	/*	ivory; autre possibilité: FDFDEF	*/
-	--background-secondary:			#fdf5e6;
+	--color-base-00:			#FFFFF0;	/*	ivory; autre possibilité: FDFDEF	*/
+	--color-base-20:			#fdf5e6;
 
 	--color-base-100:				#212A70;
 	--text-muted:				#7085CE;
@@ -639,7 +656,7 @@ body {
 	--blockquote-background-color:	#EEF4FF;
 
 /*	Adaptations for the current palette	*/
-	--icon-color-hover:				yellow;	/*	var(--color-base-20);	*/
+	--icon-color-hover:				var(--color-base-20);
 	--OT-button-text-normal:		var(--color-base-00);
 	--OT-color-muted-on-accent-1:	#97CBFF;
 	--OT-color-on-accent-1:			var(--color-base-00);
@@ -729,21 +746,24 @@ body {
 
 
 /*	Functional variables*/
-	--icon-color:									var(--background-primary);
-	--metadata-input-background-active:				var(--color-base-00);
-	--metadata-input-text-color:					var(--color-base-20);
-	--metadata-label-background-active: 			var(--color-base-00);
-	--metadata-label-text-color:					var(--color-base-100);
-	--nav-item-color:								var(--color-base-50);
-	--OT-color-muted-on-base-20:					#C8DFF0;
-	--OT-color-on-base-20:							var(--color-base-00);
-	--OT-menu-text-color:							var(--color-base-00);
-	--OT-nav-folder-title-color:					var(--OT-color-muted-on-base-20);
-	--OT-table-background:							#FBFCFD;
-	--OT-table-alt-background:						#F1FDE3;
-	--tab-text-color-active:						#153148;
-	--tab-text-color-focused:						var(--color-base-00);
-	--tab-text-color:								#2E6B9D;
+	--icon-color:							var(--OT-color-muted-on-base-20);
+	--metadata-input-background-active:		var(--color-base-00);
+	--metadata-input-text-color:			var(--color-base-20);
+	--metadata-label-background-active: 	var(--color-base-00);
+	--metadata-label-text-color:			var(--color-base-100);
+	--nav-item-color:						var(--color-base-50);
+	--OT-color-muted-on-accent-1:			#B6E1FF;
+	--OT-color-muted-on-base-20:			#B6E1FF;
+	--OT-color-on-base-20:					var(--color-base-00);
+	--OT-menu-text-color:					var(--color-base-00);
+	--OT-nav-folder-title-color:			var(--OT-color-muted-on-base-20);
+	--OT-ribbon-icon-color-sidebar-is-open:	var(--OT-color-muted-on-base-20);
+	--OT-search-settings-item-name:			var(--OT-color-muted-on-base-20);
+	--OT-table-background:					#FBFCFD;
+	--OT-table-alt-background:				#edf7ff;
+	--tab-text-color-active:				#153148;
+	--tab-text-color-focused:				var(--color-base-00);
+	--tab-text-color:						#2E6B9D;
 } /*	↑ generalPalette-metallicBlue ↑	*/
 
 /*	----------------------------------------------	*/
@@ -1015,10 +1035,11 @@ body {
 	--OT-table-background:	#262626;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-beige,
 .theme-dark.generalPalette-lightBeige.darkPalette-default {
-	--color-base-20:	#2F1E02;
 	--color-base-00:	#2A1B02;
+	--color-base-20:	#2F1E02;
 	--color-base-35:	#4A413B;
 	--color-base-40:	#603D04;
 	--color-base-05:	#4A413B;
@@ -1033,7 +1054,7 @@ body {
 	--background-modifier-border:	#784D05;
 	--blockquote-background-color:	#472E03;
 
-	--color-base-100:		#F39B0A;
+	--color-base-100:	#F39B0A;
 	--link-color:		#0A62F3;
 	--h1-color:			#F5AF66;
 	--h3-color:			#F7AF39;
@@ -1045,10 +1066,11 @@ body {
 	--OT-table-background:			#221602;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-black,
 .theme-dark.generalPalette-artDeco.darkPalette-default {
-	--color-base-20:		#000;
 	--color-base-00:		black;
+	--color-base-20:		#000;
 	--interactive-hover:	var(--color-base-20);
 	--blockquote-background-color:	#383838;
 	--link-color:			var(--obsidian-violet);
@@ -1060,10 +1082,11 @@ body {
 	--OT-table-background:	#101013;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-blue,
 .theme-dark.generalPalette-blue.darkPalette-default {
-	--color-base-20:	#021a32;
 	--color-base-00:	#011427;
+	--color-base-20:	#021a32;
 	--color-base-35:	#043363;
 	--color-base-40:	#03264a;
 	--color-base-05:	#010A14;
@@ -1092,10 +1115,11 @@ body {
 	--OT-table-background:	#031C3F;	/*	#02152F;	*/
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-brown,
 .theme-dark.generalPalette-beige.darkPalette-default {
-	--color-base-20:	#351D09;
 	--color-base-00:	#1F1105;
+	--color-base-20:	#351D09;
 	--color-base-35:	#7B6054;
 	--color-base-40:	#512C0E;
 	--color-base-05:	#190E04;
@@ -1122,10 +1146,11 @@ body {
 	--OT-table-background:	#291606;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-green,
 .theme-dark.generalPalette-green.darkPalette-default {
-	--color-base-20:	#082D15;
 	--color-base-00:	#04170B;
+	--color-base-20:	#082D15;
 	--color-base-35:	#0F582A;
 	--color-base-40:	#0B4320;
 	--color-base-05:	#000101;
@@ -1152,10 +1177,11 @@ body {
 	--OT-table-background:	#051C0E;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-icy,
 .theme-dark.generalPalette-icy.darkPalette-default {
-	--color-base-20:	#00204B;
 	--color-base-00:	#001736;
+	--color-base-20:	#00204B;
 	--color-base-35:	#00204B;
 	--color-base-40:	#000E22;
 	--color-base-05:	#00060D;
@@ -1185,9 +1211,10 @@ body {
 	--OT-table-background:	#001C41;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-LYT {
-	--color-base-20:	#232429;
 	--color-base-00:	#2E3039;
+	--color-base-20:	#232429;
 	--color-base-35:	#232429;
 	--color-base-40:	#F3EE5E;
 	--color-base-05:	black;
@@ -1221,10 +1248,11 @@ body {
 	--OT-table-background:	#292B33;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-metallicBlue,
 .theme-dark.generalPalette-metallicBlue.darkPalette-default {
-	--color-base-20:	#112A3D;
 	--color-base-00:	#143248;
+	--color-base-20:	#112A3D;
 	--color-base-35:	#334455;
 	--color-base-40:	#334455;
 	--color-base-05:	#07121B;
@@ -1256,11 +1284,12 @@ body {
 	--OT-table-background:	#122D41;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-oliveGreen,
 .theme-dark.generalPalette-paradiso.darkPalette-default,
 .theme-dark.generalPalette-pistachio.darkPalette-default {
-	--color-base-20:	#4C4D25;
 	--color-base-00:	#35361A;
+	--color-base-20:	#4C4D25;
 	--color-base-35:	#909246;
 	--color-base-40:	#35361A;
 	--color-base-05:	#1F1F0F;
@@ -1285,6 +1314,7 @@ body {
 	--OT-table-background:	#2E2F16;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-parchment,
 .theme-dark.generalPalette-parchment.darkPalette-default {
 	--color-base-00:	#4E2F0D;
@@ -1315,10 +1345,11 @@ body {
 	--OT-table-background:	#462A0C;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-red,
 .theme-dark.generalPalette-red.darkPalette-default {
-	--color-base-20:	#35020B;
 	--color-base-00:	#1E0106;
+	--color-base-20:	#35020B;
 	--color-base-35:	#B91C1C;
 	--color-base-40:	#4F0310;
 	--color-base-05:	#170105;
@@ -1349,6 +1380,7 @@ body {
 	--OT-table-background:	#36010C;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-solarized,
 .theme-dark.generalPalette-solarized.darkPalette-default {
 	--color-base-20:	var(--solarized-base02);
@@ -1381,6 +1413,7 @@ body {
 	--OT-stabilo-text:					var(--solarized-base3) !important;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-stone,
 .theme-dark.generalPalette-stone.darkPalette-default{
 	--color-base-00:	#1C1917;
@@ -1414,6 +1447,7 @@ body {
 	--OT-table-background:	#191615;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-victorian {
 	--color-base-00:	#6197B5;
 	--color-base-20:	#006615;
@@ -1449,10 +1483,11 @@ body {
 	--OT-table-background:	#558FB0;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-violet,
 .theme-dark.generalPalette-violet.darkPalette-default{
-	--color-base-20:	#200C40;
 	--color-base-00:	#16082A;
+	--color-base-20:	#200C40;
 	--color-base-35:	#4C1D95;
 	--color-base-40:	#2B1155;
 	--color-base-05:	#0B0415;
@@ -1478,6 +1513,7 @@ body {
 	--OT-table-background:	#1D0B39;
 }
 
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-yellow,
 .theme-dark.generalPalette-yellow.darkPalette-default{
 	--color-base-00:	#0D0D0D;
@@ -1530,6 +1566,9 @@ body {
 	--accent-h:			28	!important;
 	--accent-s:			31%	!important;
 	--accent-l:			40%	!important;
+	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 12.5%))	!important;
+	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 30%))		!important;
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 44%));		/*	additional accent color for theme’s needs	*/
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-1 {
 	--accent-h:			238	!important;
@@ -1545,7 +1584,7 @@ body {
 .theme-light.generalPalette-blue.accentColor-lightMode-shade {
 	--accent-h:			215		!important;
 	--accent-s:			100%	!important;
-	--accent-l:			30%		!important;
+	--accent-l:			50%		!important;
 }
 .theme-light.generalPalette-blue.accentColor-lightMode-alternative-1 {
 	--accent-h:			125		!important;
@@ -3904,7 +3943,8 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 	color:	var(--OT-color-muted-on-base-20);
 }
 .suggestion-container{								/*	le texte général des container de sélection	*/
-	color:	var(--color-base-100);
+	color:				var(--OT-menu-text-color);
+	background-color:	var(--OT-menu-background);
 }
 .suggestion-item.mod-complex .suggestion-note {		/*	le texte complémentaire dans les containers de sélection	*/
 	color:	var(--OT-color-muted-on-base-20);
@@ -3914,6 +3954,8 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 }
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover {
+		--text-faint:		var(--OT-color-faint-on-accent-1);
+		--text-muted:		var(--OT-color-muted-on-accent-1);
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
   }
@@ -3953,6 +3995,7 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 	color:	var(--OT-color-on-accent-1);
 }
 
+.suggestion-item.is-selected:hover,
 .suggestion-item.is-selected .clickable-icon:hover {
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
@@ -5305,6 +5348,15 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	color:				var(--OT-color-on-accent-3);
 	background-color:	var(--color-accent-3);
 }
+.metadata-container .metadata-add-button {
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
+}
+@media (hover: hover) {
+  .text-icon-button:hover {
+	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
+  }
 /* -------------------- ↑ Metadata Menu plugin ↑ -------------------- */
 
 
@@ -5382,18 +5434,50 @@ kbd {
 }
 /*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
 
+/*	Let’s  make collapse indicators/buttons bigger	*/
+.view-content .list-collapse-indicator svg.svg-icon,
+.view-content .collapse-indicator svg.svg-icon {
+	width:			0.8rem;
+	height:			0.8rem;
+	margin-right:	0.5rem;
+}
+
+
 /*	Bookmark	OpSpl45	*/
 /*	———————————————————— Prompts	———————————————————— */
 .prompt {
+	--text-muted:		var(--OT-color-muted-on-base-20);
 	color:				var(--OT-color-on-base-20);
 	background-color:	var(--background-secondary);
 }
 /*	-------------------- ↑ Prompts ↑	-------------------- */
 
+/*	———————————————————— Empty pannel	———————————————————— */
+.empty-state-action-list {
+	font-size:		var(--font-text-size);
+	line-height:	var(--line-height-tight);
+	color:			var(--text-muted);
+	margin-top:		1.5em;
+}
+.empty-state-action {
+	cursor:				var(--cursor);
+//	line-height: 		2rem;
+	color:				var(--OT-menu-text-color);
+	background-color:	var(--OT-menu-background);
+	padding:			0.5em 1em;
+}
+@media (hover: hover) {
+  .empty-state-action:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+  }
+}
+/*	-------------------- ↑ Empty pannel ↑	-------------------- */
 
-/*	Bookmark	OpSpl99	*/
-
-
+/*	panneau de description de la recherche	*/
+.search-params .setting-item-name {
+	color:	var(--OT-search-settings-item-name);
+}
 
 
 
@@ -5500,8 +5584,9 @@ input[type='number']::placeholder {
 .suggestion-item.is-selected .another-quick-switcher__item__description__tag,
 .suggestion-item.is-selected .omnisearch-result__body
 {
-		color: 				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
+	--text-muted:		var(--OT-color-muted-on-accent-1);
+	color: 				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
 }
 .suggestion-item.is-selected .omnisearch-result__title {
 		color: 				var(--OT-color-on-accent-1);
@@ -5518,15 +5603,11 @@ input[type='number']::placeholder {
 .input-right-decorator.clickable-icon.is-active {
 	background-color:	var(--OT-button-background-active);
 }
-
-
-/*	When tabs are displayed as sliding panes, I find it more logical to have the labels starting from the bottom and readable by tilting the head towards them, not away from them!	*/
-.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header-inner-title {
-    transform: rotate(180deg);
-    writing-mode: vertical-lr;
-    text-orientation: sideways;
+/*	survol des tabs en mode “stacked” ou “sliding panes”	*/
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header:hover .workspace-tab-header-inner {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
 }
-
 
 /*	Bookmark OpSpl100	*/
 /* ==================================================================================== */
