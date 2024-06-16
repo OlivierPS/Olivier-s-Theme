@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 16.06.2024 Version 1.10.8
+
+Still working on improving the underlying logic.
+
+----------------------------------------------
+
 #### 15.06.2024 Version 1.10.7
 
 Blue, light ➙ OK
