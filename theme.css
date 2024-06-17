@@ -59,12 +59,13 @@
 			14.06.2024	Metallic Blue, light → OK												1.10.6
 			15.06.2024	Blue, light → OK														1.10.7
 			16.06.2024	Still working on improving the underlying logic							1.10.8
+			17.06.2024	New light palette: Orange												1.11.0
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
 						Themes variables “--OT-…”
 			OpSpl02:	Initialisation des variables globales
-			OpSpl03:		Text colors
+			OpSpl03:		Accent colors
 			OpSpl03a:		Other variables: dimensions, spacings, borders, etc.
 			OpSpl03b:		Text selection tuning for light and dark mode. Tuning of the red in dark mode
 			OpSpl04:	Définition des palettes pour le mode “light”
@@ -297,6 +298,10 @@ body {
 
   	--inline-title-color:	var(--color-base-50);
 
+ 	--link-color-hover:			var(--text-accent-hover);
+	--link-external-color:		var(--link-color);
+	--link-unresolved-color:	var(--color-red) ;
+
 	--list-marker-color:	var(--text-normal);
 
 /*	--metadata-input-text-color:		var(--text-on-accent);	*/
@@ -349,6 +354,14 @@ body {
 	--tag-background-hover:	var(--color-accent-1);
 
 	--tab-container-background:		var(--color-base-05);
+
+	--text-accent-hover:		var(--link-color);
+	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
+	--text-error-hover:			var(--color-red);
+	--text-on-accent:			var(--OT-color-on-accent-1);
+	--text-on-accent-inverted:	var(--text-on-accent);		/*	dans "app.css" il est défini comme “black”. Je l’ai vu utilisé à des endroits non souhaités!	*/
+	--text-on-hover:			var(--OT-color-on-accent-1);
+
 	--titlebar-background: 			#333;
 	--titlebar-background-focused:	var(--color-base-05);
 
@@ -358,19 +371,7 @@ body {
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
 
 /*	Bookmark	OpSpl03	*/
-	/*	----- Text colors -----	*/
-	--text-accent-hover:		var(--link-color);
-	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
-	--text-error-hover:			var(--color-red);
-	--text-on-accent:			var(--OT-color-on-accent-1);
-	--text-on-accent-inverted:	var(--text-on-accent);		/*	dans "app.css" il est défini comme “black”. Je l’ai vu utilisé à des endroits non souhaités!	*/
-	--text-on-hover:			var(--OT-color-on-accent-1);
-
- 	--link-color-hover:			var(--text-accent-hover);
-	--link-external-color:		var(--link-color);
-	--link-unresolved-color:	var(--color-red) ;
-
-	/* ----- Accent color variations -----	*/
+	/* ----- Accent colors  -----	*/
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 0%))	!important;
 	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%))	!important;
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 40%))	!important;
@@ -588,7 +589,7 @@ body {
 }
 /*	----------------------------------------------	*/
 /*	zzzz	*/
-.theme-light.generalPalette-WIP {
+.theme-light.generalPalette-Orange {
 	--color-base-00:	#FDF6E8;
 	--color-base-20:	#fdf5e6;
 	--color-base-35:	#FC6E00;
@@ -1851,17 +1852,17 @@ body {
 	--accent-l:	20%	!important;
 }
 /*	zzzz	*/
-.theme-light.generalPalette-WIP.accentColor-lightMode-shade {
-	--accent-h:	33	!important;
+.theme-light.generalPalette-Orange.accentColor-lightMode-shade {
+	--accent-h:	33		!important;
 	--accent-s:	100%	!important;
-	--accent-l:	45%	!important;
+	--accent-l:	45%		!important;
 }
-.theme-light.generalPalette-WIP.accentColor-lightMode-alternative-1 {
+.theme-light.generalPalette-Orange.accentColor-lightMode-alternative-1 {
 	--accent-h:	165	!important;
 	--accent-s:	95%	!important;
 	--accent-l:	60%	!important;
 }
-.theme-light.generalPalette-WIP.accentColor-lightMode-alternative-2 {
+.theme-light.generalPalette-Orange.accentColor-lightMode-alternative-2 {
 	--accent-h:	300	!important;
 	--accent-s:	50%	!important;
 	--accent-l:	40%	!important;
@@ -5886,6 +5887,10 @@ settings:
 					label:		Icy
 					label.fr:	Glacé
 					value:		generalPalette-icy
+				-
+					label:		Orange
+					label.fr:	Orange
+					value:		generalPalette-Orange
 				-
 					label:		Paradiso
 					value:		generalPalette-paradiso
