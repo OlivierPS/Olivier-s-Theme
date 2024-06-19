@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19.06.2024 Version 1.11.1
+
+Corrected the overing in the search suggestions menu.
+
+----------------------------------------------
+
 #### 17.06.2024 Version 1.11.0
 
 New light palette: Orange
