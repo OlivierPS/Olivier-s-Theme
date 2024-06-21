@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 22.06.2024 Version 1.13.0
+
+Reviewing of the light palettes is done.
+
+----------------------------------------------
+
 #### 20.06.2024 Version 1.12.0
 
 The tab of the current active panel is better highlighted.
