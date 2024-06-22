@@ -63,6 +63,7 @@
 			19.06.2024	Corrected the overing in the search suggestions menu					1.11.1
 			20.06.2024	The tab of the current active panel is better highlighted.				1.12.0
 			22.06.2024	Reviewing of the light palettes is done									1.13.0
+						Fine tuning																1.13.1
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -484,6 +485,7 @@ body {
 	--metadata-label-text-color:	#887300;
 	--OT-color-on-base-20:			#E2FFFF;
 	--OT-color-muted-on-base-20:	#3C9199;
+	--OT-metadata-property-icon:					var(--metadata-label-text-color);
 //	--OT-metadata-title-color-faint: 				#84AAAE;
 //	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-20);
 //	--OT-setting-item-description:					#0BA5B3;
@@ -522,7 +524,7 @@ body {
 	--OT-table-header-background:	#E6DDD5;
 	--OT-table-alt-background:		#f8f5f1;
 
-	--metadata-background: 				var(--color-base-00);
+	--metadata-background: 				#EEE5DD;
 	--OT-clickable-icon-color-hover:	var(--color-base-20);
 	--OT-color-muted-on-accent-1:		#DFCFC2;
 	--OT-color-muted-on-base-20:		#89786C;
@@ -3857,7 +3859,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 }
 
 /*	Bookmark	OpSpl19	*/
-/*	panneaux de suggestions 	*/
+/*	panneaux de suggestions pour les recherches	*/
 .search-suggest-info-text {
 	color:	var(--OT-color-muted-on-base-20);
 }
@@ -3882,10 +3884,30 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
     color: var(--OT-color-on-accent-1);
   }
 }
+.tree-item.search-result:hover {
+	& .is-clickable {
+		color: 				var(--OT-color-on-accent-1)	!important;
+		background-color:	var(--color-accent-1)		!important;
+	}
+	& .collapse-icon svg.svg-icon {
+		color: 				var(--OT-color-on-accent-1)	!important;
+		background-color:	var(--color-accent-1)		!important;
+	}
+	& .tree-item-inner {
+		color: 				var(--OT-color-on-accent-1)	!important;
+		background-color:	var(--color-accent-1)		!important;
+	}
+	& .tree-item-flair-outer {
+		color: 				var(--OT-color-on-accent-1)	!important;
+		background-color:	var(--color-accent-1)		!important;
+	}
+}
+
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover {
 		--text-faint:		var(--OT-color-faint-on-accent-1);
 		--text-muted:		var(--OT-color-muted-on-accent-1);
+		--icon-color:		var(--OT-color-on-accent-1);
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
   }
@@ -3897,6 +3919,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 		background-color:	var(--color-accent-1);
   }
 }
+/*	survol des liens dans les panneaux des liens entrants et sortants 	*/
 .tree-item-self.is-clickable:hover {
   &.is-selected {
     background-color: var(--color-accent-1);
@@ -3912,6 +3935,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
     background-color:	var(--color-accent-2);
   }
 }
+
 .sync-history-list-item .version-group-container .version-group-item:hover {
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
@@ -5313,7 +5337,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	color:	var(--OT-metadata-property-icon);	/*	--icon-color	*/
 }
 @media (hover: hover) {
-  .metadata-property-icon:hover .svg-icon {
+  .metadata-property-icon:hover {
     color: 				var(--icon-color-hover);
     background-color:	var(--OT-clickable-icon-background-hover);
   }
