@@ -64,6 +64,8 @@
 			20.06.2024	The tab of the current active panel is better highlighted.				1.12.0
 			22.06.2024	Reviewing of the light palettes is done									1.13.0
 						Fine tuning																1.13.1
+						Added an option, in the General Settings, to highlight or not, in the tab,
+						the name of the current note in the tab									1.14.0
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -4270,9 +4272,11 @@ td .cm-editor .cm-line {
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
 }
-.workspace-tab-header.is-active.mod-active .workspace-tab-header-inner,
-.workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-close-button,
-.workspace-tab-header.is-active.mod-active .workspace-tab-header-status-icon {
+
+/*	Si “OT-tab-title-highlighted” est ON	*/
+.OT-tab-title-highlighted .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner,
+.OT-tab-title-highlighted .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-close-button,
+.OT-tab-title-highlighted .workspace-tab-header.is-active.mod-active .workspace-tab-header-status-icon {
 	--tab-text-color-focused-active-current:	var(--OT-color-on-accent-2);
 	color: 				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
@@ -5822,6 +5826,14 @@ settings:
 			type:		variable-number
 			default:	16
 			format:		px
+	-
+ 			id:		OT-tab-title-highlighted
+ 			title:	Highlight current tab
+ 			title.fr:	Tab courant mis en évidence
+ 			description:	Highlight the name of the current note in the tab title
+ 			description.fr:	Met en évidence sur le tab le nom de la fiche courante
+ 			type: 		class-toggle
+ 			default: 	false
 	-
 		id:			OT-LIGHT-mode-settings
 		title:		LIGHT MODE colors
