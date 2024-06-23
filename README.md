@@ -115,7 +115,13 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 22.06.2024
+#### 23.06.2024
+
+Added the possibility to choose different colors for the pills inside the Properties pannel.
+
+----------------------------------------------
+
+#### 22.06.2024 Version 1.14.0
 
 Added an option, in the General Settings, to highlight or not, in the tab, the name of the current note.
 
