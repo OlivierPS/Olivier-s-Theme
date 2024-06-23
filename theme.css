@@ -68,6 +68,7 @@
 						the name of the current note.											1.14.0
 			23.06.2024	Added the possibility to choose between different options for the pills
 						inside the Properties pannel											1.15.0
+						Palette Icy, mode dark: validated										1.15.1
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -343,7 +344,7 @@ body {
 	--tab-text-color-active:					var(--color-base-70);
 	--tab-text-color-focused:					var(--color-base-70);
 	--tab-text-color-focused-active:			var(--color-base-70);
-	--tab-text-color-focused-active-current:	var(--OT-theme-reference-color);
+	--tab-text-color-focused-active-current:	var(--OT-view-header-title-focus-color);
 
 	--tab-stacked-text-transform:	rotate(180deg);
 
@@ -469,7 +470,6 @@ body {
 
 /*	Bookmark	OpSpl04	*/
 /* —————————————————————————————— OpSpl Color Schemes —————————————————————————————— */
-/*	zzzz	*/
 .theme-light.generalPalette-artDeco {
 	--OT-theme-reference-color:	#FF52A8;
 	--color-base-00:			#D1FEFF;
@@ -1113,37 +1113,36 @@ body {
 }
 
 /*	----------------------------------------------	*/
+/*	zzzz	*/
 .theme-dark.darkPalette-icy,
 .theme-dark.generalPalette-icy.darkPalette-default {
+	--OT-theme-reference-color:	#00060D;
 	--color-base-00:	#001736;
 	--color-base-20:	#00204B;
-	--color-base-35:	#00204B;
-	--color-base-40:	#000E22;
+	--color-base-35:	#1253A9;
+	--color-base-40:	#1253A9;
+	--color-base-50:	#0C356B;
 	--color-base-05:	#00060D;
 	--OT-color-on-base-20:	#036FFF;
 	--color-base-50:	#0066EE;
 	--text-muted:	#7EB5FF;
 
-	--accent-h:	214	!important;
-	--accent-s:	80%	!important;
-	--accent-l:	30%	!important;
-
-	--background-modifier-border:	#005AD3;
 	--blockquote-background-color:	#00204B;
 	--code-background:				#003174;
 	--code-normal:					#4192FF;
 
 	--color-base-100:	#92C1FF;
 	--link-color:		#00DA0F;
-	--h1-color:			#036FFF;
-	--h3-color:			#69AAFF;
-	--h5-color:			#004CB1;
+//	--h1-color:			#036FFF;
+//	--h3-color:			#69AAFF;
+//	--h5-color:			#004CB1;
 	--OT-stabilo-text:		var(--text-normal) !important;
 	--OT-stabilo-mark:		#187BFF;
 
 	--OT-metadata-title-color-faint: 	#004CB1;
 	--OT-table-header-background:	#002558;
 	--OT-table-background:	#001C41;
+	--OT-view-header-title-focus-color:	var(--link-color);	/*	le titre dans le tab du panneau dans lequel on œuvre	*/
 }
 
 /*	----------------------------------------------	*/
@@ -1480,7 +1479,6 @@ body {
 
 /*	Bookmark	OpSpl06	*/
 /* —————————————————————————————— OpSpl Accent Colors —————————————————————————————— */
-/*	zzzz	*/
 .theme-light.generalPalette-artDeco.accentColor-lightMode-shade {
 	--accent-h:			258	!important;
 	--accent-s:			77%	!important;
@@ -1910,19 +1908,23 @@ body {
 	--accent-l:	30%	!important;
 }
 
+/*	zzzz	*/
 .theme-dark.generalPalette-icy.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-icy.accentColor-darkMode-shade {
 	--accent-h:	214	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	30%	!important;
-/*	--text-on-accent:	#C2DCFF;	*/
+
+	--color-accent-1:	#1662C7 !important;
+	--color-accent-2:	#0C356B !important;
+	--color-accent-3:	#1662C7 !important;
+	--OT-color-on-accent-1:	var(--color-base-100);
 }
 .theme-dark.generalPalette-icy.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-icy.accentColor-darkMode-alternative-1 {
 	--accent-h:	334	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	30%	!important;
-/*	--text-on-accent:	#C2DCFF;	*/
 }
 .theme-dark.generalPalette-icy.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-icy.accentColor-darkMode-alternative-2 {
