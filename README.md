@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 26.06.2024 Version 1.16.0
+
+I’ve started the revision of the dark palettes.
+
+----------------------------------------------
+
 #### 23.06.2024 Version 1.15.0 & 1.15.1
 
 Added the possibility to choose different colors for the pills inside the Properties pannel.<br>Palette Icy, Dark mode : validated.

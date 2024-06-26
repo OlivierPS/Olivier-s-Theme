@@ -69,6 +69,7 @@
 			23.06.2024	Added the possibility to choose between different options for the pills
 						inside the Properties pannel											1.15.0
 						Palette Icy, mode dark: validated										1.15.1
+			26.06.2024	I’ve started the revision of the dark palettes							1.16.0
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -381,8 +382,8 @@ body {
 	/* ----- Accent colors  -----	*/
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 0%))	!important;
 	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%))	!important;
-	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 40%))	!important;
-
+	/*--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 40%))	!important;*/
+	--color-accent-3:	var(--color-base-00);
 
 
 /*	Bookmark	OpSpl03a	*/
@@ -558,7 +559,6 @@ body {
 */
 	--color-base-100:	#0761BB;
 	--link-color:		#4E9706;
-	--checklist-done-color:	var(--color-base-50);
 //	--h1-color:			#053F79;
 //	--h3-color:			#06509A;
 //	--h5-color:			#1083F6;
@@ -690,7 +690,6 @@ body {
 	--h1-color:				var(--text-normal);
 	--h3-color:				var(--text-normal);
 	--h5-color:				var(--text-normal);
-	--checklist-done-color:	var(--color-base-50);
 	--blockquote-background-color:			#EAF3F9;
 	--OT-table-header-background:	#CBE9FF;
 	--OT-table-background:			#FBFCFD;
@@ -726,7 +725,6 @@ body {
 //	--h1-color:			#9D7956;
 //	--h3-color:			#6B523B;
 //	--h5-color:			#44607C;
-	--checklist-done-color:			var(--color-base-50);
 	--blockquote-background-color:	#FBE9D3;
 	--OT-table-header-background:	#FCEDDC;
 	--OT-table-background:			#FDF6ED;
@@ -965,19 +963,30 @@ body {
 /*	-------------------- ↓ mode “Dark” ↓ --------------------	*/
 .theme-dark.darkPalette-OBSIDIAN,
 .theme-dark.generalPalette-OBSIDIAN.darkPalette-default {
+	--color-base-05:				#333333;
 	--blockquote-background-color:	#484848;
+	--link-color:					#8B6CEF;
+	--OT-color-muted-on-base-20:	#777777;
 	--OT-table-header-background:	#151515;
-	--OT-table-background:	#262626;
+	--OT-table-background:			#262626;
+	--OT-view-header-title-focus-color:	var(--link-color);	/*	le titre dans le tab du panneau dans lequel on œuvre	*/
+	--OT-stabilo-text:					black;
+	--OT-stabilo-mark:					#E2CB56;
 }
 
 /*	----------------------------------------------	*/
+/*	zzzz	*/
 .theme-dark.darkPalette-beige,
 .theme-dark.generalPalette-lightBeige.darkPalette-default {
+	--OT-theme-reference-color:	#915D06;
 	--color-base-00:	#2A1B02;
 	--color-base-20:	#2F1E02;
 	--color-base-35:	#4A413B;
 	--color-base-40:	#603D04;
-	--color-base-05:	#4A413B;
+	--color-base-50:	#C27C08;
+	--color-base-70:	#FCDEAB;
+	--color-base-05:	#3F2903;
+
 	--OT-color-on-base-20:	#DA8B09;
 	--color-base-50:	#784D05;
 	--text-muted:	#F39B0A;
@@ -1113,7 +1122,6 @@ body {
 }
 
 /*	----------------------------------------------	*/
-/*	zzzz	*/
 .theme-dark.darkPalette-icy,
 .theme-dark.generalPalette-icy.darkPalette-default {
 	--OT-theme-reference-color:	#00060D;
@@ -1350,35 +1358,38 @@ body {
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-stone,
 .theme-dark.generalPalette-stone.darkPalette-default{
+	--OT-theme-reference-color:	#44403C;
 	--color-base-00:	#1C1917;
 	--color-base-20:	#44403C;
 	--color-base-35:	#ACA6A0;
 	--color-base-40:	#57534E;
-	--color-base-05:	#1C1917;
-	--OT-color-on-base-20:	#A8A29E;
-	--color-base-50:	#D6D3D1;
-	--text-muted:	#A8A29E;
+	--color-base-50:	#68625C;
+	--color-base-70:	#C3BFBC;
+	--color-base-05:	#56514C;
+//	--text-muted:	#A8A29E;
+
+	--blockquote-background-color:	#23211F;
 
 	--accent-h:	30	!important;
 	--accent-s:	6%	!important;
 	--accent-l:	25%	!important;
 
-	--background-modifier-border:	#57534E;
-	--code-background:	#393632;
-	--code-normal:		#D2BAA3;
 	--color-base-100:	#A8A29E;
-	--blockquote-background-color:	#23211F;
 	--link-color:		#747CD7;
 	--h1-color:			#D6D3D1;
 	--h3-color:			#D6D3D1;
 	--h5-color:			#78716C;
+	--OT-table-background:	#191615;
+	--OT-table-header-background:	#0F0E0D;
+
+	--OT-color-on-base-20:	#A8A29E;
+	--code-background:	#393632;
+//	--code-normal:		#D2BAA3;
 	--OT-stabilo-mark:		#755F48;
 	--OT-stabilo-text:		#DFCFBE	!important;
 
-	--OT-metadata-background:		#2D2825;
+//	--OT-metadata-background:		#2D2825;
 	--OT-metadata-title-color-faint: 	#574E48;
-	--OT-table-header-background:	#0F0E0D;
-	--OT-table-background:	#191615;
 }
 
 /*	----------------------------------------------	*/
@@ -1800,12 +1811,17 @@ body {
 	--accent-l:	20%	!important;
 }
 /*	Bookmark	OpSpl07	*/
+/*	zzzz	*/
 .theme-dark.generalPalette-beige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.generalPalette-lightBeige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-beige.accentColor-darkMode-shade {
 	--accent-h:	37	!important;
 	--accent-s:	92%	!important;
 	--accent-l:	30%	!important;
+	--color-accent-1:	#E39109	!important;
+	--color-accent-2:	#915D06	!important;
+	--OT-color-on-accent-2:	#FBD79B	!important;
+	--OT-color-muted-on-accent-1:	#FCDEAB	!important;
 }
 .theme-dark.generalPalette-beige.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.generalPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -1870,6 +1886,11 @@ body {
 	--accent-h:	254	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	50%	!important;
+	--OT-color-on-accent-1:	white	!important;
+	--OT-color-on-accent-2:	black	!important;
+	--color-accent-1:	#673EEA	!important;
+	--color-accent-2:	#7F5DED	!important;
+	--color-accent-3:	#3B3B3B	!important;
 }
 .theme-dark.generalPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.generalPalette-artDeco.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -1908,7 +1929,6 @@ body {
 	--accent-l:	30%	!important;
 }
 
-/*	zzzz	*/
 .theme-dark.generalPalette-icy.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-icy.accentColor-darkMode-shade {
 	--accent-h:	214	!important;
@@ -2041,6 +2061,8 @@ body {
 	--accent-h:	30	!important;
 	--accent-s:	6%	!important;
 	--accent-l:	50%	!important;
+	--OT-color-on-accent-2:	#171514	!important;
+	--OT-color-on-accent-3:	#171514	!important;
 }
 .theme-dark.generalPalette-stone.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-stone.accentColor-darkMode-alternative-1 {
@@ -2518,7 +2540,7 @@ body {
 }
 /* -------------------- ↑ Text Color Themes ↑ -------------------- ↑ */
 
-/*	Bookmark	OpSpl08a	zzzz */
+/*	Bookmark	OpSpl08a	 */
 /* —————————————————————————————— Pills Colors ——————————————————————————————	*/
 .theme-light.OT-Light-pills-color-accent {
 	--OT-pill-color:		var(--OT-color-on-accent-2);
@@ -4370,10 +4392,11 @@ td .cm-editor .cm-line {
 		background-color:	var(--color-accent-1);
   }
 }
-/*	suppression du filet sous la tab bar du haut	*/
+/*	suppression du filet sur le haut et sur le bas des tab bars	*/
 .mod-left-split .workspace-tab-header-container,
 .mod-right-split .workspace-tab-header-container,
 .workspace-ribbon.mod-left:before {
+	border-top:		none;
 	border-bottom:	none;
 }
 /*	suppression du filet horizontal en bas des panneaux qui se trouvent dans les sidebars; la mise en évidence de la tab bar suffit	*/
@@ -4587,6 +4610,20 @@ button.mod-muted {
 		background-color:	var(--color-accent-1);
   }
 }
+.mod-left-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
+.mod-right-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
+.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+	color:	var(--OT-color-on-accent-2);
+}
+.mod-left-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon:hover,
+.mod-right-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon:hover,
+.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon:hover,
+.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+}
+
 /*	-------------------- ↑ Sidebar tabs -------------------- ↑ */
 
 /*	———————————————————— Menu déroulant ———————————————	*/
@@ -5236,7 +5273,7 @@ a:hover,
 .cm-s-obsidian span.cm-formatting-image,
 .cm-s-obsidian span.cm-formatting-link-string,
 .cm-s-obsidian span.cm-formatting-link {
-	color:			var(--OT-syntax-markers);
+	color:			var(--OT-syntax-markers);	/*	À l’origine, c’était du “text-faint” et ça	m’ennuyait beaucoup, car il y en avait partout, du “text-faint”!	*/
 	font-weight:	var(--font-extralight);
 	font-size: 		0.8em;
 }
@@ -5571,7 +5608,7 @@ kbd {
 }
 /*	-------------------- ↑ Empty pannel ↑	-------------------- */
 
-/*	panneau de description de la recherche	*/
+/*	panneau de réglage des résultats de la recherche	*/
 .search-params .setting-item-name {
 	color:	var(--OT-search-settings-item-name);
 }
