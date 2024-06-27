@@ -102,6 +102,14 @@ Do you know there are now 904 (!) community plugins ? It has obviously become 
 
 … to name a few. There *shouldn’t be* any problem with most plugins, but one never knows. Should problems arise, they should be limited to popup menus or HUDs. If you can’t live with some visual glitches, tell me and I may do something about it, time permitting.
 
+
+
+### About the “Art déco” light theme
+
+I’m delivering this theme *because it exists*, without any aesthetical pretention. I made it as a “textbook exercise”. I choose a color palette of typical *Art déco* tones. It lead to a lot of “limit cases” : without adjusting things, you end up with light text on light backgrounds — i.e. illegible —, dark text on dark backgrounds — also illegible… — and so on. Thus, this theme helped me to identify and adress a lot of exceptions, thus permitting a CSS setup suitable for easier theme building.
+
+
+
 ### Thanks
 
 It may sound like a *cliché*, but I really cannot mention everyone. This project started as a collection of snippets in the early months of *Obsidian* — then in version 0.3 or so, I don’t remember exactly. I’m not a designer, nor a programmer, nor a CSS specialist. So I started with online CSS tutorials and looked everywhere for samples and explanations. The people I’m **very grateful** to are :
