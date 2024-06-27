@@ -115,6 +115,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 27.06.2024 Version 1.16.1
+
+Dark black theme OK.
+
+----------------------------------------------
+
 #### 26.06.2024 Version 1.16.0
 
 I’ve started the revision of the dark palettes.
