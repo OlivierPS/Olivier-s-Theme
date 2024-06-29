@@ -1,7 +1,7 @@
 {
 	"name": "Olivier’s Theme",
-	"version": "1.16.1",
-	"minAppVersion": "1.17.0",
+	"version": "1.17.0",
+	"minAppVersion": "0.16.0",
 	"author": "Olivier Spinnler",
 	"authorUrl": "https://github.com/OlivierPS"
 }
