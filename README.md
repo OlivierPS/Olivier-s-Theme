@@ -104,9 +104,9 @@ Do you know there are now 904 (!) community plugins ? It has obviously become 
 
 
 
-### About the “Art déco” light theme
+### About the “Art déco” light theme and the “Victorian dark palettes
 
-I’m delivering this theme *because it exists*, without any aesthetical pretention. I made it as a “textbook exercise”. I choose a color palette of typical *Art déco* tones. It lead to a lot of “limit cases” : without adjusting things, you end up with light text on light backgrounds — i.e. illegible —, dark text on dark backgrounds — also illegible… — and so on. Thus, this theme helped me to identify and adress a lot of exceptions, thus permitting a CSS setup suitable for easier theme building.
+I’m delivering these palettes *because they exists^*, without any aesthetical pretention. I made them as “textbook exercises”. I choose a color palette of typical *Art déco*  and *Victorian* tones. It lead to a lot of “limit cases” : without adjusting things, you end up with light text on light backgrounds — i.e. illegible —, dark text on dark backgrounds — also illegible… — and so on. Thus, these palettes helped me to identify and adress a lot of exceptions, thus permitting a CSS setup suitable for easier palette building.
 
 
 
@@ -122,6 +122,16 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 
 ## Updates
+
+#### 29.06.2024 Version 1.17.0
+
+I’ve finished reviewing all the dark palettes.
+
+I’ve also reviewed the logic of all the hovering — it should work beautifully now.
+
+Many under the hood improvements. I think I have arrived to a nice version, easy to maintain and permitting the creation of new palettes with ease.
+
+----------------------------------------------
 
 #### 27.06.2024 Version 1.16.1
 
