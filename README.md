@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 30.06.2024 Version 1.18.0
+
+I’ve started the revision of the alternative accent colors.
+
+----------------------------------------------
+
 #### 29.06.2024 Version 1.17.0
 
 I’ve finished reviewing all the dark palettes.

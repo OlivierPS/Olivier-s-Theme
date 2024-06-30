@@ -73,6 +73,7 @@
 			27.06.2024	Dark black theme OK														1.16.1
 			29.06.2024	Finished reviewing the dark themes
 						The logic of all the hovering should be OK now.							1.17.0
+			30.06.2024	I’ve started the revision of the alternative accent colors				1.18.0
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -213,8 +214,9 @@ body {
 	--OT-button-text-normal:						var(--OT-color-on-accent-3);
 	--OT-calendar-day-color:						var(--color-base-100);
 	--OT-calendar-today-color:						var(--text-normal);
-	--OT-clickable-icon-in-header:					var(--color-base-70);
-	--OT-clickable-icon-on-base-20:					var(--color-base-70);
+	--OT-clickable-icon-in-header:					var(--icon-color);
+	--OT-clickable-icon-in-tab-header:				var(--icon-color);
+	--OT-clickable-icon-on-base-20:					var(--icon-color);
 	--OT-color-muted-on-accent-1:					var(--color-base-70);
 	--OT-color-muted-on-base-20:					var(--color-base-70);
 	--OT-color-on-accent-1:							var(--color-base-00);
@@ -224,14 +226,13 @@ body {
 	--OT-link-color-hover:							var(--color-base-00);
 	--OT-menu-text-color:							var(--color-base-70);
 	--OT-menu-background:							var(--color-base-05);
-	--OT-metadata-property-icon-hover:				var(--color-base-70);
-	--OT-metadata-property-icon:					var(--color-base-70);
+	--OT-metadata-property-icon:					var(--icon-color);
 	--OT-nav-folder-title-color:					var(--color-base-100);
 	--OT-nav-item-vertical-padding:					var(--size-4-1);
 	--OT-pill-color:								var(--OT-color-on-accent-2);
 	--OT-pill-background:							var(--color-accent-2);
-	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-70);
-	--OT-ribbon-icon-color-sidebar-is-open:			var(--color-base-70);
+	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
+	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
 	--OT-search-result-file-title-expanded:			var(--color-base-100);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
 	--OT-search-settings-item-name:					var(--OT-setting-item-name);
 	--OT-setting-item-description:					var(--color-base-50);
@@ -242,8 +243,9 @@ body {
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-syntax-markers:							var(--color-base-50);
 	--OT-tab-background-active-hover:				var(--color-accent-1);
-	--OT-table-background:							var(--color-base-20);
-	--OT-table-alt-background:						var(--color-base-00);
+	--OT-table-background:							var(--color-base-00);
+	--OT-table-header-background:					var(--color-base-05);
+	--OT-table-alt-background:						var(--color-base-20);
 	--OT-theme-reference-color:						black;
 	--OT-tooltip-text-color:						var(--OT-color-on-accent-1);
 	--OT-tree-item-flair-background:				var(--color-accent-3);
@@ -262,7 +264,9 @@ body {
 	--background-modifier-message:		var(--color-accent-1);	/*	le fond des “tooltips”	*/
 	--background-modifier-success-rgb:	106, 245, 161;			/* pour les progress bars, je préfère une nuance de vert un peu plus claire */
 	--background-modifier-success:		rgb(106, 245, 161);
-	--blockquote-background-color:		whitesmoke;
+	--blockquote-background-color:		floralwhite;
+	--background-modifier-border-hover:	var(--color-accent-3);	/*	le fond des toggles ON / OFF quand ils sont OFF	*/
+
 
 	/*	----- Interactive colors -----
 		------------------------------	*/
@@ -305,9 +309,8 @@ body {
 	--h6-color:	var(--h5-color);		/* ma logique: les deux derniers niveaux de headings ont la même couleur	*/
 
 	--icon-color:			var(--color-base-70);
-	--icon-color-hover:		var(--OT-color-on-accent-1);
 	--icon-color-active:	var(--color-base-20);
-	--icon-color-focused:	var(--OT-color-on-accent-2);					/*	comme les icônes “focused” sont chez moi en évidence sur un fond accentué, le --text-normal ne fonctionne pas	*/
+	--icon-color-hover:		var(--OT-color-on-accent-1);
 
   	--inline-title-color:	var(--color-base-50);
 
@@ -322,6 +325,7 @@ body {
 	--metadata-border-width:				0;
 	--metadata-divider-color:				var(--color-base-35);		/*	le filet de séparation des différentes valeurs				*/
 	--metadata-divider-width:				1;
+	--metadata-label-text-color:			var(--color-base-50);
 	--metadata-label-background-active:		var(--background-modifier-form-field);	/*	le fond d’un label en train d’être édité				*/
 	--metadata-input-background-active:		var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
 
@@ -619,7 +623,6 @@ body {
 	--color-base-05:	#E7F1FF;
 
 	--color-base-100:		#0761BB;
-	--text-muted:			#42A0FF;
 	--link-color:			#57A706;
 	--h1-color:				#06509A;
 	--h3-color:				#0872DC;
@@ -627,11 +630,6 @@ body {
 
 	--blockquote-background-color:	#EEF4FF;
 
-	--icon-color-hover:				var(--color-base-20);
-//	--OT-button-text-normal:		var(--color-base-00);
-	--OT-color-muted-on-accent-1:	#97CBFF;
-	--OT-color-on-accent-1:			var(--color-base-00);
-	--OT-color-on-accent-2:			var(--color-base-100);
 	--OT-color-on-base-20:			#0760BA;
 	--OT-metadata-background:		#F4F5F6;
 	--OT-table-background:			#F4F9FF;
@@ -642,68 +640,70 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-lightBeige {
 	--OT-theme-reference-color:	#C89947;
-	--color-base-00:	#FAFAF4;
-	--color-base-20:	#F7F0E4;
-	--color-base-35:	#EBB553;
-	--color-base-40:	#c3913a;
-	--color-base-50:	#C5AC94;
-	--color-base-70:	#7A6556;
-	--color-base-05:	#F9E9CD;
+	--color-base-00:			#FCF3E5;
+	--color-base-20:			#FAECD5;
+	--color-base-35:			#EBB553;
+	--color-base-40:			#c3913a;
+	--color-base-50:			#C5AC94;
+	--color-base-70:			#7A6556;
+	--color-base-05:			#F6DEB7;
+	--icon-color:				var(--color-base-100);
 
-	--blockquote-background-color:		#F7F0E4;
+	--blockquote-background-color:	#FAEDD7;
 
 	--color-base-100:		#71573E;
 	--link-color:			#507192;
-	--checklist-done-color:	#C5AC94;
+
 //	--h1-color:				#9D7956;
 //	--h3-color:				#6B523B;
 //	--h5-color:				#44607C;
 
+
 /*	Adaptations for the current palette	*/
-	--metadata-background: 				#FBF7F1;
 	--OT-color-muted-on-base-20:		var(--color-base-40);
-	--OT-color-muted-on-accent-1:		#E9DFD6;
-	--OT-color-on-accent-2:				var(--color-base-00);
 	--OT-color-on-base-20:				#7D6754;
-	--OT-stabilo-mark:					#E9DDD1;
-	--OT-table-alt-background:			#f9f5ec;
-	--OT-table-header-background:		#EEE8DC;
+	--OT-stabilo-mark:					#9FCBA4;
+
 } /*	↑ generalPalette-lightBeige ↑	*/
 
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-metallicBlue {
 	--OT-theme-reference-color:	#378CC8;
-	--color-base-00:	#fafff3;
-	--color-base-20:	#143248;
-	--color-base-35:	#3079AE;
-	--color-base-40:	#3d8cc8;
-	--color-base-50:	var(--light-blue);
-	--color-base-70:	#72ADD8;
-	--color-base-05:	#1B4463;
+	--color-base-00:			#fafff3;
+	--color-base-20:			#143248;
+	--color-base-35:			#143248;
+	--color-base-40:			#3d8cc8;
+	--color-base-50:			var(--light-blue);
+	--color-base-70:			#72ADD8;
+	--color-base-05:			#1B4463;
 
 /*	Text colors	*/
 	--color-base-100:		#255C84;
 	--link-color:			#3F9DE1;
-	--h1-color:				var(--text-normal);
-	--h3-color:				var(--text-normal);
-	--h5-color:				var(--text-normal);
-	--blockquote-background-color:			#EAF3F9;
+//	--h1-color:				var(--text-normal);
+//	--h3-color:				var(--text-normal);
+//	--h5-color:				var(--text-normal);
+
+	--blockquote-background-color:	#EAF3F9;
+
 	--OT-table-header-background:	#CBE9FF;
 	--OT-table-background:			#FBFCFD;
 	--OT-table-alt-background:		#EDF7FF;
 
-	--color-accent-1:	#0062A9	!important;
-	--color-accent-2:	#3E88BE	!important;
-	--color-accent-3:	#8DB9D8	!important;
+
+	--metadata-background: 			#CBE9FF;
+	--metadata-label-text-color:	var(--color-base-100);
+
+	--icon-color:									#F2F7FB;
+	--OT-clickable-icon-in-header:					var(--color-base-20);
+	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-20);
+	--OT-metadata-property-icon:					var(--color-base-20);
 
 
-	--metadata-background: 					#CBE9FF;
-	--OT-color-muted-on-accent-1:			#B6E1FF;
-	--OT-color-muted-on-base-20:			#B6E1FF;
-	--OT-color-on-accent-2:             	var(--color-base-00);
-	--OT-color-on-accent-3:             	#002743;
-	--OT-color-on-base-20:					#7FB5DC;
+	--OT-color-on-base-20:					#B6E1FF;
+	--OT-color-muted-on-base-20:			#7FB5DC;
 	--OT-nav-folder-title-color:			var(--OT-color-muted-on-base-20);
+	--OT-search-settings-item-name:			var(--OT-color-on-base-20);
 } /*	↑ generalPalette-metallicBlue ↑	*/
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-Orange {
@@ -758,23 +758,23 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-parchment {
 	--OT-theme-reference-color:	#D6B37A;
-	--color-base-00:	#FFEED1;
-	--color-base-20:	#E4CDA7;
-	--color-base-35:	#C4923F;
-	--color-base-40:	#706553;
-	--color-base-50:	#B68D40;
-	--color-base-70:	#AC7F35;
-	--color-base-05:	#E8D4B4;
+	--color-base-00:			#FFEED1;
+	--color-base-20:			#E4CDA7;
+	--color-base-35:			#C4923F;
+	--color-base-40:			#706553;
+	--color-base-50:			#B68D40;
+	--color-base-70:			#CFAD76;
+	--color-base-05:			#E0C69A;
 
 	--blockquote-background-color:	#F2E1C6;
 
 	--color-base-100:	#6F5B3E;
-	--link-color:	#6089D6;
-//	--h1-color:		#B68D40;
-//	--h3-color:		#B68D40;
-//	--h5-color:		#AEA188;
+	--link-color:		#6089D6;
+//	--h1-color:			#B68D40;
+//	--h3-color:			#B68D40;
+//	--h5-color:			#AEA188;
 
-	--tab-text-color-focused:	var(--OT-color-on-base-20);
+//	--tab-text-color-focused:	var(--OT-color-on-base-20);
 
 	--OT-color-muted-on-accent-1:	#E0C69A;
 	--OT-color-muted-on-base-20:	#C4923F;
@@ -849,7 +849,6 @@ body {
 	--background-modifier-form-field:var(--solarized-base2);
 	--background-modifier-border:	var(--solarized-base1);
 	--blockquote-background-color:	var(--solarized-base2);
-	--text-muted:				var(--solarized-base00);
 
 	--color-base-100:	var(--solarized-blue);
 	--link-color:		var(--solarized-cyan);
@@ -985,7 +984,6 @@ body {
 
 	--OT-color-on-base-20:	#DA8B09;
 	--color-base-50:	#784D05;
-	--text-muted:	#F39B0A;
 
 	--accent-h:	37	!important;
 	--accent-s:	92%	!important;
@@ -1386,7 +1384,6 @@ body {
 
 	--background-modifier-border:	#F2B630;
 	--blockquote-background-color:	#FCEEDC;
-	--text-muted:				#E6F2CC;
 	--background-modifier-form-field:	#005511	!important;
 
 	--OT-color-on-base-20:	#E6F2CC;
@@ -1468,20 +1465,21 @@ body {
 
 /*	Bookmark	OpSpl06	*/
 /* —————————————————————————————— OpSpl Accent Colors —————————————————————————————— */
+/*	zzzz	*/
 .theme-light.generalPalette-artDeco.accentColor-lightMode-shade {
-	--accent-h:			258	!important;
-	--accent-s:			77%	!important;
-	--accent-l:			50%	!important;
+	--accent-h:			258		!important;
+	--accent-s:			77%		!important;
+	--accent-l:			50%		!important;
 	--color-accent-1:	#FFD700	!important;
-	--OT-color-on-accent-1:			black;
-	--OT-color-muted-on-accent-1:	#008B8D;
 	--color-accent-2:	#FFEF99	!important;
 	--color-accent-3:	#FFF7CC !important;
+	--OT-color-on-accent-1:			black;
+	--OT-color-muted-on-accent-1:	#008B8D;
 }
 .theme-light.generalPalette-artDeco.accentColor-lightMode-alternative-1 {
-	--accent-h:			300	!important;
+	--accent-h:			300		!important;
 	--accent-s:			100%	!important;
-	--accent-l:			27%	!important;
+	--accent-l:			27%		!important;
 }
 .theme-light.generalPalette-artDeco.accentColor-lightMode-alternative-2 {
 	--accent-h:			185	!important;
@@ -1499,14 +1497,21 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 44%));		/*	additional accent color for theme’s needs	*/
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-1 {
-	--accent-h:			238	!important;
-	--accent-s:			31%	!important;
-	--accent-l:			30%	!important;
+	--accent-h:			239	!important;
+	--accent-s:			30%	!important;
+	--accent-l:			43%	!important;
+	--color-accent-1:		#4D4E90	!important;
+	--color-accent-2:		#6F70B2	!important;
+	--color-accent-3:		#C7C8E2	!important;
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-2 {
 	--accent-h:			178	!important;
 	--accent-s:			31%	!important;
 	--accent-l:			30%	!important;
+	--color-accent-1:		#417A79	!important;
+	--color-accent-2:		#6FB2B1	!important;
+	--color-accent-3:		#DEEDED	!important;
+	--OT-color-on-accent-2:			#E6FAFA	!important;
 }
 
 .theme-light.generalPalette-blue.accentColor-lightMode-shade {
@@ -1569,14 +1574,16 @@ body {
 	--accent-s:			100%	!important;
 	--accent-l:			30%		!important;
 
-	--color-accent-2:	#CCE2FF	!important;
-	--color-accent-3:	#DDECFF	!important;
+	--OT-color-on-accent-1:			var(--color-base-00);
+	--OT-color-muted-on-accent-1:	#97CBFF;
+	--color-accent-2:				#CCE2FF	!important;
+	--OT-color-on-accent-2:			var(--color-base-100);
+	--color-accent-3:				#DDECFF	!important;
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-alternative-1 {
 	--accent-h:			94		!important;
 	--accent-s:			100%	!important;
 	--accent-l:			40%		!important;
-/*	--text-on-accent:		var(--OT-color-on-base-20);	*/
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-alternative-2 {
 	--accent-h:			304		!important;
@@ -1587,33 +1594,64 @@ body {
 	--accent-h:			38	!important;
 	--accent-s:			54%	!important;
 	--accent-l:			50%	!important;
+	--color-accent-1:		#C4923B	!important;
+	--color-accent-2:		#DFC595	!important;
+	--color-accent-3:		#EFE2CB	!important;
+	--OT-color-muted-on-accent-1:		#E9DFD6;
+//	--OT-color-on-accent-2:				var(--color-base-00);
 }
 .theme-light.generalPalette-lightBeige.accentColor-lightMode-alternative-1 {
 	--accent-h:			188	!important;
 	--accent-s:			54%	!important;
 	--accent-l:			50%	!important;
+	--color-accent-1:		#7CCCD8	!important;
+	--color-accent-2:		#A4DBE3	!important;
+	--color-accent-3:		#CBEAEF	!important;
+	--OT-color-on-accent-1:			#E5F5F7	!important;
+	--OT-color-on-accent-2:			#236B76	!important;
+	--OT-color-muted-on-accent-1:	#CBEAEF	!important;
 }
 .theme-light.generalPalette-lightBeige.accentColor-lightMode-alternative-2 {
 	--accent-h:			248	!important;
 	--accent-s:			54%	!important;
 	--accent-l:			50%	!important;
+	--color-accent-1:		#887CD8	!important;
+	--color-accent-2:		#C4BEEB	!important;
+	--color-accent-3:		#E7E5F7	!important;
+	--OT-color-on-accent-1:			#F3F2FB	!important;
+	--OT-color-muted-on-accent-1:	#DBD8F3	!important;
+	--OT-color-on-accent-2:			#332783	!important;
+	--OT-color-on-accent-3:			#332783	!important;
 }
 
 .theme-light.generalPalette-metallicBlue.accentColor-lightMode-shade {
-/*	--accent-h:			205	!important;
-	--accent-s:			80%	!important;
-	--accent-l:			20%	!important;	*/
+	--color-accent-1:	#0062A9	!important;
+	--color-accent-2:	#3E88BE	!important;
+	--color-accent-3:	#BAE2FF	!important;
+	--OT-color-muted-on-accent-1:	#B6E1FF;
+	--OT-color-on-accent-2:         var(--color-base-00);
+	--OT-color-on-accent-3:         #002743;
 }
+/*	zzzz	*/
 .theme-light.generalPalette-metallicBlue.accentColor-lightMode-alternative-1 {
 	--accent-h:			325	!important;
 	--accent-s:			80%	!important;
-	--accent-l:			20%	!important;
+	--accent-l:			90%	!important;
+	--color-accent-1:		#FAD1E9	!important;
+	--color-accent-2:		#E82898	!important;
+	--color-accent-3:		#FDF0F8	!important;
+	--OT-color-on-accent-1:			var(--color-base-20)	!important;
+	--OT-color-on-accent-2:			var(--color-base-00)	!important;
 }
 .theme-light.generalPalette-metallicBlue.accentColor-lightMode-alternative-2 {
 	--accent-h:			85	!important;
 	--accent-s:			80%	!important;
-	--accent-l:			30%	!important;
-/*	--text-on-accent:		var(--background-secondary);	*/
+	--accent-l:			40%	!important;
+	--color-accent-1:		#74B814	!important;
+	--color-accent-2:		#91E61A	!important;
+	--color-accent-3:		#E9FAD1	!important;
+	--OT-color-muted-on-accent-1:	#BDF075	!important;
+	--OT-color-on-accent-2:			#3A5C0A	!important;
 }
 .theme-light.generalPalette-Orange.accentColor-lightMode-shade {
 	--accent-h:	33		!important;
@@ -1864,7 +1902,6 @@ body {
 	--accent-h:	267	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	20%	!important;
-	--nav-item-color-active:	var(--OT-color-on-base-20);
 }
 .theme-dark.generalPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.generalPalette-artDeco.darkPalette-default.accentColor-darkMode-shade,
@@ -1991,7 +2028,6 @@ body {
 	--accent-l:	40%	!important;
 }
 
-/*	zzzz	*/
 .theme-dark.generalPalette-parchment.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-parchment.accentColor-darkMode-shade {
 	--accent-h:	31	!important;
@@ -2130,7 +2166,6 @@ body {
 	--accent-l:	40%	!important;
 }
 
-/*	zzzz	*/
 .theme-dark.generalPalette-yellow.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-yellow.accentColor-darkMode-shade {
 	--accent-h:	48	!important;
@@ -2979,7 +3014,6 @@ body {
 .theme-light.inkColor-lightMode-egg .cm-s-obsidian .cm-line {
 	color:			#FCE69F;
 	--text-faint:	#9FB5FC;
-	--text-muted:	#9FB5FC;
 }
 
 .theme-light.inkColor-lightMode-emerald .CodeMirror pre.CodeMirror-line,
@@ -3172,7 +3206,6 @@ body {
 .theme-dark.inkColor-darkMode-egg .cm-s-obsidian .cm-line {
 	color:	#FCE69F;
 	--text-faint:	#9FB5FC;
-	--text-muted:	#9FB5FC;
 }
 
 .theme-dark.inkColor-darkMode-emerald .CodeMirror pre.CodeMirror-line,
@@ -3972,6 +4005,9 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 .suggestion-item.mod-complex.is-selected .suggestion-note {	/*	le texte complémentaire dans la sélection	*/
 	color:	var(--OT-color-muted-on-accent-1);
 }
+.suggestion-empty-suggestion {
+	color:	var(--OT-color-muted-on-accent-1);
+}
 .search-suggest-item:hover {
   &.is-selected {
     background-color: var(--color-accent-1);
@@ -4005,7 +4041,6 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
 @media (hover: hover) {
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover {
 		--text-faint:		var(--OT-color-faint-on-accent-1);
-		--text-muted:		var(--OT-color-muted-on-accent-1);
 		--icon-color:		var(--OT-color-on-accent-1);
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
@@ -4359,7 +4394,7 @@ td .cm-editor .cm-line {
   color: var(--tab-text-color);
 }
 .workspace-tab-header-inner .workspace-tab-header-inner-icon {
-	color:	var(--tab-text-color-focused);
+	color:	var(--OT-clickable-icon-in-tab-header);
 }
 /*	Le titre du panneau qui a le focus	*/
 .is-focused .workspace-leaf.mod-active .view-header-title {
@@ -4423,11 +4458,10 @@ td .cm-editor .cm-line {
 		background-color:	var(--color-accent-1);
   }
 }
-/*	les valeurs définies dans “app.css” perturbaient le bon fonctionnement du hovering	*/
-.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title,
-.workspace-tab-header:hover .workspace-tab-header-inner-close-button {
-	color:	inherit;
+.is-focused .mod-active .workspace-tab-header.is-active:hover .workspace-tab-header-inner-icon,
+.is-focused .mod-active .workspace-tab-header.is-active:hover .workspace-tab-header-inner-title {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
 }
 /*	suppression du filet sur le haut et sur le bas des tab bars	*/
 .mod-left-split .workspace-tab-header-container,
@@ -4577,28 +4611,17 @@ button.mod-muted {
 	background-color:	var(--OT-button-background-hover);	/*	background-secondary	*/
   }
 }
-.document-search-button {
-  	color:				var(--OT-button-text-normal);		/*	text-muted	*/
-	background-color:	var(--OT-button-background-normal);	/*	nothing	*/
+.clickable-icon .document-search-button,
+.clickable-icon .document-search-close-button {
+  	color:				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
 }
-.document-search-close-button {
-  	color:				var(--OT-button-text-normal);		/*	text-muted	*/
-/*	background-color:	var(--OT-button-background-normal);		nothing	*/
-}
-@media (hover: hover) {
+s@media (hover: hover) {
   .document-search-close-button:hover {
   	color:				var(--OT-button-text-hover);		/*	text-normal	*/
 	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
   }
 }
-/*
-.checkbox-container {
-	background-color:	var(--color-accent-3);
-}
-.checkbox-container.is-enabled {
-	background-color:	var(--color-accent-1);
-}
-*/
 @media (hover: hover) {
   .search-results-info .dropdown:hover {
 		color:				var(--OT-color-on-accent-1);
@@ -4636,6 +4659,14 @@ button.mod-muted {
 		background-color:	var(--color-accent-1);
   }
 }
+/*	le bouton pour “case sensitive ON / OFF” dans le champ de recherche	*/
+.input-right-decorator.clickable-icon {
+	color:	var(--OT-clickable-icon-in-header);
+}
+.input-right-decorator.clickable-icon:hover {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+}
 /*	-------------------- ↑ icons -------------------- ↑ */
 
 /* —————————————————————————————— OpSpl Sidebar tabs —————————————————————————————— */
@@ -4665,6 +4696,13 @@ button.mod-muted {
 .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
 .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
 	color:	inherit;
+}
+@media (hover: hover) {
+  .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+  .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+  }
 }
 /*	-------------------- ↑ Sidebar tabs -------------------- ↑ */
 
@@ -5509,7 +5547,14 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .metadata-property[data-property-key="tags"] {
 	--pill-color:			var(--OT-pill-color);
 	--pill-background:		var(--OT-pill-background);
-	--pill-color-remove:	var(--OT-pill-color);
+	--pill-color-remove:	var(--OT-pill-background);
+}
+@media (hover: hover) {
+  .multi-select-pill:hover {
+  	--pill-color-remove:	var(--pill-color-hover);
+	color:				var(--pill-color-hover);
+	background-color:	var(--pill-background-hover);
+  }
 }
 /* —————————— Metadata Menu plugin —————————— */
 /* Redefine --text-faint for Metadata Menu plugin */
@@ -5607,10 +5652,9 @@ kbd {
 	font-size: calc(var(--OT-sidebars-font-size) * 0.9); /*	font size defined os 90% of the theme’s setting for sidebars	*/
 }
 
-/*	les entrées avec les noms de fichiers et les paths, quand elles sont survolées	*/
 .file-node__container_highlight,
 .file-node__container_highlight .file-node__path {
-	color:		var(--nav-item-color-active);
+	lime;	/*	color:		var(--nav-item-color-active);	*/
 }
 /*	-------------------- ↑ Adjustments for the  “Metafolders” plugin ↑	-------------------- */
 
@@ -5630,13 +5674,16 @@ kbd {
 	color:				var(--OT-color-on-base-20);
 	background-color:	var(--background-secondary);
 }
+input.prompt-input {
+	background-color:	var(--background-modifier-form-field);
+}
 /*	-------------------- ↑ Prompts ↑	-------------------- */
 
 /*	———————————————————— Empty pannel	———————————————————— */
 .empty-state-action-list {
 	font-size:		var(--font-text-size);
 	line-height:	var(--line-height-tight);
-	color:			var(--text-muted);
+	color:			var(--color-base-70);
 	margin-top:		1.5em;
 }
 .empty-state-action {
@@ -5717,17 +5764,19 @@ input[type='number']::placeholder {
 }
 
 .workspace-ribbon.mod-left.is-collapsed .clickable-icon {
-	color:	var(--OT-clickable-icon-in-header);
-	/*	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);	*/
+	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
 }
-
+/*	pour afficher un filet de séparation entre le ruban et le panneau de gauche, dans les thèmes qui le requièrent	*/
+.generalPalette-metallicBlue .workspace-ribbon {
+	border-right:	var(--divider-width) solid var(--color-base-00);
+}
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed),
 .side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed) {
 	color:	var(--OT-ribbon-icon-color-sidebar-is-open);
 }
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover,
 .side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover {
-	color:	var(--icon-color-hover);
+	color:	var(--OT-color-on-accent-1);
 }
 
 .markdown-rendered mark,
