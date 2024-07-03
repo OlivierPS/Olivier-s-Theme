@@ -123,6 +123,15 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 03.07.2024 Version 1.18.2
+
+Revision of the alternative accent colors:
+
+* light palettes: done
+* dark palettes: in progress
+
+----------------------------------------------
+
 #### 02.07.2024 Version 1.18.1
 
 The alternative accent colors for the light palettes are almost done.
