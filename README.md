@@ -123,9 +123,9 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 05.07.2024 Version 1.19.1
+#### 05.07.2024 Version 1.19.1 then 1.19.2
 
-Some tweakings. There may still be some visual glitches with some ON / OFF switches in some combinations of *palette* – *accent color*.
+Some tweaks. There may still be some visual glitches with some ON / OFF switches in some combinations of *palette* – *accent color*.
 
 
 
