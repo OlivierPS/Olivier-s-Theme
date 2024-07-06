@@ -123,6 +123,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 06.07.2024 Version 1.19.3
+
+Improved the Art Deco (light) palette.
+
+
+
+----------------------------------------------
+
 #### 05.07.2024 Version 1.19.1 then 1.19.2
 
 Some tweaks. There may still be some visual glitches with some ON / OFF switches in some combinations of *palette* – *accent color*.

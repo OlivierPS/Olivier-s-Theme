@@ -79,8 +79,9 @@
 																   * dark palettes:	in progress	1.18.2
 			04.07.2024 	Three quarters of the work on the dark palettes is done.				1.18.3
 			05.07.2024	Finished revising all the palettes, light and dark and all the accent colors.	1.19.0
-						A few tweaks																1.19.1
-						Some more tweaks															1.19.2
+						A few tweaks															1.19.1
+						Some more tweaks														1.19.2
+			06.07.2024	Improved the Art Deco (light) palette									1.19.3
 
 ----------------------------------------------
 Bookmarks:	OpSpl01:	Déclarations générales
@@ -104,11 +105,10 @@ Bookmarks:	OpSpl01:	Déclarations générales
 			OpSpl15:	La fonte du mode d’édition
 						La fonte “monospaced”
 			OpSpl16:	Autres ajustements:
-							les astérisques indiquant le “emphasised” et le strong
-							le texte “emphasized”
-							les hashtags des headers
-							les métadonnées YAML
+							les crochets des “tasks”
+							“tree-item-flair”
 							les pastilles indicatives sur la feuille de publication
+							YAML metadata
 							les petits boutons sur la feuille de publication
 			OpSpl17:	Les sidebars
 			OpSpl19:		Adaptations pour les panneaux de suggestions
@@ -370,8 +370,8 @@ body {
 	--table-row-alt-background-hover:	transparent;	/*	var(--table-background);	*/
 	--table-row-background-hover:		transparent;	/*	var(--table-row-alt-background);	*/
 
-	--tag-color:			var(--color-base-00);
-	--tag-background:		var(--link-color);
+	--tag-color:			var(--OT-pill-color);
+	--tag-background:		var(--OT-pill-background);
 	--tag-color-hover:		var(--OT-color-on-accent-1);
 	--tag-background-hover:	var(--color-accent-1);
 
@@ -380,6 +380,7 @@ body {
 	--text-accent-hover:		var(--link-color);
 	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
 	--text-error-hover:			var(--color-red);
+	--text-muted:				var(--color-base-50);			/*	c’est ce qui, chez moi, peut être considéré comme du texte “muted”	*/
 	--text-on-accent:			var(--OT-color-on-accent-1);
 	--text-on-accent-inverted:	var(--color-accent-1);			/*	dans "app.css" il est défini comme “black”. Utilisé dans le canvas	*/
 	--text-on-hover:			var(--OT-color-on-accent-1);
@@ -490,9 +491,10 @@ body {
 	--color-base-20:			#FF8BC5;
 	--color-base-35:			#FFD700;
 	--color-base-40:			#FFD700;
-	--color-base-50:			#000000;
+	--color-base-50:			#FF96CA;
 	--color-base-70:			#D1FEFF;
 	--color-base-05:			#AB8EF0;
+
 	--blockquote-background-color:	#AFFEFF;
 
 	--color-base-100:	#332B00;
@@ -500,22 +502,23 @@ body {
 //	--h1-color:			#2C686E;
 //	--h3-color:			#357F86;
 //	--h5-color:			#4FB0B9;
-	--OT-table-background:			var(--blockquote-background-color);
 
-	--metadata-background:			#FFE0EF;
-	--metadata-label-text-color:	#887300;
-	--OT-color-on-base-20:			#E2FFFF;
+	--OT-clickable-icon-in-header:	var(--color-base-100);
 	--OT-color-muted-on-base-20:	#3C9199;
+	--OT-color-on-base-20:			#E2FFFF;
+
+	--OT-stabilo-mark:				var(--stabilo-bleu-clair);
+
+//	--OT-table-background:			var(--blockquote-background-color);
+	--OT-table-header-background:	var(--metadata-background);
+	--OT-table-alt-background:		var(--blockquote-background-color);
+
+	--metadata-background:							#FFE0EF;
+	--metadata-label-text-color:					#887300;
 	--OT-metadata-property-icon:					var(--metadata-label-text-color);
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	#FF369A;
-	--OT-clickable-icon-in-header:					var(--color-base-100);
-	--OT-table-header-background:					#00CED1;
-
-	--tab-text-color:						var(--color-base-00);
-	--tab-text-color-active:				var(--color-base-100);
-	--tab-text-color-focused:				var(--color-base-100);
-	--tab-text-color-focused-active:		var(--color-base-100);
-	--OT-stabilo-mark:						var(--stabilo-bleu-clair);
+	--OT-setting-item-description:					grey;
+	--OT-view-header-title-no-focus-color:			#00BDC0;
 }/*	↑ generalPalette-artDeco ↑	*/
 
 /*	----------------------------------------------	*/
@@ -927,10 +930,11 @@ body {
 
 	--OT-color-on-base-20:			var(--favorite-blue);
 	--OT-color-muted-on-base-20:	#C49E03;
+	--OT-setting-item-description:	#1A09BC;
 	--OT-table-header-background:	#FEEFB6;
 	--text-selection:				hsl(var(--accent-h), var(--accent-s), 70%);
 	--OT-view-header-title-focus-color:		var(--color-base-100);
-	--OT-view-header-title-no-focus-color:	#FBCC12;
+	--OT-view-header-title-no-focus-color:	#BC9E00;
 } /*	↑ genaralPalette-yellow ↑	*/
 
 
@@ -1457,30 +1461,39 @@ body {
 /*	Bookmark	OpSpl06	*/
 /* —————————————————————————————— OpSpl Accent Colors —————————————————————————————— */
 .theme-light.generalPalette-artDeco.accentColor-lightMode-shade {
-	--accent-h:			258		!important;
-	--accent-s:			77%		!important;
-	--accent-l:			50%		!important;
-	--color-accent-1:	#FFD700	!important;
-	--color-accent-2:	#FFEF99	!important;
-	--color-accent-3:	#FFF7CC !important;
-	--OT-color-on-accent-1:			black;
-	--OT-color-muted-on-accent-1:	#008B8D;
+	--accent-h:						51		!important;
+	--accent-s:						100%		!important;
+	--accent-l:						80%		!important;
+	--color-accent-1:				#EEC900	!important;
+	--color-accent-2:				#FFEF99	!important;
+	--color-accent-3:				#FFF7CC !important;
+	--OT-color-on-accent-1:			white;
+	--OT-color-muted-on-accent-1:	#998100;
+	--OT-color-on-accent-2:			#443900;
+	--OT-color-on-accent-3:			#443900;
+	--OT-button-ON-bg:				var(--color-accent-1);
+	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-artDeco.accentColor-lightMode-alternative-1 {
-	--accent-h:			300		!important;
-	--accent-s:			100%	!important;
-	--accent-l:			27%		!important;
-	--color-accent-3:				var(--color-base-05)	!important;
+	--accent-h:						300		!important;
+	--accent-s:						100%	!important;
+	--accent-l:						91%		!important;
+	--color-accent-2:				var(--color-base-05)	!important;
+	--color-accent-3:				#FFE2FF	!important;
+	--OT-color-muted-on-accent-1:	#6B006B;
 	--OT-color-on-accent-2:			var(--color-base-00)	!important;
-	--OT-color-on-accent-3:			#FFD700	!important;
+	--OT-color-on-accent-3:			#6B006B	!important;
 }
 .theme-light.generalPalette-artDeco.accentColor-lightMode-alternative-2 {
 	--accent-h:			185	!important;
 	--accent-s:			88%	!important;
-	--accent-l:			52%	!important;
-	--OT-color-muted-on-accent-1:	#076169	!important;
+	--accent-l:			55%	!important;
 	--color-accent-3:				#CF0067	!important;
-	--OT-color-on-accent-3:			#FFD700	!important;
+	--OT-color-muted-on-accent-1:	#27E0F1	!important;
+	--OT-color-on-accent-2:			#F7FEFE	!important;
+	--OT-color-on-accent-3:			#97F0F8	!important;
+	--OT-view-header-title-focus-color:	var(--color-accent-1);
+/* ===============================================================	*/
 }
 
 .theme-light.generalPalette-beige.accentColor-lightMode-shade {
@@ -2012,37 +2025,42 @@ body {
 }
 
 .theme-light.generalPalette-yellow.accentColor-lightMode-shade {
-	--accent-h:						48	!important;
-	--accent-s:						97%	!important;
-	--accent-l:						49%	!important;
-
+	--accent-h:						51		!important;
+	--accent-s:						100%	!important;
+	--accent-l:						50%		!important;
 	--color-accent-1:				#F5C504	!important;
-	--color-accent-2:				gold	!important;
+	--color-accent-2:				gold	!important; /*	#FFD701	*/
 	--color-accent-3:				#FDECA6	!important;
-	--OT-color-on-accent-1:			var(--color-base-100);
-	--OT-color-muted-on-accent-1:	#7466F8;
+	--OT-color-on-accent-1:			white;
+	--OT-color-muted-on-accent-1:	#9A8200;
+	--OT-color-on-accent-2:			#675700;
+	--OT-color-on-accent-3:			#9A8200;
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-1 {
-	--accent-h:						228	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						30%	!important;
-	--color-accent-1:				#3F5AC0	!important
-	--color-accent-2:				#667BCC	!important;
-	--color-accent-3:				#D9DEF2	!important;
-	--OT-color-on-accent-1:			var(--color-base-00);
-	--OT-color-on-accent-2:			var(--color-base-00);
-	--OT-color-on-accent-3:			var(--color-base-100);
-	--OT-color-muted-on-accent-1:	var(--color-base-40);
+	--accent-h:							231		!important;
+	--accent-s:							100%	!important;
+	--accent-l:							70%		!important;
+	--color-accent-1:					#0026EF!important;
+	--color-accent-2:					#677FFF	!important;
+	--color-accent-3:					#D9DEF2	!important;
+	--OT-color-on-accent-1:				var(--color-base-00);
+	--OT-color-muted-on-accent-1:		#CDD5FF;
+	--OT-color-on-accent-2:				var(--color-base-00);
+	--OT-color-on-accent-3:				#0023DE;
+	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-2 {
-	--accent-h:						318	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						40%	!important;
-	--color-accent-2:				#DD99C8	!important;
-	--color-accent-3:				#F2D9EB	!important;
-	--OT-color-muted-on-accent-1:	#EABFDD	!important;
-	--OT-color-on-accent-2:			#401533	!important;
-	--OT-color-on-accent-3:			#591E47	!important;
+	--accent-h:						171		!important;
+	--accent-s:						100%	!important;
+	--accent-l:						70%		!important;
+	--color-accent-1:				#00AA94	!important;
+	--color-accent-2:				#00DDC0	!important;
+	--color-accent-3:				#BBFFF6	!important;
+	--OT-color-on-accent-1:			white	!important;
+	--OT-color-muted-on-accent-1:	#00FFDE	!important;
+	--OT-color-on-accent-2:			#EEFFFD	!important;
+	--OT-color-on-accent-3:			#00554A	!important;
+	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 /*	Bookmark	OpSpl07	*/
 .theme-dark.generalPalette-beige.darkPalette-default.accentColor-darkMode-shade,
@@ -2269,7 +2287,9 @@ body {
 	--color-accent-3:					#0F448A !important;
 	--OT-color-on-accent-1:				white;
 	--OT-color-muted-on-accent-1:		#A3C6F5	!important;
-	--OT-view-header-title-focus-color:	#478EEB;
+	--OT-view-header-title-focus-color:	#85B4F1;
+	--OT-view-header-title-no-focus-color:	#297BE7;
+	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#5697ED;
 	--OT-button-cta-text-normal:		#08264D;
 }
@@ -3284,7 +3304,6 @@ body {
 }
 
 /*	------------------------- quelques exceptions -------------------------	*/
-.generalPalette-yellow.darkPalette-default.inkColor-darkMode-default {}
 
 /* -------------------- ↑ OpSpl Highlight Colors -------------------- ↑ */
 
@@ -4359,6 +4378,7 @@ input[type=checkbox] {
 
 /*	Bookmark	OpSpl13	*/
 /* ---------- basic typography of the EDIT mode ---------- */
+
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
@@ -4454,7 +4474,10 @@ input[type=checkbox] {
 
 /*	Bookmark	OpSpl16	*/
 /* —————————————————————————————— OpSpl Autres ajustements —————————————————————————————— */
-
+/*	les crochets des “tasks”	*/
+.cm-s-obsidian span.cm-formatting-task {
+	color:	var(--list-marker-color);
+}
 .tree-item-flair {
 	/*		font-size:			1em;	*/
 	font-weight:		var(--font-bold);
