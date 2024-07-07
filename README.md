@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 07.07.2024 Version 1.20.0
+
+Improved the ON / OFF buttons in the Light palettes.
+
+----------------------------------------------
+
 #### 06.07.2024 Version 1.19.3
 
 Improved the Art Deco (light) palette.
