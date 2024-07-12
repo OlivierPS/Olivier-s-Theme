@@ -83,8 +83,9 @@
 						Some more tweaks														1.19.2
 			06.07.2024	Improved the Art Deco (light) palette									1.19.3
 			07.07.2024	Improved the ON / OFF buttons in the Light palettes						1.20.0
-			12.07.2024	Finished the correction of the ON / OFF buttons in the Dark palettes		1.21.0
+			12.07.2024	Finished the correction of the ON / OFF buttons in the Dark palettes	1.21.0
 						Changed the height of the modals, allowing them to be higher
+						Corrected the problem with file renaming in the navigation tree			1.21.1
 
 
 ----------------------------------------------
@@ -114,6 +115,7 @@ Bookmarks:	OpSpl01:	Déclarations générales
 							les pastilles indicatives sur la feuille de publication
 							YAML metadata
 							les petits boutons sur la feuille de publication
+							l’édition des fichiers dans la “nav bar”
 			OpSpl17:	Les sidebars
 			OpSpl19:		Adaptations pour les panneaux de suggestions
 			OpSpl20:		Adaptations pour le plugin “File Info”
@@ -363,7 +365,7 @@ body {
 	--tab-text-color-active:					var(--color-base-70);
 	--tab-text-color-focused:					var(--color-base-70);
 	--tab-text-color-focused-active:			var(--color-base-70);
-	--tab-text-color-focused-active-current:	var(--OT-view-header-title-focus-color);
+	--tab-text-color-focused-active-current:	var(--OT-color-on-accent-2);
 
 	--tab-stacked-text-transform:	rotate(180deg);
 
@@ -4568,6 +4570,11 @@ input[type=checkbox] {
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
 	}
+}
+/*	édition des fichiers dans la “nav bar”	*/
+.tree-item-self.is-being-renamed:focus-within {
+	color:				var(--color-base-100);
+	background-color:	var(--color-base-00);
 }
 
 
