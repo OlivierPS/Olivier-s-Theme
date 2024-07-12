@@ -86,9 +86,11 @@
 			12.07.2024	Finished the correction of the ON / OFF buttons in the Dark palettes	1.21.0
 						Changed the height of the modals, allowing them to be higher
 						Corrected the problem with file renaming in the navigation tree			1.21.1
-						Small tweaks															1.22.2
-						Small tweaks															1.22.3
-						Small tweaks															1.22.4
+						Small tweaks															1.21.2
+						Small tweaks															1.21.3
+						Small tweaks															1.21.4
+						Improved Solarized palette, both Light and Dark.
+						Added different Solarized colors for the text							1.22.0
 
 
 ----------------------------------------------
@@ -879,8 +881,8 @@ body {
 	--OT-button-OFF-bg:				var(--solarized-base1);
 
 
-	--color-base-100:	var(--solarized-blue);
-	--link-color:		var(--solarized-cyan);
+	--color-base-100:	var(--solarized-base00);
+	--link-color:		var(--solarized-blue);
 //	--h1-color:			var(--solarized-base02);
 //	--h3-color:			var(--solarized-violet);
 //	--h5-color:			var(--solarized-base1);
@@ -888,6 +890,7 @@ body {
 	--OT-color-on-base-20:			var(--solarized-violet);
 	--OT-table-header-background:	var(--solarized-base1);
 	--OT-table-background:			var(--solarized-base2);
+	--OT-table-alt-background:		var(--solarized-base3);
 	--table-header-color:			var(--solarized-base2);
 }
 /*	----------------------------------------------	*/
@@ -1349,25 +1352,26 @@ body {
 .theme-dark.darkPalette-solarized,
 .theme-dark.generalPalette-solarized.darkPalette-default {
 	--OT-theme-reference-color:	var(--solarized-base02);
-	--color-base-20:			var(--solarized-base02);
 	--color-base-00:			var(--solarized-base03);
+	--color-base-20:			var(--solarized-base02);
 	--color-base-35:			var(--solarized-base01);
 	--color-base-40:			var(--solarized-base02);
-	--color-base-50:			var(--solarized-base2);
+	--color-base-50:			var(--solarized-base01);
 	--color-base-70:			var(--solarized-base1);
 	--color-base-05:			var(--solarized-base03);
 
 	--OT-color-on-base-20:	var(--solarized-base1);
 
-	--blockquote-background-color:	var(--solarized-base01);
+	--blockquote-background-color:	var(--solarized-base02);
 	--OT-button-OFF-bg:				var(--solarized-base01);
 
-	--color-base-100:			var(--solarized-base3);
+	--color-base-100:			var(--solarized-base0);
 	--link-color:				var(--solarized-blue);
 
 
-	--OT-table-header-background:	var(--solarized-base03);
+	--OT-table-header-background:	var(--solarized-base01);
 	--OT-table-background:			var(--solarized-base02);
+	--OT-table-alt-background:		var(--solarized-base03);
 	--table-header-color:			var(--solarized-base2);
 	--table-text-color:				var(--solarized-base1);
 	--OT-stabilo-mark:				var(--solarized-base1);
@@ -2976,12 +2980,24 @@ body {
 	--h3-color:		#35D6FF;
 	--h5-color:		#00A5CE;
 }
-.theme-light.textColor-lightMode-solarized {
+.theme-light.textColor-lightMode-solarized-base00 {
 	--text-normal:	var(--solarized-base00);
-	--link-color:	var(--solarized-violet);
+	--link-color:	var(--solarized-blue);
 	--h1-color:		var(--solarized-yellow);
 	--h3-color:		var(--solarized-cyan);
 	--h5-color:		var(--solarized-base1);
+}
+.theme-light.textColor-lightMode-solarized-base01 {
+	--text-normal:	var(--solarized-base01);
+	--link-color:	var(--solarized-blue);
+}
+.theme-light.textColor-lightMode-solarized-base02 {
+	--text-normal:	var(--solarized-base02);
+	--link-color:	var(--solarized-blue);
+}
+.theme-light.textColor-lightMode-solarized-base03 {
+	--text-normal:	var(--solarized-base03);
+	--link-color:	var(--solarized-blue);
 }
 .theme-light.textColor-lightMode-teal {
 	--text-normal:	#0C8C81;
@@ -3173,12 +3189,20 @@ body {
 	--h3-color:		#35D6FF !important;
 	--h5-color:		#00A5CE !important;
 }
-.theme-dark.textColor-darkMode-solarized {
-	--text-normal:	var(--solarized-base00) !important;
-	--link-color:	var(--solarized-violet) !important;
+.theme-dark.textColor-darkMode-solarized-base0 {
+	--text-normal:	var(--solarized-base0) !important;
+	--link-color:	var(--solarized-blue) !important;
 	--h1-color:		var(--solarized-yellow) !important;
 	--h3-color:		var(--solarized-cyan) !important;
 	--h5-color:		var(--solarized-base1) !important;
+}
+.theme-dark.textColor-darkMode-solarized-base1 {
+	--text-normal:	var(--solarized-base1) !important;
+	--link-color:	var(--solarized-blue) !important;
+}
+.theme-dark.textColor-darkMode-solarized-base2 {
+	--text-normal:	var(--solarized-base2) !important;
+	--link-color:	var(--solarized-blue) !important;
 }
 .theme-dark.textColor-darkMode-teal {
 	--text-normal:	#0C8C81 !important;
@@ -3741,10 +3765,28 @@ body {
 	color:	var(--sky-blue);
 }
 
-.theme-light.inkColor-lightMode-solarized .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-solarized .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-solarized .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-solarized-base00 .CodeMirror pre.CodeMirror-line,
+.theme-light.inkColor-lightMode-solarized-base00 .markdown-source-view .cm-line,
+.theme-light.inkColor-lightMode-solarized-base00 .cm-s-obsidian .cm-line {
 	color:	var(--solarized-base00);
+}
+
+.theme-light.inkColor-lightMode-solarized-base01 .CodeMirror pre.CodeMirror-line,
+.theme-light.inkColor-lightMode-solarized-base01 .markdown-source-view .cm-line,
+.theme-light.inkColor-lightMode-solarized-base01 .cm-s-obsidian .cm-line {
+	color:	var(--solarized-base01);
+}
+
+.theme-light.inkColor-lightMode-solarized-base02 .CodeMirror pre.CodeMirror-line,
+.theme-light.inkColor-lightMode-solarized-base02 .markdown-source-view .cm-line,
+.theme-light.inkColor-lightMode-solarized-base02 .cm-s-obsidian .cm-line {
+	color:	var(--solarized-base02);
+}
+
+.theme-light.inkColor-lightMode-solarized-base03 .CodeMirror pre.CodeMirror-line,
+.theme-light.inkColor-lightMode-solarized-base03 .markdown-source-view .cm-line,
+.theme-light.inkColor-lightMode-solarized-base03 .cm-s-obsidian .cm-line {
+	color:	var(--solarized-base03);
 }
 
 .theme-light.inkColor-lightMode-teal .CodeMirror pre.CodeMirror-line,
@@ -3927,10 +3969,28 @@ body {
 	color:	#77A9D0;
 }
 
-.theme-dark.inkColor-darkMode-solarized .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-solarized .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-solarized .cm-s-obsidian .cm-line {
-	color:	var(--solarized-base00);
+.theme-dark.inkColor-darkMode-solarized-base0 .CodeMirror pre.CodeMirror-line,
+.theme-dark.inkColor-darkMode-solarized-base0 .markdown-source-view .cm-line,
+.theme-dark.inkColor-darkMode-solarized-base0 .cm-s-obsidian .cm-line {
+	color:	var(--solarized-base0);
+}
+
+.theme-dark.inkColor-darkMode-solarized-base1 .CodeMirror pre.CodeMirror-line,
+.theme-dark.inkColor-darkMode-solarized-base1 .markdown-source-view .cm-line,
+.theme-dark.inkColor-darkMode-solarized-base1 .cm-s-obsidian .cm-line {
+	color:	var(--solarized-base1);
+}
+
+.theme-dark.inkColor-darkMode-solarized-base2 .CodeMirror pre.CodeMirror-line,
+.theme-dark.inkColor-darkMode-solarized-base2 .markdown-source-view .cm-line,
+.theme-dark.inkColor-darkMode-solarized-base2 .cm-s-obsidian .cm-line {
+	color:	var(--solarized-base2);
+}
+
+.theme-dark.inkColor-darkMode-solarized-base3 .CodeMirror pre.CodeMirror-line,
+.theme-dark.inkColor-darkMode-solarized-base3 .markdown-source-view .cm-line,
+.theme-dark.inkColor-darkMode-solarized-base3 .cm-s-obsidian .cm-line {
+	color:	var(--solarized-base3);
 }
 
 .theme-dark.inkColor-darkMode-teal .CodeMirror pre.CodeMirror-line,
@@ -4242,10 +4302,16 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
 }
-.theme-light.inkColor-lightMode-solarized .markdown-source-view.mod-cm6 .cm-editor:before,
-.theme-dark.inkColor-darkMode-solarized .markdown-source-view.mod-cm6 .cm-editor:before {
-/*	couleur de la pastille:	#657b83	*/
-	content:	url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%23657b83" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m3.1 5.07c.14 0 .28.05.4.16l1.27 1.27c.23.22.23.57 0 .78l-1 1l-2.05-2.05l1-1c.1-.11.24-.16.38-.16m-1.97 1.74l2.06 2.06l-6.06 6.06H7.07v-2.06l6.06-6.06Z"%2F%3E%3C%2Fsvg%3E');
+.theme-light.inkColor-lightMode-solarized-base00 .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-light.inkColor-lightMode-solarized-base01 .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-light.inkColor-lightMode-solarized-base02 .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-light.inkColor-lightMode-solarized-base03 .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-dark.inkColor-darkMode-solarized-base0 .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-dark.inkColor-darkMode-solarized-base1 .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-dark.inkColor-darkMode-solarized-base2 .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-dark.inkColor-darkMode-solarized-base3 .markdown-source-view.mod-cm6 .cm-editor:before {
+/*	couleur de la pastille:	#586e75 (base-01)	*/
+	content:	url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%23586e75" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m3.1 5.07c.14 0 .28.05.4.16l1.27 1.27c.23.22.23.57 0 .78l-1 1l-2.05-2.05l1-1c.1-.11.24-.16.38-.16m-1.97 1.74l2.06 2.06l-6.06 6.06H7.07v-2.06l6.06-6.06Z"%2F%3E%3C%2Fsvg%3E');
 	height:		0px;
 	background-color: transparent;
 }
@@ -5356,7 +5422,7 @@ s@media (hover: hover) {
 	color:				var(--OT-color-on-accent-2);
 }
 .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
-	color:				var(--OT-color-on-accent-2);
+	color:	var(--OT-color-on-accent-2);
 }
 @media (hover: hover) {
   .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
@@ -6864,8 +6930,8 @@ settings:
 					label.fr:	Émeraude
 					value:		textColor-lightMode-emerald
 				-
-					label:	Fuchsia
-					value:	textColor-lightMode-fuchsia
+					label:		Fuchsia
+					value:		textColor-lightMode-fuchsia
 				-
 					label:		Green
 					label.fr:	Vert
@@ -6899,8 +6965,17 @@ settings:
 					label.fr:	Argent
 					value:		textColor-lightMode-silver
 				-
-					label:		Solarized
-					value:		textColor-lightMode-solarized
+					label:		Solarized base00
+					value:		textColor-lightMode-solarized-base00
+				-
+					label:		Solarized base01
+					value:		textColor-lightMode-solarized-base01
+				-
+					label:		Solarized base02
+					value:		textColor-lightMode-solarized-base02
+				-
+					label:		Solarized base03
+					value:		textColor-lightMode-solarized-base03
 				-
 					label:		Teal
 					label.fr:	Bleu sarcelle
@@ -7089,8 +7164,17 @@ settings:
 				label.fr:	Argent
 				value:		inkColor-lightMode-silver
 			-
-				label:		Solarized
-				value:		inkColor-lightMode-solarized
+				label:		Solarized base00
+				value:		inkColor-lightMode-solarized-base00
+			-
+				label:		Solarized base01
+				value:		inkColor-lightMode-solarized-base01
+			-
+				label:		Solarized base02
+				value:		inkColor-lightMode-solarized-base02
+			-
+				label:		Solarized base03
+				value:		inkColor-lightMode-solarized-base03
 			-
 				label:		Teal
 				label.fr:	Bleu sarcelle
@@ -7490,8 +7574,14 @@ settings:
 					label.fr:	Argent
 					value:		textColor-darkMode-silver
 				-
-					label:		Solarized
-					value:		textColor-darkMode-solarized
+					label:		Solarized base0
+					value:		textColor-darkMode-solarized-base0
+				-
+					label:		Solarized base1
+					value:		textColor-darkMode-solarized-base1
+				-
+					label:		Solarized base2
+					value:		textColor-darkMode-solarized-base2
 				-
 					label:		Teal
 					label.fr:	Bleu sarcelle
@@ -7630,12 +7720,17 @@ settings:
 				label.fr:	Brun
 				value:		inkColor-darkMode-brown
 			-
+				label:		Cyan
 				label.fr:	Cyan
 				value:		inkColor-darkMode-cyan
 			-
 				label:		Egg
 				label.fr:	Œuf
 				value:		inkColor-darkMode-egg
+			-
+				label:		Fuchsia
+				label.fr:	Fuchsia
+				value:		inkColor-darkMode-fuchsia
 			-
 				label:		Green
 				label.fr:	Vert
@@ -7649,9 +7744,7 @@ settings:
 				label.fr:	Vert terminal
 				value:		inkColor-darkMode-terminalGreen
 			-
-				label.fr:	Fuchsia
-				value:		inkColor-darkMode-fuchsia
-			-
+				label:		Indigo
 				label.fr:	Indigo
 				value:		inkColor-darkMode-indigo
 			-
@@ -7676,8 +7769,17 @@ settings:
 				label.fr:	Argent
 				value:		inkColor-darkMode-silver
 			-
-				label:		Solarized
-				value:		inkColor-darkMode-solarized
+				label:		Solarized base0
+				value:		inkColor-darkMode-solarized-base0
+			-
+				label:		Solarized base1
+				value:		inkColor-darkMode-solarized-base1
+			-
+				label:		Solarized base2
+				value:		inkColor-darkMode-solarized-base2
+			-
+				label:		Solarized base3
+				value:		inkColor-darkMode-solarized-base3
 			-
 				label:		Teal
 				label.fr:	Bleu sarcelle
