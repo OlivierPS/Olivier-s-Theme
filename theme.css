@@ -86,6 +86,7 @@
 			12.07.2024	Finished the correction of the ON / OFF buttons in the Dark palettes	1.21.0
 						Changed the height of the modals, allowing them to be higher
 						Corrected the problem with file renaming in the navigation tree			1.21.1
+						Small tweaks															1.22.2
 
 
 ----------------------------------------------
@@ -285,7 +286,7 @@ body {
 	/*	----- Interactive colors -----
 		------------------------------	*/
 	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
-	--interactive-accent:				var(--color-accent-1);
+	--interactive-accent:				var(--color-accent-2);
 	--interactive-hover:				var(--color-accent-1);
 
 
@@ -387,7 +388,7 @@ body {
 	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
 	--text-error-hover:			var(--color-red);
 	--text-muted:				var(--color-base-50);			/*	c’est ce qui, chez moi, peut être considéré comme du texte “muted”	*/
-	--text-on-accent:			var(--OT-color-on-accent-1);
+	--text-on-accent:			var(--OT-color-on-accent-2);
 	--text-on-accent-inverted:	var(--color-accent-1);			/*	dans "app.css" il est défini comme “black”. Utilisé dans le canvas	*/
 	--text-on-hover:			var(--OT-color-on-accent-1);
 
