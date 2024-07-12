@@ -88,6 +88,7 @@
 						Corrected the problem with file renaming in the navigation tree			1.21.1
 						Small tweaks															1.22.2
 						Small tweaks															1.22.3
+						Small tweaks															1.22.4
 
 
 ----------------------------------------------
@@ -5352,6 +5353,9 @@ s@media (hover: hover) {
 .mod-right-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
 .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
 .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+	color:				var(--OT-color-on-accent-2);
+}
+.is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
 	color:				var(--OT-color-on-accent-2);
 }
 @media (hover: hover) {

@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 12.07.2024 Versions 1.21.0, then 1.21.1, 1.21.2 and 1.21.3
+#### 12.07.2024 Versions 1.21.0, then 1.21.1, 1.21.2, 1.21.3 and 1.21.4
 
 Finished the correction of the ON / OFF buttons in the Dark palettes.<br>Changed the height of the modals, allowing them to be higher.
 
