@@ -87,6 +87,7 @@
 						Changed the height of the modals, allowing them to be higher
 						Corrected the problem with file renaming in the navigation tree			1.21.1
 						Small tweaks															1.22.2
+						Small tweaks															1.22.3
 
 
 ----------------------------------------------
@@ -286,7 +287,7 @@ body {
 	/*	----- Interactive colors -----
 		------------------------------	*/
 	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
-	--interactive-accent:				var(--color-accent-2);
+	--interactive-accent:				var(--color-accent-1);
 	--interactive-hover:				var(--color-accent-1);
 
 
@@ -366,7 +367,7 @@ body {
 	--tab-text-color-active:					var(--color-base-70);
 	--tab-text-color-focused:					var(--color-base-70);
 	--tab-text-color-focused-active:			var(--color-base-70);
-	--tab-text-color-focused-active-current:	var(--OT-color-on-accent-2);
+	--tab-text-color-focused-active-current:	var(--OT-view-header-title-focus-color);
 
 	--tab-stacked-text-transform:	rotate(180deg);
 
@@ -388,7 +389,7 @@ body {
 	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
 	--text-error-hover:			var(--color-red);
 	--text-muted:				var(--color-base-50);			/*	c’est ce qui, chez moi, peut être considéré comme du texte “muted”	*/
-	--text-on-accent:			var(--OT-color-on-accent-2);
+	--text-on-accent:			var(--OT-color-on-accent-1);
 	--text-on-accent-inverted:	var(--color-accent-1);			/*	dans "app.css" il est défini comme “black”. Utilisé dans le canvas	*/
 	--text-on-hover:			var(--OT-color-on-accent-1);
 
@@ -5351,7 +5352,7 @@ s@media (hover: hover) {
 .mod-right-split .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
 .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
 .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
-	color:	inherit;
+	color:				var(--OT-color-on-accent-2);
 }
 @media (hover: hover) {
   .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
@@ -5441,8 +5442,8 @@ body:not(.is-phone) .community-item.is-selected .community-item-downloads,
 body:not(.is-phone) .community-item.is-selected:hover .community-item-downloads,
 body:not(.is-phone) .community-item.is-selected .community-item-updated,
 body:not(.is-phone) .community-item.is-selected:hover .community-item-updated {
-	color:	var(--text-on-accent);
-	color: 	var(--OT-color-on-accent-3);
+	color:				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
 	opacity: 0.8;
 }
 /*	survol des propositions dans les panneaux des “Community themes” et des “Community plugins”	*/
