@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 12.07.2024
+
+Finished the correction of the ON / OFF buttons in the Dark palettes.<br>Changed the height of the modals, allowing them to be higher.
+
+----------------------------------------------
+
 #### 07.07.2024 Version 1.20.0
 
 Improved the ON / OFF buttons in the Light palettes.
