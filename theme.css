@@ -91,6 +91,7 @@
 						Small tweaks															1.21.4
 						Improved Solarized palette, both Light and Dark.
 						Added different Solarized colors for the text							1.22.0
+			13.07.2024	Changed the logic for the title of the panes, with and without focus	1.23.0
 
 
 ----------------------------------------------
@@ -271,8 +272,8 @@ body {
 	--OT-tree-item-flair-background:				var(--color-accent-3);
 	--OT-tree-item-flair-color:						var(--OT-color-on-accent-3);
 	--OT-vertical-tab-header-group-title:			var(--color-base-70);
-	--OT-view-header-title-focus-color:				var(--color-accent-2);
-	--OT-view-header-title-no-focus-color:			var(--color-base-100);
+	--OT-view-header-title-focus-color:				var(--color-base-100);
+	--OT-view-header-title-no-focus-color:			var(--color-base-50);
 	--OT-YAML-color:								var(--color-base-50);
 
 
@@ -533,6 +534,7 @@ body {
 	--OT-metadata-property-icon:					var(--metadata-label-text-color);
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	#FF369A;
 	--OT-setting-item-description:					grey;
+	--OT-view-header-title-focus-color:				var(--color-base-20);
 	--OT-view-header-title-no-focus-color:			#00BDC0;
 }/*	↑ generalPalette-artDeco ↑	*/
 
@@ -596,8 +598,10 @@ body {
 	--link-color:						var(--obsidian-violet);
 	--OT-table-header-background:		#eee;
 	--icon-color:						var(--color-accent-1);
-//	--status-bar-background:			var(--color-accent-3);
 	--status-bar-text-color:			var(--color-accent-1);
+	--OT-view-header-title-focus-color:		var(--color-accent-1);
+	--OT-view-header-title-no-focus-color:	grey;
+
 }
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-green {
@@ -616,17 +620,19 @@ body {
 	--color-base-100:	var(--favorite-blue);
 	--link-color:		#537622;
 	--checklist-done-color:	#096A2A;
+	--OT-color-on-base-20:			#085C27;
 
 //	--h1-color:						#202770;
 //	--h3-color:						#252C73;
 //	--h5-color:						#797B9D;
 
-	--OT-table-alt-background:		#E8F9EE;
-	--OT-table-background:			#E7FDEF;
-	--OT-table-header-background:	#DDFCE8;
-	--OT-color-on-base-20:			#085C27;
-	--OT-stabilo-mark:				#2BA727;
-	--OT-stabilo-text:				#CCFBDC;
+	--OT-table-alt-background:				#E8F9EE;
+	--OT-table-background:					#E7FDEF;
+	--OT-table-header-background:			#DDFCE8;
+	--OT-view-header-title-focus-color:		var(--OT-theme-reference-color);
+	--OT-view-header-title-no-focus-color:	var(--color-base-50);
+	--OT-stabilo-mark:						#2BA727;
+	--OT-stabilo-text:						#CCFBDC;
 }/*	↑ generalPalette-green ↑	*/
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-icy {
@@ -966,7 +972,6 @@ body {
 	--OT-setting-item-description:	#1A09BC;
 	--OT-table-header-background:	#FEEFB6;
 	--text-selection:				hsl(var(--accent-h), var(--accent-s), 70%);
-	--OT-view-header-title-focus-color:		var(--color-base-100);
 	--OT-view-header-title-no-focus-color:	#BC9E00;
 } /*	↑ genaralPalette-yellow ↑	*/
 
@@ -1310,7 +1315,6 @@ body {
 
 	--OT-table-header-background:	#3E250A;
 	--OT-table-background:			#462A0C;
-	--OT-view-header-title-focus-color:		var(--color-base-100);
 	--OT-view-header-title-no-focus-color:	#BC7120;
 }/*	↑	darkPalette-parchment	↑	*/
 
@@ -1522,7 +1526,6 @@ body {
 	--OT-color-on-accent-2:			#443900;
 	--OT-color-on-accent-3:			#443900;
 	--OT-button-ON-bg:				var(--color-accent-1);
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-artDeco.accentColor-lightMode-alternative-1 {
 	--accent-h:						300		!important;
@@ -1542,7 +1545,7 @@ body {
 	--OT-color-muted-on-accent-1:	#27E0F1	!important;
 	--OT-color-on-accent-2:			#F7FEFE	!important;
 	--OT-color-on-accent-3:			#97F0F8	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 
 .theme-light.generalPalette-beige.accentColor-lightMode-shade {
@@ -1554,7 +1557,7 @@ body {
 	--color-accent-3:				#F3E8D6	!important;
 	--OT-color-muted-on-accent-1:		#E9DFD6;
 //	--OT-color-on-accent-2:				var(--color-base-00);
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-1 {
 	--accent-h:							188	!important;
@@ -1567,7 +1570,7 @@ body {
 	--OT-color-muted-on-accent-1:		#17464D	!important;
 	--OT-color-on-accent-2:				#17464D	!important;
 	--OT-color-on-accent-3:				#1F5D67	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-2 {
 	--accent-h:							158	!important;
@@ -1580,7 +1583,7 @@ body {
 	--OT-color-muted-on-accent-1:		#1F674D	!important;
 	--OT-color-on-accent-2:				white	!important;
 	--OT-color-on-accent-3:				#174D39	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 
 .theme-light.generalPalette-blue.accentColor-lightMode-shade {
@@ -1651,7 +1654,6 @@ body {
 	--OT-color-muted-on-accent-1:	#72570C	!important;
 	--OT-color-on-accent-2:			#FEFCF6	!important;
 	--OT-color-on-accent-3:			#624B0B	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--status-bar-text-color:		#DDA818;
 	--icon-color:					#DDA818;
 }
@@ -1690,7 +1692,6 @@ body {
 	--OT-color-muted-on-accent-1:	#F9BFE4	!important;
 	--OT-color-on-accent-2:			white	!important;
 	--OT-color-on-accent-3:			#9A0E67	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-shade {
 	--accent-h:								214		!important;
@@ -1702,8 +1703,8 @@ body {
 	--OT-color-on-accent-1:					var(--color-base-00);
 	--OT-color-muted-on-accent-1:			#97CBFF;
 	--OT-color-on-accent-2:					#0058CC;
-	--OT-view-header-title-focus-color:		#005FDD;
-	--OT-view-header-title-no-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:		#005FDD;
+//	--OT-view-header-title-no-focus-color:	var(--color-accent-1);
 	--OT-button-ON-bg:						#0049AA;
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-alternative-1 {
@@ -1718,7 +1719,7 @@ body {
 	--OT-color-on-accent-2:				#2C6600	!important;
 	--OT-color-on-accent-3:				#2C6600	!important;
 	--OT-button-ON-bg:					#5FDD00;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-alternative-2 {
 	--accent-h:							334		!important;
@@ -1732,7 +1733,7 @@ body {
 	--OT-color-on-accent-2:				#DD005F	!important;
 	--OT-color-on-accent-3:				#AA0049	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-lightBeige.accentColor-lightMode-shade {
 	--accent-h:						28	!important;
@@ -1775,8 +1776,8 @@ body {
 	--OT-color-on-accent-2:         var(--color-base-00);
 	--OT-color-on-accent-3:         #002743;
 	--OT-button-ON-bg:						#BDD6E9;
-	--OT-view-header-title-focus-color:		var(--color-accent-1);
-	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
+//	--OT-view-header-title-focus-color:		var(--color-accent-1);
+//	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
 }
 .theme-light.generalPalette-metallicBlue.accentColor-lightMode-alternative-1 {
 	--accent-h:				325	!important;
@@ -1799,7 +1800,7 @@ body {
 	--OT-color-muted-on-accent-1:		#BDF075	!important;
 	--OT-color-on-accent-2:				var(--color-base-00)	!important;
 	--OT-color-on-accent-3:				#314E08	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-Orange.accentColor-lightMode-shade {
 	--accent-h:						39		!important;
@@ -1882,7 +1883,7 @@ body {
 	--color-accent-3:				#D7D9AE	!important;
 	--OT-color-muted-on-accent-1:	#BBBD75;
 	--OT-color-on-accent-2:			#F4F4E8;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-paradiso.accentColor-lightMode-alternative-1 {
 	--accent-h:						212	!important;
@@ -1975,7 +1976,7 @@ body {
 	--OT-color-muted-on-accent-1:	#084B1E	!important;
 	--OT-color-on-accent-2:			#073D13	!important;
 	--OT-color-on-accent-3:			#0B6A2A	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-solarized.accentColor-lightMode-shade {
 	--accent-h:						180	!important;
@@ -2026,7 +2027,7 @@ body {
 	--OT-color-on-accent-1:			#fff	!important;
 	--OT-color-on-accent-2:			#fff	!important;
 	--OT-color-on-accent-3:			#4B4643;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-stone.accentColor-lightMode-alternative-1 {
 	--accent-h:						254	!important;
@@ -2037,7 +2038,7 @@ body {
 	--color-accent-3:				#DDD6F5	!important;
 	--OT-color-on-accent-1:			#fff	!important;
 	--OT-color-on-accent-2:			#fff	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-stone.accentColor-lightMode-alternative-2 {
 	--accent-h:						74	!important;
@@ -2061,7 +2062,7 @@ body {
 	--OT-color-on-accent-2:         var(--color-base-00);
 	--OT-color-muted-on-accent-1:	#D9B4FA	!important;
 	--OT-color-on-accent-3:         #6D0EC3;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-violet.accentColor-lightMode-alternative-1 {
 	--accent-h:						152	!important;
@@ -2075,7 +2076,7 @@ body {
 	--OT-color-on-accent-2:			#076438	!important;
 	--OT-color-on-accent-3:			#076438	!important;
 	--OT-button-ON-bg:				var(--color-accent-1);
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-violet.accentColor-lightMode-alternative-2 {
 	--accent-h:						32	!important;
@@ -2113,7 +2114,7 @@ body {
 	--OT-color-muted-on-accent-1:		#CDD5FF;
 	--OT-color-on-accent-2:				var(--color-base-00);
 	--OT-color-on-accent-3:				#0023DE;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-2 {
 	--accent-h:						171		!important;
@@ -2126,7 +2127,7 @@ body {
 	--OT-color-muted-on-accent-1:	#00FFDE	!important;
 	--OT-color-on-accent-2:			#005245	!important;
 	--OT-color-on-accent-3:			#005245	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 /* =======================================================================================	*/
 }
 /*	Bookmark	OpSpl07	*/
@@ -2141,7 +2142,6 @@ body {
 	--color-accent-3:				#503303	!important;
 	--OT-color-on-accent-2:			#FBD79B	!important;
 	--OT-color-muted-on-accent-1:	#915D06	!important;
-	--OT-view-header-title-focus-color:		var(--color-base-100);
 }
 .theme-dark.generalPalette-beige.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.generalPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -2185,8 +2185,8 @@ body {
 	--OT-color-on-accent-1:			#E5F1FE	!important;
 	--OT-color-on-accent-2:			#E5F1FE	!important;
 	--OT-color-on-accent-3:			#B4D8FC	!important;
-	--OT-view-header-title-focus-color:		#208BF7;
-	--OT-view-header-title-no-focus-color:	#0761BB;
+//	--OT-view-header-title-focus-color:		#208BF7;
+//	--OT-view-header-title-no-focus-color:	#0761BB;
 }
 
 .theme-dark.generalPalette-blue.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -2228,7 +2228,7 @@ body {
 	--OT-color-muted-on-accent-1:	#5C300A	!important;
 //	--OT-color-on-accent-2:			#fff	!important;
 //	--OT-color-on-accent-3:			#fff	!important;
-	--OT-view-header-title-focus-color:		var(--color-accent-1);
+//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 }
 .theme-dark.generalPalette-Brown.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-brown.accentColor-darkMode-alternative-1 {
@@ -2243,7 +2243,7 @@ body {
 	--OT-color-on-accent-2:				#B2F7D2	!important;
 	--OT-color-on-accent-3:				#B2F7D2	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-Brown.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-brown.accentColor-darkMode-alternative-2 {
@@ -2257,7 +2257,7 @@ body {
 	--OT-color-muted-on-accent-1:		#C9A3F5	!important;
 	--OT-color-on-accent-2:				#DBC2F8	!important;
 	--OT-color-on-accent-3:				#C094F3	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#8A37EA;
 }
@@ -2354,7 +2354,7 @@ body {
 	--color-accent-3:					#0F448A !important;
 	--OT-color-on-accent-1:				white;
 	--OT-color-muted-on-accent-1:		#A3C6F5	!important;
-	--OT-view-header-title-focus-color:	#85B4F1;
+//	--OT-view-header-title-focus-color:	#85B4F1;
 	--OT-view-header-title-no-focus-color:	#297BE7;
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#5697ED;
@@ -2433,7 +2433,7 @@ body {
 	--OT-button-ON-bg:						var(--color-accent-1);
 	--OT-button-cta-background-normal:		#2E73A5;
 	--OT-button-cta-text-normal:			#091620;
-	--OT-view-header-title-focus-color:		var(--color-accent-1);
+//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 	--OT-view-header-title-no-focus-color:	#83888D;
 }
 .theme-dark.generalPalette-metallicBlue.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -2448,7 +2448,7 @@ body {
 	--OT-color-muted-on-accent-1:		#537821	!important;
 	--OT-color-on-accent-2:				#E8F4D7	!important;
 	--OT-color-on-accent-3:				#D0E9AF	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-metallicBlue.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-metallicBlue.accentColor-darkMode-alternative-2 {
@@ -2462,7 +2462,7 @@ body {
 	--OT-color-muted-on-accent-1:		#932865	!important;
 //	--OT-color-on-accent-2:				#fff	!important;
 //	--OT-color-on-accent-3:				#fff	!important;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 
 .theme-dark.generalPalette-paradiso.darkPalette-default.accentColor-darkMode-shade,
@@ -2480,7 +2480,6 @@ body {
 //	--OT-color-on-accent-3:					#fff	!important;
 	--OT-button-ON-bg:						var(--color-accent-1);
 	--OT-button-cta-background-normal:		#ADB05B;
-	--OT-view-header-title-focus-color:		var(--color-base-100);
 	--OT-view-header-title-no-focus-color:	#9C9F36;
 }
 .theme-dark.generalPalette-paradiso.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -2538,7 +2537,7 @@ body {
 	--OT-color-muted-on-accent-1:		#144274	!important;
 //	--OT-color-on-accent-2:				#fff	!important;
 //	--OT-color-on-accent-3:				#fff	!important;
-	--OT-view-header-title-focus-color:	#267DDA;
+//	--OT-view-header-title-focus-color:	#267DDA;
 	--OT-button-ON-bg:					var(--color-accent-1);
 }
 .theme-dark.generalPalette-parchment.darkPalette-default.accentColor-darkMode-alternative-2,
@@ -2553,7 +2552,7 @@ body {
 	--OT-color-muted-on-accent-1:		#1D5A1F	!important;
 	--OT-color-on-accent-2:				#BFEAC0	!important;
 	--OT-color-on-accent-3:				#A6E1A7	!important;
-	--OT-view-header-title-focus-color:	#37A63A;
+//	--OT-view-header-title-focus-color:	#37A63A;
 }
 .theme-dark.generalPalette-red.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-red.accentColor-darkMode-shade {
@@ -2582,7 +2581,7 @@ body {
 	--OT-color-on-accent-2:				#C5E5F5	!important;
 	--OT-color-on-accent-3:				#E0F3FC	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-red.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-red.accentColor-darkMode-alternative-2 {
@@ -2597,7 +2596,7 @@ body {
 	--OT-color-on-accent-2:				#CBB7F2	!important;
 	--OT-color-on-accent-3:				#D6C6F4	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--OT-button-cta-background-normal:	#7844DD;
 }
 
@@ -2613,7 +2612,7 @@ body {
 	--OT-color-muted-on-accent-1:		var(--solarized-base02)	!important;
 	--OT-color-on-accent-2:				var(--solarized-base03)	!important;
 	--OT-color-on-accent-3:				var(--solarized-base2)	!important;
-	--OT-view-header-title-focus-color:	var(--solarized-base3);
+//	--OT-view-header-title-focus-color:	var(--solarized-base3);
 	--OT-button-cta-text-normal:		var(--solarized-base03);
 	--OT-button-ON-bg:					var(--color-accent-1);
 }
@@ -2626,7 +2625,7 @@ body {
 	--OT-color-muted-on-accent-1:			var(--solarized-base01)	!important;
 //	--OT-color-on-accent-2:					#fff	!important;
 	--OT-color-on-accent-3:					var(--solarized-base2)	!important;
-	--OT-view-header-title-focus-color:		var(--solarized-blue);
+//	--OT-view-header-title-focus-color:		var(--solarized-blue);
 	--OT-button-cta-background-normal:		var(--solarized-cyan);
 }
 .theme-dark.generalPalette-solarized.darkPalette-default.accentColor-darkMode-alternative-2,
@@ -2638,7 +2637,7 @@ body {
 	--OT-color-muted-on-accent-1:			var(--solarized-base01)	!important;
 //	--OT-color-on-accent-2:					#fff	!important;
 	--OT-color-on-accent-3:					var(--solarized-base2)	!important;
-	--OT-view-header-title-focus-color:		var(--solarized-yellow);
+//	--OT-view-header-title-focus-color:		var(--solarized-yellow);
 	--OT-button-cta-background-normal:		var(--solarized-orange);
 }
 
@@ -2701,7 +2700,7 @@ body {
 //	--OT-color-on-accent-3:				#fff	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#00BB26;
-	--OT-view-header-title-focus-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-Victorian-1.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-victorian.accentColor-darkMode-alternative-1 {
@@ -2747,8 +2746,8 @@ body {
 	--OT-button-ON-bg:						var(--color-accent-1);
 	--OT-button-cta-background-normal:		#9A7CC7;
 	--OT-button-cta-text-normal:			#27193C;
-	--OT-view-header-title-focus-color:		#AC94D1;
-	--OT-view-header-title-no-focus-color:	#8864BD;
+//	--OT-view-header-title-focus-color:		#AC94D1;
+//	--OT-view-header-title-no-focus-color:	#8864BD;
 }
 .theme-dark.generalPalette-violet.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-violet.accentColor-darkMode-alternative-1 {
@@ -2790,8 +2789,8 @@ body {
 	--OT-color-muted-on-accent-1:			#7E6502	!important;
 	--OT-color-on-accent-2:					#FFFAE5	!important;
 //	--OT-color-on-accent-3:					#fff	!important;
-	--OT-view-header-title-focus-color:		var(--color-accent-1);
-	--OT-view-header-title-no-focus-color:	#9E7F02;
+//	--OT-view-header-title-focus-color:		var(--color-accent-1);
+//	--OT-view-header-title-no-focus-color:	#9E7F02;
 }
 .theme-dark.generalPalette-yellow.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-yellow.accentColor-darkMode-alternative-1 {

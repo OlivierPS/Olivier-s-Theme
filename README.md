@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 13.07.2024
+I’ve changed the logic for the color of the pannels’  titles:
+* the current pannel generally takes the default text color — there are a few exceptions;
+* the pannels in the background take the color of the default muted text color.
+
+----------------------------------------------
 #### 12.07.2024 Version 1.22.0
 Improved Solarized palette, both Light and Dark.
 Added different Solarized colors for the text.
