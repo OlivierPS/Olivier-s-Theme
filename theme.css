@@ -92,7 +92,8 @@
 						Improved Solarized palette, both Light and Dark.
 						Added different Solarized colors for the text							1.22.0
 			13.07.2024	Changed the logic for the title of the panes, with and without focus	1.23.0
-			2024-07-14	Improvement to hovering in the Metafolders plugin						1.24.0
+			14.07.2024	Improvement to hovering in the Metafolders plugin						1.24.0
+			19.07.2024	Some tweaks in the Solarized palettes									1.24.1
 
 
 ----------------------------------------------
@@ -171,7 +172,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 {
 	--obsidian-violet:		#8b6cef;
 	--favorite-blue:		#0f056b;
-	--dark-blue:				ss#212A70;
+	--dark-blue:			#212A70;
 	--blue:					#2C1CBD;
 	--light-blue:			#A6C3E1;
 	--royal-blue:			#0000a3;
@@ -181,9 +182,9 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 	--stabilo-bleu-foncé:	#39AFDC;
 	--stabilo-jaune-clair:	#FBEDB5;
 	--stabilo-jaune-foncé:	#F1E740;
-	--stabilo-orange-clair:	#FFBF80;/*	#F4A384;	*/
+	--stabilo-orange-clair:	#FFBF80;	/*	#F4A384;	*/
 	--stabilo-orange-foncé:	#F39539;
-	--stabilo-rose-clair:	#F4A5B6; /*	#EA93BE;	*/
+	--stabilo-rose-clair:	#F4A5B6;	/*	#EA93BE;	*/
 	--stabilo-rose-foncé:	#E85267;
 	--stabilo-vert-clair:	#B4DBC5;
 	--stabilo-vert-foncé:	#01C083;
@@ -459,7 +460,7 @@ body {
 	--metadata-property-padding:	0em 0em 0em 0.3em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
 
 	--modal-height:		80vh;
-	--modal-max-height:	90vh;
+	--modal-max-height:	96vh;
 
 	--nav-item-padding:				var(--OT-nav-item-vertical-padding)
 									var(--size-4-2)
@@ -877,7 +878,7 @@ body {
 	--OT-theme-reference-color:	var(--solarized-base00);
 	--color-base-00:			var(--solarized-base3);
 	--color-base-20:			var(--solarized-base2);
-	--color-base-35:			var(--solarized-yellow);
+	--color-base-35:			var(--solarized-base1);
 	--color-base-40:			var(--solarized-yellow);
 	--color-base-50:			var(--solarized-base0);
 	--color-base-70:			var(--solarized-base0);
@@ -897,10 +898,10 @@ body {
 //	--h5-color:			var(--solarized-base1);
 
 	--OT-color-on-base-20:			var(--solarized-violet);
-	--OT-table-header-background:	var(--solarized-base1);
+	--OT-table-header-background:	var(--solarized-base3);
 	--OT-table-background:			var(--solarized-base2);
 	--OT-table-alt-background:		var(--solarized-base3);
-	--table-header-color:			var(--solarized-base2);
+	--table-header-color:			var(--solarized-base1);
 }
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-stone {
@@ -1376,7 +1377,7 @@ body {
 	--link-color:				var(--solarized-blue);
 
 
-	--OT-table-header-background:	var(--solarized-base01);
+	--OT-table-header-background:	var(--solarized-base03);
 	--OT-table-background:			var(--solarized-base02);
 	--OT-table-alt-background:		var(--solarized-base03);
 	--table-header-color:			var(--solarized-base2);
@@ -5086,6 +5087,10 @@ td .cm-editor .cm-line {
 	border-bottom:	none;
 	border-top:		none;
 }
+
+.dataview.small-text {
+
+}
 /*	-------------------- ↑ OpSpl Tables -------------------- ↑ */
 
 
@@ -6005,6 +6010,14 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 .kanban-plugin__new-item-button:hover{
 		color:		var(--OT-color-on-accent-1);
 		background:	var(--color-accent-1);
+}
+
+.kanban-plugin__table-cell-wrapper .kanban-plugin__lane-menu.is-enabled,
+.kanban-plugin__table-cell-wrapper .kanban-plugin__item-prefix-button.is-enabled,
+.kanban-plugin__item .kanban-plugin__item-prefix-button.is-enabled,
+.kanban-plugin__item .kanban-plugin__item-postfix-button.is-enabled,
+.kanban-plugin__lane .kanban-plugin__lane-settings-button.is-enabled {
+	color:	var(--icon-color);
 }
 /* -------------------- ↑ Kanban -------------------- ↑ */
 

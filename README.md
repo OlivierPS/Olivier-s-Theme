@@ -123,11 +123,15 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 14.07.2024
+#### 19.07.2024	Version 1.24.1
+Some tweaks in the Solarized palettes
+
+----------------------------------------------
+#### 14.07.2024 Version 1.24.0
 Improvement to hovering in the Metafolders plugin
 
 ----------------------------------------------
-#### 13.07.2024
+#### 13.07.2024	Version 1.23.0
 I’ve changed the logic for the color of the pannels’  titles:
 * the current pannel generally takes the default text color — there are a few exceptions;
 * the pannels in the background take the color of the default muted text color.
