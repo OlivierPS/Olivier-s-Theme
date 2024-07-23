@@ -664,7 +664,7 @@ body {
 	--OT-setting-item-description:	#529DFF;									/*	le texte descriptif complémentaire dans le panneau des Settings	*/
 	--OT-table-background:			#F4F9FF;
 	--OT-table-header-background:	#E2EEFE;
-	--OT-table-alt-background:		#EEF5FE;
+	--OT-table-alt-background:		#EBF0F6;
 }/*	↑ generalPalette-icy ↑	*/
 
 /*	----------------------------------------------	*/
@@ -5361,6 +5361,7 @@ s@media (hover: hover) {
 .checkbox-container.is-enabled {
 	background-color:	var(--OT-button-ON-bg);
 }
+/*	le bouton “import” sur le modal d’importation du plugin “Style Settings”	*/
 .style-settings-import-label {
 		color:				var(--OT-button-text-normal);
 		background-color:	var(--OT-button-background-normal);
