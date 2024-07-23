@@ -94,6 +94,7 @@
 			13.07.2024	Changed the logic for the title of the panes, with and without focus	1.23.0
 			14.07.2024	Improvement to hovering in the Metafolders plugin						1.24.0
 			19.07.2024	Some tweaks in the Solarized palettes									1.24.1
+			23.07.2024	A few tweaks. In particular: alternate rows in the Icy Light palette	1.24.2
 
 
 ----------------------------------------------
@@ -162,7 +163,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 
 			OpSpl99		to be sorted…
 
-			OpSpl140	Definitions for the Style settings plugin
+			OpSpl100	Definitions for the Style settings plugin
 
 *******************************************************************/
 
@@ -663,6 +664,7 @@ body {
 	--OT-setting-item-description:	#529DFF;									/*	le texte descriptif complémentaire dans le panneau des Settings	*/
 	--OT-table-background:			#F4F9FF;
 	--OT-table-header-background:	#E2EEFE;
+	--OT-table-alt-background:		#EEF5FE;
 }/*	↑ generalPalette-icy ↑	*/
 
 /*	----------------------------------------------	*/
@@ -1776,6 +1778,7 @@ body {
 	--color-accent-1:	#0062A9	!important;
 	--color-accent-2:	#3E88BE	!important;
 	--color-accent-3:	#BDD6E9	!important;
+	--color-accent-3:	#D6E6F1	!important;
 	--OT-color-muted-on-accent-1:	#B6E1FF;
 	--OT-color-on-accent-2:         var(--color-base-00);
 	--OT-color-on-accent-3:         #002743;
@@ -5359,6 +5362,16 @@ s@media (hover: hover) {
 .checkbox-container.is-enabled {
 	background-color:	var(--OT-button-ON-bg);
 }
+.style-settings-import-label {
+		color:				var(--OT-button-text-normal);
+		background-color:	var(--OT-button-background-normal);
+		text-decoration:	none;
+}
+.style-settings-import-label:hover {
+		color:				var(--OT-button-text-hover);
+		background-color:	var(--OT-button-background-hover);
+		text-decoration:	none;
+}
 /*	-------------------- ↑ Buttons -------------------- ↑ */
 
 /* —————————————————————————————— OpSpl icons —————————————————————————————— */
@@ -6604,7 +6617,7 @@ input[type='number']::placeholder {
 	background-color:	var(--color-accent-2);
 }
 
-/*	Bookmark OpSpl140	*/
+/*	Bookmark OpSpl100	*/
 /* ==================================================================================== */
 /* —————————————————————————————— OpSpl Settings —————————————————————————————— */
 /* @settings
@@ -8027,18 +8040,18 @@ settings:
 			default:	18
 			format:		px
 	-
-			id:			OT-readingMode-line-width
-			title:		Line length [em]
-			title.fr:	Longueur de la ligne [em]
-			type:		variable-number
-			default:	42
-			format:		em
-	-
 			id:			OT-readingMode-line-height
 			title:		Line height [em]
 			title.fr:	Interligne [em]
 			type:		variable-number
 			default:	1.5
+			format:		em
+	-
+			id:			OT-readingMode-line-width
+			title:		Line length [em]
+			title.fr:	Longueur de la ligne [em]
+			type:		variable-number
+			default:	42
 			format:		em
 	-
 			id: 			OT-tables-style
@@ -8237,6 +8250,13 @@ settings:
 			default:	18
 			format:		px
 	-
+			id:			OT-editMode-line-height
+			title:		Line height [em]
+			title.fr:	Interligne [em]
+			type:		variable-number
+			default:	1.5
+			format:		em
+	-
 			id:				OT-editMode-line-width
 			title:			Line length [em]
 			title.fr:		Longueur de la ligne [em]
@@ -8245,13 +8265,6 @@ settings:
 			type:			variable-number
 			default:		46
 			format:			em
-	-
-			id:			OT-editMode-line-height
-			title:		Line height [em]
-			title.fr:	Interligne [em]
-			type:		variable-number
-			default:	1.5
-			format:		em
 	-
 			id:				OT-editMode-tableText-size
 			title:			Size of the text in table cells.

@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 23.07.2024 Version 1.24.2
+A few tweaks. In particular: the alternate rows in the Icy palette in Light mode.
+
+----------------------------------------------
 #### 19.07.2024	Version 1.24.1
 Some tweaks in the Solarized palettes
 
