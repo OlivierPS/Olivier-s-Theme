@@ -95,9 +95,14 @@
 			14.07.2024	Improvement to hovering in the Metafolders plugin						1.24.0
 			19.07.2024	Some tweaks in the Solarized palettes									1.24.1
 			23.07.2024	A few tweaks. In particular: alternate rows in the Icy Light palette	1.24.2
+			24.07.2024	The header row of the Dataview tables is now similar to the other tables.
+						Image captions provided by the… “Image Captions” plugin are now styled.
+						The paper background is now OFF by default in Live Edit Mode.
+						The default line length in both Reading and Editing modes has been
+						shortened																1.25.0
 
+--------------------------------------------------------------------------------------------------------
 
-----------------------------------------------
 Bookmarks:	OpSpl01:	Définition des couleurs
 						Déclarations générales
 			OpSpl02:	Themes variables “--OT-…”
@@ -490,7 +495,7 @@ body {
 /*	Bookmark	OpSpl06	*/
 /*	la sélection du texte prend la couleur de l’accentuation, avec une luminosité adaptée aux modes “light” et “dark”	*/
 .theme-light {
-	--text-selection:			hsl(var(--accent-h), var(--accent-s), 85%);
+	--text-selection:			hsl(var(--accent-h), var(--accent-s), 80%);
 }
 .theme-dark {
 	--text-selection:			hsl(var(--accent-h), var(--accent-s), 30%);
@@ -850,7 +855,7 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-red {
 	--OT-theme-reference-color:	#F95858;
-	--color-base-00:			#FEF4F4;
+	--color-base-00:			#FDDEDE;
 	--color-base-20:			#FEE2E2;
 	--color-base-35:			#E72E2E;
 	--color-base-40:			#FCA5A5;
@@ -2120,7 +2125,7 @@ body {
 	--OT-color-muted-on-accent-1:		#CDD5FF;
 	--OT-color-on-accent-2:				var(--color-base-00);
 	--OT-color-on-accent-3:				#0023DE;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
+	--text-selection:			hsl(var(--accent-h), var(--accent-s), 95%);
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-2 {
 	--accent-h:						171		!important;
@@ -2133,7 +2138,7 @@ body {
 	--OT-color-muted-on-accent-1:	#00FFDE	!important;
 	--OT-color-on-accent-2:			#005245	!important;
 	--OT-color-on-accent-3:			#005245	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
+	--text-selection:			hsl(var(--accent-h), var(--accent-s), 90%);
 /* =======================================================================================	*/
 }
 /*	Bookmark	OpSpl10	*/
@@ -5089,9 +5094,10 @@ td .cm-editor .cm-line {
 	border-bottom:	none;
 	border-top:		none;
 }
-
-.dataview.small-text {
-
+/*	La ligne d’en-tête dans les tables Dataview	*/
+.table-view-table > thead > tr > th {
+    font-weight:	var(--table-header-weight);
+    font-size:		var(--table-header-size);
 }
 /*	-------------------- ↑ OpSpl Tables -------------------- ↑ */
 
@@ -5361,13 +5367,17 @@ s@media (hover: hover) {
 .checkbox-container.is-enabled {
 	background-color:	var(--OT-button-ON-bg);
 }
-/*	le bouton “import” sur le modal d’importation du plugin “Style Settings”	*/
-.style-settings-import-label {
+/*	les boutouns avec des commandes dans les modals du plugin “Style Settings”	*/
+.style-settings-import-label,
+.style-settings-copy,
+.style-settings-download {
 		color:				var(--OT-button-text-normal);
 		background-color:	var(--OT-button-background-normal);
 		text-decoration:	none;
 }
-.style-settings-import-label:hover {
+.style-settings-import-label:hover,
+.style-settings-copy:hover,
+.style-settings-download:hover {
 		color:				var(--OT-button-text-hover);
 		background-color:	var(--OT-button-background-hover);
 		text-decoration:	none;
@@ -5624,6 +5634,22 @@ img {
 .signature {
 	border:		none;
 	box-shadow:	none;
+}
+
+/*	Pour le plugin “Image Captions”	*/
+.image-captions-caption {
+	font-style:		italic;
+	font-size:		var(--font-smaller);
+	line-height:	1.2rem;
+	padding-top:	1rem;
+	padding-left:	0.5rem;
+	padding-right:	0.5rem;
+	padding-bottom:	1rem;
+	text-align:		left;
+}
+.theme-light .image-captions-figure,
+.theme-light .image-captions-caption {
+	background:	transparent;
 }
 /* ———————————————————————————————————————————————————————————————————————————————————————————————	*/
 /* image-grid-1 */
@@ -7106,7 +7132,7 @@ settings:
 		title:			Paper background also in “Live Preview” mode
 		description:	It’s optional to have the paper background also in “Live Preview”.
 		type:			class-toggle
-		default:		true
+		default:		false
 	-
 		id:				OT-inkColor-lightMode
 		title:			Text color in writing/editing mode.
@@ -8044,14 +8070,14 @@ settings:
 			title:		Line height [em]
 			title.fr:	Interligne [em]
 			type:		variable-number
-			default:	1.5
+			default:	1.4
 			format:		em
 	-
 			id:			OT-readingMode-line-width
 			title:		Line length [em]
 			title.fr:	Longueur de la ligne [em]
 			type:		variable-number
-			default:	42
+			default:	39
 			format:		em
 	-
 			id: 			OT-tables-style
@@ -8254,7 +8280,7 @@ settings:
 			title:		Line height [em]
 			title.fr:	Interligne [em]
 			type:		variable-number
-			default:	1.5
+			default:	1.4
 			format:		em
 	-
 			id:				OT-editMode-line-width
@@ -8263,7 +8289,7 @@ settings:
 			description:	By default, you get longer lines than plain Obsidian.
 			description.fr:	Par défaut, une valeur un peu plus généreuse que le « défaut » d’Obsidian.
 			type:			variable-number
-			default:		46
+			default:		41
 			format:			em
 	-
 			id:				OT-editMode-tableText-size

@@ -123,6 +123,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 24.07.2024 Version 1.25.0
+* The header row of the Dataview tables is now similar to the other tables.
+* Image captions provided by the… “Image Captions” plugin are now styled.
+* The paper background is now OFF by default in Live Edit Mode.
+* The default line length in both Reading and Editing modes has been shortened. It’s typographically better with most fonts. You may, of course, adjust these values through the “Style Settings” plugin.
+
+
+----------------------------------------------
 #### 23.07.2024 Version 1.24.2
 A few tweaks. In particular: the alternate rows in the Icy palette in Light mode.
 
