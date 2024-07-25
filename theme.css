@@ -102,6 +102,7 @@
 						shortened																1.25.0
 			25.07.2024	Increased the size of the interface	fonts								1.26.0
 						Corrected the size of the table text in Source Edit mode				1.26.1
+						Small correction														1.26.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -4663,6 +4664,11 @@ input[type=checkbox] {
 .tree-item-self.is-being-renamed:focus-within {
 	color:				var(--color-base-100);
 	background-color:	var(--color-base-00);
+}
+/*	certains indicateurs dans le modal de sélection des Themes	*/
+.flair.mod-pop {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
 }
 
 
