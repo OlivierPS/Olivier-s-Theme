@@ -100,6 +100,8 @@
 						The paper background is now OFF by default in Live Edit Mode.
 						The default line length in both Reading and Editing modes has been
 						shortened																1.25.0
+			25.07.2024	Increased the size of the interface	fonts								1.26.0
+
 
 --------------------------------------------------------------------------------------------------------
 
@@ -330,6 +332,12 @@ body {
 	--dropdown-background:			var(--color-accent-3);
 	--dropdown-background-hover:	var(--color-accent-1);
 
+	--font-ui-smaller:	14px;
+	--font-ui-small:	15px;
+	--font-ui-medium:	17px;
+	--font-ui-large:	22px;
+
+
 	--graph-line:					var(--color-base-100);
 
 	--h1-color:	var(--text-normal);
@@ -465,8 +473,8 @@ body {
 	--metadata-padding:				0;
 	--metadata-property-padding:	0em 0em 0em 0.3em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
 
-	--modal-height:		80vh;
-	--modal-max-height:	96vh;
+	--modal-height:		88vh;
+	--modal-max-height:	98vh;
 
 	--nav-item-padding:				var(--OT-nav-item-vertical-padding)
 									var(--size-4-2)

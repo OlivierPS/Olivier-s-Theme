@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 25.07.2024
+I’ve increased the size of the interface, because it looke much too small for me, when working on high definition displays. I’m planning on giving a choice via settings.
+
+----------------------------------------------
 #### 24.07.2024 Version 1.25.0
 * The header row of the Dataview tables is now similar to the other tables.
 * Image captions provided by the… “Image Captions” plugin are now styled.
