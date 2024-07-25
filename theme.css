@@ -855,7 +855,7 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-red {
 	--OT-theme-reference-color:	#F95858;
-	--color-base-00:			#FDDEDE;
+	--color-base-00:			#FEECEC;
 	--color-base-20:			#FEE2E2;
 	--color-base-35:			#E72E2E;
 	--color-base-40:			#FCA5A5;
@@ -8289,7 +8289,7 @@ settings:
 			description:	By default, you get longer lines than plain Obsidian.
 			description.fr:	Par défaut, une valeur un peu plus généreuse que le « défaut » d’Obsidian.
 			type:			variable-number
-			default:		41
+			default:		44
 			format:			em
 	-
 			id:				OT-editMode-tableText-size
