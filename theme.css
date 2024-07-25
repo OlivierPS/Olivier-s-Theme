@@ -101,6 +101,7 @@
 						The default line length in both Reading and Editing modes has been
 						shortened																1.25.0
 			25.07.2024	Increased the size of the interface	fonts								1.26.0
+						Corrected the size of the table text in Source Edit mode				1.26.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5052,7 +5053,7 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 }
 
 /* texte des tables en “edit mode, RAW”	*/
-.cm-s-obsidian .HyperMD-table-row {
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
 	font-size:		var(--OT-editMode-tableText-size);
 }
 /* current table cell being edited in Liveview editing mode */

@@ -123,7 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 25.07.2024
+#### 25.07.2024 Version 1.26.1
+Corrected the size of the table text in Source Edit mode. (The setting wasn’t taken into account.)
+
+----------------------------------------------
+#### 25.07.2024 Version.1.26.0
 I’ve increased the size of the interface, because it looke much too small for me, when working on high definition displays. I’m planning on giving a choice via settings.
 
 ----------------------------------------------
