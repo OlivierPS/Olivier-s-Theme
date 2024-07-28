@@ -104,6 +104,7 @@
 						Corrected the size of the table text in Source Edit mode				1.26.1
 						Small correction														1.26.2
 			28.07.2024	Started verification of the text selection [backgrond]; light themes: done	1.27.0
+						Revised the Yellow palette in Light mode								1.27.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -977,22 +978,20 @@ body {
 	--OT-theme-reference-color:	#E7B904;
 	--color-base-00:			#FFF8DA;
 	--color-base-20:			#FEF3C7;
-	--color-base-35:			#FCD641;
+	--color-base-35:			#E7B904;
 	--color-base-40:			#fbcd15;
-	--color-base-50:			#E4B704;
-	--color-base-70:			var(--favorite-blue);
+	--color-base-50:			#C69E03;
+	--color-base-70:			#C69E03;
 	--color-base-05:			#FEEFB6;
 
-	--color-base-100:	var(--favorite-blue);
+	--color-base-100:	#D97706;
 	--link-color:		#537622;
 //	--h1-color:			#6F5902;
 
 	--blockquote-background-color:	#FEF3C7;
 	--OT-button-OFF-bg:				#FEEFB6;
-
-	--OT-color-on-base-20:					var(--favorite-blue);
+	--OT-color-on-base-20:					#937603;
 	--OT-color-muted-on-base-20:			#C49E03;
-	--OT-setting-item-description:			#1A09BC;
 	--OT-table-header-background:			#FEEFB6;
 	--text-selection:						hsl(var(--accent-h), var(--accent-s), 70%);
 	--OT-view-header-title-no-focus-color:	#BC9E00;
@@ -2126,7 +2125,6 @@ body {
 	--OT-color-on-accent-3:			#C36D0E	!important;
 	--text-selection:				hsl(var(--accent-h), var(--accent-s), 77%);
 }
-
 .theme-light.generalPalette-yellow.accentColor-lightMode-shade {
 	--accent-h:						51		!important;
 	--accent-s:						100%	!important;
@@ -2150,7 +2148,7 @@ body {
 	--OT-color-muted-on-accent-1:	#CDD5FF;
 	--OT-color-on-accent-2:			var(--color-base-00);
 	--OT-color-on-accent-3:			#0023DE;
-	--text-selection:				hsl(var(--accent-h), var(--accent-s), 95%);
+	--text-selection:				hsl(var(--accent-h), var(--accent-s), 90%);
 }
 .theme-light.generalPalette-yellow.accentColor-lightMode-alternative-2 {
 	--accent-h:						171		!important;
