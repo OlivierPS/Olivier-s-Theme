@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 28.07.2024 Version 1.27.0
+I’ve started the revision of the text selection [background] in every palette and every shade. *Light* palettes are done.
+
+----------------------------------------------
 #### 25.07.2024 Version 1.26.1 then 1.26.2
 Corrected the size of the table text in Source Edit mode. (The setting wasn’t taken into account.)
 Other small correction.
