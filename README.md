@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 29.07.2024
+Finished the revision of the selection in all variants of the Dark mode palettes.
+
+----------------------------------------------
 #### 29.07.2024	Version 1.27.2
 Small adjustments in the Violet, light mode, palette.
 
