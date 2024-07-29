@@ -105,6 +105,7 @@
 						Small correction														1.26.2
 			28.07.2024	Started verification of the text selection [backgrond]; light themes: done	1.27.0
 						Revised the Yellow palette in Light mode								1.27.1
+			29.07.2024	Small adjustments in the Violet, Light palette							1.27.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -951,13 +952,13 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-violet {
 	--OT-theme-reference-color:	#C58DF7;
-	--color-base-00:			#F1E4FD;
-	--color-base-20:			#E1C4FB;
+	--color-base-00:			#F5ECFE;
+	--color-base-20:			#E5CDFB;
 	--color-base-35:			#9736F0;
 	--color-base-40:			#9736F0;
 	--color-base-50:			#B97EF5;
 	--color-base-70:			#650CB4;
-	--color-base-05:			#D9B4FA;
+	--color-base-05:			#DDBDFA;
 
 	--blockquote-background-color:	#E9D4FC;
 	--OT-button-OFF-bg:				#D9B4FA;
@@ -970,9 +971,9 @@ body {
 
 	--OT-color-on-base-20:			#7111D2;
 	--OT-metadata-background:		#F9DEFF;
-	--OT-table-header-background:	#DBBDFB;
+	--OT-table-header-background:	#DDBDFA;
 	--OT-table-background:			#E8D6FC;
-}
+}/*	↑ generalPalette-violet ↑	*/
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-yellow {
 	--OT-theme-reference-color:	#E7B904;
@@ -2084,7 +2085,7 @@ body {
 	--text-selection:		hsl(var(--accent-h), var(--accent-s), 68%);
 }
 
-.theme-light.generalPalette-violet.accenlor-lightMode-shade {
+.theme-light.generalPalette-violet.accentColor-lightMode-shade {
 	--accent-h:							272	!important;
 	--accent-s:							87%	!important;
 	--accent-l:							58%	!important;

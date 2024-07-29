@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 29.07.2024	Version 1.27.2
+Small adjustments in the Violet, light mode, palette.
+
+----------------------------------------------
 #### 28.07.2024 Version 1.27.1
 Revised the Yellow palette in Light mode — it’s one of the most difficult to set up, because the range of yellows available on screen is so shallow.
 
