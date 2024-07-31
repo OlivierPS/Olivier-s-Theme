@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 31.07.2024
+Improved the usability when the Styles Settings plugin isn’t installed or isn’t active. I never thought of this possibility! Now, in such situation, *Obsidian* looks almost like “out of the box”, only with the typographical and other niceties.
+
+----------------------------------------------
 #### 29.07.2024
 Finished the revision of the selection in all variants of the Dark mode palettes.
 

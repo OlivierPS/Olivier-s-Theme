@@ -107,6 +107,7 @@
 						Revised the Yellow palette in Light mode								1.27.1
 			29.07.2024	Small adjustments in the Violet, Light palette							1.27.2
 						Finished the revision of the selection in all variants of the Dark mode palettes	1.27.3
+			31.07.2024	Improved usability when the Styles Settings plugin isn’t active			1.28.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -360,6 +361,7 @@ body {
 
   	--inline-title-color:	var(--color-base-50);
 
+	--link-color:				var(--obsidian-violet);
  	--link-color-hover:			var(--text-accent-hover);
 	--link-external-color:		var(--link-color);
 	--link-unresolved-color:	var(--color-red) ;
@@ -414,7 +416,7 @@ body {
 	--tab-container-background:	var(--color-base-05);
 
 	--text-accent-hover:		var(--link-color);
-	--text-accent:				cyan;							/*	je ne veux le voir nulle part → alerte, s’il apparaît	*/
+	--text-accent:				vat(--OT-color-on-accent-3);
 	--text-error-hover:			var(--color-red);
 	--text-muted:				var(--color-base-50);			/*	c’est ce qui, chez moi, peut être considéré comme du texte “muted”	*/
 	--text-on-accent:			var(--OT-color-on-accent-1);
@@ -432,6 +434,10 @@ body {
 
 /*	Bookmark	OpSpl04	*/
 	/* ----- Accent colors  -----	*/
+	--accent-h:						254	!important;
+	--accent-s:						60%	!important;
+	--accent-l:						80%	!important;
+
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 20%))	!important;
 	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 0%))	!important;
 	/*--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 40%))	!important;*/
@@ -3443,7 +3449,7 @@ body {
 .theme-light.editingBackgroundColor-lightMode-default .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-default .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-default .cm-s-obsidian {
-	background:	var(--color-base-00);
+	background-color:	var(--color-base-00);
 }
 
 .theme-light.editingBackgroundColor-lightMode-AliceBlue .CodeMirror pre.CodeMirror-line,
@@ -3558,7 +3564,7 @@ body {
 .theme-dark.editingBackgroundColor-darkMode-default .CodeMirror pre.CodeMirror-line,
 .theme-dark.editingBackgroundColor-darkMode-default .markdown-source-view .cm-line,
 .theme-dark.editingBackgroundColor-darkMode-default .cm-s-obsidian {
-	background:	var(--color-base-00);
+	background-color:	var(--color-base-00);
 }
 
 .theme-dark.editingBackgroundColor-darkMode-AliceBlue .CodeMirror pre.CodeMirror-line,
@@ -5070,7 +5076,8 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 .theme-light.pb-lm-none .kanban-plugin__board>div /*,
 .theme-dark.pb-dm-none .markdown-preview-view,
 .theme-dark.pb-dm-none .kanban-plugin__board>div */ {
-	background: unset;
+	background: 		unset;
+	background-color:	unset;
 }
 /* -------------------- ↑ OpSpl Paper background -------------------- ↑ */
 
@@ -5202,7 +5209,7 @@ td .cm-editor .cm-line {
 /*
 .is-focused .workspace-tab-header.is-active:hover {
 	color:	var(--tab-text-color-focused-active);
-//	background:	pink;
+//	background-color:	pink;
 }*/
 
 /*	le hovering des en-têtes, tel qu’il est défini dans “app.css” ne me plaît pas.	*/
@@ -5349,8 +5356,8 @@ button:not(.clickable-icon) {
 }
 /*	ne pas modifier les icônes à cliquer dans le panneau des settings	*/
 .setting-item-control .clickable-icon {
-	color:	inherit;
-	background:	inherit;
+	color:				inherit;
+	background-color:	inherit;
 }
 @media (hover: hover) {
   .modal-close-button:hover {
@@ -5706,7 +5713,8 @@ img {
 }
 .theme-light .image-captions-figure,
 .theme-light .image-captions-caption {
-	background:	transparent;
+	background:			transparent;
+	background-color:	transparent;
 }
 /* ———————————————————————————————————————————————————————————————————————————————————————————————	*/
 /* image-grid-1 */
@@ -5816,7 +5824,7 @@ body span[alt*="+grid"] {
     font-size:			var(--font-size-blockquote);
 	color:				var(--blockquote-text-color);
 	line-height: 		1.5em;
-	background:			var(--blockquote-background-color);
+	background-color:	var(--blockquote-background-color);
 	margin: 			10px 10px;
 	margin-left:		40px;
 	margin-right:		40px;
@@ -6067,7 +6075,7 @@ markdown-rendered h6 {
 /* —————————————————————————————— Kanban —————————————————————————————— */
 body .kanban-plugin{
 	background-image:	none !important;
-	background:			var(--background-primary);		/* je préfère au gris d’origine	*/
+	background-color:	var(--background-primary);		/* je préfère au gris d’origine	*/
 }
 
 body .kanban-plugin__markdown-preview-view{
@@ -6091,10 +6099,10 @@ body .kanban-plugin__markdown-preview-view{
 	text-align:			center;
 }
 
-/* le nombre indiquant en tête de colonne, le nombre de cartes dans la colonne */
+/* le nombre indiquant, en tête de colonne, le nombre de cartes dans la colonne */
 div.kanban-plugin__lane-title-count{
-	font-size:	1em !important;
-	background:	var(--background-secondary);
+	font-size:			1em !important;
+	background-color:	var(--background-secondary);
 }
 
 /* Saisie d’une fiche */
@@ -6104,8 +6112,8 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	}
 
 .kanban-plugin__new-item-button:hover{
-		color:		var(--OT-color-on-accent-1);
-		background:	var(--color-accent-1);
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 
 .kanban-plugin__table-cell-wrapper .kanban-plugin__lane-menu.is-enabled,
@@ -6148,21 +6156,21 @@ a:hover,
 /* ---------- Lien inexistant survolé */
 .markdown-rendered .internal-link.is-unresolved:hover,
 .markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
-	opacity:	1;
-	color:		var(--OT-link-color-hover);
-	background:	var(--link-unresolved-color);
+	opacity:			1;
+	color:				var(--OT-link-color-hover);
+	background-color:	var(--link-unresolved-color);
 }
 
 .is-loaded.file-embed.mod-empty {
-	color:		var(--OT-link-color-hover);
-	background:	var(--link-unresolved-color);
+	color:				var(--OT-link-color-hover);
+	background-color:	var(--link-unresolved-color);
 }
 
 /* ---------- Lien vers une image inexistante  */
 .file-embed.mod-generic,
 .file-embed.mod-empty {
-	color:		var(--OT-color-on-accent-1);
-	background:	var(--link-unresolved-color);
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--link-unresolved-color);
 }
 /* ---------- Lien vers une image inexistante survolé  */
 @media (hover: hover) {
@@ -6178,8 +6186,8 @@ a:hover,
 	color:	var(--link-color) !important;
 }
 .footnote-ref:hover {
-	color:		var(--OT-link-color-hover) !important;
-	background:	var(--link-color) !important;
+	color:				var(--OT-link-color-hover) !important;
+	background-color:	var(--link-color) !important;
 }
 .footnote-backref {
 	color:	var(--link-color);
@@ -6309,7 +6317,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	left: 		0;
 	right: 		0;
 	bottom: 	0;
-	background: var(--background-primary);
+	background-color: var(--background-primary);
 }
 /* -------------------- ↑ Zoom-image.css ↑ -------------------- */
 
@@ -6318,11 +6326,11 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /* —————————————————————————————— Status bar —————————————————————————————— */
 .theme-dark .status-bar,
 .theme-light .status-bar {
-	background:	transparent;/*	var(--background-primary);	*/
-	border:		none;
-	bottom:		5px;
-	position:	absolute;
-	right:		15px
+	background-color:	transparent;/*	var(--background-primary);	*/
+	border:				none;
+	bottom:				5px;
+	position:			absolute;
+	right:				15px
 	}
 
 .theme-dark .status-bar-item,
@@ -6351,8 +6359,8 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .theme-dark .status-bar-item:hover,
 .theme-light .status-bar-item:hover {
     /*	filter:brightness(120%)	*/
-    color:			var(--OT-color-on-accent-2);
-    background:		var(--color-accent-2);
+    color:				var(--OT-color-on-accent-2);
+    background-color:	var(--color-accent-2);
 	}
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
@@ -6463,11 +6471,11 @@ button.canvas-menu-item {
 /*	Bookmark	OpSpl46	*/
 /* ---------- classe KBD, pour documenter les raccourcis clavier ---------- */
 kbd {
-    font-family:	"IBM Plex Mono","Frutiger Neue LT Pro", "Avenir Next","Helvetica Neue";
-    font-weight:	500;
-	font-size:	1.06em;
-	background:	var(--code-background);
-	border:		1px	solid var(--text-normal);
+    font-family:		"IBM Plex Mono","Frutiger Neue LT Pro", "Avenir Next","Helvetica Neue";
+    font-weight:		500;
+	font-size:			1.06em;
+	background-color:	var(--code-background);
+	border:				1px	solid var(--text-normal);
 }
 
 
@@ -6508,8 +6516,8 @@ kbd {
 @media (hover: hover) {
 	.file-node__container_highlight,
 	.file-node__container_highlight .file-node__path {
-		color:		var(--OT-color-on-accent-1);
-		background:	var(--color-accent-1);
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 	}
 }
 
