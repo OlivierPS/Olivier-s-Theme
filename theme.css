@@ -5691,7 +5691,7 @@ img {
 	padding: 		2px;
 //	box-shadow: 	6px 6px 3px grey;
 //	max-width:		100%;							/* preventing images from overwhelming text	*/
-//	max-height: 	var(--img-max-height);
+	max-height: 	var(--img-max-height);
 //	margin-top:		0.5rem;							/* c’est quand même plus joli de laisser un peu d’espace au-dessus et au-dessous des images	*/
 //	margin-bottom:	0.5rem;
 }
