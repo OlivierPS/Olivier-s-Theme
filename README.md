@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 02.08.2024	Version 1.30.0
+#### 02.08.2024	Version 1.30.0, 1.30.1
 I’ve made changes around images: gallery is automatic, it’s possible to press-zoom images and it also works for images inside callouts
 
 ----------------------------------------------
