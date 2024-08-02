@@ -109,6 +109,8 @@
 						Finished the revision of the selection in all variants of the Dark mode palettes	1.27.3
 			31.07.2024	Improved usability when the Styles Settings plugin isn’t active			1.28.0
 			01.08.2024	Integrated a gallery view for images									1.29.0
+			02.08.2024	I’ve made changes around images: gallery is automatic, it’s possible to
+						press-zoom images and it also works for images inside callouts			1.30.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5694,6 +5696,7 @@ img {
 	max-height: 	var(--img-max-height);
 //	margin-top:		0.5rem;							/* c’est quand même plus joli de laisser un peu d’espace au-dessus et au-dessous des images	*/
 //	margin-bottom:	0.5rem;
+	border-radius:	var(--radius-s);
 }
 
 /* Pour que le logo en signature ne soit pas encadré d’un filet ni ne soit ombré	*/
@@ -5720,25 +5723,40 @@ img {
 }
 /*	complément au snippet “MCL Gallery Cards”, version 0.9.2	*/
 div[data-embed-type="image"].el-embed-image.el-p {
-	margin-block-end:	1rem;
+	margin-block-end:	1.2rem;
 }
 /*	- - - - - - - - - - MCL Gallery Cards 0.9.2 	*/
 /* Editing and Reading View - Gallery using <p> and Callout. Using <p> (in Reading View) to contain and format as gallery view using metadata="gallery" to contain and format as gallery view */
 /* Create display: flex and key adjustment on margin and gap */
 div[data-embed-type="image"] > p,
-div[data-callout-metadata*="gallery"].callout > .callout-content > p
-	{ display: flex; gap: var(--OT-callout-gallery-gap); margin-top: calc( var(--OT-callout-gallery-gap) ); margin-bottom: 0; }
-div[data-embed-type="image"].el-embed-image.el-p { margin-top: var(--OT-callout-gallery-gap); }
-div[data-callout-metadata*="gallery"].callout > .callout-content { --callout-content-padding: 0.5rem 0 0 0; }
-/* Introduce subtle border and make the gallery as object-fit: cover */
+div[data-callout-metadata*="gallery"].callout > .callout-content > p {
+	display:		flex;
+	gap:			var(--OT-callout-gallery-gap);
+	margin-top:		calc( var(--OT-callout-gallery-gap) );
+	margin-bottom:	0;
+}
+div[data-embed-type="image"].el-embed-image.el-p {
+	margin-top: var(--OT-callout-gallery-gap);
+}
+div[data-callout-metadata*="gallery"].callout > .callout-content {
+	--callout-content-padding: 0.5rem 0 0 0;
+	}
+/* Introduce subtle border and make the gallery as object-fit: cover
 div[data-embed-type="image"] > p img,
-div[data-callout-metadata*="gallery"].callout > .callout-content > p img
-	{ max-height: var(--img-max-height); border: 1px solid var(--background-modifier-border); object-fit: cover; display: block;}
+div[data-callout-metadata*="gallery"].callout > .callout-content > p img {
+	max-height:	var(--img-max-height);
+	border:		1px solid var(--background-modifier-border);
+	object-fit:	cover;
+	display:	block;
+	}*/
 /* display: block for img is important to control the hidden margin-bottom but for Minimal, it uses display: flex for top level divs which pose another "margin" issues no plan to solve yet as this is not critical */
-
-/* Editing View - as alternate to <p> in Reading View since there's no natural container in Editing View using <p> */
-div:not(.cm-callout):not(.HyperMD-list-line).image-embed img
-	{ max-height: calc(var(--img-max-height)/1.5); display: unset; object-fit: cover; margin-right: var(--OT-callout-gallery-gap); }
+/* Editing View - as alternate to <p> in Reading View since there's no natural container in Editing View using <p>
+div:not(.cm-callout):not(.HyperMD-list-line).image-embed img {
+	max-height:		calc(var(--img-max-height)/1.5);
+	display:		unset;
+	object-fit:		cover;
+	margin-right:	var(--OT-callout-gallery-gap);
+}*/
 
 /* -------------------- ↑ Images, etc. -------------------- ↑ */
 
@@ -6287,15 +6305,17 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .markdown-preview-view .internal-embed img {
 	cursor:zoom-in;}
 .markdown-preview-view .internal-embed img:active {
+	--callout-blend-mode:	unset;
+	mix-blend-mode:	normal;
 	cursor: 	zoom-out;
 	display: 	block;
 	z-index: 	100;
 	position: 	fixed;
-	max-height: 100%;
-	max-width: 	100%;
-	height: 	100%;
+	max-height:	calc(100% + 1px);
+	max-width:	calc(100% - 20px);
+	height:		calc(100% + 1px);
 	width: 		100%;
-	object-fit: contain;
+	object-fit: scale-down;
 	margin: 	0 auto;
 	text-align: center;
 	top: 		50%;
