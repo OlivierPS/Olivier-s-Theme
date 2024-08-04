@@ -6308,7 +6308,6 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .markdown-preview-view .internal-embed img {
 	cursor:zoom-in;}
 .markdown-preview-view .internal-embed img:active {
-	--callout-blend-mode:	unset;
 	mix-blend-mode:	normal;
     opacity:	1 !important;
 	cursor: 	zoom-out;
