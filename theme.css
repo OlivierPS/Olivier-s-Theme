@@ -113,6 +113,7 @@
 						press-zoom images and it also works for images inside callouts			1.30.0
 						Small correction														1.30.1
 			11.08.2024	Preparation for the next step around images								1.30.2
+						You can now choose between 4 rendering of images						1.31.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5693,14 +5694,26 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 }
 
 img {
+	max-height: 	var(--img-max-height);
+	border-radius:	var(--radius-s);
+}
+
+.plain-images img {
+}
+
+.images-with-frame img {
 	border:			1px solid  var(--text-normal);
 	padding: 		2px;
+}
+
+.images-with-shadow img {
 	box-shadow: 	6px 6px 3px grey;
-//	max-width:		100%;							/* preventing images from overwhelming text	*/
-	max-height: 	var(--img-max-height);
-//	margin-top:		0.5rem;							/* c’est quand même plus joli de laisser un peu d’espace au-dessus et au-dessous des images	*/
-//	margin-bottom:	0.5rem;
-	border-radius:	var(--radius-s);
+}
+
+.images-with-frame-and-shadow img {
+	box-shadow: 	6px 6px 3px grey;
+	border:			1px solid  var(--text-normal);
+	padding: 		2px;
 }
 
 /* Pour que le logo en signature ne soit pas encadré d’un filet ni ne soit ombré	*/
@@ -5719,6 +5732,11 @@ img {
 	padding-right:	0.5rem;
 	padding-bottom:	0;
 	text-align:		left;
+}
+
+.images-with-shadow .image-captions-caption,
+.images-with-frame-and-shadow .image-captions-caption {
+	padding-top:	0.8rem;
 }
 
 .theme-light .image-captions-figure,
@@ -8186,6 +8204,30 @@ settings:
 					label:		Alternate row backgrounds
 					label.fr:	Avec fonds alternés
 					value:		OT-tables-tinted-rows
+	-
+			id:			OT-images-rendering
+			title:		How do you prefer your images?
+			title.fr:	Comment préférez-vous vos images?
+			type:		class-select
+			allowEmpty:	false
+			default:	images-with-shadow
+			options:
+				-
+					label:		plain
+					label.fr:	sans rien
+					value:		plain-images
+				-
+					label:		with a frame
+					label.fr:	avec un cadre
+					value:		images-with-frame
+				-
+					label:		with a shadow
+					label.fr:	avec une ombre
+					value:		images-with-shadow
+				-
+					label:		with a frame and a shadow
+					label.fr:	avec un cadre et une ombre
+					value:		images-with-frame-and-shadow
 	-
 		id:				OT-EDIT-mode-settings
 		title:			WRITING/EDITING mode

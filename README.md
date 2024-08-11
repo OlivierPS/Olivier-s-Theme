@@ -124,7 +124,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 #### 11.08.2024
-Preparation for the next step regarding the styling of images.
+You can now choose between 4 styles of images:
+
+* plain
+* with a border
+* with a shadow
+* with a border and a shadow
 
 ----------------------------------------------
 #### 02.08.2024	Version 1.30.0, 1.30.1
