@@ -123,7 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 11.08.2024
+#### 12.08.2024 Version 1.31.1
+Small correction to the “signature” class.
+
+----------------------------------------------
+#### 11.08.2024 Version 1.30
 You can now choose between 4 styles of images:
 
 * plain

@@ -114,6 +114,7 @@
 						Small correction														1.30.1
 			11.08.2024	Preparation for the next step around images								1.30.2
 						You can now choose between 4 rendering of images						1.31.0
+			12.08.2024	Corrected the "signature" class											1.31.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5716,12 +5717,6 @@ img {
 	padding: 		2px;
 }
 
-/* Pour que le logo en signature ne soit pas encadré d’un filet ni ne soit ombré	*/
-.signature {
-	border:		none;
-	box-shadow:	none;
-}
-
 /*	Pour le plugin “Image Captions”	*/
 .image-captions-caption {
 	font-style:		italic;
@@ -5788,6 +5783,11 @@ div:not(.cm-callout):not(.HyperMD-list-line).image-embed img {
 	margin-right:	var(--OT-callout-gallery-gap);
 }*/
 
+/* Pour que le logo en signature ne soit pas encadré d’un filet ni ne soit ombré	*/
+.signature {
+	border:		none	!important;
+	box-shadow:	none	!important;
+}
 /* -------------------- ↑ Images, etc. -------------------- ↑ */
 
 
