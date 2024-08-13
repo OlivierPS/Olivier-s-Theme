@@ -115,6 +115,7 @@
 			11.08.2024	Preparation for the next step around images								1.30.2
 						You can now choose between 4 rendering of images						1.31.0
 			12.08.2024	Corrected the "signature" class											1.31.1
+			13.08.2024	Corrected the display of found string(s) in edit panes					1.32.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -147,6 +148,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 							YAML metadata
 							les petits boutons sur la feuille de publication
 							l’édition des fichiers dans la “nav bar”
+							la mise en évidence du texte trouvé
 			OpSpl21:	Les sidebars
 			OpSpl22:		Adaptations pour les panneaux de suggestions
 			OpSpl23:		Adaptations pour le plugin “File Info”
@@ -317,9 +319,10 @@ body {
 
 	/*	----- Interactive colors -----
 		------------------------------	*/
-	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.2);
-	--interactive-accent:				var(--color-accent-1);
+	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.7);
+	--interactive-accent:				var(--color-accent-2);
 	--interactive-hover:				var(--color-accent-1);
+	--background-modifier-hover:		var(--interactive-accent-hover);
 
 
 	/*	----- Functional colors -----
@@ -4718,7 +4721,10 @@ input[type=checkbox] {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
 }
-
+/*	found string in editing pane	*/
+.cm-s-obsidian span.obsidian-search-match-highlight {
+  box-shadow: 0 0 0px 3px var(--color-accent-1);
+}
 
 /*	Bookmark	OpSpl21	*/
 /* —————————————————————————————— OpSpl Sidebars —————————————————————————————— */
@@ -5322,7 +5328,7 @@ button:not(.clickable-icon) {
 @media (hover: hover) {
   .markdown-source-view.mod-cm6 .edit-block-button:hover {
   		color:				var(--OT-button-text-hover);
-	    background-color:	var(--OT-button-background-hover);/*	var(--background-modifier-hover);	*/
+	    background-color:	var(--OT-button-background-hover);
   }
 }
 .setting-add-hotkey-button,
