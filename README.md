@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 15.08.2024
+Changed (ie. inverted) the visual logic of the ON / OFF buttons in the Light Metallic Blue palette.
+
+----------------------------------------------
 #### 13.08.2024 Version 1.31.2
 Corrected the display of found string(s) in editing panes. Plus one or two other cosmetic issues.
 

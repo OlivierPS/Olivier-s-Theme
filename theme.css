@@ -116,6 +116,7 @@
 						You can now choose between 4 rendering of images						1.31.0
 			12.08.2024	Corrected the "signature" class											1.31.1
 			13.08.2024	Corrected the display of found string(s) in edit panes					1.32.2
+			15.08.2024	Changed the logic of the ON / OFF buttons in the Light Metallic Blue palette		1.32.3
 
 
 --------------------------------------------------------------------------------------------------------
@@ -757,7 +758,9 @@ body {
 //	--h5-color:				var(--text-normal);
 
 	--blockquote-background-color:	#EAF3F9;
-	--OT-button-OFF-bg:				#26618B;
+	--OT-button-OFF-bg:				#F0F5EA;
+	--OT-button-ON-bg:				#26618B;
+	--toggle-thumb-color:			#5894C5;
 
 	--OT-table-header-background:	#CBE9FF;
 	--OT-table-background:			#FBFCFD;
@@ -1814,7 +1817,6 @@ body {
 	--OT-color-muted-on-accent-1:			#B6E1FF;
 	--OT-color-on-accent-2:        			var(--color-base-00);
 	--OT-color-on-accent-3:        			#002743;
-	--OT-button-ON-bg:						#BDD6E9;
 //	--OT-view-header-title-focus-color:		var(--color-accent-1);
 //	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
 	--text-selection:						hsl(var(--accent-h), var(--accent-s), 91%);
@@ -1834,9 +1836,9 @@ body {
 .theme-light.generalPalette-metallicBlue.accentColor-lightMode-alternative-2 {
 	--accent-h:							85	!important;
 	--accent-s:							80%	!important;
-	--accent-l:							50%	!important;
+	--accent-l:							47%	!important;
 	--color-accent-1:					#74B814	!important;
-	--color-accent-2:					#87D718	!important;
+	--color-accent-2:					#6AA913	!important;
 	--color-accent-3:					#E9FAD1	!important;
 	--OT-color-muted-on-accent-1:		#BDF075	!important;
 	--OT-color-on-accent-2:				var(--color-base-00)	!important;
