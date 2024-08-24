@@ -115,8 +115,9 @@
 			11.08.2024	Preparation for the next step around images								1.30.2
 						You can now choose between 4 rendering of images						1.31.0
 			12.08.2024	Corrected the "signature" class											1.31.1
-			13.08.2024	Corrected the display of found string(s) in edit panes					1.32.2
-			15.08.2024	Changed the logic of the ON / OFF buttons in the Light Metallic Blue palette		1.32.3
+			13.08.2024	Corrected the display of found string(s) in edit panes					1.31.2
+			15.08.2024	Changed the logic of the ON / OFF buttons in the Light Metallic Blue palette		1.31.3
+			24.08.2024	Small corrections														1.31.4
 
 
 --------------------------------------------------------------------------------------------------------
@@ -518,7 +519,7 @@ body {
 	--status-bar-border-width:		1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
 
 	--table-header-weight:			var(--font-bold);
-	--table-text-size:				var(--font-smaller);
+	--table-text-size:				0.9em;
 
 	--vault-name-font-size:			calc(var(--OT-sidebars-font-size) * 1.3);
 	--vault-name-font-weight:		var(--font-bold);
@@ -6720,6 +6721,7 @@ input[type='number']::placeholder {
 .suggestion-item.is-selected,
 .suggestion-item.is-selected .another-quick-switcher__item__description__link,
 .suggestion-item.is-selected .another-quick-switcher__item__description__tag,
+.suggestion-item.is-selected .another-quick-switcher__item__directory,
 .suggestion-item.is-selected .omnisearch-result__body
 {
 	--text-muted:		var(--OT-color-muted-on-accent-1);

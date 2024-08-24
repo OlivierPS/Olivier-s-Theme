@@ -123,7 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 15.08.2024
+#### 24.08.2024 Version 1.31.4
+Small corrections.
+
+----------------------------------------------
+#### 15.08.2024	Version 1.31.3
 Changed (ie. inverted) the visual logic of the ON / OFF buttons in the Light Metallic Blue palette.
 
 ----------------------------------------------
