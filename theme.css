@@ -119,6 +119,7 @@
 			15.08.2024	Changed the logic of the ON / OFF buttons in the Light Metallic Blue palette		1.31.3
 			24.08.2024	Small corrections														1.31.4
 			25.08.2024	Corrected the “copy code” button (code blocks)							1.31.5
+						Added “JetBrains Mono” as a font choice for editing						1.31.6
 
 
 --------------------------------------------------------------------------------------------------------
@@ -8322,6 +8323,9 @@ settings:
 				-
 					label:	Inter
 					value:	Inter
+				-
+					label:	JetBrains Mono
+					value:	JetBrains Mono
 				-
 					label:	Lato
 					value:	Lato
