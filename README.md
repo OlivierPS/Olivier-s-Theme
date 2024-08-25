@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 25.08.2024 Version 1.31.5
+Corrected the [copy] button at the top-right of code blocks, appearing when hovering the block.
+
+----------------------------------------------
 #### 24.08.2024 Version 1.31.4
 Small corrections.
 

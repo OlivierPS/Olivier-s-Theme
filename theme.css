@@ -118,6 +118,7 @@
 			13.08.2024	Corrected the display of found string(s) in edit panes					1.31.2
 			15.08.2024	Changed the logic of the ON / OFF buttons in the Light Metallic Blue palette		1.31.3
 			24.08.2024	Small corrections														1.31.4
+			25.08.2024	Corrected the “copy code” button (code blocks)							1.31.5
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5455,6 +5456,17 @@ s@media (hover: hover) {
 		color:				var(--OT-button-text-hover);
 		background-color:	var(--OT-button-background-hover);
 		text-decoration:	none;
+}
+/*	le bouton pour copier le code d’un bloc, en haut à droite du bloc quand on le survole	*/
+.markdown-rendered button.copy-code-button {
+	color:				var(--OT-button-text-normal);
+	background-color: 	var(--OT-button-background-normal);
+}
+@media (hover: hover) {
+  .markdown-rendered button.copy-code-button:hover {
+  		color:				var(--OT-button-text-hover);
+	    background-color:	var(--OT-button-background-hover);
+  }
 }
 /*	-------------------- ↑ Buttons -------------------- ↑ */
 
