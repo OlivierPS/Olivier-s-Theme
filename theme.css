@@ -120,6 +120,9 @@
 			24.08.2024	Small corrections														1.31.4
 			25.08.2024	Corrected the “copy code” button (code blocks)							1.31.5
 						Added “JetBrains Mono” as a font choice for editing						1.31.6
+			19.09.2024	Suppressed the disturbing background behind unresolved internal links.
+						Added a dotted left border to transcludes
+						Added “Cascadia Mono” as a font choice for editing						1.32.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5681,10 +5684,14 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 .markdown-preview-view .markdown-embed,
 .markdown-preview-view .file-embed,
 .markdown-embed .markdown-preview-view {
-  border:	0px;
-  padding:	0;
-  margin:	0;
+	padding:		0;
+	margin:			0;
 }
+/*	bord traitillé à gauche des transcludes	*/
+.markdown-preview-view .markdown-embed {
+	border-left: 	1px dotted var(--color-accent-1);
+}
+
 
 /* adjust the position of the transcludes	*/
 .markdown-preview-view .markdown-embed-content {
@@ -6241,7 +6248,7 @@ a:hover,
 	background-color:	var(--link-color);
 }
 
-/* ---------- Lien inexistant survolé */
+/* ---------- Liens inexistants	*/
 .markdown-rendered .internal-link.is-unresolved:hover,
 .markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
 	opacity:			1;
@@ -6458,8 +6465,7 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	color:				var(--pill-color-hover);
 	background-color:	var(--pill-background-hover);
 }
-.metadata-container .internal-link.is-unresolved,
-.markdown-rendered .internal-link.is-unresolved {
+.metadata-container .internal-link.is-unresolved {
 	background-color:	lightgrey;
 }
 .metadata-property[data-property-key="tags"] {
@@ -8281,6 +8287,9 @@ settings:
 				-
 					label:	Cambria
 					value:	Cambria
+				-
+					label:	Cascadia Mono
+					value:	Cascadia Mono
 				-
 					label:	Courier
 					value:	Courier

@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19.09.2024 Version 1.32.0
+* Suppressed the disturbing background behind unresolved internal links.
+* Added a dotted left border to transcludes.
+* Added “Cascadia Mono” as a font choice for editing.
+
+----------------------------------------------
 #### 25.08.2024 Version 1.31.5, then 1.31.6
 Corrected the [copy] button at the top-right of code blocks, appearing when hovering the block.
 Added “JetBrains Mono” as a font choice for editing.
