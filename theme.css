@@ -123,6 +123,7 @@
 			19.09.2024	Suppressed the disturbing background behind unresolved internal links.
 						Added a dotted left border to transcludes
 						Added “Cascadia Mono” as a font choice for editing						1.32.0
+			06.10.2024	Improved the visibility of found strings in editing panes				1.33.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -155,7 +156,6 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 							YAML metadata
 							les petits boutons sur la feuille de publication
 							l’édition des fichiers dans la “nav bar”
-							la mise en évidence du texte trouvé
 			OpSpl21:	Les sidebars
 			OpSpl22:		Adaptations pour les panneaux de suggestions
 			OpSpl23:		Adaptations pour le plugin “File Info”
@@ -190,6 +190,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl48		Metafolders plugin
 						Autres éléments d’interface
 			OpSpl49		Prompts
+			OpSpl50		Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition
 
 			OpSpl99		to be sorted…
 
@@ -4729,10 +4730,6 @@ input[type=checkbox] {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
 }
-/*	found string in editing pane	*/
-.cm-s-obsidian span.obsidian-search-match-highlight {
-  box-shadow: 0 0 0px 3px var(--color-accent-1);
-}
 
 /*	Bookmark	OpSpl21	*/
 /* —————————————————————————————— OpSpl Sidebars —————————————————————————————— */
@@ -6639,6 +6636,31 @@ input.prompt-input {
 	color:	var(--OT-search-settings-item-name);
 }
 
+/*	Bookmark	OpSpl50	*/
+/*	———————————————————— Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition	———————————————————— */
+/* Read */
+.markdown-rendered .search-highlight > div {
+	box-shadow:			0 0 0px 1px var(--color-accent-2);
+	opacity:			0.6;
+    color:				var(--OT-stabilo-text) !important;
+    background-color:	var(--OT-stabilo-mark) !important;
+}
+.markdown-rendered .search-highlight > div.is-active {
+	box-shadow:	0 0 0px 2px var(--color-accent-1);
+}
+.cm-s-obsidian span.obsidian-search-match-highlight {
+	box-shadow:		0 0 0px 2px var(--color-accent-1);
+}
+/* Edit */
+.cm-s-obsidian span.cm-highlight.obsidian-search-match-highlight {
+    color:				var(--OT-stabilo-text) !important;
+    background-color:	var(--OT-stabilo-mark) !important;
+}
+
+.obsidian-search-match-highlight {
+    color:				var(--OT-stabilo-text) !important;
+    background-color:	var(--OT-stabilo-mark) !important;
+}
 
 
 

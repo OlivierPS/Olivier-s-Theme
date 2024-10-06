@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 06.10.2024 Version 1.33.0
+Improved the visibility of found strings in editing panes.
+
+----------------------------------------------
 #### 19.09.2024 Version 1.32.0
 * Suppressed the disturbing background behind unresolved internal links.
 * Added a dotted left border to transcludes.
