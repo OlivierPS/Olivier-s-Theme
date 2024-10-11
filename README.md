@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 11.10.2024
+In Live Preview editing mode, headers are now in bigger sizes corresponding to their hierarchy.
+
+----------------------------------------------
 #### 06.10.2024 Version 1.33.0, 1.33.1
 Improved the visibility of found strings in editing panes.
 
