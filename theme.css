@@ -127,6 +127,7 @@
 						Fine tuning																1.33.1
 			11.10.2024	In Live Preview mode, headers are now in bigger sizes corresponding to
 						their hierarchy															1.34.0
+			12.10.2024	Small tweak + added typographical fillet under H1 and H2 in edit mode	1.34.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -4605,36 +4606,30 @@ input[type=checkbox] {
 .cm-s-obsidian .HyperMD-header-6 {
     font-family:	var(--editor-font-family);
     color:			inherit;
+    font-weight:	var(--font-bold);
+}
+/*	filets sous H1 et H2	*/
+.cm-s-obsidian .HyperMD-header-1,
+.cm-s-obsidian .HyperMD-header-2 {
+	border-bottom: 	.12em solid;
 }
 
 /* ----- type sizes */
-.cm-s-obsidian .HyperMD-header-1,
 .is-live-preview .cm-header-1 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.6 );
-//  	font-weight:	700;
+  	font-size:		calc( var(--OT-editMode-font-size)*1.6 )	!important;
 }
-.cm-s-obsidian .HyperMD-header-2,
 .is-live-preview .cm-header-2 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.5 );
-  	font-weight:	700;
-	border-bottom: 	.12em solid;
+  	font-size:		calc( var(--OT-editMode-font-size)*1.5 )	!important;
 }
-.cm-s-obsidian .HyperMD-header-3,
 .is-live-preview .cm-header-3 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.2 );
-  	font-weight:	700;
+  	font-size:		calc( var(--OT-editMode-font-size)*1.2 )	!important;
 }
-.cm-s-obsidian .HyperMD-header-4,
 .is-live-preview .cm-header-4 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.05 );
-  	font-weight:	700;
+  	font-size:		calc( var(--OT-editMode-font-size)*1.05 )	!important;
 }
-.cm-s-obsidian .HyperMD-header-5,
-.cm-s-obsidian .HyperMD-header-6,
 .is-live-preview .cm-header-5,
 .is-live-preview .cm-header-6 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1 );
-  	font-weight:	700;
+  	font-size:		calc( var(--OT-editMode-font-size)*1 )	!important;
 }
 /* -------------------- ↑ OpSpl Headings in editing mode ↑ -------------------- */
 

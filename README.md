@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 12.10.2024
+Small tweak + added typographical fillet under H1 and H2 in edit mode.
+
+----------------------------------------------
 #### 11.10.2024
 In Live Preview editing mode, headers are now in bigger sizes corresponding to their hierarchy.
 
