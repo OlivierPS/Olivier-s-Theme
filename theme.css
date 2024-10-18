@@ -128,6 +128,7 @@
 			11.10.2024	In Live Preview mode, headers are now in bigger sizes corresponding to
 						their hierarchy															1.34.0
 			12.10.2024	Small tweak + added typographical fillet under H1 and H2 in edit mode	1.34.1
+			18.10.2024	Improved the display of canvas cards									1.35.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -342,6 +343,9 @@ body {
 	--background-modifier-form-field:	var(--color-base-00);
 
 	--callout-blend-mode:			normal;
+
+	--canvas-card-label-color:	var(--color-base-50);
+	--canvas-dot-pattern:		var(--color-base-40);
 
 	--caret-color:					red;
 
@@ -6503,6 +6507,10 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 
 /*	Bookmark	OpSpl45	*/
 /* —————————————————————————————— Canvas —————————————————————————————— */
+.canvas-node-container {
+	border:				2px solid var(--color-base-50);
+}
+
 .canvas-card-menu .canvas-card-menu-button,
 .canvas-controls button,
 button.canvas-menu-item {
@@ -6513,16 +6521,43 @@ button.canvas-menu-item {
 	font:	var(--OT-kanban-font);
 }
 
-.canvas-node-label {
-	color:	var(--OT-color-muted-on-base-20);		/*	was --text-faint	*/
-}
-
-.canvas-node-container {
-	border:				2px solid var(--background-modifier-border);
-}
-
 .canvas-node-content.markdown-embed {
 	background-image:	none !important;
+}
+
+.canvas-node-container :is(h1,h2,h3) {
+	font-family:	var(--OT-kanban-font);	/*	"Palatino Sans Com";	*/
+	font-weight:	var(--bold-weight);
+	border-bottom:	none;
+	padding-top:	0.2em;
+}
+
+.canvas-node-container h1,
+.canvas-node-container h2 {
+	font-size:		1.2em;
+}
+
+.canvas-node-container h3 {
+	font-size:		1.1em;
+}
+
+.canvas-node-label {
+	color:	var(--OT-color-muted-on-base-20);		/*	was --text-faint	*/
+	font-style:	italic;
+	font-size:	0.9em;
+}
+
+.canvas-node.is-selected .canvas-node-label,
+.canvas-node.is-focused .canvas-node-label {
+	color:		var(--text-normal);
+}
+@media (hover: hover) {
+	.canvas-node.is-selected .canvas-node-label:hover,
+	.canvas-node.is-focused .canvas-node-label:hover,
+	.canvas-node-label:hover {
+		color:				var(--OT-button-text-hover);
+		background-color:	var(--OT-button-background-hover);
+  }
 }
 /* -------------------- ↑ Canvas ↑ -------------------- */
 
