@@ -129,6 +129,8 @@
 						their hierarchy															1.34.0
 			12.10.2024	Small tweak + added typographical fillet under H1 and H2 in edit mode	1.34.1
 			18.10.2024	Improved the display of canvas cards									1.35.0
+						Added a choice in "Style Settings > GENERAL settings" for hiding or not
+						the canvas dot pattern													1.35.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6507,6 +6509,9 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 
 /*	Bookmark	OpSpl45	*/
 /* —————————————————————————————— Canvas —————————————————————————————— */
+body.OT-canvas-dot-pattern-hidden {
+  --canvas-dot-pattern: transparent;
+}
 .canvas-node-container {
 	border:				2px solid var(--color-base-50);
 }
@@ -7024,6 +7029,12 @@ settings:
  			description.fr:	Met en évidence sur le tab le nom de la fiche courante
  			type: 		class-toggle
  			default: 	false
+	-
+ 			id:				OT-canvas-dot-pattern-hidden
+ 			title:			Hide canvas dot pattern
+ 			title.fr:		Cacher les points en fond des canvas
+ 			type: 			class-toggle
+ 			default: 		false
 	-
 		id:			OT-LIGHT-mode-settings
 		title:		LIGHT MODE colors

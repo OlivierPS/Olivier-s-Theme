@@ -123,11 +123,13 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 18.10.2024	Version 1.35.0
+#### 18.10.2024	Version 1.35.0, 1.35.1
 Improved the display of canvas cards:
 
 * The label of vault notes is discrete and its hovering is the same as buttons’  hovering.
 * H1, H2 and H3 in cards are adapted for the canvas and take kanban’s  font. Generally, you’ll choose a nice handwriting font.
+
+In `Style Settings > GENERAL settings`, it’s now possible to hide the canvas dot pattern.
 
 ----------------------------------------------
 #### 12.10.2024	Version 1.34.1
