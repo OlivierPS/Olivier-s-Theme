@@ -131,6 +131,7 @@
 			18.10.2024	Improved the display of canvas cards									1.35.0
 						Added a choice in "Style Settings > GENERAL settings" for hiding or not
 						the canvas dot pattern													1.35.1
+			19.10.2024	Small tweaks -- in particular for the “Vertical Tabs” plugin			1.35.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -198,6 +199,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 						Autres éléments d’interface
 			OpSpl49		Prompts
 			OpSpl50		Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition
+			OpSpl51		Vertical Tabs plugin
 
 			OpSpl99		to be sorted…
 
@@ -324,11 +326,17 @@ body {
 /*	Bookmark	OpSpl03	*/
 /*	---------- INITIALISATION DES VARIABLES GLOBALES ----------	*/
 
-	/*	----- Surface colors -----
+	/*	----- Backgrounds  -----
 		--------------------------	*/
+	--background-modifier-hover:		var(--interactive-accent-hover);
 	--background-modifier-message:		var(--color-accent-1);	/*	le fond des “tooltips”	*/
 	--background-modifier-success-rgb:	106, 245, 161;			/* pour les progress bars, je préfère une nuance de vert un peu plus claire */
 	--background-modifier-success:		rgb(106, 245, 161);
+	--background-modifier-active-hover:	var(--color-accent-1);
+
+	/*	Inputs	*/
+	--background-modifier-form-field:	var(--color-base-00);
+
 	--blockquote-background-color:		floralwhite;
 
 
@@ -337,12 +345,10 @@ body {
 	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.7);
 	--interactive-accent:				var(--color-accent-2);
 	--interactive-hover:				var(--color-accent-1);
-	--background-modifier-hover:		var(--interactive-accent-hover);
 
 
 	/*	----- Functional colors -----
 		-----------------------------	*/
-	--background-modifier-form-field:	var(--color-base-00);
 
 	--callout-blend-mode:			normal;
 
@@ -2149,7 +2155,7 @@ body {
 	--accent-s:						87%	!important;
 	--accent-l:						58%	!important;
 	--color-accent-1:				#EF8815	!important;
-	--color-accent-2:				#F19835	!important;
+	--color-accent-2:				#F2A247	!important;
 	--color-accent-3:				#FBE1C4	!important;
 //	--OT-color-on-accent-1:			#2F540A	!important;
 	--OT-color-muted-on-accent-1:	#94530A	!important;
@@ -6539,7 +6545,7 @@ button.canvas-menu-item {
 
 .canvas-node-container h1,
 .canvas-node-container h2 {
-	font-size:		1.2em;
+	font-size:		1.3em;
 }
 
 .canvas-node-container h3 {
@@ -6697,7 +6703,16 @@ input.prompt-input {
     color:				var(--OT-stabilo-text) !important;
     background-color:	var(--OT-stabilo-mark) !important;
 }
+/*	---------- ↑ search match ↑ ----------	*/
 
+
+/*	Bookmark	OpSpl51	*/
+/*	———————————————————— Vertical Tabs plugin ————————————————————	*/
+.obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .tree-item-self {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+}
+/*	---------- ↑ Vertical Tabs plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl99	*/

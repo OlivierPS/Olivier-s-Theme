@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19.10.2024	Version 1.35.2
+Small tweaks -- in particular for the “Vertical Tabs” plugin.
+
+----------------------------------------------
 #### 18.10.2024	Version 1.35.0, 1.35.1
 Improved the display of canvas cards:
 
