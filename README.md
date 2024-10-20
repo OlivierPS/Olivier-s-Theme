@@ -123,8 +123,8 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 20.10.2024 Version 1.35.3
-The icons beside filenames in the “Vertical Tabs” plugin are now OK.
+#### 20.10.2024 Version 1.35.3, 1.35.4
+The icons beside filenames in the “Vertical Tabs” plugin are now OK and so is the pin for pinned notes.
 
 ----------------------------------------------
 #### 19.10.2024	Version 1.35.2
