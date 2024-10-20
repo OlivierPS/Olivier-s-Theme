@@ -132,6 +132,7 @@
 						Added a choice in "Style Settings > GENERAL settings" for hiding or not
 						the canvas dot pattern													1.35.1
 			19.10.2024	Small tweaks -- in particular for the “Vertical Tabs” plugin			1.35.2
+			20.10.2024	The icons beside filenames in the “Vertical Tabs” plugin are now OK		1.35.3
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6712,7 +6713,13 @@ input.prompt-input {
 	color:				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
 }
-/*	---------- ↑ Vertical Tabs plugin ↑ ----------	*/
+.tree-item-self.is-clickable.is-active .tree-item-icon {
+	color:	var(--OT-color-on-accent-1);
+}
+
+.is-pinned .tree-item-self.is-clickable.is-active .tree-item-icon {
+	color:	var(--OT-color-on-accent-2);
+}/*	---------- ↑ Vertical Tabs plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl99	*/

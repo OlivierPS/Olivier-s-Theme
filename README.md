@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 20.10.2024 Version 1.35.3
+The icons beside filenames in the “Vertical Tabs” plugin are now OK.
+
+----------------------------------------------
 #### 19.10.2024	Version 1.35.2
 Small tweaks -- in particular for the “Vertical Tabs” plugin.
 
