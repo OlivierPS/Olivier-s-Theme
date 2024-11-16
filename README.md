@@ -123,6 +123,17 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+
+#### 16.11.2024 Version 1.36.0
+Improvements in the look of the status bar:
+
+* It now has the accent color as background.
+* There isn’t rounded ends anymore, because it didn’t work well with the “Status Bar Organizer” plugin.
+
+Changed the nuances of the tables’ background and alternate rows in the Light Beige theme.
+
+
+----------------------------------------------
 #### 20.10.2024 Version 1.35.3, 1.35.4
 The icons beside filenames in the “Vertical Tabs” plugin are now OK and so is the pin for pinned notes.
 

@@ -134,6 +134,8 @@
 			19.10.2024	Small tweaks -- in particular for the “Vertical Tabs” plugin			1.35.2
 			20.10.2024	The icons beside filenames in the “Vertical Tabs” plugin are now OK		1.35.3
 						… and the pin also!														1.35.4
+			16.11.2024	Changed the look of the status bar
+						Adjustments of the table backgrounds in the light-beige theme			1.36.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -429,8 +431,10 @@ body {
 	--pill-color-remove:		var(--OT-pill-background);
 	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
 
-	--status-bar-background:	var(--color-base-05);
-	--status-bar-text-color:	var(--color-base-70);
+	--status-bar-background:	var(--color-accent-2);
+	--status-bar-border-width:	1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
+//	--status-bar-radius:		0 0 0 0;
+	--status-bar-text-color:	var(--OT-color-on-accent-2);
 
 	--tab-text-color:							var(--color-base-50);
 	--tab-text-color-active:					var(--color-base-70);
@@ -539,8 +543,6 @@ body {
 	--popover-height:				40vh;
 	--popover-max-height:			70vh;
 	--popover-width:				46rem;
-
-	--status-bar-border-width:		1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
 
 	--table-header-weight:			var(--font-bold);
 	--table-text-size:				0.9em;
@@ -743,7 +745,7 @@ body {
 	--color-base-70:			#725B49;
 	--color-base-05:			#E3D4C6;
 
-	--blockquote-background-color:	#EDE4DD;
+	--blockquote-background-color:	#E6DBD0;
 	--OT-button-OFF-bg:				#DAC9BA;
 
 	--color-base-100:		#6A4F38;
@@ -752,9 +754,9 @@ body {
 //	--h1-color:				#96704F;
 //	--h3-color:				#9F7653;
 //	--h5-color:				#BEA18D;
-	--OT-table-background:			var(--blockquote-background-color);
+	--OT-table-background:			#f8f5f1;
 	--OT-table-header-background:	#E6DDD5;
-	--OT-table-alt-background:		#f8f5f1;
+	--OT-table-alt-background:		#F2ECE6;
 
 	--metadata-background: 				#EEE5DD;
 	--OT-color-muted-on-accent-1:		#DFCFC2;
@@ -6411,25 +6413,25 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .theme-light .status-bar-item {
 	background-color:	var(--status-bar-background);	/*	var(--statusbar-item-background);	*/
 	display:			block;
-	padding-left:		10px;
-	padding-right:		10px;
+	padding-left:		6px;
+	padding-right:		6px;
 	padding-top:		8px;
-	transition:			.2s ease-in-out;
+//	transition:			.2s ease-in-out;
 	border-top:			1px solid var(--status-bar-border-color);
 	}
 
+/*
 .theme-dark .status-bar-item:first-of-type,
 .theme-light .status-bar-item:first-of-type {
 	border-bottom-left-radius:	50px;
 	border-top-left-radius:		50px
 	}
-
 .theme-dark .status-bar-item:last-of-type,
 .theme-light .status-bar-item:last-of-type {
 	border-bottom-right-radius:	50px;
 	border-top-right-radius:	50px
 	}
-
+*/
 .theme-dark .status-bar-item:hover,
 .theme-light .status-bar-item:hover {
     /*	filter:brightness(120%)	*/
