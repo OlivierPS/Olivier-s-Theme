@@ -124,6 +124,15 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+
+#### 17.11.2024	Version 1.37.0
+Small tweeks on the status bar:
+
+* the “Sync succesfull” indicator
+* the button of the “Metadata Menu” plugin
+
+
+----------------------------------------------
 #### 16.11.2024 Version 1.36.0
 Improvements in the look of the status bar:
 

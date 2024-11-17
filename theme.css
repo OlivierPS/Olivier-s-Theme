@@ -136,6 +136,10 @@
 						… and the pin also!														1.35.4
 			16.11.2024	Changed the look of the status bar
 						Adjustments of the table backgrounds in the light-beige theme			1.36.0
+			17.11.2024	The “sync success” indicator on the status bar is more visible on every
+							backgrounds
+						The status bar button of the “Metadata Menu” plugin is in the correct
+							colors and it’s hovering has been adjusted							1.37.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6435,9 +6439,13 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .theme-dark .status-bar-item:hover,
 .theme-light .status-bar-item:hover {
     /*	filter:brightness(120%)	*/
-    color:				var(--OT-color-on-accent-2);
-    background-color:	var(--color-accent-2);
+    color:				var(--OT-color-on-accent-1);
+    background-color:	var(--color-accent-1);
 	}
+/*	sync status icon: if it remains in the “text success” color, it’s not always visible. It’s more convenient to let it in the color of the other status bar items	*/
+.sync-status-icon.mod-success {
+  color: var(--status-bar-text-color);
+}
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
 
@@ -6509,11 +6517,42 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	color:				var(--OT-button-text-normal);
 //	background-color:	var(--OT-button-background-normal);
 }
-@media (hover: hover) {
-  .text-icon-button:hover {
-	color:				var(--OT-button-text-hover);
-	background-color:	var(--OT-button-background-hover);
-  }
+	/*	le bouton sur la status bar		*/
+.plugin-metadata-menu .status-item-btn .sync-status-icon .svg-icon {
+	stroke:				var(--OT-color-on-accent-2);
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+}
+.plugin-metadata-menu .status-item-btn .sync-status-icon.indexed .check-mark {
+  stroke: var(--status-bar-text-color);
+}
+.status-bar-item-segment:hover .status-item-icon {
+	stroke:				var(--OT-color-on-accent-1);
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+}
+/* Main container hover */
+.status-bar-item.plugin-metadata-menu:hover {
+    background-color: var(--color-accent-1);
+}
+
+/* Button hover state when parent is hovered */
+.status-bar-item.plugin-metadata-menu:hover .status-item-btn {
+    color: var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
+}
+
+/* SVG icon hover state when parent is hovered */
+.status-bar-item.plugin-metadata-menu:hover .svg-icon {
+    stroke: var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
+}
+
+/* Specific path hover state when parent is hovered */
+.status-bar-item.plugin-metadata-menu:hover .check-mark {
+    stroke: var(--OT-color-on-accent-1) !important;
+}
+
 /* -------------------- ↑ Metadata Menu plugin ↑ -------------------- */
 
 
