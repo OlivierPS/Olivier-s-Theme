@@ -140,6 +140,7 @@
 							backgrounds
 						The status bar button of the “Metadata Menu” plugin is in the correct
 							colors and it’s hovering has been adjusted							1.37.0
+			18.11.2024	Corrected muted buttons													1.37.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5427,7 +5428,7 @@ button.mod-cta {
 }
 button.mod-muted {
 	color:				var(--OT-button-text-normal);		/*	text-muted	*/
-	background-color:	lime;	/*	var(--OT-button-background-normal);	*/	/*	background-secondary	*/
+	background-color:	var(--OT-button-background-normal);	/*	background-secondary	*/
 }
 @media (hover: hover) {
   button.mod-muted:hover {

@@ -125,6 +125,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 
 
+#### 18.11.2024 Verstion 1.37.1
+Corrected the muted buttons.
+
+
+----------------------------------------------
 #### 17.11.2024	Version 1.37.0
 Small tweeks on the status bar:
 
