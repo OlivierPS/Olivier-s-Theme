@@ -142,6 +142,7 @@
 							colors and it’s hovering has been adjusted							1.37.0
 			18.11.2024	Corrected muted buttons													1.37.1
 			19.11.2024	Made the status bar smaller and suppressed its useless top border		1.38.0
+						Suppressed the display of an empty space by the Readwise plugin			1.38.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6424,18 +6425,6 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 	border:		none;
 }
 
-/*
-.theme-dark .status-bar-item:first-of-type,
-.theme-light .status-bar-item:first-of-type {
-	border-bottom-left-radius:	50px;
-	border-top-left-radius:		50px
-	}
-.theme-dark .status-bar-item:last-of-type,
-.theme-light .status-bar-item:last-of-type {
-	border-bottom-right-radius:	50px;
-	border-top-right-radius:	50px
-	}
-*/
 .theme-dark .status-bar-item:hover,
 .theme-light .status-bar-item:hover {
     /*	filter:brightness(120%)	*/
@@ -6445,6 +6434,9 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 /*	sync status icon: if it remains in the “text success” color, it’s not always visible. It’s more convenient to let it in the color of the other status bar items	*/
 .sync-status-icon.mod-success {
   color: var(--status-bar-text-color);
+}
+.plugin-readwise-official.statusbar-organizer-element-hidden {
+	display: none;	/*	otherwise, it leaves an empty space on the status bar	*/
 }
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
