@@ -141,6 +141,7 @@
 						The status bar button of the “Metadata Menu” plugin is in the correct
 							colors and it’s hovering has been adjusted							1.37.0
 			18.11.2024	Corrected muted buttons													1.37.1
+			19.11.2024	Made the status bar smaller and suppressed its useless top border		1.38.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6409,21 +6410,19 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .theme-light .status-bar {
 	background-color:	transparent;/*	var(--background-primary);	*/
 	border:				none;
-	bottom:				5px;
+	padding:			4px;
+	margin:				4px;
 	position:			absolute;
-	right:				15px
-	}
+}
 
 .theme-dark .status-bar-item,
 .theme-light .status-bar-item {
 	background-color:	var(--status-bar-background);	/*	var(--statusbar-item-background);	*/
-	display:			block;
-	padding-left:		6px;
-	padding-right:		6px;
-	padding-top:		8px;
-//	transition:			.2s ease-in-out;
-	border-top:			1px solid var(--status-bar-border-color);
-	}
+	display:	block;
+	padding:	8px 5px 3px;
+	margin:		0px;
+	border:		none;
+}
 
 /*
 .theme-dark .status-bar-item:first-of-type,

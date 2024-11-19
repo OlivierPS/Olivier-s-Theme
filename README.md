@@ -125,7 +125,13 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 
 
-#### 18.11.2024 Verstion 1.37.1
+
+#### 19.11.2024	Version 1.38.0
+Made status bar smaller and suppressed its useless top border.
+
+
+----------------------------------------------
+### 18.11.2024 Verstion 1.37.1
 Corrected the muted buttons.
 
 
