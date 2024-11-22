@@ -126,6 +126,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 
 
+
+#### 22.11.2024 Version 1.38.2
+Small tweak.
+
+----------------------------------------------
 #### 19.11.2024	Version 1.38.0 thn 1.38.1
 Made status bar smaller and suppressed its useless top border.
 Suppressed the display of an empty space by the Readwise plugin.

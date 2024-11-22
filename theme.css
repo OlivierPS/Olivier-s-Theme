@@ -143,6 +143,7 @@
 			18.11.2024	Corrected muted buttons													1.37.1
 			19.11.2024	Made the status bar smaller and suppressed its useless top border		1.38.0
 						Suppressed the display of an empty space by the Readwise plugin			1.38.1
+			22.11.2024	Small tweak																1.38.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -429,7 +430,7 @@ body {
 	--nav-item-color:				var(--OT-color-on-base-20);
 	--nav-item-color-hover:			var(--OT-color-on-accent-1);
 	--nav-item-color-active:		var(--OT-color-on-accent-2);
-	--nav-item-color-selected:		var(--color-base-20);
+	--nav-item-color-selected:		var(--OT-color-on-accent-2);
 	--nav-item-background-active:	var(--color-accent-2);
 	--nav-item-background-selected:	hsla(var(--color-accent-hsl), 0.1);
 
