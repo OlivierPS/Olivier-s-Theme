@@ -124,9 +124,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+#### 21.12.2024 Version 1.39.0
+Added code for styling the floating TOC of the eponymous plugin.
 
 
-
+----------------------------------------------
 #### 22.11.2024 Version 1.38.2
 Small tweak.
 

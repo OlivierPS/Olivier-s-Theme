@@ -144,6 +144,7 @@
 			19.11.2024	Made the status bar smaller and suppressed its useless top border		1.38.0
 						Suppressed the display of an empty space by the Readwise plugin			1.38.1
 			22.11.2024	Small tweak																1.38.2
+			21.12.2024	Added code for the “Floating TOC” plugin								1.39.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -212,6 +213,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl49		Prompts
 			OpSpl50		Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition
 			OpSpl51		Vertical Tabs plugin
+			OpSpl52		Floating TOC plugin
 
 			OpSpl99		to be sorted…
 
@@ -393,6 +395,10 @@ body {
 	--font-ui-medium:	17px;
 	--font-ui-large:	22px;
 
+	--floating-toc-font-color:			var(--nav-item-color) !important;
+	--floating-toc-hover-color:			var(--text-accent-hover);
+	--floating-toc-background-color:	var(--background-primary)	!important;
+	--floating-toc-header-background-color:	var(--background-primary)	!important;
 
 	--graph-line:					var(--color-base-100);
 
@@ -6755,6 +6761,33 @@ input.prompt-input {
 	background-color:	var(--color-accent-1);
 }
 /*	---------- ↑ Vertical Tabs plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl52	*/
+/*	———————————————————— Floating TOC plugin ————————————————————	*/
+heading-list-item.focus  .text
+{
+	font-weight:		normal;
+	color:				var(--OT-color-on-accent-1)	!important;
+	background-color:	var(--color-accent-1)		!important;
+	opacity:			1	!important;
+}
+.heading-list-item .text-wrap .text:hover {
+	background-color:	var(--OT-color-on-accent-3)	!important;
+	color:				var(--color-accent-3)		!important;
+	font-weight:		normal !important;
+}
+.floating-toc-div:not(:is(.hover)) .heading-list-item:not(:is(.located,.focus)) {
+	opacity: 			1	!important;
+	color:				var(--OT-color-on-accent-1)	!important;
+	background-color:	var(--color-accent-1)		!important;
+}
+.floating-toc {
+	border:	var(--border-width) solid var(--color-base-35);
+}
+.heading-list-item .text-wrap .text {
+	padding:	0 0.5rem;
+}
+/*	---------- ↑ Floating TOC plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl99	*/
