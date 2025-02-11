@@ -145,6 +145,8 @@
 						Suppressed the display of an empty space by the Readwise plugin			1.38.1
 			22.11.2024	Small tweak																1.38.2
 			21.12.2024	Added code for the “Floating TOC” plugin								1.39.0
+			11.02.2025	Slightly darkened the text selection in the Light Beige theme, because
+						it wasn’t visible inside codeblocks										1.39.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -764,6 +766,7 @@ body {
 
 	--color-base-100:		#6A4F38;
 	--link-color:			#58A8A5;
+	--text-selection:		hsl(var(--accent-h), var(--accent-s), 81%);
 	--checklist-done-color:	#C7AD96;
 //	--h1-color:				#96704F;
 //	--h3-color:				#9F7653;

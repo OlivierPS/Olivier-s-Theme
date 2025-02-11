@@ -123,7 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 11.02.2025 Version 1.39.1
+Slightly darkened the text selection in the Light Beige theme, because it wasn’t visible inside codeblocks.
 
+
+----------------------------------------------
 #### 21.12.2024 Version 1.39.0
 Added code for styling the floating TOC of the eponymous plugin.
 
