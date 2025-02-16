@@ -147,6 +147,7 @@
 			21.12.2024	Added code for the “Floating TOC” plugin								1.39.0
 			11.02.2025	Slightly darkened the text selection in the Light Beige theme, because
 						it wasn’t visible inside codeblocks										1.39.1
+			16.02.2025	Some more code for the “Floating TOC” plugin							1.39.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6767,6 +6768,14 @@ input.prompt-input {
 
 /*	Bookmark	OpSpl52	*/
 /*	———————————————————— Floating TOC plugin ————————————————————	*/
+.theme-light,
+.theme-dark {
+	--floating-toc-font-color:			var(--text-normal);
+	--floating-toc-hover-color:			var(--OT-color-on-accent-1);
+	--floating-toc-highlight-color:		var(--color-accent-2);	/*	var(--text-highlight-bg-active);	*/
+	--floating-toc-highlight-color-rgb:	255,128,0;
+	--floating-toc-line-color:			var(--OT-color-on-accent-2);
+}
 heading-list-item.focus  .text
 {
 	font-weight:		normal;
@@ -6790,6 +6799,44 @@ heading-list-item.focus  .text
 .heading-list-item .text-wrap .text {
 	padding:	0 0.5rem;
 }
+.floating-toc-div.pin .floating-toc, .floating-toc:hover {
+	width:	var(--floating-toc-line-width)	!important;
+}
+/*
+body.enable-heading-nowrap .floating-toc-div.pin .floating-toc .heading-list-item>.text-wrap {
+	width:	calc(var(--floating-toc-line-width) - 3rem)	!important;
+}
+*/
+.floating-toc-div.floating-right.alignLeft.pin .floating-toc .heading-list-item>.text-wrap,
+.floating-toc-div.floating-right.alignLeft .floating-toc:hover .heading-list-item>.text-wrap
+{
+   max-width: unset;
+}
+.heading-list-item[data-level="2"] .text::after,
+.heading-list-item[data-level="3"] .text::after,
+.heading-list-item[data-level="4"] .text::after,
+.heading-list-item[data-level="5"] .text::after,
+.heading-list-item[data-level="6"] .text::after {
+	font-size:	0.8rem;
+	color:		var(--OT-color-on-accent-2);
+}
+.heading-list-item:is(
+    [data-level="2"],
+    [data-level="3"],
+    [data-level="4"],
+    [data-level="5"],
+    [data-level="6"]
+) .text:hover {
+    color: white;	/*	var(--OT-color-on-accent-1);	*/
+}
+.floating-toc:hover {
+	color:		var(--OT-color-on-accent-1);
+}
+.heading-list-item .text-wrap .text:hover::after {
+	font-size:	0.8rem;
+	color:		var(--OT-color-on-accent-1);
+}
+
 /*	---------- ↑ Floating TOC plugin ↑ ----------	*/
 
 

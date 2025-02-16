@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+
+#### 16.02.2025	Version 1.39.2
+Some more code for the “Floting TOC” plugin.
+
+
+----------------------------------------------
 #### 11.02.2025 Version 1.39.1
 Slightly darkened the text selection in the Light Beige theme, because it wasn’t visible inside codeblocks.
 
