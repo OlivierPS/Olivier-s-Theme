@@ -124,6 +124,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+#### 23.02.2025 Version 1.40.0
+Added a new color palette: Sunny Memos.
+Added a new ink color: Dark Red.
+Corrected the pills in the properties in Dark mode.
+Small tweaks.
+
+
+----------------------------------------------
 #### 16.02.2025	Version 1.39.2
 Some more code for the “Floting TOC” plugin.
 

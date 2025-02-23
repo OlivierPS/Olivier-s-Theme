@@ -148,6 +148,10 @@
 			11.02.2025	Slightly darkened the text selection in the Light Beige theme, because
 						it wasn’t visible inside codeblocks										1.39.1
 			16.02.2025	Some more code for the “Floating TOC” plugin							1.39.2
+			23.02.2025	Added a color palette: Sunny Memos										1.40.0
+						Added an ink color: Dark red
+						Corrected the pills in the properties in Dark mode
+						Small tweaks
 
 
 --------------------------------------------------------------------------------------------------------
@@ -319,7 +323,7 @@ body {
 	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
 	--OT-search-result-file-title-expanded:			var(--color-base-100);				/*	pour le nom de fichier dans le panneau des backlinks, “expanded” (= not collapsed)	*/
 	--OT-search-settings-item-name:					var(--OT-setting-item-name);
-	--OT-setting-item-description:					var(--color-base-50);
+	--OT-setting-item-description:					var(--color-base-70);
 	--OT-setting-item-name:                			var(--color-base-100);
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
@@ -335,7 +339,7 @@ body {
 	--OT-tree-item-flair-background:				var(--color-accent-3);
 	--OT-tree-item-flair-color:						var(--OT-color-on-accent-3);
 	--OT-vertical-tab-header-group-title:			var(--color-base-70);
-	--OT-view-header-title-focus-color:				var(--color-base-100);
+	--OT-view-header-title-focus-color:				var(--color-accent-1);
 	--OT-view-header-title-no-focus-color:			var(--color-base-50);
 	--OT-YAML-color:								var(--color-base-50);
 
@@ -343,8 +347,10 @@ body {
 /*	Bookmark	OpSpl03	*/
 /*	---------- INITIALISATION DES VARIABLES GLOBALES ----------	*/
 
+
 	/*	----- Backgrounds  -----
 		--------------------------	*/
+	--background-modifier-border:		var(--color-base-35);
 	--background-modifier-hover:		var(--interactive-accent-hover);
 	--background-modifier-message:		var(--color-accent-1);	/*	le fond des “tooltips”	*/
 	--background-modifier-success-rgb:	106, 245, 161;			/* pour les progress bars, je préfère une nuance de vert un peu plus claire */
@@ -431,7 +437,7 @@ body {
 	--metadata-border-width:			0;
 	--metadata-divider-color:			var(--color-base-35);		/*	le filet de séparation des différentes valeurs				*/
 	--metadata-divider-width:			1;
-	--metadata-label-text-color:		var(--color-base-50);
+	--metadata-label-text-color:		var(--color-base-70);
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
 
@@ -588,6 +594,16 @@ body {
 
 /*	Bookmark	OpSpl07	*/
 /* —————————————————————————————— OpSpl Color Schemes —————————————————————————————— */
+.theme-light.generalPalette-OBSIDIAN {
+	--color-base-05:					#eee;
+	--color-base-50:					var(--obsidian-violet);
+	--link-color:						var(--obsidian-violet);
+	--OT-table-header-background:		#eee;
+	--icon-color:						var(--color-accent-1);
+	--status-bar-text-color:			var(--color-accent-1);
+	--OT-view-header-title-no-focus-color:	grey;
+}
+/*	----------------------------------------------	*/
 .theme-light.generalPalette-artDeco {
 	--OT-theme-reference-color:	#FF52A8;
 	--color-base-00:			#D1FEFF;
@@ -680,18 +696,6 @@ body {
 	--OT-table-background:			#EBF3FF;
 	--OT-table-header-background:	#CEE9FF;
 } /*	↑ generalPalette-blue ↑	*/
-/*	----------------------------------------------	*/
-.theme-light.generalPalette-OBSIDIAN {
-	--color-base-05:					#eee;
-	--color-base-50:					var(--obsidian-violet);
-	--link-color:						var(--obsidian-violet);
-	--OT-table-header-background:		#eee;
-	--icon-color:						var(--color-accent-1);
-	--status-bar-text-color:			var(--color-accent-1);
-	--OT-view-header-title-focus-color:		var(--color-accent-1);
-	--OT-view-header-title-no-focus-color:	grey;
-
-}
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-green {
 	--OT-theme-reference-color:	#0B7931;
@@ -1016,6 +1020,40 @@ body {
 	--OT-color-muted-on-accent-1:	#D6D3D1;
 	--OT-color-on-base-20:			#44403C;
 	--OT-metadata-background:		#DFDDDC;
+}
+/*	----------------------------------------------	*/
+.theme-light.generalPalette-sunnyMemos {
+	--OT-theme-reference-color:	#FFDFB7;
+	--color-base-00:	#ffeed9;	/*	--background-primary		*/
+	--color-base-20:	#FFDFB7;	/*	--background-secondary		*/
+	--color-base-05:	#ffce8a;	/*	--background-secondary-alt	*/
+	--color-base-10:	#ffddb1;	/*	--background-primary-alt	*/
+	--color-base-35:	#ffce8a;	/*	--interactive-hover			*/
+	--color-base-40:	#b45e19;	/*	--bordures					*/
+	--color-base-50:	#EFA385;	/*	--text-faint				*/
+	--color-base-70:	#D04F1C;	/*	--text-muted				*/
+	--color-base-100:	#a33e16;	/*	--text-normal				*/
+
+	--link-color:	#167BA3;
+
+	--accent-h:	33	!important;
+	--accent-s:	76%	!important;
+	--accent-l:	65%	!important;
+
+	--OT-stabilo-mark:	var(--stabilo-orange-foncé);
+	--OT-stabilo-text:	var(--color-base-00);
+
+	--OT-table-header-background:	#FFD7A6;
+	--OT-table-alt-background:		#FFE6C8;
+
+	--blockquote-background-color:	#FFE6C8;
+
+	--OT-color-on-base-20:			#c57000;
+	--OT-color-on-accent-2:			var(--color-base-00);
+	--OT-color-muted-on-base-20:	#FF930D;
+	--OT-color-muted-on-accent-1:	#FFD095;
+	--text-selection:				hsl(var(--accent-h), var(--accent-s), 77%);
+
 }
 /*	----------------------------------------------	*/
 .theme-light.generalPalette-violet {
@@ -1466,6 +1504,40 @@ body {
 }/*	↑	darkPalette-solarized	↑	*/
 
 /*	----------------------------------------------	*/
+.theme-dark.generalPalette-sunnyMemos.darkPalette-default {
+	--OT-theme-reference-color:	#512D00;
+	--color-base-00:	#402400;	/*	--background-primary	—	fond des fiches		*/
+	--color-base-20:	#512D00;		/*	--background-secondary	— 	fond des panneaux latéraux	*/
+	--color-base-05:	#402400;	/*	--background-secondary-alt	— en-têtes de tables et des panneaux	*/
+	--color-base-10:	yellow;			/*	--background-primary-alt	*/
+	--color-base-35:	#955300;		/*	bordures			*/
+	--color-base-40:	#A65C00;		/*	bordures dans les settings, l’entourage du champ qui a le focus					*/
+	--color-base-50:	#FF9B1E;			/*	--text-faint				*/
+	--color-base-70:	#FFC173;		/*	--text-muted				*/
+	--color-base-100:	#FFDFB7;		/*	--text-normal				*/
+
+	--link-color:	#B7D7FF;
+	--blockquote-background-color:	#2F1A00;
+
+/*	Accent color	(pour commencer, en attendant de mettre en place les variantes dans la section OpSpl06)	*/
+	--accent-h:	33	!important;
+	--accent-s:	80%	!important;
+	--accent-l:	30%	!important;
+	--color-accent-1:	#5C370A	!important;
+	--color-accent-3:	#C77816	!important;
+
+	--OT-stabilo-mark:				var(--stabilo-orange-foncé);
+	--OT-stabilo-text:				#734000;
+	--OT-table-background:			#2F1A00;
+//	--OT-table-header-background:	#1E1100;
+	--OT-table-alt-background:	#402400;
+	--OT-color-on-accent-1:		var(--color-base-100);
+	--OT-view-header-title-focus-color:	#FB8B00;
+	--OT-view-header-title-no-focus-color:	var(--color-base-35);
+
+} /*	↑ generalPalette-sunnyMemos (dark) ↑	*/
+
+/*	----------------------------------------------	*/
 .theme-dark.darkPalette-stone,
 .theme-dark.generalPalette-stone.darkPalette-default{
 	--OT-theme-reference-color:	#332F2B;
@@ -1630,7 +1702,6 @@ body {
 	--OT-color-muted-on-accent-1:	#27E0F1	!important;
 	--OT-color-on-accent-2:			#F7FEFE	!important;
 	--OT-color-on-accent-3:			#97F0F8	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 
 .theme-light.generalPalette-beige.accentColor-lightMode-shade {
@@ -1642,7 +1713,6 @@ body {
 	--color-accent-3:				#F3E8D6	!important;
 	--OT-color-muted-on-accent-1:		#E9DFD6;
 //	--OT-color-on-accent-2:				var(--color-base-00);
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-1 {
 	--accent-h:							188	!important;
@@ -1655,7 +1725,6 @@ body {
 	--OT-color-muted-on-accent-1:		#17464D	!important;
 	--OT-color-on-accent-2:				#17464D	!important;
 	--OT-color-on-accent-3:				#1F5D67	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-beige.accentColor-lightMode-alternative-2 {
 	--accent-h:							158	!important;
@@ -1668,7 +1737,6 @@ body {
 	--OT-color-muted-on-accent-1:		#1F674D	!important;
 	--OT-color-on-accent-2:				white	!important;
 	--OT-color-on-accent-3:				#174D39	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 
 .theme-light.generalPalette-blue.accentColor-lightMode-shade {
@@ -1805,7 +1873,6 @@ body {
 	--OT-color-on-accent-2:				#2C6600	!important;
 	--OT-color-on-accent-3:				#2C6600	!important;
 	--OT-button-ON-bg:					#5FDD00;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-icy.accentColor-lightMode-alternative-2 {
 	--accent-h:							334		!important;
@@ -1819,7 +1886,6 @@ body {
 	--OT-color-on-accent-2:				#DD005F	!important;
 	--OT-color-on-accent-3:				#AA0049	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--text-selection:					hsl(var(--accent-h), var(--accent-s), 93%);
 }
 .theme-light.generalPalette-lightBeige.accentColor-lightMode-shade {
@@ -1862,7 +1928,6 @@ body {
 	--OT-color-muted-on-accent-1:			#B6E1FF;
 	--OT-color-on-accent-2:        			var(--color-base-00);
 	--OT-color-on-accent-3:        			#002743;
-//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 //	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
 	--text-selection:						hsl(var(--accent-h), var(--accent-s), 91%);
 }
@@ -1911,7 +1976,6 @@ body {
 	--OT-color-muted-on-accent-1:	#33E1FF	!important;
 	--OT-color-on-accent-2:			var(--color-base-70)!important;
 	--OT-color-on-accent-3:			#008A91	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-Orange.accentColor-lightMode-alternative-2 {
 	--accent-h:						249		!important;
@@ -1973,7 +2037,6 @@ body {
 	--color-accent-3:				#D7D9AE	!important;
 	--OT-color-muted-on-accent-1:	#BBBD75;
 	--OT-color-on-accent-2:			#F4F4E8;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-paradiso.accentColor-lightMode-alternative-1 {
 	--accent-h:						212	!important;
@@ -2040,7 +2103,6 @@ body {
 	--OT-color-on-accent-1:					white	!important;
 	--OT-color-muted-on-accent-1:			#F5A1AF;
 	--OT-color-on-accent-2:					white;
-//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 //	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
 	--text-selection:						hsl(var(--accent-h), var(--accent-s), 90%);
 }
@@ -2067,7 +2129,6 @@ body {
 	--OT-color-muted-on-accent-1:	#084B1E	!important;
 	--OT-color-on-accent-2:			#073D13	!important;
 	--OT-color-on-accent-3:			#0B6A2A	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-solarized.accentColor-lightMode-shade {
 	--accent-h:						180	!important;
@@ -2108,6 +2169,27 @@ body {
 	--icon-color:					var(--solarized-violet)	!important;
 }
 
+.theme-light.generalPalette-sunnyMemos.accentColor-lightMode-shade {
+}
+.theme-light.generalPalette-sunnyMemos.accentColor-lightMode-alternative-1 {
+	--accent-h:	213	!important;
+	--accent-s:	76%	!important;
+	--accent-l:	65%	!important;
+	--color-accent-1:				#3583E4	!important;
+	--color-accent-2:				#629FEA	!important;
+	--color-accent-3:				#8FBAF0	!important;
+}
+.theme-light.generalPalette-sunnyMemos.accentColor-lightMode-alternative-2 {
+	--accent-h:			153	!important;
+	--accent-s:			76%	!important;
+	--accent-l:			65%	!important;
+	--color-accent-1:	#26E28E	!important;
+	--color-accent-2:	#62EAAD	!important;
+	--color-accent-3:	#ADF4D4	!important;
+	--OT-color-on-accent-2:	#09442A	!important;
+//	--OT-color-on-accent-3:	#000;	!important;
+	--OT-color-muted-on-accent-1:	#CBF8E4;
+}
 .theme-light.generalPalette-stone.accentColor-lightMode-shade {
 	--accent-h:							24	!important;
 	--accent-s:							5%	!important;
@@ -2118,7 +2200,6 @@ body {
 	--OT-color-on-accent-1:				#fff	!important;
 	--OT-color-on-accent-2:				#fff	!important;
 	--OT-color-on-accent-3:				#4B4643;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--text-selection:					hsl(var(--accent-h), var(--accent-s), 78%);
 }
 .theme-light.generalPalette-stone.accentColor-lightMode-alternative-1 {
@@ -2130,7 +2211,6 @@ body {
 	--color-accent-3:				#DDD6F5	!important;
 	--OT-color-on-accent-1:			#fff	!important;
 	--OT-color-on-accent-2:			#fff	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-stone.accentColor-lightMode-alternative-2 {
 	--accent-h:				74	!important;
@@ -2155,7 +2235,6 @@ body {
 	--OT-color-on-accent-2:        		var(--color-base-00);
 	--OT-color-muted-on-accent-1:		#D9B4FA	!important;
 	--OT-color-on-accent-3:        		#6D0EC3;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--text-selection:					hsl(var(--accent-h), var(--accent-s), 85%);
 }
 .theme-light.generalPalette-violet.accentColor-lightMode-alternative-1 {
@@ -2170,7 +2249,6 @@ body {
 	--OT-color-on-accent-2:			var(--OT-color-on-base-20)	!important;
 	--OT-color-on-accent-3:			#076438	!important;
 	--OT-button-ON-bg:				var(--color-accent-1);
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.generalPalette-violet.accentColor-lightMode-alternative-2 {
 	--accent-h:						32	!important;
@@ -2279,7 +2357,6 @@ body {
 	--OT-color-on-accent-1:			#E5F1FE	!important;
 	--OT-color-on-accent-2:			#E5F1FE	!important;
 	--OT-color-on-accent-3:			#B4D8FC	!important;
-//	--OT-view-header-title-focus-color:		#208BF7;
 //	--OT-view-header-title-no-focus-color:	#0761BB;
 	--text-selection:				hsl(var(--accent-h), var(--accent-s), 18%);
 }
@@ -2324,7 +2401,6 @@ body {
 	--OT-color-muted-on-accent-1:	#5C300A	!important;
 //	--OT-color-on-accent-2:			#fff	!important;
 //	--OT-color-on-accent-3:			#fff	!important;
-//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 }
 .theme-dark.generalPalette-Brown.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-brown.accentColor-darkMode-alternative-1 {
@@ -2339,7 +2415,6 @@ body {
 	--OT-color-on-accent-2:				#B2F7D2	!important;
 	--OT-color-on-accent-3:				#B2F7D2	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-Brown.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-brown.accentColor-darkMode-alternative-2 {
@@ -2353,7 +2428,6 @@ body {
 	--OT-color-muted-on-accent-1:		#C9A3F5	!important;
 	--OT-color-on-accent-2:				#DBC2F8	!important;
 	--OT-color-on-accent-3:				#C094F3	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#8A37EA;
 	--text-selection:					hsl(var(--accent-h), var(--accent-s), 33%);
@@ -2536,7 +2610,6 @@ body {
 	--OT-button-ON-bg:						var(--color-accent-1);
 	--OT-button-cta-background-normal:		#2E73A5;
 	--OT-button-cta-text-normal:			#091620;
-//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 	--OT-view-header-title-no-focus-color:	#83888D;
 	--text-selection:				hsl(var(--accent-h), var(--accent-s), 7.5%);
 }
@@ -2552,7 +2625,6 @@ body {
 	--OT-color-muted-on-accent-1:		#537821	!important;
 	--OT-color-on-accent-2:				#E8F4D7	!important;
 	--OT-color-on-accent-3:				#D0E9AF	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-metallicBlue.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-metallicBlue.accentColor-darkMode-alternative-2 {
@@ -2566,7 +2638,6 @@ body {
 	--OT-color-muted-on-accent-1:		#932865	!important;
 //	--OT-color-on-accent-2:				#fff	!important;
 //	--OT-color-on-accent-3:				#fff	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-paradiso.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.generalPalette-pistachio.darkPalette-default.accentColor-darkMode-shade,
@@ -2642,7 +2713,6 @@ body {
 	--OT-color-muted-on-accent-1:		#144274	!important;
 //	--OT-color-on-accent-2:				#fff	!important;
 //	--OT-color-on-accent-3:				#fff	!important;
-//	--OT-view-header-title-focus-color:	#267DDA;
 	--OT-button-ON-bg:					var(--color-accent-1);
 }
 .theme-dark.generalPalette-parchment.darkPalette-default.accentColor-darkMode-alternative-2,
@@ -2657,7 +2727,6 @@ body {
 	--OT-color-muted-on-accent-1:		#1D5A1F	!important;
 	--OT-color-on-accent-2:				#BFEAC0	!important;
 	--OT-color-on-accent-3:				#A6E1A7	!important;
-//	--OT-view-header-title-focus-color:	#37A63A;
 }
 .theme-dark.generalPalette-red.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-red.accentColor-darkMode-shade {
@@ -2687,7 +2756,6 @@ body {
 	--OT-color-on-accent-2:				#C5E5F5	!important;
 	--OT-color-on-accent-3:				#E0F3FC	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-red.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-red.accentColor-darkMode-alternative-2 {
@@ -2702,7 +2770,6 @@ body {
 	--OT-color-on-accent-2:				#FEDAE0	!important;
 	--OT-color-on-accent-3:				#D6C6F4	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 	--OT-button-cta-background-normal:	#1A7F05;
 	--text-selection:					hsl(var(--accent-h), var(--accent-s), 15%);
 }
@@ -2719,7 +2786,6 @@ body {
 	--OT-color-muted-on-accent-1:		var(--solarized-base02)	!important;
 	--OT-color-on-accent-2:				var(--solarized-base03)	!important;
 	--OT-color-on-accent-3:				var(--solarized-base2)	!important;
-//	--OT-view-header-title-focus-color:	var(--solarized-base3);
 	--OT-button-cta-text-normal:		var(--solarized-base03);
 	--OT-button-ON-bg:					var(--color-accent-1);
 }
@@ -2800,6 +2866,27 @@ body {
 	--OT-color-on-accent-3:			#BDDBBD	!important;
 }
 
+.theme-dark.generalPalette-sunnyMemos.accentColor-darkMode-alternative-1 {
+	--accent-h:			183	!important;		/*	c’est pour la sélection du texte qu’on explicite ici en HSL la couleur d’accentuation n°2	*/
+	--accent-s:			100%	!important;
+	--accent-l:			23%	!important;
+	--color-accent-1:	#004D51	!important;
+	--color-accent-2:	#006D73	!important;
+	--color-accent-3:	#00ADB7	!important;
+	--OT-color-on-accent-1:	#40F5FF	!important;
+//	--OT-color-on-accent-2:	#000	!important;
+	--OT-color-on-accent-3:	#734000;	!important;
+//	--OT-color-muted-on-accent-1:	grey;
+}
+.theme-dark.generalPalette-sunnyMemos.accentColor-darkMode-alternative-2 {
+	--accent-h:			243	!important;		/*	c’est pour la sélection du texte qu’on explicite ici en HSL la couleur d’accentuation n°2	*/
+	--accent-s:			100%	!important;
+	--accent-l:			36%	!important;
+	--color-accent-1:	#060073	!important;
+	--color-accent-2:	#0A00B7	!important;
+	--color-accent-3:	#0E00FB	!important;
+}
+
 .theme-dark.generalPalette-Victorian-1.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-victorian.accentColor-darkMode-shade {
 	--accent-h:							132		!important;
@@ -2814,7 +2901,6 @@ body {
 //	--OT-color-on-accent-3:				#fff	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#00BB26;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-dark.generalPalette-Victorian-1.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-victorian.accentColor-darkMode-alternative-1 {
@@ -2907,7 +2993,6 @@ body {
 	--OT-color-muted-on-accent-1:			#7E6502	!important;
 	--OT-color-on-accent-2:					#FFFAE5	!important;
 //	--OT-color-on-accent-3:					#fff	!important;
-//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 //	--OT-view-header-title-no-focus-color:	#9E7F02;
 }
 .theme-dark.generalPalette-yellow.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -3066,6 +3151,13 @@ body {
 .theme-light.textColor-lightMode-red {
 	--text-normal:	#DA032A;
 	--link-color:	#0395DA;
+//	--h1-color:		#C90327;
+//	--h3-color:		#F20D36;
+//	--h5-color:		#A80220;
+}
+.theme-light.textColor-lightMode-darkRed {
+	--text-normal:	#a33e16;
+	--link-color:	#167BA3;
 //	--h1-color:		#C90327;
 //	--h3-color:		#F20D36;
 //	--h5-color:		#A80220;
@@ -3390,6 +3482,41 @@ body {
 }
 .theme-light.OT-Light-pills-color-theme {
 	--OT-pill-color:		white;
+	--OT-pill-background:	var(--OT-theme-reference-color);
+}
+
+.theme-dark.OT-Dark-pills-color-accent {
+	--OT-pill-color:		var(--OT-color-on-accent-2);
+	--OT-pill-background:	var(--color-accent-2);
+}
+.theme-dark.OT-Dark-pills-color-text {
+	--OT-pill-color:		var(--color-base-00);
+	--OT-pill-background:	var(--text-normal);
+}
+.theme-dark.OT-Dark-pills-color-link {
+	--OT-pill-color:		var(--color-base-00);
+	--OT-pill-background:	var(--link-color);
+}
+.theme-dark.OT-Dark-pills-color-black {
+	--OT-pill-color:		var(--color-base-100);
+	--OT-pill-background:	black;
+}
+.theme-dark.OT-Dark-pills-color-grey {
+	--OT-pill-color:		var(--color-base-00);
+	--OT-pill-background:	grey;
+}
+.theme-dark.OT-Dark-pills-color-white {
+	--OT-pill-color:		var(--color-base-00);
+	--OT-pill-background:	white;
+}
+.theme-dark.OT-Dark-pills-color-theme {
+	--OT-pill-color:		white;
+	--OT-pill-background:	var(--OT-theme-reference-color);
+}
+
+/*	EXCEPTIONS	*/
+.theme-light.OT-Light-pills-color-theme.generalPalette-sunnyMemos {
+	--OT-pill-color:		var(--color-base-100);
 	--OT-pill-background:	var(--OT-theme-reference-color);
 }
 /* -------------------- ↑ Pills Colors ↑ -------------------- ↑ */
@@ -3857,6 +3984,12 @@ body {
 	color:	#DA032A;
 }
 
+.theme-light.inkColor-lightMode-darkRed .CodeMirror pre.CodeMirror-line,
+.theme-light.inkColor-lightMode-darkRed .markdown-source-view .cm-line,
+.theme-light.inkColor-lightMode-darkRed .cm-s-obsidian .cm-line {
+	color:	#a33e16;
+}
+
 .theme-light.inkColor-lightMode-rose .CodeMirror pre.CodeMirror-line,
 .theme-light.inkColor-lightMode-rose .markdown-source-view .cm-line,
 .theme-light.inkColor-lightMode-rose .cm-s-obsidian .cm-line {
@@ -4247,6 +4380,12 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
 }
+.theme-light.generalPalette-sunnyMemos.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
+/*	couleur de la pastille:	#a33e16	*/
+	content:	url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%23a33e16" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m3.1 5.07c.14 0 .28.05.4.16l1.27 1.27c.23.22.23.57 0 .78l-1 1l-2.05-2.05l1-1c.1-.11.24-.16.38-.16m-1.97 1.74l2.06 2.06l-6.06 6.06H7.07v-2.06l6.06-6.06Z"%2F%3E%3C%2Fsvg%3E');
+	height:		0px;
+	background-color: transparent;
+}
 .theme-light.generalPalette-violet.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#4B0B8B	*/
 	content:	url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%234B0B8B" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m3.1 5.07c.14 0 .28.05.4.16l1.27 1.27c.23.22.23.57 0 .78l-1 1l-2.05-2.05l1-1c.1-.11.24-.16.38-.16m-1.97 1.74l2.06 2.06l-6.06 6.06H7.07v-2.06l6.06-6.06Z"%2F%3E%3C%2Fsvg%3E');
@@ -4440,6 +4579,13 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
 }
+.theme-light.inkColor-lightMode-darkRed .markdown-source-view.mod-cm6 .cm-editor:before,
+.theme-dark.inkColor-darkMode-darkRed .markdown-source-view.mod-cm6 .cm-editor:before {
+/*	couleur de la pastille:	#a33e16	*/
+	content:	url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%23a33e16" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m3.1 5.07c.14 0 .28.05.4.16l1.27 1.27c.23.22.23.57 0 .78l-1 1l-2.05-2.05l1-1c.1-.11.24-.16.38-.16m-1.97 1.74l2.06 2.06l-6.06 6.06H7.07v-2.06l6.06-6.06Z"%2F%3E%3C%2Fsvg%3E');
+	height:		0px;
+	background-color: transparent;
+}
 .theme-light.inkColor-lightMode-terminalGreen .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-terminalGreen .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#22C55E	*/
@@ -4584,6 +4730,13 @@ input[type=checkbox] {
 .theme-dark.generalPalette-stone.darkPalette-default.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#A8A29E	*/
 	content:	url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%23A8A29E" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m3.1 5.07c.14 0 .28.05.4.16l1.27 1.27c.23.22.23.57 0 .78l-1 1l-2.05-2.05l1-1c.1-.11.24-.16.38-.16m-1.97 1.74l2.06 2.06l-6.06 6.06H7.07v-2.06l6.06-6.06Z"%2F%3E%3C%2Fsvg%3E');
+	height:		0px;
+	background-color: transparent;
+}
+
+.theme-dark.generalPalette-sunnyMemos.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
+/*	couleur de la pastille:	#FFDFB7	*/
+	content:	url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="30" height="30" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="%23FFDFB7" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m3.1 5.07c.14 0 .28.05.4.16l1.27 1.27c.23.22.23.57 0 .78l-1 1l-2.05-2.05l1-1c.1-.11.24-.16.38-.16m-1.97 1.74l2.06 2.06l-6.06 6.06H7.07v-2.06l6.06-6.06Z"%2F%3E%3C%2Fsvg%3E');
 	height:		0px;
 	background-color: transparent;
 }
@@ -5253,8 +5406,8 @@ td .cm-editor .cm-line {
 .OT-tab-title-highlighted .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-close-button,
 .OT-tab-title-highlighted .workspace-tab-header.is-active.mod-active .workspace-tab-header-status-icon {
 	--tab-text-color-focused-active-current:	var(--OT-color-on-accent-2);
-	color: 				var(--color-base-00);
-	background-color:	var(--OT-theme-reference-color);
+	color: 				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
 }
 /*
 .is-focused .workspace-tab-header.is-active:hover {
@@ -5454,7 +5607,7 @@ button.mod-muted {
   	color:				var(--OT-color-on-accent-3);
 	background-color:	var(--color-accent-3);
 }
-s@media (hover: hover) {
+media (hover: hover) {
   .document-search-close-button:hover {
   	color:				var(--OT-button-text-hover);		/*	text-normal	*/
 	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
@@ -5464,6 +5617,13 @@ s@media (hover: hover) {
   .search-results-info .dropdown:hover {
 		color:				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
+  }
+}
+/*	le bouton pour copier le contenu des codeblocks, en haut à droite de ceux-ci	*/
+@media (hover: hover) {
+  .markdown-source-view.mod-cm6 .code-block-flair:hover {
+  	color:				var(--OT-button-text-hover);		/*	text-normal	*/
+	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
   }
 }
 .checkbox-container {
@@ -5486,6 +5646,13 @@ s@media (hover: hover) {
 		color:				var(--OT-button-text-hover);
 		background-color:	var(--OT-button-background-hover);
 		text-decoration:	none;
+}
+.style-settings-collapse-indicator {
+	color:	var(--OT-setting-item-name);
+}
+.style-settings-collapse-indicator:hover {
+		color:				var(--OT-button-text-hover);
+		background-color:	var(--OT-button-background-hover);
 }
 /*	le bouton pour copier le code d’un bloc, en haut à droite du bloc quand on le survole	*/
 .markdown-rendered button.copy-code-button {
@@ -6818,7 +6985,7 @@ body.enable-heading-nowrap .floating-toc-div.pin .floating-toc .heading-list-ite
 .heading-list-item[data-level="5"] .text::after,
 .heading-list-item[data-level="6"] .text::after {
 	font-size:	0.8rem;
-	color:		var(--OT-color-on-accent-2);
+	color:		var(--color-base-50);
 }
 .heading-list-item:is(
     [data-level="2"],
@@ -7247,6 +7414,9 @@ settings:
 					label:		Solarized
 					value:		generalPalette-solarized
 				-
+					label:		Sunny memos
+					value:		generalPalette-sunnyMemos
+				-
 					label:		Stone
 					label.fr:	Pierre
 					value:		generalPalette-stone
@@ -7356,6 +7526,10 @@ settings:
 					label:		Red
 					label.fr:	Rouge
 					value:		textColor-lightMode-red
+				-
+					label:		dark Red
+					label.fr:	Rouge
+					value:		textColor-lightMode-darkRed
 				-
 					label:		Rose
 					value:		textColor-lightMode-pink
@@ -7555,6 +7729,10 @@ settings:
 				label:		Red
 				label.fr:	Rouge
 				value:		inkColor-lightMode-red
+			-
+				label:		dark Red
+				label.fr:	Rouge foncé
+				value:		inkColor-lightMode-darkRed
 			-
 				label:		Rose
 				value:		inkColor-lightMode-pink
@@ -7857,6 +8035,10 @@ settings:
 					label:		Stone
 					label.fr:	Pierre
 					value:		darkPalette-stone
+				-
+					label:		Sunny memos
+					label.fr:	Pierre
+					value:		darkPalette-sunnyMemos
 				-
 					label:		Victorian
 					value:		darkPalette-victorian
