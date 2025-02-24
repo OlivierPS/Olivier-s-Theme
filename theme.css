@@ -154,6 +154,7 @@
 						Small tweaks
 			24.02.2025	The key symbols (ie. the KBD class) now has an ivory background			1.41.0
 						Small tweaks
+						The dark version of the “Sunny memos” palette is ready.					1.41.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -1506,6 +1507,7 @@ body {
 }/*	↑	darkPalette-solarized	↑	*/
 
 /*	----------------------------------------------	*/
+.theme-dark.darkPalette-sunnyMemos,
 .theme-dark.generalPalette-sunnyMemos.darkPalette-default {
 	--OT-theme-reference-color:	#512D00;
 	--color-base-00:	#402400;	/*	--background-primary	—	fond des fiches		*/
@@ -7406,6 +7408,7 @@ settings:
 					value:		generalPalette-solarized
 				-
 					label:		Sunny memos
+					label.fr:	Mémos ensoleillés (“Sunny memos”)
 					value:		generalPalette-sunnyMemos
 				-
 					label:		Stone
@@ -8028,7 +8031,7 @@ settings:
 					value:		darkPalette-stone
 				-
 					label:		Sunny memos
-					label.fr:	Pierre
+					label.fr:	Mémos ensoleillés (“Sunny memos”)
 					value:		darkPalette-sunnyMemos
 				-
 					label:		Victorian

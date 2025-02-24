@@ -125,6 +125,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 
 
+
+#### 24.02.2025 Version 1.41.1
+The dark version of the “Sunny memos” palette is ready.
+
+----------------------------------------------
 #### 24.02.2025 Version 1.41.0
 The key symbols (ie. the KBD class) now has an ivory background.
 Small tweaks.
