@@ -124,27 +124,29 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+
+#### 24.02.2025 Version 1.41.0
+The key symbols (ie. the KBD class) now has an ivory background.
+Small tweaks.
+
+----------------------------------------------
 #### 23.02.2025 Version 1.40.0
 Added a new color palette: Sunny Memos.
 Added a new ink color: Dark Red.
 Corrected the pills in the properties in Dark mode.
 Small tweaks.
 
-
 ----------------------------------------------
 #### 16.02.2025	Version 1.39.2
 Some more code for the “Floting TOC” plugin.
-
 
 ----------------------------------------------
 #### 11.02.2025 Version 1.39.1
 Slightly darkened the text selection in the Light Beige theme, because it wasn’t visible inside codeblocks.
 
-
 ----------------------------------------------
 #### 21.12.2024 Version 1.39.0
 Added code for styling the floating TOC of the eponymous plugin.
-
 
 ----------------------------------------------
 #### 22.11.2024 Version 1.38.2
