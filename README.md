@@ -124,9 +124,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+#### 18.03.2025	Version 1.43.0
+Improved the display of tall images.
 
 
-
+----------------------------------------------
 #### 01.032025	Version 1.42.0
 Added the option to have the text selection take the accent color or not, in both light and dark modes, separately. It’s ON by default, because it’s one of the theme’s caracteristic features.
 

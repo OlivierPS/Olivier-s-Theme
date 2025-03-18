@@ -157,6 +157,7 @@
 						The dark version of the “Sunny memos” palette is ready.					1.41.1
 			01.03.2025	Added the option to have the text selection take the accent color or not	1.42.0
 						ON by default, because it’s one of the theme’s caracteristic features
+			18.03.2025	Improved the display of tall images										1.43.0
 
 
 
@@ -5918,6 +5919,9 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 
 img {
 	max-height: 	var(--img-max-height);
+	width:			auto;
+	height:			auto;
+	object-fit:		contain;
 	border-radius:	var(--radius-s);
 }
 
