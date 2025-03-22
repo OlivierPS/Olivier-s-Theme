@@ -124,6 +124,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+
+#### 22.03. 2025 Version 1.44.0
+Incorporated new fonts into the selection for writing.
+
+
+----------------------------------------------
 #### 18.03.2025	Version 1.43.0
 Improved the display of tall images.
 

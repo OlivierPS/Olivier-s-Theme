@@ -158,6 +158,7 @@
 			01.03.2025	Added the option to have the text selection take the accent color or not	1.42.0
 						ON by default, because it’s one of the theme’s caracteristic features
 			18.03.2025	Improved the display of tall images										1.43.0
+			22.03.2025	Incorporated new fonts into the selection for writing					1.44.0
 
 
 
@@ -7329,7 +7330,10 @@ settings:
 					value:	Noto Sans
 				-
 					label:	Officina Sans
-					value:	Officina Sans ITC Pro
+					value:	ITC Officina Sans Std
+				-
+					label:	Officina Sans Serif
+					value:	ITC Officina Serif Std
 				-
 					label:	Overpass
 					value:	Overpass
@@ -8815,7 +8819,10 @@ settings:
 					value:	Office Code Pro D
 				-
 					label:	Officina Sans
-					value:	Officina Sans ITC Pro
+					value:	ITC Officina Sans Std
+				-
+					label:	Officina Sans Serif
+					value:	ITC Officina Serif Std
 				-
 					label:	Overpass
 					value:	Overpass
@@ -8850,20 +8857,29 @@ settings:
 					label:	Siseriff
 					value:	Siseriff LT Std
 				-
-					label:	Source Code
-					value:	Source Code Pro
-				-
 					label:	Space Mono
 					value:	Space Mono
 				-
+					label:	Stone Humanist
+					value:	Stone Humanist ITC Pro
+				-
 					label:	Stone Informal
-					value:	ITC Stone Informal Std
+					value:	Stone Informal ITC Pro
 				-
-					label:	Stone Sans
-					value:	ITC Stone Sans Std
+					label:	Stone Sans II
+					value:	Stone Sans II ITC Com
 				-
-					label:	Source Sans
-					value:	Source Sans Pro
+					label:	Stone Serif
+					value:	Stone Serif ITC Pro
+				-
+					label:	Source Code
+					value:	Source Code Pro
+				-
+					label:	Source Sans 3
+					value:	Source Sans 3
+				-
+					label:	Source Serif
+					value:	Source Serif Pro
 				-
 					label:	Tisa
 					value:	Tisa Pro
