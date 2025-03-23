@@ -125,19 +125,20 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 
 
+#### 23.03.2025 Version 1.45.0
+Diminished the margin at the top of the panels in both Reading and Live Editing views.
+
+----------------------------------------------
 #### 22.03. 2025 Version 1.44.0
 Incorporated new fonts into the selection for writing.
-
 
 ----------------------------------------------
 #### 18.03.2025	Version 1.43.0
 Improved the display of tall images.
 
-
 ----------------------------------------------
 #### 01.032025	Version 1.42.0
 Added the option to have the text selection take the accent color or not, in both light and dark modes, separately. It’s ON by default, because it’s one of the theme’s caracteristic features.
-
 
 ----------------------------------------------
 #### 24.02.2025 Version 1.41.1

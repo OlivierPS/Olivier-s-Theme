@@ -159,6 +159,8 @@
 						ON by default, because it’s one of the theme’s caracteristic features
 			18.03.2025	Improved the display of tall images										1.43.0
 			22.03.2025	Incorporated new fonts into the selection for writing					1.44.0
+			23.03.2025	Diminished the margin (padding) at the top of panels in Reading View and
+						in Live Editing View													1.45.0
 
 
 
@@ -5368,6 +5370,11 @@ td .cm-editor .cm-line {
 
 /*	Bookmark	OpSpl26	*/
 /* —————————————————————————————— OpSpl En-tête des panneaux —————————————————————————————— */
+/*	Je gagne un peu de place en haut des panneaux en permettant au texte de s’approcher du bord haut:	*/
+.markdown-preview-view,
+.view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
+	padding-top:	0.5em;
+}
 /* Suppression du “breadcrumb” dans la title bar (titre des panneaux),
 	car, sur les écrans de portables, il prend trop de place.
 	Je préfère l’indication dans la status bar, via le plugin “Show Current File Path”*/
