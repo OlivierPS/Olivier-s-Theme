@@ -123,8 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 27 mars 2025
+I’ve reverted the font weights of H1 to H6 to the *Obsidian* defaults, as they are now in line with what I like
 
-
+----------------------------------------------
 #### 23.03.2025 Version 1.45.0
 Diminished the margin at the top of the panels in both Reading and Live Editing views.
 

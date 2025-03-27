@@ -161,6 +161,8 @@
 			22.03.2025	Incorporated new fonts into the selection for writing					1.44.0
 			23.03.2025	Diminished the margin (padding) at the top of panels in Reading View and
 						in Live Editing View													1.45.0
+			27.03.2025	I’ve reverted the font weights of H1 to H6 to the *Obsidian* defaults,
+						as they are now in line with what I like								1.46.00
 
 
 
@@ -6204,12 +6206,12 @@ body {
 	--h5-size:		clamp(1.266em, calc(1rem + 3vw), 		1.44em);
 	--h6-size:		clamp(1.125em, calc(1rem + 3vw), 		1.2em);
 
-    --h1-weight:	600;
-    --h2-weight:	500;
+/*  --h1-weight:	700;
+    --h2-weight:	600;
     --h3-weight:	600;
     --h4-weight:	600;
     --h5-weight:	600;
-    --h6-weight:	600;
+    --h6-weight:	600;	*/
 
 	--h1-variant:	normal;
 	--h2-variant:	small-caps;
