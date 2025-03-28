@@ -123,12 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-
-#### 28 mars 2025
+#### 28 mars 2025 Versions 1.47.0 and 1.47.1
 Improved the logic of the interface sizing. It’s now based on a single value, available in the “GENERAL settings” section of the “Style Settings”.
+Improved the rendering of the TOC pannel provided by the “floating TOC” plugin.
 
 ----------------------------------------------
-#### 27 mars 2025
+#### 27 mars 2025 Version 1.46.0
 I’ve reverted the font weights of H1 to H6 to the *Obsidian* defaults, as they are now in line with what I like
 
 ----------------------------------------------
