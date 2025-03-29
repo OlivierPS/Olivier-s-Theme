@@ -170,8 +170,7 @@
 			29.03.2025	Added code for the “Recent Notes” plugin								1.48.0
 						Small tweaks															1.48.1
 						Small tweaks															1.48.2
-
-
+						Small tweaks															1.48.3
 
 
 --------------------------------------------------------------------------------------------------------
@@ -516,8 +515,7 @@ body {
 
 	--toggle-thumb-color:			var(--color-base-20);
 
-	--vault-name-color:				var(--OT-color-on-base-20);
-	--vault-profile-color:			var(--OT-color-on-base-20);
+	--vault-profile-color:			var(--OT-view-header-title-focus-color);
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
 
 /*	Bookmark	OpSpl04	*/
@@ -744,7 +742,7 @@ body {
 	--OT-table-alt-background:				#E8F9EE;
 	--OT-table-background:					#E7FDEF;
 	--OT-table-header-background:			#DDFCE8;
-	--OT-view-header-title-focus-color:		var(--OT-theme-reference-color);
+//	--OT-view-header-title-focus-color:		var(--OT-theme-reference-color);
 	--OT-view-header-title-no-focus-color:	var(--color-base-50);
 	--OT-stabilo-mark:						#2BA727;
 	--OT-stabilo-text:						#CCFBDC;
@@ -933,7 +931,7 @@ body {
 	--OT-table-background:			#FFF4E2;
 	--OT-menu-text-color:			var(--color-base-100);
 	--icon-color:					var(--color-base-100);
-	--status-bar-text-color:		var(--color-base-100);
+//	--status-bar-text-color:		var(--color-base-100);
 }
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-pistachio {
@@ -1727,20 +1725,21 @@ body {
 }
 
 .theme-light.lightPalette-beige.accentColor-lightMode-shade {
-	--accent-h:						38	!important;
-	--accent-s:						54%	!important;
-	--accent-l:						73%	!important;
-	--color-accent-1:				#C4923B	!important;
-	--color-accent-2:				#DFC495	!important;
-	--color-accent-3:				#F3E8D6	!important;
-	--OT-color-muted-on-accent-1:		#E9DFD6;
-//	--OT-color-on-accent-2:				var(--color-base-00);
+	--accent-h:							38	!important;
+	--accent-s:							54%	!important;
+	--accent-l:							73%	!important;
+	--color-accent-1:					#C4923B	!important;
+	--OT-color-muted-on-accent-1:		#E3CBA2;
+	--color-accent-2:					#DFC495	!important;
+	--OT-color-on-accent-2:				#816027;
+	--OT-color-muted-on-accent-2:		#B58737;
+	--color-accent-3:					#F3E8D6	!important;
 }
 .theme-light.lightPalette-beige.accentColor-lightMode-alternative-1 {
 	--accent-h:							188	!important;
 	--accent-s:							54%	!important;
 	--accent-l:							73%	!important;
-	--color-accent-1:					#7CCCD8	!important;
+	--color-accent-1:					#54BBCB	!important;
 	--color-accent-2:					#95D5DF	!important;
 	--color-accent-3:					#CBEAEF	!important;
 	--OT-color-on-accent-1:				#F0F9FB	!important;
@@ -1750,47 +1749,53 @@ body {
 }
 .theme-light.lightPalette-beige.accentColor-lightMode-alternative-2 {
 	--accent-h:							158	!important;
-	--accent-s:							54%	!important;
-	--accent-l:							73%	!important;
-	--color-accent-1:					#6ED3AE	!important;
-	--color-accent-2:					#95DFC4	!important;
-	--color-accent-3:					#C9EFE1	!important;
+	--accent-s:							53%	!important;
+	--accent-l:							53%	!important;
+	--color-accent-1:					#278160	!important;
 //	--OT-color-on-accent-1:				#F0FBF7	!important;
-	--OT-color-muted-on-accent-1:		#1F674D	!important;
-	--OT-color-on-accent-2:				white	!important;
+	--OT-color-muted-on-accent-1:		#6ED3AE	!important;
+	--color-accent-2:					#47C798	!important;
+	--OT-color-on-accent-2:				var(--color-base-20)	!important;
+	--OT-color-muted-on-accent-2:		#1F674D	!important;
+	--color-accent-3:					#C9EFE1	!important;
 	--OT-color-on-accent-3:				#174D39	!important;
 }
 
 .theme-light.lightPalette-blue.accentColor-lightMode-shade {
 	--accent-h:						215		!important;
 	--accent-s:						100%	!important;
-	--accent-l:						50%		!important;
-	--color-accent-3:				#BBD7FF	!important;
+	--accent-l:						30%		!important;
+	--color-accent-1:				hsl(215,100%,50%)	!important;
 	--OT-color-muted-on-accent-1:	#C3D9EF;
 	--OT-color-on-accent-2:         var(--color-base-00);
+	--color-accent-3:				#BBD7FF	!important;
+	--vault-profile-color:			var(--color-accent-2);
 }
 .theme-light.lightPalette-blue.accentColor-lightMode-alternative-1 {
 	--accent-h:						125		!important;
-	--accent-s:						700%	!important;
-	--accent-l:						47%		!important;
-	--color-accent-1:				#178420	!important;
-	--color-accent-2:				#24CC32	!important;
+	--accent-s:						100%	!important;
+	--accent-l:						37%		!important;
+	--color-accent-1:				hsl(125,100%,47%)	!important;
+//	--color-accent-2:				#24CC32	!important;
 	--color-accent-3:				#CCFFD0	!important;
-	--OT-color-on-accent-1:			#F2FDF3	!important;
-	--OT-color-muted-on-accent-1:	#B8F3BD	!important;
-	--OT-color-on-accent-2:			#DDFFE0	!important;
+	--OT-color-on-accent-1:			#255229	!important;
+	--OT-color-muted-on-accent-1:	#408C46	!important;
+	--OT-color-on-accent-2:			#C5E4C7	!important;
+	--OT-color-muted-on-accent-2:	#306935	!important;
 	--OT-color-on-accent-3:			#00770A	!important;
+	--OT-view-header-title-focus-color:	var(--color-accent-2);
 }
 .theme-light.lightPalette-blue.accentColor-lightMode-alternative-2 {
 	--accent-h:						305		!important;
 	--accent-s:						100%	!important;
 	--accent-l:						30%		!important;
 	--color-accent-1:				#CC00BB	!important;
-	--color-accent-2:				#FF77F3	!important;
+//	--color-accent-2:				#FF77F3	!important;
 	--color-accent-3:				#FFCCFB	!important;
 	--OT-color-on-accent-1:			#FFEEFE	!important;
-	--OT-color-muted-on-accent-1:	#FFBBF9	!important;
+	--OT-color-muted-on-accent-1:	#FFCCFB	!important;
 	--OT-color-on-accent-2:			#FFEEFE	!important;
+	--OT-color-muted-on-accent-2:	#FFCCFB	!important;
 	--OT-color-on-accent-3:			var(--color-accent-1)	!important;
 	--OT-button-cta-text-normal:	#F2FDF3;
 }
@@ -1804,7 +1809,9 @@ body {
 	--color-accent-3:				#DDD6F5	!important;
 	--OT-color-muted-on-accent-1:	#D2C9F1;
 	--OT-color-on-accent-2:			white;
+	--OT-color-muted-on-accent-2:	#DDD6F5;
 	--OT-color-on-accent-3:			4529A3;
+	--OT-view-header-title-focus-color:	var(--color-accent-2);
 }
 .theme-light.lightPalette-OBSIDIAN.accentColor-lightMode-alternative-1 {
 	--accent-h:						134	!important;
@@ -1814,33 +1821,38 @@ body {
 //	--color-accent-2:				#999	!important;
 	--color-accent-3:				#D6F5DD	!important;
 	--OT-color-on-accent-1:			#F1FCF4	!important;
-	--OT-color-muted-on-accent-1:	#A0E7B0	!important;
+	--OT-color-muted-on-accent-1:	#D6F5DD	!important;
 	--OT-color-on-accent-2:			#F1FCF4	!important;
+	--OT-color-muted-on-accent-2:	#D6F5DD	!important;
 	--OT-color-on-accent-3:			#145223	!important;
 
 }
 .theme-light.lightPalette-OBSIDIAN.accentColor-lightMode-alternative-2 {
 	--accent-h:						44	!important;
 	--accent-s:						80%	!important;
-	--accent-l:						68%	!important;
-	--color-accent-1:				#EABC3E	!important;
-	--color-accent-2:				#EFCC6C	!important;
+	--accent-l:						60%	!important;
+	--color-accent-1:				hsl(44,80%,80%)	!important;
+	--OT-color-on-accent-1:			#BE9115	!important;
+//	--color-accent-2:				#EFCC6C	!important;
 	--color-accent-3:				#F7E7B9	!important;
 	--OT-color-muted-on-accent-1:	#72570C	!important;
 	--OT-color-on-accent-2:			#FEFCF6	!important;
 	--OT-color-on-accent-3:			#624B0B	!important;
-	--status-bar-text-color:		#DDA818;
+//	--status-bar-text-color:		#DDA818;
 	--icon-color:					#DDA818;
+//	--OT-view-header-title-focus-color:	var(--color-accent-2);
 }
 .theme-light.lightPalette-green.accentColor-lightMode-shade {
 	--accent-h:						142	!important;
 	--accent-s:						83%	!important;
 	--accent-l:						66%	!important;
 	--color-accent-1:				#14D65B	!important;
-	--color-accent-2:				#60F095	!important;
-	--color-accent-3:				#CDFADD	!important;
+	--OT-color-on-accent-1:			#085A26 !important;
 	--OT-color-muted-on-accent-1:	#0B7934	!important;
+//	--color-accent-2:				#60F095	!important;
 	--OT-color-on-accent-2:			#085A26 !important;
+	--OT-color-muted-on-accent-2:	#0A692D	!important;
+	--color-accent-3:				#CDFADD	!important;
 	--OT-color-on-accent-3:			#085A26	!important;
 }
 .theme-light.lightPalette-green.accentColor-lightMode-alternative-1 {
@@ -1848,26 +1860,30 @@ body {
 	--accent-s:						83%	!important;
 	--accent-l:						63%	!important;
 	--color-accent-1:				#0E219A	!important;
-	--color-accent-2:				#5267EF	!important;
+//	--color-accent-2:				#5267EF	!important;
 	--color-accent-3:				#CED4FB	!important;
 	--OT-color-on-accent-1:			#EEF0FD	!important;
-	--OT-color-muted-on-accent-1:	#AFB9F8	!important;
+	--OT-color-muted-on-accent-1:	#BFC7F9	!important;
 	--OT-color-on-accent-2:			#EEF0FD	!important;
+	--OT-color-muted-on-accent-2:	#DEE2FC	!important;
 	--OT-color-on-accent-3:			#0B1A7B	!important;
-	--toggle-thumb-color:			var(--color-accent-3);
+//	--toggle-thumb-color:			var(--color-accent-3);
 }
 .theme-light.lightPalette-green.accentColor-lightMode-alternative-2 {
 	--accent-h:						322	!important;
 	--accent-s:						83%	!important;
 	--accent-l:						69%	!important;
-	--color-accent-1:				#EA22A0	!important;
-	--color-accent-2:				#F26FC1	!important;
+	--color-accent-1:				hsl(322,83%,89%)	!important;
+	--OT-color-on-accent-1:			#D6138E	!important;
+	--OT-color-muted-on-accent-1:	#EC30A6	!important;
+//	--color-accent-2:				#F26FC1	!important;
+	--OT-color-on-accent-2:			#FFFAFD	!important;
+	--OT-color-muted-on-accent-2:	#FCDBF0	!important;
 	--color-accent-3:				#FCDEF1	!important;
-	--OT-color-on-accent-1:			white	!important;
-	--OT-color-muted-on-accent-1:	#F9BFE4	!important;
-	--OT-color-on-accent-2:			white	!important;
 	--OT-color-on-accent-3:			#9A0E67	!important;
+	--OT-view-header-title-focus-color:	var(--color-accent-2);
 }
+
 .theme-light.lightPalette-icy.accentColor-lightMode-shade {
 	--accent-h:								214		!important;
 	--accent-s:								100%	!important;
@@ -1878,6 +1894,7 @@ body {
 	--OT-color-on-accent-1:					var(--color-base-00);
 	--OT-color-muted-on-accent-1:			#97CBFF;
 	--OT-color-on-accent-2:					#0058CC;
+	--OT-color-muted-on-accent-2:			#4495FF;
 //	--OT-view-header-title-focus-color:		#005FDD;
 //	--OT-view-header-title-no-focus-color:	var(--color-accent-1);
 	--OT-button-ON-bg:						#0049AA;
@@ -1893,6 +1910,7 @@ body {
 //	--OT-color-on-accent-1:				#163300	!important;
 	--OT-color-muted-on-accent-1:		#79FF11	!important;
 	--OT-color-on-accent-2:				#2C6600	!important;
+	--OT-color-muted-on-accent-2:		#429700	!important;
 	--OT-color-on-accent-3:				#2C6600	!important;
 	--OT-button-ON-bg:					#5FDD00;
 }
@@ -1906,6 +1924,7 @@ body {
 	--OT-color-on-accent-1:				white	!important;
 	--OT-color-muted-on-accent-1:		#FFDDEC	!important;
 	--OT-color-on-accent-2:				#DD005F	!important;
+	--OT-color-muted-on-accent-2:		#FF559E	!important;
 	--OT-color-on-accent-3:				#AA0049	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-text-selection-background:					hsl(var(--accent-h), var(--accent-s), 93%);
@@ -6946,9 +6965,16 @@ input.prompt-input {
 
 /*	Bookmark	OpSpl51	*/
 /*	———————————————————— Vertical Tabs plugin ————————————————————	*/
+.obsidian-vertical-tabs-container .is-group-slot .tree-item-self {		/*	le petit bouton pour ajouter un groupe	*/
+	color: var(--OT-color-muted-on-base-20);
+}
+.obsidian-vertical-tabs-container .is-group-slot .tree-item-icon svg {	/*	le `+` devant le petit bouton pour ajouter un groupe	*/
+	color: var(--OT-color-muted-on-base-20)!important;
+}
 .is-tab .tree-item-self.is-clickable.is-active .tree-item-icon,
 .is-tab .tree-item-self.is-clickable.is-active .action-pin {
-	color:	var(--OT-color-on-accent-2);
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
 }
 .obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .tree-item-self,
 .obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .action-pin,
@@ -7063,7 +7089,7 @@ input.prompt-input {
     color:	var(--OT-color-muted-on-base-20);
 }
 .recent-notes-view h6 {
-	color:			var(--color-accent-2);
+	color:			var(--vault-profile-color);
     font-weight:	700;
     font-size:		var(--font-ui-normal);
 }
@@ -7480,11 +7506,11 @@ settings:
 					label.fr:	Par défaut
 					value:		lightPalette-OBSIDIAN
 				-
-					label:	Art déco
-					value:	lightPalette-artDeco
+					label:		Art déco
+					value:		lightPalette-artDeco
 				-
-					label:	Beige
-					value:	lightPalette-beige
+					label:		Beige
+					value:		lightPalette-beige
 				-
 					label:		light Beige
 					label.fr:	Beige claire
