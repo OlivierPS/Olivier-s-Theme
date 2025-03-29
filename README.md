@@ -124,8 +124,8 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
-#### 29.03.2025 Version 1.48.0
-Added code for the “Recent notes” plugin.
+#### 29.03.2025 Version 1.48.0 and 1.48.1
+Added code for the “Recent Notes” plugin.
 
 ----------------------------------------------
 #### 28.03.2025 Versions 1.47.0 and 1.47.1

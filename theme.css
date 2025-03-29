@@ -167,7 +167,8 @@
 						selectable in the “General settings” section of the “Style Settings”	1.47.0
 						Improved the rendering of the TOC pannel provided by the
 						“floating TOC” plugin													1.47.1
-			29.03.2025	Added code for the “Recent notes” plugin								1.48.0
+			29.03.2025	Added code for the “Recent Notes” plugin								1.48.0
+						Small tweaks															1.48.1
 
 
 
@@ -1958,6 +1959,7 @@ body {
 	--color-accent-3:		#FDF0F8	!important;
 //	--OT-color-on-accent-1:	var(--color-base-20)	!important;
 	--OT-color-on-accent-2:	var(--color-base-00)	!important;
+	--OT-color-muted-on-accent-2:	#FAD1E9	!important;
 	--OT-color-on-accent-3:	var(--color-accent-2)	!important;
 	--OT-text-selection-background:		hsl(var(--accent-h), var(--accent-s), 93%);
 }
@@ -5622,8 +5624,8 @@ button.mod-muted {
 }
 media (hover: hover) {
   .document-search-close-button:hover {
-  	color:				var(--OT-button-text-hover);		/*	text-normal	*/
-	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
   }
 }
 @media (hover: hover) {
@@ -5635,10 +5637,31 @@ media (hover: hover) {
 /*	le bouton pour copier le contenu des codeblocks, en haut à droite de ceux-ci	*/
 @media (hover: hover) {
   .markdown-source-view.mod-cm6 .code-block-flair:hover {
-  	color:				var(--OT-button-text-hover);		/*	text-normal	*/
-	background-color:	var(--OT-button-background-hover);	/*	background-modifier-hover	*/
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
   }
 }
+
+@media (hover: hover) {
+  .text-icon-button:hover {
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
+  }
+  .text-icon-button:hover .text-button-icon {
+    color: var(--icon-color-hover);
+  }
+  .text-icon-button.has-active-menu,
+  .text-icon-button:active {
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
+  }
+  .text-icon-button.has-active-menu .text-button-icon,
+  .text-icon-button:active .text-button-icon {
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
+  }
+}
+
 .checkbox-container {
 	background-color:	var(--OT-button-OFF-bg);
 }
@@ -6700,6 +6723,9 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 .metadata-container .metadata-add-button {
 	color:				var(--OT-button-text-normal);
 }
+.metadata-container .metadata-add-button:hover {
+	color:				var(--OT-button-text-hover);
+}
 	/*	le bouton sur la status bar		*/
 .plugin-metadata-menu .status-item-btn .sync-status-icon .svg-icon {
 	stroke:				var(--OT-color-on-accent-2);
@@ -7017,6 +7043,9 @@ input.prompt-input {
 
 /*	Bookmark	OpSpl54	*/
 /*	———————————————————— Recent notes plugin  ————————————————————	*/
+.recent-note-title{
+    color:	var(--OT-color-muted-on-base-20);
+}
 .recent-note-date {
     color:	var(--OT-color-muted-on-base-20);
 }
@@ -7027,7 +7056,7 @@ input.prompt-input {
 	color:			var(--OT-color-on-base-20);
     font-weight:	700;
 }
-.recent-note-item.is-active {
+.recent-note-item.is-active .recent-note-title {
     color: 				var(--OT-color-on-accent-2);
     background-color:	var(--color-accent-2);
 }
