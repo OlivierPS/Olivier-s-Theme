@@ -123,12 +123,17 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 28 mars 2025 Versions 1.47.0 and 1.47.1
+
+#### 29.03.2025 Version 1.48.0
+Added code for the “Recent notes” plugin.
+
+----------------------------------------------
+#### 28.03.2025 Versions 1.47.0 and 1.47.1
 Improved the logic of the interface sizing. It’s now based on a single value, available in the “GENERAL settings” section of the “Style Settings”.
 Improved the rendering of the TOC pannel provided by the “floating TOC” plugin.
 
 ----------------------------------------------
-#### 27 mars 2025 Version 1.46.0
+#### 27.03.2025 Version 1.46.0
 I’ve reverted the font weights of H1 to H6 to the *Obsidian* defaults, as they are now in line with what I like
 
 ----------------------------------------------

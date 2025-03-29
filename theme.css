@@ -167,6 +167,7 @@
 						selectable in the “General settings” section of the “Style Settings”	1.47.0
 						Improved the rendering of the TOC pannel provided by the
 						“floating TOC” plugin													1.47.1
+			29.03.2025	Added code for the “Recent notes” plugin								1.48.0
 
 
 
@@ -238,6 +239,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl51		Vertical Tabs plugin
 			OpSpl52		Floating TOC plugin
 			OpSpl53		Text selection when it takes the accent color
+			OpSpl54		Recent notes plugin
 
 			OpSpl99		to be sorted…
 
@@ -7012,6 +7014,68 @@ input.prompt-input {
 	color:		var(--OT-text-selection-color)		!important
 }
 /*	---------- ↑ Text selection when it takes the accent color ↑ ----------	*/
+
+/*	Bookmark	OpSpl54	*/
+/*	———————————————————— Recent notes plugin  ————————————————————	*/
+.recent-note-date {
+    color:	var(--OT-color-muted-on-base-20);
+}
+.recent-note-info {
+    color:	var(--OT-color-muted-on-base-20);
+}
+.recent-notes-view h6 {
+	color:			var(--OT-color-on-base-20);
+    font-weight:	700;
+}
+.recent-note-item.is-active {
+    color: 				var(--OT-color-on-accent-2);
+    background-color:	var(--color-accent-2);
+}
+.recent-note-item.is-active .recent-note-date,
+.recent-note-item.is-active .recent-note-info {
+    color: var(--OT-color-muted-on-accent-2);
+}
+body[data-recent-notes-density="compact"] .recent-note-date {
+    color:		var(--OT-color-muted-on-base-20);
+    font-size:	var(--font-ui-small);
+}
+body[data-recent-notes-density="compact"] .recent-note-preview {
+	color:	var(--OT-color-muted-on-base-20);
+}
+body[data-recent-notes-density="compact"] .is-active .recent-note-preview {
+	color:	var(--OT-color-muted-on-accent-2);
+}
+/*	---- hovering ----	*/
+.recent-note-item:hover {
+    background: var(--color-accent-1);
+  & .recent-note-title {
+	color:		var(--OT-color-on-accent-1);
+    background: inherit; /* Inherit background from parent */
+  }
+  & .recent-note-date {
+	color:		var(--OT-color-on-accent-1);
+    background: inherit; /* Inherit background from parent */
+  }
+  & .recent-note-preview-line {
+    color:		var(--OT-color-muted-on-accent-1);
+    background: inherit; /* Inherit background from parent */
+  }
+}
+body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-active) {
+  color: 		var(--OT-color-on-accent-1);
+  background:	var(--color-accent-1);
+
+  & .recent-note-date {
+    color:		var(--OT-color-muted-on-accent-1);
+    background: inherit; /* Inherit background from parent */
+  }
+
+  & .recent-note-preview-line {
+    color:		var(--OT-color-on-accent-1);
+    background: inherit; /* Inherit background from parent */
+  }
+}
+/*	---------- ↑ Recent notes plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl99	*/
