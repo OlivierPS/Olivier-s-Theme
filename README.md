@@ -123,6 +123,13 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+
+#### 02.04.2025	Version 1.48.4
+Small tweaks for the “Floating TOC” plugin.
+Added code to display bigger the text inside the input box of the “Quickadd” plugin, when the screen is large enough.
+
+
+----------------------------------------------
 #### 29.03.2025 Version 1.48.0, 1.48.1, 1.48.2 and 1.48.3
 Added code for the “Recent Notes” plugin.
 Tweaked some colors; in particular: I’ve started to revise all the accent colors and associated foreground colors (normal and muted).

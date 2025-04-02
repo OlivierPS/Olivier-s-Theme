@@ -171,6 +171,9 @@
 						Small tweaks															1.48.1
 						Small tweaks															1.48.2
 						Small tweaks															1.48.3
+			02.04.2025	Tweaks for the “Floating TOC” plugin									1.48.4
+						Added code to display bigger the text inside the input box of the
+						“Quickadd” plugin, when the screen is large enough.
 
 
 --------------------------------------------------------------------------------------------------------
@@ -241,6 +244,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl52		Floating TOC plugin
 			OpSpl53		Text selection when it takes the accent color
 			OpSpl54		Recent notes plugin
+			OpSpl55		QuickAdd plugin
 
 			OpSpl99		to be sorted…
 
@@ -6988,23 +6992,28 @@ input.prompt-input {
 /*	———————————————————— Floating TOC plugin ————————————————————	*/
 .theme-light,
 .theme-dark {
-//	--floating-toc-font-color:			var(--text-normal)	!important;
-	--floating-toc-hover-color:			var(--OT-color-on-accent-1)	!important;
-	--floating-toc-font-size:			var(--font-ui-small)	!important;
-	--floating-toc-background-color:	var(--background-secondary)	!important;
+//	--floating-toc-font-color:				var(--text-normal)	!important;
+	--floating-toc-hover-color:				var(--OT-color-on-accent-1)	!important;
+	--floating-toc-font-size:				var(--font-ui-small)	!important;
+	--floating-toc-background-color:		var(--background-secondary)	!important;
 	--floating-toc-header-background-color:	var(--background-secondary)	!important;
-	--floating-toc-highlight-color:		var(--color-accent-2) !important;	/*	var(--text-highlight-bg-active);	*/
-	--floating-toc-highlight-color-rgb:	255,128,0 !important;
-	--floating-toc-line-color:			var(--OT-color-on-accent-2) !important;
-	--floating-toc-line-height:			1.2rem	!important;
-	--floating-toc-line-width:			26rem	!important;
-	--actual-toc-width:					26rem	!important;
-	--floating-toc-response-time:		0.0s	!important;
+	--floating-toc-highlight-color:			var(--color-accent-2) !important;	/*	var(--text-highlight-bg-active);	*/
+	--floating-toc-highlight-color-rgb:		255,128,0 !important;
+	--floating-toc-line-color:				var(--OT-color-on-accent-2) !important;
+	--floating-toc-line-height:				1.2rem	!important;
+//	--floating-toc-line-width:				26rem	!important;
+//	--actual-toc-width:						26rem	!important;
+	--floating-toc-response-time:			0.0s	!important;
 }
 .heading-list-item .text-wrap .text:hover {
 	color:				var(--OT-color-on-accent-1)	!important;
 	background-color:	var(--color-accent-1)		!important;
 }
+
+.heading-list-item .text-wrap .text:hover::after{
+	color:	var(--OT-color-muted-on-accent-1);
+}
+
 .heading-list-item[data-level="1"] .text::after,
 .heading-list-item[data-level="2"] .text::after,
 .heading-list-item[data-level="3"] .text::after,
@@ -7012,7 +7021,7 @@ input.prompt-input {
 .heading-list-item[data-level="5"] .text::after,
 .heading-list-item[data-level="6"] .text::after{
 	font-size:	var(--font-ui-smaller);
-	color:		var(--OT-color-on-accent-1)	!important;
+	color:		var(--OT-color-muted-on-base-20)	!important;
 }
 .heading-list-item .text-wrap .text:hover::after {
 	font-size:	var(--font-ui-smaller);
@@ -7142,6 +7151,16 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
   }
 }
 /*	---------- ↑ Recent notes plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl54	*/
+/*	———————————————————— QuickAdd plugin  ————————————————————	*/
+/*	pour afficher plus grand le texte dans la boite de dialogue de saisie, quand l’écran est suffisamment grand	*/
+@media screen and (min-width: 781px) {
+	.wideInputPromptInputEl {
+		font-size:	var(--font-ui-large);
+	}
+}
+/*	---------- ↑ QuickAdd plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl99	*/
