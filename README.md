@@ -124,6 +124,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+
+#### 06.04.2025	Version 1.48.5
+Improvements for the “Floating TOC” plugin.
+
+
+----------------------------------------------
 #### 02.04.2025	Version 1.48.4
 Small tweaks for the “Floating TOC” plugin.
 Added code to display bigger the text inside the input box of the “Quickadd” plugin, when the screen is large enough.

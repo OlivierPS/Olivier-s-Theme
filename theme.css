@@ -174,6 +174,7 @@
 			02.04.2025	Tweaks for the “Floating TOC” plugin									1.48.4
 						Added code to display bigger the text inside the input box of the
 						“Quickadd” plugin, when the screen is large enough.
+			06.04.2025	Improvements for the “Floating TOC” plugin								1.48.5
 
 
 --------------------------------------------------------------------------------------------------------
@@ -245,6 +246,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl53		Text selection when it takes the accent color
 			OpSpl54		Recent notes plugin
 			OpSpl55		QuickAdd plugin
+			OpSpl56		Another Quick Switcher plugin
 
 			OpSpl99		to be sorted…
 
@@ -7005,6 +7007,19 @@ input.prompt-input {
 //	--actual-toc-width:						26rem	!important;
 	--floating-toc-response-time:			0.0s	!important;
 }
+
+.heading-list-item .text-wrap.located .text {
+	color:			var(--floating-toc-font-color);
+	font-weight:	700;
+	font-size:		1.1em;
+}
+
+.heading-list-item.located .text-wrap:not(.located) .text {
+	color:			var(--floating-toc-font-color);
+	font-weight:	600;
+	font-size:		1.1em;
+}
+
 .heading-list-item .text-wrap .text:hover {
 	color:				var(--OT-color-on-accent-1)	!important;
 	background-color:	var(--color-accent-1)		!important;
@@ -7152,7 +7167,7 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 }
 /*	---------- ↑ Recent notes plugin ↑ ----------	*/
 
-/*	Bookmark	OpSpl54	*/
+/*	Bookmark	OpSpl55	*/
 /*	———————————————————— QuickAdd plugin  ————————————————————	*/
 /*	pour afficher plus grand le texte dans la boite de dialogue de saisie, quand l’écran est suffisamment grand	*/
 @media screen and (min-width: 781px) {
@@ -7161,6 +7176,14 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 	}
 }
 /*	---------- ↑ QuickAdd plugin ↑ ----------	*/
+
+
+/*	Bookmark	OpSpl56	*/
+/*	———————————————————— Another Quick Switcher plugin  ————————————————————	*/
+.another-quick-switcher__custom__item__title {
+	font-weight:	600;	/*	700 (plugin’s default) is too much for my taste	*/
+}
+/*	---------- ↑ Another Quick Switcher plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl99	*/
@@ -7180,26 +7203,6 @@ input[type='number']::placeholder {
 .inline-title {
 	text-align:		right;
 	padding-bottom:	1em;
-}
-
-/*	—————————————————————————————— la palette des commandes ——————————————————————————————
-.suggestion-item.mod-complex.is-selected,
-.suggestion-item.mod-complex.is-selected .suggestion-note,
-.suggestion-item.mod-complex.is-selected .suggestion-flair {
-	color:				var(--text-on-accent);
-}
-.suggestion-item.is-selected,
-.suggestion-item.is-selected .another-quick-switcher__item__title,
-.suggestion-item.is-selected .another-quick-switcher__item__description__header,
-.suggestion-item.is-selected .another-quick-switcher__item__description__link {
-	color:				var(--text-on-accent);
-	background-color:	var(--interactive-accent-hover);
-} */
-/*	-------------------- ↑ palette des commandes ↑ --------------------	*/
-
-/* correction d’une erreur dans le plugin “another quick switcher”	*/
-.another-quick-switcher__create_button {
-	color:		var(--text-normal);
 }
 
 /*	les deux petits boutons “import” et “export” des “Style settings”	*/
