@@ -175,6 +175,7 @@
 						Added code to display bigger the text inside the input box of the
 						“Quickadd” plugin, when the screen is large enough.
 			06.04.2025	Improvements for the “Floating TOC” plugin								1.48.5
+			13.04.2025	Added code for the “Highlight active folder section” plugin				1.49.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -247,6 +248,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl54		Recent notes plugin
 			OpSpl55		QuickAdd plugin
 			OpSpl56		Another Quick Switcher plugin
+			OpSpl57		Highlight active folder section plugin
 
 			OpSpl99		to be sorted…
 
@@ -523,6 +525,20 @@ body {
 
 	--vault-profile-color:			var(--OT-view-header-title-focus-color);
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
+
+	/*	a series of variables used by the “Highlight active folder section”	plugin   */
+	--highlighted-parent-folder-text-color:		var(--OT-color-on-accent-3) !important;
+	--highlighted-parent-folder-background:		var(--color-accent-3) !important;
+	--highlighted-parent-folder-color:			yellow !important;
+	--highlighted-folder-title-color:			var(--OT-color-on-accent-2) !important;
+	--highlighted-folder-title-background:		var(--color-accent-2) !important;
+	--highlighted-folder-text-color:			var(--nav-item-color) !important;
+	--highlighted-folder-current-note-color:	var(--OT-view-header-title-focus-color);
+	--highlighted-folder-background:			var(--color-base-05) !important;
+	--highlighted-folder-color:					yellow !important;
+	--highlighted-folder-font-weight:			var(--font-normal);
+	--highlighted-parent-folder-font-weight:	var(--font-normal);
+
 
 /*	Bookmark	OpSpl04	*/
 	/* ----- Accent colors  -----	*/
@@ -1817,7 +1833,7 @@ body {
 	--OT-color-on-accent-2:			white;
 	--OT-color-muted-on-accent-2:	#DDD6F5;
 	--OT-color-on-accent-3:			4529A3;
-	--OT-view-header-title-focus-color:	var(--color-accent-2);
+	--OT-view-header-title-focus-color:	var(--obsidian-violet);
 }
 .theme-light.lightPalette-OBSIDIAN.accentColor-lightMode-alternative-1 {
 	--accent-h:						134	!important;
@@ -1838,15 +1854,16 @@ body {
 	--accent-s:						80%	!important;
 	--accent-l:						60%	!important;
 	--color-accent-1:				hsl(44,80%,80%)	!important;
-	--OT-color-on-accent-1:			#BE9115	!important;
-//	--color-accent-2:				#EFCC6C	!important;
+	--OT-color-on-accent-1:			#72570C	!important;
+	--OT-color-muted-on-accent-1:	#A98012	!important;
+	--color-accent-2:				#EBBF47	!important;
 	--color-accent-3:				#F7E7B9	!important;
-	--OT-color-muted-on-accent-1:	#72570C	!important;
 	--OT-color-on-accent-2:			#FEFCF6	!important;
+	--OT-color-muted-on-accent-2:	#FDFAF0	!important;
 	--OT-color-on-accent-3:			#624B0B	!important;
 //	--status-bar-text-color:		#DDA818;
 	--icon-color:					#DDA818;
-//	--OT-view-header-title-focus-color:	var(--color-accent-2);
+	--OT-view-header-title-focus-color:	#E6AF19;
 }
 .theme-light.lightPalette-green.accentColor-lightMode-shade {
 	--accent-h:						142	!important;
@@ -2228,7 +2245,8 @@ body {
 	--OT-color-on-accent-1:				#fff	!important;
 	--OT-color-on-accent-2:				#fff	!important;
 	--OT-color-on-accent-3:				#4B4643;
-	--OT-text-selection-background:					hsl(var(--accent-h), var(--accent-s), 78%);
+	--OT-text-selection-background:		hsl(var(--accent-h), var(--accent-s), 78%);
+	--OT-view-header-title-focus-color:	#35312E;
 }
 .theme-light.lightPalette-stone.accentColor-lightMode-alternative-1 {
 	--accent-h:						254	!important;
@@ -2251,9 +2269,11 @@ body {
 	--OT-color-muted-on-accent-2:	#E5F0C3	!important;
 	--OT-color-on-accent-3:	#495816	!important;
 	--OT-text-selection-background:		hsl(var(--accent-h), var(--accent-s), 68%);
+	--OT-view-header-title-focus-color:	var(--color-accent-2);
 }
 
 .theme-light.lightPalette-sunnyMemos.accentColor-lightMode-shade {
+	--highlighted-folder-current-note-color:	var(--color-base-70);
 }
 .theme-light.lightPalette-sunnyMemos.accentColor-lightMode-alternative-1 {
 	--accent-h:	213	!important;
@@ -2273,6 +2293,7 @@ body {
 	--OT-color-on-accent-2:	#09442A	!important;
 //	--OT-color-on-accent-3:	#000;	!important;
 	--OT-color-muted-on-accent-1:	#CBF8E4;
+	--OT-view-header-title-focus-color:	#11804E;
 }
 
 .theme-light.lightPalette-violet.accentColor-lightMode-shade {
@@ -5141,7 +5162,7 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 }
 
 .nav-file-title {
-	border-bottom:	1px dotted var(--OT-color-on-base-20);
+//	border-bottom:	1px dotted var(--OT-color-on-base-20);
 }
 /* ------------------------------ ↑ OpSpl Sidebars ↑ ------------------------------ */
 
@@ -7185,6 +7206,42 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 }
 /*	---------- ↑ Another Quick Switcher plugin ↑ ----------	*/
 
+/*	Bookmark	OpSpl57	*/
+/*	———————————————————— Highlight active folder section plugin  ————————————————————	*/
+.highlighted-folder {
+	color:				var(--highlighted-folder-text-color);
+    background-color:	var(--highlighted-folder-background);
+}
+.highlighted-folder > .nav-folder-title {			/*	le titre du folder courant	*/
+	color:				var(--highlighted-folder-title-color);
+	background-color:	var(--highlighted-folder-title-background);
+}
+.highlighted-parent-folder {						/*	tout le folder parent	*/
+	color:				var(--highlighted-parent-folder-text-color);
+	background-color:	var(--highlighted-parent-folder-background);
+}
+.highlighted-parent-folder > .nav-folder-title {	/*	le nom du folder parent	*/
+	font-size:	1.05em;
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+}
+.highlighted-folder .nav-file-title {					/*	tous les noms de fichiers	*/
+	color:				var(--highlighted-folder-text-color);
+//	background-color:	pink !important;
+}
+.highlighted-folder .nav-file-title.is-active {	/*	le fichier courant	*/
+	color:				var(--highlighted-folder-current-note-color)	!important;
+	background-color:	transparent !important;
+	font-weight:		var(--font-semibold);
+}
+.highlighted-folder .nav-file-title:hover,
+.highlighted-parent-folder .nav-file-title:hover,
+.highlighted-folder .nav-file-title.is-being-dragged,
+.highlighted-parent-folder .nav-file-title.is-being-dragged {
+    color:				var(--OT-color-on-accent-1)	!important;
+    background-color:	var(--color-accent-1)	!important;
+}
+/*	---------- ↑ Highlight active folder section plugin ↑ ----------	*/
 
 /*	Bookmark	OpSpl99	*/
 /* ————————————————————————————————————————————————————————————	*/

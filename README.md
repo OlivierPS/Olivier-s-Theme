@@ -123,8 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 13 avril 2025
+Added code for the “Highlight active folder section” plugin.
 
-
+----------------------------------------------
 #### 06.04.2025	Version 1.48.5
 Improvements for the “Floating TOC” plugin.
 
