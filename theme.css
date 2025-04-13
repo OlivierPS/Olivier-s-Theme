@@ -250,6 +250,8 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl56		Another Quick Switcher plugin
 			OpSpl57		Highlight active folder section plugin
 
+			OpSpl90		Some useful CSSCLASSES
+
 			OpSpl99		to be sorted…
 
 			OpSpl100	Definitions for the Style settings plugin
@@ -7242,6 +7244,23 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
     background-color:	var(--color-accent-1)	!important;
 }
 /*	---------- ↑ Highlight active folder section plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl90	*/
+/*	———————————————————— Some useful CSSCLASSES ————————————————————	*/
+.readingMode-text-big {
+	--OT-readingMode-text-size:		1.1em	!important;
+	--table-text-size:				1em	!important;
+}
+.readingMode-text-bigger {
+	--OT-readingMode-text-size:		1.2em	!important;
+	--table-text-size:				1.1em	!important;
+}
+.readingMode-text-biggest {
+	--OT-readingMode-text-size:		1.3em	!important;
+	--table-text-size:				1.2em	!important;
+}
+/*	---------- ↑ Some useful CSSCLASSES ↑ ----------	*/
+
 
 /*	Bookmark	OpSpl99	*/
 /* ————————————————————————————————————————————————————————————	*/
