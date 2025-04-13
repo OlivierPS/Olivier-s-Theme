@@ -7247,6 +7247,14 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 /*	Bookmark	OpSpl90	*/
 /*	———————————————————— Some useful CSSCLASSES ————————————————————	*/
+.readingMode-text-smaller {
+	--OT-readingMode-text-size:		0.8em	!important;
+	--table-text-size:				0.7em	!important;
+}
+.readingMode-text-small {
+	--OT-readingMode-text-size:		0.9em	!important;
+	--table-text-size:				0.8em	!important;
+}
 .readingMode-text-big {
 	--OT-readingMode-text-size:		1.1em	!important;
 	--table-text-size:				1em	!important;
