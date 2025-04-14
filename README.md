@@ -123,10 +123,18 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 13 avril 2025
-Added code for the “Highlight active folder section” plugin.
-Added three useful CSSCLASSES:
 
+#### 14.04.2025 Version 1.50.0
+I’ve changed the position of the icon indicating “edit mode” from the top left of the pane to its top right. I always felt it would be more natural to have it there, next to the other indicators and the “more options” menu… but I didn’t know how to do it. Now, I’ve figured out the way!
+
+
+----------------------------------------------
+#### 13.04.2025 Version 1.49.0
+Added code for the “Highlight active folder section” plugin.
+Added five  useful CSSCLASSES:
+
+* readingMode-text-smaller
+* readingMode-text-small
 * readingMode-text-big
 * readingMode-text-bigger
 * readingMode-text-biggest
