@@ -178,6 +178,7 @@
 			13.04.2025	Added code for the “Highlight active folder section” plugin				1.49.0
 			14.04.2025	Changed the position of the icon indicating “edit mode” from top left to
 						top right																1.50.0
+			15.04.2025	Added code for the “execute script” button of the “JS Engine” plugin	1.50.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -254,7 +255,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 
 			OpSpl90		Some useful CSSCLASSES
 
-			OpSpl99		to be sorted…
+			OpSpl99		misc.; to be sorted…
 
 			OpSpl100	Definitions for the Style settings plugin
 
@@ -7457,8 +7458,18 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 /*	Bookmark	OpSpl99	*/
 /* ————————————————————————————————————————————————————————————	*/
-/* ———————————————————— À ranger ——————————————————————————————	*/
+/* ———————————————————— Misc.; to be sorted ————————————————————————————— */
 /* ————————————————————————————————————————————————————————————	*/
+
+/*	---------- JS Engine plugin ----------	*/
+.js-engine-execution-stats-button {
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
+}
+.js-engine-execution-stats-button:hover {
+	color:				var(--OT-button-background-normal);
+	background-color:	var(--OT-button-text-normal);
+}
 
 textarea::placeholder,
 input[type='text']::placeholder,

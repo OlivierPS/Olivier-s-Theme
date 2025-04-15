@@ -124,6 +124,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+
+#### 15.04 2025 Version 1.50.1
+Added code for the “execute script” button of the “JS Engine” plugin.
+
+----------------------------------------------
 #### 14.04.2025 Version 1.50.0
 I’ve changed the position of the icon indicating “edit mode” from the top left of the pane to its top right. I always felt it would be more natural to have it there, next to the other indicators and the “more options” menu… but I didn’t know how to do it. Now, I’ve figured out the way!
 
