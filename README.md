@@ -123,8 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19 avril 2025	Version 1.51.0
+Added a toggle for line wrapping within codeblocks.
+Adjusted colors inside codeblocks
 
-
+----------------------------------------------
 #### 15.04 2025 Version 1.50.1
 Added code for the “execute script” button of the “JS Engine” plugin.
 

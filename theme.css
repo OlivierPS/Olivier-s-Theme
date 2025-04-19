@@ -179,6 +179,8 @@
 			14.04.2025	Changed the position of the icon indicating “edit mode” from top left to
 						top right																1.50.0
 			15.04.2025	Added code for the “execute script” button of the “JS Engine” plugin	1.50.1
+			19.04.2025	Added a toggle for line wrapping within codeblocks
+						Adjusted colors inside codeblocks										1.51.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -199,7 +201,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl13:	Définition des couleurs pour le “highlight”
 			OpSpl14:	Définition des couleurs pour le fond du panneau d’édition
 			OpSpl15:	Définition de la couleur du texte en mode d’édition
-			OpSpl16:	Définition de l’icône en haut à gauche d’un panneau d’édition
+			OpSpl16:	Définition de l’icône en haut à droite d’un panneau d’édition
 			OpSpl17:	basic typography of the EDIT mode: font size, line length and line height
 			OpSpl18:	Les headings en mode d’édition
 			OpSpl19:	La fonte du mode d’édition
@@ -227,7 +229,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl31		Zoom-image
 			OpSpl32		PDFs
 			OpSpl33		Other refinements
-			OpSpl34		Blockquotes
+			OpSpl34		Blockquotes and codeblocks
 			OpSpl35		Contextual typography
 			OpSpl36		Headings to my taste
 			OpSpl37		Horizontal rule
@@ -420,8 +422,12 @@ body {
 	--checkbox-border-color-hover:	var(--color-accent-1);
 	--checklist-done-color:			var(--color-base-50);
 
-	--code-normal:					var(--text-normal);
 	--code-background:				floralwhite;
+	--code-comment:					var(--OT-syntax-markers);
+	--code-normal:					var(--text-normal);
+	--code-operator:				var(--text-normal);
+	--code-property:				var(--OT-color-on-base-20);
+	--code-string:					var(--link-color);
 	--code-tag:						var(--OT-syntax-markers);
 
 	--collapse-icon-color:				var(--h1-color);
@@ -4399,8 +4405,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-artDeco.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#2E6E74	*/
@@ -4408,8 +4414,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-beige.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#6A4F38	*/
@@ -4417,8 +4423,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-icy.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#0761BB	*/
@@ -4426,8 +4432,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-lightBeige.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#71573E	*/
@@ -4435,8 +4441,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-metallicBlue.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#255C84	*/
@@ -4444,8 +4450,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-paradiso.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#4C4D25	*/
@@ -4453,8 +4459,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-parchment.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#6F5B3E	*/
@@ -4462,8 +4468,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-pistachio.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#288045	*/
@@ -4471,8 +4477,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-red.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#5D0603	*/
@@ -4480,8 +4486,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-solarized.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#268bd2	*/
@@ -4489,8 +4495,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-sunnyMemos.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#a33e16	*/
@@ -4498,8 +4504,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.lightPalette-violet.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
 /*	couleur de la pastille:	#4B0B8B	*/
@@ -4507,8 +4513,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-light.inkColor-lightMode-amber .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4518,8 +4524,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-light.lightPalette-OBSIDIAN.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4530,8 +4536,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-blue .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-light.textColor-lightMode-blue.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4541,8 +4547,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-brown .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-brown .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4551,8 +4557,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-cyan .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-cyan .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4561,8 +4567,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-egg .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-egg .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4571,8 +4577,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-emerald .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-emerald .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4581,8 +4587,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-light.lightPalette-green.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4596,8 +4602,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-fuchsia .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-fuchsia .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4606,8 +4612,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-green .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-green .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4616,8 +4622,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-indigo .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-indigo .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4626,8 +4632,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-lightBlue .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-light.textColor-lightMode-lightBlue.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4637,8 +4643,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-darkBlue .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-light.textColor-lightMode-darkBlue.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4648,8 +4654,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-lime .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-lime .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4658,8 +4664,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-orange .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-orange .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4668,8 +4674,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-pink .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-pink .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4678,8 +4684,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-purple .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-purple .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4688,8 +4694,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-red .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-red .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4698,8 +4704,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-rose .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-rose .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4708,8 +4714,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-royalBlue .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-royalBlue .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4719,8 +4725,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-silver .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-silver .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4729,8 +4735,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-skyBlue .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-light.textColor-lightMode-skyBlue.inkColor-lightMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4740,8 +4746,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-solarized-base00 .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-light.inkColor-lightMode-solarized-base01 .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4756,8 +4762,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-teal .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-teal .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4766,8 +4772,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-darkRed .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-darkRed .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4776,8 +4782,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-terminalGreen .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-terminalGreen .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4786,8 +4792,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-violet .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-violet .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4796,8 +4802,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-white .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-white .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4806,8 +4812,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-yellow .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-yellow .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4816,8 +4822,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 .theme-light.inkColor-lightMode-zinc .markdown-source-view.mod-cm6 .cm-editor:before,
 .theme-dark.inkColor-darkMode-zinc .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4826,8 +4832,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-beige.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4837,8 +4843,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-black.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4848,8 +4854,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-blue.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4859,8 +4865,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-brown.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4870,8 +4876,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-green.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4881,8 +4887,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-icy.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4892,8 +4898,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-LYT.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4902,8 +4908,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-metallicBlue.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4913,8 +4919,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-OBSIDIAN.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4924,8 +4930,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-oliveGreen.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4936,8 +4942,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-parchment.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4947,8 +4953,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-red.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4958,8 +4964,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-solarized.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4969,8 +4975,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-stone.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -4980,8 +4986,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.lightPalette-sunnyMemos.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -4990,8 +4996,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-victorian.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before {
@@ -5000,8 +5006,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-violet.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -5011,8 +5017,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 
 .theme-dark.darkPalette-yellow.inkColor-darkMode-default .markdown-source-view.mod-cm6 .cm-editor:before,
@@ -5022,8 +5028,8 @@ input[type=checkbox] {
 	height:		0px;
 	background-color: transparent;
     position: absolute;
-    top: 0; /* Position at the top */
-    right: 0; /* Position at the right */
+	top:	0;
+	right:	0;
 }
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à gauche du panneau d’édition ↑ -------------------------	*/
 
@@ -6379,7 +6385,7 @@ div:not(.cm-callout):not(.HyperMD-list-line).image-embed img {
 
 
 /*	Bookmark	OpSpl34	*/
-/*	—————————————————————————————— OpSpl Blockquotes —————————————————————————————— */
+/*	—————————————————————————————— OpSpl Blockquotes and codeblocks —————————————————————————————— */
 /* Tout ce qui concerne les citations:
 	* le “blockquote”
 	* le style pour l’origine (l’auteur) de la citation */
@@ -6423,7 +6429,16 @@ div:not(.cm-callout):not(.HyperMD-list-line).image-embed img {
 .citation-source:before { /* Devant l’auteur de la citation: un tiret cadratin suivi d’un espace demi-cadratin	*/
 	content:	"—\2002";
 }
-/* -------------------- ↑ OpSpl Blockquotes ↑ -------------------- */
+
+/*	linewrapping ON inside codeblocks if set via Styles settings	*/
+.OT-codeblock-linewrap-OFF .HyperMD-codeblock,
+.OT-codeblock-linewrap-OFF .markdown-preview-view pre > code {
+	white-space:	pre;	/* Prevent line wrapping */
+	overflow-x:		auto;	/* Enable horizontal scrolling */
+}
+
+
+/* -------------------- ↑ OpSpl Blockquotes and codeblocks ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl35	*/
@@ -7766,18 +7781,24 @@ settings:
 	-
 			id:			OT-kanban-font-size
 			title:		Kanban — Size of the cards text [px]
-			title.fr:		Kanban — Taille des caractères dans les fiches [px]
+			title.fr:	Kanban — Taille des caractères dans les fiches [px]
 			type:		variable-number
 			default:	16
 			format:		px
 	-
- 			id:		OT-tab-title-highlighted
- 			title:	Highlight current tab
- 			title.fr:	Tab courant mis en évidence
+ 			id:			OT-codeblock-linewrap-OFF
+ 			title:		Suppress line wrapping within code blocks
+ 			title.fr:	Supprimer les retours à la ligne dans les blocs de code
+ 			type: 		class-toggle
+ 			default: 	TRUE
+	-
+ 			id:				OT-tab-title-highlighted
+ 			title:			Highlight current tab
+ 			title.fr:		Tab courant mis en évidence
  			description:	Highlight the name of the current note in the tab title
  			description.fr:	Met en évidence sur le tab le nom de la fiche courante
- 			type: 		class-toggle
- 			default: 	false
+ 			type: 			class-toggle
+ 			default: 		false
 	-
  			id:				OT-canvas-dot-pattern-hidden
  			title:			Hide canvas dot pattern
