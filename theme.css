@@ -182,6 +182,7 @@
 			19.04.2025	Added a toggle for line wrapping within codeblocks
 						Adjusted colors inside codeblocks										1.51.0
 			23.04.2025	Small tweaks to navigation items colors									1.51.1
+			25.04.2025	Tweaks for non existing images											1.51.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6757,6 +6758,7 @@ a:hover,
 }
 
 /* ---------- Lien vers une image inexistante  */
+.file-embed.mod-empty-attachment,
 .file-embed.mod-generic,
 .file-embed.mod-empty {
 	color:				var(--OT-color-on-accent-1);
@@ -6764,10 +6766,11 @@ a:hover,
 }
 /* ---------- Lien vers une image inexistante survolé  */
 @media (hover: hover) {
-  .file-embed.mod-generic:hover,
-  .file-embed.mod-empty:hover {
-    color: 				var(--link-unresolved-color);
-    background-color:	var(--OT-color-on-accent-1);
+	.file-embed.mod-empty-attachment:hover,
+	.file-embed.mod-generic:hover,
+	.file-embed.mod-empty:hover {
+    	color: 				var(--link-unresolved-color);
+    	background-color:	var(--OT-color-on-accent-1);
   }
 }
 

@@ -124,6 +124,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+
+#### 25.04.2025	Version 1.51.2
+Tweaks for non existing images.
+
+----------------------------------------------
 #### 23.04.2025	Version 1.51.1
 Small tweaks to navigation items colors.
 
