@@ -123,8 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 26 avril 2025 Version 1.52.0
+Fine tuned the links — existing, non existing, hovered, images — both in light and dark modes.
+Fine tuned the keyboard keys (`kbd`) like <kbd>⌘</kbd> <kbd>E</kbd>, also in light and dark modes.
 
-
+----------------------------------------------
 #### 25.04.2025	Version 1.51.2
 Tweaks for non existing images.
 

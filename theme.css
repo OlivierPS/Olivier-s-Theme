@@ -183,6 +183,7 @@
 						Adjusted colors inside codeblocks										1.51.0
 			23.04.2025	Small tweaks to navigation items colors									1.51.1
 			25.04.2025	Tweaks for non existing images											1.51.2
+			26.04.2025	Fine tuned the links and the `kbd`										1.52.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -349,8 +350,8 @@ body {
 	--OT-color-on-accent-2:							var(--color-base-100);
 	--OT-color-on-accent-3:							var(--color-base-100);
 	--OT-color-on-base-20:							var(--color-base-100);
+	--OT-kbd:										#353500;
 	--OT-kbd-background:							ivory;
-	--OT-link-color-hover:							var(--color-base-00);
 	--OT-menu-text-color:							var(--color-base-70);
 	--OT-menu-background:							var(--color-base-05);
 	--OT-metadata-property-icon:					var(--icon-color);
@@ -385,7 +386,6 @@ body {
 
 /*	Bookmark	OpSpl03	*/
 /*	---------- INITIALISATION DES VARIABLES GLOBALES ----------	*/
-
 
 	/*	----- Backgrounds  -----
 		--------------------------	*/
@@ -469,9 +469,12 @@ body {
   	--inline-title-color:		var(--color-base-50);
 
 	--link-color:				var(--obsidian-violet);
- 	--link-color-hover:			var(--text-accent-hover);
 	--link-external-color:		var(--link-color);
 	--link-unresolved-color:	var(--color-red) ;
+ 	--link-decoration:					none;
+ 	--link-decoration-hover:			none;
+ 	--link-external-decoration:			none;
+ 	--link-external-decoration-hover:	none;
 
 	--list-marker-color:		var(--text-normal);
 
@@ -501,10 +504,12 @@ body {
 	--pill-color-remove:		var(--OT-pill-background);
 	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
 
+	--status-bar-text-color:	var(--OT-color-on-accent-2);
 	--status-bar-background:	var(--color-accent-2);
+	--status-bar-border-color:	red;
+	--status-bar-font-size:		var(--font-ui-small);
 	--status-bar-border-width:	1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
 //	--status-bar-radius:		0 0 0 0;
-	--status-bar-text-color:	var(--OT-color-on-accent-2);
 
 	--tab-text-color:							var(--color-base-50);
 	--tab-text-color-active:					var(--color-base-70);
@@ -643,9 +648,11 @@ body {
 .theme-dark {
 	--OT-text-selection-background:	hsl(var(--accent-h), var(--accent-s), 20%);
 	--OT-text-selection-color:		var(--text-normal);
+	--OT-kbd:						white;
+	--OT-kbd-background:			#6D6D6D;
 	/*	je trouve le rouge un peu trop «pétant» → je corrige	*/
 	--color-red-rgb:					199, 56, 60;
-	--color-red:						#C7383C;
+	--color-red:						#EF5547;
 	--background-modifier-form-field:	var(--color-base-00);
 }
 
@@ -660,7 +667,6 @@ body {
 	--link-color:						var(--obsidian-violet);
 	--OT-table-header-background:		#eee;
 	--icon-color:						var(--color-accent-1);
-	--status-bar-text-color:			var(--color-accent-1);
 	--OT-view-header-title-no-focus-color:	grey;
 }
 /*	----------------------------------------------	*/
@@ -6719,50 +6725,30 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 
 /*	Bookmark	OpSpl39	*/
 /* —————————————————————————————— Links —————————————————————————————— */
-/* ---------- no underline */
- body {
- 	--link-decoration:					none;		/* Depuis la version 0.16.0, c’est suffisant, en tout cas pour le mode "Preview" */
- 	--link-decoration-hover:			none;
- 	--link-external-decoration:			none;
- 	--link-external-decoration-hover:	none;
-}
 
-/* ---------- liens survolés: j’aime bien qu’ils soient en «inversé» */
-/*	sauf en mode “edit”
-.cm-s-obsidian span.cm-hmd-internal-link:hover,
-.cm-s-obsidian span.cm-link:hover,
-.cm-s-obsidian span.cm-hmd-internal-link:hover,
-.cm-s-obsidian span.cm-link:hover,
-.cm-s-obsidian span.cm-url:hover, */
+/* ---------- Lien vers une image inexistante  */
+.file-embed.mod-empty-attachment,
+.file-embed.mod-generic,
+.file-embed.mod-empty {
+	color:				white;
+	background-color:	var(--link-unresolved-color);
+}
+/* ---------- liens survolés ---------- */
 a:hover,
 .external-link:hover,
 .markdown-rendered .internal-link:hover,
 .markdown-source-view.mod-cm6 .cm-link .cm-underline:hover,
 .markdown-source-view.mod-cm6 .cm-url .cm-underline:hover
 {
-	color:				var(--OT-link-color-hover);
-	background-color:	var(--link-color);
-}
-
-/* ---------- Liens inexistants	*/
-.markdown-rendered .internal-link.is-unresolved:hover,
-.markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
-	opacity:			1;
-	color:				var(--OT-link-color-hover);
-	background-color:	var(--link-unresolved-color);
-}
-
-.is-loaded.file-embed.mod-empty {
-	color:				var(--OT-link-color-hover);
-	background-color:	var(--link-unresolved-color);
-}
-
-/* ---------- Lien vers une image inexistante  */
-.file-embed.mod-empty-attachment,
-.file-embed.mod-generic,
-.file-embed.mod-empty {
 	color:				var(--OT-color-on-accent-1);
-	background-color:	var(--link-unresolved-color);
+	background-color:	var(--color-accent-1);
+}
+@media (hover: hover) {		/*	lien inexistant survolé	*/
+	.metadata-container .internal-link.is-unresolved:hover,
+	.markdown-rendered .internal-link.is-unresolved:hover {
+    	color:				white;
+    	background-color: 	var(--link-unresolved-color);
+}
 }
 /* ---------- Lien vers une image inexistante survolé  */
 @media (hover: hover) {
@@ -6770,18 +6756,11 @@ a:hover,
 	.file-embed.mod-generic:hover,
 	.file-embed.mod-empty:hover {
     	color: 				var(--link-unresolved-color);
-    	background-color:	var(--OT-color-on-accent-1);
+    	background-color:	white;
   }
 }
 
-/*	---------- les footnotes sont un cas particulier de liens ---------- */
-.footnote-ref {
-	color:	var(--link-color) !important;
-}
-.footnote-ref:hover {
-	color:				var(--OT-link-color-hover) !important;
-	background-color:	var(--link-color) !important;
-}
+/*	---------- le lien de retour des footnotes ---------- */
 .footnote-backref {
 	color:	var(--link-color);
 }
@@ -7096,11 +7075,12 @@ button.canvas-menu-item {
 /*	Bookmark	OpSpl46	*/
 /* ---------- classe KBD, pour documenter les raccourcis clavier ---------- */
 kbd {
-    font-family:		"IBM Plex Mono","Frutiger Neue LT Pro", "Avenir Next","Helvetica Neue";
-    font-weight:		500;
-	font-size:			1.06em;
+    font-family:		"Frutiger Neue LT Pro", "Avenir Next", "IBM Plex Mono", "Helvetica Neue";
+    font-weight:		var(--font-semibold);
+	font-size:			1.02em;
+	color:				var(--OT-kbd);
 	background-color:	var(--OT-kbd-background);
-	border:				1px	solid var(--text-normal);
+	border:				1px	solid var(--OT-kbd);
 }
 
 
