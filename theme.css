@@ -184,6 +184,7 @@
 			23.04.2025	Small tweaks to navigation items colors									1.51.1
 			25.04.2025	Tweaks for non existing images											1.51.2
 			26.04.2025	Fine tuned the links and the `kbd`										1.52.0
+			27.04.2025	More logical text size in the sidebars, in some cases					1.52.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -504,6 +505,8 @@ body {
 	--pill-color-remove:		var(--OT-pill-background);
 	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
 
+//	--sidebar-markdown-font-size:	calc(var(--OT-readingMode-text-size) * 0.9);
+
 	--status-bar-text-color:	var(--OT-color-on-accent-2);
 	--status-bar-background:	var(--color-accent-2);
 	--status-bar-border-color:	red;
@@ -593,6 +596,7 @@ body {
 	--file-header-justify:		left;
 
 	--file-line-width:			var(--OT-readingMode-line-width);
+	--font-text-size:			var(--OT-readingMode-text-size);
 	--heading-spacing:			0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
     --img-max-height:			33rem;	/* to prevent images with portrait proportions from overwhelming text; put "100%" if you don’t like this idea */
 	--inline-title-font:		var(--font-monospace);
