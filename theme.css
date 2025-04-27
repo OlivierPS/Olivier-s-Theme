@@ -596,7 +596,7 @@ body {
 	--file-header-justify:		left;
 
 	--file-line-width:			var(--OT-readingMode-line-width);
-	--font-text-size:			var(--OT-readingMode-text-size);
+	--font-text-size:			var(--OT-readingMode-text-size) !important;
 	--heading-spacing:			0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
     --img-max-height:			33rem;	/* to prevent images with portrait proportions from overwhelming text; put "100%" if you don’t like this idea */
 	--inline-title-font:		var(--font-monospace);
