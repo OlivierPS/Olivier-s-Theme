@@ -187,6 +187,7 @@
 			27.04.2025	More logical text size in the sidebars, in some cases					1.52.1
 			11.05.2025	Added adjustments for the “Related Notes” plugin						1.53.0
 																								1.53.1
+						The separation line between panes and sidebars is back!					1.53.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5748,10 +5749,6 @@ td .cm-editor .cm-line {
 }
 .workspace-split.mod-horizontal > * > .workspace-leaf-resize-handle {
 	border-bottom:	none;
-}
-/*	suppression du bord interne des sidebars, qui épaississait la séparation d’avec les panneaux	*/
-.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
-	border-inline-start-width:	0;
 }
 /* -------------------- ↑ En-tête des panneaux ↑ -------------------- */
 

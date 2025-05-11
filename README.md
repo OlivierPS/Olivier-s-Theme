@@ -124,8 +124,9 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
-#### 11.05.2025	Versions 1.53.0 and 1.53.1
+#### 11.05.2025	Versions 1.53.0, 1.53.1 and 1.53.2
 Added code for the “Related Notes” plugin.
+The separation line between editing panes and sidebar is back!
 
 ----------------------------------------------
 #### 28.04.2025 Version 1.52.1
