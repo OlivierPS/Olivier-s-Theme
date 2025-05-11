@@ -123,6 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+
+#### 11.05.2025
+Added code for the “Related Notes” plugin.
+
+----------------------------------------------
 #### 28.04.2025 Version 1.52.1
 More logical text size in the sidebars, in some cases.
 

@@ -185,6 +185,7 @@
 			25.04.2025	Tweaks for non existing images											1.51.2
 			26.04.2025	Fine tuned the links and the `kbd`										1.52.0
 			27.04.2025	More logical text size in the sidebars, in some cases					1.52.1
+			11.05.2025	Added adjustments for the “Related Notes” plugin						1.53.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -258,6 +259,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl55		QuickAdd plugin
 			OpSpl56		Another Quick Switcher plugin
 			OpSpl57		Highlight active folder section plugin
+			OpSpl58		Related Notes plugin
 
 			OpSpl90		Some useful CSSCLASSES
 
@@ -7438,6 +7440,168 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
     background-color:	var(--color-accent-1)	!important;
 }
 /*	---------- ↑ Highlight active folder section plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl58	*/
+/*	———————————————————— Related Notes plugin  ————————————————————	*/
+.related-notes-header {
+	padding:			var(--size-4-1) var(--size-4-2);
+	border-bottom:		none;
+}
+.related-notes-header h4 {
+	font-size:		var(--font-ui-medium);
+	font-weight:	var(--font-semibold);
+	color:			inherit;	/*	var(--text-muted);	*/
+	text-transform:	none;
+}
+.related-notes-reindex-button {
+	font-size:			var(--font-ui-medium);
+	border-radius:		var(--radius-s);
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
+}
+.related-notes-reindex-button:hover {
+	color:				var(--OT-button-text-hover);
+    background-color:	var(--OT-button-background-hover);
+}
+/*
+.related-notes-reindex-button.reindexing {
+	animation:	spin 1.5s linear infinite;
+	color:		var(--text-accent);
+	cursor:		wait;
+}*/
+
+/* Content styles */
+.related-notes-content {
+	padding:		var(--size-2-2) 0px;
+	vertical-align:	top;
+	margin-top:		-2px;
+}
+
+/* List styles
+.related-notes-list {
+	margin:		0;
+	padding:	0;
+	list-style:	none;
+	contain:	layout style;
+} */
+
+.related-note-item {
+	display:			flex;
+	align-items:		baseline;
+	padding:			0px 0px;
+	margin:				var(--size-2-1) 0;
+	border-radius:		var(--radius-s);
+	transition:			none;	/*	all 0.15s ease-in-out;	*/
+	border: 			none;	/*	1px solid transparent;	*/
+}
+.related-note-item::before {
+	content: 		"⭢";
+	margin-right:	0.4em;
+	font-size:		var(--font-ui-small);
+}
+.related-note-item:hover {
+	background-color:	var(--color-accent-1);
+	color:				var(--OT-color-on-accent-1);
+	border-color:		none;	/*	var(--background-modifier-border);	*/
+}
+.related-note-item:hover .related-note-link {
+    background-color:	var(--color-accent-1);
+    color: 				var(--OT-color-on-accent-1);
+}
+.related-note-link-container {
+	justify-content:	space-between;
+	align-items:	flex-start;
+	width:			100%;
+	margin-bottom:	var(--size-2-1);
+}
+.related-note-link {
+	color:				var(--OT-color-muted-on-base-20);
+	text-decoration:	none;
+	font-size:			var(--font-ui-small);
+	font-weight:		var(--font-medium);
+	white-space:		normal;	/*	nowrap;	*/
+	line-height:		1.1em;
+}
+.related-note-link:hover {
+	color:				var(--OT-color-on-accent-1);
+}
+.related-notes-message {
+	color:	var(--OT-color-muted-on-base-20);	/*	var(--text-muted);	*/
+}
+.related-notes-message-text {
+	margin:		0 0 var(--size-4-2);
+	font-size:	var(--font-ui-medium);
+}
+.related-notes-message-subtext {
+	font-size:	var(--font-ui-small);
+}
+.related-notes-info {
+	padding:	var(--size-4-2) 0;
+	color:		var(--OT-color-muted-on-base-20);	/*	var(--text-muted);	*/
+}
+.related-notes-info-text {
+	font-size:	var(--font-ui-medium);
+}
+/* Item container styles
+.related-note-item-container {
+	display:			flex;
+	justify-content:	space-between;
+	align-items:		center;
+	width:				100%;
+} */
+.related-note-actions {
+	align-self:		flex-start;
+	gap:			var(--size-4-1);
+	margin-left:	var(--size-4-2);
+	padding:		var(--size-2-1) 0;
+}
+.related-note-link-button {
+	font-size:			var(--font-ui-smaller);
+	padding:			0 var(--size-2-3);
+	border-radius:		var(--radius-s);
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
+//	margin:				var(--size-2-1);
+//	border:				none;
+//	cursor:				pointer;
+//	transition:			background-color 0.15s ease;
+}
+.related-note-link-button:hover {
+	color:				var(--OT-button-background-normal);
+	background-color:	var(--OT-button-text-normal);
+}
+.related-note-link-button.linked {
+	color:				var(--OT-button-cta-text-normal);
+	background-color:	var(--OT-button-cta-background-normal);
+}
+.related-note-link-button.linked:hover {
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
+}
+.related-note-indicator {
+	font-size:		var(--font-ui-small);
+	color:			var(--OT-color-muted-on-base-20);	/*	var(--text-muted);	*/
+	margin-left:	var(--size-4-2);
+}
+.related-notes-progress-container {
+	height:				var(--size-4-2);
+	background-color:	yellow	/*	var(--background-modifier-border);	*/
+	border-radius:		var(--radius-s);
+	margin-top:			var(--size-4-2);
+}
+.related-notes-progress-indicator {
+	background-color:	var(--color-accent-2);	/*	var(--interactive-accent);	*/
+}
+.related-notes-progress-text {
+	font-size:	var(--font-ui-small);
+	color:		var(--OT-color-muted-on-base-20);	/*	var(--text-muted);	*/
+	margin-top:	var(--size-4-1);
+}
+.related-notes-button-container {
+	gap:		var(--size-4-2);
+}
+/*	---------- ↑ Related Notes plugin ↑ ----------	*/
+
 
 /*	Bookmark	OpSpl90	*/
 /*	———————————————————— Some useful CSSCLASSES ————————————————————	*/
