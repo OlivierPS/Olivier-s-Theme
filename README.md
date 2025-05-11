@@ -124,7 +124,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
-#### 11.05.2025
+#### 11.05.2025	Versions 1.53.0 and 1.53.1
 Added code for the “Related Notes” plugin.
 
 ----------------------------------------------

@@ -186,6 +186,7 @@
 			26.04.2025	Fine tuned the links and the `kbd`										1.52.0
 			27.04.2025	More logical text size in the sidebars, in some cases					1.52.1
 			11.05.2025	Added adjustments for the “Related Notes” plugin						1.53.0
+																								1.53.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7444,8 +7445,9 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 /*	Bookmark	OpSpl58	*/
 /*	———————————————————— Related Notes plugin  ————————————————————	*/
 .related-notes-header {
-	padding:			var(--size-4-1) var(--size-4-2);
-	border-bottom:		none;
+	padding:		var(--size-4-1) var(--size-4-2);
+	border-bottom:	none;
+	border-radius:	var(--radius-s);
 }
 .related-notes-header h4 {
 	font-size:		var(--font-ui-medium);
