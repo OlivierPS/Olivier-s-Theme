@@ -188,6 +188,7 @@
 			11.05.2025	Added adjustments for the “Related Notes” plugin						1.53.0
 																								1.53.1
 						The separation line between panes and sidebars is back!					1.53.2
+			16.05.2025	Fix for the “Note Status” plugin										1.54.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -262,6 +263,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl56		Another Quick Switcher plugin
 			OpSpl57		Highlight active folder section plugin
 			OpSpl58		Related Notes plugin
+			OpSpl59		Note Status plugin
 
 			OpSpl90		Some useful CSSCLASSES
 
@@ -7600,6 +7602,17 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 	gap:		var(--size-4-2);
 }
 /*	---------- ↑ Related Notes plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl59	*/
+/*	———————————————————— Note Status plugin  ————————————————————	*/
+.note-status-bar .note-status-unknown,
+.nav-file-title .note-status-unknown {
+	color:	cyan	!important;		/*	For now (2025-05-16), I can’t correct the color set by the plugin’s  author. This is to check wether he has corrected his “important!” directive.	*/
+}
+.note-status-bar {
+	height:	unset !important;
+}
+/*	---------- ↑ Note Status plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl90	*/

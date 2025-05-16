@@ -124,6 +124,13 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
+
+#### 16.05.2025	Version 1.54.0
+Adjustment for the “Note Status” plugin: the indicator on the status bar has the correct height.
+For the time being, I can’t correct the color of the “status unknown” text. Unfortunately.
+
+
+----------------------------------------------
 #### 11.05.2025	Versions 1.53.0, 1.53.1 and 1.53.2
 Added code for the “Related Notes” plugin.
 The separation line between editing panes and sidebar is back!
