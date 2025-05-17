@@ -125,6 +125,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 
 
+
+#### 17.05.2025	Version 1.54.2
+Improved the “KBD” element (for keyboard shortcuts).
+
+----------------------------------------------
 #### 16.05.2025	Versions 1.54.0 and 1.54.1
 Adjustment for the “Note Status” plugin: the indicator on the status bar has the correct height.
 For the time being, I can’t correct the color of the “status unknown” text. Unfortunately.

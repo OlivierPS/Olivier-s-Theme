@@ -190,6 +190,7 @@
 						The separation line between panes and sidebars is back!					1.53.2
 			16.05.2025	Fix for the “Note Status” plugin										1.54.0
 						status icons in the navigation pane: no background						1.54.1
+			17.05.2025	Improved the “KBD” element (for keyboard shortcuts)						1.54.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5859,8 +5860,8 @@ button:not(.clickable-icon) {	/*	boutons affichés par "Metadata Menu" à côté
 }
 @media (hover: hover) {
   button:hover {
-  	color:				var(--OT-button-text-hover);		/*	nothing	*/
-	background-color:	var(--OT-button-background-hover);	/*	interactive-hover	*/
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
   }
 }
 button.mod-cta {
@@ -5869,18 +5870,18 @@ button.mod-cta {
 }
 @media (hover: hover) {
   button.mod-cta:hover {
-  	color:				var(--OT-button-text-hover);		/*	nothing	*/
-	background-color:	var(--OT-button-background-hover);	/*	interactive-accent-hover	*/
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
   }
 }
 button.mod-muted {
-	color:				var(--OT-button-text-normal);		/*	text-muted	*/
-	background-color:	var(--OT-button-background-normal);	/*	background-secondary	*/
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
 }
 @media (hover: hover) {
   button.mod-muted:hover {
-  	color:				var(--OT-button-text-hover);		/*	nothing	*/
-	background-color:	var(--OT-button-background-hover);	/*	background-secondary	*/
+  	color:				var(--OT-button-text-hover);
+	background-color:	var(--OT-button-background-hover);
   }
 }
 .clickable-icon .document-search-button,
@@ -7082,12 +7083,23 @@ button.canvas-menu-item {
 /*	Bookmark	OpSpl46	*/
 /* ---------- classe KBD, pour documenter les raccourcis clavier ---------- */
 kbd {
-    font-family:		"Frutiger Neue LT Pro", "Avenir Next", "IBM Plex Mono", "Helvetica Neue";
+    font-family:
+    					Consolas,
+    					"Courier New",
+    					"PT Mono",
+						"Dico Code Two",
+    					"Frutiger Neue LT Pro",
+    					"Menlo",
+    					Monaco,
+    					Verdana,
+    					monospace;
     font-weight:		var(--font-semibold);
-	font-size:			1.02em;
+	font-size:			1.05em;
+	padding:			3px 3px 0px 3px;
 	color:				var(--OT-kbd);
 	background-color:	var(--OT-kbd-background);
 	border:				1px	solid var(--OT-kbd);
+	border-radius:		3px;
 }
 
 
