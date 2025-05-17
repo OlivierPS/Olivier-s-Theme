@@ -191,6 +191,7 @@
 			16.05.2025	Fix for the “Note Status” plugin										1.54.0
 						status icons in the navigation pane: no background						1.54.1
 			17.05.2025	Improved the “KBD” element (for keyboard shortcuts)						1.54.2
+						Status icons in the Note Status” pane									1.54.3
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7625,7 +7626,8 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 .note-status-bar {
 	height:	unset !important;
 }
-.note-status-icon-container .nav-file-tag {	/*	status icons in the file navigation pane	*/
+.status-group .nav-file-tag,
+.note-status-icon-container .nav-file-tag {	/*	status icons in the file navigation pane, and the files status pane	*/
 	background:	transparent;
 }
 /*	---------- ↑ Note Status plugin ↑ ----------	*/
