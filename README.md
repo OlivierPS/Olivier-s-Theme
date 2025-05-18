@@ -123,9 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 18 mai 2025 Version 1.54.4
+Some tweaks in the light Orange theme.
 
-
-
+----------------------------------------------
 #### 17.05.2025	Version 1.54.2 and 1.54.3
 Improved the “KBD” element (for keyboard shortcuts).
 Small tweaks.

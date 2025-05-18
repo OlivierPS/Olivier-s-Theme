@@ -192,6 +192,7 @@
 						status icons in the navigation pane: no background						1.54.1
 			17.05.2025	Improved the “KBD” element (for keyboard shortcuts)						1.54.2
 						Status icons in the Note Status” pane									1.54.3
+			18.05.2025	Some tweaks in the light Orange theme									1.54.4
 
 
 --------------------------------------------------------------------------------------------------------
@@ -2066,6 +2067,7 @@ body {
 	--color-accent-3:				#FFE4C4	!important;
 	--OT-color-muted-on-accent-1:	#EDD4B6;
 	--OT-color-on-accent-2: 		var(--color-base-00);
+	--OT-color-muted-on-accent-2:	#AA6E00;
 	--OT-color-on-accent-3: 		#F78700;
 }
 .theme-light.lightPalette-Orange.accentColor-lightMode-alternative-1 {
@@ -2078,6 +2080,7 @@ body {
 	--OT-color-on-accent-1:			white	!important;
 	--OT-color-muted-on-accent-1:	#33E1FF	!important;
 	--OT-color-on-accent-2:			var(--color-base-70)!important;
+	--OT-color-muted-on-accent-2:	#008A91;
 	--OT-color-on-accent-3:			#008A91	!important;
 }
 .theme-light.lightPalette-Orange.accentColor-lightMode-alternative-2 {
@@ -2088,7 +2091,7 @@ body {
 	--color-accent-2:				#6E55FF	!important;
 	--color-accent-3:				#D3CCFF	!important;
 //	--OT-color-on-accent-1:			#fff	!important;
-	--OT-color-muted-on-accent-1:	#C7C4FF	!important;
+	--OT-color-muted-on-accent-1:	#FFC355	!important;
 	--OT-color-on-accent-2:			#fff	!important;
 	--OT-color-on-accent-3:			#0B00E6	!important;
 	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 93%);
