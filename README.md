@@ -123,7 +123,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 18 mai 2025 Version 1.54.4
+
+#### 25.05.2025	Version 1.54.5
+I have included two new options for editing: ‘Maison Neue’ and ‘Maison Neue Mono’.
+Nostalgia : These fonts are reminiscent of the ones used in vintage *Olivetti* typewriters.
+
+
+----------------------------------------------
+#### 18.05.2025 Version 1.54.4
 Some tweaks in the light Orange theme.
 
 ----------------------------------------------
