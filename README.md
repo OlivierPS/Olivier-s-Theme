@@ -123,8 +123,8 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 10 juin 2025
-Pushed slightly to the right the symbol marking external links. I didn’t like it “glued” to the text.
+#### 10.06.2025 Versions 1.54.6 and 1.54.7
+Changed the symbol marking external links: in SVG format, it’s possible to better align it vertically, regardless of the used typeface. I have also pushed it slightly to the right, 'cause I don’t like it “glued” to the text.
 
 ----------------------------------------------
 #### 25.05.2025	Version 1.54.5
