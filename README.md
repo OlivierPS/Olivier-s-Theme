@@ -124,7 +124,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
-#### 10.06.2025 Version 1.55.0
+#### 10.06.2025 Version 1.55.0 and 1.55.1
 Added compatibility with the “Dynamic Outline” plugin.
 
 

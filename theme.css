@@ -198,6 +198,7 @@
 						Changed the symbol for an SVG one, aligning better, vertically			1.54.7
 						Added a light version for the dark mode									1.54.8
 						Added compatibility with the Dynamic Outline plugin						1.55.0
+						I forgot the button…													1.55.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7652,7 +7653,7 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 }
 /*	---------- ↑ Note Status plugin ↑ ----------	*/
 
-/*	Bookmark	OpSpl59	*/
+/*	Bookmark	OpSpl60	*/
 /*	———————————————————— Dynamic Outline plugin  ————————————————————	*/
 body {
 	--dynamic-outline-active-heading-pill-color:	var(--color-accent-2) !important;
@@ -7674,6 +7675,11 @@ body {
 	background-color:	var(--dynamic-outline-background-hover);
 	color:				var(--OT-color-on-accent-1)	!important;
 }
+.dynamic-outline-button.button-active {
+	color: 				var(--OT-color-on-accent-2) !important;
+	background-color:	var(--color-accent-2) !important;
+}
+
 /*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
 
 
