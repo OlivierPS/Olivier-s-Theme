@@ -123,7 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 10 juin 2025
+Pushed slightly to the right the symbol marking external links. I didn’t like it “glued” to the text.
 
+----------------------------------------------
 #### 25.05.2025	Version 1.54.5
 I have included two new options for editing: ‘Maison Neue’ and ‘Maison Neue Mono’.
 Nostalgia : These fonts are reminiscent of the ones used in vintage *Olivetti* typewriters.

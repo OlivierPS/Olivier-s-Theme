@@ -194,6 +194,7 @@
 						Status icons in the Note Status” pane									1.54.3
 			18.05.2025	Some tweaks in the light Orange theme									1.54.4
 			25.05.2025	Added “Maison Neue” and “Maison Neue Mono” as choices for editing		1.54.5
+			10.06.2025	Slightly increased the space between external links and the symbol		1.54.6
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6738,7 +6739,9 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 
 /*	Bookmark	OpSpl39	*/
 /* —————————————————————————————— Links —————————————————————————————— */
-
+.external-link {
+  padding-inline-end: 1.1em;	/*	to push slightly to the right the symbol marking external links	*/
+}
 /* ---------- Lien vers une image inexistante  */
 .file-embed.mod-empty-attachment,
 .file-embed.mod-generic,
