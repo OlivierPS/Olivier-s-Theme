@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+
+#### 10.06.2025 Version 1.55.0
+Added compatibility with the “Dynamic Outline” plugin.
+
+
+----------------------------------------------
 #### 10.06.2025 Versions 1.54.6, 1.54.7 and 1.54.8
 Changed the symbol marking external links: in SVG format, it’s possible to better align it vertically, regardless of the used typeface. I have also pushed it slightly to the right, 'cause I don’t like it “glued” to the text.
 

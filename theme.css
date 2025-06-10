@@ -197,6 +197,7 @@
 			10.06.2025	Slightly increased the space between external links and the symbol		1.54.6
 						Changed the symbol for an SVG one, aligning better, vertically			1.54.7
 						Added a light version for the dark mode									1.54.8
+						Added compatibility with the Dynamic Outline plugin						1.55.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -272,6 +273,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl57		Highlight active folder section plugin
 			OpSpl58		Related Notes plugin
 			OpSpl59		Note Status plugin
+			OpSpl60		Dynamic Outline plugin
 
 			OpSpl90		Some useful CSSCLASSES
 
@@ -7649,6 +7651,30 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 	background:	transparent;
 }
 /*	---------- ↑ Note Status plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl59	*/
+/*	———————————————————— Dynamic Outline plugin  ————————————————————	*/
+body {
+	--dynamic-outline-active-heading-pill-color:	var(--color-accent-2) !important;
+	--dynamic-outline-active-heading-background:	var(--color-accent-3) !important;
+	--dynamic-outline-background-hover:				var(--color-accent-1) !important;
+	--dynamic-outline-background-modifier-hover-lighter:	yellow !important;
+}
+
+#dynamic-outline li.highlight {
+	position: relative;
+	background-color: var(--dynamic-outline-active-heading-background);
+	color:	var(--OT-color-on-accent-3) !important;
+}
+
+#dynamic-outline li:hover *,
+#dynamic-outline li.highlight:hover,
+#dynamic-outline li.hovered,
+#dynamic-outline li.highlight.hovered {
+	background-color:	var(--dynamic-outline-background-hover);
+	color:				var(--OT-color-on-accent-1)	!important;
+}
+/*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl90	*/
