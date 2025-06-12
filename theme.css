@@ -199,6 +199,7 @@
 						Added a light version for the dark mode									1.54.8
 						Added compatibility with the Dynamic Outline plugin						1.55.0
 						I forgot the button…													1.55.1
+			12.06.2025	Small tweaks															1.55.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5216,6 +5217,10 @@ input[type=checkbox] {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
 }
+/*	je ne sais pas pourquoi le plugin “Note Status” rend invisible ce bouton ⭢ je le rétablis	*/
+.search-input-clear-button, .note-status-search-clear-button {
+	opacity:	1;
+}
 
 /*	Bookmark	OpSpl21	*/
 /* —————————————————————————————— OpSpl Sidebars —————————————————————————————— */
@@ -7778,6 +7783,11 @@ input[type='number']::placeholder {
 
 .workspace-split.mod-horizontal.mod-right-split .empty-state-container {
 	color:	var(--OT-color-on-base-20);
+}
+
+/*	Dans les dialogues d’entrées (QuickAdd, par exemple), je préfère la fonte d’édition plutôt que la fonte de l’interface	*/
+.modal-content textarea {
+	font-family:	var(--editor-font-family);
 }
 /* ———————————————————————————————————————————————————————————————————————————————————————————————	*/
 
