@@ -200,6 +200,8 @@
 						Added compatibility with the Dynamic Outline plugin						1.55.0
 						I forgot the button…													1.55.1
 			12.06.2025	Small tweaks															1.55.2
+						Improved colors and thightened the vertical spacing of the Dynamic Outline
+						plugin																	1.55.3
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7661,12 +7663,17 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 /*	Bookmark	OpSpl60	*/
 /*	———————————————————— Dynamic Outline plugin  ————————————————————	*/
 body {
-	--dynamic-outline-active-heading-pill-color:	var(--color-accent-2) !important;
+	--dynamic-outline-active-heading-pill-color:	var(--OT-color-on-accent-3) !important;
 	--dynamic-outline-active-heading-background:	var(--color-accent-3) !important;
 	--dynamic-outline-background-hover:				var(--color-accent-1) !important;
 	--dynamic-outline-background-modifier-hover-lighter:	yellow !important;
 }
-
+#dynamic-outline li.collapsed > .dynamic-outline-collapse-icon {
+	color:	var(--OT-color-on-accent-3) !important;
+}
+#dynamic-outline li {
+	padding: 1px 0;
+}
 #dynamic-outline li.highlight {
 	position: relative;
 	background-color: var(--dynamic-outline-active-heading-background);
@@ -7680,9 +7687,19 @@ body {
 	background-color:	var(--dynamic-outline-background-hover);
 	color:				var(--OT-color-on-accent-1)	!important;
 }
+.heading-level-styling-1 #dynamic-outline li.hovered::before {
+	color: var(--OT-color-muted-on-accent-1);
+}
+#dynamic-outline li.highlight.hovered::before{
+	color: var(--OT-color-muted-on-accent-1) !important;
+}
 .dynamic-outline-button.button-active {
-	color: 				var(--OT-color-on-accent-2) !important;
-	background-color:	var(--color-accent-2) !important;
+	color: 				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+}
+.dynamic-outline-button.button-active:hover {
+	color: 				var(--OT-color-on-accent-1) !important;
+	background-color:	var(--color-accent-1) !important;
 }
 
 /*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
