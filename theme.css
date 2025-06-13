@@ -204,6 +204,7 @@
 						plugin																	1.55.3
 			13.06.2025	I hope I have now completely addressed the problem of hovering headers
 						in the modal of the Dynamic Outline plugin								1.55.4
+						completed the task														1.55.5
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7664,6 +7665,15 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 /*	Bookmark	OpSpl60	*/
 /*	———————————————————— Dynamic Outline plugin  ————————————————————	*/
+body {
+	/*	for now (13.06.2025), I’m deliberately inhibiting the change of colors inside the modal, because it ruins the logic of the whole theme, especially in “inverted” themes, like “metallic blue”, where modals have a dark background	*/
+	--dynamic-outline-h1-text-color: var(--OT-menu-text-color)!important;
+	--dynamic-outline-h2-text-color: var(--OT-menu-text-color)!important;
+	--dynamic-outline-h3-text-color: var(--OT-menu-text-color)!important;
+	--dynamic-outline-h4-text-color: var(--OT-menu-text-color)!important;
+	--dynamic-outline-h5-text-color: var(--OT-menu-text-color)!important;
+	--dynamic-outline-h6-text-color: var(--OT-menu-text-color)!important;
+}
 #dynamic-outline {
 	background-color: 	var(--OT-menu-background);
 	color:				var(--OT-menu-text-color);
