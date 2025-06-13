@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 13.06.2025	Version 1.55.4
+I hope I have now completely addressed the problem of hovering headers in the modal of the Dynamic Outline plugin.
+
+----------------------------------------------
 #### 12.06.2025	Version 1.55.2 and 1.55.3
 Small tweaks.
 Improved colors and tightened the vertical spacing of the “Dynamic Outline” plugin.

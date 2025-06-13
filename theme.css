@@ -202,6 +202,8 @@
 			12.06.2025	Small tweaks															1.55.2
 						Improved colors and thightened the vertical spacing of the Dynamic Outline
 						plugin																	1.55.3
+			13.06.2025	I hope I have now completely addressed the problem of hovering headers
+						in the modal of the Dynamic Outline plugin								1.55.4
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7662,36 +7664,61 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 /*	Bookmark	OpSpl60	*/
 /*	———————————————————— Dynamic Outline plugin  ————————————————————	*/
-body {
-	--dynamic-outline-active-heading-pill-color:	var(--OT-color-on-accent-3) !important;
-	--dynamic-outline-active-heading-background:	var(--color-accent-3) !important;
-	--dynamic-outline-background-hover:				var(--color-accent-1) !important;
-	--dynamic-outline-background-modifier-hover-lighter:	yellow !important;
-}
-#dynamic-outline li.collapsed > .dynamic-outline-collapse-icon {
-	color:	var(--OT-color-on-accent-3) !important;
+#dynamic-outline {
+	background-color: 	var(--OT-menu-background);
+	color:				var(--OT-menu-text-color);
 }
 #dynamic-outline li {
 	padding: 1px 0;
 }
-#dynamic-outline li.highlight {
-	position: relative;
-	background-color: var(--dynamic-outline-active-heading-background);
-	color:	var(--OT-color-on-accent-3) !important;
+.dynamic-outline-collapse-icon {
+	color:	var(--OT-menu-text-color);
 }
-
+#dynamic-outline li.collapsed > .dynamic-outline-collapse-icon {
+	color:	var(--OT-color-on-accent-3);
+}
+.dynamic-outline-collapse-icon:hover {
+	color: 		var(--OT-color-on-accent-1) !important;
+	background:	var(--color-accent-1);
+}
 #dynamic-outline li:hover *,
 #dynamic-outline li.highlight:hover,
 #dynamic-outline li.hovered,
 #dynamic-outline li.highlight.hovered {
-	background-color:	var(--dynamic-outline-background-hover);
+	background-color:	var(--color-accent-1) !important;
 	color:				var(--OT-color-on-accent-1)	!important;
 }
-.heading-level-styling-1 #dynamic-outline li.hovered::before {
+#dynamic-outline li:hover::before,
+#dynamic-outline li:has(.dynamic-outline-collapse-icon:hover)::before,
+#dynamic-outline li:has(a:hover)::before {
+  color: var(--OT-color-on-accent-1) !important;
+  background: var(--color-accent-1) !important;
+}
+#dynamic-outline li.highlight {
+	background-color: var(--color-accent-3);
+	color:	var(--OT-color-on-accent-3) !important;
+}
+#dynamic-outline li.highlight::before,
+#dynamic-outline li.highlight::after {
+	color: var(--color-accent-2) !important;
+}
+.heading-level-styling-1 #dynamic-outline li::before,
+.heading-level-styling-2 #dynamic-outline li::before {
+	color: var(--OT-color-muted-on-base-20);
+#dynamic-outline li a {
+	color:	var(--OT-menu-text-color);
+}
+.heading-level-styling-1 #dynamic-outline li.hovered::before,
+.heading-level-styling-2 #dynamic-outline li.hovered::before {
 	color: var(--OT-color-muted-on-accent-1);
 }
-#dynamic-outline li.highlight.hovered::before{
-	color: var(--OT-color-muted-on-accent-1) !important;
+#dynamic-outline li a.heading-level-1,
+#dynamic-outline li a.heading-level-2,
+#dynamic-outline li a.heading-level-3,
+#dynamic-outline li a.heading-level-4,
+#dynamic-outline li a.heading-level-5,
+#dynamic-outline li a.heading-level-6 {
+	color:	var(--OT-menu-text-color);
 }
 .dynamic-outline-button.button-active {
 	color: 				var(--OT-color-on-accent-2);
@@ -7701,7 +7728,9 @@ body {
 	color: 				var(--OT-color-on-accent-1) !important;
 	background-color:	var(--color-accent-1) !important;
 }
-
+.dynamic-outline-button.pinned {
+	color:	var(--OT-menu-text-color);
+}
 /*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
 
 
