@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 14.06.2025
+#### 14.06.2025 Versions 1.55.6 and 1.55.7
 Small tweaks. Among them: the default interface font size is bigger.
 
 ----------------------------------------------

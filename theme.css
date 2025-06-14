@@ -206,6 +206,7 @@
 						in the modal of the Dynamic Outline plugin								1.55.4
 						completed the task														1.55.5
 			14.06.2025	Small tweaks. Among them: the default interface font size is bigger		1.55.6
+						Small tweak																1.55.7
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6021,7 +6022,8 @@ media (hover: hover) {
   }
 }
 @media (hover: hover) {
-  .clickable-icon.is-active:hover {
+  .clickable-icon.is-active:hover,
+  .view-header .clickable-icon.button-active:hover {
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
   }
