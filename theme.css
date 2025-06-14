@@ -205,6 +205,7 @@
 			13.06.2025	I hope I have now completely addressed the problem of hovering headers
 						in the modal of the Dynamic Outline plugin								1.55.4
 						completed the task														1.55.5
+			14.06.2025	Small tweaks. Among them: the default interface font size is bigger		1.55.6
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6003,7 +6004,8 @@ media (hover: hover) {
 .view-header .clickable-icon {
 	color:	var(--OT-clickable-icon-in-header);
 }
-.clickable-icon.is-active {
+.clickable-icon.is-active,
+.view-header .clickable-icon.button-active {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
 }
@@ -7730,9 +7732,10 @@ body {
 #dynamic-outline li a.heading-level-6 {
 	color:	var(--OT-menu-text-color);
 }
-.dynamic-outline-button.button-active {
-	color: 				var(--OT-color-on-accent-2);
-	background-color:	var(--color-accent-2);
+.dynamic-outline-button.button-active,
+.dynamic-outline-button.button-active.pinned {
+	color: 				var(--OT-color-on-accent-2) ;
+	background-color:	var(--color-accent-2) ;
 }
 .dynamic-outline-button.button-active:hover {
 	color: 				var(--OT-color-on-accent-1) !important;
@@ -7919,7 +7922,7 @@ settings:
 			title:		Base size for the interface texts [px]
 			title.fr:	Taille de base pour les caractères de l’interface [px]
 			type:		variable-number
-			default:	15
+			default:	18
 			format:		px
 	-
 			id:			OT-filesNavigator-spacing

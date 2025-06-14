@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 14.06.2025
+Small tweaks. Among them: the default interface font size is bigger.
+
+----------------------------------------------
 #### 13.06.2025	Version 1.55.4 and 1.55.5
 I hope I have now completely addressed the problem of hovering headers in the modal of the Dynamic Outline plugin.
 
