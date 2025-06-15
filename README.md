@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 15.06.2025 Version 1.56.0
+#### 15.06.2025 Version 1.56.0 and 1.56.1
 Worked on the suggestion lists, including those of the following plugins: Another Quick Search, Omnisearch, Better Command Palette
 
 ----------------------------------------------

@@ -567,7 +567,7 @@ body {
 	--interactive-normal:		var(--color-accent-3);
 	--interactive-hover:		var(--color-accent-1);
 	--interactive-accent:		var(--color-accent-2);
-	--interactive-accent-hover:	hsla(var(--color-accent-hsl), 0.7);
+	--interactive-accent-hover:	var(--color-accent-1);	/*	hsla(var(--color-accent-hsl), 0.7);	*/
 
 /*	--text-error-hover:			var(--color-red);				15.06.2025 ne se trouve plus dans “app.css”	*/
 /*	--text-on-hover:			var(--OT-color-on-accent-1);	15.06.2025 ne se trouve plus dans “app.css”	*/
