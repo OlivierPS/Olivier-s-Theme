@@ -103,7 +103,7 @@
 			25.07.2024	Increased the size of the interface	fonts								1.26.0
 						Corrected the size of the table text in Source Edit mode				1.26.1
 						Small correction														1.26.2
-			28.07.2024	Started verification of the text selection [backgrond]; light themes: done	1.27.0
+			28.07.2024	Started verification of the text selection [background]; light themes: done	1.27.0
 						Revised the Yellow palette in Light mode								1.27.1
 			29.07.2024	Small adjustments in the Violet, Light palette							1.27.2
 						Finished the revision of the selection in all variants of the Dark mode palettes	1.27.3
@@ -207,6 +207,8 @@
 						completed the task														1.55.5
 			14.06.2025	Small tweaks. Among them: the default interface font size is bigger		1.55.6
 						Small tweak																1.55.7
+			15.06.2025	Worked on the suggestion lists, including those of the following
+						plugins: Another Quick Search, Omnisearch, Better Command Palette		1.56.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -240,8 +242,8 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 							les petits boutons sur la feuille de publication
 							l’édition des fichiers dans la “nav bar”
 			OpSpl21:	Les sidebars
-			OpSpl22:		Adaptations pour les panneaux de suggestions
-			OpSpl23:		Adaptations pour le plugin “File Info”
+			OpSpl22:	Suggestions pannels and prompts
+			OpSpl23:	Adaptations pour le plugin “File Info”
 							autres adaptations
 			OpSpl24:	Reading Mode
 							paper background
@@ -271,7 +273,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl46		<kbd>
 			OpSpl47		Calendar plugin
 			OpSpl48		Other interface elements
-			OpSpl49		Prompts
+			OpSpl49		Empty pane
 			OpSpl50		Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition
 			OpSpl51		Vertical Tabs plugin
 			OpSpl52		Floating TOC plugin
@@ -279,6 +281,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl54		Recent notes plugin
 			OpSpl55		QuickAdd plugin
 			OpSpl56		Another Quick Switcher plugin
+						Omnisearch plugin
 			OpSpl57		Highlight active folder section plugin
 			OpSpl58		Related Notes plugin
 			OpSpl59		Note Status plugin
@@ -427,11 +430,6 @@ body {
 	--blockquote-background-color:		var(--code-background);
 
 
-	/*	----- Interactive colors -----
-		------------------------------	*/
-	--interactive-accent-hover:			hsla(var(--accent-h), 100%, var(--accent-l), 0.7);
-	--interactive-accent:				var(--color-accent-2);
-	--interactive-hover:				var(--color-accent-1);
 
 
 	/*	----- Functional colors -----
@@ -561,13 +559,18 @@ body {
 
 	--tab-container-background:	var(--color-base-05);
 
-	--text-accent-hover:		var(--link-color);
-	--text-accent:				vat(--OT-color-on-accent-3);
-	--text-error-hover:			var(--color-red);
-	--text-muted:				var(--color-base-50);			/*	c’est ce qui, chez moi, peut être considéré comme du texte “muted”	*/
+/*	--text-muted:				var(--color-base-50);			je me suis quelque peu égaré, le jour où j’avais décidé de rendre encore plus faible le texte “muted”. */
 	--text-on-accent:			var(--OT-color-on-accent-1);
 	--text-on-accent-inverted:	var(--color-accent-1);			/*	dans "app.css" il est défini comme “black”. Utilisé dans le canvas	*/
-	--text-on-hover:			var(--OT-color-on-accent-1);
+	--text-accent:				var(--color-accent-2);
+	--text-accent-hover:		var(--OT-color-on-accent-1);
+	--interactive-normal:		var(--color-accent-3);
+	--interactive-hover:		var(--color-accent-1);
+	--interactive-accent:		var(--color-accent-2);
+	--interactive-accent-hover:	hsla(var(--color-accent-hsl), 0.7);
+
+/*	--text-error-hover:			var(--color-red);				15.06.2025 ne se trouve plus dans “app.css”	*/
+/*	--text-on-hover:			var(--OT-color-on-accent-1);	15.06.2025 ne se trouve plus dans “app.css”	*/
 
 	--titlebar-background: 			#333;
 	--titlebar-background-focused:	var(--color-base-05);
@@ -5291,22 +5294,27 @@ input[type='range']::-webkit-slider-thumb:hover {
 }
 
 /*	Bookmark	OpSpl22	*/
-/*	panneaux de suggestions pour les recherches	*/
-.search-suggest-info-text {
-	color:	var(--OT-color-muted-on-base-20);
-}
+/*	panneaux de suggestions et prompts	*/
 .suggestion-container{								/*	le texte général des container de sélection	*/
 	color:				var(--OT-menu-text-color);
 	background-color:	var(--OT-menu-background);
 }
-.suggestion-item.mod-complex .suggestion-note {		/*	le texte complémentaire dans les containers de sélection	*/
-	color:	var(--OT-color-muted-on-base-20);
+.suggestion-item.is-selected {
+	color:		var(--OT-color-on-accent-1);
 }
-.suggestion-item.mod-complex.is-selected .suggestion-note {	/*	le texte complémentaire dans la sélection	*/
+.suggestion-item.mod-complex .suggestion-note {		/*	le texte complémentaire dans les containers de sélection	*/
+//	color:	cyan;	/*	var(--OT-color-muted-on-base-20);	*/
+}
+.suggestion-item.mod-complex.is-selected .suggestion-note,
+.suggestion-item.mod-complex.is-selected .search-suggest-info-text,
+.suggestion-item.mod-complex.is-selected .suggestion-flair {
 	color:	var(--OT-color-muted-on-accent-1);
 }
 .suggestion-empty-suggestion {
 	color:	var(--OT-color-muted-on-accent-1);
+}
+.search-suggest-info-text {
+	color:	var(--OT-color-muted-on-base-20);
 }
 .search-suggest-item:hover {
   &.is-selected {
@@ -5319,6 +5327,22 @@ input[type='range']::-webkit-slider-thumb:hover {
     color: var(--OT-color-muted-on-accent-1);
   }
 }
+/*	panneau de réglage des résultats de la recherche	*/
+.search-params .setting-item-name {
+	color:	var(--OT-search-settings-item-name);
+}
+
+/*	———————————————————— Prompts	———————————————————— */
+.prompt {
+	color:				var(--OT-menu-text-color);
+	background-color:	var(--OT-menu-background);
+}
+input.prompt-input {
+//	background-color:	var(--background-modifier-form-field);
+}
+/*	-------------------- ↑ Prompts ↑	-------------------- */
+
+
 .tree-item.search-result:hover {
 	& .is-clickable {
 		color: 				var(--OT-color-on-accent-1)	!important;
@@ -7169,18 +7193,7 @@ kbd {
 
 
 /*	Bookmark	OpSpl49	*/
-/*	———————————————————— Prompts	———————————————————— */
-.prompt {
-	--text-muted:		var(--OT-color-muted-on-base-20);
-	color:				var(--OT-color-on-base-20);
-	background-color:	var(--background-secondary);
-}
-input.prompt-input {
-	background-color:	var(--background-modifier-form-field);
-}
-/*	-------------------- ↑ Prompts ↑	-------------------- */
-
-/*	———————————————————— Empty pannel	———————————————————— */
+/*	———————————————————— Empty pane	———————————————————— */
 .empty-state-action-list {
 	font-size:		var(--font-text-size);
 	line-height:	var(--line-height-tight);
@@ -7203,10 +7216,6 @@ input.prompt-input {
 }
 /*	-------------------- ↑ Empty pannel ↑	-------------------- */
 
-/*	panneau de réglage des résultats de la recherche	*/
-.search-params .setting-item-name {
-	color:	var(--OT-search-settings-item-name);
-}
 
 /*	Bookmark	OpSpl50	*/
 /*	———————————————————— Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition	———————————————————— */
@@ -7437,10 +7446,13 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 /*	Bookmark	OpSpl55	*/
 /*	———————————————————— QuickAdd plugin  ————————————————————	*/
+.wideInputPromptInputEl {
+	font-family:	var(--editor-font-family);
+}
 /*	pour afficher plus grand le texte dans la boite de dialogue de saisie, quand l’écran est suffisamment grand	*/
 @media screen and (min-width: 781px) {
 	.wideInputPromptInputEl {
-		font-size:	var(--font-ui-large);
+//		font-size:		var(--font-ui-large);
 	}
 }
 /*	---------- ↑ QuickAdd plugin ↑ ----------	*/
@@ -7451,7 +7463,41 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 .another-quick-switcher__custom__item__title {
 	font-weight:	600;	/*	700 (plugin’s default) is too much for my taste	*/
 }
+.suggestion-item.is-selected .another-quick-switcher__item {
+	color:		var(--OT-color-on-accent-1);
+}
+.suggestion-item.is-selected .another-quick-switcher__item__description,
+.suggestion-item.is-selected .another-quick-switcher__item__directory {
+	color:		var(--OT-color-muted-on-accent-1);
+}
+.another-quick-switcher__item__directory {
+//	color:	var(--OT-color-muted-on-base-20);
+}
+.another-quick-switcher__item__extension {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+}
 /*	---------- ↑ Another Quick Switcher plugin ↑ ----------	*/
+
+/*	———————————————————— Omnisearch plugin  ————————————————————	*/
+.omnisearch-result.is-selected .omnisearch-result__counter,
+.omnisearch-result.is-selected .omnisearch-result__folder-path,
+.omnisearch-result.is-selected .omnisearch-result__icon,
+.omnisearch-result.is-selected .omnisearch-result__body {
+	color:		var(--OT-color-muted-on-accent-1);
+}
+.omnisearch-default-highlight {
+    color:				var(--OT-stabilo-text) ;
+    background-color:	var(--OT-stabilo-mark) ;
+}
+/*	séparons visuellement les résultats, fiche par fiche	*/
+.svelte-lazy {
+  border-top: 1px dotted 	var(--color-base-100);
+  border-bottom: 1px dotted var(--color-base-100);
+}
+
+/*	---------- ↑ Omnisearch plugin ↑ ----------	*/
+
 
 /*	Bookmark	OpSpl57	*/
 /*	———————————————————— Highlight active folder section plugin  ————————————————————	*/
@@ -7846,47 +7892,10 @@ input[type='number']::placeholder {
 	color:	var(--OT-color-on-base-20);
 }
 
-/*	Dans les dialogues d’entrées (QuickAdd, par exemple), je préfère la fonte d’édition plutôt que la fonte de l’interface	*/
-.modal-content textarea {
-	font-family:	var(--editor-font-family);
-}
 /* ———————————————————————————————————————————————————————————————————————————————————————————————	*/
 
 
-/*	Pour les plugins “OmniSearch” et “Another Quick Switcher”	*/
-.another-quick-switcher__item__directory,
-.omnisearch-result__body {
-	color:	var(--OT-color-muted-on-base-20);
-}
 
-.another-quick-switcher__item__extension {
-		color: 				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
-}
-
-.suggestion-item.is-selected,
-.suggestion-item.is-selected .another-quick-switcher__item__description__link,
-.suggestion-item.is-selected .another-quick-switcher__item__description__tag,
-.suggestion-item.is-selected .another-quick-switcher__item__directory,
-.suggestion-item.is-selected .omnisearch-result__body
-{
-	--text-muted:		var(--OT-color-muted-on-accent-1);
-	color: 				var(--OT-color-on-accent-1);
-	background-color:	var(--color-accent-1);
-}
-.suggestion-item.is-selected .omnisearch-result__title {
-		color: 				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
-}
-
-
-/*	----- Pour le plugin “Better Command Palette” -----	*/
-.better-command-palette {
-	--text-faint:	var(--color-base-70);
-}
-.better-command-palette .better-command-palette-title {
-  color: var(--color-base-100);
-}
 
 /*	pour que l’indicateur de la recherche “case sensitive” soit visible quand ce mode est actif	*/
 .input-right-decorator.clickable-icon.is-active {

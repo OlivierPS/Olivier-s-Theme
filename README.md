@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 15.06.2025 Version 1.56.0
+Worked on the suggestion lists, including those of the following plugins: Another Quick Search, Omnisearch, Better Command Palette
+
+----------------------------------------------
 #### 14.06.2025 Versions 1.55.6 and 1.55.7
 Small tweaks. Among them: the default interface font size is bigger.
 
