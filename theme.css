@@ -209,6 +209,8 @@
 						Small tweak																1.55.7
 			15.06.2025	Worked on the suggestion lists, including those of the following
 						plugins: Another Quick Search, Omnisearch, Better Command Palette		1.56.0
+			         	Small tweaks															1.56.1
+			16.06.2025	Small tweaks															1.56.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -494,6 +496,7 @@ body {
 
 	--link-color:				var(--obsidian-violet);
 	--link-external-color:		var(--link-color);
+	--link-external-color-hover:var(--color-accent-1)
 	--link-unresolved-color:	var(--color-red) ;
  	--link-decoration:					none;
  	--link-decoration-hover:			none;
@@ -6806,7 +6809,8 @@ a:hover,
 .external-link:hover,
 .markdown-rendered .internal-link:hover,
 .markdown-source-view.mod-cm6 .cm-link .cm-underline:hover,
-.markdown-source-view.mod-cm6 .cm-url .cm-underline:hover
+.markdown-source-view.mod-cm6 .cm-url .cm-underline:hover,
+.cm-s-obsidian span.cm-link:hover
 {
 	color:				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
