@@ -211,6 +211,7 @@
 						plugins: Another Quick Search, Omnisearch, Better Command Palette		1.56.0
 			         	Small tweaks															1.56.1
 			16.06.2025	Small tweaks															1.56.2
+			17.06.2025	Smallest tweak															1.56.3
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6810,7 +6811,8 @@ a:hover,
 .markdown-rendered .internal-link:hover,
 .markdown-source-view.mod-cm6 .cm-link .cm-underline:hover,
 .markdown-source-view.mod-cm6 .cm-url .cm-underline:hover,
-.cm-s-obsidian span.cm-link:hover
+.cm-s-obsidian span.cm-link:hover,
+.cm-s-obsidian span.cm-hmd-internal-link:hover
 {
 	color:				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
