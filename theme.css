@@ -214,6 +214,7 @@
 			17.06.2025	Smallest tweak															1.56.3
 			19.06.2025	Added the correct handling of zooming panes by the “Vertical tabs”
 						plugin in Editing modes													1.57.0
+						The suppression of the breadcrumb in the Title Bar is now optional		1.58.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -499,7 +500,7 @@ body {
 
 	--link-color:				var(--obsidian-violet);
 	--link-external-color:		var(--link-color);
-	--link-external-color-hover:var(--color-accent-1)
+	--link-external-color-hover:var(--color-accent-1);
 	--link-unresolved-color:	var(--color-red) ;
  	--link-decoration:					none;
  	--link-decoration-hover:			none;
@@ -5705,12 +5706,20 @@ td .cm-editor .cm-line {
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
 	padding-top:	0.5em;
 }
-/* Suppression du “breadcrumb” dans la title bar (titre des panneaux),
-	car, sur les écrans de portables, il prend trop de place.
-	Je préfère l’indication dans la status bar, via le plugin “Show Current File Path”*/
+.OT-suppress-title-bar-breadcrumb .view-header-title-parent .view-header-breadcrumb,
+.OT-suppress-title-bar-breadcrumb .view-header-title-parent .view-header-breadcrumb-separator {
+	display:	none;
+}
 .view-header-title-parent .view-header-breadcrumb,
 .view-header-title-parent .view-header-breadcrumb-separator {
-	display:	none;
+	font-size:		var(--font-ui-medium);
+	font-weight:	var(--font-normal);
+}
+
+.view-header-title-parent .view-header-breadcrumb:hover,
+.view-header-title-parent .view-header-breadcrumb-separator:hover {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
 }
 
 /* mise en évidence du panneau qui a le focus */
@@ -7480,7 +7489,8 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 .another-quick-switcher__custom__item__title {
 	font-weight:	600;	/*	700 (plugin’s default) is too much for my taste	*/
 }
-.suggestion-item.is-selected .another-quick-switcher__item {
+.suggestion-item.is-selected .another-quick-switcher__item,
+.suggestion-item.is-selected .another-quick-switcher__starred_item::before {
 	color:		var(--OT-color-on-accent-1);
 }
 .suggestion-item.is-selected .another-quick-switcher__item__description,
@@ -7494,6 +7504,7 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
 }
+
 /*	---------- ↑ Another Quick Switcher plugin ↑ ----------	*/
 
 /*	———————————————————— Omnisearch plugin  ————————————————————	*/
@@ -8131,6 +8142,12 @@ settings:
  			title.fr:		Tab courant mis en évidence
  			description:	Highlight the name of the current note in the tab title
  			description.fr:	Met en évidence sur le tab le nom de la fiche courante
+ 			type: 			class-toggle
+ 			default: 		false
+	-
+ 			id:				OT-suppress-title-bar-breadcrumb
+ 			title:			Suppress the Title Bar breadcrumb
+ 			title.fr:		Suppression du “breadcrumb” dans la barre de titre
  			type: 			class-toggle
  			default: 		false
 	-

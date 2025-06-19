@@ -123,8 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 19.06.2025
+#### 19.06.2025	Version 1.57.0
 The zooming in panes by the “Vertical Tabs” plugin is now handled correctly in editing modes.
+
+###### Version 1.58.0
+The suppression of the breadcrumb in the Title Bar is now optional. The switch is in the “General settings” of the theme’s Style Settings.
 
 ----------------------------------------------
 #### 16.06.2025 Version 1.56.2 and 1.56.3
