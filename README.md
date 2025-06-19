@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19.06.2025
+The zooming in panes by the “Vertical Tabs” plugin is now handled correctly in editing modes.
+
+----------------------------------------------
 #### 16.06.2025 Version 1.56.2 and 1.56.3
 Small tweaks
 

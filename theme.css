@@ -212,6 +212,8 @@
 			         	Small tweaks															1.56.1
 			16.06.2025	Small tweaks															1.56.2
 			17.06.2025	Smallest tweak															1.56.3
+			19.06.2025	Added the correct handling of zooming panes by the “Vertical tabs”
+						plugin in Editing modes													1.57.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7270,6 +7272,15 @@ kbd {
 .obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .tree-item-icon {
 	color:				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
+}
+/*	handling of the zoom factor in editing modes	*/
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom {
+	--OT-editMode-scaled-file-line-width: calc( var(--OT-editMode-line-width) / var(--vt-tab-zoom-factor) );
+}
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
+  max-width: var(--OT-editMode-scaled-file-line-width);
 }
 /*	---------- ↑ Vertical Tabs plugin ↑ ----------	*/
 
