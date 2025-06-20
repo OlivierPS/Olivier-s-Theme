@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 20.06.2025 Version 1.59.0
+There’s now an option for the *Status Bar* padding, under “General Settings”: how many pixels do you want between the status bar and the bottom / right border of the window? Default: 0, the status bar is flushed towards the bottom and the right border of the window.
+
+----------------------------------------------
 #### 19.06.2025	Version 1.57.0
 The zooming in panes by the “Vertical Tabs” plugin is now handled correctly in editing modes.
 

@@ -215,6 +215,7 @@
 			19.06.2025	Added the correct handling of zooming panes by the “Vertical tabs”
 						plugin in Editing modes													1.57.0
 						The suppression of the breadcrumb in the Title Bar is now optional		1.58.0
+			20.06.2025	Added a setting for the Status Bar padding								1.59.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -352,6 +353,7 @@ body {
 		ne sont pas automatiquement appliquées quand on change de thème, il est judicieux
 		de définir ici leurs valeurs par défaut. Elles sont ici dans le même ordre que dans les “Settings”.	*/
 	--OT-UI-font-size:				15px;
+	--OT-status-bar-padding:		0px;
 	--OT-readingMode-text-size:		17px;
 	--OT-readingMode-line-width:	42em;
 	--OT-readingMode-line-height:	1.5em;
@@ -6954,26 +6956,26 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 
 /*	Bookmark	OpSpl43	*/
 /* —————————————————————————————— Status bar —————————————————————————————— */
-.theme-dark .status-bar,
-.theme-light .status-bar {
+.status-bar {
 	background-color:	transparent;/*	var(--background-primary);	*/
 	border:				none;
-	padding:			4px;
-	margin:				4px;
 	position:			absolute;
+	padding:			var(--OT-status-bar-padding);
 }
 
-.theme-dark .status-bar-item,
-.theme-light .status-bar-item {
+body:not(.is-fullscreen) .status-bar {
+	padding:			var(--OT-status-bar-padding);
+}
+
+.status-bar-item {
 	background-color:	var(--status-bar-background);	/*	var(--statusbar-item-background);	*/
 	display:	block;
-	padding:	8px 5px 3px;
+	padding:	8px 5px 5px;
 	margin:		0px;
 	border:		none;
 }
 
-.theme-dark .status-bar-item:hover,
-.theme-light .status-bar-item:hover {
+.status-bar-item:hover {
     /*	filter:brightness(120%)	*/
     color:				var(--OT-color-on-accent-1);
     background-color:	var(--color-accent-1);
@@ -8150,6 +8152,14 @@ settings:
  			title.fr:		Suppression du “breadcrumb” dans la barre de titre
  			type: 			class-toggle
  			default: 		false
+	-
+			id:				OT-status-bar-padding
+			title:			Status Bar padding [px]
+			description:	Number of pixels between the status bar and the window border.
+			dsecription.fr:	Nombre de pixels entre la “Status Bar” et le bord de la fenêtre.
+			type:			variable-number
+			default:		0
+			format:			px
 	-
  			id:				OT-canvas-dot-pattern-hidden
  			title:			Hide canvas dot pattern
