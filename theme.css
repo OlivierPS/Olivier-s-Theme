@@ -216,6 +216,7 @@
 						plugin in Editing modes													1.57.0
 						The suppression of the breadcrumb in the Title Bar is now optional		1.58.0
 			20.06.2025	Added a setting for the Status Bar padding								1.59.0
+						Small tweak																1.59.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -6967,7 +6968,8 @@ body:not(.is-fullscreen) .status-bar {
 	padding:			var(--OT-status-bar-padding);
 }
 
-.status-bar-item {
+.status-bar-item,
+.status-bar-item.plugin-editor-status, .status-bar-item.plugin-sync {
 	background-color:	var(--status-bar-background);	/*	var(--statusbar-item-background);	*/
 	display:	block;
 	padding:	8px 5px 5px;
