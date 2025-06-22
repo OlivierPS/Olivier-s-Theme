@@ -217,6 +217,7 @@
 						The suppression of the breadcrumb in the Title Bar is now optional		1.58.0
 			20.06.2025	Added a setting for the Status Bar padding								1.59.0
 						Small tweak																1.59.1
+			22.06.2025	Lot of small improvements around hovering and text highlighting			1.59.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -282,7 +283,8 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl47		Calendar plugin
 			OpSpl48		Other interface elements
 			OpSpl49		Empty pane
-			OpSpl50		Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition
+			OpSpl50		Text highlighting
+						Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition
 			OpSpl51		Vertical Tabs plugin
 			OpSpl52		Floating TOC plugin
 			OpSpl53		Text selection when it takes the accent color
@@ -526,7 +528,7 @@ body {
 	--nav-item-color-active:		var(--OT-color-on-accent-2);
 	--nav-item-color-selected:		var(--OT-color-on-accent-3);
 	--nav-item-color-highlighted:	var(--text-accent);
-	--nav-item-background-active:	var(--color-accent-2);
+	--nav-item-background-active:	var(--color-accent-3);
 	--nav-item-background-selected:	var(--color-accent-3);
 	--nav-item-background-hover:	var(--color-accent-1);
     --nav-collapse-icon-color:		var(--nav-indentation-guide-color);
@@ -833,7 +835,7 @@ body {
 //	--OT-view-header-title-focus-color:		var(--OT-theme-reference-color);
 	--OT-view-header-title-no-focus-color:	var(--color-base-50);
 	--OT-stabilo-mark:						#2BA727;
-	--OT-stabilo-text:						#CCFBDC;
+	--OT-stabilo-text:						#DCFCE8;
 }/*	↑ lightPalette-green ↑	*/
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-icy {
@@ -1898,7 +1900,7 @@ body {
 	--OT-color-muted-on-accent-1:	#D2C9F1;
 	--OT-color-on-accent-2:			white;
 	--OT-color-muted-on-accent-2:	#DDD6F5;
-	--OT-color-on-accent-3:			4529A3;
+	--OT-color-on-accent-3:			#4529A3;
 	--OT-view-header-title-focus-color:	var(--obsidian-violet);
 }
 .theme-light.lightPalette-OBSIDIAN.accentColor-lightMode-alternative-1 {
@@ -1936,8 +1938,8 @@ body {
 	--accent-s:						83%	!important;
 	--accent-l:						66%	!important;
 	--color-accent-1:				#14D65B	!important;
-	--OT-color-on-accent-1:			#085A26 !important;
-	--OT-color-muted-on-accent-1:	#0B7934	!important;
+	--OT-color-on-accent-1:			#FBFFFD !important;
+	--OT-color-muted-on-accent-1:	#BDF9D3	!important;
 //	--color-accent-2:				#60F095	!important;
 	--OT-color-on-accent-2:			#085A26 !important;
 	--OT-color-muted-on-accent-2:	#0A692D	!important;
@@ -6977,8 +6979,8 @@ body:not(.is-fullscreen) .status-bar {
 	border:		none;
 }
 
-.status-bar-item:hover {
-    /*	filter:brightness(120%)	*/
+.status-bar-item:hover,
+.status-bar-item.mod-clickable:hover {
     color:				var(--OT-color-on-accent-1);
     background-color:	var(--color-accent-1);
 	}
@@ -7239,6 +7241,26 @@ kbd {
 
 
 /*	Bookmark	OpSpl50	*/
+/*	———————————————————— Text highlighting ————————————————————	*/
+.is-flashing,
+.community-item .suggestion-highlight,
+.textLayer .mod-focused,
+.markdown-rendered mark,
+.search-result-file-matched-text,
+.cm-s-obsidian span.cm-formatting-highlight,
+.cm-s-obsidian span.cm-highlight {
+	color:				var(--OT-stabilo-text) !important;
+	background-color:	var(--OT-stabilo-mark) !important;
+}
+.markdown-rendered mark .internal-link {
+	color:						var(--OT-stabilo-text);
+	background-color:			var(--OT-stabilo-mark);
+	text-decoration-line:		underline;
+	text-decoration-style:		dotted;
+	text-decoration-color:		var(--OT-stabilo-text);
+	text-decoration-thickness:	2px;
+}
+
 /*	———————————————————— Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition	———————————————————— */
 /* Read */
 .markdown-rendered .search-highlight > div {
@@ -7275,17 +7297,39 @@ kbd {
 .obsidian-vertical-tabs-container .is-group-slot .tree-item-icon svg {	/*	le `+` devant le petit bouton pour ajouter un groupe	*/
 	color: var(--OT-color-muted-on-base-20)!important;
 }
-.is-tab .tree-item-self.is-clickable.is-active .tree-item-icon,
-.is-tab .tree-item-self.is-clickable.is-active .action-pin {
+
+.tree-item-self.is-clickable.is-active {
+	color:				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
+	& .tree-item-icon { color: var(--OT-color-on-accent-3); }  /* icons */
+	& .clickable-icon { color: var(--OT-color-on-accent-3); }  /* pins */
+	&:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+    	& .tree-item-icon { color: var(--OT-color-on-accent-1); }
+    	& .clickable-icon { color: var(--OT-color-on-accent-1); }
+	}
+}
+
+.tree-item.is-tab.is-highlighted {
+	& .tree-item-self.is-clickable.is-active {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
+		& .tree-item-icon {
+		  color: var(--OT-color-on-accent-2);
 }
-.obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .tree-item-self,
-.obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .action-pin,
-.obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .tree-item-icon {
+		& .clickable-icon {
+		  color: var(--OT-color-on-accent-2);
+		}
+		&:hover {
 	color:				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
+			& .tree-item-icon { color: var(--OT-color-on-accent-1); }
+			& .clickable-icon { color: var(--OT-color-on-accent-1); }
 }
+	}
+}
+
 /*	handling of the zoom factor in editing modes	*/
 body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom {
 	--OT-editMode-scaled-file-line-width: calc( var(--OT-editMode-line-width) / var(--vt-tab-zoom-factor) );
@@ -7909,15 +7953,6 @@ input[type='number']::placeholder {
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover,
 .side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover {
 	color:	var(--OT-color-on-accent-1);
-}
-
-.markdown-rendered mark,
-.search-result-file-matched-text,
-.community-item .suggestion-highlight,
-.cm-s-obsidian span.cm-formatting-highlight,
-.cm-s-obsidian span.cm-highlight {
-	color:				var(--OT-stabilo-text) !important;
-	background-color:	var(--OT-stabilo-mark) !important;
 }
 
 .workspace-split.mod-horizontal.mod-right-split .empty-state-container {
