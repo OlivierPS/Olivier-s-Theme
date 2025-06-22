@@ -218,6 +218,8 @@
 			20.06.2025	Added a setting for the Status Bar padding								1.59.0
 						Small tweak																1.59.1
 			22.06.2025	Lot of small improvements around hovering and text highlighting			1.59.2
+						A new palette is arriving: Ivory
+						Lots of small corrections. Cleaned somewhat the code					1.60.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -383,11 +385,11 @@ body {
 	--OT-clickable-icon-in-header:					var(--icon-color);
 	--OT-clickable-icon-in-tab-header:				var(--icon-color);
 	--OT-clickable-icon-on-base-20:					var(--icon-color);
-	--OT-color-muted-on-accent-1:					var(--color-base-70);
+	--OT-color-muted-on-accent-1:					var(--color-base-35);
 	--OT-color-muted-on-accent-2:					var(--OT-color-muted-on-accent-1);
 	--OT-color-muted-on-base-20:					var(--color-base-70);
 	--OT-color-on-accent-1:							var(--color-base-00);
-	--OT-color-on-accent-2:							var(--color-base-100);
+	--OT-color-on-accent-2:							var(--color-base-00);
 	--OT-color-on-accent-3:							var(--color-base-100);
 	--OT-color-on-base-20:							var(--color-base-100);
 	--OT-kbd:										#353500;
@@ -525,7 +527,7 @@ body {
 
 	--nav-item-color:				var(--OT-color-on-base-20);
 	--nav-item-color-hover:			var(--OT-color-on-accent-1);
-	--nav-item-color-active:		var(--OT-color-on-accent-2);
+	--nav-item-color-active:		var(--OT-color-on-accent-3);
 	--nav-item-color-selected:		var(--OT-color-on-accent-3);
 	--nav-item-color-highlighted:	var(--text-accent);
 	--nav-item-background-active:	var(--color-accent-3);
@@ -608,14 +610,14 @@ body {
 
 /*	Bookmark	OpSpl04	*/
 	/* ----- Accent colors  -----	*/
-	--accent-h:						254	!important;
-	--accent-s:						60%	!important;
-	--accent-l:						80%	!important;
+	--accent-h:						258	!important;
+	--accent-s:						88%	!important;
+	--accent-l:						66%	!important;
 
-	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 20%))	!important;
+	--color-accent-1:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 25%))	!important;
 	--color-accent-2:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 0%))	!important;
-	/*--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 40%))	!important;*/
-	--color-accent-3:	var(--color-base-20);
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 25%))	!important;
+//	--color-accent-3:	var(--color-base-35);
 
 
 /*	Bookmark	OpSpl05	*/
@@ -698,6 +700,9 @@ body {
 	--color-red-rgb:					199, 56, 60;
 	--color-red:						#EF5547;
 	--background-modifier-form-field:	var(--color-base-00);
+	--OT-stabilo-text:					black;
+	--code-background:					darkgrey;
+	--code-normal:						white;
 }
 
 /* -------------------- ↑ OpSpl Déclarations générales -------------------- ↑ */
@@ -865,22 +870,90 @@ body {
 	--OT-table-alt-background:		#EBF0F6;
 }/*	↑ lightPalette-icy ↑	*/
 
+/*	OpSpl999 ----------------------------------------------	*/
+.theme-light.lightPalette-ivory {
+	--OT-theme-reference-color:	floralwhite;
+	--color-base-00:	floralwhite;	/*	--background-primary		— fond des fiches												*/
+	--color-base-05:	#FFEFCE;	/*	--background-secondary-alt	— en-têtes de tables et des panneaux, --OT-menu-background		*/
+	--color-base-20:	#FFF4DF;	/*	--background-secondary	 ⭢ --menu-background	fond des panneaux latéraux (sidebars)		*/
+	--color-base-30:	#e0e0e0;	/*	pas utilisée chez moi	--background-modifier-border  																*/
+	--color-base-35:	#FFE3AC;	/*	--interactive-hover, --graph-line, --background-modifier-border-hover; chez moi: les fines bordures des panneaux et des menus, ainsi que les traits de séparation des settings						*/
+	--color-base-40:	#FFE3AC;	/*	--bordures des boutons quand ils sont sélectionnés par ⇥⃣																					*/
+	--color-base-50:	#D9B5A0;	/*	--text-faint																				*/
+	--color-base-60:	#707070;	/*	un filtre quelque part pour les PDF															*/
+	--color-base-70:	#AC6F49;	/*	--text-muted																				*/
+	--color-base-100:	#402009;	/*	--text-normal																				*/
+
+	--link-color:	var(--obsidian-violet);
+
+/*	Accent colors and corresponding text variants	*/
+	--accent-h:	40	!important;
+	--accent-s:	80%	!important;
+	--accent-l:	63%	!important;
+
+//	--color-accent-1:	hsl(254, 80%, 88%);
+//	--color-accent-3:	hsl(254, 80%, 38%);
+
+//	--OT-color-on-accent-1:			var(--color-base-00);
+//	--OT-color-on-accent-2:			var(--color-base-00);
+//	--OT-color-on-accent-3:			var(--color-base-100);
+//	--OT-color-muted-on-accent-1:	var(--color-base-35);
+//	--OT-color-muted-on-accent-2:	var(--OT-color-muted-on-accent-1);
+
+/*	Tables	*/
+//	--OT-table-background:			var(--color-base-00);
+//	--OT-table-header-background:	var(--color-base-05);
+//	--OT-table-alt-background:		var(--color-base-20);
+
+/*	Blocs	*/
+//	--code-background:				floralwhite;
+//	--blockquote-background-color:	var(--code-background);
+
+/*	Stabilo	*/
+//	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
+//	--OT-stabilo-text:	var(--text-normal);
+
+/*	Autres situations délicates pour le texte	*/
+//	--OT-color-on-base-20:			var(--color-base-100);
+//	--OT-color-muted-on-base-20:	var(--color-base-70);
+
+/*	Menus	*/
+//	--OT-menu-text-color:	var(--color-base-70);
+//	--OT-menu-background:	var(--color-base-05);
+
+}/*	↑ lightPalette-ivory ↑	*/
+
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-lightBeige {
 	--OT-theme-reference-color:	#C3A78D;
-	--color-base-00:			#F6F2EE;
-	--color-base-20:			#E8DCD2;
-	--color-base-35:			#D7C2B0;
-	--color-base-40:			#A87D58;
-	--color-base-50:			#BFA389;
-	--color-base-70:			#725B49;
-	--color-base-05:			#E3D4C6;
+	--color-base-00:	#F6F2EE;
+	--color-base-05:	#E3D4C6;
+	--color-base-20:	#E8DCD2;
+	--color-base-35:	#D7C2B0;
+	--color-base-40:	#A87D58;
+	--color-base-50:	#BFA389;
+	--color-base-70:	#725B49;
+	--color-base-100:	#6A4F38;
+
+	--link-color:		#58A8A5;
+
+	--color-accent-1:				#876446	!important;
+	--color-accent-2:				#A87D58	!important;
+	--color-accent-3:				#DAC9BA	!important;
+
+	--accent-h:						28	!important;
+	--accent-s:						31%	!important;
+	--accent-l:						50%	!important;
+
+	--OT-color-on-accent-1:			#FAF7F4	!important;
+	--OT-color-muted-on-accent-1:	#DFCFC2;
+	--OT-color-muted-on-base-20:	#89786C;
+	--OT-color-on-accent-2:			var(--color-base-00);
+	--OT-color-on-base-20:			#A87D58;
 
 	--code-background:				#E6DBD0;
 	--OT-button-OFF-bg:				#DAC9BA;
 
-	--color-base-100:		#6A4F38;
-	--link-color:			#58A8A5;
 	--OT-text-selection-background:		hsl(var(--accent-h), var(--accent-s), 81%);
 	--checklist-done-color:	#C7AD96;
 //	--h1-color:				#96704F;
@@ -891,10 +964,6 @@ body {
 	--OT-table-alt-background:		#F2ECE6;
 
 	--metadata-background: 				#EEE5DD;
-	--OT-color-muted-on-accent-1:		#DFCFC2;
-	--OT-color-muted-on-base-20:		#89786C;
-	--OT-color-on-accent-2:				var(--color-base-00);
-	--OT-color-on-base-20:				#A87D58;
 	--OT-setting-item-description:		#8B684A;
 	--OT-stabilo-mark:					#E9DDD1;
 } /*	↑ lightPalette-lightBeige ↑	*/
@@ -2021,16 +2090,6 @@ body {
 	--OT-text-selection-background:					hsl(var(--accent-h), var(--accent-s), 93%);
 }
 .theme-light.lightPalette-lightBeige.accentColor-lightMode-shade {
-	--accent-h:						28	!important;
-	--accent-s:						31%	!important;
-	--accent-l:						50%	!important;
-	--color-accent-1:				#876446	!important;
-	--color-accent-2:				#A87D58	!important;
-	--color-accent-3:				#E8DDD3	!important;
-	--OT-color-on-accent-1:			#FAF7F4	!important;
-//	--OT-color-muted-on-accent-1:	#fff	!important;
-//	--OT-color-on-accent-2:			#fff	!important;
-//	--OT-color-on-accent-3:			#fff	!important;
 }
 .theme-light.lightPalette-lightBeige.accentColor-lightMode-alternative-1 {
 	--accent-h:			239	!important;
@@ -5243,6 +5302,11 @@ input[type=checkbox] {
 .search-input-clear-button, .note-status-search-clear-button {
 	opacity:	1;
 }
+/*	correction d’une autre niaiserie du même plugin	*/
+.search-input-clear-button:hover,.note-status-search-clear-button:hover {
+	color: 				var(--color-accent-1);
+	background-color: 	transparent;
+}
 
 /*	Bookmark	OpSpl21	*/
 /* —————————————————————————————— OpSpl Sidebars —————————————————————————————— */
@@ -6075,6 +6139,10 @@ media (hover: hover) {
 /*	le bouton pour “case sensitive ON / OFF” dans le champ de recherche	*/
 .input-right-decorator.clickable-icon {
 	color:	var(--OT-clickable-icon-in-header);
+}
+.input-right-decorator.clickable-icon.is-active {
+		color: 				var(--OT-color-on-accent-2);
+		background-color:	var(--color-accent-2);
 }
 .input-right-decorator.clickable-icon:hover {
 		color: 				var(--OT-color-on-accent-1);
@@ -6984,6 +7052,7 @@ body:not(.is-fullscreen) .status-bar {
     color:				var(--OT-color-on-accent-1);
     background-color:	var(--color-accent-1);
 	}
+
 /*	sync status icon: if it remains in the “text success” color, it’s not always visible. It’s more convenient to let it in the color of the other status bar items	*/
 .sync-status-icon.mod-success {
   color: var(--status-bar-text-color);
@@ -7313,20 +7382,20 @@ kbd {
 
 .tree-item.is-tab.is-highlighted {
 	& .tree-item-self.is-clickable.is-active {
-	color:				var(--OT-color-on-accent-2);
-	background-color:	var(--color-accent-2);
+		color:				var(--OT-color-on-accent-2);
+		background-color:	var(--color-accent-2);
 		& .tree-item-icon {
 		  color: var(--OT-color-on-accent-2);
-}
+		}
 		& .clickable-icon {
 		  color: var(--OT-color-on-accent-2);
 		}
 		&:hover {
-	color:				var(--OT-color-on-accent-1);
-	background-color:	var(--color-accent-1);
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
 			& .tree-item-icon { color: var(--OT-color-on-accent-1); }
 			& .clickable-icon { color: var(--OT-color-on-accent-1); }
-}
+		}
 	}
 }
 
@@ -8256,6 +8325,10 @@ settings:
 					label:		Icy
 					label.fr:	Glacé
 					value:		lightPalette-icy
+				-
+					label:		Ivory
+					label.fr:	Ivoire
+					value:		lightPalette-ivory
 				-
 					label:		Orange
 					label.fr:	Orange

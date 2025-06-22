@@ -123,7 +123,13 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 22.06.2025 Verstion 1.59.2
+
+#### 23.06.2025	 Version 1.60.0
+I’m working on a new palette: Ivory
+I’ve tweaked and cleaned some parts of the code in order to simplify maintenance.
+
+----------------------------------------------
+#### 22.06.2025 Version 1.59.2
 A lot of small improvements around hovering and text highlighting.
 
 ----------------------------------------------
