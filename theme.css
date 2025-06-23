@@ -220,6 +220,7 @@
 			22.06.2025	Lot of small improvements around hovering and text highlighting			1.59.2
 						A new palette is arriving: Ivory
 						Lots of small corrections. Cleaned somewhat the code					1.60.0
+			23.06.2025	Improving the Ivory palette												1.60.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -884,42 +885,42 @@ body {
 	--color-base-70:	#AC6F49;	/*	--text-muted																				*/
 	--color-base-100:	#402009;	/*	--text-normal																				*/
 
-	--link-color:	var(--obsidian-violet);
+	--link-color:	#12517D;
 
 /*	Accent colors and corresponding text variants	*/
 	--accent-h:	40	!important;
 	--accent-s:	80%	!important;
 	--accent-l:	63%	!important;
 
-//	--color-accent-1:	hsl(254, 80%, 88%);
-//	--color-accent-3:	hsl(254, 80%, 38%);
+//	--color-accent-1:	hsl(254, 80%, 88%) !important;
+	--color-accent-3:	#FADBA7 !important;
 
 //	--OT-color-on-accent-1:			var(--color-base-00);
 //	--OT-color-on-accent-2:			var(--color-base-00);
-//	--OT-color-on-accent-3:			var(--color-base-100);
+	--OT-color-on-accent-3:			#8F6510;
 //	--OT-color-muted-on-accent-1:	var(--color-base-35);
-//	--OT-color-muted-on-accent-2:	var(--OT-color-muted-on-accent-1);
+	--OT-color-muted-on-accent-2:	#FFEFCE;
 
-/*	Tables	*/
-//	--OT-table-background:			var(--color-base-00);
-//	--OT-table-header-background:	var(--color-base-05);
-//	--OT-table-alt-background:		var(--color-base-20);
-
-/*	Blocs	*/
-//	--code-background:				floralwhite;
-//	--blockquote-background-color:	var(--code-background);
-
-/*	Stabilo	*/
-//	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
-//	--OT-stabilo-text:	var(--text-normal);
-
-/*	Autres situations délicates pour le texte	*/
+/*	Texte dans les sidebars	*/
 //	--OT-color-on-base-20:			var(--color-base-100);
 //	--OT-color-muted-on-base-20:	var(--color-base-70);
 
 /*	Menus	*/
 //	--OT-menu-text-color:	var(--color-base-70);
 //	--OT-menu-background:	var(--color-base-05);
+
+/*	Tables	*/
+//	--OT-table-background:			var(--color-base-00);
+	--OT-table-header-background:	#FFE9BD;
+	--OT-table-alt-background:		#FFEFCE;
+
+/*	Citations & Blocs	*/
+	--code-background:				#FFF4DF;
+//	--blockquote-background-color:	var(--code-background);
+
+/*	Stabilo	*/
+//	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
+//	--OT-stabilo-text:	var(--text-normal);
 
 }/*	↑ lightPalette-ivory ↑	*/
 
