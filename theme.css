@@ -221,6 +221,7 @@
 						A new palette is arriving: Ivory
 						Lots of small corrections. Cleaned somewhat the code					1.60.0
 			23.06.2025	Improving the Ivory palette												1.60.1
+			24.06.2025	Ivory palette, light: both alternative accent colors are ready			1.60.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -299,6 +300,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl58		Related Notes plugin
 			OpSpl59		Note Status plugin
 			OpSpl60		Dynamic Outline plugin
+			OpSpl61		Better Command Palette plugin
 
 			OpSpl90		Some useful CSSCLASSES
 
@@ -885,7 +887,7 @@ body {
 	--color-base-70:	#AC6F49;	/*	--text-muted																				*/
 	--color-base-100:	#402009;	/*	--text-normal																				*/
 
-	--link-color:	#12517D;
+	--link-color:		#12517D;
 
 /*	Accent colors and corresponding text variants	*/
 	--accent-h:	40	!important;
@@ -2090,6 +2092,38 @@ body {
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-text-selection-background:					hsl(var(--accent-h), var(--accent-s), 93%);
 }
+
+.theme-light.lightPalette-ivory.accentColor-lightMode-shade {
+}
+.theme-light.lightPalette-ivory.accentColor-lightMode-alternative-1 {
+	--accent-h:	192	!important;
+	--accent-s:	100%	!important;
+	--accent-l:	50%	!important;
+
+	--color-accent-1:	#46DAFF !important;
+	--color-accent-3:	#ACEEFF !important;
+
+//	--OT-color-on-accent-1:			var(--color-base-00);
+	--OT-color-on-accent-2:			var(--color-base-20);
+	--OT-color-on-accent-3:			#006E8A;
+	--OT-color-muted-on-accent-1:	#007C9B;
+//	--OT-color-muted-on-accent-2:	var(--OT-color-muted-on-accent-1);
+}
+.theme-light.lightPalette-ivory.accentColor-lightMode-alternative-2 {
+	--accent-h:	280	!important;
+	--accent-s:	50%	!important;
+	--accent-l:	64%	!important;
+
+//	--color-accent-1:	hsl(254, 80%, 88%) !important;
+	--color-accent-3:	#EFCEFF !important;
+
+//	--OT-color-on-accent-1:			var(--color-base-00);
+	--OT-color-on-accent-2:			#FAF0FF;
+	--OT-color-on-accent-3:			#5C008A;
+//	--OT-color-muted-on-accent-1:	var(--color-base-35);
+//	--OT-color-muted-on-accent-2:	var(--OT-color-muted-on-accent-1);
+}
+
 .theme-light.lightPalette-lightBeige.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-lightBeige.accentColor-lightMode-alternative-1 {
@@ -7911,6 +7945,7 @@ body {
 .heading-level-styling-1 #dynamic-outline li::before,
 .heading-level-styling-2 #dynamic-outline li::before {
 	color: var(--OT-color-muted-on-base-20);
+}
 #dynamic-outline li a {
 	color:	var(--OT-menu-text-color);
 }
@@ -7939,6 +7974,15 @@ body {
 	color:	var(--OT-menu-text-color);
 }
 /*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl61	*/
+/*	———————————————————— Better Command Palette plugin  ————————————————————	*/
+.better-command-palette .better-command-palette-title {
+	font-size:		var(--font-ui-large);
+	font-weight:	var(--font-medium);
+	color:			var(--OT-menu-text);
+}
+/*	---------- ↑ Better Command Palette plugin ↑ ----------	*/
 
 
 /*	Bookmark	OpSpl90	*/

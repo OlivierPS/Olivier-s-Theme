@@ -123,7 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 23 juin 2025 Version 1.60.1
+#### 24.06.2025
+The Ivory palette is now complete in Light mode.
+
+----------------------------------------------
+#### 23.062025 Version 1.60.1
 I’m progressively improving the Ivory palette.
 
 ----------------------------------------------
