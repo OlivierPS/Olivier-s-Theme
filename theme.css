@@ -222,6 +222,7 @@
 						Lots of small corrections. Cleaned somewhat the code					1.60.0
 			23.06.2025	Improving the Ivory palette												1.60.1
 			24.06.2025	Ivory palette, light: both alternative accent colors are ready			1.60.2
+			26.06.2025	Vastly improved tables													1.61.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -562,12 +563,7 @@ body {
 
 	--tab-stacked-text-transform:	rotate(180deg);
 
-	--table-background:					var(--OT-table-background);
-	--table-column-alt-background:		undefined;
-	--table-header-background-hover:	transparent;	/*	var(--table-header-background);	*/
-	--table-header-color:				var(--h3-color);
-	--table-row-alt-background-hover:	transparent;	/*	var(--table-background);	*/
-	--table-row-background-hover:		transparent;	/*	var(--table-row-alt-background);	*/
+/*	place des variables pour les tables	*/
 
 	--tag-color:			var(--OT-pill-color);
 	--tag-background:		var(--OT-pill-background);
@@ -679,9 +675,6 @@ body {
 	--popover-height:				40vh;
 	--popover-max-height:			70vh;
 	--popover-width:				46rem;
-
-	--table-header-weight:			var(--font-bold);
-	--table-text-size:				0.9em;
 
 	--vault-name-font-weight:		var(--font-bold);
 	--vault-profile-font-size:		var(--font-ui-large);
@@ -5731,75 +5724,173 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 
 /*	Bookmark	OpSpl25	*/
 /*	—————————————————————————————— OpSpl Tables —————————————————————————————— */
-/*	la table dans son entier; quelques ajustements que je trouve judicieux, qui font partie de mon “par défaut”	*/
-.cm-embed-block.markdown-rendered .block-language-dataview,
-.markdown-rendered table,
-.markdown-rendered .table-view-table {
+body {
+	--table-background:					transparent;	/*	var(--OT-table-background);	*/
+	--table-border-color:				var(--text-normal);
+//	--table-row-alt-background:			var(--table-background);
+	--table-column-alt-background:		transparent;
+	--table-header-background-hover:	var(--table-header-background);
+//	--table-header-color:				var(--h3-color);
+//	--table-row-alt-background-hover:	transparent;	/*	var(--table-background);	*/
+//	--table-row-background-hover:		transparent;	/*	var(--table-row-alt-background);	*/
+//	--table-header-weight:				var(--font-bold);
+//	--table-text-size:					0.9em;
+}
+.OT-tables-style-1,
+.OT-tables-style-2,
+.OT-tables-improved,
+.OT-tables-alternate-rows {
+	--table-background:			var(--OT-table-background);
+	--table-header-background:	var(--OT-table-header-background);
+	--table-row-alt-background:	var(--OT-table-background);
+}
+/*	.................... Je vais copier ici les règles de “app.css” que je souhaite modifier.
+						Ainsi, j’aurai la même logique qu’Obsidian .......................................................	*/
+.markdown-rendered table {
 	margin-block-start:		calc(var(--p-spacing) * 1.1);
 	margin-block-end:		calc(var(--p-spacing) * 1.5);
 	font-feature-settings:	"lnum";		/*	au lieu des “old-style numerals”	*/
-	}
-
+}
+.cm-html-embed th,
 .markdown-rendered th {
 	vertical-align:	bottom;
+	font-style:		italic;
+}
+/*	toutes les séparations intérieures, horizontales et verticales, ainsi que le bord du haut de la table	*/
+.OT-tables-style-1.cm-html-embed td,
+.OT-tables-style-1.markdown-rendered td,
+.OT-tables-style-1.cm-html-embed th,
+.OT-tables-style-1.markdown-rendered th,
+.OT-tables-improved .cm-html-embed td,
+.OT-tables-improved .markdown-rendered td,
+.OT-tables-improved .cm-html-embed th,
+.OT-tables-improved .markdown-rendered th,
+.OT-tables-style-2.cm-html-embed td,
+.OT-tables-style-2.markdown-rendered td,
+.OT-tables-style-2.cm-html-embed th,
+.OT-tables-style-2.markdown-rendered th,
+.OT-tables-alternate-rows .cm-html-embed td,
+.OT-tables-alternate-rows .markdown-rendered td,
+.OT-tables-alternate-rows .cm-html-embed th,
+.OT-tables-alternate-rows .markdown-rendered th
+{
+  	border:	1px dotted var(--table-border-color);
 }
 
-/* texte des tables en “edit mode, RAW”	*/
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
-	font-size:		var(--OT-editMode-tableText-size);
+.OT-tables-style-2.cm-html-embed tbody tr:nth-child(even),
+.OT-tables-style-2.markdown-rendered tbody tr:nth-child(even),
+.OT-tables-alternate-rows .cm-html-embed tbody tr:nth-child(even),
+.OT-tables-alternate-rows .markdown-rendered tbody tr:nth-child(even)
+{
+  	background-color:	var(--OT-table-alt-background);
 }
-/* current table cell being edited in Liveview editing mode */
-td .cm-editor .cm-line {
-    font-size:	var(--OT-editMode-tableText-size);
+.OT-tables-style-1.cm-html-embed tbody tr:nth-child(even),
+.OT-tables-style-1.markdown-rendered tbody tr:nth-child(even)
+{
+  	background-color:	var(--table-background);
 }
-
-.OT-tables-custom .cm-embed-block.markdown-rendered .block-language-dataview,
-.OT-tables-custom .markdown-rendered table,
-.OT-tables-custom .markdown-rendered .table-view-table {
-	border:							calc(var(--table-border-width) * 2) solid;
-}
-
-.OT-tables-custom .markdown-rendered td,
-.OT-tables-custom .markdown-rendered th,
-.OT-tables-tinted-rows .markdown-rendered td,
-.OT-tables-tinted-rows .markdown-rendered th {
-	border:	1px dotted;
-}
-
-/*	la ligne d’en-tête, dans mes deux styles améliorés	*/
-.OT-tables-custom .markdown-rendered thead tr,
-.OT-tables-tinted-rows .markdown-rendered thead tr {
-	--table-header-size:				1em;
-	--table-header-background:			var(--OT-table-header-background);
-	--table-header-background-hover:	var(--table-header-background);
-	--table-header-border-width:		0;
-	font-style:					italic;
-	letter-spacing:				0.02em;
-	border-bottom:				1.5px solid var(--table-header-background);
+.OT-tables-style-1.cm-html-embed tbody tr:last-child > td,
+.OT-tables-style-1.markdown-rendered tbody tr:last-child > td,
+.OT-tables-style-2.cm-html-embed tbody tr:last-child > td,
+.OT-tables-style-2.markdown-rendered tbody tr:last-child > td,
+.OT-tables-improved .cm-html-embed tbody tr:last-child > td,
+.OT-tables-improved .markdown-rendered tbody tr:last-child > td,
+.OT-tables-alternate-rows .cm-html-embed tbody tr:last-child > td,
+.OT-tables-alternate-rows .markdown-rendered tbody tr:last-child > td
+{
+	border-bottom:			2px solid;
 }
 
-.OT-tables-tinted-rows .cm-embed-block.markdown-rendered .block-language-dataview,
-.OT-tables-tinted-rows .markdown-rendered table,
-.OT-tables-tinted-rows .markdown-rendered .table-view-table {
-	--table-row-alt-background:			var(--OT-table-background);
-	--table-background:					var(--OT-table-alt-background);
-	--table-row-background-hover:		transparent;	/*	var(--OT-table-alt-background);	*/
-	--table-row-alt-background-hover:	transparent;	/*	var(--OT-table-alt-background);	*/
-	vertical-align:						top;
-	border:								calc(var(--table-border-width) * 2) solid;
+.OT-tables-style-1.cm-html-embed tbody tr > td:first-child,
+.OT-tables-style-1.markdown-rendered tbody tr > td:first-child,
+.OT-tables-style-2.cm-html-embed tbody tr > td:first-child,
+.OT-tables-style-2.markdown-rendered tbody tr > td:first-child,
+.OT-tables-improved .cm-html-embed tbody tr > td:first-child,
+.OT-tables-improved .markdown-rendered tbody tr > td:first-child,
+.OT-tables-alternate-rows .cm-html-embed tbody tr > td:first-child,
+.OT-tables-alternate-rows .markdown-rendered tbody tr > td:first-child
+{
+	border-left:			2px solid;
 }
 
-.OT-tables-tinted-rows .cm-embed-block.markdown-rendered .block-language-dataview td,
-.OT-tables-tinted-rows .markdown-rendered table td,
-.OT-tables-tinted-rows .markdown-rendered .table-view-table td {
-	border-bottom:	none;
-	border-top:		none;
+.OT-tables-style-1.cm-html-embed 				tbody tr > td:last-child,
+.OT-tables-style-1.markdown-rendered			tbody tr > td:last-child,
+.OT-tables-style-2.cm-html-embed				tbody tr > td:last-child,
+.OT-tables-style-2.markdown-rendered			tbody tr > td:last-child,
+.OT-tables-improved .cm-html-embed				tbody tr > td:last-child,
+.OT-tables-improved .markdown-rendered			tbody tr > td:last-child,
+.OT-tables-alternate-rows .cm-html-embed		tbody tr > td:last-child,
+.OT-tables-alternate-rows .markdown-rendered	tbody tr > td:last-child
+{
+	border-right:			2px solid;
 }
-/*	La ligne d’en-tête dans les tables Dataview	*/
-.table-view-table > thead > tr > th {
-    font-weight:	var(--table-header-weight);
-    font-size:		var(--table-header-size);
+
+.OT-tables-style-1.cm-html-embed 				tbody td,
+.OT-tables-style-1.markdown-rendered			tbody td,
+.OT-tables-improved .cm-html-embed				tbody td,
+.OT-tables-improved .markdown-rendered			tbody td
+{
+	border-top:			1px solid !important;
 }
+
+.OT-tables-style-2.cm-html-embed				tbody td,
+.OT-tables-style-2.markdown-rendered			tbody td,
+.OT-tables-alternate-rows .cm-html-embed		tbody td,
+.OT-tables-alternate-rows .markdown-rendered	tbody td
+{
+	border-top:			0px;
+	border-bottom:		0px;
+}
+
+.OT-tables-style-1.cm-html-embed 				thead tr > th,
+.OT-tables-style-1.markdown-rendered			thead tr > th,
+.OT-tables-style-2.cm-html-embed				thead tr > th,
+.OT-tables-style-2.markdown-rendered			thead tr > th,
+.OT-tables-improved .cm-html-embed				thead tr > th,
+.OT-tables-improved .markdown-rendered			thead tr > th,
+.OT-tables-alternate-rows .cm-html-embed		thead tr > th,
+.OT-tables-alternate-rows .markdown-rendered	thead tr > th
+{
+		border-top:		2px solid !important;
+		border-left:	1px solid ;
+}
+
+.OT-tables-style-1.cm-html-embed 				thead tr > th:first-child,
+.OT-tables-style-1.markdown-rendered			thead tr > th:first-child,
+.OT-tables-style-2.cm-html-embed				thead tr > th:first-child,
+.OT-tables-style-2.markdown-rendered			thead tr > th:first-child,
+.OT-tables-improved .cm-html-embed				thead tr > th:first-child,
+.OT-tables-improved .markdown-rendered			thead tr > th:first-child,
+.OT-tables-alternate-rows .cm-html-embed		thead tr > th:first-child,
+.OT-tables-alternate-rows .markdown-rendered	thead tr > th:first-child
+{
+  	border-left:	2px solid !important;
+}
+
+.OT-tables-style-1.cm-html-embed 				thead tr > th:last-child,
+.OT-tables-style-1.markdown-rendered			thead tr > th:last-child,
+.OT-tables-style-2.cm-html-embed				thead tr > th:last-child,
+.OT-tables-style-2.markdown-rendered			thead tr > th:last-child,
+.OT-tables-improved .cm-html-embed				thead tr > th:last-child,
+.OT-tables-improved .markdown-rendered			thead tr > th:last-child,
+.OT-tables-alternate-rows .cm-html-embed		thead tr > th:last-child,
+.OT-tables-alternate-rows .markdown-rendered	thead tr > th:last-child
+{
+		border-right:	2px solid !important;
+}
+
+.OT-tables-style-1.cm-html-embed 				thead tr > th,
+.OT-tables-style-1.markdown-rendered			thead tr > th,
+.OT-tables-style-2.cm-html-embed				thead tr > th,
+.OT-tables-style-2.markdown-rendered			thead tr > th,
+.OT-tables-improved .cm-html-embed				thead tr > th,
+.OT-tables-improved .markdown-rendered			thead tr > th,
+.OT-tables-alternate-rows .cm-html-embed		thead tr > th,
+.OT-tables-alternate-rows .markdown-rendered	thead tr > th
+{
+		border-bottom:		1px solid !important;
+}
+
 /*	-------------------- ↑ OpSpl Tables -------------------- ↑ */
 
 
@@ -9594,7 +9685,7 @@ settings:
 			description.fr:	Différents styles de tables. Par défaut, le modèle « Obsidian nature ».
 			type:			class-select
 			allowEmpty:		false
-			default:		OT-tables-tinted-rows
+			default:		OT-tables-alternate-rows
 			options:
 				-
 					label:		Obsidian plain
@@ -9603,11 +9694,11 @@ settings:
 				-
 					label:		Improved
 					label.fr:	Améliorées
-					value:		OT-tables-custom
+					value:		OT-tables-improved
 				-
 					label:		Alternate row backgrounds
 					label.fr:	Avec fonds alternés
-					value:		OT-tables-tinted-rows
+					value:		OT-tables-alternate-rows
 	-
 			id:			OT-images-rendering
 			title:		How do you prefer your images?

@@ -123,6 +123,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+
+#### 26 juin 2025
+Vastly improved tables. There are now two `cssclasses` that can be used to style tables on a per note basis:
+
+* `OT-tables-style-1`	— equivalent to the “improved” style that one can set in Style Settings
+* `OT-tables-style-2`	— equivalent to the “alternate rows” style that one can set in Style Settings
+
+----------------------------------------------
 #### 24.06.2025
 The Ivory palette is now complete in Light mode.
 
