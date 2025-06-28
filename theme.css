@@ -223,6 +223,7 @@
 			23.06.2025	Improving the Ivory palette												1.60.1
 			24.06.2025	Ivory palette, light: both alternative accent colors are ready			1.60.2
 			26.06.2025	Vastly improved tables													1.61.0
+			28.06.2025	Colors tuning in different themes										1.61.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -528,6 +529,8 @@ body {
 	--metadata-label-text-color:		var(--color-base-70);
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
+  	--metadata-label-font-size:			var(--font-ui-small);
+  	--metadata-input-font-size:			var(--font-ui-small);
 
 	--nav-item-color:				var(--OT-color-on-base-20);
 	--nav-item-color-hover:			var(--OT-color-on-accent-1);
@@ -755,22 +758,38 @@ body {
 }/*	↑ lightPalette-artDeco ↑	*/
 
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-beige {
 	--OT-theme-reference-color:	#C89947;
-	--color-base-00:			#FCF3E5;
-	--color-base-20:			#FAECD5;
-	--color-base-35:			#EBB553;
-	--color-base-40:			#c3913a;
-	--color-base-50:			#C5AC94;
-	--color-base-70:			#7A6556;
-	--color-base-05:			#F6DEB7;
+	--color-base-00:	#FCF3E5;
+	--color-base-05:	#F6DEB7;
+	--color-base-20:	#FAECD5;
+	--color-base-35:	#EBB553;
+	--color-base-40:	#c3913a;
+	--color-base-50:	#C5AC94;
+	--color-base-70:	#7A6556;
+	--color-base-100:	#71573E;
+	--link-color:		#698BAC;
+
+	--accent-h:							38	!important;
+	--accent-s:							54%	!important;
+	--accent-l:							72%	!important;
+
+	--color-accent-1:					#C4923B	!important;
+//	--color-accent-2:					#DFC495	!important;
+	--color-accent-3:					#E7D3B1	!important;
+	--OT-color-on-accent-1:				#FFFFFF;
+	--OT-color-on-accent-2:				#FFF;
+	--OT-color-on-accent-3:				#4E3A18;
+	--OT-color-muted-on-accent-1:		#EBDBBE;
+	--OT-color-muted-on-accent-2:		#B78837;
+
+
 	--icon-color:				var(--color-base-100);
 
 	--code-background:			#FAEDD7;
 	--OT-button-OFF-bg:			#F8E5C6;
 
-	--color-base-100:		#71573E;
-	--link-color:			#698BAC;
 
 //	--h1-color:				#9D7956;
 //	--h3-color:				#6B523B;
@@ -810,29 +829,40 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-green {
 	--OT-theme-reference-color:	#0B7931;
-	--color-base-00:			#F0FDF4;
-	--color-base-20:			#DCFCE7;
-	--color-base-35:			#12D856;
-	--color-base-40:			#70ec9d;
-	--color-base-50:			#75857B;
-	--color-base-70:			#0D993D;
-	--color-base-05:			#BDF9D2;
+	--color-base-00:	#F0FDF4;
+	--color-base-05:	#BDF9D2;
+	--color-base-20:	#DCFCE7;
+	--color-base-35:	#12D856;
+	--color-base-40:	#70ec9d;
+	--color-base-50:	#75857B;
+	--color-base-70:	#0D993D;
+	--color-base-100:	#0F7635;
+	--link-color:		#537622;
+
+	--accent-h:						141	!important;
+	--accent-s:						83%	!important;
+	--accent-l:						72%	!important;
+
+	--color-accent-1:				#14D65B	!important;
+	--color-accent-3:				#BDF9D2	!important;
+
+	--OT-color-on-accent-1:			#FBFFFD !important;
+	--OT-color-on-accent-2:			#085A26 !important;
+	--OT-color-on-accent-3:			#085A24	!important;
+	--OT-color-muted-on-accent-1:	#BDF9D3	!important;
+	--OT-color-muted-on-accent-2:	#0A692D	!important;
+
+	--OT-color-on-base-20:			#085C27;
+
+	--OT-table-header-background:	#CDFADC;
+	--OT-table-background:			#E7FDEF;
+	--OT-table-alt-background:		#CDFADC;
 
 	--code-background:				#DFFAE7;
 	--OT-button-OFF-bg:				#BDF9D2;
 
-	--color-base-100:	#0F7635;
-	--link-color:		#537622;
 	--checklist-done-color:	#096A2A;
-	--OT-color-on-base-20:			#085C27;
 
-//	--h1-color:						#202770;
-//	--h3-color:						#252C73;
-//	--h5-color:						#797B9D;
-
-	--OT-table-alt-background:				#E8F9EE;
-	--OT-table-background:					#E7FDEF;
-	--OT-table-header-background:			#DDFCE8;
 //	--OT-view-header-title-focus-color:		var(--OT-theme-reference-color);
 	--OT-view-header-title-no-focus-color:	var(--color-base-50);
 	--OT-stabilo-mark:						#2BA727;
@@ -866,19 +896,18 @@ body {
 	--OT-table-alt-background:		#EBF0F6;
 }/*	↑ lightPalette-icy ↑	*/
 
-/*	OpSpl999 ----------------------------------------------	*/
 .theme-light.lightPalette-ivory {
 	--OT-theme-reference-color:	floralwhite;
-	--color-base-00:	floralwhite;	/*	--background-primary		— fond des fiches												*/
-	--color-base-05:	#FFEFCE;	/*	--background-secondary-alt	— en-têtes de tables et des panneaux, --OT-menu-background		*/
-	--color-base-20:	#FFF4DF;	/*	--background-secondary	 ⭢ --menu-background	fond des panneaux latéraux (sidebars)		*/
-	--color-base-30:	#e0e0e0;	/*	pas utilisée chez moi	--background-modifier-border  																*/
-	--color-base-35:	#FFE3AC;	/*	--interactive-hover, --graph-line, --background-modifier-border-hover; chez moi: les fines bordures des panneaux et des menus, ainsi que les traits de séparation des settings						*/
-	--color-base-40:	#FFE3AC;	/*	--bordures des boutons quand ils sont sélectionnés par ⇥⃣																					*/
-	--color-base-50:	#D9B5A0;	/*	--text-faint																				*/
-	--color-base-60:	#707070;	/*	un filtre quelque part pour les PDF															*/
-	--color-base-70:	#AC6F49;	/*	--text-muted																				*/
-	--color-base-100:	#402009;	/*	--text-normal																				*/
+	--color-base-00:	floralwhite;
+	--color-base-05:	#FFEFCE;
+	--color-base-20:	#FFF4DF;
+	--color-base-30:	#e0e0e0;
+	--color-base-35:	#FFD279;
+	--color-base-40:	#FFE3AC;
+	--color-base-50:	#D9B5A0;
+	--color-base-60:	#707070;
+	--color-base-70:	#AC6F49;
+	--color-base-100:	#402009;
 
 	--link-color:		#12517D;
 
@@ -1009,26 +1038,45 @@ body {
 .theme-light.lightPalette-Orange {
 	--OT-theme-reference-color:	orange;		/*	#FFA500	*/
 	--color-base-00:			#FDF6E8;
+	--color-base-05:			#FFD7B8;
 	--color-base-20:			#FFE1C9;
 	--color-base-35:			#FFB174;
 	--color-base-40:			#FC6E00;
 	--color-base-50:			#F0B36A;
 	--color-base-70:			#FF811F;
-	--color-base-05:			#FFD7B8;
+	--color-base-100:			#2F4858;
+	--link-color:				#849F86;
 
-	--color-base-100:	#2F4858;
-	--link-color:		#849F86;
-//	--h1-color:			#9D7956;
-//	--h3-color:			#6B523B;
-//	--h5-color:			#44607C;
+	--accent-h:						39		!important;
+	--accent-s:						100%	!important;
+	--accent-l:						70%		!important;
+
+	--color-accent-1:				#FFAB11	!important;
+	--color-accent-3:				#FFDB99	!important;
+
+	--OT-color-on-accent-1: 		white;
+	--OT-color-on-accent-2: 		white;
+	--OT-color-on-accent-3: 		#996300;
+
+	--OT-color-muted-on-accent-1:	#885800;
+	--OT-color-muted-on-accent-2:	#AA6E00;
+
 	--code-background:				#FBE9D3;
 	--OT-button-OFF-bg:				#FFD8B8;
 
 	--OT-color-on-base-20:			#F78700;
 	--OT-color-muted-on-base-20:	#FF9D52;
-	--OT-table-header-background:	#FCEDDC;
+
+	--OT-menu-text-color:	#885800;
+	--OT-menu-background:	#FFDB99;
+
+	--OT-table-header-background:	#FFEDCC;
 	--OT-table-background:			#FDF6ED;
-	--OT-table-alt-background:		#FCF2E5;
+	--OT-table-alt-background:		#FFEDCC;
+
+	--OT-stabilo-mark:	var(--stabilo-orange-clair);
+
+
 	--metadata-background: 			#FFECD5;
 	--OT-setting-item-description:	#EE9A00;
 }	/*	↑ lightPalette-Orange ↑	*/
@@ -1174,27 +1222,44 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-stone {
 	--OT-theme-reference-color:	#AEA7A3;
-	--color-base-00:			#E7E5E4;
-	--color-base-20:			#D6D3D1;
-	--color-base-35:			#292524;
-	--color-base-40:			#A8A29E;
-	--color-base-50:			#78716C;
-	--color-base-70:			#78716C;
-	--color-base-05:			#CECAC8;
-
-	--OT-button-OFF-bg:			#C6C2BF;
-
+	--color-base-00:	#E7E5E4;
+	--color-base-05:	#CECAC8;
+	--color-base-20:	#D6D3D1;
+	--color-base-35:	#292524;
+	--color-base-40:	#A8A29E;
+	--color-base-50:	#78716C;
+	--color-base-70:	#78716C;
 	--color-base-100:	#47413E;
+
 	--link-color:		#297622;
-//	--h1-color:		#1E256A;
-//	--h3-color:		#2D379E;
-//	--h5-color:		#9293AD;
+
+	--accent-h:	24	!important;
+	--accent-s:	5%	!important;
+	--accent-l:	61%	!important;
+
+	--color-accent-1:	#534E4A	!important;
+	--color-accent-3:	#EEECEB	!important;
+
+	--OT-color-on-accent-1:			#fff;
+	--OT-color-on-accent-2:			#fff;
+	--OT-color-on-accent-3:			#4B4643;
+	--OT-color-muted-on-accent-1:	#D6D3D1;
+
+	--OT-color-on-base-20:			#44403C;
 
 	--OT-table-background:			#E2E0DF;
 	--OT-table-header-background:	#CFCCCA;
-	--OT-color-muted-on-accent-1:	#D6D3D1;
-	--OT-color-on-base-20:			#44403C;
-	--OT-metadata-background:		#DFDDDC;
+
+	--code-background:				#E6E4E2;
+
+	--OT-stabilo-mark:	var(--stabilo-jaune-clair);
+
+	--OT-text-selection-background:		hsl(var(--accent-h), var(--accent-s), 78%);
+
+	--OT-view-header-title-focus-color:	#35312E;
+
+	--OT-button-OFF-bg:			#C6C2BF;
+	--OT-metadata-background:	#DFDDDC;
 }
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-sunnyMemos {
@@ -1880,15 +1945,6 @@ body {
 }
 
 .theme-light.lightPalette-beige.accentColor-lightMode-shade {
-	--accent-h:							38	!important;
-	--accent-s:							54%	!important;
-	--accent-l:							73%	!important;
-	--color-accent-1:					#C4923B	!important;
-	--OT-color-muted-on-accent-1:		#E3CBA2;
-	--color-accent-2:					#DFC495	!important;
-	--OT-color-on-accent-2:				#816027;
-	--OT-color-muted-on-accent-2:		#B58737;
-	--color-accent-3:					#F3E8D6	!important;
 }
 .theme-light.lightPalette-beige.accentColor-lightMode-alternative-1 {
 	--accent-h:							188	!important;
@@ -1999,17 +2055,6 @@ body {
 	--OT-view-header-title-focus-color:	#E6AF19;
 }
 .theme-light.lightPalette-green.accentColor-lightMode-shade {
-	--accent-h:						142	!important;
-	--accent-s:						83%	!important;
-	--accent-l:						66%	!important;
-	--color-accent-1:				#14D65B	!important;
-	--OT-color-on-accent-1:			#FBFFFD !important;
-	--OT-color-muted-on-accent-1:	#BDF9D3	!important;
-//	--color-accent-2:				#60F095	!important;
-	--OT-color-on-accent-2:			#085A26 !important;
-	--OT-color-muted-on-accent-2:	#0A692D	!important;
-	--color-accent-3:				#CDFADD	!important;
-	--OT-color-on-accent-3:			#085A26	!important;
 }
 .theme-light.lightPalette-green.accentColor-lightMode-alternative-1 {
 	--accent-h:						232	!important;
@@ -2177,15 +2222,6 @@ body {
 //	--OT-view-header-title-focus-color:	var(--color-accent-1);
 }
 .theme-light.lightPalette-Orange.accentColor-lightMode-shade {
-	--accent-h:						39		!important;
-	--accent-s:						100%	!important;
-	--accent-l:						57%		!important;
-	--color-accent-2:				#FFB122	!important;
-	--color-accent-3:				#FFE4C4	!important;
-	--OT-color-muted-on-accent-1:	#EDD4B6;
-	--OT-color-on-accent-2: 		var(--color-base-00);
-	--OT-color-muted-on-accent-2:	#AA6E00;
-	--OT-color-on-accent-3: 		#F78700;
 }
 .theme-light.lightPalette-Orange.accentColor-lightMode-alternative-1 {
 	--accent-h:						189		!important;
@@ -2393,17 +2429,6 @@ body {
 }
 
 .theme-light.lightPalette-stone.accentColor-lightMode-shade {
-	--accent-h:							24	!important;
-	--accent-s:							5%	!important;
-	--accent-l:							61%	!important;
-//	--color-accent-1:					#534E4A	!important;
-	--color-accent-2:					#A19B97	!important;
-	--color-accent-3:					#D9D7D5	!important;
-	--OT-color-on-accent-1:				#fff	!important;
-	--OT-color-on-accent-2:				#fff	!important;
-	--OT-color-on-accent-3:				#4B4643;
-	--OT-text-selection-background:		hsl(var(--accent-h), var(--accent-s), 78%);
-	--OT-view-header-title-focus-color:	#35312E;
 }
 .theme-light.lightPalette-stone.accentColor-lightMode-alternative-1 {
 	--accent-h:						254	!important;
@@ -5734,7 +5759,7 @@ body {
 //	--table-row-alt-background-hover:	transparent;	/*	var(--table-background);	*/
 //	--table-row-background-hover:		transparent;	/*	var(--table-row-alt-background);	*/
 //	--table-header-weight:				var(--font-bold);
-//	--table-text-size:					0.9em;
+	--table-text-size:					0.9rem;
 }
 .OT-tables-style-1,
 .OT-tables-style-2,
@@ -6333,6 +6358,9 @@ media (hover: hover) {
 .menu-item-icon {
 	color:				var(--OT-menu-text-color);
 }
+.menu-item.is-disabled {
+	color:	var(--OT-color-muted-on-base-20);
+}
 .menu-item.selected:not(.is-label):not(.is-disabled) {
 	color:				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
@@ -6773,17 +6801,10 @@ body {
 	--h5-size:		clamp(1.266em, calc(1rem + 3vw), 		1.44em);
 	--h6-size:		clamp(1.125em, calc(1rem + 3vw), 		1.2em);
 
-/*  --h1-weight:	700;
-    --h2-weight:	600;
-    --h3-weight:	600;
-    --h4-weight:	600;
-    --h5-weight:	600;
-    --h6-weight:	600;	*/
-
 	--h1-variant:	normal;
 	--h2-variant:	small-caps;
 	--h3-variant:	normal;
-	--h4-variant:	normal;
+	--h4-variant:	small-caps;
 	--h5-variant:	normal;
 	--h6-variant:	normal;
 
@@ -7510,6 +7531,7 @@ kbd {
 	& .tree-item-self.is-clickable.is-active {
 		color:				var(--OT-color-on-accent-2);
 		background-color:	var(--color-accent-2);
+		font-weight:		var(--nav-item-weight-active);
 		& .tree-item-icon {
 		  color: var(--OT-color-on-accent-2);
 		}
@@ -8035,7 +8057,7 @@ body {
 }
 .heading-level-styling-1 #dynamic-outline li::before,
 .heading-level-styling-2 #dynamic-outline li::before {
-	color: var(--OT-color-muted-on-base-20);
+	color: var(--OT-color-muted-on-base-20) !important;
 }
 #dynamic-outline li a {
 	color:	var(--OT-menu-text-color);
