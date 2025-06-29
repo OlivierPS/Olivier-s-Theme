@@ -224,6 +224,7 @@
 			24.06.2025	Ivory palette, light: both alternative accent colors are ready			1.60.2
 			26.06.2025	Vastly improved tables													1.61.0
 			28.06.2025	Colors tuning in different themes										1.61.1
+			29.06.2025	Colors tuning															1.61.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -528,6 +529,7 @@ body {
 	--metadata-divider-width:			1;
 	--metadata-label-text-color:		var(--color-base-70);
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
+	--metadata-label-width:				6em;
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
   	--metadata-label-font-size:			var(--font-ui-small);
   	--metadata-input-font-size:			var(--font-ui-small);
@@ -758,7 +760,6 @@ body {
 }/*	↑ lightPalette-artDeco ↑	*/
 
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-beige {
 	--OT-theme-reference-color:	#C89947;
 	--color-base-00:	#FCF3E5;
@@ -1107,32 +1108,47 @@ body {
 	--OT-table-background:			#EDEDDB;
 }	/*	↑ lightPalette-paradiso ↑	*/
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-parchment {
 	--OT-theme-reference-color:	#D6B37A;
-	--color-base-00:			#FFEED1;
-	--color-base-20:			#E4CDA7;
-	--color-base-35:			#C4923F;
-	--color-base-40:			#706553;
-	--color-base-50:			#B68D40;
-	--color-base-70:			#CFAD76;
-	--color-base-05:			#E0C69A;
+	--color-base-00:	#FFEED1;
+	--color-base-05:	#EAD8BB;
+	--color-base-20:	#E6D1AE;
+	--color-base-35:	#C4923F;
+	--color-base-40:	#706553;
+	--color-base-50:	#CFAD76;
+	--color-base-70:	#B68D40;
+	--color-base-100:	#6F5B3E;
+
+	--link-color:		#6089D6;
+
+	--accent-h:						37	!important;
+	--accent-s:						53%	!important;
+	--accent-l:						61%	!important;
+//	--color-accent-1:				#999	!important;
+	--color-accent-3:				#F2E7D5	!important;
+
+//	--OT-color-on-accent-1:			#fff	!important;
+	--OT-color-on-accent-2:         var(--color-base-00)	!important;
+	--OT-color-on-accent-3:			var(--color-accent-1)	!important;
+	--OT-color-muted-on-accent-1:	#E0C69A	!important;
+
+	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 80%);
+
+	--OT-color-on-base-20:			#725423;
+	--OT-color-muted-on-base-20:	#C4923F;
+
+	--OT-menu-text-color:			var(--color-base-100);
+
+	--OT-table-header-background:	#F6DFB6;
+	--OT-table-background:			#FFF4E2;
 
 	--code-background:				#F2E1C6;
-	--OT-button-OFF-bg:				#E0C69A;
 
-	--color-base-100:	#6F5B3E;
-	--link-color:		#6089D6;
-//	--h1-color:			#B68D40;
-//	--h3-color:			#B68D40;
-//	--h5-color:			#AEA188;
+	--OT-button-OFF-bg:				#E0C69A;
 
 	--tab-text-color-focused:	var(--OT-color-on-base-20);
 
-	--OT-color-muted-on-base-20:	#C4923F;
-	--OT-color-on-base-20:			#B98939;
-	--OT-table-header-background:	#F6DFB6;
-	--OT-table-background:			#FFF4E2;
-	--OT-menu-text-color:			var(--color-base-100);
 	--icon-color:					var(--color-base-100);
 //	--status-bar-text-color:		var(--color-base-100);
 }
@@ -2251,17 +2267,6 @@ body {
 }
 
 .theme-light.lightPalette-parchment.accentColor-lightMode-shade {
-	--accent-h:						37	!important;
-	--accent-s:						53%	!important;
-	--accent-l:						61%	!important;
-//	--color-accent-1:				#999	!important;
-	--color-accent-2:				#D0A866	!important;
-	--color-accent-3:				#F2E7D5	!important;
-//	--OT-color-on-accent-1:			#fff	!important;
-	--OT-color-muted-on-accent-1:	#E0C69A	!important;
-	--OT-color-on-accent-2:         var(--color-base-00)	!important;
-	--OT-color-on-accent-3:			var(--color-accent-1)	!important;
-	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 80%);
 }
 .theme-light.lightPalette-parchment.accentColor-lightMode-alternative-1 {
 	--accent-h:						217	!important;
@@ -6046,6 +6051,10 @@ body {
 
 /*	Bookmark	OpSpl27	*/
 /* —————————————————————————————— Buttons —————————————————————————————— */
+.modal-close-button {
+	color:	var(--OT-setting-item-description);
+}
+
 button:not(.clickable-icon) {
 	color:				var(--OT-button-text-normal);
 	background-color: 	var(--OT-button-background-normal);
@@ -7769,7 +7778,10 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
 }
-
+.another-quick-switcher__hit_word {
+		color: 				var(--OT-color-on-accent-2);
+		background-color:	var(--color-accent-2);
+}
 /*	---------- ↑ Another Quick Switcher plugin ↑ ----------	*/
 
 /*	———————————————————— Omnisearch plugin  ————————————————————	*/

@@ -123,7 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 28.062025 Version 1.61.1
+
+#### 29.06.2025 Version 1.61.2
+Fine tuning of colors in different themes.
+
+----------------------------------------------
+#### 28.06.2025 Version 1.61.1
 Fine tuning of colors in different themes.
 
 ----------------------------------------------
