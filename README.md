@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 05.07.2025	Version 1.62.0
+#### 05.07.2025	Version 1.62.0 and 1.62.1
 Refinements and correction inside tables, both in reading and editing modes.
 **In particular:** Text size inside tables can now be chosen in percents, both in Reading and in Editing modes.
 

@@ -226,6 +226,7 @@
 			28.06.2025	Colors tuning in different themes										1.61.1
 			29.06.2025	Colors tuning															1.61.2
 			05.07.2025	Refinements and correction inside tables, both in reading and editing modes		1.62.0
+						I missed something…														1.62.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -5776,14 +5777,21 @@ body {
 	--table-header-background:	var(--OT-table-header-background);
 	--table-row-alt-background:	var(--OT-table-background);
 }
-/*	Taille des caractères dans les tables en mode d’édition	*/
+/*	Taille des caractères dans les tables en mode Reading	*/
 .cm-html-embed td,
 .markdown-rendered td,
 .cm-html-embed th,
 .markdown-rendered th {
+	font-size:	calc(var(--OT-readingMode-text-size) * var(--OT-readingMode-tableText-percent) / 100);
+}
+.markdown-source-view.mod-cm6 .cm-html-embed td,
+.markdown-source-view.mod-cm6 .markdown-rendered td,
+.markdown-source-view.mod-cm6 .cm-html-embed th,
+.markdown-source-view.mod-cm6 .markdown-rendered th {
 	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
 }
-/* Target the input field when editing a table cell in Live Preview */
+
+/* Target the input field when editing a table cell in Live Edit mode */
 .markdown-source-view.mod-cm6 .cm-table-widget .cm-content,
 .markdown-source-view.mod-cm6 .cm-table-widget .cm-line {
 	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
