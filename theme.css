@@ -225,6 +225,7 @@
 			26.06.2025	Vastly improved tables													1.61.0
 			28.06.2025	Colors tuning in different themes										1.61.1
 			29.06.2025	Colors tuning															1.61.2
+			05.07.2025	Refinements and correction inside tables, both in reading and editing modes		1.62.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -363,18 +364,19 @@ body {
 	/*	Parce que les valeurs par défaut des variables gérées par le plugin “Style Settings”
 		ne sont pas automatiquement appliquées quand on change de thème, il est judicieux
 		de définir ici leurs valeurs par défaut. Elles sont ici dans le même ordre que dans les “Settings”.	*/
-	--OT-UI-font-size:				15px;
-	--OT-status-bar-padding:		0px;
-	--OT-readingMode-text-size:		17px;
-	--OT-readingMode-line-width:	42em;
-	--OT-readingMode-line-height:	1.5em;
-	--OT-editMode-font:				var(--font-text);
-	--OT-editMode-font-size:		18px;
-	--OT-editMode-line-height:		1.5em;
-	--OT-editMode-line-width:		45em;
-	--OT-editMode-tableText-size:	0.9em;
-	--OT-kanban-font:				"Uberhand Pro";
-	--OT-kanban-font-size:			17px;
+	--OT-UI-font-size:					15px;
+	--OT-status-bar-padding:			0px;
+	--OT-readingMode-text-size:			17px;
+	--OT-readingMode-line-width:		42em;
+	--OT-readingMode-line-height:		1.5em;
+	--OT-readingMode-tableText-percent:	90;
+	--OT-editMode-font:					var(--font-text);
+	--OT-editMode-text-size:			18px;
+	--OT-editMode-line-height:			1.5em;
+	--OT-editMode-line-width:			45em;
+	--OT-editMode-tableText-percent:	90;
+	--OT-kanban-font:					"Uberhand Pro";
+	--OT-kanban-font-size:				17px;
 
 	/*	---------- Other theme’s variables	*/
 	--OT-button-background-hover:					var(--color-accent-1);
@@ -5217,7 +5219,7 @@ input[type=checkbox] {
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
 	max-width:		var(--OT-editMode-line-width);
-	font-size:		var(--OT-editMode-font-size);
+	font-size:		var(--OT-editMode-text-size);
     line-height:	var(--OT-editMode-line-height);
 }
 
@@ -5247,20 +5249,20 @@ input[type=checkbox] {
 
 /* ----- type sizes */
 .is-live-preview .cm-header-1 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.6 )	!important;
+  	font-size:		calc( var(--OT-editMode-text-size)*1.6 )	!important;
 }
 .is-live-preview .cm-header-2 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.5 )	!important;
+  	font-size:		calc( var(--OT-editMode-text-size)*1.5 )	!important;
 }
 .is-live-preview .cm-header-3 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.2 )	!important;
+  	font-size:		calc( var(--OT-editMode-text-size)*1.2 )	!important;
 }
 .is-live-preview .cm-header-4 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1.05 )	!important;
+  	font-size:		calc( var(--OT-editMode-text-size)*1.05 )	!important;
 }
 .is-live-preview .cm-header-5,
 .is-live-preview .cm-header-6 {
-  	font-size:		calc( var(--OT-editMode-font-size)*1 )	!important;
+  	font-size:		calc( var(--OT-editMode-text-size)*1 )	!important;
 }
 /* -------------------- ↑ OpSpl Headings in editing mode ↑ -------------------- */
 
@@ -5281,7 +5283,7 @@ input[type=checkbox] {
 .markdown-source-view,
 .cm-s-obsidian {
     font-family:	var(--editor-font-family);
-	font-size: 		var(--OT-editMode-font-size);
+	font-size: 		var(--OT-editMode-text-size);
 }
 
 /* ---------- OpSpl fonte “monospaced” ----------
@@ -5764,7 +5766,7 @@ body {
 //	--table-row-alt-background-hover:	transparent;	/*	var(--table-background);	*/
 //	--table-row-background-hover:		transparent;	/*	var(--table-row-alt-background);	*/
 //	--table-header-weight:				var(--font-bold);
-	--table-text-size:					0.9rem;
+	--table-text-size:					calc(var(--OT-readingMode-text-size) * var(--OT-readingMode-tableText-percent) / 100 );
 }
 .OT-tables-style-1,
 .OT-tables-style-2,
@@ -5773,6 +5775,24 @@ body {
 	--table-background:			var(--OT-table-background);
 	--table-header-background:	var(--OT-table-header-background);
 	--table-row-alt-background:	var(--OT-table-background);
+}
+/*	Taille des caractères dans les tables en mode d’édition	*/
+.cm-html-embed td,
+.markdown-rendered td,
+.cm-html-embed th,
+.markdown-rendered th {
+	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+}
+/* Target the input field when editing a table cell in Live Preview */
+.markdown-source-view.mod-cm6 .cm-table-widget .cm-content,
+.markdown-source-view.mod-cm6 .cm-table-widget .cm-line {
+	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+	line-height:	var(--table-line-height);
+}
+/*	suppression of the edit mode circular indicator that has nothing to do inside table cells	*/
+.markdown-source-view.mod-cm6 .cm-table-widget  .cm-editor:before,
+.markdown-source-view.mod-cm6 .cm-table-widget  .cm-editor:before {
+	content:	none !important;
 }
 /*	.................... Je vais copier ici les règles de “app.css” que je souhaite modifier.
 						Ainsi, j’aurai la même logique qu’Obsidian .......................................................	*/
@@ -9713,6 +9733,13 @@ settings:
 			default:	39
 			format:		em
 	-
+			id:				OT-readingMode-tableText-percent
+			title:			Size of the text in table cells, in percents of the body text. 100 = same size
+			title.fr:		Taille des caractères dans les tables, en pourcents du texte normal. 100 = même taille
+			description:	It’s generally practical to have a smaller text size inside table cells.
+			type:			variable-number
+			default:		90
+	-
 			id: 			OT-tables-style
 			title:			Tables
 			description:	Three different styles for tables.
@@ -9950,7 +9977,7 @@ settings:
 					label:	Verdana
 					value:	Verdana
 	-
-			id:			OT-editMode-font-size
+			id:			OT-editMode-text-size
 			title:		Body text size [px]
 			title.fr:	Taille des caractères [px]
 			type:		variable-number
@@ -9973,13 +10000,12 @@ settings:
 			default:		44
 			format:			em
 	-
-			id:				OT-editMode-tableText-size
-			title:			Size of the text in table cells.
-			title.fr:		Taille des caractères dans les tables [px]
+			id:				OT-editMode-tableText-percent
+			title:			Size of the text in table cells, in percents of the body text. 100 = same size
+			title.fr:		Taille des caractères dans les tables, en pourcents du texte normal. 100 = même taille
 			description:	It’s generally practical to have a smaller text size inside table cells.
 			type:			variable-number
-			default:		17
-			format:			px
+			default:		90
 	-
 		id:				OlivierPS-support
 		title:			Support OlivierPS
