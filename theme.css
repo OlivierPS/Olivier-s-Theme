@@ -227,6 +227,7 @@
 			29.06.2025	Colors tuning															1.61.2
 			05.07.2025	Refinements and correction inside tables, both in reading and editing modes		1.62.0
 						I missed something…														1.62.1
+			12.07.2025	Improvement of the hovering of headers and buttons in Bases				1.63.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -266,6 +267,7 @@ Bookmarks:	OpSpl01:	Définition des couleurs
 			OpSpl24:	Reading Mode
 							paper background
 			OpSpl25		Tables
+			OpSpl25b	Bases
 			OpSpl26		En-tête des panneaux
 						Container for document search/replace UI
 			OpSpl27		Buttons & Icons
@@ -5950,6 +5952,57 @@ body {
 }
 
 /*	-------------------- ↑ OpSpl Tables -------------------- ↑ */
+
+
+/*	Bookmark	OpSpl25b	*/
+/*	—————————————————————————————— OpSpl Bases —————————————————————————————— */
+.query-toolbar .query-toolbar-item.mod-views .text-icon-button {
+	--icon-color-hover:	var(--OT-button-text-hover);
+}
+.bases-td.mod-implicit:hover,
+.bases-td:hover {
+	& .bases-table-header {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+	& .bases-table-header-label {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+	& .bases-table-header-sort {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+	& .text-button-label {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+}
+.query-toolbar .query-toolbar-item.mod-views:hover {
+	& .text-button-label {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+	& .text-icon-label {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+	& .text-icon-button {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+	& .text-button-icon {
+		color:		var(--OT-color-on-accent-1);
+		background:	var(--color-accent-1);
+	}
+}
+.query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover {
+	color:		var(--OT-color-on-accent-1);
+	background:	var(--color-accent-1);
+}
+/*	-------------------- ↑ OpSpl Bases -------------------- ↑ */
+
+
 
 
 /*	Bookmark	OpSpl26	*/
