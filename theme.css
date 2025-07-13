@@ -229,6 +229,7 @@
 						I missed something…														1.62.1
 			12.07.2025	Improvement of the hovering of headers and buttons in Bases				1.63.0
 						Fine tuning of many colors in light palettes							1.63.1
+			13.07.2025	Ongoing fine tuning														1.63.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -699,17 +700,23 @@ body {
 	--OT-text-selection-color:		var(--text-normal);
 }
 .theme-dark {
-	--OT-text-selection-background:	hsl(var(--accent-h), var(--accent-s), 20%);
-	--OT-text-selection-color:		var(--text-normal);
-	--OT-kbd:						white;
-	--OT-kbd-background:			#6D6D6D;
+	--OT-theme-reference-color:		dimgrey;
+	--OT-color-on-accent-1:			silver;
+	--OT-color-on-accent-2:			lightgrey;
+	--OT-color-on-accent-3:			var(--obsidian-violet);
+	--OT-color-muted-on-accent-1:	grey;
+	--OT-color-muted-on-accent-2:	black;
+
 	/*	je trouve le rouge un peu trop «pétant» → je corrige	*/
 	--color-red-rgb:					199, 56, 60;
 	--color-red:						#EF5547;
-	--background-modifier-form-field:	var(--color-base-00);
-	--OT-stabilo-text:					black;
-	--code-background:					darkgrey;
+
+	--OT-kbd:				var(--color-base-100);
+	--OT-kbd-background:	var(--color-base-20);
+
 	--code-normal:						white;
+	--code-background:					darkgrey;
+	--OT-stabilo-text:					black;
 }
 
 /* -------------------- ↑ OpSpl Déclarations générales -------------------- ↑ */
@@ -1150,7 +1157,6 @@ body {
 	--OT-table-background:			#EDEDDB;
 }	/*	↑ lightPalette-paradiso ↑	*/
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-parchment {
 	--OT-theme-reference-color:	#FFE0AF;
 	--color-base-00:	#FFEDD1;
@@ -1490,25 +1496,36 @@ body {
 .theme-dark.darkPalette-beige,
 .theme-dark.lightPalette-lightBeige.darkPalette-default {
 	--OT-theme-reference-color:	#915D06;
-	--color-base-00:			#2A1B02;
-	--color-base-20:			#2F1E02;
-	--color-base-35:			#4A413B;
-	--color-base-40:			#603D04;
-	--color-base-50:			#784D05;
-	--color-base-70:			#FCDEAB;
-	--color-base-05:			#3F2903;
+	--color-base-00:	#2A1B02;
+	--color-base-05:	#3F2903;
+	--color-base-20:	#2F1E02;
+	--color-base-35:	#4A413B;
+	--color-base-40:	#603D04;
+	--color-base-50:	#784D05;
+	--color-base-70:	#FCDEAB;
+	--color-base-100:	#F39B0A;
+	--link-color:		#0A62F3;
 
-	--OT-color-on-base-20:	#DA8B09;
+	--color-accent-1:				#E39109	!important;
+	--accent-h:						37	!important;
+	--accent-s:						92%	!important;
+	--accent-l:						30%	!important;
+	--color-accent-3:				#503303	!important;
 
+	--OT-color-on-accent-1:			var(--color-base-00)	!important;
+	--OT-color-on-accent-2:			#FACA7A	!important;
+	--OT-color-on-accent-3:			#FACA7A	!important;
+	--OT-color-muted-on-accent-1:	#915D06	!important;
+
+	--OT-text-selection-background:		hsl(var(--accent-h), var(--accent-s), 17%);
+
+//	--OT-color-on-base-20:	#DA8B09;
+
+	--code-normal:						#FDEBCC;
 	--code-background:					#472E03;
 	--background-modifier-form-field:	#3F2903;
 	--OT-button-OFF-bg:					#503303;
 
-	--color-base-100:	#F39B0A;
-	--link-color:		#0A62F3;
-//	--h1-color:			#F5AF66;
-//	--h3-color:			#F7AF39;
-//	--h5-color:			#05794D;
 	--OT-stabilo-mark:	#F39539;
 	--OT-stabilo-text:	var(--color-base-00) !important;
 
@@ -1518,10 +1535,23 @@ body {
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-black,
 .theme-dark.lightPalette-artDeco.darkPalette-default {
-	--OT-theme-reference-color:	black;
+	--OT-theme-reference-color:	#444;
 	--color-base-00:			black;
-	--color-base-20:			black;
 	--color-base-05:			#242424;
+	--color-base-20:			black;
+
+	--color-accent-1:				#A38BF2	!important;
+	--accent-h:						254	!important;
+	--accent-s:						80%	!important;
+	--accent-l:						68%	!important;
+	--color-accent-3:				#4216CE	!important;
+
+	--OT-color-on-accent-1:			white	!important;
+	--OT-color-on-accent-2:			white	!important;
+	--OT-color-on-accent-3:			white	!important;
+	--OT-color-muted-on-accent-1:	#4E1FE7	!important;
+
+	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 45%);
 
 	--code-background:				#222222;
 	--OT-button-OFF-bg:				#333333;
@@ -1543,29 +1573,40 @@ body {
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-blue,
 .theme-dark.lightPalette-blue.darkPalette-default {
-	--OT-theme-reference-color:	#011427;
-	--color-base-00:			#011427;
-	--color-base-20:			#021a32;
-	--color-base-35:			#043363;
-	--color-base-40:			#03264a;
-	--color-base-50:			#0458AC;
-	--color-base-70:			#067AEE;
-	--color-base-05:			#022548;
+	--OT-theme-reference-color:	#067FF9;
+	--color-base-00:	#011427;
+	--color-base-05:	#022548;
+	--color-base-20:	#021a32;
+	--color-base-35:	#043363;
+	--color-base-40:	#03264a;
+	--color-base-50:	#0458AC;
+	--color-base-70:	#067AEE;
+	--color-base-100:	#0C82F9 ;
+	--link-color:		#069406	;
+
+	--color-accent-1:				#419CF8	!important;
+	--accent-h:						210	!important;
+	--accent-s:						93%	!important;
+	--accent-l:						38%	!important;
+	--color-accent-2:				#0872DC	!important;
+	--color-accent-3:				#06509A	!important;
+
+	--OT-color-on-accent-1:			#E5F1FE	!important;
+	--OT-color-on-accent-2:			#E5F1FE	!important;
+	--OT-color-on-accent-3:			#B4D8FC	!important;
+	--OT-color-muted-on-accent-1:	#021D38	!important;
+
+	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 18%);
 
 	--code-background:					#032d57;
 	--background-modifier-form-field:	#011C38;
 	--OT-button-OFF-bg:					#053C73;
 
-	--color-base-100:		#0C82F9 ;
-	--link-color:			#069406	;
 	--checklist-done-color:	#033669;
-//	--h1-color:				#6385C6	!important;
-//	--h3-color:				#0656A6	!important;
-//	--h5-color:				#44607C	!important;
 
 	--OT-color-on-base-20:	#0868CA;	/*	#0760BA;	*/
 
-	--OT-stabilo-text:		var(--color-base-00) !important;
+	--OT-stabilo-text:		#ACD4FD !important;
 	--OT-stabilo-mark:		#054789;
 
 	--OT-search-settings-item-name:		var(--OT-color-muted-on-base-20);
@@ -1575,26 +1616,35 @@ body {
 	--OT-table-background:				#022548;
 }/*	↑	darkPalette-blue	↑	*/
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.darkPalette-brown,
 .theme-dark.lightPalette-beige.darkPalette-default {
-	--OT-theme-reference-color:	#1F1105;
-	--color-base-00:			#1F1105;
-	--color-base-20:			#351D09;
-	--color-base-35:			#7B6054;
-	--color-base-40:			#512C0E;
-	--color-base-50:			#CC6F24;
-	--color-base-70:			#DC7925;
-	--color-base-05:			#4B290C;
+	--OT-theme-reference-color:	#A36229;
+	--color-base-00:	#1F1105;
+	--color-base-05:	#4B290C;
+	--color-base-20:	#351D09;
+	--color-base-35:	#7B6054;
+	--color-base-40:	#512C0E;
+	--color-base-50:	#CC6F24;
+	--color-base-70:	#DC7925;
+	--color-base-100:	#E6A571;
+	--link-color:		#3385CC;
+
+	--color-accent-1:				#E67819	!important;
+	--accent-h:						28	!important;
+	--accent-s:						60%	!important;
+	--accent-l:						40%	!important;
+	--color-accent-3:				#5C300A	!important;
+
+	--OT-color-on-accent-1:			#F8EDE4	!important;
+	--OT-color-muted-on-accent-1:	#5C300A	!important;
+	--OT-color-on-accent-2:			#F8EDE4	!important;
+	--OT-color-on-accent-3:			#F3D2B6	!important;
 
 	--code-background:					#351D09;
 	--background-modifier-form-field:	#1F1105;
 	--OT-button-OFF-bg:					#613510;
 
-	--color-base-100:			#E6A571;
-	--link-color:				#1D67A1;
-//	--h1-color:					var(--text-normal);
-//	--h3-color:					var(--text-normal);
-//	--h5-color:					var(--text-normal);
 	--OT-stabilo-text:			var(--color-base-00) !important;
 	--OT-stabilo-mark:			#916847;
 	--OT-color-on-base-20:		#B76320;
@@ -2584,15 +2634,6 @@ body {
 .theme-dark.lightPalette-beige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-beige.accentColor-darkMode-shade {
-	--accent-h:						37	!important;
-	--accent-s:						92%	!important;
-	--accent-l:						30%	!important;
-	--color-accent-1:				#E39109	!important;
-	--color-accent-2:				#915D06	!important;
-	--color-accent-3:				#503303	!important;
-	--OT-color-on-accent-2:			#FBD79B	!important;
-	--OT-color-muted-on-accent-1:	#915D06	!important;
-	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 17%);
 }
 .theme-dark.lightPalette-beige.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -2625,18 +2666,6 @@ body {
 }
 .theme-dark.lightPalette-blue.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-blue.accentColor-darkMode-shade {
-	--accent-h:						210	!important;
-	--accent-s:						93%	!important;
-	--accent-l:						38%	!important;
-	--color-accent-1:				#419CF8	!important;
-	--color-accent-2:				#0872DC	!important;
-	--color-accent-3:				#06509A	!important;
-	--OT-color-muted-on-accent-1:	#021D38	!important;
-	--OT-color-on-accent-1:			#E5F1FE	!important;
-	--OT-color-on-accent-2:			#E5F1FE	!important;
-	--OT-color-on-accent-3:			#B4D8FC	!important;
-//	--OT-view-header-title-no-focus-color:	#0761BB;
-	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 18%);
 }
 
 .theme-dark.lightPalette-blue.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -2667,18 +2696,9 @@ body {
 	--OT-color-on-accent-3:			#DDFDBD	!important;
 	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 15%);
 }
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.lightPalette-Brown.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-brown.accentColor-darkMode-shade {
-	--accent-h:						28	!important;
-	--accent-s:						80%	!important;
-	--accent-l:						20%	!important;
-	--color-accent-1:				#E67819	!important;
-	--color-accent-2:				#8A480F	!important;
-	--color-accent-3:				#5C300A	!important;
-//	--OT-color-on-accent-1:			#E39451	!important;
-	--OT-color-muted-on-accent-1:	#5C300A	!important;
-//	--OT-color-on-accent-2:			#fff	!important;
-//	--OT-color-on-accent-3:			#fff	!important;
 }
 .theme-dark.lightPalette-Brown.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-brown.accentColor-darkMode-alternative-1 {
@@ -2714,16 +2734,6 @@ body {
 .theme-dark.lightPalette-artDeco.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-OBSIDIAN.accentColor-darkMode-shade,
 .theme-dark.darkPalette-black.accentColor-darkMode-shade{
-	--accent-h:						254	!important;
-	--accent-s:						80%	!important;
-	--accent-l:						68%	!important;
-	--color-accent-1:				#A38BF2	!important;
-	--color-accent-2:				var(--obsidian-violet)	!important;
-	--color-accent-3:				#4216CE	!important;
-	--OT-color-on-accent-1:			white	!important;
-	--OT-color-on-accent-2:			white	!important;
-	--OT-color-muted-on-accent-1:	#4E1FE7	!important;
-	--OT-text-selection-background:				hsl(var(--accent-h), var(--accent-s), 45%);
 }
 .theme-dark.lightPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.lightPalette-artDeco.darkPalette-default.accentColor-darkMode-alternative-1,
@@ -3774,7 +3784,7 @@ body {
 	--OT-pill-background:	var(--text-normal);
 }
 .theme-dark.OT-Dark-pills-color-link {
-	--OT-pill-color:		var(--color-base-00);
+	--OT-pill-color:		var(--color-base-100);
 	--OT-pill-background:	var(--link-color);
 }
 .theme-dark.OT-Dark-pills-color-black {
@@ -7143,6 +7153,9 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 .file-embed.mod-empty {
 	color:				white;
 	background-color:	var(--link-unresolved-color);
+	margin-left:	25%;
+	margin-right:	25%;
+
 }
 /* ---------- liens survolés ---------- */
 a:hover,
@@ -7320,6 +7333,12 @@ body:not(.is-fullscreen) .status-bar {
 
 /*	Bookmark	OpSpl44	*/
 /*	Metadata	*/
+.metadata-property-value .internal-link {
+	color:				var(--OT-pill-color);
+}
+.metadata-property-value .internal-link.is-unresolved {
+	background-color:	var(--color-accent-3);
+}
 .metadata-property-icon {
 	color:	var(--OT-metadata-property-icon);	/*	--icon-color	*/
 }

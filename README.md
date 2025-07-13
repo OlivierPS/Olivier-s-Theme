@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 13.07.2025	Version 1.63.2
+Ongoing fine tuning.
+
+----------------------------------------------
 #### 12.07.2025	Version 1.63.0 and 1.63.1
 Improvement of the hovering of headers and buttons in Bases.
 Fine tuning of many colors of the light palettes.
