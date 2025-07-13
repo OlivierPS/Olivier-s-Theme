@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 13.07.2025	Version 1.63.2
+#### 13.07.2025	Version 1.63.2 and 1.63.3
 Ongoing fine tuning.
 
 ----------------------------------------------
