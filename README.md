@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 25.07.2025
+Adjusted the vertical position of the “Status” display from the “Note Status” plugin in the status bar.
+
+----------------------------------------------
 #### 13.07.2025	Version 1.63.2 and 1.63.3
 Ongoing fine tuning.
 

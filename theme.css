@@ -231,6 +231,8 @@
 						Fine tuning of many colors in light palettes							1.63.1
 			13.07.2025	Ongoing fine tuning														1.63.2
 																								1.63.3
+			25.07.2025	Adjusted the vertical position of the “Status” display from the “Note Status”
+						plugin in the status bar												1.63.4
 
 
 --------------------------------------------------------------------------------------------------------
@@ -7311,13 +7313,19 @@ body:not(.is-fullscreen) .status-bar {
 }
 
 .status-bar-item,
-.status-bar-item.plugin-editor-status, .status-bar-item.plugin-sync {
+.status-bar-item.plugin-editor-status,
+.status-bar-item.plugin-sync {
 	background-color:	var(--status-bar-background);	/*	var(--statusbar-item-background);	*/
 	display:	block;
 	padding:	8px 5px 5px;
 	margin:		0px;
 	border:		none;
 }
+
+.status-bar-item.plugin-note-status {
+	padding:	6px 2px 2px !important;		/*	pour le plugin “Note Status”, j’ai été obligé d’ajouter “important”, car il y avait quelque part une règle “element.style” qui annulait le réglage	*/
+}
+
 
 .status-bar-item:hover,
 .status-bar-item.mod-clickable:hover {
