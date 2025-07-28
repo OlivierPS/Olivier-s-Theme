@@ -123,6 +123,15 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+
+#### 28 juillet 2025
+Further adjustments for the “Note Status” plugin.
+Changed the typography of level 4 headings (H4), because I wanted to them more easily distinguishable from both H3 and H5:
+
+* They are in small caps and bold;
+* but their size is the same as that of H5.
+
+----------------------------------------------
 #### 25.07.2025
 Adjusted the vertical position of the “Status” display from the “Note Status” plugin in the status bar.
 

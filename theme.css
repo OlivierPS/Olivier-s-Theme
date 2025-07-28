@@ -233,6 +233,8 @@
 																								1.63.3
 			25.07.2025	Adjusted the vertical position of the “Status” display from the “Note Status”
 						plugin in the status bar												1.63.4
+			28.07.2025	Changes to the typography of headings 4
+						Adjustments for the “Note Status” plugin								1.64.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -410,9 +412,9 @@ body {
 	--OT-color-on-base-20:							var(--color-base-100);
 	--OT-kbd:										#353500;
 	--OT-kbd-background:							ivory;
-	--OT-menu-text-color:							var(--color-base-100);
+	--OT-menu-text-color:							var(--OT-color-on-accent-2);
 	--OT-menu-text-muted:							var(--OT-color-muted-on-base-20);
-	--OT-menu-background:							var(--color-base-05);
+	--OT-menu-background:							var(--color-accent-2);
 	--OT-metadata-property-icon:					var(--icon-color);
 	--OT-nav-folder-title-color:					var(--color-base-100);
 	--OT-nav-item-vertical-padding:					var(--size-4-1);
@@ -875,7 +877,7 @@ body {
 	--color-base-100:	#0F7635;
 	--link-color:		#537622;
 
-	--color-accent-1:				#5AEF8F	!important;
+	--color-accent-1:				#12D856	!important;
 	--accent-h:						141	!important;
 	--accent-s:						83%	!important;
 	--accent-l:						78%	!important;
@@ -884,7 +886,7 @@ body {
 	--OT-color-on-accent-1:			#FBFFFD !important;
 	--OT-color-on-accent-2:			#085A26 !important;
 	--OT-color-on-accent-3:			#085A24	!important;
-	--OT-color-muted-on-accent-1:	#11B049	!important;
+	--OT-color-muted-on-accent-1:	#ADF8C7	!important;
 	--OT-color-muted-on-accent-2:	#0A692D	!important;
 
 	--OT-color-on-base-20:			#085C27;
@@ -1224,7 +1226,7 @@ body {
 
 	--OT-color-on-accent-1:         white;
 	--OT-color-on-accent-2:         white;
-	--OT-color-on-accent-3:         var(--color-accent-1);
+	--OT-color-on-accent-3:         #3C7E51;
 	--OT-color-muted-on-accent-1:	#C8E5D0;
 	--OT-color-muted-on-accent-2:	#DDEFE2;
 
@@ -6915,7 +6917,8 @@ div:not(.cm-callout):not(.HyperMD-list-line).image-embed img {
 	* couleurs
 	* interligne
 	* filet sous les H1 et les H2
-	* les H2 en petites capitales
+	* les H2 et H4 en petites capitales
+	* H4: bold, mais de la même grandeur que H5
 	* h3 à h6 en italique					 */
 body {
 	--h1-size:		clamp(2.027em, calc(0.4rem + 5.1vw),	2.986em);
@@ -6938,6 +6941,8 @@ body {
 	--h4-style:		italic;
 	--h5-style:		italic;
 	--h6-style:		italic;
+
+	--h4-weight:	var(--font-bold);
 }
 
 body.headings-scaling-OpSpl {
@@ -7041,6 +7046,8 @@ markdown-rendered h3 {
 markdown-rendered h4 {
 	--heading-spacing:	1em;
 	margin-bottom:		0.2rem;
+	letter-spacing:		0.03em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
+	font-size:			var(--h5-size);
 }
 
 .cm-header-5,
@@ -8146,6 +8153,60 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 .note-status-icon-container .nav-file-tag {	/*	status icons in the file navigation pane, and the files status pane	*/
 	background:	transparent;
 }
+.selectable-list-item-check {
+	--interactive-accent: var(--OT-color-on-accent-1);
+}
+.selectable-list-item.note-status-option {
+	--background-modifier-hover:	var(--color-accent-2);
+	& .selectable-list-item-check {
+	color:	var(--OT-color-on-accent-2) !important;
+	}
+}
+.selectable-list-item.note-status-option:hover {
+	--background-modifier-hover:	var(--color-accent-1);
+	& .selectable-list-item-content {
+	color:	var(--OT-color-on-accent-1) !important;
+	}
+	& .selectable-list-item-check {
+	color:	var(--OT-color-on-accent-1) !important;
+	}
+}
+
+/*
+.selectable-list-item:hover {
+	color:		var(--OT-color-on-accent-1)	!important;
+	background:	var(--color-accent-1)	!important;
+}*/
+.template-status-chip,
+.note-status-chip {
+	--text-on-accent:	var(--OT-color-on-accent-3);
+	color:		var(--OT-color-on-accent-3);
+	background:	var(--color-accent-3);
+}
+.selectable-list-item.template-item.enabled {
+	background:	var(--color-accent-2) !important;
+	& .setting-item-name {
+	color:	var(--OT-color-on-accent-2);
+	}
+	& .setting-item-description {
+	color:	var(--OT-color-on-accent-2);
+	}
+	& .selectable-list-item-check {
+	color:	var(--OT-color-on-accent-2) !important;
+	}
+}
+.selectable-list-item.template-item:hover {
+	& .setting-item-name {
+	color:	var(--OT-color-on-accent-1);
+	}
+	& .setting-item-description {
+	color:	var(--OT-color-on-accent-1);
+	}
+	& .selectable-list-item-check {
+	color:	var(--OT-color-on-accent-1) !important;
+	}
+}
+
 /*	---------- ↑ Note Status plugin ↑ ----------	*/
 
 /*	Bookmark	OpSpl60	*/
