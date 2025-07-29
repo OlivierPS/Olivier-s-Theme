@@ -235,6 +235,7 @@
 						plugin in the status bar												1.63.4
 			28.07.2025	Changes to the typography of headings 4
 						Adjustments for the “Note Status” plugin								1.64.0
+			29.07.2025	Small tweaks															1.64.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -413,7 +414,7 @@ body {
 	--OT-kbd:										#353500;
 	--OT-kbd-background:							ivory;
 	--OT-menu-text-color:							var(--OT-color-on-accent-2);
-	--OT-menu-text-muted:							var(--OT-color-muted-on-base-20);
+	--OT-menu-text-muted:							var(--OT-color-muted-on-accent-2);
 	--OT-menu-background:							var(--color-accent-2);
 	--OT-metadata-property-icon:					var(--icon-color);
 	--OT-nav-folder-title-color:					var(--color-base-100);
@@ -5474,7 +5475,7 @@ input[type='range']::-webkit-slider-thumb:hover {
 	color:		var(--OT-color-on-accent-1);
 }
 .suggestion-item.mod-complex .suggestion-note {		/*	le texte complémentaire dans les containers de sélection	*/
-//	color:	cyan;	/*	var(--OT-color-muted-on-base-20);	*/
+	color:	var(--OT-menu-text-muted);
 }
 .suggestion-item.mod-complex.is-selected .suggestion-note,
 .suggestion-item.mod-complex.is-selected .search-suggest-info-text,

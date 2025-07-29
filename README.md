@@ -124,7 +124,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 ## Updates
 
 
-#### 28 juillet 2025
+#### 29.07.2025
+Small tweaks.
+
+----------------------------------------------
+#### 28.07.2025
 Further adjustments for the “Note Status” plugin.
 Changed the typography of level 4 headings (H4), because I wanted to them more easily distinguishable from both H3 and H5:
 
