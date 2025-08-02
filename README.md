@@ -123,12 +123,15 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 02.08.2025 Version 1.64.2
+Changing the background of the modals was a bad idea. It’s now corrected.
 
-#### 29.07.2025
+----------------------------------------------
+#### 29.07.2025 Version 1.64.1
 Small tweaks.
 
 ----------------------------------------------
-#### 28.07.2025
+#### 28.07.2025 Version 1.64.0
 Further adjustments for the “Note Status” plugin.
 Changed the typography of level 4 headings (H4), because I wanted to them more easily distinguishable from both H3 and H5:
 
@@ -136,7 +139,7 @@ Changed the typography of level 4 headings (H4), because I wanted to them more e
 * but their size is the same as that of H5.
 
 ----------------------------------------------
-#### 25.07.2025
+#### 25.07.2025 Version 1.63.4
 Adjusted the vertical position of the “Status” display from the “Note Status” plugin in the status bar.
 
 ----------------------------------------------
