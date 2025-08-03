@@ -237,8 +237,11 @@
 						Adjustments for the “Note Status” plugin								1.64.0
 			29.07.2025	Small tweaks															1.64.1
 			02.08.2025	Changing the background of the modals was a bad idea. It’s now reverted.	1.64.2
-			03.08.2025	Corrected a big mistake on menus.
+			03.08.2025	Corrected a big mistake in menus.
 						Preparing code for version 2.0											1.65.0
+						Code generally improved
+						Status bar improved
+						Several refinements to the typography, especially in editing modes		1.65.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -285,7 +288,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl27b	icons
 			OpSpl27c	menus
 			OpSpl28		settings pannel
-			OpSpl29		transcludes
+			OpSpl29		footnotes
 			OpSpl30		images
 			OpSpl31		zoom-image
 			OpSpl32		PDFs
@@ -374,6 +377,8 @@ Bookmarks:	OpSpl01:	définition des couleurs
 /*	Bookmark	OpSpl02	 —————————————————————————————— Theme’s variables —————————————————————————————— */
 	/*	Pour avoir un premier état, même sans avoir chargé le plugin “Style Settings”.*/
 body {
+	--OT-blockquote-font-family:					Questa, "Stone Serif ITC Pro","Times Roman", serif;
+	--OT-blockquote-font-size:						calc(var(--OT-readingMode-text-size) * 0.95);
 	--OT-button-background-hover:					var(--color-accent-1);
 	--OT-button-background-normal:					var(--color-accent-3);
 	--OT-button-cta-background-normal:				var(--color-accent-2);
@@ -399,7 +404,7 @@ body {
 	--OT-editMode-font-family:						var(--OT-editMode-font),
     												"Comic Sans MS",
 													var(--font-default);
-	--OT-editMode-line-height:						1.5em;
+	--OT-editMode-line-height:						var(--line-height-normal);
 	--OT-editMode-line-width:						45em;
 	--OT-editMode-tableText-percent:				90;
 	--OT-editMode-text-size:						18px;
@@ -416,7 +421,7 @@ body {
 	--OT-nav-item-vertical-padding:					var(--size-4-1);
 	--OT-pill-background:							var(--color-accent-2);
 	--OT-pill-color:								var(--OT-color-on-accent-2);
-	--OT-readingMode-line-height:					1.5em;
+	--OT-readingMode-line-height:					var(--line-height-normal);
 	--OT-readingMode-line-width:					42em;
 	--OT-readingMode-tableText-percent:				90;
 	--OT-readingMode-text-size:						17px;
@@ -427,6 +432,12 @@ body {
 	--OT-setting-item-name:                			var(--color-base-100);
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
+	--OT-space-below-h1:							1.0rem;
+	--OT-space-below-h2:							1.5rem;
+	--OT-space-below-h3:							0.4rem;
+	--OT-space-below-h4:							0.2rem;
+	--OT-space-below-h5:							0.2rem;
+	--OT-space-below-h6:							0.0rem;
 	--OT-stabilo-mark:								var(--stabilo-jaune-foncé);
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-status-bar-padding:						0px;
@@ -450,16 +461,23 @@ body {
 	--background-modifier-active-hover:	var(--color-accent-1);
 	--background-modifier-border:		var(--color-base-35);
 	--background-modifier-form-field:	var(--color-base-00);
-	--background-modifier-hover:		var(--interactive-accent-hover);
+//	--background-modifier-hover:		var(--interactive-accent-hover);
+	--background-modifier-hover:		hsla(60, 100%, 50%, 0.4);			/*	for plugins that I don’t address specifically; Obsidian violet would be: 258, 88%, 66%	*/
 	--background-modifier-message:		var(--color-accent-1);				/* le fond des “tooltips”	*/
 	--background-modifier-success-rgb:	106, 245, 161;						/* pour les progress bars, je préfère une nuance de vert un peu plus claire */
 	--background-modifier-success:		rgb(106, 245, 161);
 
-	--blockquote-background-color:		var(--code-background);
+	--blockquote-background-color:	var(--code-background);
+	--blockquote-font-style:		italic;
+	--blockquote-border-thickness:	0px;
 
 	--border-width:				1.5px;
 
-	--callout-blend-mode:			normal;
+	--callout-blend-mode:		normal;
+	--callout-border-width:		1px;
+	--callout-content-padding:	0 1rem;
+	--callout-padding:			0.5rem;
+//	--callout-title-padding:	0 0.5em;
 
 	--canvas-card-label-color:		var(--color-base-50);
 	--canvas-dot-pattern:			var(--color-base-40);
@@ -470,26 +488,46 @@ body {
 	--checkbox-border-color:		var(--text-normal);
 	--checkbox-color-hover:			var(--color-accent-1);
 	--checkbox-color:				var(--text-normal);
+	--checklist-done-decoration:	none;	//line-through;
+//	--checkbox-margin-inline-start:	0.85em;					/*	à revoir avec les listes	*/
 	--checkbox-radius:				0.3rem;
-	--checkbox-size:				0.95rem;
+	--checkbox-size:				0.85rem;
 	--checklist-done-color:			var(--color-base-50);
 
-	--code-background:				floralwhite;
-	--code-comment:					var(--OT-syntax-markers);
-	--code-normal:					var(--text-normal);
-	--code-operator:				var(--text-normal);
-	--code-property:				var(--OT-color-on-base-20);
-	--code-string:					var(--link-color);
-	--code-tag:						var(--OT-syntax-markers);
+	--code-background:		floralwhite;
+	--code-border-width:	1px;
+	--code-border-color:	var(--code-normal);
+	--code-comment:			var(--OT-syntax-markers);
+	--code-normal:			var(--text-normal);
+	--code-operator:		var(--text-normal);
+	--code-property:		var(--OT-color-on-base-20);
+	--code-string:			var(--link-color);
+	--code-tag:				var(--OT-syntax-markers);
+	--code-size:			var(--font-smallest);
+//	--code-radius:			var(--radius-m);
 
-	--collapse-icon-color:				var(--color-base-50);
-	--collapse-icon-color-collapsed:	var(--text-normal);
+	--collapse-icon-color:				var(--color-accent-2);
+	--collapse-icon-color-collapsed:	var(--color-accent-2);
 
-	--divider-color:				var(--color-base-35);
-	--divider-width:				1.5px;
+	--divider-color:		var(--color-base-35);
+	--divider-width:		2px;
+ 	--divider-width-hover:	3px;
 
 	--dropdown-background:			var(--color-accent-3);
 	--dropdown-background-hover:	var(--color-accent-1);
+
+	--embed-border-start:		0;
+	--embed-border-end:			1px dotted;
+	--embed-border-top:			none;
+	--embed-border-bottom:		none;
+	--embed-padding:			0;	// 0 0 0 var(--size-4-6);
+
+	--file-line-width:	var(--OT-readingMode-line-width);
+	--file-margins:				0.5em var(--size-4-8);
+	--file-header-font-size:	var(--font-ui-small);
+	--file-header-font-weight:	400;
+	--file-header-border:		var(--border-width) solid var(--divider-color);
+	--file-header-justify:		left;
 
 	--floating-toc-background-color:		var(--background-primary)	!important;
 	--floating-toc-font-color:				var(--nav-item-color)		!important;
@@ -501,7 +539,15 @@ body {
 	--font-ui-medium:	var(--OT-UI-font-size);
 	--font-ui-large:	calc(var(--font-ui-medium)/15*20);
 
-	--graph-line:					var(--color-base-100);
+	--footnote-gap:				0.5rem;	// var(--size-4-1);
+	--footnote-id-color:		var(--list-marker-color);
+	--footnote-id-delimiter:	")";	// ".";
+	--footnote-line-height:		var(--line-height-tight);
+	--footnote-size:			var(--OT-UI-font-size);
+
+	--graph-line:		var(--color-base-100);
+
+	--header-height:	2em;	// 40px;
 
 	--heading-spacing:			0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
 
@@ -516,6 +562,7 @@ body {
 	--icon-color-hover:		var(--OT-color-on-accent-1);
 	--icon-color:			var(--color-base-70);
 
+	--indentation-guide-color:	var(--color-accent);	//	rgba(var(--mono-rgb-100), 0.12);
 	--indentation-guide-color:	var(--color-base-50);
 
 	--inline-title-color:		var(--color-base-50);
@@ -532,6 +579,8 @@ body {
 	--link-external-color:				var(--link-color);
 	--link-external-color-hover:		var(--color-accent-1);
 	--link-unresolved-color:			var(--color-red) ;
+	--link-unresolved-filter:			blur(0.5px);
+	--link-unresolved-filter:			brightness(0.9);
  	--link-decoration:					none;
  	--link-decoration-hover:			none;
  	--link-external-decoration:			none;
@@ -584,28 +633,30 @@ body {
 									var(--size-4-6);
 
 	--p-spacing:		0.5em;
-	--p-spacing-empty:	1rem;		/*	en mode édition, vient s’ajouter sous les headings. Ainsi, on peut coller les paragraphes sous les headings et avoir tout de même une bonne apparence en mode d’édition. 	*/
+//	--p-spacing-empty:	1rem;		/*	en mode édition, vient s’ajouter sous les headings. Ainsi, on peut coller les paragraphes sous les headings et avoir tout de même une bonne apparence en mode d’édition. 	*/
 
 	--pill-background-hover:	var(--color-accent-1);
 	--pill-color-hover:			var(--OT-color-on-accent-1);
 	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
 	--pill-color-remove:		var(--OT-pill-background);
 
-	--popover-font-size:			calc(var(--font-text-size) * 0.9);
-	--popover-height:				50vh;
-//	--popover-max-height:			70vh;
-	--popover-width:				46rem;
+	--popover-font-size:	calc(var(--font-text-size) * 0.9);
+	--popover-height:		50vh;
+//	--popover-max-height:	70vh;
+	--popover-width:		46rem;
+
+	--prompt-max-height:	80vh;
 
 	--search-icon-color:	var(--OT-clickable-icon-in-header);
 
 //	--sidebar-markdown-font-size:	calc(var(--OT-readingMode-text-size) * 0.9);
 
-	--status-bar-text-color:	var(--OT-color-on-accent-2);
-	--status-bar-background:	var(--color-accent-2);
-	--status-bar-border-color:	red;
+	--status-bar-text-color:	var(--OT-color-on-accent-3);
+	--status-bar-background:	var(--color-accent-3);
+//	--status-bar-border-color:	red;
 	--status-bar-font-size:		var(--font-ui-small);
-	--status-bar-border-width:	1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
-//	--status-bar-radius:		0 0 0 0;
+//	--status-bar-border-width:	1px 0 0 1px;				/*	un fin bord en haut de la status bar pour la faire ressortir du fond, quand elle a la même couleur (c’était un problème, parfois, quand le sidepannel de droite était ouvert) */
+	--status-bar-radius:		var(--radius-s);
 
 	--tab-container-background:	var(--color-base-05);
 
@@ -1789,8 +1840,8 @@ body {
 
 	--OT-color-on-base-20:		#DEDFE1;
 
-	--blockquote-text-color:	var(--text-normal) !important;
-	--code-normal:				var(--text-normal);
+//	--blockquote-color:		var(--text-normal) !important;
+	--code-normal:			var(--text-normal);
 
 	--OT-setting-item-name:			#DDEBF5;
 	--OT-setting-item-description:	#8DBDDF;
@@ -1889,7 +1940,7 @@ body {
 	--OT-button-OFF-bg:					#660415;
 
 	--code-background:					#46030E;
-	--blockquote-text-color:			#FBAAB7;
+	--blockquote-color:					#FBAAB7;
 	--background-modifier-form-field:	var(--color-base-20);
 
 	--OT-color-on-base-20:			#C09B9C;
@@ -2026,7 +2077,7 @@ body {
 
 	--OT-stabilo-text:	var(--color-base-20);
 
-	--blockquote-text-color:	#001F99;
+	--blockquote-color:			#001F99;
 	--code-normal:				#001F99;
 	--OT-setting-item-name:		var(--color-base-50);
 
@@ -5194,15 +5245,28 @@ body {
 	font-size:		var(--OT-editMode-text-size);
     line-height:	var(--OT-editMode-line-height);
 }
-/*	Pour que `--p-spacing-empty` reste à 0 sous les H5 et H6	*/
-.cm-s-obsidian
-.cm-line.HyperMD-header-5 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)),
-.cm-s-obsidian
-.cm-line.HyperMD-header-6 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
-	--p-spacing-empty: 0;
-}
 
 /*	Bookmark	OpSpl18	 —————————————————————————————— Headings, in Edit mode —————————————————————————————— */
+/*	pour simuler, en Edit mode, le blanc sous les H1 à H6
+.cm-s-obsidian .cm-line.HyperMD-header-1 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
+	--p-spacing-empty:		var(--OT-space-below-h1);
+}
+.cm-s-obsidian .cm-line.HyperMD-header-2 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
+	--p-spacing-empty:		var(--OT-space-below-h2);
+}
+.cm-s-obsidian .cm-line.HyperMD-header-3 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
+	--p-spacing-empty:		var(--OT-space-below-h3);
+}
+.cm-s-obsidian .cm-line.HyperMD-header-4 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
+	--p-spacing-empty:		var(--OT-space-below-h4);
+}
+.cm-s-obsidian .cm-line.HyperMD-header-5 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
+	--p-spacing-empty:		var(--OT-space-below-h5);
+}
+.cm-s-obsidian .cm-line.HyperMD-header-6 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
+	--p-spacing-empty:		var(--OT-space-below-h6);
+}
+*/
 .cm-s-obsidian .cm-header-1,
 .cm-s-obsidian .cm-header-2,
 .cm-s-obsidian .cm-header-3,
@@ -5219,28 +5283,39 @@ body {
     color:			inherit;
     font-weight:	var(--font-bold);
 }
-/*	filets sous H1 et H2	*/
+/*	filets sous H1 et H2
 .cm-s-obsidian .HyperMD-header-1,
 .cm-s-obsidian .HyperMD-header-2 {
 	border-bottom: 	.12em solid;
-}
+}*/
 
-/* ----- type sizes */
-.is-live-preview .cm-header-1 {
+.cm-s-obsidian .cm-header-1,
+.HyperMD-header-1 {
   	font-size:		calc( var(--OT-editMode-text-size)*1.6 )	!important;
+	padding-bottom: var(--OT-space-below-h1) !important;
 }
-.is-live-preview .cm-header-2 {
+.cm-s-obsidian .cm-header-2,
+.HyperMD-header-2 {
   	font-size:		calc( var(--OT-editMode-text-size)*1.5 )	!important;
+	padding-bottom: var(--OT-space-below-h2) !important;
 }
-.is-live-preview .cm-header-3 {
+.cm-s-obsidian .cm-header-3,
+.HyperMD-header-3 {
   	font-size:		calc( var(--OT-editMode-text-size)*1.2 )	!important;
+	padding-bottom: var(--OT-space-below-h3) !important;
 }
-.is-live-preview .cm-header-4 {
+.cm-s-obsidian .cm-header-4,
+.HyperMD-header-4 {
   	font-size:		calc( var(--OT-editMode-text-size)*1.05 )	!important;
+	padding-bottom: var(--OT-space-below-h4) !important;
 }
-.is-live-preview .cm-header-5,
-.is-live-preview .cm-header-6 {
-  	font-size:		calc( var(--OT-editMode-text-size)*1 )	!important;
+.cm-s-obsidian .cm-header-5,
+.HyperMD-header-5 {
+	padding-bottom: var(--OT-space-below-h5) !important;
+}
+.cm-s-obsidian .cm-header-6,
+.HyperMD-header-6 {
+	padding-bottom: var(--OT-space-below-h6) !important;
 }
 /* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
 
@@ -5265,16 +5340,25 @@ body {
 
 /* ---------- “monospaced” font ----------
 	je trouve judicieux de compacter l’affichage de tout ce qui est en «fonte fixe» */
-.markdown-source-view.mod-cm6 .HyperMD-codeblock,
-/*.markdown-source-view.mod-cm6 .cm-hmd-frontmatter,*/
-.markdown-source-view.mod-cm6 span.cm-inline-code.cm-hmd-indented-code,
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
-	line-height:	1.1em;
+.cm-s-obsidian .hmd-fold-html-stub,
+.cm-s-obsidian .hmd-fold-code-stub,
+.cm-s-obsidian .cm-inline-code,
+.cm-s-obsidian .HyperMD-codeblock,
+.cm-s-obsidian .HyperMD-hr,
+.cm-s-obsidian .cm-hmd-frontmatter,
+.cm-s-obsidian .cm-hmd-orgmode-markup,
+.cm-s-obsidian .cm-formatting-code,
+.cm-s-obsidian .cm-math,
+.cm-s-obsidian span.hmd-fold-math-placeholder,
+.cm-s-obsidian .hmd-fold-html kbd {
+	font-family:	var(--font-monospace);
+	line-height:	1.2 !important;
 }
 /*	en mode “Edit, RAW” également, je trouve judicieux que le code soit sur son propre fond	*/
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
 	background-color:	var(--code-background);
 }
+
 
 
 /*	Bookmark	OpSpl20	 —————————————————————————————— Autres ajustements —————————————————————————————— */
@@ -5295,6 +5379,7 @@ p,
 input[type=checkbox] {
   border: 2px solid var(--checkbox-border-color);
 }
+
 /*	les crochets des “tasks”	*/
 .cm-s-obsidian span.cm-formatting-task {
 	color:	var(--list-marker-color);
@@ -5814,10 +5899,17 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 .markdown-rendered th {
 	font-size:	calc(var(--OT-readingMode-text-size) * var(--OT-readingMode-tableText-percent) / 100);
 }
+/*	in live mode	*/
 .markdown-source-view.mod-cm6 .cm-html-embed td,
 .markdown-source-view.mod-cm6 .markdown-rendered td,
 .markdown-source-view.mod-cm6 .cm-html-embed th,
 .markdown-source-view.mod-cm6 .markdown-rendered th {
+	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+}
+/*	in raw mode:	*/
+.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+.markdown-source-view.mod-cm6 span.cm-inline-code.cm-hmd-indented-code,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
 	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
 }
 
@@ -6039,8 +6131,9 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 }
 .view-header-title-parent .view-header-breadcrumb,
 .view-header-title-parent .view-header-breadcrumb-separator {
-	font-size:		var(--font-ui-medium);
+	font-size:		var(--font-ui-small);
 	font-weight:	var(--font-normal);
+	padding-top:	2pt ;
 }
 
 .view-header-title-parent .view-header-breadcrumb:hover,
@@ -6070,7 +6163,7 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 .is-focused .workspace-leaf.mod-active .view-header-title {
     color: 				var(--OT-view-header-title-focus-color);
     font-variant:		small-caps;
-    font-size:			calc(var(--OT-readingMode-text-size) * 1.5);
+    font-size:			var(--font-ui-large);	//calc(var(--OT-readingMode-text-size) * 1.5);
     font-weight:		700;
 }
 .workspace-tab-header-status-icon.mod-pinned {
@@ -6584,39 +6677,32 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 /*	-------------------- ↑ Settings pannel -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl29	 ——————————————————————————————  TRANSCLUDES —————————————————————————————— */
-/* Remove the border, padding, and margin for the transcludes/embeds */
-.markdown-preview-view .markdown-embed,
-.markdown-preview-view .file-embed,
-.markdown-embed .markdown-preview-view {
-	padding:		0;
-	margin:			0;
+/*	Bookmark	OpSpl29	 ——————————————————————————————  Footnotes —————————————————————————————— */
+.footnotes-view .footnote-list-item.is-editing > .footnote {
+//   background-color: var(--footnote-input-background-active);
+    box-shadow: none;
 }
-/*	bord traitillé à gauche des transcludes	*/
-.markdown-preview-view .markdown-embed {
-	border-left: 	1px dotted var(--color-accent-1);
+/*	footnote editing in the footnotes pane: let’s use the size of the sidebars	*/
+.footnote-content .markdown-source-view.mod-cm6 .cm-line {
+	font-size:		calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+//	font-size:		var(--OT-UI-font-size);
+	line-height:	var(--line-height-tight);
 }
-
-
-/* adjust the position of the transcludes	*/
-.markdown-preview-view .markdown-embed-content {
-    padding-left: 		0.5rem;
+/*	---------- le lien de retour des footnotes ---------- */
+/*	Obsidian’s  choice (--text-faint) seems OK, after all
+.footnote-backref {
+	color:	var(--link-color);
+}*/
+@media (hover: hover) {
+  .footnote-backref:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+  }
 }
-
-/* Hide the title of the embeds */
-.markdown-embed-title {
-  display: none;
-}
-
-.markdown-preview-view .markdown-embed-content {
-  max-height:		unset;
-  overflow-y: 		unset;
-  padding-right:	unset;
-}
-/* -------------------- ↑ Transcludes -------------------- ↑ */
+/* -------------------- ↑ Footnotes -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl30	 —————————————————————————————— OpSpl Images, etc. —————————————————————————————— */
+/*	Bookmark	OpSpl30	 ——————————————————————————————  Images, etc. —————————————————————————————— */
 .markdown-preview-view img:not([width]),
 .markdown-preview-view audio,
 .markdown-preview-view video {
@@ -6810,33 +6896,23 @@ div:not(.cm-callout):not(.HyperMD-list-line).image-embed img {
 /* Tout ce qui concerne les citations:
 	* le “blockquote”
 	* le style pour l’origine (l’auteur) de la citation */
-.markdown-preview-view blockquote {
-  	border: 			none;
-	border-color:		var(--blockquote-border-color);
-	border-left-width: 	0.05em !important;
-  	border-radius: 		1em ;
-    font-family: 		var(--font-family-blockquote);
-    font-style:			italic;
-    font-size:			var(--font-size-blockquote);
-	color:				var(--blockquote-text-color);
-	line-height: 		1.5em;
-	background-color:	var(--blockquote-background-color);
-	margin: 			10px 10px;
-	margin-left:		40px;
-	margin-right:		40px;
-	padding-top:		10px;
-	padding-bottom:		10px;
-	padding-right:		20px;
+.markdown-rendered blockquote {
+ 	border-radius: 		var(--radius-m) ;
+    font-family: 		var(--OT-blockquote-font-family);
+    font-size:			var(--OT-blockquote-font-size);
+//	line-height: 		1.5em;
+	margin: 			1em 2em;
+	padding:			0.5rem 0.75rem;
 	position:			relative;
 }
 
-.markdown-preview-view blockquote:after {
+.markdown-rendered blockquote:after {
 	content:	"«";
 	color:		var(--text-normal);
 	position:	absolute;
 	top:		0.1em;
 	left:		-0.7em;
-	font-size:	3em;
+	font-size:	2.5em;
 }
 
 /* Pour le nom de l’auteur ou la source de la citation */
@@ -6857,6 +6933,12 @@ div:not(.cm-callout):not(.HyperMD-list-line).image-embed img {
 	overflow-x:		auto;	/* Enable horizontal scrolling */
 }
 
+/* fenced code blocks in Preview/Reading mode */
+.markdown-rendered pre {
+  line-height: 		1.1;
+  font-size:		var(--code-size);
+  vertical-align:	unset;
+}
 /* -------------------- ↑  Blockquotes and codeblocks ↑ -------------------- */
 
 
@@ -7000,7 +7082,7 @@ body.headings-scaling-major-third {
 .markdown-preview-section h1,
 markdown-rendered h1 {
 	letter-spacing:		0.01em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
-	margin-bottom:		1em;
+	margin-block-end:		var(--OT-space-below-h1);
 }
 
 
@@ -7010,21 +7092,21 @@ markdown-rendered h2 {
 	letter-spacing:		0.02em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
 	line-height:		1.0em;		/* vu qu’on est en petites capitales, cela n’a pas de sens que les lignes soient plus écartées que tant */
 	--heading-spacing:	1.618em;
-	margin-bottom:		1.0em;
+	margin-block-end:		var(--OT-space-below-h2);
 }
 
 .cm-header-3,
 .markdown-preview-section h3,
 markdown-rendered h3 {
 	--heading-spacing:	1.618em;
-	margin-bottom:		0.4rem;
+	margin-block-end:		var(--OT-space-below-h3);
 }
 
 .cm-header-4,
 .markdown-preview-section h4,
 markdown-rendered h4 {
 	--heading-spacing:	1em;
-	margin-bottom:		0.2rem;
+	margin-block-end:		var(--OT-space-below-h4);
 	letter-spacing:		0.03em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
 	font-size:			var(--h5-size);
 }
@@ -7033,14 +7115,14 @@ markdown-rendered h4 {
 .markdown-preview-section h5,
 markdown-rendered h5 {
 	--heading-spacing:	1em;
-	margin-bottom:		0.2rem;
+	margin-block-end:		var(--OT-space-below-h5);
 }
 
 .cm-header-6,
 .markdown-preview-section h6,
 markdown-rendered h6 {
 	--heading-spacing:	1em;
-	margin-bottom:		0.1rem;
+	margin-bottom:		var(--OT-space-below-h6);
 }
 /* -------------------- ↑ Headings to my taste ↑ -------------------- */
 
@@ -7140,7 +7222,7 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 .file-embed.mod-empty-attachment,
 .file-embed.mod-generic,
 .file-embed.mod-empty {
-	color:				white;
+	color:				white !important;
 	background-color:	var(--link-unresolved-color);
 	margin-left:	25%;
 	margin-right:	25%;
@@ -7160,29 +7242,18 @@ a:hover,
 }
 @media (hover: hover) {		/*	lien inexistant survolé	*/
 	.metadata-container .internal-link.is-unresolved:hover,
-	.markdown-rendered .internal-link.is-unresolved:hover {
+	.markdown-rendered .internal-link.is-unresolved:hover,
+	.markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
     	color:				white;
     	background-color: 	var(--link-unresolved-color);
-}
 }
 /* ---------- Lien vers une image inexistante survolé  */
 @media (hover: hover) {
 	.file-embed.mod-empty-attachment:hover,
 	.file-embed.mod-generic:hover,
 	.file-embed.mod-empty:hover {
-    	color: 				var(--link-unresolved-color);
+    	color: 				var(--link-unresolved-color) !important;
     	background-color:	white;
-  }
-}
-
-/*	---------- le lien de retour des footnotes ---------- */
-.footnote-backref {
-	color:	var(--link-color);
-}
-@media (hover: hover) {
-  .footnote-backref:hover {
-	color:				var(--OT-color-on-accent-1);
-	background-color:	var(--color-accent-1);
   }
 }
 /* -------------------- ↑ Links ↑ -------------------- */
@@ -7279,31 +7350,38 @@ div > * > li > * > li > * > li:last-child {	/* All level 3 last items */
 
 
 /*	Bookmark	OpSpl43	—————————————————————————————— Status bar —————————————————————————————— */
+/* Let’s position the status bar */
 .status-bar {
-	background-color:	transparent;/*	var(--background-primary);	*/
-	border:				none;
-	position:			absolute;
-	padding:			var(--OT-status-bar-padding);
+  background:	none !important;
+  border:		none !important;
+  width:		auto !important;
+  padding:		0 !important;
+  display:		flex;
+  gap:			var(--size-2-2); /* Gaps between the items */
+  position:		fixed;
+  bottom:		var(--OT-status-bar-padding);
+  right:		var(--OT-status-bar-padding);
+  left:			auto;
+  z-index:		1000;
+}
+/* Create a pill-style for each individual item */
+.status-bar-item {
+  background-color: var(--status-bar-background);
+  color:			var(--status-bar-text-color);
+  border-radius:	var(--status-bar-radius);
+  padding:			var(--size-2-3) var(--size-2-3);
+//  padding: 2px 8px;
+//  margin: 0;
+//  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+//  font-size: 0.9em;
+//  line-height: 1.6;
+  display:		flex;
+  align-items:	center;
 }
 
-body:not(.is-fullscreen) .status-bar {
-	padding:			var(--OT-status-bar-padding);
+.status-bar-item:last-child {
+  gap: 0;
 }
-
-.status-bar-item,
-.status-bar-item.plugin-editor-status,
-.status-bar-item.plugin-sync {
-	background-color:	var(--status-bar-background);	/*	var(--statusbar-item-background);	*/
-	display:	block;
-	padding:	8px 5px 5px;
-	margin:		0px;
-	border:		none;
-}
-
-.status-bar-item.plugin-note-status {
-	padding:	6px 2px 2px !important;		/*	pour le plugin “Note Status”, j’ai été obligé d’ajouter “important”, car il y avait quelque part une règle “element.style” qui annulait le réglage	*/
-}
-
 
 .status-bar-item:hover,
 .status-bar-item.mod-clickable:hover {
@@ -7314,9 +7392,6 @@ body:not(.is-fullscreen) .status-bar {
 /*	sync status icon: if it remains in the “text success” color, it’s not always visible. It’s more convenient to let it in the color of the other status bar items	*/
 .sync-status-icon.mod-success {
   color: var(--status-bar-text-color);
-}
-.plugin-readwise-official.statusbar-organizer-element-hidden {
-	display: none;	/*	otherwise, it leaves an empty space on the status bar	*/
 }
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
@@ -8511,7 +8586,7 @@ settings:
 			description:	Number of pixels between the status bar and the window border.
 			dsecription.fr:	Nombre de pixels entre la “Status Bar” et le bord de la fenêtre.
 			type:			variable-number
-			default:		0
+			default:		4
 			format:			px
 	-
  			id:				OT-canvas-dot-pattern-hidden

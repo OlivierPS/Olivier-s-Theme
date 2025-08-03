@@ -123,8 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 03.08.2025 Version 1.65.0
+#### 03.08.2025 Version 1.65.0 and 1.65.1
 Corrected a big mistake on menus. I’m sorry.
+Several refinements to the typography, especially in editing modes.
+Status bar improved.
 
 Preparing (i.e. *improving*) the code for version 2.0.
 
