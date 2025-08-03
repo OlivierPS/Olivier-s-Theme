@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 03.08.2025 Version 1.65.0
+Corrected a big mistake on menus. I’m sorry.
+
+Preparing (i.e. *improving*) the code for version 2.0.
+
+----------------------------------------------
 #### 02.08.2025 Version 1.64.2
 Changing the background of the modals was a bad idea. It’s now corrected.
 
