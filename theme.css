@@ -242,6 +242,7 @@
 						Code generally improved
 						Status bar improved
 						Several refinements to the typography, especially in editing modes		1.65.1
+						Suppression of the paper background that did appear in the footnotes view	1.65.2
 
 
 --------------------------------------------------------------------------------------------------------
@@ -544,6 +545,7 @@ body {
 	--footnote-id-delimiter:	")";	// ".";
 	--footnote-line-height:		var(--line-height-tight);
 	--footnote-size:			var(--OT-UI-font-size);
+//	--footnote-input-background:	cyan;	var(--metadata-input-background);
 
 	--graph-line:		var(--color-base-100);
 
@@ -6678,6 +6680,12 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 
 
 /*	Bookmark	OpSpl29	 ——————————————————————————————  Footnotes —————————————————————————————— */
+/*	let’s suppress the (paper) background image	in the footnotes view */
+.markdown-embed[data-type="footnote"],
+.markdown-embed-content.node-insert-event,
+.footnote-content .markdown-rendered {
+	background-image: none !important;
+}
 .footnotes-view .footnote-list-item.is-editing > .footnote {
 //   background-color: var(--footnote-input-background-active);
     box-shadow: none;
