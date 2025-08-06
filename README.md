@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 06.08.2025 Version 1.65.3
+Refinements.
+
+----------------------------------------------
 #### 03.08.2025 Version 1.65.0, 1.65.1 and 1.65.2
 Corrected a big mistake on menus. I’m sorry.
 Several refinements to the typography, especially in editing modes.

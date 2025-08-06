@@ -243,6 +243,7 @@
 						Status bar improved
 						Several refinements to the typography, especially in editing modes		1.65.1
 						Suppression of the paper background that did appear in the footnotes view	1.65.2
+			06.08.2025	Refinements																1.65.3
 
 
 --------------------------------------------------------------------------------------------------------
@@ -298,7 +299,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl35		contextual typography
 			OpSpl36		headings to my taste
 			OpSpl37		horizontal rule
-			OpSpl38		kanban
+			OpSpl38		Kanban plugin
 			OpSpl39		links
 			OpSpl40		syntax markers
 			OpSpl41		tags
@@ -441,7 +442,7 @@ body {
 	--OT-space-below-h6:							0.0rem;
 	--OT-stabilo-mark:								var(--stabilo-jaune-foncé);
 	--OT-stabilo-text:								var(--text-normal);
-	--OT-status-bar-padding:						0px;
+	--OT-status-bar-padding:						6px;
 	--OT-syntax-markers:							var(--color-base-50);
 	--OT-tab-background-active-hover:				var(--color-accent-1);
 	--OT-table-alt-background:						var(--color-base-20);
@@ -698,7 +699,7 @@ body {
 
 /* ------------------------ ↑ sorted ↑ ------------------------ */
 
-	--text-on-accent:			var(--OT-color-on-accent-1);
+	--text-on-accent:			var(--OT-color-on-accent-2);
 	--text-on-accent-inverted:	var(--color-accent-1);			/*	dans "app.css" il est défini comme “black”. Utilisé dans le canvas	*/
 	--text-accent:				var(--color-accent-2);
 	--text-accent-hover:		var(--OT-color-on-accent-1);
@@ -7159,7 +7160,7 @@ markdown-rendered h6 {
 /* -------------------- ↑ horizontal rule ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl38	—————————————————————————————— Kanban —————————————————————————————— */
+/*	Bookmark	OpSpl38	—————————————————————————————— Kanban plugin —————————————————————————————— */
 body .kanban-plugin{
 	background-image:	none !important;
 	background-color:	var(--background-primary);		/* je préfère au gris d’origine	*/
@@ -7198,11 +7199,6 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	font-family:	var(--OT-kanban-font), "P22 Eaglefeather", "Tekton Pro", "Palatino Sans Com", "Arial Narrow", "Helvetica Neue",sans-serif !important;
 	}
 
-.kanban-plugin__new-item-button:hover{
-		color:				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
-}
-
 .kanban-plugin__table-cell-wrapper .kanban-plugin__lane-menu.is-enabled,
 .kanban-plugin__table-cell-wrapper .kanban-plugin__item-prefix-button.is-enabled,
 .kanban-plugin__item .kanban-plugin__item-prefix-button.is-enabled,
@@ -7210,7 +7206,22 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 .kanban-plugin__lane .kanban-plugin__lane-settings-button.is-enabled {
 	color:	var(--icon-color);
 }
-/* -------------------- ↑ Kanban -------------------- ↑ */
+
+.kanban-plugin__new-item-button:hover{
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+}
+.kanban-plugin__item-postfix-button-wrapper:hover {
+	& .kanban-plugin__item-postfix-button:hover{
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+	}
+}
+.kanban-plugin__icon:hover {
+	color: 				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+}
+/* -------------------- ↑ Kanban plugin -------------------- ↑ */
 
 
 /*	Bookmark	OpSpl39	—————————————————————————————— Links —————————————————————————————— */
@@ -7962,6 +7973,10 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 		color: 				var(--OT-color-on-accent-2);
 		background-color:	var(--color-accent-2);
 }
+.another-quick-switcher__command_button:hover {
+		color: 				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+}
 /*	---------- ↑ Another Quick Switcher plugin ↑ ----------	*/
 
 /*	Bookmark	OpSpl56b ———————————————————— Omnisearch plugin  ————————————————————	*/
@@ -8594,7 +8609,7 @@ settings:
 			description:	Number of pixels between the status bar and the window border.
 			dsecription.fr:	Nombre de pixels entre la “Status Bar” et le bord de la fenêtre.
 			type:			variable-number
-			default:		4
+			default:		6
 			format:			px
 	-
  			id:				OT-canvas-dot-pattern-hidden
