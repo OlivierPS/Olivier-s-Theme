@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 09.08.2025 Version 1.66.0
+The “done” text stays in the appropriate (subdued) color in live edit mode.
+
+----------------------------------------------
 #### 09.08.2025 Version 1.65.5
 Corrected some glitches; some improvements.
 

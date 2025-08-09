@@ -246,6 +246,7 @@
 			06.08.2025	Refinements																1.65.3
 			07.08.2025	Worked around an error in "app.css" regarding quotes					1.65.4
 			09.08.2025	Corrected some glitches; some improvements								1.65.5
+						The “done” text stays in the appropriate (subdued) color in live edit mode.	1.66.0
 
 
 --------------------------------------------------------------------------------------------------------
@@ -4187,216 +4188,216 @@ body {
 
 
 /*	Bookmark	OpSpl15	—————————————————————————————— Edit text colors —————————————————————————————— */
-.theme-light.inkColor-lightMode-default .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-default .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-default .cm-s-obsidian .cm-line {
-	color:	var(--text-normal);
+.theme-light.inkColor-lightMode-default .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-default .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-default .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
+	color: var(--text-normal);
 }
 
-.theme-light.inkColor-lightMode-amber .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-amber .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-amber .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-amber .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-amber .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-amber .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#D97706;
 }
 
-.theme-light.inkColor-lightMode-black .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-black .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-black .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-black .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-black .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-black .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:			black;
 	--link-color:	var(--obsidian-violet);
 }
 
-.theme-light.inkColor-lightMode-blue .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-blue .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-blue .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-blue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-blue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-blue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--blue);
 	--text-normal:	var(--blue) !important;
 }
 
-.theme-light.inkColor-lightMode-brown .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-brown .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-brown .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-brown .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-brown .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-brown .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#542200;
 }
 
-.theme-light.inkColor-lightMode-cyan .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-cyan .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-cyan .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-cyan .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-cyan .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-cyan .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#2D9EC6;
 }
 
-.theme-light.inkColor-lightMode-egg .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-egg .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-egg .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-egg .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-egg .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-egg .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:			#FCE69F;
 	--text-faint:	#9FB5FC;
 }
 
-.theme-light.inkColor-lightMode-emerald .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-emerald .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-emerald .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-emerald .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-emerald .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-emerald .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#009B77;
 }
 
-.theme-light.inkColor-lightMode-favoriteBlue .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-favoriteBlue .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-favoriteBlue .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-favoriteBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-favoriteBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-favoriteBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--favorite-blue);
 }
 
-.theme-light.inkColor-lightMode-fuchsia .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-fuchsia .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-fuchsia .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-fuchsia .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-fuchsia .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-fuchsia .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#F400A0;
 }
 
-.theme-light.inkColor-lightMode-green .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-green .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-green .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-green .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-green .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-green .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#0F7635;
 }
 
-.theme-light.inkColor-lightMode-indigo .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-indigo .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-indigo .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-indigo .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-indigo .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-indigo .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#4b0082;
 }
 
-.theme-light.inkColor-lightMode-lightBlue .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-lightBlue .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-lightBlue .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-lightBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-lightBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-lightBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--light-blue);
 }
 
-.theme-light.inkColor-lightMode-darkBlue .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-darkBlue .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-darkBlue .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-darkBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-darkBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-darkBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--dark-blue);
 }
 
-.theme-light.inkColor-lightMode-lime .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-lime .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-lime .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-lime .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-lime .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-lime .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#00EE00;
 }
 
-.theme-light.inkColor-lightMode-orange .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-orange .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-orange .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-orange .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-orange .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-orange .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#E65C1C;
 }
 
-.theme-light.inkColor-lightMode-pink .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-pink .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-pink .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-pink .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-pink .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-pink .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#F953A7;
 }
 
-.theme-light.inkColor-lightMode-purple .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-purple .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-purple .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-purple .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-purple .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-purple .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#5300A4;
 }
 
-.theme-light.inkColor-lightMode-red .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-red .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-red .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-red .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-red .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-red .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#DA032A;
 }
 
-.theme-light.inkColor-lightMode-darkRed .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-darkRed .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-darkRed .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-darkRed .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-darkRed .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-darkRed .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#a33e16;
 }
 
-.theme-light.inkColor-lightMode-rose .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-rose .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-rose .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-rose .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-rose .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-rose .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#FA74B8;
 }
 
-.theme-light.inkColor-lightMode-royalBlue .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-royalBlue .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-royalBlue .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-royalBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-royalBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-royalBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--royal-blue);
 }
 
-.theme-light.inkColor-lightMode-silver .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-silver .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-silver .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-silver .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-silver .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-silver .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:					silver;
 	--link-color:			white;
 	--link-external-color:	white;
 }
 
-.theme-light.inkColor-lightMode-skyBlue .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-skyBlue .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-skyBlue .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-skyBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-skyBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-skyBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--sky-blue);
 }
 
-.theme-light.inkColor-lightMode-solarized-base00 .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-solarized-base00 .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-solarized-base00 .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-solarized-base00 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base00 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base00 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base00);
 }
 
-.theme-light.inkColor-lightMode-solarized-base01 .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-solarized-base01 .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-solarized-base01 .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-solarized-base01 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base01 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base01 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base01);
 }
 
-.theme-light.inkColor-lightMode-solarized-base02 .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-solarized-base02 .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-solarized-base02 .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-solarized-base02 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base02 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base02 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base02);
 }
 
-.theme-light.inkColor-lightMode-solarized-base03 .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-solarized-base03 .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-solarized-base03 .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-solarized-base03 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base03 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-solarized-base03 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base03);
 }
 
-.theme-light.inkColor-lightMode-teal .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-teal .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-teal .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-teal .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-teal .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-teal .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#0C8C81;
 }
 
-.theme-light.inkColor-lightMode-terminalGreen .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-terminalGreen .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-terminalGreen .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-terminalGreen .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-terminalGreen .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-terminalGreen .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#22C55E;
 }
 
-.theme-light.inkColor-lightMode-violet .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-violet .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-violet .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-violet .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-violet .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-violet .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#7f00ff;
 }
 
-.theme-light.inkColor-lightMode-white .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-white .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-white .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-white .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-white .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-white .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:					#FFFFFF;
 	--link-color:			silver;
 	--link-external-color:	silver;
 }
 
-.theme-light.inkColor-lightMode-yellow .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-yellow .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-yellow .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-yellow .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-yellow .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-yellow .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:						#FBCD15;
 	--link-color:				#15CDFB;
 	--link-external-color:		#15CDFB;
 }
 
-.theme-light.inkColor-lightMode-zinc .CodeMirror pre.CodeMirror-line,
-.theme-light.inkColor-lightMode-zinc .markdown-source-view .cm-line,
-.theme-light.inkColor-lightMode-zinc .cm-s-obsidian .cm-line {
+.theme-light.inkColor-lightMode-zinc .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-zinc .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light.inkColor-lightMode-zinc .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:					#909096;
 	--link-color:			silver;
 	--link-external-color:	silver;
@@ -4404,202 +4405,202 @@ body {
 
 /*	----------------------------------------------------------------------	*/
 
-.theme-dark.inkColor-darkMode-default .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-default .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-default .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-default .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-default .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-default .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--text-normal);
 }
 
-.theme-dark.inkColor-darkMode-amber .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-amber .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-amber .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-amber .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-amber .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-amber .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#D97706;
 	--OT-text-selection-background:	#022348;
 }
 
-.theme-dark.inkColor-darkMode-black .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-black .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-black .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-black .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-black .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-black .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	black;
 }
 
-.theme-dark.inkColor-darkMode-blue .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-blue .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-blue .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-blue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-blue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-blue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--blue);
 }
 
-.theme-dark.inkColor-darkMode-brown .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-brown .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-brown .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-brown .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-brown .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-brown .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#542200;
 }
 
-.theme-dark.inkColor-darkMode-cyan .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-cyan .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-cyan .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-cyan .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-cyan .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-cyan .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#2D9EC6;
 }
 
-.theme-dark.inkColor-darkMode-egg .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-egg .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-egg .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-egg .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-egg .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-egg .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#FCE69F;
 	--text-faint:	#9FB5FC;
 }
 
-.theme-dark.inkColor-darkMode-emerald .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-emerald .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-emerald .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-emerald .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-emerald .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-emerald .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#009B77;
 }
 
-.theme-dark.inkColor-darkMode-favoriteBlue .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-favoriteBlue .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-favoriteBlue .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-favoriteBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-favoriteBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-favoriteBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--favorite-blue);
 }
 
-.theme-dark.inkColor-darkMode-fuchsia .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-fuchsia .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-fuchsia .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-fuchsia .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-fuchsia .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-fuchsia .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#F400A0;
 }
 
-.theme-dark.inkColor-darkMode-green .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-green .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-green .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-green .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-green .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-green .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#0F7635;
 }
 
-.theme-dark.inkColor-darkMode-indigo .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-indigo .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-indigo .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-indigo .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-indigo .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-indigo .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#4b0082;
 }
 
-.theme-dark.inkColor-darkMode-lightBlue .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-lightBlue .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-lightBlue .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-lightBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-lightBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-lightBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#00CCFF;
 }
 
-.theme-dark.inkColor-darkMode-lime .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-lime .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-lime .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-lime .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-lime .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-lime .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#00EE00;
 }
 
-.theme-dark.inkColor-darkMode-orange .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-orange .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-orange .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-orange .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-orange .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-orange .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#E65C1C;
 }
 
-.theme-dark.inkColor-darkMode-pink .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-pink .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-pink .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-pink .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-pink .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-pink .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#F953A7;
 }
 
-.theme-dark.inkColor-darkMode-purple .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-purple .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-purple .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-purple .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-purple .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-purple .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#5300A4;
 }
 
-.theme-dark.inkColor-darkMode-red .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-red .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-red .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-red .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-red .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-red .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#DA032A;
 }
 
-.theme-dark.inkColor-darkMode-rose .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-rose .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-rose .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-rose .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-rose .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-rose .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#FA74B8;
 }
 
-.theme-dark.inkColor-darkMode-royalBlue .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-royalBlue .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-royalBlue .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-royalBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-royalBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-royalBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--royal-blue);
 }
 
-.theme-dark.inkColor-darkMode-silver .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-silver .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-silver .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-silver .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-silver .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-silver .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:					silver;
 	--link-color:			white;
 	--link-external-color:	white;
 }
 
-.theme-dark.inkColor-darkMode-sky .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-sky .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-sky .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-sky .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-sky .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-sky .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#77A9D0;
 }
 
-.theme-dark.inkColor-darkMode-solarized-base0 .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-solarized-base0 .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-solarized-base0 .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-solarized-base0 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base0 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base0 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base0);
 }
 
-.theme-dark.inkColor-darkMode-solarized-base1 .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-solarized-base1 .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-solarized-base1 .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-solarized-base1 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base1 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base1 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base1);
 }
 
-.theme-dark.inkColor-darkMode-solarized-base2 .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-solarized-base2 .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-solarized-base2 .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-solarized-base2 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base2 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base2 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base2);
 }
 
-.theme-dark.inkColor-darkMode-solarized-base3 .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-solarized-base3 .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-solarized-base3 .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-solarized-base3 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base3 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-solarized-base3 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	var(--solarized-base3);
 }
 
-.theme-dark.inkColor-darkMode-teal .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-teal .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-teal .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-teal .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-teal .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-teal .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#0C8C81;
 }
 
-.theme-dark.inkColor-darkMode-terminalGreen .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-terminalGreen .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-terminalGreen .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-terminalGreen .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-terminalGreen .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-terminalGreen .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#22C55E;
 }
 
-.theme-dark.inkColor-darkMode-violet .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-violet .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-violet .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-violet .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-violet .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-violet .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:	#7f00ff;
 }
 
-.theme-dark.inkColor-darkMode-white .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-white .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-white .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-white .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-white .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-white .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:					#FFFFFF;
 	--link-color:			silver;
 	--link-external-color:	silver;
 }
 
-.theme-dark.inkColor-darkMode-yellow .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-yellow .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-yellow .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-yellow .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-yellow .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-yellow .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:				#FBCD15;
 	--link-color:		#15CDFB;
 }
 
-.theme-dark.inkColor-darkMode-zinc .CodeMirror pre.CodeMirror-line,
-.theme-dark.inkColor-darkMode-zinc .markdown-source-view .cm-line,
-.theme-dark.inkColor-darkMode-zinc .cm-s-obsidian .cm-line {
+.theme-dark.inkColor-darkMode-zinc .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-zinc .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark.inkColor-darkMode-zinc .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
 	color:					#909096;
 	--link-color:			silver;
 	--link-external-color:	silver;
