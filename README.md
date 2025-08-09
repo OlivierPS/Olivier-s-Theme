@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 09.08.2025 Version 1.65.5
+Corrected some glitches; some improvements.
+
+----------------------------------------------
 #### 07.08.2025 Version 1.65.4
 Worked around an error in "app.css" regarding quotes.
 
