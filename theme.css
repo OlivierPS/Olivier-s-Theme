@@ -250,6 +250,7 @@
 			11.08.2025	Many modifications to the basic code.
 						In particular: using hsl() color definitions makes everything more
 						coherent!																1.67.0
+						Improving light palettes												1.67.1
 
 
 --------------------------------------------------------------------------------------------------------
@@ -460,7 +461,7 @@ body {
 	--OT-UI-font-size:								16px;
 	--OT-vertical-tab-header-group-title:			var(--color-base-70);
 	--OT-view-header-title-focus-color:				var(--color-accent-1);
-	--OT-view-header-title-no-focus-color:			var(--color-base-50);
+	--OT-view-header-title-no-focus-color:			var(--color-base-70);
 	--OT-YAML-color:								var(--color-base-50);
 
 
@@ -629,10 +630,10 @@ body {
 	--nav-collapse-icon-color-collapsed:	red;	/*	pour le repérer, au cas où	*/
 	--nav-item-color:						var(--OT-color-on-base-20);
 	--nav-item-color-hover:					var(--OT-color-on-accent-1);
-	--nav-item-color-active:				var(--OT-color-on-accent-3);
+	--nav-item-color-active:				var(--OT-color-on-accent-2);
 	--nav-item-color-selected:				var(--OT-color-on-accent-3);
 	--nav-item-color-highlighted:			var(--text-accent);
-	--nav-item-background-active:			var(--color-accent-3);
+	--nav-item-background-active:			var(--color-accent-2);
 	--nav-item-background-selected:			var(--color-accent-3);
 	--nav-item-background-hover:			var(--color-accent-1);
 
@@ -905,7 +906,6 @@ body {
 
 } /*	↑ lightPalette-blue ↑	*/
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-green {
 	--OT-theme-h:		141;
 	--OT-theme-s:		85%;
@@ -951,8 +951,8 @@ body {
 */
 }/*	↑ lightPalette-green ↑	*/
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-icy {
-		/*	--OT-theme-reference-color:	#B8D7FF;	*/
 	--OT-theme-h:		214;
 	--OT-theme-s:		100;
 	--color-base-00:	#fdfeff;
@@ -960,37 +960,31 @@ body {
 	--color-base-35:	#a6d1fc;
 	--color-base-40:	#0870d9;
 	--color-base-50:	#93C7FB;
-	--color-base-70:	#1B7DFF;
+	--color-base-70:	hsl(214, 50%, 70%);
 	--color-base-05:	#E7F1FF;
 	--color-base-100:	#0761BB;
-	--link-color:		#57A706;
+	--link-color:		hsl(94, 95%, 30%);
 
 	--color-accent-1:				#4495FF	!important;
 	--accent-h:						214		!important;
 	--accent-s:						100%	!important;
-	--accent-l:						90%		!important;
+	--accent-l:						85%		!important;
 	--color-accent-3:				#DDECFF	!important;
 
-	--OT-color-on-accent-1:			var(--color-base-00);
-	--OT-color-on-accent-2:			#0058CC;
 	--OT-color-muted-on-accent-1:	#C9E0FF;
+	--OT-color-on-accent-2:			#0058CC;
 	--OT-color-muted-on-accent-2:	#4495FF;
 
-	--OT-button-ON-bg:						#0049AA;
-	--OT-text-selection:			hsl(var(--accent-h), var(--accent-s), 93%);
+	--OT-button-OFF-bg:				hsl(214, 30%, 50%);
+	--OT-button-ON-bg:				hsl(214, 75%, 50%);
+	--code-background:				hsl(214, 100%, 98%);
 
-	--code-background:				#EEF4FF;
-	--OT-button-OFF-bg:				#D6E8FF;
+	--table-header-background:	hsl(214, 93%, 94%);
+	--OT-table-background:		hsl(214, 100%, 98%);
+	--OT-table-alt-background:	hsl(214, 44%, 93%);
 
-	--OT-color-on-base-20:			#0760BA;
-	--OT-metadata-background:		#F4F5F6;
-	--OT-setting-item-description:	#529DFF;
-
-	--OT-table-background:			#F4F9FF;
-	--table-header-background:	#E2EEFE;
-	--OT-table-alt-background:		#EBF0F6;
-
-	--OT-stabilo-mark:	#DAEAFF;
+	--metadata-background: 	var(--color-base-05);
+	--OT-stabilo-mark:		hsla(214, 100%, 90%);
 }/*	↑ lightPalette-icy ↑	*/
 
 .theme-light.lightPalette-ivory {
@@ -1421,7 +1415,6 @@ body {
 	--OT-view-header-title-focus-color:	#35312E;
 
 	--OT-button-OFF-bg:			#C6C2BF;
-	--OT-metadata-background:	#DFDDDC;
 }
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-sunnyMemos {
@@ -1495,7 +1488,6 @@ body {
 	--OT-button-OFF-bg:				#D9B4FA;
 
 	--OT-color-on-base-20:			#7111D2;
-	--OT-metadata-background:		#F9DEFF;
 	--table-header-background:	#DDBDFA;
 	--OT-table-background:			#E8D6FC;
 }/*	↑ lightPalette-violet ↑	*/
@@ -1636,7 +1628,6 @@ body {
 	--OT-stabilo-text:				var(--color-base-00) !important;
 	--OT-stabilo-mark:				#D1BA62;
 
-	--OT-metadata-background:		#151515;
 	--OT-setting-item-description:	#CCCCCC;
 	--table-header-background:	#1F1F20;
 	--OT-table-background:			#101013;
@@ -2305,7 +2296,7 @@ body {
 .theme-light.lightPalette-blue.accentColor-lightMode-alternative-2 {
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s),	40%)	!important;
 	--accent-h:					305										!important;
-	--accent-s:								80%							!important;
+	--accent-s:								70%							!important;
 	--accent-l:													63%		!important;
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	93%)	!important;
 
@@ -2342,26 +2333,23 @@ body {
 .theme-light.lightPalette-icy.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-1 {
-	--accent-h:							94		!important;
-	--accent-s:							100%	!important;
-	--accent-l:							83%		!important;
-	--color-accent-1:					#51BB00	!important;
-	--color-accent-2:					#C5FF99	!important;
-	--color-accent-3:					#ECFFDD	!important;
-//	--OT-color-on-accent-1:				#163300	!important;
-	--OT-color-muted-on-accent-1:		#79FF11	!important;
-	--OT-color-on-accent-2:				#2C6600	!important;
-	--OT-color-muted-on-accent-2:		#429700	!important;
-	--OT-color-on-accent-3:				#2C6600	!important;
-	--OT-button-ON-bg:					#5FDD00;
+	--color-accent-1:	#51BB00	!important;
+	--accent-h:			94					!important;
+	--accent-s:				70%				!important;
+	--accent-l:						70%		!important;
+	--color-accent-3:	hsl(94, 100%, 92%)				!important;
 }
+.theme-light.lightPalette-icy.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
+}
+
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-2 {
-	--accent-h:							334		!important;
-	--accent-s:							100%	!important;
-	--accent-l:							90%		!important;
-//	--color-accent-1:					#99008F	!important;
-	--color-accent-2:					#FFCCE2	!important;
+	--color-accent-1:	hsl(var(--accent-h), 	80%,	60%)	!important;
+	--accent-h:					334										!important;
+	--accent-s:									100%					!important;
+	--accent-l:													90%		!important;
 	--color-accent-3:					#FFDDEC	!important;
+/*
 	--OT-color-on-accent-1:				white	!important;
 	--OT-color-muted-on-accent-1:		#FFDDEC	!important;
 	--OT-color-on-accent-2:				#DD005F	!important;
@@ -2369,6 +2357,7 @@ body {
 	--OT-color-on-accent-3:				#AA0049	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-text-selection:					hsl(var(--accent-h), var(--accent-s), 93%);
+*/
 }
 
 .theme-light.lightPalette-ivory.accentColor-lightMode-shade {
@@ -3909,6 +3898,13 @@ body {
 	--OT-pill-color:		white;
 	--OT-pill-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
 }
+
+	/*	--------------- exceptions	*/
+.theme-light.OT-Light-pills-color-theme.lightPalette-icy {
+	--OT-pill-color:		var(--color-base-100);
+	--OT-pill-background:	hsl(var(--OT-theme-h), 80%, 88%);
+}
+
 /* -------------------- ↑ Pills Colors ↑ -------------------- ↑ */
 
 

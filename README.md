@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 11.08.2025 Version 1.67.0
+#### 11.08.2025 Version 1.67.0 and 1.67.1
 The better I understand things, the simpler I can make my code and the more coherent it becomes.
 I’m in the process of revising all the palettes. If your favorite has some inconsistencies, let me know !
 
