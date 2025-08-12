@@ -123,6 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 13.08.2025
+I’m continuing to improve the code and the color palettes.
+I have added a refinement to the H4 headings: they are now made more identifiable by the addition of a leading diamond. In live mode, the diamonds disappears while editing the heading, and it’s also not visible in Raw/Source editing mode.
+
+----------------------------------------------
 #### 11.08.2025 Version 1.67.0 and 1.67.1
 The better I understand things, the simpler I can make my code and the more coherent it becomes.
 I’m in the process of revising all the palettes. If your favorite has some inconsistencies, let me know !
