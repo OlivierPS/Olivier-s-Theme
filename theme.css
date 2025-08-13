@@ -254,6 +254,7 @@
 			12.08.2025	I’m continuing to improve the code and the color palettes.
 						I added a refinement to the H4 headings: they are made more identifiable
 						by the addition of a leading diamond.									1.68.0
+			13.08.2025	Progressing with the revision of light mode palettes					1.68.1
 
 ========================================================================================================
 
@@ -984,7 +985,6 @@ body {
 	--OT-stabilo-mark:		hsla(214, 100%, 90%);
 }/*	↑ lightPalette-icy ↑	*/
 
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-ivory {
 	--OT-theme-h:		40;
 	--OT-theme-s:		100;
@@ -1110,6 +1110,7 @@ body {
 	--OT-setting-item-description:		#3676A4;									/*	le texte descriptif complémentaire dans le panneau des Settings	*/
 } /*	↑ lightPalette-metallicBlue ↑	*/
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-Orange {
 		/*	--OT-theme-reference-color:	orange;	*/
 	--OT-theme-h:		39;
@@ -1117,43 +1118,42 @@ body {
 	--color-base-00:	#FDF6E8;
 	--color-base-05:	#FFD7B8;
 	--color-base-20:	#FFE1C9;
-	--color-base-35:	#FFB174;
+	--color-base-35:	hsl(var(--OT-theme-h), 80%, 50%);
 	--color-base-40:	#FC6E00;
 	--color-base-50:	#F0B36A;
-	--color-base-70:	#FF811F;
-	--color-base-100:	#2F4858;
-	--link-color:		#849F86;
+	--color-base-70:	hsl(29, 50%, 55%);
+	--color-base-100:	hsl(203, 30%, 26%);
 
-	--color-accent-1:				orange	!important;
-	--accent-h:						39		!important;
-	--accent-s:						100%	!important;
-	--accent-l:						66%		!important;
-	--color-accent-3:				#FFDB99	!important;
+	--link-color:		hsl(113, 45%, 40%);
 
-	--OT-color-on-accent-1: 		white;
-	--OT-color-on-accent-2: 		#664200;
-	--OT-color-on-accent-3: 		#996300;
+	--color-accent-1:	hsl(var(--accent-h), 80%,	50%)				!important;
+	--accent-h:					39										!important;
+	--accent-s:								95%							!important;
+	--accent-l:													66%		!important;
 
-	--OT-color-muted-on-accent-1:	#885800;
-	--OT-color-muted-on-accent-2:	var(--color-base-00);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 70%, 85%)	!important;
+	--OT-color-on-accent-2:			hsl(9, 50%, 40%);
+	--OT-color-muted-on-accent-2:	var(--color-base-00)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 30%, 30%);
 
-	--code-background:				#FBE9D3;
-	--OT-button-OFF-bg:				#FFD8B8;
+	--nav-item-color:	hsl(29, 100%, 48%);
 
-	--nav-item-color:			#F78700;
-
-	--OT-menu-text-color:	#885800;
+	--OT-menu-text-color:	hsl(29, 100%, 30%);
 	--menu-background:		hsl(39, 100%, 90%);
 
-	--table-header-background:	#FFEDCC;
-	--OT-table-background:			#FDF6ED;
-	--OT-table-alt-background:		#FFEDCC;
+	--OT-table-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 96%);
+	--OT-table-alt-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 93%);
+
+	--blockquote-background-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 91%);
+
+	--metadata-background: 			#FFECD5;
 
 	--OT-stabilo-mark:	var(--stabilo-orange-clair);
 
+	--OT-setting-item-description:					hsl(var(--OT-theme-h), 90%, 50%);
+	--OT-button-OFF-bg:								hsl(var(--OT-theme-h), 80%, 80%);
 
-	--metadata-background: 			#FFECD5;
-	--OT-setting-item-description:	#EE9A00;
+	--text-selection:						hsla(var(--OT-theme-h), var(--OT-theme-s), 50%, 0.25);
 }	/*	↑ lightPalette-Orange ↑	*/
 
 /*	----------------------------------------------	*/
@@ -2346,7 +2346,6 @@ body {
 	--dynamic-outline-background-hover:				var(--color-accent-3)!important;
 	--dynamic-outline-active-heading-background:	var(--color-accent-3)!important;
 }
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-ivory.accentColor-lightMode-alternative-2 {
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s),	60%)	!important;
 	--accent-h:					280										!important;
@@ -2465,32 +2464,43 @@ body {
 }
 
 .theme-light.lightPalette-Orange.accentColor-lightMode-shade {
+	--dynamic-outline-background-hover:				var(--color-accent-2)!important;
+	--dynamic-outline-active-heading-background:	var(--color-accent-2)!important;
+	--icon-color:									hsl(29, 100%, 48%);
+	--OT-view-header-title-focus-color:				var(--nav-item-color);
 }
+.theme-light.lightPalette-Orange.accentColor-lightMode-shade.textSelection-takesAccentColor-lightMode {
+	--text-selection:	hsla(var(--OT-theme-h), var(--OT-theme-s), 50%, 0.25);
+}
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-Orange.accentColor-lightMode-alternative-1 {
-	--color-accent-1:				#00D2F7	!important;
-	--accent-h:						189		!important;
-	--accent-s:						100%	!important;
-	--accent-l:						66%		!important;
-	--color-accent-3:				#CCF7FF	!important;
+	--color-accent-1:	hsl(var(--accent-h), 90%,	44%)	!important;
+	--accent-h:					189										!important;
+	--accent-s:								70%							!important;
+	--accent-l:													80%		!important;
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	95%)	!important;
 
-	--OT-color-on-accent-1:			white	!important;
-	--OT-color-muted-on-accent-1:	hsl(189, 100%, 34%)	!important;
-	--OT-color-on-accent-2:			hsl(189, 100%, 30%) !important;
-	--OT-color-muted-on-accent-2:	hsla(189, 100%, 36%);
-	--OT-color-on-accent-3:			#008A91	!important;
+//	--OT-color-on-accent-1:			var(--color-base-00);
+//	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 25%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 40%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 40%, 30%);
+	--icon-color:	var(--color-accent-1);
+//	--OT-view-header-title-focus-color:		var(--color-accent-1);
 }
 .theme-light.lightPalette-Orange.accentColor-lightMode-alternative-2 {
-	--color-accent-1:				hsla(249, 90%, 40%)	!important;
+	--color-accent-1:				hsl(249, 50%, 40%)	!important;
 	--accent-h:						     249				!important;
-	--accent-s:							 	 100%			!important;
-	--accent-l:									   70%		!important;
-	--color-accent-3:				hsl(249, 100%, 94%)	!important;
+	--accent-s:							 	 50%			!important;
+	--accent-l:									   80%		!important;
+	--color-accent-3:				hsl(249, 80%, 96%)	!important;
 
 //	--OT-color-on-accent-1:			#fff	!important;
 	--OT-color-muted-on-accent-1:	#FFC355	!important;
 	--OT-color-on-accent-2:			#fff	!important;
 	--OT-color-on-accent-3:			#0B00E6	!important;
-	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 93%);	*/
+	--dynamic-outline-background-hover:				hsl(249, 80%, 90%)!important;
+	--dynamic-outline-active-heading-background:	hsl(249, 80%, 90%)!important;
 }
 
 .theme-light.lightPalette-parchment.accentColor-lightMode-shade {
