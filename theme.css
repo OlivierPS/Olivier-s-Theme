@@ -255,6 +255,8 @@
 						I added a refinement to the H4 headings: they are made more identifiable
 						by the addition of a leading diamond.									1.68.0
 			13.08.2025	Progressing with the revision of light mode palettes					1.68.1
+			14.08.2025	Progressing with the revision of light mode palettes					1.68.2
+
 
 ========================================================================================================
 
@@ -262,8 +264,8 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl02:	themes variables “--OT-…”
 			OpSpl03:	ajustement des variables fournies par *Obsidian
 			OpSpl04:	accent colors
-			OpSpl05:	text selection
-			OpSpl06:	dark mode tuning
+			OpSpl05:	dark mode tuning
+			OpSpl06:	text selection
 			OpSpl07:	définition des palettes pour le mode “light”
 			OpSpl08:	définition des palettes pour le mode “dark”
 			OpSpl09:	définition des “Accent Colors” pour les palettes “light”
@@ -395,7 +397,7 @@ body {
 	--OT-button-background-normal:					var(--color-accent-3);
 	--OT-button-cta-background-normal:				var(--color-accent-2);
 	--OT-button-cta-text-normal:					var(--OT-color-on-accent-2);
-	--OT-button-OFF-bg:								grey;
+	--OT-button-OFF-bg:								var(--color-accent-05);
 	--OT-button-ON-bg:								var(--color-accent-2);
 	--OT-button-text-hover:							var(--OT-color-on-accent-1);
 	--OT-button-text-normal:						var(--OT-color-on-accent-3);
@@ -423,7 +425,7 @@ body {
 	--OT-kanban-font:								"Uberhand Pro";
 	--OT-kbd-background:							ivory;
 	--OT-kbd:										#353500;
-	--OT-menu-text-color:							var(--color-base-100);
+	--OT-menu-text-color:							var(--nav-item-color);
 	--OT-menu-text-muted:							var(--color-base-70);
 	--OT-metadata-property-icon:					var(--icon-color);
 	--OT-nav-folder-title-color:					var(--color-base-100);
@@ -468,7 +470,7 @@ body {
 /*	Bookmark	OpSpl03	—————————————————————————————— Ajustement des variables “Obsidian” —————————————————————————————— */
 	--background-modifier-active-hover:	var(--color-accent-1);
 	--background-modifier-border:		var(--color-base-35);
-	--background-modifier-form-field:	var(--color-base-00);
+	--background-modifier-form-field:	var(--color-base-00) !important;
 //	--background-modifier-hover:		var(--interactive-accent-hover);
 	--background-modifier-hover:		hsla( var(--accent-h), var(--accent-s), 50%, 0.4);			/*	for plugins that I don’t address specifically; Obsidian violet would be: 258, 88%, 66%	*/
 	--background-modifier-message:		var(--color-accent-1);				/* le fond des “tooltips”	*/
@@ -573,7 +575,7 @@ body {
 
 	--icon-color-active:	var(--color-base-20);
 	--icon-color-hover:		var(--OT-color-on-accent-1);
-	--icon-color:			var(--color-accent-1);
+	--icon-color:			var(--color-accent-1)	!important;
 
 	--indentation-guide-color:	var(--color-accent);	//	rgba(var(--mono-rgb-100), 0.12);
 	--indentation-guide-color:	var(--color-base-50);
@@ -745,26 +747,61 @@ body {
 .theme-light{
 	--color-base-05:	hsl(0, 0%, 90%);
 }
-/*	Bookmark	OpSpl06	—————————————————————————————— dark mode tuning —————————————————————————————— */
+/*	Bookmark	OpSpl05	—————————————————————————————— dark mode tuning —————————————————————————————— */
 .theme-dark {
-	/*		--OT-theme-reference-color:		dimgrey;	*/
-	--OT-color-on-accent-1:			silver;
-	--OT-color-on-accent-2:			lightgrey;
-	--OT-color-on-accent-3:			var(--obsidian-violet);
-	--OT-color-muted-on-accent-1:	grey;
-	--OT-color-muted-on-accent-2:	black;
+	--color-base-70:	hsl(var(--OT-theme-h), var(--OT-theme-s), 55%);
 
-	/*	je trouve le rouge un peu trop «pétant» → je corrige	*/
-	--color-red-rgb:	199, 56, 60;
-	--color-red:		#EF5547;
+	--color-red-rgb:	348, 83, 47;
+	--color-red:		hsl(348, 90%, 64%);
+
+	--OT-theme-h:	0;
+	--OT-theme-s:	0%;
+
+	--color-accent-1:	hsl(var(--accent-h),	var(--accent-s),	50%)	!important;
+	--accent-s:									40%;
+	--accent-l:														30%;
+	--color-accent-3:	hsl(var(--accent-h),	var(--accent-s),	10%)	!important;
+
+	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 96%)	!important;
+	--OT-color-muted-on-accent-1:	silver !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%)	!important;
+	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 96%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%)	!important;
+	--OT-color-on-accent-3:			var(--color-base-100);
+
+	--OT-button-OFF-bg:	var(--color-base-35);
+	--OT-button-ON-bg:	var(--color-accent-1);
+
+	--OT-table-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);
+	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 17%);
+	--OT-table-alt-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 14%);
 
 	--OT-kbd:				var(--color-base-100);
 	--OT-kbd-background:	var(--color-base-20);
 
-	--code-normal:		white;
-	--code-background:	darkgrey;
+	--code-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 20%);
+	--code-normal:		var(--color-base-100);
+
+	--OT-stabilo-mark:	var(--stabilo-violet-foncé);
 	--OT-stabilo-text:	black;
+
+	--text-selection:	hsla(var(--accent-h), 80%, 60%, 0.4);
+
+	--dynamic-outline-background-hover:				var(--color-accent-2)!important;
+	--dynamic-outline-active-heading-background:	var(--color-accent-2)!important;
+} /*	=== ↑ dark mode tuning ↑ ===	*/
+
+/*	Bookmark	OpSpl06	—————————————————————————————— text selection  ——————————————————————————————*/
+/*
+.theme-light.textSelection-takesAccentColor-lightMode {
+	--text-selection:	hsla(var(--OT-theme-h), 75%, 40%, 0.2);
 }
+*/
+/*
+.theme-dark.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
+}
+*/
 
 
 /*	Bookmark	OpSpl07	 —————————————————————————————— LIGHT mode palettes —————————————————————————————— */
@@ -1110,7 +1147,6 @@ body {
 	--OT-setting-item-description:		#3676A4;									/*	le texte descriptif complémentaire dans le panneau des Settings	*/
 } /*	↑ lightPalette-metallicBlue ↑	*/
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-Orange {
 		/*	--OT-theme-reference-color:	orange;	*/
 	--OT-theme-h:		39;
@@ -1527,44 +1563,48 @@ body {
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-beige,
 .theme-dark.lightPalette-lightBeige.darkPalette-default {
-	/*	--OT-theme-reference-color:	#915D06;	*/
 	--OT-theme-h:		38;
 	--OT-theme-s:		92%;
-	--color-base-00:	#2A1B02;
-	--color-base-05:	#3F2903;
-	--color-base-20:	#2F1E02;
-	--color-base-35:	#4A413B;
-	--color-base-40:	#603D04;
-	--color-base-50:	#784D05;
-	--color-base-70:	#FCDEAB;
-	--color-base-100:	#F39B0A;
-	--link-color:		#0A62F3;
+	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 9%);
+	--color-base-05:	hsl(var(--OT-theme-h), var(--OT-theme-s), 15%);
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 11%);
+	--color-base-35:	hsl(var(--OT-theme-h), 60%, 25%);
+	--color-base-40:	hsl(var(--OT-theme-h), 100%		, 20%);
+	--color-base-50:	hsl(var(--OT-theme-h), var(--OT-theme-s), 25%);
+	--color-base-70:	hsl(var(--OT-theme-h), var(--OT-theme-s), 30%);
+	--color-base-100:	hsl(var(--OT-theme-h), var(--OT-theme-s), 40%);
+	--link-color:		hsl(218, var(--OT-theme-s), 50%);
 
-	--color-accent-1:				#E39109	!important;
-	--accent-h:						37	!important;
-	--accent-s:						92%	!important;
-	--accent-l:						30%	!important;
-	--color-accent-3:				#503303	!important;
+	--color-accent-1:				hsl(var(--accent-h), 	var(--accent-s),	50%)	!important;
+	--accent-h:						var(--OT-theme-h)									!important;
+	--accent-s:												var(--OT-theme-s)			!important;
+	--accent-l:																	30%		!important;
+	--color-accent-3:				hsla(var(--accent-h),	var(--accent-s),	10%)	!important;
 
-	--OT-color-on-accent-1:			#1F1401	!important;
-	--OT-color-muted-on-accent-1:	#704805	!important;
-	--OT-color-on-accent-2:			#FACA7A	!important;
-	--OT-color-on-accent-3:			#FACA7A	!important;
+	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 5%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%)	!important;
+	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 73%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), var(--OT-theme-s), 50%)	!important;
 
 	/*	--OT-text-selection:		hsl(var(--accent-h), var(--accent-s), 17%);	*/
 
-	--OT-menu-text-muted:	#A16707;
+	--menu-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 9%);
+//	--OT-menu-text-muted:	#A16707;
 
-	--code-normal:						#FDEBCC;
-	--code-background:					#472E03;
-	--background-modifier-form-field:	#3F2903;
-	--OT-button-OFF-bg:					#503303;
+	--OT-table-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);;
+	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 14%);;
+	--OT-table-alt-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);;
 
-	--OT-stabilo-mark:	#F39539;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--code-background:					hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);
+	--code-normal:						hsl(var(--OT-theme-h), var(--OT-theme-s), 60%);
 
-	--table-header-background:	#3A2503;
-	--OT-table-background:			#221602;
+	/*	--OT-button-OFF-bg:					#503303;	*/
+
+	--OT-stabilo-mark:	hsl(30, var(--OT-theme-s), 60%);
+	--OT-stabilo-text:	var(--color-base-00);
+
+	--text-selection:	hsla(var(--OT-theme-h), 100%, var(--accent-l), 0.4);
 }/*	↑	darkPalette-beige	↑	*/
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-black,
@@ -1594,7 +1634,7 @@ body {
 
 	--link-color:	var(--obsidian-violet);
 
-	--OT-stabilo-text:				var(--color-base-00) !important;
+	--OT-stabilo-text:				var(--color-base-00);
 	--OT-stabilo-mark:				#D1BA62;
 
 	--OT-setting-item-description:	#CCCCCC;
@@ -1642,7 +1682,7 @@ body {
 
 	--nav-item-color:	#0868CA;	/*	#0760BA;	*/
 
-	--OT-stabilo-text:		#ACD4FD !important;
+	--OT-stabilo-text:		#ACD4FD;
 	--OT-stabilo-mark:		#054789;
 
 	--OT-search-settings-item-name:		var(--OT-menu-text-muted);
@@ -1685,101 +1725,77 @@ body {
 	--background-modifier-form-field:	#1F1105;
 	--OT-button-OFF-bg:					#613510;
 
-	--OT-stabilo-text:			var(--color-base-00) !important;
+	--OT-stabilo-text:			var(--color-base-00);
 	--OT-stabilo-mark:			#916847;
 	--nav-item-color:		#B76320;
 }/*	↑	darkPalette-brown	↑	*/
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.darkPalette-green,
 .theme-dark.lightPalette-green.darkPalette-default {
 	/*	--OT-theme-reference-color:	#17823C;	*/
 	--OT-theme-h:		141;
 	--OT-theme-s:		70%;
-	--color-base-00:	#051D0D;
-	--color-base-05:	#0B3B1C;
-	--color-base-20:	#082D15;
-	--color-base-35:	#0F582A;
-	--color-base-40:	#0B4320;
-	--color-base-50:	#157537;
-	--color-base-70:	#27DA69;
-	--color-base-100:	#69E596;
-	--link-color:		#FFCC00;
+	--color-base-40:	hsla(142.5, 71.795%, 15.294%);
 
-	--color-accent-1:				#24CA5D	!important;
-	--accent-h:						141	!important;
-	--accent-s:						70%	!important;
-	--accent-l:						30%	!important;
-	--color-accent-3:				#0F5728 !important;
+	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 6%);
+	--color-base-05:	hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 9%);
+	--color-base-35:	hsl(var(--OT-theme-h), 60%, 20%);
+	--color-base-40:	hsl(var(--OT-theme-h), 100%, 15%);
+	--color-base-50:	hsl(var(--OT-theme-h), var(--OT-theme-s), 28%);
+	--color-base-70:	hsl(var(--OT-theme-h), var(--OT-theme-s), 28%);
+	--color-base-100:	hsl(var(--OT-theme-h), var(--OT-theme-s), 55%);
 
-	--OT-color-on-accent-1:			#F1FCF5	!important;
-	--OT-color-on-accent-2:			#9AEDB7	!important;
-	--OT-color-on-accent-3:			#F1FCF5	!important;
-	--OT-color-muted-on-accent-1:	#12652F	!important;
+	--link-color:		hsla(51, 80%, 50%);
 
-	--nav-item-color:			#22C55E;
+	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);
+	--OT-table-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 9%);
+	--OT-table-alt-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 10.7%);
 
-	--code-normal:						#D4F7E0;
-	--code-background:					#0A3A1B;
-	--background-modifier-form-field:	#082B14;
-	--OT-button-OFF-bg:					#105829;
+	--code-background:				hsl(var(--OT-theme-h), var(--OT-theme-s), 9%);
 
-	--OT-stabilo-text:		#24514C !important;
+	--color-accent-1:				hsl(var(--accent-h), 	var(--accent-s),	50%)!important;
+	--accent-h: 						141											!important;
+	--accent-s:												70% 					!important;
+	--accent-l:																	30%	!important;
+	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	10%)	!important;
+
+	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 5%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 25%)	!important;
+	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), var(--OT-theme-s), 50%)	!important;
+
+	--text-selection:	hsla(var(--accent-h), 80%, 40%, 0.3);
+
 	--OT-stabilo-mark:		var(--stabilo-vert-foncé);
 
-	--OT-table-background:			#051C0E;
-	--table-header-background:	var(--color-base-05);
-	--OT-table-alt-background:		#082B14;
 }/*	↑	darkPalette-green	↑	*/
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-icy,
 .theme-dark.lightPalette-icy.darkPalette-default {
-	/*	--OT-theme-reference-color:	#4077BF;	*/
 	--OT-theme-h:		214;
-	--OT-theme-s:		50%;
-	--color-base-00:	#001736;
+	--OT-theme-s:		100%;
+	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 9%);
 	--color-base-05:	#00060D;
-	--color-base-20:	#00204B;
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 7%);
 	--color-base-35:	#1253A9;
 	--color-base-40:	#1253A9;
 	--color-base-50:	#0066EE;
-	--color-base-70:	#62AAFF;
-	--color-base-100:	#92C1FF;
-	--link-color:		#00DA0F;
+	--color-base-70:	hsl(var(--OT-theme-h), 30%, 40%);
+	--color-base-100:	hsl(var(--OT-theme-h), 100%, 70%);
+	--link-color:		hsl(124, var(--OT-theme-s), 35%);
 
-	--color-accent-1:	#1662C7 !important;
-	--accent-h:			214	!important;
-	--accent-s:			80%	!important;
-	--accent-l:			30%	!important;
-	--color-accent-2:	#0C356B !important;
-	--color-accent-3:	#0F448A !important;
+	--nav-item-color:	hsl(var(--OT-theme-h), 100%, 80%);
 
-	--OT-color-on-accent-1:				white;
-	--OT-color-on-accent-3:				#F2F6FB;
-	--OT-color-muted-on-accent-1:		#A3C6F5	!important;
-	--OT-color-muted-on-accent-2:		#A6C0E1	!important;
+	--OT-table-alt-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 12%);
 
-	--OT-view-header-title-focus-color:	var(--color-base-100);
-	--OT-view-header-title-no-focus-color:	#297BE7;
-	--OT-button-ON-bg:					var(--color-accent-1);
-	--OT-button-cta-background-normal:	#5697ED;
-	--OT-button-cta-text-normal:		#08264D;
-	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 30%);	*/
-
-	--nav-item-color:	#036FFF;
-
-	--code-normal:						#4192FF;
-	--code-background:					#00204B;
-	--code-background:					#003174;
-	--background-modifier-form-field:	#00162F;
-	--OT-button-OFF-bg:					#003D8F;
-
-
-	--OT-stabilo-text:		#F2F6FB !important;
-	--OT-stabilo-mark:		#187BFF;
-
-	--table-header-background:	#002558;
-	--OT-table-background:			#001C41;
+	--accent-h:				var(--OT-theme-h)							!important;
+	--accent-s:								100%						!important;
+	--accent-l:													30%		!important;
 }/*	↑	darkPalette-icy	↑	*/
+
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-LYT {
 	/*	--OT-theme-reference-color:	#3BABC4;	*/
@@ -1816,8 +1832,8 @@ body {
 	--nav-item-color:	hsl(224, 17%, 68%);
 
 
-	--OT-stabilo-text:			var(--text-normal) !important;
-    --OT-stabilo-mark:			#FDFCE8 !important;
+	--OT-stabilo-text:			var(--text-normal);
+    --OT-stabilo-mark:			#FDFCE8;
 	--checklist-done-color:	#497C87;
 	--code-normal:			hsl(224, 37%, 80%);
 
@@ -1859,7 +1875,7 @@ body {
 
 	--OT-setting-item-name:			#DDEBF5;
 	--OT-setting-item-description:	#8DBDDF;
-	--OT-stabilo-text:				var(--nav-item-color) !important;
+	--OT-stabilo-text:				var(--nav-item-color);
 	--OT-stabilo-mark:				#255C84;
 
 	--table-header-background:	#10293B;
@@ -1888,7 +1904,7 @@ body {
 	--color-base-100:		#E1E2C2;
 	--link-color:			#FFCC00;
 	--OT-stabilo-mark:		#909246 ;
-	--OT-stabilo-text:		#24514C !important;
+	--OT-stabilo-text:		#24514C;
 	--nav-item-color:	#BFC17D;
 
 	--OT-setting-item-description:	#D0D29F;
@@ -1967,7 +1983,7 @@ body {
 
 	--OT-setting-item-name		:	#FCBAC5;
 	--OT-setting-item-description:	#FB99AA;
-	--OT-stabilo-text:				var(--color-base-00) !important;
+	--OT-stabilo-text:				var(--color-base-00);
 	--OT-stabilo-mark:				#F84F6D;
 
 	--OT-table-background:			#1D0106;
@@ -2003,7 +2019,7 @@ body {
 	--table-header-color:			var(--solarized-base2);
 	--table-text-color:				var(--solarized-base1);
 	--OT-stabilo-mark:				var(--solarized-base1);
-	--OT-stabilo-text:				var(--solarized-base3) !important;
+	--OT-stabilo-text:				var(--solarized-base3);
 	--OT-view-header-title-no-focus-color:	var(--solarized-base0);
 }/*	↑	darkPalette-solarized	↑	*/
 
@@ -2171,21 +2187,12 @@ body {
 	--color-base-100:			#F2C204;
 	--link-color:				#607FFC;
 	--checklist-done-color:		#8E7202;
-	--OT-stabilo-text:			#424012 !important;
+	--OT-stabilo-text:			#424012;
 
 	--table-header-background:	#2E2501;
 	--OT-table-background:			#1A1500;
 }/*	↑	darkPalette-yellow	↑	*/
 /* -------------------- ↑ DARK mode palettes -------------------- ↑ */
-
-/*	Bookmark	OpSpl05	—————————————————————————————— text selection  ——————————————————————————————*/
-.theme-light.textSelection-takesAccentColor-lightMode {
-	/*	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);	*/
-	--text-selection:	hsla(var(--accent-h), 75%, 70%, 0.3);
-}
-.theme-dark.textSelection-takesAccentColor-darkMode {
-	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
-}
 
 /*	Bookmark	OpSpl09	—————————————————————————————— Accent Colors for LIGHT palettes —————————————————————————————— */
 .theme-light.lightPalette-artDeco.accentColor-lightMode-shade {
@@ -2472,7 +2479,6 @@ body {
 .theme-light.lightPalette-Orange.accentColor-lightMode-shade.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--OT-theme-h), var(--OT-theme-s), 50%, 0.25);
 }
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-Orange.accentColor-lightMode-alternative-1 {
 	--color-accent-1:	hsl(var(--accent-h), 90%,	44%)	!important;
 	--accent-h:					189										!important;
@@ -2751,36 +2757,50 @@ body {
 .theme-dark.lightPalette-beige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-beige.accentColor-darkMode-shade {
+	--icon-color:	var(--color-accent-1);
+	/*	--text-selection:	hsla(var(--accent-h), 100%, var(--accent-l), 0.4);	*/
 }
 .theme-dark.lightPalette-beige.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-beige.accentColor-darkMode-alternative-1 {
-	--accent-h:						217	!important;
-	--accent-s:						92%	!important;
-	--accent-l:						10%	!important;
-	--color-accent-1:				#335A99	!important;
-	--color-accent-2:				#4071BF	!important;
-	--color-accent-3:				#1A2D4C	!important;
-	--OT-color-on-accent-1:			#E6ECF6	!important;
-	--OT-color-muted-on-accent-1:	#A6BDE1	!important;
-	--OT-color-on-accent-2:			#D9E3F2	!important;
-	--OT-color-on-accent-3:			#668DCC	!important;
+	--color-accent-1:	hsl(var(--accent-h), 	var(--accent-s),	50%)	!important;
+	--accent-h:				217												!important;
+	--accent-s:									40%							!important;
+	--accent-l:														30%		!important;
+	--color-accent-3:	hsla(var(--accent-h),	var(--accent-s),	10%)	!important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-muted-on-accent-1:	var(--color-base-100)	!important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-muted-on-accent-2:	var(--color-base-100)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+}
+.theme-dark.lightPalette-beige.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-beige.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 100%, 40%, 0.5);
 }
 .theme-dark.lightPalette-beige.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-beige.accentColor-darkMode-alternative-2 {
-	--accent-h:						277	!important;
-	--accent-s:						80%	!important;
-	--accent-l:						16%	!important;
-	--color-accent-1:				#682F8C	!important;
-	--color-accent-2:				#853CB2	!important;
-	--color-accent-3:				#4C2266	!important;
-	--OT-color-on-accent-1:			#E1CCEE	!important;
+	--color-accent-1:	hsl(var(--accent-h), 	var(--accent-s),	50%)	!important;
+	--accent-h:				277												!important;
+	--accent-s:									40%							!important;
+	--accent-l:														30%		!important;
+	--color-accent-3:	hsla(var(--accent-h),	var(--accent-s),	10%)	!important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 80%)	!important;
 	--OT-color-muted-on-accent-1:	var(--color-base-100)	!important;
-	--OT-color-on-accent-2:			var(--color-base-100)	!important;
-//	--OT-color-on-accent-3:			#fff	!important;
-	/*	--OT-text-selection:			hsl(var(--accent-h), var(--accent-s), 25%);	*/
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 80%)	!important;
+	--OT-color-muted-on-accent-2:	var(--color-base-100)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
 }
+.theme-dark.lightPalette-beige.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-beige.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 100%, 40%, 0.5);
+}
+
 .theme-dark.lightPalette-blue.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-blue.accentColor-darkMode-shade {
 }
@@ -2883,6 +2903,7 @@ body {
 	--OT-button-ON-bg:				var(--color-accent-1);
 }
 
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.lightPalette-green.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-green.accentColor-darkMode-shade {
 }
@@ -2918,33 +2939,30 @@ body {
 }
 .theme-dark.lightPalette-icy.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-icy.accentColor-darkMode-alternative-1 {
-	--accent-h:						334	!important;
-	--accent-s:						80%	!important;
-	--accent-l:						63%	!important;
-	--color-accent-1:				#A81353	!important;
-	--color-accent-2:				#EC5797	!important;
-	--color-accent-3:				#6B0C35	!important;
-	--OT-color-on-accent-1:			#D6E8FF	!important;
-//	--OT-color-muted-on-accent-1:	#fff	!important;
-	--OT-color-on-accent-2:			#D6E8FF	!important;
-//	--OT-color-on-accent-3:			#fff	!important;
-	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 33%);	*/
+	--color-accent-1:				hsl(var(--accent-h), 	var(--accent-s),	40%)	!important;
+	--accent-h:						334									!important;
+	--accent-s:												80%			!important;
+	--accent-l:																	25%		!important;
+	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)	!important;
+
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%)	!important;
 }
 .theme-dark.lightPalette-icy.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-icy.accentColor-darkMode-alternative-2 {
-	--accent-h:						94	!important;
-	--accent-s:						80%	!important;
-	--accent-l:						30%	!important;
-	--color-accent-1:				#62C716	!important;
-	--color-accent-2:				#448A0F	!important;
-	--color-accent-3:				#356B0C	!important;
-	--OT-color-on-accent-1:			#fff	!important;
-	--OT-color-muted-on-accent-1:	#264D08	!important;
-	--OT-color-on-accent-2:			white	!important;
-	--OT-color-on-accent-3:			#D8E7CD	!important;
-	--OT-button-ON-bg:				var(--color-accent-1);
-	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 33%);	*/
+	--color-accent-1:				hsl(var(--accent-h), 	var(--accent-s),	40%)	!important;
+	--accent-h:						94									!important;
+	--accent-s:												80%			!important;
+	--accent-l:																	25%		!important;
+	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)	!important;
+
+	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), 10%, 85%)	!important;
+	--OT-color-on-accent-1:	black !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 10%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 50%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%)	!important;
 }
+
+
 .theme-dark.darkPalette-LYT.accentColor-darkMode-shade {
 }
 .theme-dark.darkPalette-LYT.accentColor-darkMode-alternative-1 {
@@ -3875,8 +3893,8 @@ body {
 	--OT-pill-background:	white;
 }
 .theme-dark.OT-Dark-pills-color-theme {
-	--OT-pill-color:		white;
-	--OT-pill-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
+	--OT-pill-color:		var(--color-base-100);
+	--OT-pill-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 17%);
 }
 
 	/*	--------------- exceptions	*/
@@ -3890,101 +3908,101 @@ body {
 
 /*	Bookmark	OpSpl13	 —————————————————————————————— Highlight Colors (Stabilo) —————————————————————————————— */
 .highlight-color-lightBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-clair) !important;
-	--OT-stabilo-text:	#24514C !important;
+	--OT-stabilo-mark:	var(--stabilo-bleu-clair);
+	--OT-stabilo-text:	#24514C;
 }
 .highlight-color-lightYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-clair) !important;
+	--OT-stabilo-mark:	var(--stabilo-jaune-clair);
 	/*	--OT-stabilo-text:	#987B08;	*/
 }
 .highlight-color-lightOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-clair) !important;
+	--OT-stabilo-mark:	var(--stabilo-orange-clair);
 	/*	--OT-stabilo-text:	#FDEFE1;	*/
 }
 .highlight-color-lightRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-clair) !important;
+	--OT-stabilo-mark:	var(--stabilo-rose-clair);
 	/*	--OT-stabilo-text:	#A5162A;	*/
 }
 .highlight-color-lightGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-clair) !important;
-	--OT-stabilo-text:	#1E3F2C !important;
+	--OT-stabilo-mark:	var(--stabilo-vert-clair);
+	--OT-stabilo-text:	#1E3F2C;
 }
 .highlight-color-lightViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-clair) !important;
-	--OT-stabilo-text:	#E2D6E8 !important;
+	--OT-stabilo-mark:	var(--stabilo-violet-clair);
+	--OT-stabilo-text:	#E2D6E8;
 }
 .highlight-color-strongBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-foncé) !important;
-	--OT-stabilo-text:	#BBE4F3 !important;
+	--OT-stabilo-mark:	var(--stabilo-bleu-foncé);
+	--OT-stabilo-text:	#BBE4F3;
 }
 .highlight-color-strongYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-foncé) !important;
+	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
 	/*	--OT-stabilo-text:	#987B08;	*/
 }
 .highlight-color-strongOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-foncé) !important;
-	--OT-stabilo-text:	#FDEFE1 !important;
+	--OT-stabilo-mark:	var(--stabilo-orange-foncé);
+	--OT-stabilo-text:	#FDEFE1;
 }
 .highlight-color-strongRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-foncé) !important;
-	--OT-stabilo-text:	#F5CCE0 !important;
+	--OT-stabilo-mark:	var(--stabilo-rose-foncé);
+	--OT-stabilo-text:	#F5CCE0;
 }
 .highlight-color-strongGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-foncé) !important;
-	--OT-stabilo-text:	#8FFEDB !important;
+	--OT-stabilo-mark:	var(--stabilo-vert-foncé);
+	--OT-stabilo-text:	#8FFEDB;
 }
 .highlight-color-strongViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-foncé) !important;
-	--OT-stabilo-text:	#F5CCE0 !important;
+	--OT-stabilo-mark:	var(--stabilo-violet-foncé);
+	--OT-stabilo-text:	#F5CCE0;
 }
 /*	--------------------------------------------------	*/
 .theme-dark.highlight-color-dark-lightBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-clair) !important;
-	--OT-stabilo-text:	midnightblue !important;
+	--OT-stabilo-mark:	var(--stabilo-bleu-clair);
+	--OT-stabilo-text:	midnightblue;
 }
 .theme-dark.highlight-color-dark-lightYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-clair) !important;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--OT-stabilo-mark:	var(--stabilo-jaune-clair);
+	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-clair) !important;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--OT-stabilo-mark:	var(--stabilo-orange-clair);
+	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-clair) !important;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--OT-stabilo-mark:	var(--stabilo-rose-clair);
+	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-clair) !important;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--OT-stabilo-mark:	var(--stabilo-vert-clair);
+	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-clair) !important;
-	--OT-stabilo-text:	#432C4F !important;
+	--OT-stabilo-mark:	var(--stabilo-violet-clair);
+	--OT-stabilo-text:	#432C4F;
 }
 .theme-dark.highlight-color-dark-strongBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-foncé) !important;
-	--OT-stabilo-text:	var(--text-normal) !important;
+	--OT-stabilo-mark:	var(--stabilo-bleu-foncé);
+	--OT-stabilo-text:	var(--text-normal);
 }
 .theme-dark.highlight-color-dark-strongYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-foncé) !important;
-	--OT-stabilo-text:	#2A280B !important;
+	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
+	--OT-stabilo-text:	#2A280B;
 }
 .theme-dark.highlight-color-dark-strongOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-foncé) !important;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--OT-stabilo-mark:	var(--stabilo-orange-foncé);
+	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-strongRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-foncé) !important;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--OT-stabilo-mark:	var(--stabilo-rose-foncé);
+	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-strongGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-foncé) !important;
-	--OT-stabilo-text:	var(--color-base-00) !important;
+	--OT-stabilo-mark:	var(--stabilo-vert-foncé);
+	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-strongViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-foncé) !important;
-	--OT-stabilo-text:	var(--text-normal) !important;
+	--OT-stabilo-mark:	var(--stabilo-violet-foncé);
+	--OT-stabilo-text:	var(--text-normal);
 }
 /* -------------------- ↑ Highlight Colors -------------------- ↑ */
 
@@ -7808,8 +7826,8 @@ kbd {
 .search-result-file-matched-text,
 .cm-s-obsidian span.cm-formatting-highlight,
 .cm-s-obsidian span.cm-highlight {
-	color:				var(--OT-stabilo-text) !important;
-	background-color:	var(--OT-stabilo-mark) !important;
+	color:				var(--OT-stabilo-text);
+	background-color:	var(--OT-stabilo-mark);
 }
 .markdown-rendered mark .internal-link {
 	color:						var(--OT-stabilo-text);
