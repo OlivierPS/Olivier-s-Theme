@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 16.08.2025 Version 1.68.3
+Progressing with the revision of palettes, both for *light* and for *dark* modes.
+
+----------------------------------------------
 #### 15.08.2025 Version 1.68.2
 Progressing with the revision of palettes, both for *light* and for *dark* modes.
 

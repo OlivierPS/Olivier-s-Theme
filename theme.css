@@ -256,6 +256,7 @@
 						by the addition of a leading diamond.									1.68.0
 			13.08.2025	Progressing with the revision of light mode palettes					1.68.1
 			14.08.2025	Progressing with the revision of light mode palettes					1.68.2
+			16.08.2025	Progressing with the revision of light and dark mode palettes			1.68.3
 
 
 ========================================================================================================
@@ -349,43 +350,43 @@ Bookmarks:	OpSpl01:	définition des couleurs
 /*	Bookmark	OpSpl01 —————————————————————————————— Définition des couleurs —————————————————————————————— */
 :root
 {
-	--obsidian-violet:		hsl(258, 88%, 66%);
-	--favorite-blue:		#0f056b;
-	--dark-blue:			#212A70;
-	--blue:					#2C1CBD;
-	--light-blue:			#A6C3E1;
-	--royal-blue:			#0000a3;
-	--sky-blue:				#24D3FF;
+	--obsidian-violet:		hsl(258,  88%, 66%);
+	--favorite-blue:        hsl(246,  91%, 22%);
+	--dark-blue:            hsl(233,  54%, 28%);
+	--blue:                 hsl(246,  74%, 43%);
+	--light-blue:           hsl(211,  50%, 77%);
+	--royal-blue:           hsl(240, 100%, 32%);
+	--sky-blue:             hsl(192, 100%, 57%);
 
-	--stabilo-bleu-clair:	#BBE4F3;
-	--stabilo-bleu-foncé:	#39AFDC;
-	--stabilo-jaune-clair:	#FBEDB5;
-	--stabilo-jaune-foncé:	#F1E740;
-	--stabilo-orange-clair:	#FFBF80;	/*	#F4A384;	*/
-	--stabilo-orange-foncé:	#F39539;
-	--stabilo-rose-clair:	#F4A5B6;	/*	#EA93BE;	*/
-	--stabilo-rose-foncé:	#E85267;
-	--stabilo-vert-clair:	#B4DBC5;
-	--stabilo-vert-foncé:	#01C083;
-	--stabilo-violet-clair:	#AD89BE;
-	--stabilo-violet-foncé:	#D72F83;
+	--stabilo-bleu-clair:   hsl(196,  70%, 84%);
+	--stabilo-bleu-foncé:   hsl(197,  70%, 54%);
+	--stabilo-jaune-clair:  hsl( 48,  90%, 85%);
+	--stabilo-jaune-foncé:  hsl( 57,  86%, 60%);
+	--stabilo-orange-clair: hsl( 30, 100%, 75%);
+	--stabilo-orange-foncé: hsl( 30,  89%, 59%);
+	--stabilo-rose-clair:   hsl(347,  78%, 80%);
+	--stabilo-rose-foncé:   hsl(352,  77%, 62%);
+	--stabilo-vert-clair:   hsl(146,  35%, 78%);
+	--stabilo-vert-foncé:   hsl(161,  99%, 38%);
+	--stabilo-violet-clair: hsl(281,  29%, 64%);
+	--stabilo-violet-foncé: hsl(330,  68%, 51%);
 
-	--solarized-base03:    #002b36;
-	--solarized-base02:    #073642;
-	--solarized-base01:    #586e75;
-	--solarized-base00:    #657b83;
-	--solarized-base0:     #839496;
-	--solarized-base1:     #93a1a1;
-	--solarized-base2:     #eee8d5;
-	--solarized-base3:     #fdf6e3;
-	--solarized-yellow:    #b58900;
-	--solarized-orange:    #cb4b16;
-	--solarized-red:       #dc322f;
-	--solarized-magenta:   #d33682;
-	--solarized-violet:    #6c71c4;
-	--solarized-blue:      #268bd2;
-	--solarized-cyan:      #2aa198;
-	--solarized-green:     #859900;
+	--solarized-base03:     hsl(192, 100%, 11%);
+	--solarized-base02:     hsl(192,  81%, 14%);
+	--solarized-base01:     hsl(194,  14%, 40%);
+	--solarized-base00:     hsl(196,  13%, 45%);
+	--solarized-base0:      hsl(186,   8%, 55%);
+	--solarized-base1:      hsl(180,   7%, 60%);
+	--solarized-base2:      hsl( 46,  42%, 88%);
+	--solarized-base3:      hsl( 44,  87%, 94%);
+	--solarized-yellow:     hsl( 45, 100%, 35%);
+	--solarized-orange:     hsl( 18 , 80%, 44%);
+	--solarized-red:        hsl(  1,  71%, 52%);
+	--solarized-magenta:    hsl(331,  64%, 52%);
+	--solarized-violet:     hsl(237,  43%, 60%);
+	--solarized-blue:       hsl(205,  69%, 49%);
+	--solarized-cyan:       hsl(175,  59%, 40%);
+	--solarized-green:      hsl( 68, 100%, 30%);
 }/* -------------------- ↑ définition des couleurs ↑ --------------------	*/
 
 /*	Bookmark	OpSpl02	 —————————————————————————————— Theme’s variables —————————————————————————————— */
@@ -575,7 +576,7 @@ body {
 
 	--icon-color-active:	var(--color-base-20);
 	--icon-color-hover:		var(--OT-color-on-accent-1);
-	--icon-color:			var(--color-accent-1)	!important;
+	--icon-color:			var(--color-accent-1);
 
 	--indentation-guide-color:	var(--color-accent);	//	rgba(var(--mono-rgb-100), 0.12);
 	--indentation-guide-color:	var(--color-base-50);
@@ -869,44 +870,48 @@ body {
 
 /*	————————————————————————————————————————————————————————————	*/
 .theme-light.lightPalette-beige {
-	--OT-theme-h:		38;
-	--OT-theme-s:		53%;
-	--color-base-00:	#FCF3E5;
-	--color-base-05:	#F6DEB7;
-	--color-base-20:	#FAECD5;
-	--color-base-35:	hsla(38, 53%, 70%);
-	--color-base-40:	#c3913a;
-	--color-base-50:	#C5AC94;
-	--color-base-70:	#7A6556;
-	--color-base-100:	#71573E;
-	--link-color:		#698BAC;
+	--OT-theme-h:		38;     /* base hue for beige */
+	--OT-theme-s:		50%;    /* base saturation */
 
-	--color-accent-1:					#C4923B	!important;
-	--accent-h:							38	!important;
-	--accent-s:							54%	!important;
-	--accent-l:							72%	!important;
-	--color-accent-3:					hsl(38, 54%, 86%)	!important;
+	/* 🌿 Base background scale */
+	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 94%);
+	--color-base-05:	hsl(var(--OT-theme-h), var(--OT-theme-s), 86%);
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 90%);
+	--color-base-35:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%);
+	--color-base-40:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
+	--color-base-50:	hsl(var(--OT-theme-h), calc(var(--OT-theme-s) * 0.5), 67%);
+	--color-base-70:	hsl(var(--OT-theme-h), calc(var(--OT-theme-s) * 0.4), 40%);
+	--color-base-100:	hsl(var(--OT-theme-h), calc(var(--OT-theme-s) * 0.6), 34%);
 
-	--OT-color-on-accent-1:				#FFFFFF;
-	--OT-color-muted-on-accent-1:		#EBDBBE;
-	--OT-color-on-accent-2:				#FFF;
-	--OT-color-muted-on-accent-2:		#B78837;
-	--OT-color-on-accent-3:				#4E3A18;
+	/* Links intentionally outside beige hue */
+	--link-color:		hsl(212, 30%, 55%);
 
-	--OT-menu-text-muted:		hsl(38, 40%, 60%);
+	/* 🌟 Accents */
+	--color-accent-1:	hsl(var(--OT-theme-h), 55%, 50%) !important;
+	--accent-h:			var(--OT-theme-h) !important;
+	--accent-s:			54% !important;
+	--accent-l:			72% !important;
+	--color-accent-3:	hsl(var(--OT-theme-h), 55%, 86%) !important;
 
-	--code-background:			#FAEDD7;
-	--OT-button-OFF-bg:			#F8E5C6;
+	/* On-accent / contrast colors */
+	--OT-color-on-accent-1:		hsl(0, 0%, 100%);
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 55%, 84%);
+	--OT-color-on-accent-2:		hsl(0, 0%, 100%);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 47%);
+	--OT-color-on-accent-3:		hsl(var(--OT-theme-h), 50%, 20%);
 
+	/* Muted menu text */
+	--OT-menu-text-muted:	hsl(var(--OT-theme-h), 40%, 60%);
 
-//	--h1-color:				#9D7956;
-//	--h3-color:				#6B523B;
-//	--h5-color:				#44607C;
+	/* Code + Buttons */
+	--code-background:		hsl(var(--OT-theme-h), 70%, 91%);
+	--OT-button-OFF-bg:		hsl(var(--OT-theme-h), 70%, 88%);
 
-	--nav-item-color:				#7D6754;
-	--OT-setting-item-description:		#927050;
-	--OT-stabilo-mark:					#9FCBA4;
-}/*	↑ lightPalette-beige ↑	*/
+	/* Other UI elements */
+	--nav-item-color:				hsl(var(--OT-theme-h), 30%, 41%);
+	--OT-setting-item-description:	hsl(var(--OT-theme-h), 30%, 45%);
+	--OT-stabilo-mark:				hsl(128, 40%, 72%); /* stays separate green accent */
+}/* ↑ lightPalette-beige ↑ */
 
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-blue {
@@ -1110,41 +1115,58 @@ body {
 } /*	↑ lightPalette-lightBeige ↑	*/
 
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-metallicBlue {
-	/*	--OT-theme-reference-color:	#9AC4E3;	*/
 	--OT-theme-h:		205;
 	--OT-theme-s:		57%;
-	--color-base-00:	#fafff3;
-	--color-base-05:	#1B4463;
-	--color-base-20:	#143248;
-	--color-base-35:	#143248;
-	--color-base-40:	#3d8cc8;
+	--color-base-00:	hsl(83, 100%, 97%);
+	--color-base-05:	hsl(var(--OT-theme-h), var(--OT-theme-s), 25%);
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 18%);
+	--color-base-35:	hsl(var(--OT-theme-h), 40%, 80%);
+	--color-base-40:	hsl(var(--OT-theme-h), var(--OT-theme-s), 51%);
 	--color-base-50:	var(--light-blue);
-	--color-base-70:	#72ADD8;
-	--color-base-100:	#255C84;
-	--link-color:		#3F9DE1;
+	--color-base-70:	hsl(var(--OT-theme-h), var(--OT-theme-s), 64%);
+	--color-base-100:	hsl(var(--OT-theme-h), var(--OT-theme-s), 33%);
 
-	--code-background:			#EAF3F9;
-	--OT-button-OFF-bg:			#F0F5EA;
-	--OT-button-ON-bg:			#26618B;
-	--toggle-thumb-color:		#5894C5;
+	--link-color:		hsl(var(--OT-theme-h), 85%, 50%);
 
-	--table-header-background:	#CBE9FF;
-	--OT-table-background:		#FBFCFD;
-	--OT-table-alt-background:	#EDF7FF;
+	--menu-background:		hsl(var(--OT-theme-h), 100%, 98%);
+	--nav-item-color:		hsl(var(--OT-theme-h), 100%, 90%);
+	--OT-menu-text-color:	var(--color-base-100);
+//	--OT-menu-text-muted:	var(--color-base-50);
 
-	--metadata-background: 			#CBE9FF;
+	--table-header-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 90%);
+	--OT-table-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 98%);
+	--OT-table-alt-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 94%);
+
+	--code-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 96%);
+
+	--metadata-background: 			hsl(var(--OT-theme-h), 80%, 95%);
 	--metadata-label-text-color:	var(--color-base-100);
 
-	--OT-clickable-icon-in-header:					var(--color-base-20);
-	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-base-20);
-	--OT-metadata-property-icon:					var(--color-base-20);
+	--OT-clickable-icon-in-tab-header:		var(--color-accent-3);
+	--OT-ribbon-icon-color-sidebar-is-open:	var(--color-accent-3);
+	--OT-clickable-icon-on-base-20:			var(--color-accent-3);
+	--OT-nav-folder-title-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 67%);	/*	dans le panneau des backlinks	*/
+	--OT-button-OFF-bg:						var(--color-accent-3);
+	--OT-button-ON-bg:						var(--color-accent-1);
+/*
+	--toggle-thumb-color:		hsl(var(--OT-theme-h), var(--OT-theme-s), 56%);
+	--OT-search-settings-item-name:	var(--nav-item-color);
+	--OT-setting-item-description:	hsl(var(--OT-theme-h), var(--OT-theme-s), 43%);
+	--OT-view-header-title-no-focus-color:  var(--color-accent-2);
+*/
+	--OT-view-header-title-focus-color:		var(--color-accent-2);
 
+	--color-accent-1:                       hsl(	204,	50%,	70%)	!important;
+	--accent-h:                             		205						!important;
+	--accent-s:                             				50%				!important;
+	--accent-l:                             						50%		!important;
+	--color-accent-3:                       hsl(	204,	56%,	92%)	!important;
 
-	--nav-item-color:				#B6E1FF;
-	--OT-nav-folder-title-color:		#7FB5DC;
-	--OT-search-settings-item-name:		var(--nav-item-color);
-	--OT-setting-item-description:		#3676A4;									/*	le texte descriptif complémentaire dans le panneau des Settings	*/
+	--OT-color-muted-on-accent-1:           hsl(206, 100%, 84%);
+	--OT-color-on-accent-2:                 var(--color-base-00);
+	--OT-color-on-accent-3:                 hsl(204, 100%, 13%);
 } /*	↑ lightPalette-metallicBlue ↑	*/
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-Orange {
@@ -1730,7 +1752,6 @@ body {
 	--nav-item-color:		#B76320;
 }/*	↑	darkPalette-brown	↑	*/
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.darkPalette-green,
 .theme-dark.lightPalette-green.darkPalette-default {
 	/*	--OT-theme-reference-color:	#17823C;	*/
@@ -2395,43 +2416,46 @@ body {
 //	--OT-color-on-accent-3:			var(--color-base-100);
 }
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-shade {
-	--accent-h:								205	!important;
-	--accent-s:								51%	!important;
-	--accent-l:								49%	!important;
-	--color-accent-1:						#0062A9	!important;
-	--color-accent-2:						#3E88BE	!important;
-	--color-accent-3:						#D6E6F1	!important;
-	--OT-color-muted-on-accent-1:			#B6E1FF;
-	--OT-color-on-accent-2:        			var(--color-base-00);
-	--OT-color-on-accent-3:        			#002743;
-	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
+}
+.theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
+	--color-accent-1:	hsl(var(--accent-h), var(--accent-s),	30%)	!important;
+	--accent-h:					325										!important;
+	--accent-s:								70%							!important;
+	--accent-l:													63%		!important;
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	93%)	!important;
+
+//	--OT-color-on-accent-1:			var(--color-base-00)	!important;
+//	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+//	--OT-color-on-accent-2:			var(--color-base-00);
+//	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 25%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 30%, 30%);
+
+	--icon-color:	var(--color-accent-2);
+	--OT-clickable-icon-in-tab-header:		var(--color-accent-2);
+	--OT-ribbon-icon-color-sidebar-is-open:	var(--color-accent-2);
+	--OT-clickable-icon-on-base-20:			var(--color-accent-2);
 }
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-1 {
-	--accent-h:							325	!important;
-	--accent-s:							81%	!important;
-	--accent-l:							33%	!important;
-	--color-accent-1:					hsl(325, 81%,53%)	!important;
-	--color-accent-2:					hsl(325, 81%,33%)	!important;
-	--color-accent-3:					#FDF0F8	!important;
-//	--OT-color-on-accent-1:				var(--color-base-20)	!important;
-	--OT-color-muted-on-accent-1:		#3C0625	!important;
-	--OT-color-on-accent-2:				var(--color-base-00)	!important;
-	--OT-color-muted-on-accent-2:		#FAD1E9	!important;
-	--OT-color-on-accent-3:				var(--color-accent-2)	!important;
-	/*	--OT-text-selection:		hsl(var(--accent-h), var(--accent-s), 93%);	*/
+	--text-selection:	hsla(var(--accent-h), 90%, 80%, 0.5);
 }
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-2 {
-	--accent-h:							85	!important;
-	--accent-s:							80%	!important;
-	--accent-l:							47%	!important;
-	--color-accent-1:					#74B814	!important;
-	--color-accent-2:					#6AA913	!important;
-	--color-accent-3:					#E9FAD1	!important;
-	--OT-color-muted-on-accent-1:		var(--color-base-20)	!important;
-	--OT-color-on-accent-2:				var(--color-base-00)	!important;
-	--OT-color-muted-on-accent-2:		var(--color-base-20)	!important;
-	--OT-color-on-accent-3:				#314E08	!important;
-//	--OT-view-header-title-focus-color:	var(--color-accent-1);
+	--color-accent-1:	hsl(var(--accent-h), var(--accent-s),	24%)	!important;
+	--accent-h:					85										!important;
+	--accent-s:								70%							!important;
+	--accent-l:													40%		!important;
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	90%)	!important;
+
+//	--OT-color-on-accent-1:			var(--color-base-00)	!important;
+//	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+//	--OT-color-on-accent-2:			var(--color-base-00);
+//	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 25%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 30%, 30%);
+
+//	--icon-color:	var(--color-accent-1);
+}
+.theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.4);
 }
 
 .theme-light.lightPalette-OBSIDIAN.accentColor-lightMode-shade {
@@ -2903,7 +2927,6 @@ body {
 	--OT-button-ON-bg:				var(--color-accent-1);
 }
 
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.lightPalette-green.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-green.accentColor-darkMode-shade {
 }
@@ -2956,12 +2979,14 @@ body {
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)	!important;
 
 	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), 10%, 85%)	!important;
-	--OT-color-on-accent-1:	black !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 10%)	!important;
 	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 50%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 10%)	!important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%)	!important;
 }
-
+.theme-dark.lightPalette-icy.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-icy.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 100%, 40%, 0.5);
+}
 
 .theme-dark.darkPalette-LYT.accentColor-darkMode-shade {
 }
@@ -5521,14 +5546,15 @@ input[type='number']::placeholder {
 .workspace-ribbon.mod-left.is-collapsed .clickable-icon {
 	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
 }
-/*	pour afficher un filet de séparation entre le ruban et le panneau de gauche, dans les thèmes qui le requièrent	*/
-.lightPalette-metallicBlue .workspace-ribbon {
-	border-right:	var(--divider-width) solid var(--color-base-00);
-}
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed),
 .side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed) {
 	color:	var(--OT-ribbon-icon-color-sidebar-is-open);
 }
+/*	pour afficher un filet de séparation entre le ruban et le panneau de gauche, dans les thèmes qui le requièrent	*/
+/*
+.lightPalette-metallicBlue .workspace-ribbon {
+	border-right:	var(--divider-width) solid var(--color-base-00);
+}*/
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover,
 .side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover {
 	color:	var(--OT-color-on-accent-1);
