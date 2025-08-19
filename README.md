@@ -123,6 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 19.08.2025 Version 1.69.0
+Progressing with the revision of palettes…
+Most importantly: corrected bug with the Editing Mode font family — I don’t know when I inadvertedly made a mistake…
+
+----------------------------------------------
 #### 16.08.2025 Version 1.68.3
 Progressing with the revision of palettes, both for *light* and for *dark* modes.
 

@@ -257,6 +257,8 @@
 			13.08.2025	Progressing with the revision of light mode palettes					1.68.1
 			14.08.2025	Progressing with the revision of light mode palettes					1.68.2
 			16.08.2025	Progressing with the revision of light and dark mode palettes			1.68.3
+						Progressing with the revision of light mode palettes					1.68.4
+			19.08.2025	Idem + corrected bug with the Editing mode font							1.69.0
 
 
 ========================================================================================================
@@ -511,7 +513,7 @@ body {
 	--code-border-width:	1px;
 	--code-border-color:	var(--code-normal);
 	--code-comment:			var(--OT-syntax-markers);
-	--code-normal:			var(--text-normal);
+	--code-normal:			var(--color-base-100);
 	--code-operator:		var(--text-normal);
 //	--code-property:		var(--nav-item-color);		/*	var(--color-cyan)	*/
 	--code-string:			var(--link-color);
@@ -1141,12 +1143,24 @@ body {
 
 	--code-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 96%);
 
-	--metadata-background: 			hsl(var(--OT-theme-h), 80%, 95%);
-	--metadata-label-text-color:	var(--color-base-100);
+	--color-accent-1:                       hsl(	204,	50%,	70%)	!important;
+	--accent-h:                             		205						!important;
+	--accent-s:                             				50%				!important;
+	--accent-l:                             						50%		!important;
+	--color-accent-3:                       hsl(	204,	56%,	92%)	!important;
 
-	--OT-clickable-icon-in-tab-header:		var(--color-accent-3);
-	--OT-ribbon-icon-color-sidebar-is-open:	var(--color-accent-3);
-	--OT-clickable-icon-on-base-20:			var(--color-accent-3);
+	--OT-color-muted-on-accent-1:           hsl(206, 100%, 84%);
+	--OT-color-on-accent-2:                 var(--color-base-00);
+	--OT-color-on-accent-3:                 hsl(204, 100%, 13%);
+
+	--OT-clickable-icon-in-tab-header:				var(--color-accent-3);
+	--OT-clickable-icon-on-base-20:					var(--color-accent-1);
+	--OT-metadata-property-icon:					var(--color-accent-2);
+	--OT-ribbon-icon-color-sidebar-is-open:			var(--color-accent-3);
+	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--color-accent-2);
+
+	--metadata-background: 			hsl(var(--OT-theme-h), 80%, 95%);
+
 	--OT-nav-folder-title-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 67%);	/*	dans le panneau des backlinks	*/
 	--OT-button-OFF-bg:						var(--color-accent-3);
 	--OT-button-ON-bg:						var(--color-accent-1);
@@ -1158,15 +1172,6 @@ body {
 */
 	--OT-view-header-title-focus-color:		var(--color-accent-2);
 
-	--color-accent-1:                       hsl(	204,	50%,	70%)	!important;
-	--accent-h:                             		205						!important;
-	--accent-s:                             				50%				!important;
-	--accent-l:                             						50%		!important;
-	--color-accent-3:                       hsl(	204,	56%,	92%)	!important;
-
-	--OT-color-muted-on-accent-1:           hsl(206, 100%, 84%);
-	--OT-color-on-accent-2:                 var(--color-base-00);
-	--OT-color-on-accent-3:                 hsl(204, 100%, 13%);
 } /*	↑ lightPalette-metallicBlue ↑	*/
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-Orange {
@@ -1865,6 +1870,7 @@ body {
 }/*	↑	darkPalette-LYT	↑	*/
 
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.darkPalette-metallicBlue,
 .theme-dark.lightPalette-metallicBlue.darkPalette-default {
 	/*	--OT-theme-reference-color:	#143248;	*/
@@ -2245,29 +2251,39 @@ body {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.4);
 }
 .theme-light.lightPalette-beige.accentColor-lightMode-alternative-1 {
-	--color-accent-1:					#54BBCB	!important;
-	--accent-h:							188	!important;
-	--accent-s:							54%	!important;
-	--accent-l:							73%	!important;
-	--color-accent-3:					#CBEAEF	!important;
+	--color-accent-1:	hsl(	var(--accent-h),	60%,	30%)	!important;
+	--accent-h:					188									!important;
+	--accent-s:										60% 			!important;
+	--accent-l:												80%		!important;
+	--color-accent-3:	hsl(	var(--accent-h),	60%,	93%)	!important;
 
-	--OT-color-on-accent-1:				#F0F9FB	!important;
-	--OT-color-muted-on-accent-1:		#17464D	!important;
-	--OT-color-on-accent-2:				#17464D	!important;
-	--OT-color-on-accent-3:				#1F5D67	!important;
+	--OT-color-on-accent-1:			hsl(0, 0%, 100%);
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 40%, 80%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), 40%, 15%);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 55%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 40%, 15%);
+}
+.theme-light.lightPalette-beige.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.6);
 }
 .theme-light.lightPalette-beige.accentColor-lightMode-alternative-2 {
-	--color-accent-1:					hsla(158, 50%, 40%)	!important;
-	--accent-h:								 158				!important;
-	--accent-s:									  50%			!important;
-	--accent-l:										   60%		!important;
-	--color-accent-3:					hsla(158, 53%, 88%)	!important;
+	--color-accent-1:	hsl(	var(--accent-h),	60%,	30%)	!important;
+	--accent-h:					158									!important;
+	--accent-s:										60% 			!important;
+	--accent-l:												80%		!important;
+	--color-accent-3:	hsl(	var(--accent-h),	60%,	93%)	!important;
 
-//	--OT-color-on-accent-1:				#F0FBF7	!important;
-	--OT-color-muted-on-accent-1:		hsla(158, 52%, 70%)	!important;
-	--OT-color-on-accent-2:				var(--color-base-20)	!important;
-	--OT-color-muted-on-accent-2:		hsla(158, 52%, 84%)	!important;
-	--OT-color-on-accent-3:				hsla(158, 60%, 30%)	!important;
+	--OT-color-on-accent-1:			hsl(0, 0%, 100%);
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 40%, 80%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), 40%, 15%);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 55%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 80%, 15%);
+
+	--dynamic-outline-background-hover:				var(--color-accent-2)!important;
+	--dynamic-outline-active-heading-background:	var(--color-accent-2)!important;
+}
+.theme-light.lightPalette-beige.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.6);
 }
 
 .theme-light.lightPalette-blue.accentColor-lightMode-shade {
@@ -2325,11 +2341,11 @@ body {
 .theme-light.lightPalette-icy.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-1 {
-	--color-accent-1:	#51BB00	!important;
+	--color-accent-1:	#51BB00				!important;
 	--accent-h:			94					!important;
 	--accent-s:				70%				!important;
 	--accent-l:						70%		!important;
-	--color-accent-3:	hsl(94, 100%, 92%)				!important;
+	--color-accent-3:	hsl(94, 100%, 92%)	!important;
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
@@ -2397,7 +2413,7 @@ body {
 	--color-accent-1:	hsl(	239,	30%,	43%)	!important;
 	--accent-h:					239						!important;
 	--accent-s:							30%				!important;
-	--accent-l:									63%		!important;
+	--accent-l:									70%		!important;
 	--color-accent-3:	hsl(	239,	30%,	90%)	!important;
 
 	--OT-color-on-accent-3:	hsl(239, 30%, 30%);
@@ -2415,6 +2431,7 @@ body {
 //	--OT-color-muted-on-accent-2:	var(--OT-color-muted-on-accent-1);
 //	--OT-color-on-accent-3:			var(--color-base-100);
 }
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
@@ -2438,7 +2455,6 @@ body {
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-1 {
 	--text-selection:	hsla(var(--accent-h), 90%, 80%, 0.5);
 }
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-2 {
 	--color-accent-1:	hsl(var(--accent-h), var(--accent-s),	24%)	!important;
 	--accent-h:					85										!important;
@@ -3016,6 +3032,7 @@ body {
 	--OT-color-on-accent-3:			#CEF0E0	!important;
 	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 30%);	*/
 }
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.lightPalette-metallicBlue.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-metallicBlue.accentColor-darkMode-shade {
 	--accent-h:								206	!important;
@@ -5365,7 +5382,7 @@ body {
 .cm-s-obsidian .HyperMD-header-4,
 .cm-s-obsidian .HyperMD-header-5,
 .cm-s-obsidian .HyperMD-header-6 {
-    font-family:	var(--editor-font-family);
+    font-family:	var(--OT-editMode-font-family);
     color:			inherit;
     font-weight:	var(--font-bold);
 }
@@ -5420,7 +5437,7 @@ body {
 .markdown-source-view.mod-cm6 .cm-scroller,
 .markdown-source-view,
 .cm-s-obsidian {
-    font-family:	var(--editor-font-family);
+    font-family:	var(--OT-editMode-font-family);
 	font-size: 		var(--OT-editMode-text-size);
 }
 
@@ -7320,6 +7337,7 @@ markdown-rendered h6 {
 	--heading-spacing:	1em;
 	margin-bottom:		var(--OT-space-below-h6);
 }
+
 /* -------------------- ↑ Headings to my taste ↑ -------------------- */
 
 
@@ -7820,6 +7838,10 @@ kbd {
 	margin-right:	0.5rem;
 }
 
+/*	notamment pour le plugin “Advanced Tables”	*/
+.nav-buttons-container {
+	color:	var(--nav-item-color);
+}
 
 /*	Bookmark	OpSpl49	———————————————————— Empty pane	———————————————————— */
 .empty-state-action-list {
@@ -8083,7 +8105,7 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 /*	Bookmark	OpSpl55	———————————————————— QuickAdd plugin  ————————————————————	*/
 .wideInputPromptInputEl {
-	font-family:	var(--editor-font-family);
+	font-family:	var(--OT-editMode-font-family);
 }
 /*	pour afficher plus grand le texte dans la boite de dialogue de saisie, quand l’écran est suffisamment grand	*/
 @media screen and (min-width: 781px) {
