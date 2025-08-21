@@ -259,6 +259,7 @@
 			16.08.2025	Progressing with the revision of light and dark mode palettes			1.68.3
 						Progressing with the revision of light mode palettes					1.68.4
 			19.08.2025	Idem + corrected bug with the Editing mode font							1.69.0
+			21.08.2025	Improvements to the Metallic Blue palette								1.69.1
 
 
 ========================================================================================================
@@ -1146,12 +1147,14 @@ body {
 	--color-accent-1:                       hsl(	204,	50%,	70%)	!important;
 	--accent-h:                             		205						!important;
 	--accent-s:                             				50%				!important;
-	--accent-l:                             						50%		!important;
+	--accent-l:                             						40%		!important;
 	--color-accent-3:                       hsl(	204,	56%,	92%)	!important;
 
-	--OT-color-muted-on-accent-1:           hsl(206, 100%, 84%);
-	--OT-color-on-accent-2:                 var(--color-base-00);
-	--OT-color-on-accent-3:                 hsl(204, 100%, 13%);
+	--OT-color-on-accent-1:                 white;	/*	hsl(204, 100%, 13%);	*/
+	--OT-color-muted-on-accent-1:			hsl(var(--OT-theme-h), 60%, 45%);
+	--OT-color-on-accent-2:					hsl(var(--OT-theme-h), 60%, 90%);
+	--OT-color-muted-on-accent-2:			hsl(var(--OT-theme-h), 60%, 75%);
+	--OT-color-on-accent-3:                 hsl(var(--OT-theme-h), 60%, 70%);
 
 	--OT-clickable-icon-in-tab-header:				var(--color-accent-3);
 	--OT-clickable-icon-on-base-20:					var(--color-accent-1);

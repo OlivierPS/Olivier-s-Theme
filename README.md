@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 21.08.2025 Version 1.69.1
+Improvements to the Metallic Blue palette.
+
+----------------------------------------------
 #### 19.08.2025 Version 1.69.0
 Progressing with the revision of palettes…
 Most importantly: corrected bug with the Editing Mode font family — I don’t know when I inadvertedly made a mistake…
