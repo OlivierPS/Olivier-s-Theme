@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 22.08.2025 Version 1.69.2
+Tweaked the H4 rendering.
+
+----------------------------------------------
 #### 21.08.2025 Version 1.69.1
 Improvements to the Metallic Blue palette.
 

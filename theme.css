@@ -260,6 +260,7 @@
 						Progressing with the revision of light mode palettes					1.68.4
 			19.08.2025	Idem + corrected bug with the Editing mode font							1.69.0
 			21.08.2025	Improvements to the Metallic Blue palette								1.69.1
+			22.08.2025	Tweaked the H4 rendering												1.69.2
 
 
 ========================================================================================================
@@ -1828,28 +1829,41 @@ body {
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-LYT {
 	/*	--OT-theme-reference-color:	#3BABC4;	*/
-	--OT-theme-h:		191;
+	--OT-theme-h:		231;
 	--OT-theme-s:		54%;
-	--color-base-00:	#2E3039;
-	--color-base-05:	black;
-	--color-base-20:	#232429;
-	--color-base-35:	#232429;
-	--color-base-40:	#F3EE5E;
-	--color-base-50:	#B9C3DF;
-	--color-base-70:	#2F899D;
-    --color-base-100: 	rgb(114, 195, 213);
+	--color-base-00:	hsl(231, 7%, 20%);
+	--color-base-05:	hsl(0, 0%, 0%);
+	--color-base-20:	hsl(231, 7%, 15%);
+	--color-base-35:	hsl(231, 7%, 15%);
+	--color-base-40:	hsl(56, 86%, 66%);
+	--color-base-50:	hsl(222, 36%, 80%);
+	--color-base-70:	hsl(191, 55%, 40%);
+    --color-base-100: 	hsl(190, 53%, 64%);
 	--link-color:		hsl(334, 100%, 75%);
 
-	--accent-h:				264	!important;
-	--accent-s:				46%	!important;
-	--accent-l:				61%	!important;
-	--OT-color-on-accent-1:	var(--color-base-1003BABC4);
-	--OT-color-on-accent-2:	var(--color-base-05);
-	--OT-color-on-accent-3:	var(--color-base-00);
-	--OT-button-ON-bg:		var(--color-accent-2);
+	--nav-item-color:	hsl(224, 17%, 68%);
 
-	--code-background:				#232429;
-	--OT-button-OFF-bg:				#42444E;
+	--table-header-background:	hsl(231, 9%, 20%);
+	--OT-table-background:		hsl(231, 9%, 17%);
+	--OT-table-alt-background:	hsl(231, 9%, 15%);
+
+	--code-normal:		hsl(224, 37%, 80%);
+	--code-background:	hsl(231,  9%, 18%);
+
+	--accent-h:				264 !important;
+	--accent-s:				46% !important;
+	--accent-l:				61% !important;
+
+	--OT-color-on-accent-1:			var(--color-base-100);
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%)	!important;
+	--OT-color-on-accent-2:			var(--color-base-05);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%)	!important;
+	--OT-color-on-accent-3:			var(--color-base-100);
+
+	--icon-color:					var(--color-accent-1);
+
+	--OT-button-ON-bg:		var(--color-accent-2);
+	--OT-button-OFF-bg:		hsl(231, 9%, 28%);
 
     --h1-color: 		hsl(59, 81%, 47%);
     --h2-color: 		hsl(260, 100%, 79%);
@@ -1858,18 +1872,10 @@ body {
     --h5-color: 		hsl(224, 37%, 80%);
     --h6-color: 		hsl(223, 18%, 68%);
 
-	--nav-item-color:	hsl(224, 17%, 68%);
+//	--OT-stabilo-text:	var(--text-normal);
+    --OT-stabilo-mark:	hsl(56, 83%, 96%);
 
-
-	--OT-stabilo-text:			var(--text-normal);
-    --OT-stabilo-mark:			#FDFCE8;
-	--checklist-done-color:	#497C87;
-	--code-normal:			hsl(224, 37%, 80%);
-
-	--table-header-background:	#363842;
-	--OT-table-background:	#292B33;
-	--OT-view-header-title-focus-color:		#A4D8E3;
-	--OT-view-header-title-no-focus-color:	#3BABC4;
+	--checklist-done-color:	hsl(190, 29%, 35%);
 }/*	↑	darkPalette-LYT	↑	*/
 
 /*	----------------------------------------------	*/
@@ -7243,12 +7249,12 @@ markdown-rendered h3 {
 
 /* === Adjustable values === */
 :root {
-  --h4-collapse-width: 1.6em; /* tweak for icon size on your theme */
-  --h4-icon-left: 1.6em;      /* diamond sits after the collapse icon */
-  --h4-padding-left: 1.1em;   /* collapse + diamond + space */
-  --h4-icon-left: 0em;
-  --h4-icon-top:	0.25em;
-  --h4-icon-size: 0.7rem;
+	--h4-collapse-width:1.6em;	/* tweak for icon size on your theme */
+	--h4-icon-left:		1.6em;  /* diamond sits after the collapse icon */
+	--h4-padding-left:	1.1em;  /* collapse + diamond + space */
+  	--h4-icon-left:		0em;
+  	--h4-icon-top:		0em;	/*	0.25em;	*/
+//	--h4-icon-size:		0.7rem;
 }
 
 /* === Common H4 base === */
@@ -7258,7 +7264,7 @@ markdown-rendered h3 {
 	--heading-spacing:	1.2em;
   margin-block-start: 1.2em;
   margin-block-end: var(--OT-space-below-h4);
-  font-size: var(--h5-size);
+  font-size: var(--h4-size);
 }
 
 /* ================= PREVIEW ================= */
@@ -7266,15 +7272,16 @@ markdown-rendered h3 {
 .markdown-preview-view h4,
 .markdown-rendered h4 {
   position: relative;
-  padding-left: var(--h4-padding-left);
+//  padding-left: var(--h4-padding-left);
 }
 
 /* diamond is after collapse icon */
 .markdown-preview-view h4::before,
 .markdown-rendered h4::before {
   content: "◆ ";
+  font-family:	Helvetica;
   font-style: normal;
-  font-size: var(--h4-icon-size);
+//  font-size: var(--h4-size)	/*	var(--h4-icon-size);	*/
   position: absolute;
   left: var(--h4-icon-left);
   top: var(--h4-icon-top);
@@ -7305,10 +7312,12 @@ markdown-rendered h3 {
 
 .markdown-source-view.is-live-preview .cm-header-4:not(.cm-formatting-header)::before {
   content: "◆ ";
+  font-family:	Helvetica;
   font-style: normal;
-  font-size: var(--h4-icon-size);
+//  font-size: var(--h4-size)	/*	var(--h4-icon-size);	*/
   margin-right: 1em;
   position: absolute;
+  top:	-0.2em;
   left: var(--h4-icon-left);
   z-index: 2;
 }
