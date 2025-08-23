@@ -123,7 +123,7 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 23.08.2025 Version 1.69.3
+#### 23.08.2025 Version 1.69.3 and 1.69.4
 Improved the compactness of everything in monospaced font.
 
 ----------------------------------------------

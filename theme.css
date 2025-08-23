@@ -262,6 +262,7 @@
 			21.08.2025	Improvements to the Metallic Blue palette								1.69.1
 			22.08.2025	Tweaked the H4 rendering												1.69.2
 			23.08.2025	Improved the compactness of everything in monospaced font				1.69.3
+						YAML targeted. At last!													1.69.4
 
 
 ========================================================================================================
@@ -5465,7 +5466,7 @@ body {
 .cm-s-obsidian span.hmd-fold-math-placeholder,
 .cm-s-obsidian .hmd-fold-html kbd {
 	font-family:	var(--font-monospace);
-	line-height:	1rem;
+	line-height:	1rem !important;
 	padding-top:	0;
 	padding-bottom: 0;
 }
@@ -5520,11 +5521,12 @@ input[type=checkbox] {
 }
 /*	YAML metadata	*/
 .cm-hmd-frontmatter,
-.cm-hmd-frontmatter.cm-def {
+.cm-hmd-frontmatter.cm-def,
+.cm-line:has(.cm-hmd-frontmatter) {
 	color:			var(--OT-YAML-color);
+	padding-top:	2pt !important;
+	padding-bottom:	0	!important;
 	line-height:	1rem !important;
-	padding-top:	0;
-	padding-bottom:	0;
 }
 .publish-section-header,
 .u-pop {
