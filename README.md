@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 23.08.2025 Version 1.69.3
+Improved the compactness of everything in monospaced font.
+
+----------------------------------------------
 #### 22.08.2025 Version 1.69.2
 Tweaked the H4 rendering.
 

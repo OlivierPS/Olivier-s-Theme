@@ -261,6 +261,7 @@
 			19.08.2025	Idem + corrected bug with the Editing mode font							1.69.0
 			21.08.2025	Improvements to the Metallic Blue palette								1.69.1
 			22.08.2025	Tweaked the H4 rendering												1.69.2
+			23.08.2025	Improved the compactness of everything in monospaced font				1.69.3
 
 
 ========================================================================================================
@@ -5352,7 +5353,7 @@ body {
 /*	Bookmark	OpSpl17	—————————————————————————————— basic typography of the EDIT mode —————————————————————————————— */
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-line:not(.cm-hmd-frontmatter) {
 	max-width:		var(--OT-editMode-line-width);
 	font-size:		var(--OT-editMode-text-size);
     line-height:	var(--OT-editMode-line-height);
@@ -5464,7 +5465,9 @@ body {
 .cm-s-obsidian span.hmd-fold-math-placeholder,
 .cm-s-obsidian .hmd-fold-html kbd {
 	font-family:	var(--font-monospace);
-	line-height:	1.2 !important;
+	line-height:	1rem;
+	padding-top:	0;
+	padding-bottom: 0;
 }
 /*	en mode “Edit, RAW” également, je trouve judicieux que le code soit sur son propre fond	*/
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
@@ -5517,8 +5520,11 @@ input[type=checkbox] {
 }
 /*	YAML metadata	*/
 .cm-hmd-frontmatter,
-.cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def {
-	color:	var(--OT-YAML-color);
+.cm-hmd-frontmatter.cm-def {
+	color:			var(--OT-YAML-color);
+	line-height:	1rem !important;
+	padding-top:	0;
+	padding-bottom:	0;
 }
 .publish-section-header,
 .u-pop {
