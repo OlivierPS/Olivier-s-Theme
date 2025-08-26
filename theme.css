@@ -263,6 +263,8 @@
 			22.08.2025	Tweaked the H4 rendering												1.69.2
 			23.08.2025	Improved the compactness of everything in monospaced font				1.69.3
 						YAML targeted. At last!													1.69.4
+			26.08.2025	added code for the TaskNotes plugin
+						improved the vertical spacing of tables in RAW editing mode				1.70.0
 
 
 ========================================================================================================
@@ -283,10 +285,10 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl14:	définition des couleurs pour le fond du panneau d’édition
 			OpSpl15:	définition de la couleur du texte en mode d’édition
 			OpSpl16:	définition de l’icône en haut à droite d’un panneau d’édition
-			OpSpl17:	typography of the EDIT mode: font size, line length and line height
-			OpSpl18:	les headings en mode d’édition
-			OpSpl19:	la fonte du mode d’édition
+			OpSpl17:	la fonte du mode d’édition
 						la fonte “monospaced”
+			OpSpl18:	typography of the EDIT mode: font size, line length and line height
+			OpSpl19:	les headings en mode d’édition
 			OpSpl20:	autres ajustements:
 							les crochets des “tasks”
 							“tree-item-flair”
@@ -346,6 +348,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl60		Dynamic Outline plugin
 			OpSpl61		Better Command Palette plugin
 			OpSpl62		JS Engine plugin
+			OpSpl63		TaskNotes plugin
 
 			OpSpl90		Some useful CSSCLASSES
 
@@ -5351,16 +5354,62 @@ body {
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à gauche du panneau d’édition ↑ -------------------------	*/
 
 
-/*	Bookmark	OpSpl17	—————————————————————————————— basic typography of the EDIT mode —————————————————————————————— */
+/*	Bookmark	OpSpl17	 —————————————————————————————— Edit mode font family and font size —————————————————————————————— */
+.cm-list-1,
+.cm-list-2,
+.cm-list-3,
+.cm-list-4,
+.cm-list-5,
+.cm-list-6,
+.cm-list-7,
+.cm-list-8,
+.cm-list-9,
+.cm-list-10,
+.cm-line,
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-source-view,
+.cm-s-obsidian {
+    font-family:	var(--OT-editMode-font-family);
+	font-size: 		var(--OT-editMode-text-size);
+}
+
+/* ---------- “monospaced” font ----------
+	je trouve judicieux de compacter l’affichage de tout ce qui est en «fonte fixe» */
+.cm-s-obsidian .hmd-fold-html-stub,
+.cm-s-obsidian .hmd-fold-code-stub,
+.cm-s-obsidian .cm-inline-code,
+.cm-s-obsidian .HyperMD-codeblock,
+.cm-s-obsidian .HyperMD-hr,
+.cm-s-obsidian .cm-hmd-frontmatter,
+.cm-s-obsidian .cm-hmd-orgmode-markup,
+.cm-s-obsidian .cm-formatting-code,
+.cm-s-obsidian .cm-math,
+.cm-s-obsidian span.hmd-fold-math-placeholder,
+.cm-s-obsidian .hmd-fold-html kbd {
+	font-family:	var(--font-monospace);
+	line-height:	1rem !important;
+	padding-top:	0;
+	padding-bottom: 0;
+}
+/*	en mode “Edit, RAW” également, je trouve judicieux que le code soit sur son propre fond	*/
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+	background-color:	var(--code-background);
+}
+/*	------------------------- ↑ Edit mode fonte family and font size ↑ -------------------------	*/
+
+/*	Bookmark	OpSpl18	—————————————————————————————— basic typography of the EDIT mode —————————————————————————————— */
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-line:not(.cm-hmd-frontmatter) {
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
 	max-width:		var(--OT-editMode-line-width);
 	font-size:		var(--OT-editMode-text-size);
     line-height:	var(--OT-editMode-line-height);
 }
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
+	line-height:	1.2rem;
+}
 
-/*	Bookmark	OpSpl18	 —————————————————————————————— Headings, in Edit mode —————————————————————————————— */
+/*	Bookmark	OpSpl19	 —————————————————————————————— Headings, in Edit mode —————————————————————————————— */
 /*	pour simuler, en Edit mode, le blanc sous les H1 à H6
 .cm-s-obsidian .cm-line.HyperMD-header-1 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
 	--p-spacing-empty:		var(--OT-space-below-h1);
@@ -5433,50 +5482,6 @@ body {
 }
 /* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
 
-/*	Bookmark	OpSpl19	 —————————————————————————————— Edit mode font family and font size —————————————————————————————— */
-.cm-list-1,
-.cm-list-2,
-.cm-list-3,
-.cm-list-4,
-.cm-list-5,
-.cm-list-6,
-.cm-list-7,
-.cm-list-8,
-.cm-list-9,
-.cm-list-10,
-.cm-line,
-.markdown-source-view.mod-cm6 .cm-scroller,
-.markdown-source-view,
-.cm-s-obsidian {
-    font-family:	var(--OT-editMode-font-family);
-	font-size: 		var(--OT-editMode-text-size);
-}
-
-/* ---------- “monospaced” font ----------
-	je trouve judicieux de compacter l’affichage de tout ce qui est en «fonte fixe» */
-.cm-s-obsidian .hmd-fold-html-stub,
-.cm-s-obsidian .hmd-fold-code-stub,
-.cm-s-obsidian .cm-inline-code,
-.cm-s-obsidian .HyperMD-codeblock,
-.cm-s-obsidian .HyperMD-hr,
-.cm-s-obsidian .cm-hmd-frontmatter,
-.cm-s-obsidian .cm-hmd-orgmode-markup,
-.cm-s-obsidian .cm-formatting-code,
-.cm-s-obsidian .cm-math,
-.cm-s-obsidian span.hmd-fold-math-placeholder,
-.cm-s-obsidian .hmd-fold-html kbd {
-	font-family:	var(--font-monospace);
-	line-height:	1rem !important;
-	padding-top:	0;
-	padding-bottom: 0;
-}
-/*	en mode “Edit, RAW” également, je trouve judicieux que le code soit sur son propre fond	*/
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
-	background-color:	var(--code-background);
-}
-
-
-
 /*	Bookmark	OpSpl20	 —————————————————————————————— Autres ajustements —————————————————————————————— */
 /*	Vertical spacing of paragraphs: I prefer a more compact vertical spacing.
 	This also permits to show more text on a laptop */
@@ -5521,12 +5526,12 @@ input[type=checkbox] {
 }
 /*	YAML metadata	*/
 .cm-hmd-frontmatter,
-.cm-hmd-frontmatter.cm-def,
+.cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def,
 .cm-line:has(.cm-hmd-frontmatter) {
 	color:			var(--OT-YAML-color);
-	padding-top:	2pt !important;
+	padding-top:	0	!important;
 	padding-bottom:	0	!important;
-	line-height:	1rem !important;
+	line-height:	1.2rem	!important;
 }
 .publish-section-header,
 .u-pop {
@@ -6057,7 +6062,7 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 .markdown-source-view.mod-cm6 .HyperMD-codeblock,
 .markdown-source-view.mod-cm6 span.cm-inline-code.cm-hmd-indented-code,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
-	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+	font-size:		calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
 }
 
 /* Target the input field when editing a table cell in Live Edit mode */
@@ -8526,6 +8531,224 @@ body {
 	background-color:	var(--OT-button-text-normal);
 }
 /* ---------- ↑ JS Engine plugin ↑ ----------	*/
+
+/*	Bookmark	OpSpl63	———————————————————— TaskNotes plugin ————————————————————	*/
+.tasknotes-plugin {
+    --tn-font-size-xs:	calc( var(--OT-UI-font-size) * 0.7);
+	--tn-font-size-sm:	calc( var(--OT-UI-font-size) * 0.8);
+    --tn-font-size-md:	calc( var(--OT-UI-font-size) * 0.9);
+    --tn-font-size-lg:	calc( var(--OT-UI-font-size));
+    --tn-font-size-xl:	calc( var(--OT-UI-font-size) * 1.1);
+    --tn-font-size-2xl:	calc( var(--OT-UI-font-size) * 1.2);
+
+    --interactive-accent:			var(--OT-color-on-accent-1);
+    --interactive-accent-hover:		var(--OT-color-on-accent-1);
+    --background-modifier-hover:	var(--color-accent-1);
+//    --tn-text-muted:				var(--OT-color-muted-on-accent-1);
+    --tn-interactive-accent:		var(--color-accent-2);
+    --tn-interactive-hover:			var(--color-accent-1);
+}
+/*
+.tasknotes-plugin .tn-btn:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+}
+.tasknotes-plugin .tn-btn--primary:hover,
+.tasknotes-plugin .tn-btn--secondary:hover,
+.tasknotes-plugin .tn-btn--ghost:hover,
+.tasknotes-plugin .task-card:hover,
+.tasknotes-plugin .task-card__recurring-indicator:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+}
+*/
+.tasknotes-plugin .tn-btn:hover,
+.tasknotes-plugin .tn-btn--primary:hover,
+.tasknotes-plugin .tn-btn--secondary:hover,
+.tasknotes-plugin .tn-btn--ghost:hover,
+.tasknotes-plugin .task-card:hover,
+.tasknotes-plugin .task-card__recurring-indicator:hover,
+.tasknotes-plugin .task-card__reminder-indicator:hover,
+.tasknotes-plugin .task-card__project-indicator:hover,
+.tasknotes-plugin .task-card__chevron:hover,
+.tasknotes-plugin .task-card__metadata-date:hover,
+.tasknotes-plugin .task-card__metadata-date--due:hover,
+.tasknotes-plugin .task-inline-preview__date--clickable:hover,
+.tasknotes-plugin .task-inline-preview__recurring-indicator:hover,
+.tasknotes-plugin .task-inline-preview:hover,
+.tasknotes-plugin .task-inline-preview__title:hover,
+.tasknotes-plugin .note-card__tag:hover,
+.tasknotes-plugin .tn-card:hover,
+.tasknotes-plugin .filter-bar__clear-filters:hover,
+.tasknotes-plugin .filter-date-help-button:hover,
+.tasknotes-plugin .filter-bar__filter-toggle:hover,
+.tasknotes-plugin .filter-bar__templates-button:hover,
+.tasknotes-plugin .filter-bar__view-item-container:hover,
+.tasknotes-plugin .filter-bar__view-drag-handle:hover,
+.tasknotes-plugin .filter-bar__view-item-container--active:hover,
+.tasknotes-plugin .filter-bar__section-header-main:hover,
+.tasknotes-plugin .filter-bar__expand-groups:hover,
+.tasknotes-plugin .filter-bar__collapse-groups:hover,
+.tasknotes-plugin .filter-bar__conjunction .dropdown:hover,
+.tasknotes-plugin .filter-bar__condition .dropdown:hover,
+.tasknotes-plugin .filter-bar__condition .text-input:hover,
+.tasknotes-plugin .filter-bar__condition:hover,
+.tasknotes-plugin .filter-bar__property-select:hover,
+.tasknotes-plugin .filter-bar__operator-select:hover,
+.tasknotes-plugin .filter-bar__value-input:hover,
+.tasknotes-plugin .filter-bar__action-button:hover,
+.tasknotes-plugin .filter-bar__sort-container .dropdown:hover,
+.tasknotes-plugin .filter-bar__group-container .dropdown:hover,
+.tasknotes-plugin .nl-quick-create-button:hover,
+.tasknotes-plugin .nl-parse-button:hover,
+.tasknotes-plugin .nl-show-detail-button:hover,
+.tasknotes-plugin .modal-form__suggestion:hover,
+.tasknotes-plugin .modal-form__suggestion--selected,
+.tasknotes-plugin .modal-form__button--quick-date:hover,
+.tasknotes-plugin .modal-form__button--quick-date--clear:hover,
+.tasknotes-plugin .task-selector-modal__suggestion:hover,
+.tasknotes-plugin .content-type-buttons button:hover,
+.tasknotes-plugin .related-note-item:hover,
+.tasknotes-plugin .action-button.secondary-button:hover,
+.tasknotes-plugin .action-icon:hover,
+.tasknotes-plugin .action-icon:hover .icon,
+.tasknotes-plugin .save-button:hover,
+.tasknotes-plugin .cancel-button:hover,
+.tasknotes-plugin .autocomplete-suggestion:hover,
+.tasknotes-plugin .recurring-calendar__nav:hover,
+.tasknotes-plugin .recurring-calendar__day--clickable:hover,
+.tasknotes-plugin .recurring-calendar__day--completed:hover,
+.tasknotes-plugin .task-project-item:hover,
+.tasknotes-plugin .project-suggestion:hover,
+.tasknotes-plugin .reminder-modal__reminder-card:hover,
+.tasknotes-plugin .reminder-modal__quick-btn:hover,
+.tasknotes-plugin .reminder-modal__type-tab:not(.reminder-modal__type-tab--active):hover,
+.tasknotes-plugin .reminder-add-btn:hover,
+.tasknotes-plugin .reminder-modal__save-btn:not(:disabled):hover,
+.tasknotes-plugin .reminder-modal__cancel-btn:hover,
+.tasknotes-plugin .reminder-defaults-card:hover,
+.tasknotes-plugin .reminder-defaults-type-tab:not(.reminder-defaults-type-tab--active):hover,
+.tasknotes-plugin .reminder-defaults-add-btn:hover,
+.date-picker-modal__button--primary:hover,
+.date-picker-modal__button--secondary:hover,
+.date-picker-modal input[type="date"]:hover::-webkit-calendar-picker-indicator,
+.date-picker-modal input[type="time"]:hover::-webkit-calendar-picker-indicator,
+.task-action-palette__suggestion:hover,
+.tasknotes-plugin .project-note-subtasks__new-btn:hover,
+.tasknotes-plugin .project-note-subtasks__title:hover,
+.tasknotes-plugin .task-group-toggle:hover,
+.tasknotes-plugin .task-list-view__add-button:hover,
+.tasknotes-plugin .calendar-view__view-selector:hover,
+.tasknotes-plugin .mini-calendar-view__view-selector:hover,
+.tasknotes-plugin .calendar-view__today-button:hover,
+.tasknotes-plugin .mini-calendar-view__today-button:hover,
+.tasknotes-plugin .calendar-view__day:hover,
+.tasknotes-plugin .mini-calendar-view__day:hover,
+.ics-context-menu-item:hover,
+.timeblock-attachment-item:hover,
+.ics-subscription-actions button:hover,
+.ics-form-button:hover,
+.ics-edit-button:hover,
+.ics-form-button.mod-cta:hover,
+.ics-edit-button.mod-cta:hover,
+.advanced-calendar-view__schedule-tasks-btn:hover,
+.advanced-calendar-view .fc-button:hover:not(:disabled),
+.advanced-calendar-view .fc-button-primary:hover:not(:disabled),
+.advanced-calendar-view .fc-button-secondary:hover:not(:disabled),
+.advanced-calendar-view .fc-prev-button:hover:not(:disabled),
+.advanced-calendar-view .fc-next-button:hover:not(:disabled),
+.advanced-calendar-view .fc-today-button:hover:not(:disabled),
+.advanced-calendar-view .fc-more-link:hover,
+.advanced-calendar-view__collapse-btn:hover,
+.advanced-calendar-view .fc-refreshICS-button:hover,
+.advanced-calendar-view .fc-refreshICS-button:hover .fc-icon,
+.advanced-calendar-view .fc-refreshICS-button:hover .fc-button-label,
+.tasknotes-plugin .kanban-view__new-task-button:hover,
+.tasknotes-plugin .kanban-view__column-empty:hover,
+.tasknotes-plugin .agenda-view__period-select:hover,
+.tasknotes-plugin .agenda-view__today-button:hover,
+.tasknotes-plugin .agenda-view__toggle:hover,
+.tasknotes-plugin .notes-view__refresh-button:hover,
+.tasknotes-plugin .notes-view__note-item:hover,
+.tasknotes-plugin .pomodoro-view__task-select-button:hover,
+.tasknotes-plugin .pomodoro-view__task-clear-button:hover,
+.tasknotes-plugin .pomodoro-view__start-button:hover,
+.tasknotes-plugin .pomodoro-view__time-adjust-button:hover,
+.tasknotes-plugin .pomodoro-view__stat--clickable:hover,
+.tasknotes-plugin .pomodoro-stats-view__refresh-button:hover,
+.tasknotes-plugin .pomodoro-stats-view__session-item:hover,
+.tasknotes-plugin .settings-view__table-row:hover,
+.tasknotes-plugin .settings-view__item-row:hover,
+.tasknotes-plugin .settings-drag-handle:hover,
+.tasknotes-plugin .settings-view__add-button:hover,
+.tasknotes-plugin .ics-form-button:hover,
+.tasknotes-plugin .ics-subscription-edit:hover,
+.tasknotes-plugin .default-project-add-btn:hover,
+.tasknotes-webhook-modal-btn.cancel:hover,
+.tasknotes-webhook-modal-btn.save:hover,
+.tasknotes-status-bar:hover,
+.tasknotes-status-bar:hover .tasknotes-status-text,
+.theme-dark .tasknotes-status-bar:hover,
+.theme-light .tasknotes-status-bar:hover,
+.tasknotes-plugin .open-note-button:hover
+{
+	color:				var(--OT-color-on-accent-1)	!important;
+	background-color:	var(--color-accent-1)		!important;
+}
+
+.tasknotes-plugin .task-card__project-link:hover,
+.tasknotes-plugin .task-card__project-link:focus,
+.tasknotes-plugin .task-card__project-link.internal-link:hover,
+.tasknotes-plugin .task-card__project-link.internal-link:focus,
+.tasknotes-plugin .note-header .internal-link:hover,
+.task-selector-modal__project-link:hover,
+.unscheduled-tasks-selector__project-link:hover,
+.tasknotes-plugin .task-list-view__project-link:hover
+{
+}
+.tasknotes-plugin .ics-subscription-refresh:hover {
+    background: var(--tn-color-blue);
+    color: 		var(--color-base-100);	/*	var(--tn-text-on-accent);	*/
+}
+
+.tasknotes-plugin .kanban-view__board::-webkit-scrollbar-thumb:hover,
+.tasknotes-plugin .kanban-view__column-body::-webkit-scrollbar-thumb:hover
+{}
+
+.tasknotes-plugin .filter-bar__filter-toggle--active,
+.tasknotes-plugin .filter-bar__templates-button--active,
+.tasknotes-plugin .filter-bar__templates-button--saved-view-active,
+.tasknotes-plugin .filter-bar__view-item--active,
+.tasknotes-plugin .filter-bar__view-item-container--active,
+.tasknotes-plugin .reminder-modal__type-tab--active,
+.tasknotes-plugin .reminder-defaults-type-tab--active,
+.advanced-calendar-view .fc-button-active,
+.advanced-calendar-view .fc-button.fc-button-active,
+.tasknotes-plugin .settings-view__tab-button--active,
+.tasknotes-plugin .tn-btn:active
+{
+	color:				var(--OT-color-on-accent-2)	!important;
+	background-color:	var(--color-accent-2)		!important;
+}
+
+.tasknotes-plugin .tn-btn,
+.tasknotes-plugin .reminder-modal__action-btn,
+.tasknotes-plugin .reminder-modal__quick-btn,
+.tasknotes-plugin .reminder-add-btn,
+.tasknotes-plugin .reminder-modal__save-btn,
+.tasknotes-plugin .reminder-defaults-add-btn,
+.tasknotes-plugin .project-note-subtasks__new-btn,
+.advanced-calendar-view__schedule-tasks-btn,
+.advanced-calendar-view__collapse-btn,
+.tasknotes-plugin .default-project-add-btn,
+.tasknotes-webhook-action-btn,
+.tasknotes-webhook-modal-btn,
+.tasknotes-webhook-modal-btn.save {
+	color:				var(--OT-color-on-accent-3)	!important;
+	background-color:	var(--color-accent-3)		!important;
+}
+/* ---------- ↑ TaskNotes plugin ↑ ----------	*/
+
 
 
 /*	Bookmark	OpSpl90	———————————————————— Some useful CSSCLASSES ————————————————————	*/
