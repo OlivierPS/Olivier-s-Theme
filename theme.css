@@ -265,6 +265,8 @@
 						YAML targeted. At last!													1.69.4
 			26.08.2025	added code for the TaskNotes plugin
 						improved the vertical spacing of tables in RAW editing mode				1.70.0
+			27.08.2025	Dark Ivory palette done, at last!
+						Improvements for TaskNotes plugin										1.70.1
 
 
 ========================================================================================================
@@ -1039,44 +1041,46 @@ body {
 .theme-light.lightPalette-ivory {
 	--OT-theme-h:		40;
 	--OT-theme-s:		100;
-	--color-base-00:	floralwhite;
-	--color-base-05:	#FFEFCE;
-	--color-base-20:	#FFF4DF;
-	--color-base-30:	#e0e0e0;
-	--color-base-35:	hsl(40, 70%, 75%);
-	--color-base-40:	#FFE3AC;
-	--color-base-50:	#D9B5A0;
-	--color-base-60:	#707070;
-	--color-base-70:	#AC6F49;
-	--color-base-100:	#402009;
+	--color-base-00:	hsl(var(--OT-theme-h), 100%, 97%); /* floralwhite */
+	--color-base-05:	hsl(var(--OT-theme-h), 100%, 91%);
+	--color-base-20:	hsl(var(--OT-theme-h), 100%, 94%);
+	--color-base-30:	hsl(0, 0%, 88%);
+	--color-base-35:	hsl(var(--OT-theme-h), 70%, 75%);
+	--color-base-40:	hsl(var(--OT-theme-h), 100%, 86%);
+	--color-base-50:	hsl(24, 40%, 66%);
+	--color-base-60:	hsl(0, 0%, 44%);
+	--color-base-70:	hsl(22, 41%, 47%);
+	--color-base-100:	hsl(28, 74%, 14%);
 
 	--link-color:		hsl(200, 90%, 35%);
 
-	--table-header-background:	#FFE9BD;
+	--table-header-background:	hsl(var(--OT-theme-h), 100%, 87%); /* #FFE9BD */
 	--OT-table-alt-background:	hsl(var(--OT-theme-h), 100%, 93%);
 
-	--color-accent-1:	hsl(var(--accent-h), var(--accent-s),	60%)	!important;
-	--accent-h:			40						!important;
-	--accent-s:					90%			!important;
-	--accent-l:							75%		!important;
+	--color-accent-1:	hsl(	var(--accent-h),	var(--accent-s),	60%)	!important;
+	--accent-h:					var(--OT-theme-h)								!important;
+	--accent-s:										90%							!important;
+	--accent-l:															75%		!important;
 
 	--OT-color-on-accent-1:			var(--color-base-100);
 	--OT-color-muted-on-accent-1:	var(--color-base-00);
 	--OT-color-on-accent-2:			var(--color-base-100);
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 100%, 33%)	!important;
-	--OT-color-muted-on-accent-2:	white;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 100%, 33%) !important;
+	--OT-color-muted-on-accent-2:	hsl(0, 0%, 100%); /* white */
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 60%);
 
 	--icon-color:		hsl(var(--accent-h), 80%, 50%);
 	--text-selection:	hsla(var(--OT-theme-h), 90%, 70%, 0.5);
 
+	/*	Citations & Blocs	*/
+	--code-background:	hsl(var(--OT-theme-h), 100%, 94%); /* #FFF4DF */
+	/*	--blockquote-background-color:	var(--code-background); */
 
-/*	Citations & Blocs	*/
-	--code-background:				#FFF4DF;
-//	--blockquote-background-color:	var(--code-background);
+	/*	Stabilo	*/
+	--OT-stabilo-mark:	hsl(var(--OT-theme-h), 100%, 86%); /* #FFE6B1 */
+	--OT-stabilo-text:	hsl(var(--OT-theme-h), 90%, 40%);
 
-/*	Stabilo	*/
-	--OT-stabilo-mark:	#FFE6B1;
-	--OT-stabilo-text:	hsl(40, 90%, 40%);
+	--OT-button-OFF-bg:	hsl(var(--OT-theme-h), 50%, 70%);
 
 	--dynamic-outline-background-hover:				var(--color-accent-2)!important;
 	--dynamic-outline-active-heading-background:	var(--color-accent-2)!important;
@@ -1830,6 +1834,62 @@ body {
 	--accent-s:								100%						!important;
 	--accent-l:													30%		!important;
 }/*	↑	darkPalette-icy	↑	*/
+/*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
+.theme-dark.darkPalette-ivory,
+.theme-dark.lightPalette-ivory.darkPalette-default {
+	--OT-theme-h:		40;
+	--OT-theme-s:		100;
+
+	/* DARK BASE SPECTRUM */
+	--color-base-00:	hsl(var(--OT-theme-h), 30%, 8%);   /* near black */
+	--color-base-05:	hsl(var(--OT-theme-h), 30%, 10%);
+	--color-base-20:	hsl(var(--OT-theme-h), 25%, 14%);
+	--color-base-30:	hsl(var(--OT-theme-h), 20%, 18%);
+	--color-base-35:	hsl(var(--OT-theme-h), 30%, 22%);
+	--color-base-40:	hsl(var(--OT-theme-h), 35%, 28%);
+	--color-base-50:	hsl(24, 30%, 40%);
+	--color-base-60:	hsl(0, 0%, 70%);
+	--color-base-70:	hsl(24, 50%, 60%);
+	--color-base-100:	hsl(var(--OT-theme-h), 70%, 82%);   /* the lightest tone (was darkest in light mode) */
+
+	/* LINKS & INTERACTIVES */
+	--link-color:		hsl(200, 80%, 65%);  /* cooler blue, but lighter */
+
+	/* TABLE BACKGROUNDS */
+	--table-header-background:	hsl(var(--OT-theme-h), 25%, 16%);
+	--OT-table-alt-background:	hsl(var(--OT-theme-h), 25%, 12%);
+
+	/* CITATIONS & BLOCKS */
+	--code-background:	hsl(var(--OT-theme-h), 25%, 14%); /* dark warm gray */
+	/* --blockquote-background-color: var(--code-background); */
+
+	/* ACCENT SYSTEM */
+	--color-accent-1:	hsl(var(--accent-h),	var(--accent-s),	50%)	!important;
+	--accent-h:				var(--OT-theme-h)											!important;
+	--accent-s:									90% 									!important;
+	--accent-l:														30% 				!important;
+
+
+	--OT-color-on-accent-1:			var(--color-base-00)			!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%, 30%)	!important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), 100%, 94%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 100%, 70%) !important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 65%);
+
+	/* ICONS & SELECTION */
+	--icon-color:		hsl(var(--accent-h), 80%, 60%);
+	--text-selection:	hsla(var(--OT-theme-h), 80%, 40%, 0.3);
+
+	/* Stabilo (Highlight Marker) */
+	--OT-stabilo-mark:	hsl(var(--OT-theme-h), 85%, 28%);
+	--OT-stabilo-text:	hsl(var(--OT-theme-h), 80%, 70%);
+
+	/* BUTTONS */
+	--OT-button-OFF-bg:	hsl(var(--OT-theme-h), 40%, 25%);
+	--OT-button-ON-bg:	hsl(var(--OT-theme-h), 90%, 45%);
+}/*	↑	darkPalette-ivory	↑	*/
+
 
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-LYT {
@@ -1884,7 +1944,6 @@ body {
 }/*	↑	darkPalette-LYT	↑	*/
 
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.darkPalette-metallicBlue,
 .theme-dark.lightPalette-metallicBlue.darkPalette-default {
 	/*	--OT-theme-reference-color:	#143248;	*/
@@ -3015,6 +3074,42 @@ body {
 }
 .theme-dark.lightPalette-icy.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
 .theme-dark.darkPalette-icy.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 100%, 40%, 0.5);
+}
+
+.theme-dark.lightPalette-ivory.darkPalette-default.accentColor-darkMode-shade,
+.theme-dark.darkPalette-ivory.accentColor-darkMode-shade {
+}
+.theme-dark.lightPalette-ivory.darkPalette-default.accentColor-darkMode-alternative-1,
+.theme-dark.darkPalette-ivory.accentColor-darkMode-alternative-1 {
+	--color-accent-1:				hsl(var(--accent-h), 	var(--accent-s),	45%)	!important;
+	--accent-h:						160													!important;
+	--accent-s:												80%							!important;
+	--accent-l:																	20%		!important;
+	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)		!important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s),	8%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%,				24%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s),	40%)	!important;
+}
+.theme-dark.lightPalette-ivory.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-ivory.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 100%, 40%, 0.3);
+}
+.theme-dark.lightPalette-ivory.darkPalette-default.accentColor-darkMode-alternative-2,
+.theme-dark.darkPalette-ivory.accentColor-darkMode-alternative-2 {
+	--color-accent-1:				hsl(var(--accent-h), 	var(--accent-s),	45%)	!important;
+	--accent-h:						200													!important;
+	--accent-s:												80%							!important;
+	--accent-l:																	20%		!important;
+	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)		!important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s),	90%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%,				24%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s),	40%)	!important;
+}
+.theme-dark.lightPalette-ivory.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-ivory.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
 	--text-selection:	hsla(var(--accent-h), 100%, 40%, 0.5);
 }
 
@@ -5529,9 +5624,9 @@ input[type=checkbox] {
 .cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def,
 .cm-line:has(.cm-hmd-frontmatter) {
 	color:			var(--OT-YAML-color);
-	padding-top:	0	!important;
+	padding-top:	4pt	!important;
 	padding-bottom:	0	!important;
-	line-height:	1.2rem	!important;
+	line-height:	1rem	!important;
 }
 .publish-section-header,
 .u-pop {
@@ -6404,6 +6499,7 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 button:not(.clickable-icon) {
 	color:				var(--OT-button-text-normal);
 	background-color: 	var(--OT-button-background-normal);
+	border:	1px solid var(--color-accent-2);
 }
 @media (hover: hover) {
   button:hover {
@@ -8747,7 +8843,34 @@ body {
 	color:				var(--OT-color-on-accent-3)	!important;
 	background-color:	var(--color-accent-3)		!important;
 }
-/* ---------- ↑ TaskNotes plugin ↑ ----------	*/
+
+.tasknotes-plugin button.instant-convert-button,
+.tasknotes-plugin .filter-date-help-button,
+.tasknotes-plugin .filter-bar__templates-button,
+.tasknotes-plugin .filter-bar__delete-button,
+.tasknotes-plugin .filter-bar__action-button,
+.tasknotes-plugin .nl-quick-create-button,
+.tasknotes-plugin .nl-parse-button,
+.tasknotes-plugin .nl-show-detail-button,
+.tasknotes-plugin .save-button,
+.tasknotes-plugin .content-type-buttons button,
+.tasknotes-plugin .kanban-view__new-task-button,
+.tasknotes-plugin .agenda-view__today-button {
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
+	border:				1px solid var(--color-accent-2);
+}
+
+.tasknotes-plugin .content-type-buttons button.mod-cta,
+.ics-form-button.mod-cta,
+.ics-edit-button.mod-cta {
+	color:				var(--OT-button-cta-text-normal);
+	background-color:	var(--OT-button-cta-background-normal);
+}
+
+.tasknotes-plugin .title-input:focus {
+	background:	var(--background-modifier-form-field);
+}/* ---------- ↑ TaskNotes plugin ↑ ----------	*/
 
 
 
@@ -9681,6 +9804,10 @@ settings:
 					label:		Icy
 					label.fr:	Glacé
 					value:		darkPalette-icy
+				-
+					label:		Ivory
+					label.fr:	Ivoire
+					value:		darkPalette-ivory
 				-
 					label:		LYT
 					value:		darkPalette-LYT

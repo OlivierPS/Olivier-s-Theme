@@ -123,6 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 27.08.2025
+Ivory palette in DARK mode: done!
+Improvements for *TaskNotes** plugin
+
+----------------------------------------------
 #### 26.08.2025 Version 1.70.0
 Added code for the TaskNotes plugin.
 Improved the vertical spacing of tables in RAW editing mode.
