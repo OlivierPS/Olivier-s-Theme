@@ -123,7 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 27.08.2025
+#### 29.08.2025 Version 1.71.0
+Revised lists formatting
+
+----------------------------------------------
+#### 27.08.2025 Version 1.70.1
 Ivory palette in DARK mode: done!
 Improvements for *TaskNotes** plugin
 
