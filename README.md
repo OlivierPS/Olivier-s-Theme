@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 30.08.2025 Version 1.71.1
+Improvements, for bases in particular
+
+----------------------------------------------
 #### 29.08.2025 Version 1.71.0
 Revised lists formatting
 

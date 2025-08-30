@@ -268,6 +268,7 @@
 			27.08.2025	Dark Ivory palette done, at last!
 						Improvements for TaskNotes plugin										1.70.1
 			29.08.2025	Revised lists formatting												1.71.0
+			30.08.2025	Improvements, for bases in particular									1.71.1
 
 
 ========================================================================================================
@@ -541,6 +542,21 @@ body {
 
 	--dropdown-background:			var(--color-accent-3);
 	--dropdown-background-hover:	var(--color-accent-1);
+
+	/*	for now (13.06.2025), I’m deliberately inhibiting the change of colors inside the modal, because it ruins the logic of the whole theme, especially in “inverted” themes, like “metallic blue”, where modals have a dark background	*/
+	--dynamic-outline-text-color:		var(--OT-menu-text-color);
+	--dynamic-outline-color:			var(--OT-menu-text-color);
+	--dynamic-outline-h1-text-color:	var(--dynamic-outline-text-color)!important;
+	--dynamic-outline-h2-text-color:	var(--dynamic-outline-text-color)!important;
+	--dynamic-outline-h3-text-color:	var(--dynamic-outline-text-color)!important;
+	--dynamic-outline-h4-text-color:	var(--dynamic-outline-text-color)!important;
+	--dynamic-outline-h5-text-color:	var(--dynamic-outline-text-color)!important;
+	--dynamic-outline-h6-text-color:	var(--dynamic-outline-text-color)!important;
+	--dynamic-outline-background:		var(--menu-background);
+	--dynamic-outline-background-accent:					lime!important;
+	--dynamic-outline-background-hover:						var(--color-accent-3)!important;
+	--dynamic-outline-background-modifier-hover-lighter:	lime!important;
+	--dynamic-outline-active-heading-background:			var(--color-accent-3)!important;
 
 	--embed-border-start:		0;
 	--embed-border-end:			1px dotted;
@@ -1131,7 +1147,6 @@ body {
 } /*	↑ lightPalette-lightBeige ↑	*/
 
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-metallicBlue {
 	--OT-theme-h:		205;
 	--OT-theme-s:		57%;
@@ -1842,7 +1857,6 @@ body {
 	--accent-l:													30%		!important;
 }/*	↑	darkPalette-icy	↑	*/
 /*	----------------------------------------------	*/
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.darkPalette-ivory,
 .theme-dark.lightPalette-ivory.darkPalette-default {
 	--OT-theme-h:		40;
@@ -2131,39 +2145,40 @@ body {
 }/*	↑	darkPalette-solarized	↑	*/
 
 /*	----------------------------------------------	*/
+.theme-dark.darkPalette-sunnyMemos,
 .theme-dark.lightPalette-sunnyMemos.darkPalette-default {
-	/*	--OT-theme-reference-color:	#512D00;	*/
-	--OT-theme-h:		33;
-	--OT-theme-s:		100%;
-	--color-base-00:	#402400;
-	--color-base-20:	#512D00;
-	--color-base-05:	#402400;
-	--color-base-10:	yellow;
-	--color-base-35:	#955300;
-	--color-base-40:	#A65C00;
-	--color-base-50:	#FF9B1E;
-	--color-base-70:	#FFC173;
-	--color-base-100:	#FFDFB7;
+	--OT-theme-h: 33;
+	--OT-theme-s: 100%;
+	--color-base-00:	hsl(var(--OT-theme-h), 25%, 12%);   /* base background */
+	--color-base-20:	hsl(var(--OT-theme-h), 30%, 16%);   /* lighter panels */
+	--color-base-05:	hsl(var(--OT-theme-h), 35%, 20%);   /* hover highlights */
+	--color-base-10:	hsl(var(--OT-theme-h), 40%, 24%);
+	--color-base-35:	hsl(var(--OT-theme-h), 45%, 20%);
+	--color-base-40:	hsl(var(--OT-theme-h), 55%, 32%);   /* mid text */
+	--color-base-50:	hsl(var(--OT-theme-h), 65%, 42%);
+	--color-base-70:	hsl(var(--OT-theme-h), 55%, 40%);
+	--color-base-100:	hsl(var(--OT-theme-h), 75%, 64%);  /* strongest orange */
 
-	--link-color:		#B7D7FF;
-	--code-background:	#2F1A00;
+	--link-color:		hsl(197, 82%, 65%); /* lighter teal to stand on dark bg */
 
-	--color-accent-1:	#5C370A	!important;
-	--accent-h:			33	!important;
-	--accent-s:			80%	!important;
-	--accent-l:			30%	!important;
-	--color-accent-3:	#C77816	!important;
+	--table-header-background:		hsl(var(--OT-theme-h), 50%, 14%);
+	--OT-table-background:			hsl(var(--OT-theme-h), 50%, 10%);
+	--OT-table-alt-background:		hsl(var(--OT-theme-h), 50%, 13%);
 
-	--OT-stabilo-mark:				var(--stabilo-orange-foncé);
-	--OT-stabilo-text:				#734000;
-	--OT-table-background:			#2F1A00;
-//	--table-header-background:	#1E1100;
-	--OT-table-alt-background:	#402400;
-	--OT-color-on-accent-1:		var(--color-base-100);
-	--OT-view-header-title-focus-color:	#FB8B00;
-	--OT-view-header-title-no-focus-color:	var(--color-base-35);
+	--code-background:	hsl(var(--OT-theme-h), 30%, 16%);
 
-} /*	↑ lightPalette-sunnyMemos (dark) ↑	*/
+	--color-accent-1:				hsl(var(--accent-h), 	var(--accent-s),	38%)	!important;
+	--accent-h:						var(--OT-theme-h)									!important;
+	--accent-s:												76%							!important;
+	--accent-l:																	52%		!important;
+
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%)	!important;
+
+	--text-selection:	hsla(var(--accent-h), 80%, 40%, 0.3);
+
+	--OT-stabilo-mark:	hsl(var(--OT-theme-h), 90%, 40%);
+	--OT-stabilo-text:	hsl(var(--OT-theme-h), 30%, 12%); /* same as bg to "highlight" */
+} /*	↑ darkPalette-sunnyMemos ↑	*/
 
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-stone,
@@ -6374,8 +6389,18 @@ body:not(.is-grabbing) .nav-folder-title.is-active:hover {
 	background:	var(--color-accent-1);
 }
 .query-toolbar-item .text-icon-button.is-active {
-	color: 				var(--color-base-50);
-//	background-color:	var(--color-accent-2);
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+}
+@media (hover: hover) {
+  .text-icon-button.is-active:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+  }
+  .text-icon-button.is-active:hover .text-button-icon {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+  }
 }
 /*	-------------------- ↑ Bases ↑ -------------------- */
 
@@ -8553,57 +8578,30 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 
 /*	Bookmark	OpSpl60	———————————————————— Dynamic Outline plugin  ————————————————————	*/
-body {
-	/*	for now (13.06.2025), I’m deliberately inhibiting the change of colors inside the modal, because it ruins the logic of the whole theme, especially in “inverted” themes, like “metallic blue”, where modals have a dark background	*/
-	--dynamic-outline-text-color:		var(--OT-menu-text-color);
-	--dynamic-outline-color:			var(--OT-menu-text-color);
-	--dynamic-outline-h1-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h2-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h3-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h4-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h5-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h6-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-background:		var(--menu-background);
-	--dynamic-outline-background-accent:					lime!important;
-	--dynamic-outline-background-hover:						var(--color-accent-3)!important;
-	--dynamic-outline-background-modifier-hover-lighter:	lime!important;
-	--dynamic-outline-active-heading-background:			var(--color-accent-3)!important;
-}
-#dynamic-outline {
-	--interactive-accent:	yellow	!important;
-	--background-modifier-hover:	yellow	!important;
-	color:				var(--OT-menu-text-color);
-}
-#dynamic-outline:hover {
-	color: 		var(--OT-color-on-accent-3) !important;
-	opacity:	unset;
-}
 #dynamic-outline li {
 	padding: 1px 0;
 }
-.dynamic-outline-collapse-icon {
-	color:	var(--OT-menu-text-color);
-}
-#dynamic-outline a:hover {
-	color: 		var(--OT-color-on-accent-1) !important;
-	background:	var(--color-accent-1);
-}
-
-/*
-#dynamic-outline li:hover,
-#dynamic-outline li.highlight:hover,
-#dynamic-outline li.hovered,
-#dynamic-outline li.highlight.hovered {
-	color: 		var(--OT-color-on-accent-1) !important;
-	background:	var(--color-accent-3);
-}
-#dynamic-outline li.highlight {
-	color: 		var(--OT-color-on-accent-1) !important;
-	background:	var(--color-accent-3);
-}*/
+.dynamic-outline-collapse-icon,
 .heading-level-styling-1 #dynamic-outline li::before,
 .heading-level-styling-2 #dynamic-outline li::before {
 	color: var(--OT-menu-text-muted);
+}
+.dynamic-outline-button.button-active {
+	opacity: 1;
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+}
+
+.dynamic-outline-button.pinned {
+	color:				var(--OT-color-on-accent-2);
+}
+#dynamic-outline li.highlight a,
+#dynamic-outline li.hovered a{
+	color:	var(--OT-color-on-accent-2);
+}
+#dynamic-outline a:hover {
+	color: 		var(--OT-color-on-accent-2) !important;
+	background:	var(--color-accent-2);
 }
 /*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
 
@@ -8873,6 +8871,11 @@ body {
 
 .tasknotes-plugin .title-input:focus {
 	background:	var(--background-modifier-form-field);
+}
+.
+tasknotes-plugin .filter-bar__view-empty-message {
+	color:				var(--OT-menu-text-muted);
+	background-color:	var(--menu-background);
 }/* ---------- ↑ TaskNotes plugin ↑ ----------	*/
 
 
