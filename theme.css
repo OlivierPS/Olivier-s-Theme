@@ -269,6 +269,7 @@
 						Improvements for TaskNotes plugin										1.70.1
 			29.08.2025	Revised lists formatting												1.71.0
 			30.08.2025	Improvements, for bases in particular									1.71.1
+			31.08.2025	Improvements for the *TaskNotes* plugin	and for Bases					1.71.2
 
 
 ========================================================================================================
@@ -1893,7 +1894,7 @@ body {
 
 
 	--OT-color-on-accent-1:			var(--color-base-00)			!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%, 30%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%, 16%)	!important;
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 100%, 94%)	!important;
 	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 100%, 70%) !important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 65%);
@@ -8876,7 +8877,29 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 tasknotes-plugin .filter-bar__view-empty-message {
 	color:				var(--OT-menu-text-muted);
 	background-color:	var(--menu-background);
-}/* ---------- ↑ TaskNotes plugin ↑ ----------	*/
+}
+
+.tasknotes-plugin .task-card:hover,
+.tasknotes-plugin .task-card:hover * {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1) !important;
+	& .task-card__status-dot {
+		border-color:		var(--OT-color-on-accent-1) !important;
+	}
+	& .task-card__priority-dot {
+		background-color:	var(--OT-color-on-accent-1)	!important;
+	}
+}
+
+.tasknotes-plugin .filter-bar__sort-group-button:hover *,
+.tasknotes-plugin .filter-bar__filter-toggle:hover *,
+.tasknotes-plugin .filter-bar__properties-button:hover *,
+.tasknotes-plugin .filter-bar__new-task-button:hover *,
+.tasknotes-plugin .filter-bar__view-item-container:hover * {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1) !important;
+}
+/* ---------- ↑ TaskNotes plugin ↑ ----------	*/
 
 
 

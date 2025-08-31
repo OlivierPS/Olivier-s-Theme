@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 31.08.2025 Version 1.71.2
+Improvements for the *TaskNotes* plugin and for Bases
+
+----------------------------------------------
 #### 30.08.2025 Version 1.71.1
 Improvements, for bases in particular
 
