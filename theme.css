@@ -271,6 +271,7 @@
 			30.08.2025	Improvements, for bases in particular									1.71.1
 			31.08.2025	Improvements for the *TaskNotes* plugin	and for Bases					1.71.2
 			01.09.2025	New setting: OT-metadata-label-width									1.72.0
+			02.09.2025	Bug correction															1.72.1
 
 
 ========================================================================================================
@@ -654,7 +655,7 @@ body {
   	--metadata-label-font-size:			var(--font-ui-small);
 	--metadata-label-font-weight:		var(--font-semibold);
 	--metadata-label-text-color:		var(--color-base-70);
-	--metadata-label-width:				var(--OT-metadada-label-width);
+	--metadata-label-width:				var(--OT-metadata-label-width);
 	--metadata-padding:					0;
 	--metadata-property-padding:		0em 0em 0em 0.3em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
 
@@ -9153,7 +9154,7 @@ settings:
 			description:
 			dsecription.fr:	Largeur des noms des champs des propriétés
 			type:			variable-number
-			default:		6
+			default:		9
 			format:			em
 	-
  			id:				OT-canvas-dot-pattern-hidden

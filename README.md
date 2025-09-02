@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 02.09.2025 Version 1.72.1
+Bug correction.
+
+----------------------------------------------
 #### 01.09.2025 Version 1.72.0
 New setting: GENERAL settings > Width of the properties labels [em]
 
