@@ -123,8 +123,9 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
-#### 03.09.2025 Version 1.72.2
+#### 03.09.2025 Version 1.72.2 and 1.72.3
 Fine tuned the Olive Green dark mode palette.
+Improving code for TaskNotes plugin.
 
 ----------------------------------------------
 #### 02.09.2025 Version 1.72.1
