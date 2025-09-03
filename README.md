@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 03.09.2025 Version 1.72.2
+Fine tuned the Olive Green dark mode palette.
+
+----------------------------------------------
 #### 02.09.2025 Version 1.72.1
 Bug correction.
 

@@ -272,6 +272,7 @@
 			31.08.2025	Improvements for the *TaskNotes* plugin	and for Bases					1.71.2
 			01.09.2025	New setting: OT-metadata-label-width									1.72.0
 			02.09.2025	Bug correction															1.72.1
+			03.09.2025	Fine tuned the Olive Green dark palette									1.72.2
 
 
 ========================================================================================================
@@ -371,6 +372,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 	--dark-blue:            hsl(233,  54%, 28%);
 	--blue:                 hsl(246,  74%, 43%);
 	--light-blue:           hsl(211,  50%, 77%);
+	--neutral-100: 			hsl(  0,   0%, 100%);   /* Pure white */
 	--royal-blue:           hsl(240, 100%, 32%);
 	--sky-blue:             hsl(192, 100%, 57%);
 
@@ -782,8 +784,8 @@ body {
 }
 /*	Bookmark	OpSpl05	—————————————————————————————— dark mode tuning —————————————————————————————— */
 .theme-dark {
-	--color-base-70:	hsl(var(--OT-theme-h), var(--OT-theme-s), 55%);
-	--background-primary-alt:			hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);
+	--color-base-70:			hsl(var(--OT-theme-h), var(--OT-theme-s), 55%);
+	--background-primary-alt:	hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);
 
 	--color-red-rgb:	348, 83, 47;
 	--color-red:		hsl(348, 90%, 64%);
@@ -801,7 +803,7 @@ body {
 	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%)	!important;
 	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 96%)	!important;
 	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%)	!important;
-	--OT-color-on-accent-3:			var(--color-base-100);
+	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), 50%, 30%);
 
 	--OT-button-OFF-bg:	var(--color-base-35);
 	--OT-button-ON-bg:	var(--color-accent-1);
@@ -2007,66 +2009,69 @@ body {
 }/*	↑	darkPalette-metallicBlue	↑	*/
 
 /*	----------------------------------------------	*/
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.darkPalette-oliveGreen,
 .theme-dark.lightPalette-paradiso.darkPalette-default,
 .theme-dark.lightPalette-pistachio.darkPalette-default {
-	/*	--OT-theme-reference-color:	#35361A;	*/
-	--OT-theme-h:		62;
-	--OT-theme-s:		35%;
-	--color-base-00:			#35361A;
-	--color-base-20:			#4C4D25;
-	--color-base-35:			#909246;
-	--color-base-40:			#35361A;
-	--color-base-50:			#797B3B;
-	--color-base-70:			#ADB05B;
-	--color-base-05:			#404120;
+	--OT-theme-h:             62;
+	--OT-theme-s:             35%;
 
-	--background-modifier-border:		#82843F;
-	--code-background:					#636430;
-	--OT-button-OFF-bg:					#6E6F36;
+	--color-base-00:          hsl(var(--OT-theme-h), var(--OT-theme-s), 16%);
+	--color-base-05:          hsl(var(--OT-theme-h), var(--OT-theme-s), 18%);
+	--color-base-20:          hsl(var(--OT-theme-h), var(--OT-theme-s), 20%);
+	--color-base-35:          hsl(var(--OT-theme-h), var(--OT-theme-s), 42%);
+	--color-base-40:          hsl(var(--OT-theme-h), var(--OT-theme-s), 16%);
+	--color-base-50:          hsl(var(--OT-theme-h), var(--OT-theme-s), 36%);
+	--color-base-70:          hsl(var(--OT-theme-h), var(--OT-theme-s), 42%);
+	--color-base-100:         hsl(var(--OT-theme-h), var(--OT-theme-s), 82%);
 
-	--color-base-100:		#E1E2C2;
-	--link-color:			#FFCC00;
-	--OT-stabilo-mark:		#909246 ;
-	--OT-stabilo-text:		#24514C;
-	--nav-item-color:	#BFC17D;
+	--link-color:             hsl(48, 100%, 50%);
 
-	--OT-setting-item-description:	#D0D29F;
-	--table-header-background:	#2A2B14;
-	--OT-table-background:			#2E2F16;
+	--table-header-background:  hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);
+	--OT-table-background:      hsl(var(--OT-theme-h), var(--OT-theme-s), 9%);
+	--OT-table-alt-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 12%);
+
+	--accent-h:							62										!important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), 34%, 5%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 35%, 26%) !important;
+
+	--text-selection:	hsla(var(--OT-theme-h), 80%, 33%, 0.25);
+	--OT-stabilo-mark:  var(--stabilo-vert-foncé);
+	--OT-button-OFF-bg: hsl(var(--OT-theme-h), 35%, 32%);
 }/*	↑	darkPalette-oliveGreen, paradiso, pistachio	↑	*/
 
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-parchment,
 .theme-dark.lightPalette-parchment.darkPalette-default {
 	/*	--OT-theme-reference-color:	#4E2F0D;	*/
-	--OT-theme-h:		31;
-	--OT-theme-s:		71%;
-	--color-base-00:	#4E2F0D;
-	--color-base-20:	#623B11;
-	--color-base-35:	#A7661D;
-	--color-base-40:	#B97020;
-	--color-base-50:	#A5641C;
-	--color-base-70:	#D17E23;
-	--color-base-05:	#57340F;
+--OT-theme-h:                   31;
+--OT-theme-s:                   71%;
+--color-base-00:                hsl(var(--OT-theme-h), 70%, 18%);
+--color-base-05:                hsl(var(--OT-theme-h), 70%, 20%);
+--color-base-20:                hsl(var(--OT-theme-h), 70%, 20%);
+--color-base-35:                hsl(var(--OT-theme-h), 70%, 38%);
+--color-base-40:                hsl(var(--OT-theme-h), 70%, 42%);
+--color-base-50:                hsl(var(--OT-theme-h), 70%, 38%);
+--color-base-70:                hsl(var(--OT-theme-h), 70%, 48%);
+--color-base-100:               hsl(var(--OT-theme-h), 70%, 89%);
 
-	--code-background:	#9E6729;
-	--code-background:	#734614;
-	--OT-button-OFF-bg:	#8D5519;
+--code-background:              hsl(var(--OT-theme-h), 58%, 39%);
+--code-background:              hsl(var(--OT-theme-h), 68%, 27%);
+--OT-button-OFF-bg:             hsl(var(--OT-theme-h), 67%, 33%);
 
-	--color-base-100:	#F5DEC4;
-	--link-color:		#C4DBF5;
+--link-color:                   hsl(212, 76%, 88%);
 
-	--nav-item-color:	#ECC090;
+--nav-item-color:               hsl(32, 67%, 76%);
 
-	--OT-setting-item-name:			#FCF7F0;
-	--OT-setting-item-description:	#F2D5B6;
-	--OT-stabilo-mark:				#E3A35C;
-	--OT-stabilo-text:				var(--color-base-20);
+--OT-setting-item-name:         hsl(32, 82%, 97%);
+--OT-setting-item-description:  hsl(32, 71%, 84%);
+--OT-stabilo-mark:              hsl(31, 74%, 64%);
+--OT-stabilo-text:              var(--color-base-20);
 
-	--table-header-background:	#3E250A;
-	--OT-table-background:			#462A0C;
-	--OT-view-header-title-no-focus-color:	#BC7120;
+--table-header-background:      hsl(32, 74%, 15%);
+--OT-table-background:          hsl(30, 69%, 16%);
+--OT-view-header-title-no-focus-color: hsl(33, 71%, 43%);
 }/*	↑	darkPalette-parchment	↑	*/
 
 /*	----------------------------------------------	*/
@@ -2529,7 +2534,6 @@ body {
 //	--OT-color-muted-on-accent-2:	var(--OT-color-muted-on-accent-1);
 //	--OT-color-on-accent-3:			var(--color-base-100);
 }
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-metallicBlue.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
@@ -3166,7 +3170,6 @@ body {
 	--OT-color-on-accent-3:			#CEF0E0	!important;
 	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 30%);	*/
 }
-/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.lightPalette-metallicBlue.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-metallicBlue.accentColor-darkMode-shade {
 	--accent-h:								206	!important;
@@ -3205,58 +3208,33 @@ body {
 	--color-accent-1:					#D76CA9	!important;
 	--color-accent-2:					#A02C6E	!important;
 	--color-accent-3:					#782152	!important;
-//	--OT-color-on-accent-1:				#fff	!important;
 	--OT-color-muted-on-accent-1:		#932865	!important;
-//	--OT-color-on-accent-2:				#fff	!important;
-//	--OT-color-on-accent-3:				#fff	!important;
-	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 30%);	*/
 }
 .theme-dark.lightPalette-paradiso.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.lightPalette-pistachio.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-oliveGreen.accentColor-darkMode-shade {
-	--accent-h:								62	!important;
-	--accent-s:								50%	!important;
-	--accent-l:								35%	!important;
-	--color-accent-1:						#B5B93E	!important;
-	--color-accent-2:						#6D6F36	!important;
-	--color-accent-3:						#777929	!important;
-	--OT-color-on-accent-1:					#1E1F0F	!important;
-	--OT-color-muted-on-accent-1:			#57582B	!important;
-	--OT-color-on-accent-2:					#F8F9EC	!important;
-//	--OT-color-on-accent-3:					#fff	!important;
-	--OT-button-ON-bg:						var(--color-accent-1);
-	--OT-button-cta-background-normal:		#ADB05B;
-	--OT-view-header-title-no-focus-color:	#9C9F36;
 }
+/*	OpSpl9999 ----------------------------------------------	*/
 .theme-dark.lightPalette-paradiso.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.lightPalette-pistachio.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-oliveGreen.accentColor-darkMode-alternative-1 {
 	--accent-h:						152	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						40%	!important;
-	--color-accent-1:				#73D0A4	!important;
-	--color-accent-2:				#37A672	!important;
-	--color-accent-3:				#226646	!important;
-	--OT-color-on-accent-1:			#15402C	!important;
-	--OT-color-muted-on-accent-1:	#2F8C60	!important;
-	--OT-color-on-accent-2:			#F2FBF7	!important;
-	--OT-color-on-accent-3:			#8CD9B5	!important;
-	--OT-button-ON-bg:				var(--color-accent-1);
+}
+.theme-dark.lightPalette-paradiso.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.lightPalette-pistachio.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-oliveGreen.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 90%, var(--accent-l), 0.5);
 }
 .theme-dark.lightPalette-paradiso.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.lightPalette-pistachio.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-oliveGreen.accentColor-darkMode-alternative-2 {
 	--accent-h:						32	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						40%	!important;
-	--color-accent-1:				#D4AC7F	!important;
-	--color-accent-2:				#C38B4C	!important;
-	--color-accent-3:				#8C602F	!important;
-//	--OT-color-on-accent-1:			#fff	!important;
-	--OT-color-muted-on-accent-1:	#8C602F	!important;
-//	--OT-color-on-accent-2:			#fff	!important;
-//	--OT-color-on-accent-3:			#fff	!important;
-	/*	--OT-text-selection:				hsl(var(--accent-h), var(--accent-s), 33%);	*/
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 50%, 40%);
+}
+.theme-dark.lightPalette-paradiso.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.lightPalette-pistachio.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-oliveGreen.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 90%, var(--accent-l), 0.5);
 }
 .theme-dark.lightPalette-parchment.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-parchment.accentColor-darkMode-shade {
@@ -3427,7 +3405,7 @@ body {
 	--OT-color-on-accent-3:			#BDDBBD	!important;
 }
 
-.theme-dark.lightPalette-sunnyMemos.accentColor-darkMode-alternative-1 {
+.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-1 {
 	--accent-h:			183	!important;		/*	c’est pour la sélection du texte qu’on explicite ici en HSL la couleur d’accentuation n°2	*/
 	--accent-s:			100%	!important;
 	--accent-l:			23%	!important;
@@ -3439,7 +3417,7 @@ body {
 	--OT-color-on-accent-3:	#734000;	!important;
 //	--OT-color-muted-on-accent-1:	grey;
 }
-.theme-dark.lightPalette-sunnyMemos.accentColor-darkMode-alternative-2 {
+.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-2 {
 	--accent-h:			243	!important;		/*	c’est pour la sélection du texte qu’on explicite ici en HSL la couleur d’accentuation n°2	*/
 	--accent-s:			100%	!important;
 	--accent-l:			36%	!important;
@@ -8309,6 +8287,23 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 .svelte-lazy {
   border-top: 1px dotted 	var(--color-base-100);
   border-bottom: 1px dotted var(--color-base-100);
+}
+.omnisearch-result.is-selected {
+	& .omnisearch-result__folder-path {
+		color:	var(--OT-color-muted-on-accent-2);
+	}
+	& .omnisearch-result__body {
+			color:	var(--OT-color-muted-on-accent-2);
+	}
+}
+.suggestion-item.is-selected:hover {
+	& .omnisearch-result__folder-path {
+		color:	var(--OT-color-muted-on-accent-1);
+	}
+	& .omnisearch-result__body {
+			color:	var(--OT-color-muted-on-accent-1);
+	}
+
 }
 /*	---------- ↑ Omnisearch plugin ↑ ----------	*/
 
