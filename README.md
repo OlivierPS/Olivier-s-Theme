@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 05.09.2025	Version 1.72.5
+Improved code for Bases.
+Improved code for the Metadata Menu plugin.
+Revised the Stone palette, both LIGHT and DARK
+
+----------------------------------------------
 #### 03.09.2025 Version 1.72.2, 1.72.3 and 1.72.4
 Fine tuned the Olive Green dark mode palette.
 Improved code for TaskNotes plugin.
