@@ -123,10 +123,14 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 06.09.2025	Version 1.72.6
+Small tweaks.
+
+----------------------------------------------
 #### 05.09.2025	Version 1.72.5
 Improved code for Bases.
 Improved code for the Metadata Menu plugin.
-Revised the Stone palette, both LIGHT and DARK
+Revised the Stone palette, both LIGHT and DARK.
 
 ----------------------------------------------
 #### 03.09.2025 Version 1.72.2, 1.72.3 and 1.72.4
