@@ -123,6 +123,10 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 07.09.2025	Version 1.72.7
+Small tweaks.
+
+----------------------------------------------
 #### 06.09.2025	Version 1.72.6
 Small tweaks.
 
