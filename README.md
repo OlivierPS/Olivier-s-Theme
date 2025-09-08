@@ -123,6 +123,12 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 08.09.2025	Version 1.73.0
+Big improvements in the code. Maintenance and upgradability should be very improved.
+I’m verifying everything.
+
+
+----------------------------------------------
 #### 07.09.2025	Version 1.72.7
 Small tweaks.
 
