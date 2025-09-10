@@ -123,6 +123,11 @@ It may sound like a *cliché*, but I really cannot mention everyone. This projec
 
 ## Updates
 
+#### 11.09.2025 Version 1.74.0
+Greatly improved the handling of muted text in every place.
+Prepared for the revision of the Dark Mode palettes.
+
+----------------------------------------------
 #### 09.09.2025 Version 1.73.1
 Small tweaks.
 
