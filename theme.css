@@ -284,6 +284,7 @@
 			09.09.2025	Small tweaks															1.73.1
 			10.09.2025	Very much improved the muted text handling + prepared for the revision
 						of Dark Mode palettes													1.74.0
+			11.09.2025	Small tweaks															1.74.1
 
 
 ========================================================================================================
@@ -1045,11 +1046,12 @@ body {
 	--color-base-05:	hsl(var(--OT-theme-h), 100%, 88%);
 	--color-base-20:	hsl(var(--OT-theme-h), 100%, 96%);
 	--color-base-35:	hsl(var(--OT-theme-h), 50%, 80%);
-	--color-base-50:	hsl(var(--OT-theme-h), var(--OT-theme-s), 77%);
+	--color-base-50:	hsl(var(--OT-theme-h), 80%, 70%);
 	--text-muted:		hsl(var(--OT-theme-h), 70%, 44%);
 
 	--blockquote-background-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
 	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
+	--OT-YAML-color:								hsl(var(--OT-theme-h), 50%, 50%);
 
 	--accent-s:										90%							!important;
 	--accent-l:															75%		!important;
@@ -2386,7 +2388,7 @@ body {
 	--accent-h:					192										!important;
 	--accent-s:								100%							!important;
 	--accent-l:													45%		!important;
-	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	90%)	!important;
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	97%)	!important;
 
 	--OT-color-on-accent-1:			var(--color-base-00);
 	--OT-color-muted-on-accent-1:	hsla(var(--accent-h), var(--accent-s), 90%)	!important;
@@ -8614,7 +8616,7 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 .dynamic-outline-collapse-icon,
 .heading-level-styling-1 #dynamic-outline li::before,
 .heading-level-styling-2 #dynamic-outline li::before {
-	color: var(--OT-menu-text-muted);
+	color: var(--OT-nav-item-muted);
 }
 .dynamic-outline-button.button-active {
 	opacity: 1;
@@ -8627,7 +8629,7 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 }
 #dynamic-outline li.highlight a,
 #dynamic-outline li.hovered a{
-	color:	var(--OT-color-on-accent-2);
+	color:	var(--OT-color-on-accent-3);
 }
 #dynamic-outline a:hover {
 	color: 		var(--OT-color-on-accent-2) !important;
@@ -8636,7 +8638,7 @@ body[data-recent-notes-density="compact"] div.recent-note-item:hover:not(.is-act
 
 #dynamic-outline .highlight [class^="heading-level-"],
 #dynamic-outline .hovered [class^="heading-level-"]{
-	color:	var(--OT-color-on-accent-2);
+	color:	var(--OT-color-on-accent-3);
 }
 /*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
 
