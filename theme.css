@@ -285,7 +285,7 @@
 			10.09.2025	Very much improved the muted text handling + prepared for the revision
 						of Dark Mode palettes													1.74.0
 			11.09.2025	Small tweaks															1.74.1
-
+						Small tweaks															1.74.2
 
 ========================================================================================================
 
@@ -568,7 +568,7 @@ body {
 	--dynamic-outline-background-accent:					lime!important;
 	--dynamic-outline-background-hover:						var(--color-accent-2)!important;
 	--dynamic-outline-background-modifier-hover-lighter:	lime!important;
-	--dynamic-outline-active-heading-background:			var(--color-accent-2)!important;
+	--dynamic-outline-active-heading-background:			var(--color-accent-3)!important;
 
 	--embed-border-start:		0;
 	--embed-border-end:			1px dotted;
