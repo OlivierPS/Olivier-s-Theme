@@ -3,11 +3,11 @@
   "version": "2.0.0",
   "minAppVersion": "1.6.0",
   "author": "Olivier Spinnler",
-  "authorUrl": "https://github.com/OlivierPS",
+  "authorUrl": "https://github.com/olivierps",
   "description": "A typography-first, color-system-driven Obsidian theme with unified accent logic, refined reading/editing ergonomics, and extensive plugin integration (Canvas, Kanban, Metadata Menu, Vertical Tabs, Smart Connections, etc.). [file:1]",
   "isDesktopOnly": false,
   "fundingUrl": "",
-  "repo": "OlivierPS/obsidian-oliviers-theme",
+  "repo": "olivierps/obsidian-oliviers-theme",
   "theme": true,
   "css": "theme.css"
 }
