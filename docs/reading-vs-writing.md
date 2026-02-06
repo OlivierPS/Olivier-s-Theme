@@ -1,4 +1,4 @@
-# Reading vs. Writing
+# Reading vs. Writing — mental modes
 
 Olivier’s Theme treats **Reading** and **Writing** as two different mental activities.  
 Each gets its own visual environment, so you can optimise both without compromise.

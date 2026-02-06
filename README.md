@@ -7,7 +7,7 @@ It combines a rich set of color palettes with a carefully structured set of opti
 
 > If you enjoy long‑form thinking, journaling, research, or psychotherapy notes, this theme is designed to stay out of your way while keeping your notes beautiful and readable.
 
-Documentation and screenshots for version 2.0 are currently being updated and will follow very shortly.
+Full documentation for version 2.0 is available in the **User Guide** (see _User Guide & screenshots_ below).
 
 ***
 
@@ -62,7 +62,7 @@ Documentation and screenshots for version 2.0 are currently being updated and wi
 The theme works out of the box, but it is designed to shine with these plugins:
 
 - **Style Settings** – Required to access most of the customization options.  
-- **Contextual Typography** – Recommended for finer control of vertical spacing and reading comfort.
+- **Contextual Typography** – Recommended: it allows the theme to refine certain vertical spacings more precisely, for smoother reading and writing rhythm.
 
 The theme also includes dedicated styling for many community plugins, such as (non‑exhaustive): Calendar, Dataview, Kanban, Metadata Menu, TaskNotes, Dynamic Outline, Floating TOC, Related Notes, Note Status, Vertical Tabs, QuickAdd, and others.
 
@@ -89,10 +89,10 @@ Once the theme and Style Settings are enabled, you will find a structured list o
 
 ***
 
-## Screenshots & User Guide
+## User Guide & screenshots
 
-- Full User Guide for v2: coming shortly  
-- Additional screenshots and sample notes: coming shorly
+- **Full User Guide for v2**: see the `/docs` folder, starting with [`docs/index.md`](docs/index.md).  
+- Additional screenshots and sample notes will be added over time as the documentation evolves.
 
 ***
 

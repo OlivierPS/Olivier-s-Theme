@@ -1,7 +1,7 @@
 # Reading mode
 
 The **READING mode** settings control how your notes look when you are simply reading them.  
-They focus on typography, tables, images and a few small behaviours that improve legibility.
+They focus on typography, tables, images and a few small behaviours that improve legibility and create a calm, book‑like page.
 
 <!-- screenshot: Style Settings – Olivier’s Theme – READING mode section -->
 
@@ -42,7 +42,7 @@ If the text feels too “wide” and tiring, reduce this value; if it feels too 
 
 This option defines the **text size inside table cells**, as a percentage of the Reading body text size.
 
-- At **90 %** (the recommended default), tables remain clear but do not overpower the main text. It may be more practical when cells have more than a few words.
+- At **90 %** (the recommended default), tables remain clear but do not overpower the main text. It may be more practical when cells have more than a few words.  
 - At **100 %**, tables feel more prominent and are easier to read when cells contain just numbers or few words.
 
 If your notes rely heavily on tables or Dataview outputs, you may want to experiment between 90 and 100 %.
@@ -71,22 +71,20 @@ This toggle enables a **hover highlight** on **list items** in **Reading mode**:
 When it is ON, moving the mouse over an item gives it a subtle accent background.  
 This makes it easier to visually follow long lists while reading, especially in dense notes.
 
-The highlight does **not** affect Editing mode; it is purely a reading aid.
+The highlight does **not** affect Writing / Editing mode; it is purely a reading aid.
 
 <!-- screenshot: list with hover highlight on an item -->
-
 
 ### Bases: hide header in Preview
 
 Once you have finished configuring a Base inside a note, the header with its buttons often becomes unnecessary and even visually disturbing, because it breaks the flow of the text.
 
-This option lets you completely hide the Bases header in **Reading (Preview) mode**, so the note reads like continuous text, simply with a table or a list
+This option lets you completely hide the Bases header in **Reading (Preview) mode**, so the note reads like continuous text, simply with a table or a list.
 
 When this switch is **ON**, you still have two easy ways to adjust a Base later:
 
-* Open the note in **Live Preview**: the Bases header is always visible while you are editing.
-* Temporarily **re‑enable the header for that note only** by using the `cssclasses` property in the note’s metadata and adding “bases-header-on”:
-
+- Open the note in **Live Preview**: the Bases header is always visible while you are editing.  
+- Temporarily **re‑enable the header for that note only** by using the `cssclasses` property in the note’s metadata and adding `bases-header-on`:
 
 ```yaml
 cssclasses: bases-header-on
@@ -94,7 +92,7 @@ cssclasses: bases-header-on
 
 Conversely, if you prefer to **see the Bases header in all notes by default**, leave this switch **OFF**.
 
-You can then hide the header only in some notes by adding the “bases-clean” class in the `cssclasses` property:
+You can then hide the header only in some notes by adding the `bases-clean` class in the `cssclasses` property:
 
 ```yaml
 cssclasses: bases-clean
@@ -130,5 +128,5 @@ The *width* of an image is always contained within the line length of the text c
 
 ---
 
-In short, Reading mode is where you tune the “book‑like” experience:  
+In short, Reading mode is where you tune the **book‑like** experience:  
 body size, rhythm of lines, behaviour of tables and images, and the overall feeling of the page while you are simply absorbing information — reading, studying, etc.

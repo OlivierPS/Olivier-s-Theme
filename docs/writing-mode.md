@@ -1,7 +1,7 @@
 # Writing / Editing mode
 
 The **WRITING / EDITING mode** settings control how your notes look and feel while you are working on them, either in Live Preview or in Source mode.  
-These settings are designed to give you a clear, efficient workspace.
+These settings are designed to give you a clear, efficient workspace that supports your thinking while you write.
 
 <!-- screenshot: Style Settings – Olivier’s Theme – WRITING / EDITING mode section -->
 

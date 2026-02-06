@@ -1,4 +1,4 @@
-# Visual catalogue of CSS classes
+# CSS classes and niceties
 
 This page shows the main **cssclasses provided by Olivier’s Theme**, with a short description and a visual example for each family.  
 To use them, add them to the `cssclasses` property in your note’s properties / YAML block.

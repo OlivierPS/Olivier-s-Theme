@@ -31,7 +31,7 @@ Later, you can override specific elements (accent, text color, backgrounds, high
 
 ### Accent color (Light)
 
-The accent color is used for interactive elements: buttons, tabs, hover states, active items, and so on.
+The **accent color** is used for interactive elements: buttons, tabs, hover states, active items, and so on.
 
 For each Light palette, you can choose:
 
@@ -43,7 +43,7 @@ Switch to an alternative when you want a slightly stronger, cooler or warmer con
 
 <!-- screenshot: accent color selector with Coordinated / Alt1 / Alt2 -->
 
-###  Body text color in Reading mode (Light)
+### Body text color in Reading mode (Light)
 
 This option sets the **text color for Reading mode** when Obsidian is in Light theme.
 
@@ -52,7 +52,7 @@ This option sets the **text color for Reading mode** when Obsidian is in Light t
 
 Combining a subtle ink color with a paper background can create very pleasant “fountain‑pen on paper” moods.
 
-If you change this color, Editing text color follows it (when set to Default), unless you customize it separately.
+If you change this color, the Writing / Editing text color follows it (when set to Default), unless you customize it separately.
 
 ### Notes background in Reading mode (Light)
 
@@ -70,11 +70,11 @@ Paper backgrounds are often ideal for journaling, long‑form reading or psychot
 
 ### Paper background also in Live Preview (Light)
 
-Live Preview is the default editing mode for many users.  
+Live Preview is the default editing mode for many users.
 
 This toggle decides whether the **paper background is also used in Live Preview**:
 
-- **OFF** – Reading uses the chosen paper (or plain) background; Live Preview uses a plain editing background. This makes the difference between reading and editing visually obvious.  
+- **OFF** – Reading uses the chosen paper (or plain) background; Live Preview uses a plain editing background. This makes the difference between Reading and Writing visually obvious.  
 - **ON** – both Reading and Live Preview share the same paper background, for a very consistent “paper notebook” look.
 
 Whatever you choose, a small indicator in the upper‑right corner of each pane always shows whether it is ready for editing, and this indicator uses the same color as the text.
@@ -90,7 +90,7 @@ This option sets the **ink color while editing** in Light mode.
 
 Typical reasons to diverge:
 
-- to make Reading vs Writing immediately distinguishable;  
+- to make Reading vs Writing immediately distinguishable,  
 - simply for variety and personal preference.
 
 ### Notes background in Writing / Editing mode (Light)
@@ -100,7 +100,7 @@ Here you choose the **background of the note while editing** in Light mode.
 On **Default**, it uses the background derived from the General palette.  
 If you want to emphasise the difference between Reading and Writing, pick another background:
 
-- a very light tint (ivory, grey, light green, etc.)  
+- a very light tint (ivory, grey, light green, etc.),  
 - or a slightly more saturated choice if you like strong visual cues.
 
 This affects Live Preview and Source views.
@@ -110,8 +110,7 @@ This affects Live Preview and Source views.
 When this switch is **ON**, text selections in Light mode use a tinted version of the **accent color**.  
 This keeps selections clearly visible while staying in tune with your chosen palette.
 
-When it is **OFF**, selections use a more neutral highlight that is still easy to see but less colorful.
-
+When it is **OFF**, selections use a more neutral highlight that is still easy to see but less colorful.  
 Choose the behaviour that feels the least distracting for you.
 
 ### Highlighting color (Light)
@@ -144,7 +143,8 @@ If you rely heavily on tags and metadata, it is worth trying a few options to fi
 
 ## Dark mode colors
 
-The Dark mode section mirrors the Light mode options. You can use it in a very simple way or design a separate Dark personality.
+The Dark mode section mirrors the Light mode options.  
+You can use it in a very simple way or design a separate Dark personality.
 
 ### General palette (Dark)
 
@@ -152,7 +152,7 @@ The **General palette (Dark)** controls the overall mood when Obsidian is in Dar
 
 You have two main approaches:
 
-- **Default \< light mode** – the Dark palette is automatically derived from the chosen Light palette. This keeps a strong relationship between the two modes and is usually the best starting point.  
+- **Default < light mode** – the Dark palette is automatically derived from the chosen Light palette. This keeps a strong relationship between the two modes and is usually the best starting point.  
 - **Explicit Dark palette** – select a specific Dark palette from the list when you want a very different night mood (for example a cooler, more contrasty Dark theme while keeping a warm Light theme).
 
 Some Dark palettes do not have a Light equivalent (for example *LYT* or *Victorian*); those must be chosen explicitly in Dark mode.
@@ -160,7 +160,7 @@ Some Dark palettes do not have a Light equivalent (for example *LYT* or *Victori
 Once a Dark General palette is chosen, it propagates just like in Light mode:
 
 - Reading background and text color,  
-- Editing background and text color (when left on Default),  
+- Writing / Editing background and text color (when left on Default),  
 - accent variations,  
 - highlighting colors.
 
@@ -177,8 +177,8 @@ Again, you can choose:
 - **Coordinated** – fits the Dark General palette,  
 - **Alternative 1** / **Alternative 2** – stronger or more contrasted accents.
 
-If you want Light and Dark to share the same “accent personality”, keep both on Coordinated;  
-if you want Dark to feel a little more vivid, try an alternative here.
+If you want Light and Dark to share the same “accent personality”, keep both on Coordinated.  
+If you want Dark to feel a little more vivid, try an alternative here.
 
 ### Text color in Reading mode (Dark)
 
@@ -202,12 +202,12 @@ Dark paper can make long reading sessions at night feel softer and less glaring.
 
 ### Paper background also in Live Preview (Dark)
 
-In case you have chosen a paper background for the Reading mode, this toggle defines wether this paper background is also used in **Live Preview**.
+If you have chosen a paper background for Reading mode, this toggle defines whether this paper background is also used in **Live Preview**.
 
 - **OFF** – Live Preview always uses a plain editing background.  
-- **ON** – The paper background chosen for Reading mode is also used in **Live Preview**.
+- **ON** – the paper background chosen for Reading mode is also used in Live Preview.
 
-Again, there’s an indicator in the top‑right corner of the pane signaling Editing mode.
+Again, there is an indicator in the top‑right corner of the pane signalling Editing mode.
 
 ### Text color in Writing / Editing mode (Dark)
 
@@ -216,7 +216,7 @@ This sets the **ink color while editing** in Dark mode.
 On **Default**, it follows the Dark Reading text color.  
 You can select a different color if you like a more vivid ink for Writing (for example bright cyan on a very dark background) while keeping Reading calmer.
 
-### Notes background in Writing / Editing mode (Dark)
+### Notes background in Writing / Editing mode (Dark)
 
 Here you choose the **Editing background** in Dark theme.
 
@@ -255,8 +255,8 @@ For users who work mainly in Dark mode with many tags and metadata, this setting
 
 ## A simple way to think about it
 
-- Let **Light General palette** define the *daytime personality* of your vault.  
-- Let **Dark General palette** either follow that choice (*Default \< light mode*) or become a separate *night personality*.  
+- Let the **Light General palette** define the *daytime personality* of your vault.  
+- Let the **Dark General palette** either follow that choice (`Default < light mode`) or become a separate *night personality*.  
 - Keep most other color options on **Default** until something feels off, then override only what you need.
 
 This way you keep the cascade working for you, instead of fighting dozens of independent color knobs.
