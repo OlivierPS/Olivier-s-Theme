@@ -1,4 +1,5 @@
 {
+  "id": "oliviers-theme",
   "name": "Olivier’s Theme",
   "version": "2.0.1",
   "minAppVersion": "1.6.0",
@@ -7,7 +8,7 @@
   "description": "A typography-first, color-system-driven Obsidian theme with unified accent logic, refined reading/editing ergonomics, and extensive plugin integration (Canvas, Kanban, Metadata Menu, Vertical Tabs, Smart Connections, etc.). [file:1]",
   "isDesktopOnly": false,
   "fundingUrl": "",
-  "repo": "https://github.com/OlivierPS/Olivier-s-Theme",
+  "repo": "OlivierPS/Olivier-s-Theme",
   "theme": true,
   "css": "theme.css"
 }
