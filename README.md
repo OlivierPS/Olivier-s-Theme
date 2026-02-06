@@ -1,5 +1,7 @@
 # Olivier’s Theme 2.0
 
+![readme screenshot](readme screenshot.png)
+
 An advanced interface theme for [Obsidian](https://obsidian.md/) focused on **legibility**, typography, and a calm, paper‑like writing environment.  
 It combines a rich set of color palettes with a carefully structured set of options via the Style Settings plugin.
 
