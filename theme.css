@@ -45,6 +45,15 @@
  *   - For reuse, forks, or publication, please credit “Olivier’s Theme for Obsidian, v2.0 – Olivier Charles”.
  */
 
+/*
+* Post‑release tweaks
+* -------------------
+* 2026‑02‑06
+*   - Increased `--header-height` from 2.0em to 2.4em for more comfortable workspace tab bars and view headers.
+*   - Restored normal vertical space for tab icons by relying on the updated header height instead of extra padding.
+*/
+
+
 ========================================================================================================
 
 Bookmarks:	OpSpl01:	définition des couleurs
@@ -400,7 +409,6 @@ body {
 	--OT-space-below-h4:							0.2rem;
 	--OT-space-below-h5:							0.2rem;
 	--OT-space-below-h6:							0.0rem;
-	--OT-stabilo-mark:								var(--stabilo-jaune-clair);
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-status-bar-padding:						6px;
 	--OT-syntax-markers:							var(--color-base-50);
@@ -529,7 +537,7 @@ body {
 
 	--graph-line:		var(--color-base-100);
 
-	--header-height:	2em;	/*	40px;	*/
+	--header-height:	2.4em;			/*	2026‑02‑06: raise header height for more legible tab bars.	*/
 
 	--heading-spacing:			0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
 
@@ -676,7 +684,8 @@ body {
 /*	--table-header-weight:				var(--font-bold);	*/
 	--table-text-size:					calc(var(--OT-readingMode-text-size) * var(--OT-readingMode-tableText-percent) / 100 );
 
-	--text-selection:	hsla(var(--OT-theme-h), var(--OT-theme-s), 40%, 0.2);
+	--text-highlight-bg:			var(--stabilo-jaune-clair);
+	--text-selection:				hsla(var(--OT-theme-h), var(--OT-theme-s), 40%, 0.2);
 
 	--titlebar-background:			var(--color-base-20);
 	--titlebar-background-focused:	var(--color-base-05);
@@ -717,6 +726,8 @@ body {
 	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 88%)	!important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%);
 }
+
+
 /*	Bookmark	OpSpl05	—————————————————————————————— base colors for a light theme —————————————————————————————— */
 .theme-light{
 	--OT-theme-h: 27;
@@ -736,6 +747,7 @@ body {
 	--OT-table-alt-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 91%);
 	--blockquote-background-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 98%);
 }
+
 /*	Bookmark	OpSpl06	—————————————————————————————— base colors for a dark theme —————————————————————————————— */
 .theme-dark {
 	--OT-theme-h:		40;
@@ -766,7 +778,7 @@ body {
 
 	--OT-menu-text-muted:	hsl(var(--OT-theme-h), 50%, 40%);
 
-	--OT-stabilo-mark:	var(var(--stabilo-jaune-foncé));
+	--text-highlight-bg:	var(--stabilo-jaune-foncé);
 	--OT-stabilo-text:	var(--color-base-00);
 	--text-selection:	hsla(var(--OT-theme-h), 90%, 60%, 0.2);
 
@@ -857,7 +869,7 @@ body {
 	--code-background:				hsl(178, 100%, 86%);             /* #AFFEFF */
 
 	/* Stabilo */
-	--OT-stabilo-mark:				var(--stabilo-bleu-clair);
+	--text-highlight-bg:				var(--stabilo-bleu-clair);
 
 	/* Buttons */
 	--OT-button-ON-bg:				var(--color-accent-1);
@@ -901,7 +913,7 @@ body {
 
 	--table-header-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 87%);
 	--OT-table-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 89%);
-	--OT-stabilo-mark:	var(--stabilo-bleu-foncé);
+	--text-highlight-bg:	var(--stabilo-bleu-foncé);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 50%, 90%);
 
 	--accent-s:							100%			!important;
@@ -935,7 +947,7 @@ body {
 	--OT-nav-item-muted:	hsl(var(--OT-theme-h), 20%, 50%);
 	--OT-menu-text-muted:	hsl(var(--OT-theme-h), 20%, 65%);
 
-	--OT-stabilo-mark:	var(--stabilo-vert-clair);
+	--text-highlight-bg:	hsl(146,  55%, 80%);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 80%, 40%);
 
 	--accent-s:								60%							!important;
@@ -969,7 +981,7 @@ body {
 	--OT-menu-text-color:	var(--OT-nav-item-muted);
 	--OT-menu-text-muted:	var(--nav-item-color);
 
-	--OT-stabilo-mark:	var(--stabilo-bleu-clair);
+	--text-highlight-bg:	var(--stabilo-bleu-clair);
 
 	--accent-s:						100%	!important;
 	--accent-l:						70%		!important;
@@ -991,7 +1003,7 @@ body {
 	--text-muted:		hsl(var(--OT-theme-h), 70%, 44%);
 
 	--blockquote-background-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
-	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
+	--text-highlight-bg:	var(--stabilo-jaune-foncé);
 	--OT-YAML-color:								hsl(var(--OT-theme-h), 50%, 50%);
 
 	--accent-s:										90%							!important;
@@ -1112,7 +1124,7 @@ body {
 
 	--metadata-background: 			#FFECD5;
 
-	--OT-stabilo-mark:	var(--stabilo-orange-clair);
+	--text-highlight-bg:	var(--stabilo-orange-clair);
 
 	--OT-setting-item-description:					hsl(var(--OT-theme-h), 90%, 50%);
 	--OT-button-OFF-bg:								hsl(var(--OT-theme-h), 80%, 80%);
@@ -1153,7 +1165,7 @@ body {
 	--OT-button-OFF-bg:				hsl(var(--OT-theme-h), 40%, 72%);
 
 	/* Stabilo */
-	--OT-stabilo-mark:				hsl(var(--OT-theme-h), 40%, 75%);
+	--text-highlight-bg:				hsl(var(--OT-theme-h), 40%, 75%);
 
 	/* Navigation & settings */
 	--nav-item-color:				hsl(var(--OT-theme-h), 30%, 30%);
@@ -1258,7 +1270,7 @@ body {
 	--blockquote-background-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 91%);
 	--nav-item-color:		hsl(var(--OT-theme-h), 80%, 44%);
 
-	--OT-stabilo-mark:	var(--stabilo-rose-foncé);
+	--text-highlight-bg:	var(--stabilo-rose-foncé);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 50%, 90%);
 
 	--accent-s:						93%	!important;
@@ -1354,7 +1366,7 @@ body {
 
 	--text-selection:	hsla(var(--OT-theme-h), var(--OT-theme-s), 40%, 0.2);
 
-	--OT-stabilo-mark:	var(--stabilo-jaune-clair);
+	--text-highlight-bg:	var(--stabilo-jaune-clair);
 
 	--OT-button-OFF-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 84%);
 }
@@ -1387,7 +1399,7 @@ body {
 	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 75%)	!important;
 	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 35%)	!important;
 
-	--OT-stabilo-mark:	var(--stabilo-orange-foncé);
+	--text-highlight-bg:	var(--stabilo-orange-foncé);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 100%, 94%);
 
 	--table-header-background:	hsl(var(--OT-theme-h), 100%, 83%); /* #FFD7A6 */
@@ -1433,7 +1445,7 @@ body {
 
 	/* Stabilo */
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);  /* #EDDCFD */
-	--OT-stabilo-mark:	hsl(var(--OT-theme-h), var(--OT-theme-s), 67%);  /* #B56DF5 */
+	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 67%);  /* #B56DF5 */
 
 	/* --OT-text-selection: hsl(var(--accent-h), var(--accent-s), 85%); */
 
@@ -1479,7 +1491,7 @@ body {
 	--OT-color-muted-on-accent-1:	hsl(35, 92%, 33%) !important;
 
 	/* STABILO */
-	--OT-stabilo-mark:	hsl(var(--OT-theme-h), var(--OT-theme-s), 65%);	/* #FFE655, near ref */
+	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 65%);	/* #FFE655, near ref */
 
 	/* COMPONENTS */
 	--code-background:				hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);	/* #FEF3C7 */
@@ -1523,7 +1535,7 @@ body {
 	--OT-button-OFF-bg:				hsl(var(--OT-theme-h), var(--OT-theme-s), 27%);
 	--OT-button-ON-bg:				var(--obsidian-violet);
 
-	--OT-stabilo-mark:				hsl(49, 72%, 62%);   /* #E2CB56, yellow accent, not a gray */
+	--text-highlight-bg:				hsl(49, 72%, 62%);   /* #E2CB56, yellow accent, not a gray */
 
 	--color-accent-1:		hsl(var(--accent-h), var(--accent-s), 50%) !important;
 	--accent-h:				268 !important;
@@ -1566,7 +1578,7 @@ body {
 	--OT-nav-item-muted:	hsl(var(--OT-theme-h), 0%, 40%);
 	--OT-menu-text-muted:	hsl(var(--OT-theme-h), 0%, 30%);
 	--OT-stabilo-text:		black;
-	--OT-stabilo-mark:		hsl(48, 66%, 30%);
+	--text-highlight-bg:		hsl(48, 66%, 30%);
 
 	--table-header-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 12%);
 	--OT-table-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 5%) ;
@@ -1651,7 +1663,7 @@ body {
 	--nav-item-color:			hsl(var(--OT-theme-h), 91%, 43%);                      /* #0868CA */
 
 	--OT-stabilo-text:			hsl(var(--OT-theme-h), 94%, 86%);                      /* #ACD4FD */
-	--OT-stabilo-mark:			hsl(var(--OT-theme-h), var(--OT-theme-s), 28%);        /* #054789 */
+	--text-highlight-bg:			hsl(var(--OT-theme-h), var(--OT-theme-s), 28%);        /* #054789 */
 
 	--OT-search-settings-item-name:	var(--OT-menu-text-muted);
 	--OT-setting-item-name:		hsl(var(--OT-theme-h), 95%, 67%);                      /* #5FADFB */
@@ -1696,7 +1708,7 @@ body {
 	--OT-button-OFF-bg:			hsl(var(--OT-theme-h), var(--OT-theme-s), 22%);           /* #613510 */
 
 	--OT-stabilo-text:			hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);           /* var(--color-base-00) */
-	--OT-stabilo-mark:			hsl(var(--OT-theme-h), 26%, 43%);                         /* #916847 */
+	--text-highlight-bg:			hsl(var(--OT-theme-h), 26%, 43%);                         /* #916847 */
 	--nav-item-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 43%);            /* #B76320 */
 }
 /*	↑	darkPalette-brown	↑	*/
@@ -1738,7 +1750,7 @@ body {
 
 	--text-selection:	hsla(var(--accent-h), 80%, 40%, 0.3);
 
-	--OT-stabilo-mark:		var(--stabilo-vert-foncé);
+	--text-highlight-bg:		var(--stabilo-vert-foncé);
 
 }/*	↑	darkPalette-green	↑	*/
 
@@ -1783,7 +1795,7 @@ body {
 
 	--text-selection: hsla(40, 98%, 47%, 0.27);
 
-	--OT-stabilo-mark:   #ffbf00;
+	--text-highlight-bg:   #ffbf00;
 }
 
 .theme-light.lightPalette-crt80s-green,
@@ -1827,7 +1839,7 @@ body {
 
 	--text-selection: hsla(101, 90%, 41%, 0.3);
 
-	--OT-stabilo-mark:   var(--stabilo-vert-foncé);
+	--text-highlight-bg:   var(--stabilo-vert-foncé);
 }
 
 /*	----------------------------------------------	*/
@@ -1913,7 +1925,7 @@ body {
 	--text-selection:	hsla(var(--OT-theme-h), 80%, 40%, 0.3);
 
 	/* Stabilo (Highlight Marker) */
-	--OT-stabilo-mark:	hsl(var(--OT-theme-h), 85%, 28%);
+	--text-highlight-bg:	hsl(var(--OT-theme-h), 85%, 28%);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 80%, 70%);
 
 	/* BUTTONS */
@@ -1971,7 +1983,7 @@ body {
     --h6-color: 		hsl(223, 18%, 68%);
 
 /*	--OT-stabilo-text:	var(--text-normal);	*/
-    --OT-stabilo-mark:	hsl(56, 83%, 96%);
+    --text-highlight-bg:	hsl(56, 83%, 96%);
 
 	--checklist-done-color:	hsl(190, 29%, 35%);
 }/*	↑	darkPalette-LYT	↑	*/
@@ -2005,7 +2017,7 @@ body {
 	--OT-setting-item-name:			hsl(206, 54%, 93%);                                /* #DDEBF5, pale blue */
 	--OT-setting-item-description:	hsl(204, 58%, 75%);                                /* #8DBDDF */
 	--OT-stabilo-text:				hsl(220, 7%, 87%);                                 /* var(--nav-item-color), off-white */
-	--OT-stabilo-mark:				hsl(205, 56%, 33%);                                /* #255C84, blue accent */
+	--text-highlight-bg:				hsl(205, 56%, 33%);                                /* #255C84, blue accent */
 
 	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);     /* #10293B */
 	--OT-table-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 16%);     /* #122D41 */
@@ -2040,7 +2052,7 @@ body {
 	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 35%, 26%) !important;
 
 	--text-selection:	hsla(var(--OT-theme-h), 80%, 33%, 0.25);
-	--OT-stabilo-mark:  var(--stabilo-vert-foncé);
+	--text-highlight-bg:  var(--stabilo-vert-foncé);
 	--OT-button-OFF-bg: hsl(var(--OT-theme-h), 35%, 32%);
 }/*	↑	darkPalette-oliveGreen, paradiso, pistachio	↑	*/
 
@@ -2069,7 +2081,7 @@ body {
 
 --OT-setting-item-name:         hsl(32, 82%, 97%);
 --OT-setting-item-description:  hsl(32, 71%, 84%);
---OT-stabilo-mark:              hsl(31, 74%, 64%);
+--text-highlight-bg:              hsl(31, 74%, 64%);
 --OT-stabilo-text:              var(--color-base-20);
 
 --table-header-background:      hsl(32, 74%, 15%);
@@ -2098,7 +2110,7 @@ body {
 	--code-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 7%);
 	--blockquote-background-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);
 	--OT-stabilo-text:		black;
-	--OT-stabilo-mark:		hsl(347, 90%, 64%);
+	--text-highlight-bg:		hsl(347, 90%, 64%);
 
 	--color-accent-1:	hsl(var(--OT-theme-h), 90%, 35%) !important;
 	--accent-h:			350 !important;
@@ -2164,7 +2176,7 @@ body {
 	--OT-table-alt-background:		var(--solarized-base03);
 	--table-header-color:			var(--solarized-base2);
 	--table-text-color:				var(--solarized-base1);
-	--OT-stabilo-mark:				var(--solarized-base1);
+	--text-highlight-bg:				var(--solarized-base1);
 	--OT-stabilo-text:				var(--solarized-base3);
 	--OT-view-header-title-no-focus-color:	var(--solarized-base0);
 }/*	↑	darkPalette-solarized	↑	*/
@@ -2201,7 +2213,7 @@ body {
 
 	--text-selection:	hsla(var(--accent-h), 80%, 40%, 0.3);
 
-	--OT-stabilo-mark:	hsl(var(--OT-theme-h), 90%, 40%);
+	--text-highlight-bg:	hsl(var(--OT-theme-h), 90%, 40%);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 30%, 12%); /* same as bg to "highlight" */
 } /*	↑ darkPalette-sunnyMemos ↑	*/
 
@@ -2241,7 +2253,7 @@ body {
 
 	--text-selection:	hsla(var(--accent-h), 20%, 50%, 0.3);
 
-	--OT-stabilo-mark:	var(--stabilo-vert-foncé);
+	--text-highlight-bg:	var(--stabilo-vert-foncé);
 
 	--OT-button-OFF-bg:	hsl(var(--OT-theme-h), 10%, 30%);
 
@@ -2318,7 +2330,7 @@ body {
 
 	--OT-setting-item-description:	hsl(265, 38%, 56%);                                 /* #8864BD */
 
-	--OT-stabilo-mark:			hsl(266, 58%, 89%);                                   /* #CDB6F1 */
+	--text-highlight-bg:			hsl(266, 58%, 89%);                                   /* #CDB6F1 */
 	--OT-stabilo-text:			hsl(var(--OT-theme-h), var(--OT-theme-s), 15%);      /* #200C40 */
 
 	--table-header-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 16%);      /* #270F4E */
@@ -3980,100 +3992,100 @@ body {
 
 /*	Bookmark	OpSpl14	 —————————————————————————————— Highlight Colors (Stabilo) —————————————————————————————— */
 .highlight-color-lightBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-clair);
+	--text-highlight-bg:	var(--stabilo-bleu-clair);
 	--OT-stabilo-text:	#24514C;
 }
 .highlight-color-lightYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-clair);
+	--text-highlight-bg:	var(--stabilo-jaune-clair);
 	/*	--OT-stabilo-text:	#987B08;	*/
 }
 .highlight-color-lightOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-clair);
+	--text-highlight-bg:	var(--stabilo-orange-clair);
 	/*	--OT-stabilo-text:	#FDEFE1;	*/
 }
 .highlight-color-lightRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-clair);
+	--text-highlight-bg:	var(--stabilo-rose-clair);
 	/*	--OT-stabilo-text:	#A5162A;	*/
 }
 .highlight-color-lightGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-clair);
+	--text-highlight-bg:	var(--stabilo-vert-clair);
 	--OT-stabilo-text:	#1E3F2C;
 }
 .highlight-color-lightViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-clair);
+	--text-highlight-bg:	var(--stabilo-violet-clair);
 	--OT-stabilo-text:	#E2D6E8;
 }
 .highlight-color-strongBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-foncé);
+	--text-highlight-bg:	var(--stabilo-bleu-foncé);
 	--OT-stabilo-text:	#BBE4F3;
 }
 .highlight-color-strongYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
+	--text-highlight-bg:	var(--stabilo-jaune-foncé);
 	/*	--OT-stabilo-text:	#987B08;	*/
 }
 .highlight-color-strongOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-foncé);
+	--text-highlight-bg:	var(--stabilo-orange-foncé);
 	--OT-stabilo-text:	#FDEFE1;
 }
 .highlight-color-strongRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-foncé);
+	--text-highlight-bg:	var(--stabilo-rose-foncé);
 	--OT-stabilo-text:	#F5CCE0;
 }
 .highlight-color-strongGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-foncé);
+	--text-highlight-bg:	var(--stabilo-vert-foncé);
 	--OT-stabilo-text:	#8FFEDB;
 }
 .highlight-color-strongViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-foncé);
+	--text-highlight-bg:	var(--stabilo-violet-foncé);
 	--OT-stabilo-text:	#F5CCE0;
 }
 /*	--------------------------------------------------	*/
 .theme-dark.highlight-color-dark-lightBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-clair);
+	--text-highlight-bg:	var(--stabilo-bleu-clair);
 	--OT-stabilo-text:	midnightblue;
 }
 .theme-dark.highlight-color-dark-lightYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-clair);
+	--text-highlight-bg:	var(--stabilo-jaune-clair);
 	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-clair);
+	--text-highlight-bg:	var(--stabilo-orange-clair);
 	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-clair);
+	--text-highlight-bg:	var(--stabilo-rose-clair);
 	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-clair);
+	--text-highlight-bg:	var(--stabilo-vert-clair);
 	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-lightViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-clair);
+	--text-highlight-bg:	var(--stabilo-violet-clair);
 	--OT-stabilo-text:	#432C4F;
 }
 .theme-dark.highlight-color-dark-strongBlue {
-	--OT-stabilo-mark:	var(--stabilo-bleu-foncé);
+	--text-highlight-bg:	var(--stabilo-bleu-foncé);
 	--OT-stabilo-text:	var(--text-normal);
 }
 .theme-dark.highlight-color-dark-strongYellow {
-	--OT-stabilo-mark:	var(--stabilo-jaune-foncé);
+	--text-highlight-bg:	var(--stabilo-jaune-foncé);
 	--OT-stabilo-text:	#2A280B;
 }
 .theme-dark.highlight-color-dark-strongOrange {
-	--OT-stabilo-mark:	var(--stabilo-orange-foncé);
+	--text-highlight-bg:	var(--stabilo-orange-foncé);
 	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-strongRose {
-	--OT-stabilo-mark:	var(--stabilo-rose-foncé);
+	--text-highlight-bg:	var(--stabilo-rose-foncé);
 	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-strongGreen {
-	--OT-stabilo-mark:	var(--stabilo-vert-foncé);
+	--text-highlight-bg:	var(--stabilo-vert-foncé);
 	--OT-stabilo-text:	var(--color-base-00);
 }
 .theme-dark.highlight-color-dark-strongViolet {
-	--OT-stabilo-mark:	var(--stabilo-violet-foncé);
+	--text-highlight-bg:	var(--stabilo-violet-foncé);
 	--OT-stabilo-text:	var(--text-normal);
 }
 /* -------------------- ↑ Highlight Colors -------------------- ↑ */
@@ -6499,7 +6511,7 @@ select {
 .collapse-icon svg.svg-icon,
 .svg-icon.right-triangle {
   width:        1.2em !important;
-  height:       1em !important;
+  height:       auto !important;
   padding-right: 0.3em !important;
   stroke-width: 4px !important; /* épaisseur des traits */
 }
@@ -8927,6 +8939,7 @@ kbd {
 /*	-------------------- ↑ Empty panel ↑	-------------------- */
 
 /*	Bookmark	OpSpl56	———————————————————— Text highlighting ————————————————————	*/
+
 .is-flashing,
 .community-item .suggestion-highlight,
 .textLayer .mod-focused,
@@ -8935,11 +8948,11 @@ kbd {
 .cm-s-obsidian span.cm-formatting-highlight,
 .cm-s-obsidian span.cm-highlight {
 	color:				var(--OT-stabilo-text) !important;
-	background-color:	var(--OT-stabilo-mark) !important;
+	background-color:	var(--text-highlight-bg) !important;
 }
 .markdown-rendered mark .internal-link {
 	color:						var(--OT-stabilo-text);
-	background-color:			var(--OT-stabilo-mark);
+	background-color:			var(--text-highlight-bg);
 	text-decoration-line:		underline;
 	text-decoration-style:		dotted;
 	text-decoration-color:		var(--OT-stabilo-text);
@@ -8952,7 +8965,7 @@ kbd {
 	box-shadow:			0 0 0px 1px var(--color-accent-2);
 	opacity:			0.5;
     color:				var(--OT-stabilo-text) !important;
-    background-color:	var(--OT-stabilo-mark) !important;
+    background-color:	var(--text-highlight-bg) !important;
 }
 .markdown-rendered .search-highlight > div.is-active {
 	box-shadow:	0 0 0px 2px var(--color-accent-1);
@@ -8964,12 +8977,12 @@ kbd {
 /* Edit */
 .cm-s-obsidian span.cm-highlight.obsidian-search-match-highlight {
     color:				var(--OT-stabilo-text) !important;
-    background-color:	var(--OT-stabilo-mark) !important;
+    background-color:	var(--text-highlight-bg) !important;
 }
 
 .obsidian-search-match-highlight {
     color:				var(--OT-stabilo-text) !important;
-    background-color:	var(--OT-stabilo-mark) !important;
+    background-color:	var(--text-highlight-bg) !important;
 }
 /*	---------- ↑ search match ↑ ----------	*/
 
@@ -9426,7 +9439,7 @@ kbd {
 /* Highlight dans les extraits */
 .omnisearch-default-highlight {
   color:            var(--OT-stabilo-text);
-  background-color: var(--OT-stabilo-mark);
+  background-color: var(--text-highlight-bg);
   text-decoration:  none;
 }
 
