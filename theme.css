@@ -48,6 +48,9 @@
 /*
 * Post‑release tweaks
 * -------------------
+* 2026-02-07
+* 	- Modified the Style Settings font selector for writing so that it gives a CSS class.
+* 	- This permits the fine tuning of letter-spacing on a per-font basis
 * 2026‑02‑06
 *   - Increased `--header-height` from 2.0em to 2.4em for more comfortable workspace tab bars and view headers.
 *   - Restored normal vertical space for tab icons by relying on the updated header height instead of extra padding.
@@ -376,6 +379,7 @@ body {
 	--OT-editMode-text-size:						17px;
 	--OT-editMode-line-width:						46em;
 	--OT-editMode-line-height:						1.35em;
+	--OT-editMode-letter-spacing:					0em;
 	--OT-editMode-tableText-percent:				90;
 	--OT-img-max-height-preview:					550px;
 	--OT-img-max-height-live:						10rem;
@@ -4768,6 +4772,364 @@ body {
 
 
 /*	Bookmark	OpSpl18	 —————————————————————————————— Edit mode font family and font size —————————————————————————————— */
+
+/* ------------------------- Edit mode font family + kerning (2026-02-07) ------------------------- */
+
+/* Valeurs par défaut (aucune classe spéciale) */
+body {
+	--OT-editMode-font-family:		var(--OT-editMode-font), Courier, var(--font-default);
+	--OT-editMode-letter-spacing:	0em;
+}
+
+/* Default = même fonte qu’en lecture */
+body.edit-font-Default {
+	--OT-editMode-font-family: var(--font-text), Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* American Typewriter */
+body.edit-font-AmericanTypewriter {
+	--OT-editMode-font-family: "American Typewriter", "ITC American Typewriter", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0.02em;
+}
+
+/* Candara */
+body.edit-font-Candara {
+	--OT-editMode-font-family: Candara, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Cambria */
+body.edit-font-Cambria {
+	--OT-editMode-font-family: Cambria, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Cascadia Mono */
+body.edit-font-Cascadia-Mono {
+	--OT-editMode-font-family: "Cascadia Mono", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Courier – exception : fallback Comic Sans MS */
+body.edit-font-Courier {
+	--OT-editMode-font-family: Courier, "Comic Sans MS", var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* DejaVu Sans */
+body.edit-font-DejaVu-Sans {
+	--OT-editMode-font-family: "DejaVu Sans", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Depot Condensed */
+body.edit-font-Depot-Condensed {
+	--OT-editMode-font-family: "Depot New Condensed", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Dico Mono */
+body.edit-font-Dico-Mono {
+	--OT-editMode-font-family: "Dico Mono", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* DM Sans */
+body.edit-font-DM-Sans {
+	--OT-editMode-font-family: "DM Sans", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Etica Mono */
+body.edit-font-Etica-Mono {
+	--OT-editMode-font-family: "LFT Etica Mono", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Georgia */
+body.edit-font-Georgia {
+	--OT-editMode-font-family: Georgia, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* iA Writer Mono */
+body.edit-font-iA-Writer-Mono {
+	--OT-editMode-font-family: "iA Writer Mono S", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* iA Writer Duo */
+body.edit-font-iA-Writer-Duo {
+	--OT-editMode-font-family: "iA Writer Duospace", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* iA Writer Quattro */
+body.edit-font-iA-Writer-Quattro {
+	--OT-editMode-font-family: "iA Writer Quattro S", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* IBM Plex Sans */
+body.edit-font-IBM-Plex-Sans {
+	--OT-editMode-font-family: "IBM Plex Sans", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* IBM Plex Mono */
+body.edit-font-IBM-Plex-Mono {
+	--OT-editMode-font-family: "IBM Plex Mono", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* IBM Plex Serif */
+body.edit-font-IBM-Plex-Serif {
+	--OT-editMode-font-family: "IBM Plex Serif", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Inter */
+body.edit-font-Inter {
+	--OT-editMode-font-family: Inter, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* JetBrains Mono */
+body.edit-font-JetBrains-Mono {
+	--OT-editMode-font-family: "JetBrains Mono", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Lato */
+body.edit-font-Lato {
+	--OT-editMode-font-family: Lato, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Lucida Sans */
+body.edit-font-Lucida-Sans {
+	--OT-editMode-font-family: "Lucida Sans Std", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Lucida Typewriter */
+body.edit-font-Lucida-Typewriter {
+	--OT-editMode-font-family: "Lucida Typewriter Std", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0.01em;
+}
+
+/* Maison Neue */
+body.edit-font-Maison-Neue {
+	--OT-editMode-font-family: "Maison Neue", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Maison Neue Mono */
+body.edit-font-Maison-Neue-Mono {
+	--OT-editMode-font-family: "Maison Neue Mono", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Menlo */
+body.edit-font-Menlo {
+	--OT-editMode-font-family: Menlo, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Muli */
+body.edit-font-Muli {
+	--OT-editMode-font-family: Muli, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Myriad */
+body.edit-font-Myriad {
+	--OT-editMode-font-family: "Myriad Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Nexus Typewriter */
+body.edit-font-Nexus-Typewriter {
+	--OT-editMode-font-family: "Nexus Typewriter Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0.015em;
+}
+
+/* Norms */
+body.edit-font-Norms {
+	--OT-editMode-font-family: "TT Norms", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Norms Condensed */
+body.edit-font-Norms-Condensed {
+	--OT-editMode-font-family: "TT Norms Std Condensed", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Noto Sans */
+body.edit-font-Noto-Sans {
+	--OT-editMode-font-family: "Noto Sans", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Office Code */
+body.edit-font-Office-Code {
+	--OT-editMode-font-family: "Office Code Pro D", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Officina Sans */
+body.edit-font-Officina-Sans {
+	--OT-editMode-font-family: "ITC Officina Sans Std", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Officina Sans Serif */
+body.edit-font-Officina-Sans-Serif {
+	--OT-editMode-font-family: "ITC Officina Serif Std", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Overpass */
+body.edit-font-Overpass {
+	--OT-editMode-font-family: Overpass, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Palatino Sans */
+body.edit-font-Palatino-Sans {
+	--OT-editMode-font-family: "Palatino Sans Com", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Palatino Sans Informal */
+body.edit-font-Palatino-Sans-Informal {
+	--OT-editMode-font-family: "Palatino Sans Informal LT Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* PT Sans */
+body.edit-font-PT-Sans {
+	--OT-editMode-font-family: "PT Sans", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Questa */
+body.edit-font-Questa {
+	--OT-editMode-font-family: Questa, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Questa Sans */
+body.edit-font-Questa-Sans {
+	--OT-editMode-font-family: "Questa Sans", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Questa Slab */
+body.edit-font-Questa-Slab {
+	--OT-editMode-font-family: "Questa Slab", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Roboto */
+body.edit-font-Roboto {
+	--OT-editMode-font-family: Roboto, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Rockwell */
+body.edit-font-Rockwell {
+	--OT-editMode-font-family: Rockwell, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Sans serif de base */
+body.edit-font-sans-serif {
+	--OT-editMode-font-family: sans-serif, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Siseriff */
+body.edit-font-Siseriff {
+	--OT-editMode-font-family: "Siseriff LT Std", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Space Mono */
+body.edit-font-Space-Mono {
+	--OT-editMode-font-family: "Space Mono", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Stone Humanist */
+body.edit-font-Stone-Humanist {
+	--OT-editMode-font-family: "Stone Humanist ITC Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Stone Informal */
+body.edit-font-Stone-Informal {
+	--OT-editMode-font-family: "Stone Informal ITC Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Stone Sans II */
+body.edit-font-Stone-Sans-II {
+	--OT-editMode-font-family: "Stone Sans II ITC Com", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Stone Serif */
+body.edit-font-Stone-Serif {
+	--OT-editMode-font-family: "Stone Serif ITC Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Source Code */
+body.edit-font-Source-Code {
+	--OT-editMode-font-family: "Source Code Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Source Sans 3 */
+body.edit-font-Source-Sans-3 {
+	--OT-editMode-font-family: "Source Sans 3", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Source Serif */
+body.edit-font-Source-Serif {
+	--OT-editMode-font-family: "Source Serif Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Tisa */
+body.edit-font-Tisa {
+	--OT-editMode-font-family: "Tisa Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Tisa Sans */
+body.edit-font-Tisa-Sans {
+	--OT-editMode-font-family: "Tisa Sans Pro", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Trebuchet */
+body.edit-font-Trebuchet {
+	--OT-editMode-font-family: "Trebuchet MS", Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Verdana */
+body.edit-font-Verdana {
+	--OT-editMode-font-family: Verdana, Courier, var(--font-default);
+	--OT-editMode-letter-spacing: 0em;
+}
+
+/* Application dans l’éditeur (complète ton bloc existant) */
 .cm-list-1,
 .cm-list-2,
 .cm-list-3,
@@ -4782,8 +5144,9 @@ body {
 .markdown-source-view.mod-cm6 .cm-scroller,
 .markdown-source-view,
 .cm-s-obsidian {
-    font-family:	var(--OT-editMode-font-family);
-	font-size: 		var(--OT-editMode-text-size);
+	font-family: var(--OT-editMode-font-family);
+	font-size: var(--OT-editMode-text-size);
+	letter-spacing: var(--OT-editMode-letter-spacing);
 }
 
 /* ---------- “monospaced” font ----------
@@ -12404,186 +12767,186 @@ settings:
 			id:				OT-editMode-font
 			title:			Typeface
 			title.fr:		Police d’écriture
-			description:	“Default” chooses the same font as for reading. Reading font is chosen in the Appearance panel of the Settings.
+			description:	"Default” chooses the same font as for reading. Reading font is chosen in the Appearance panel of the Settings."
 			description.fr:	Par défaut, la même qu’en mode LECTURE.
-			type:			variable-select
-			default:		var(--font-text)
+			type:			class-select
+			default:		edit-font-Default
 			options:
 				-
 					label:		Default
 					label.fr:	Par défaut
-					value:		var(--font-text)
+					value:		edit-font-Default
 				-
-					label:	American Typewriter
-					value:	American Typewriter
+					label:		American Typewriter
+					value:		edit-font-AmericanTypewriter
 				-
-					label:	Candara
-					value:	Candara
+					label:		Candara
+					value:		edit-font-Candara
 				-
-					label:	Cambria
-					value:	Cambria
+					label:		Cambria
+					value:		edit-font-Cambria
 				-
-					label:	Cascadia Mono
-					value:	Cascadia Mono
+					label:		Cascadia Mono
+					value:		edit-font-Cascadia-Mono
 				-
-					label:	Courier
-					value:	Courier
+					label:		Courier
+					value:		edit-font-Courier
 				-
-					label:	DejaVu Sans
-					value:	DejaVu Sans
+					label:		DejaVu Sans
+					value:		edit-font-DejaVu-Sans
 				-
-					label:	Depot Condensed
-					value:	Depot New Condensed
+					label:		Depot Condensed
+					value:		edit-font-Depot-Condensed
 				-
-					label:	Dico Mono
-					value:	Dico Mono
+					label:		Dico Mono
+					value:		edit-font-Dico-Mono
 				-
-					label:	DM Sans
-					value:	DM Sans
+					label:		DM Sans
+					value:		edit-font-DM-Sans
 				-
-					label:	Etica Mono
-					value:	LFT Etica Mono
+					label:		Etica Mono
+					value:		edit-font-Etica-Mono
 				-
-					label:	Georgia
-					value:	Georgia
+					label:		Georgia
+					value:		edit-font-Georgia
 				-
-					label:	iA Writer Mono
-					value:	iA Writer Mono S
+					label:		iA Writer Mono
+					value:		edit-font-iA-Writer-Mono
 				-
-					label:	iA Writer Duo
-					value:	iA Writer Duospace
+					label:		iA Writer Duo
+					value:		edit-font-iA-Writer-Duo
 				-
-					label:	iA Writer Quattro
-					value:	iA Writer Quattro S
+					label:		iA Writer Quattro
+					value:		edit-font-iA-Writer-Quattro
 				-
-					label:	IBM Plex Sans
-					value:	IBM Plex Sans
+					label:		IBM Plex Sans
+					value:		edit-font-IBM-Plex-Sans
 				-
-					label:	IBM Plex Mono
-					value:	IBM Plex Mono
+					label:		IBM Plex Mono
+					value:		edit-font-IBM-Plex-Mono
 				-
-					label:	IBM Plex Serif
-					value:	IBM Plex Serif
+					label:		IBM Plex Serif
+					value:		edit-font-IBM-Plex-Serif
 				-
-					label:	Inter
-					value:	Inter
+					label:		Inter
+					value:		edit-font-Inter
 				-
-					label:	JetBrains Mono
-					value:	JetBrains Mono
+					label:		JetBrains Mono
+					value:		edit-font-JetBrains-Mono
 				-
-					label:	Lato
-					value:	Lato
+					label:		Lato
+					value:		edit-font-Lato
 				-
-					label:	Lucida Sans
-					value:	Lucida Sans Std
+					label:		Lucida Sans
+					value:		edit-font-Lucida-Sans
 				-
-					label:	Lucida Typewriter
-					value:	Lucida Typewriter Std
+					label:		Lucida Typewriter
+					value:		edit-font-Lucida-Typewriter
 				-
-					label:	Maison Neue
-					value:	Maison Neue
+					label:		Maison Neue
+					value:		edit-font-Maison-Neue
 				-
-					label:	Maison Neue Mono
-					value:	Maison Neue Mono
+					label:		Maison Neue Mono
+					value:		edit-font-Maison-Neue-Mono
 				-
-					label:	Menlo
-					value:	Menlo
+					label:		Menlo
+					value:		edit-font-Menlo
 				-
-					label:	Muli
-					value:	Muli
+					label:		Muli
+					value:		edit-font-Muli
 				-
-					label: 	Myriad
-					value:	Myriad Pro
+					label:		Myriad
+					value:		edit-font-Myriad
 				-
-					label:	Nexus Typewriter
-					value:	Nexus Typewriter Pro
+					label:		Nexus Typewriter
+					value:		edit-font-Nexus-Typewriter
 				-
-					label:	Norms
-					value:	TT Norms
+					label:		Norms
+					value:		edit-font-Norms
 				-
-					label:	Norms Condensed
-					value:	TT Norms Std Condensed
+					label:		Norms Condensed
+					value:		edit-font-Norms-Condensed
 				-
-					label: 	Noto Sans
-					value:	Noto Sans
+					label:		Noto Sans
+					value:		edit-font-Noto-Sans
 				-
-					label:	Office Code
-					value:	Office Code Pro D
+					label:		Office Code
+					value:		edit-font-Office-Code
 				-
-					label:	Officina Sans
-					value:	ITC Officina Sans Std
+					label:		Officina Sans
+					value:		edit-font-Officina-Sans
 				-
-					label:	Officina Sans Serif
-					value:	ITC Officina Serif Std
+					label:		Officina Sans Serif
+					value:		edit-font-Officina-Sans-Serif
 				-
-					label:	Overpass
-					value:	Overpass
+					label:		Overpass
+					value:		edit-font-Overpass
 				-
-					label:	Palatino Sans
-					value:	Palatino Sans Com
+					label:		Palatino Sans
+					value:		edit-font-Palatino-Sans
 				-
-					label:	Palatino Sans Informal
-					value:	Palatino Sans Informal LT Pro
+					label:		Palatino Sans Informal
+					value:		edit-font-Palatino-Sans-Informal
 				-
-					label:	PT Sans
-					value:	PT Sans
+					label:		PT Sans
+					value:		edit-font-PT-Sans
 				-
-					label:	Questa
-					value:	Questa
+					label:		Questa
+					value:		edit-font-Questa
 				-
-					label:	Questa Sans
-					value:	Questa Sans
+					label:		Questa Sans
+					value:		edit-font-Questa-Sans
 				-
-					label:	Questa Slab
-					value:	Questa Slab
+					label:		Questa Slab
+					value:		edit-font-Questa-Slab
 				-
-					label:	Roboto
-					value:	Roboto
+					label:		Roboto
+					value:		edit-font-Roboto
 				-
-					label:	Rockwell
-					value:	Rockwell
+					label:		Rockwell
+					value:		edit-font-Rockwell
 				-
-					label:	Sans serif de base
-					value:	sans-serif
+					label:		Sans serif de base
+					value:		edit-font-sans-serif
 				-
-					label:	Siseriff
-					value:	Siseriff LT Std
+					label:		Siseriff
+					value:		edit-font-Siseriff
 				-
-					label:	Space Mono
-					value:	Space Mono
+					label:		Space Mono
+					value:		edit-font-Space-Mono
 				-
-					label:	Stone Humanist
-					value:	Stone Humanist ITC Pro
+					label:		Stone Humanist
+					value:		edit-font-Stone-Humanist
 				-
-					label:	Stone Informal
-					value:	Stone Informal ITC Pro
+					label:		Stone Informal
+					value:		edit-font-Stone-Informal
 				-
-					label:	Stone Sans II
-					value:	Stone Sans II ITC Com
+					label:		Stone Sans II
+					value:		edit-font-Stone-Sans-II
 				-
-					label:	Stone Serif
-					value:	Stone Serif ITC Pro
+					label:		Stone Serif
+					value:		edit-font-Stone-Serif
 				-
-					label:	Source Code
-					value:	Source Code Pro
+					label:		Source Code
+					value:		edit-font-Source-Code
 				-
-					label:	Source Sans 3
-					value:	Source Sans 3
+					label:		Source Sans 3
+					value:		edit-font-Source-Sans-3
 				-
-					label:	Source Serif
-					value:	Source Serif Pro
+					label:		Source Serif
+					value:		edit-font-Source-Serif
 				-
-					label:	Tisa
-					value:	Tisa Pro
+					label:		Tisa
+					value:		edit-font-Tisa
 				-
-					label:	Tisa Sans
-					value:	Tisa Sans Pro
+					label:		Tisa Sans
+					value:		edit-font-Tisa-Sans
 				-
-					label:	Trebuchet
-					value:	Trebuchet MS
+					label:		Trebuchet
+					value:		edit-font-Trebuchet
 				-
-					label:	Verdana
-					value:	Verdana
+					label:		Verdana
+					value:		edit-font-Verdana
 	-
 			id:			OT-editMode-text-size
 			title:		Body text size [px]
