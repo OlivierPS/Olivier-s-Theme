@@ -49,15 +49,16 @@
 * Post‑release tweaks
 * -------------------
 * 2026-02-07
-* 	- Modified the Style Settings font selector for writing so that it gives a CSS class.
-* 	- This permits the fine tuning of letter-spacing on a per-font basis
+* 	- Modified the Style Settings font selector for writing so that it gives a CSS class ⭢ 
+* 		- This permits the fine tuning of letter-spacing on a per-font basis
+*	- Corrected the different states and the hovering of the different buttons in the Bases menu bar
+*	- Corrected the colors of the different states in Metadata Menu modals.
 * 2026‑02‑06
 *   - Increased `--header-height` from 2.0em to 2.4em for more comfortable workspace tab bars and view headers.
 *   - Restored normal vertical space for tab icons by relying on the updated header height instead of extra padding.
 */
 
-
-========================================================================================================
+/* ========================================================================================================
 
 Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl02:	themes variables “--OT-…”
@@ -100,6 +101,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl28		en-têtes des panneaux (tab headers)
 			OpSpl29		container for document search/replace UI
 			OpSpl30		buttons
+			OpSpl30a	Combobox / dropdown buttons – ajustements généraux + Bases
 			OpSpl31		icons
 			OpSpl32		menus
 			OpSpl33		settings panel
@@ -6107,87 +6109,15 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 /*  Bookmark OpSpl27 ————————————————————————— Bases ————————————————————————— */
 
-/* Toolbar text-icon buttons (Bases, Query toolbar, etc.) */
+/* -------------------- Toolbar text-icon buttons (Bases, Query toolbar) -------------------- */
 
-/* Normal: accent‑3 */
+/* 1. Bouton porteur du fond, labels/icônes transparents par défaut — état normal: accent‑3 */
 .query-toolbar .query-toolbar-item.mod-views .text-icon-button,
 .bases-toolbar .text-icon-button {
   color:            var(--OT-color-on-accent-3);
   background-color: var(--color-accent-3);
 }
 
-/* Actif (is-active / has-active-menu): accent‑2 */
-.query-toolbar .query-toolbar-item.mod-views .text-icon-button.is-active,
-.bases-toolbar .text-icon-button.is-active,
-.bases-toolbar-menu-item.mod-active {
-  color:            var(--OT-color-on-accent-2);
-  background-color: var(--color-accent-2);
-}
-
-/* Hover (desktop): accent‑1 — que ce soit actif ou non */
-@media (hover: hover) {
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover,
-  .bases-toolbar .text-icon-button:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-  }
-
-  /* Icône intérieure suit la couleur du bouton */
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover .text-button-icon,
-  .bases-toolbar .text-icon-button:hover .text-button-icon {
-    color: inherit;
-  }
-
-  /* Bouton actif + hover = hover (accent‑1) */
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button.is-active:hover,
-  .bases-toolbar .text-icon-button.is-active:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-  }
-}
-
-/* Bases table header hover (ligne d’en-tête) */
-@media (hover: hover) {
-  .bases-td:hover .bases-table-header,
-  .bases-td.mod-implicit:hover .bases-table-header {
-    color:      var(--OT-color-on-accent-1);
-    background: var(--color-accent-1);
-  }
-
-  .bases-table-header-label,
-  .bases-table-header-sort {
-    color:      inherit;
-    background: inherit;
-  }
-}
-
-/* Liens textuels dans les Barres Bases (labels, etc.) */
-.query-toolbar .query-toolbar-item.mod-views:hover .text-button-label,
-.text-button-label,
-.text-icon-label {
-  color: var(--OT-color-on-accent-1);
-  background: var(--color-accent-1);
-}
-
-/* Cartes Board: liens cliquables sans déco parasite */
-.board-card .card-prop.clickable {
-  text-decoration: none;
-}
-.board-card .file-name {
-  font-weight: inherit;
-  font-size: var(--font-ui-small);
-}
-
-/* Bases header: sane defaults for text-icon buttons */
-
-/* 1. Bouton = porteur du fond, labels et icônes transparents par défaut */
-.query-toolbar .query-toolbar-item.mod-views .text-icon-button,
-.bases-toolbar .text-icon-button {
-  color:            var(--OT-color-on-accent-3);
-  background-color: var(--color-accent-3);
-}
-
-/* Labels & icônes à l’intérieur: pas de fond autonome, ils héritent seulement de la couleur */
 .query-toolbar .query-toolbar-item.mod-views .text-icon-button .text-button-label,
 .query-toolbar .query-toolbar-item.mod-views .text-icon-button .text-button-icon,
 .bases-toolbar .text-icon-button .text-button-label,
@@ -6196,7 +6126,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color: inherit;
 }
 
-/* 2. État actif = accent‑2, limité au bouton */
+/* 2. État actif (is-active / has-active-menu): accent‑2 */
 .query-toolbar .query-toolbar-item.mod-views .text-icon-button.is-active,
 .bases-toolbar .text-icon-button.is-active,
 .bases-toolbar-menu-item.mod-active {
@@ -6204,7 +6134,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color:            var(--OT-color-on-accent-2);
 }
 
-/* 3. Hover (desktop) = accent‑1, sans sur-remplir les labels imbriqués */
+/* 3. Hover (desktop): accent‑1 — que ce soit actif ou non */
 @media (hover: hover) {
   .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover,
   .bases-toolbar .text-icon-button:hover,
@@ -6222,8 +6152,230 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     background-color: transparent;
     color: inherit;
   }
+
+  /* Bouton actif + hover = hover (accent‑1) */
+  .query-toolbar .query-toolbar-item.mod-views .text-icon-button.is-active:hover,
+  .bases-toolbar .text-icon-button.is-active:hover {
+    background-color: var(--color-accent-1);
+    color:            var(--OT-color-on-accent-1);
+  }
 }
+
+/* -------------------- Boutons imbriqués de la Bases toolbar -------------------- */
+/* Vue (Ce dossier, par Type) */
+.bases-toolbar .bases-toolbar-item.bases-toolbar-views-menu {
+  /* État actif (menu ouvert, sans hover) */
+  & .text-icon-button.has-active-menu,
+  & .text-icon-button.is-active {
+    background-color: var(--color-accent-2);
+    color:            var(--OT-color-on-accent-2);
+  }
+
+  & .text-icon-button.has-active-menu .text-button-icon,
+  & .text-icon-button.has-active-menu .text-button-label,
+  & .text-icon-button.is-active .text-button-icon,
+  & .text-icon-button.is-active .text-button-label {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  /* Survol du conteneur: accent‑1 */
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
+
+    &:hover .text-icon-button {
+      background-color: transparent;
+      color: inherit;
+    }
+
+    &:hover .text-button-icon,
+    &:hover .text-button-label {
+      background-color: transparent;
+      color: inherit;
+    }
+
+    /* bouton actif + hover => accent‑1 */
+    &:hover .text-icon-button.has-active-menu,
+    &:hover .text-icon-button.is-active {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
+  }
+}
+
+/* Filtre */
+.bases-toolbar .bases-toolbar-item.bases-toolbar-filter-menu {
+  /* État actif (menu de filtre ouvert) */
+  & .text-icon-button.is-active,
+  & .text-icon-button.has-active-menu {
+    background-color: var(--color-accent-2);
+    color:            var(--OT-color-on-accent-2);
+  }
+
+  & .text-icon-button.is-active .text-button-icon,
+  & .text-icon-button.is-active .text-button-label,
+  & .text-icon-button.is-active .flair.toolbar-badge,
+  & .text-icon-button.has-active-menu .text-button-icon,
+  & .text-icon-button.has-active-menu .text-button-label,
+  & .text-icon-button.has-active-menu .flair.toolbar-badge {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
+
+    &:hover .text-icon-button {
+      background-color: transparent;
+      color: inherit;
+    }
+
+    &:hover .text-button-icon,
+    &:hover .text-button-label,
+    &:hover .flair.toolbar-badge {
+      background-color: transparent;
+      color: inherit;
+    }
+
+    &:hover .text-icon-button.is-active,
+    &:hover .text-icon-button.has-active-menu {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
+  }
+}
+
+/* Sort (bouton de vue de tri dans la toolbar) */
+.bases-toolbar .bases-toolbar-item.bases-toolbar-sort-menu {
+  /* État actif (menu de tri ouvert) */
+  & .text-icon-button.is-active,
+  & .text-icon-button.has-active-menu {
+    background-color: var(--color-accent-2);
+    color:            var(--OT-color-on-accent-2);
+  }
+
+  & .text-icon-button.is-active .text-button-icon,
+  & .text-icon-button.is-active .text-button-label,
+  & .text-icon-button.is-active .flair.toolbar-badge,
+  & .text-icon-button.has-active-menu .text-button-icon,
+  & .text-icon-button.has-active-menu .text-button-label,
+  & .text-icon-button.has-active-menu .flair.toolbar-badge {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
+
+    &:hover .text-icon-button {
+      background-color: transparent;
+      color: inherit;
+    }
+
+    &:hover .text-button-icon,
+    &:hover .text-button-label,
+    &:hover .flair.toolbar-badge {
+      background-color: transparent;
+      color: inherit;
+    }
+
+    &:hover .text-icon-button.is-active,
+    &:hover .text-icon-button.has-active-menu {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
+  }
+}
+
+/* Bouton "Add sort" dans la section de tri */
+.bases-toolbar-section-content > .text-icon-button {
+  /* état normal : accent‑3 */
+  background-color: var(--color-accent-3);
+  color:            var(--OT-color-on-accent-3);
+}
+
+.bases-toolbar-section-content > .text-icon-button .text-button-label,
+.bases-toolbar-section-content > .text-icon-button .text-button-icon,
+.bases-toolbar-section-content > .text-icon-button .text-button-icon .svg-icon {
+  background-color: transparent;
+  color: inherit;
+  stroke: currentColor;
+}
+
+/* éventuel état actif (si Obsidian ajoute .is-active / .has-active-menu) */
+.bases-toolbar-section-content > .text-icon-button.is-active,
+.bases-toolbar-section-content > .text-icon-button.has-active-menu {
+  background-color: var(--color-accent-2);
+  color:            var(--OT-color-on-accent-2);
+}
+
+.bases-toolbar-section-content > .text-icon-button.is-active .text-button-label,
+.bases-toolbar-section-content > .text-icon-button.is-active .text-button-icon,
+.bases-toolbar-section-content > .text-icon-button.is-active .text-button-icon .svg-icon,
+.bases-toolbar-section-content > .text-icon-button.has-active-menu .text-button-label,
+.bases-toolbar-section-content > .text-icon-button.has-active-menu .text-button-icon,
+.bases-toolbar-section-content > .text-icon-button.has-active-menu .text-button-icon .svg-icon {
+  background-color: transparent;
+  color: inherit;
+  stroke: currentColor;
+}
+
+@media (hover: hover) {
+  .bases-toolbar-section-content > .text-icon-button:hover {
+    background-color: var(--color-accent-1);
+    color:            var(--OT-color-on-accent-1);
+  }
+
+  .bases-toolbar-section-content > .text-icon-button:hover .text-button-label,
+  .bases-toolbar-section-content > .text-icon-button:hover .text-button-icon,
+  .bases-toolbar-section-content > .text-icon-button:hover .text-button-icon .svg-icon {
+    background-color: transparent;
+    color: inherit;
+    stroke: currentColor;
+  }
+
+  .bases-toolbar-section-content > .text-icon-button.is-active:hover,
+  .bases-toolbar-section-content > .text-icon-button.has-active-menu:hover {
+    background-color: var(--color-accent-1);
+    color:            var(--OT-color-on-accent-1);
+  }
+}
+
+/* -------------------- Bases table header hover (ligne d’en-tête) -------------------- */
+@media (hover: hover) {
+  .bases-td:hover .bases-table-header,
+  .bases-td.mod-implicit:hover .bases-table-header {
+    color:      var(--OT-color-on-accent-1);
+    background: var(--color-accent-1);
+  }
+
+  .bases-table-header-label,
+  .bases-table-header-sort {
+    color:      inherit;
+    background: inherit;
+  }
+}
+
+/* -------------------- Cartes Board -------------------- */
+.board-card .card-prop.clickable {
+  text-decoration: none;
+}
+.board-card .file-name {
+  font-weight: inherit;
+  font-size: var(--font-ui-small);
+}
+
 /* -------------------- ↑ Bases ↑ -------------------- */
+
 
 /*  Bookmark OpSpl28 —————————————————————————————— En-tête des panneaux —————————————————————————————— */
 /* =========================================
@@ -6867,6 +7019,33 @@ select {
 }
 /* -------------------- ↑ Boutons ↑ -------------------- */
 
+/* Bookmark		OpSpl30a --------------------	Combobox / dropdown buttons – ajustements généraux + Bases */
+
+/* Hover générique pour tous les combobox (cohérent avec ta matrice accent-1) */
+.combobox-button:hover {
+  color:            var(--OT-color-on-accent-1);
+  background-color: var(--color-accent-1);
+}
+
+/* Cas particulier : combobox Bases avec placeholder (bases-sort-property vide) */
+.combobox-button.bases-sort-property:hover .combobox-button-label[placeholder]::before {
+  content: attr(placeholder);
+  color:   var(--OT-color-on-accent-1);
+}
+
+/* Quand une propriété est choisie, le texte est du vrai contenu ⇒ la règle générique suffit */
+.combobox-button.bases-sort-property:hover .combobox-button-label {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* Icônes chevron + clear pour les deux combobox Bases */
+.combobox-button.bases-sort-property:hover .combobox-button-chevron .svg-icon,
+.combobox-button.bases-sort-property:hover .combobox-clear-button .svg-icon,
+.combobox-button.bases-sort-direction:hover .combobox-button-chevron .svg-icon,
+.combobox-button.bases-sort-direction:hover .combobox-clear-button .svg-icon {
+  stroke: var(--OT-color-on-accent-1);
+}
+/* ---------- ↑ Comboboxes ↑ ----------*/
 
 /*  Bookmark OpSpl31 ————————————— Icons ————————————— */
 
@@ -9057,6 +9236,75 @@ li.task-list-item {
   font-style: normal;
 }
 
+/* SECTION : Metadata Menu – value-container dans les modales */
+.metadata-menu.modal-container {
+  .suggestion-item.value-container {
+    /* mode normal */
+    background-color: transparent;
+    color: var(--text-normal);
+
+    .item-with-add-on {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* texte principal */
+    > .item-with-add-on > div:first-child {
+      color: var(--text-normal);
+    }
+
+    /* add-on = texte muted */
+    > .item-with-add-on > .add-on {
+      color: var(--OT-nav-item-muted);
+    }
+
+    /* mode active (sélectionnée) */
+    &.is-selected {
+      background-color: var(--color-accent-2);
+      color: var(--OT-color-on-accent-2);
+
+      > .item-with-add-on > div:first-child {
+        color: var(--OT-color-on-accent-2);
+      }
+
+      > .item-with-add-on > .add-on {
+        color: var(--OT-color-muted-on-accent-2);
+      }
+    }
+
+    /* active + hovered */
+    @media (hover: hover) {
+      &.is-selected:hover {
+        background-color: var(--color-accent-1);
+        color: var(--OT-color-on-accent-1);
+
+        > .item-with-add-on > div:first-child {
+          color: var(--OT-color-on-accent-1);
+        }
+
+        > .item-with-add-on > .add-on {
+          color: var(--OT-color-muted-on-accent-1);
+        }
+      }
+
+      /* normal + hovered */
+      &:not(.is-selected):hover {
+        background-color: var(--color-accent-1);
+        color: var(--OT-color-on-accent-1);
+
+        > .item-with-add-on > div:first-child {
+          color: var(--OT-color-on-accent-1);
+        }
+
+        > .item-with-add-on > .add-on {
+          color: var(--OT-color-muted-on-accent-1);
+        }
+      }
+    }
+  }
+}
+
+
 /* -------------------- ↑ Metadata Menu plugin ↑ -------------------- */
 
 
@@ -11129,6 +11377,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 /* 5. Recent vault editable name: déjà traité via état actif ci-dessus */
 
 /* ---------- ↑ correcting all hovering ↑ ---------- */
+
 
 
 /*	Bookmark	OpSpl90	———————————————————— Some useful CSSCLASSES ————————————————————	*/
