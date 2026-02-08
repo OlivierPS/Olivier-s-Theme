@@ -48,6 +48,8 @@
 /*
 * Post‑release tweaks
 * -------------------
+* 2026-02-08
+*	- Temporarily removed Art Deco and Victorian palettes from the menus, because they aren’t fully tuned
 * 2026-02-07
 * 	- Modified the Style Settings font selector for writing so that it gives a CSS class ⭢ 
 * 		- This permits the fine tuning of letter-spacing on a per-font basis
@@ -11662,9 +11664,6 @@ settings:
 					label.fr:	Par défaut
 					value:		lightPalette-OBSIDIAN
 				-
-					label:		Art déco
-					value:		lightPalette-artDeco
-				-
 					label:		Beige
 					value:		lightPalette-Beige
 				-
@@ -12364,9 +12363,6 @@ settings:
 					label:		Sunny memos
 					label.fr:	Pierre
 					value:		darkPalette-sunnyMemos
-				-
-					label:		Victorian
-					value:		darkPalette-victorian
 				-
 					label:		Violet
 					value:		darkPalette-violet
@@ -13256,3 +13252,12 @@ settings:
 			markdown:		true
 */
 /* -------------------- ↑ @settings -------------------- ↑ */
+
+/*	—————————————————————————————— Temporarily removed palettes; because I don’t feel they are pertinent enough and not completely fine .theme-dark.lightPalette-sunnyMemos.darkPalette-default
+		-
+			label:		Art déco
+			value:		lightPalette-artDeco
+		-
+			label:		Victorian
+			value:		darkPalette-victorian
+*/

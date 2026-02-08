@@ -41,12 +41,13 @@ If you are in a hurry, you can simply follow the “Quick path” below.
    - “Base size for the interface texts (px)”, so sidebar text and UI labels are comfortable on your main screen.  
    - “Spacing for the files listing”, so the file explorer feels neither cramped nor overly airy.
 
-   ![image-20260208094607649](assets/image-20260208094607649.png)
+   ![sidebar_settings](assets/sidebar_settings.png)
    
 2. **Choose your color palettes**  
    In **LIGHT / DARK MODE colors**, pick a Light palette that fits your taste; a coordinated Dark palette is selected automatically.  
+   
    - Optionally override the Dark palette if you want a different mood at night.
-
+   
 3. **Tune Reading mode for comfort**  
    In **READING mode**, adjust:  
    - Body text size.  
