@@ -42,36 +42,54 @@ If you are in a hurry, you can simply follow the “Quick path” below.
    - “Spacing for the files listing”, so the file explorer feels neither cramped nor overly airy.
 
    ![sidebar_settings](assets/sidebar_settings.png)
+
    
+
 2. **Choose your color palettes**  
-   In **LIGHT / DARK MODE colors**, pick a Light palette that fits your taste; a coordinated Dark palette is selected automatically.  
-   
+   In **LIGHT MODE colors**, pick a Light palette that fits your taste; a coordinated Dark palette is selected automatically.
+
+   ![Light palette choice](assets/light_palette_choice.png)
+
    - Optionally override the Dark palette if you want a different mood at night.
-   
-3. **Tune Reading mode for comfort**  
+
+3. **Tune Reading mode for comfort**
    In **READING mode**, adjust:  
+
    - Body text size.  
    - Line height.  
-   - Line length (in em).  
+   - Line length (in em).
    Aim for a page that feels like a well‑set book, not a slide deck.
 
-4. **Tune Writing mode for ergonomics**  
+4. **Tune Writing mode for ergonomics**
    In **WRITING / editing mode**, pick:  
+
    - The font you prefer while typing (can differ from Reading).  
    - Slightly smaller or larger body size.  
-   - Line length that fits your monitor and your writing style.
+   - Line length that fits your writing style.
 
-5. **Optionally add cssclasses for special notes**  
-   For notes that need a special layout (handout style, bigger or smaller reading text), add cssclasses in the note’s Properties, for example:  
-   ```yaml
-   ---
-   cssclasses:
-     - bases-clean
-     - readingMode-text-small
-   ---
-   ```
+5. **Choose a paper background**
 
-Once this is done, you already have a coherent, comfortable setup that you can refine later.
+	You can read your notes written on paper. You have a choice, from subtle to parchment :
+
+	![Paper background choices](assets/Paper_backgrounds_choice.png)
+
+	<br>Once this is done, you already have a coherent, comfortable setup that you can refine later.
+
+	
+
+	###### cssclasses for special notes
+
+	For notes that need a special layout — with or without menu for the Bases, smaller or bigger reading text, tables with or without alternating row backgrounds, etc. — you have a handful of CSS classes that you can use by adding them in the note’s Properties, like this:  
+
+	```yaml
+	---
+	cssclasses:
+	  - bases-clean
+	  - readingMode-text-small
+	---
+	```
+
+
 
 ---
 
