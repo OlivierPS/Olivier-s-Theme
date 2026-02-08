@@ -1,4 +1,4 @@
-# Olivier’s Theme 2.0 · User Guide
+# Olivier’s Theme 2.0 ⬩ User Guide
 
 Olivier’s Theme is a refined interface theme for Obsidian that focuses on legibility, calm color palettes, and a clear separation between **reading** and **writing**. It is designed for people who spend a lot of time with long notes – journaling, research, psychotherapy notes, technical writing – and who want the interface to support, not distract, their thinking.
 
@@ -34,7 +34,7 @@ If you are in a hurry, you can simply follow the “Quick path” below.
 
 ---
 
-## Quick path · 10‑minute setup
+## Quick path ⬩ 5‑minute setup
 
 1. **Set interface size and sidebar density**  
    Open **GENERAL settings** and adjust:  
@@ -81,45 +81,50 @@ If you are in a hurry, you can simply follow the “Quick path” below.
 
 	For notes that need a special layout — with or without menu for the Bases, smaller or bigger reading text, tables with or without alternating row backgrounds, etc. — you have a handful of CSS classes that you can use by adding them in the note’s Properties, like this:  
 
-	```yaml
-	---
-	cssclasses:
-	  - bases-clean
-	  - readingMode-text-small
-	---
-	```
-
-
-
+```yaml
 ---
+cssclasses:
+  - bases-clean
+  - readingMode-text-small
+---
+```
+
+&emsp;
 
 ## Table of contents
 
 The rest of the documentation is organised into focused pages:
 
-- **General settings**  
-  Global interface scaling, sidebar spacing, headings hierarchy, Kanban options, code wrapping, status bar, title bar breadcrumb, canvas background.  
-  → `general.md`
+##### General settings
 
-- **Colors in Light and Dark mode**  
-  How palettes work, how Light and Dark interact, accent colors, text vs muted text, and background logic.  
-  → `colors-light-dark.md`
+Global interface scaling, sidebar spacing, headings hierarchy, Kanban options, code wrapping, status bar, title bar breadcrumb, canvas background.<br>
+→ [General](general.md)
 
-- **Reading vs Writing – mental modes**  
-  Why Reading and Writing are treated as different activities, and how to design your personal reading and drafting environments.  
-  → `reading-vs-writing.md`
+##### Colors in Light and Dark mode
 
-- **Reading mode**  
-  Body text size, line height, line length, tables style, image style and maximum height, Bases header hiding options.  
-  → `reading-mode.md`
+How palettes work, how Light and Dark interact, accent colors, text vs muted text, and background logic.  
+→ [Colors, light and dark modes](colors-light-dark.md)
 
-- **Writing mode**  
-  Editor fonts, text sizes, line length and height tuned for drafting, so you see enough context around the cursor without sacrificing readability.  
-  → `writing-mode.md`
+##### Reading mode
 
-- **cssclasses and niceties**  
-  Visual catalogue of cssclasses: Bases headers, image sizing, reading‑text size, specialised niceties (step lists, table styles) and how to combine them in real notes.  
-  → `css-classes.md`, `niceties-and-cssclasses.md`
+Body text size, line height, line length, tables style, image style and maximum height, Bases header hiding options.  
+→ [Reading mode](reading-mode.md)
+
+##### Writing mode
+
+Editor fonts, text sizes, line length and height tuned for drafting, so you see enough context around the cursor without sacrificing readability.  
+→ [Writing mode](writing-mode.md)
+
+](colors-light-dark.md)
+
+##### Reading vs Writing – mental modes
+
+Why Reading and Writing are treated as different activities, and how to design your personal reading and drafting environments.  
+→ [Reading vs. Writing](reading-vs-writing.md)
+
+##### CSS classes and niceties
+
+Visual catalogue of cssclasses: Bases headers, image sizing, reading‑text size, specialised niceties (step lists, table styles) and how to combine them in real notes.
+→ [CSS classes](css-classes.md), [Niceties and CSS classes](niceties-and-cssclasses.md)
 
 As the documentation evolves, this index will remain the entry point to the most up‑to‑date pages and screenshots.
-
