@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://olivierps.github.io/Olivier-s-Theme/niceties-and-cssclasses/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Niceties & cssclasses - Olivier’s Theme for Obsidian</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Olivier’s Theme for Obsidian</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">General</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../general/" class="dropdown-item">General settings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Colors</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../colors-light-dark/" class="dropdown-item">Light and Dark mode colors</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reading & writing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../reading-mode/" class="dropdown-item">Reading mode</a>
+</li>
+                                    
+<li>
+    <a href="../writing-mode/" class="dropdown-item">Writing / Editing mode</a>
+</li>
+                                    
+<li>
+    <a href="../reading-vs-writing/" class="dropdown-item">Reading vs Writing – mental modes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">cssclasses</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../css-classes/" class="dropdown-item">Visual catalogue of CSS classes</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Niceties & cssclasses</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../css-classes/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/OlivierPS/Olivier-s-Theme/edit/master/docs/niceties-and-cssclasses.md" class="nav-link">Edit on OlivierPS/Olivier-s-Theme
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#niceties-cssclasses" class="nav-link">Niceties &amp; cssclasses</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#how-cssclasses-work-in-obsidian" class="nav-link">How cssclasses work in Obsidian</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#niceties-provided-by-oliviers-theme" class="nav-link">Niceties provided by Olivier’s Theme</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#using-cssclasses-in-practice" class="nav-link">Using cssclasses in practice</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tips-and-conventions" class="nav-link">Tips and conventions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="niceties-cssclasses">Niceties &amp; cssclasses<a class="headerlink" href="#niceties-cssclasses" title="Permanent link">&para;</a></h1>
+<p>This page explains the <strong>extra visual niceties</strong> offered by Olivier’s Theme, and how to enable them in your notes using the <code>cssclass</code> / <code>cssclasses</code> property in YAML frontmatter.</p>
+<p>It complements the more detailed descriptions in the “cssclasses and niceties” catalogue by focusing on <em>how</em> to use these classes in practice and how they fit into your workflows.</p>
+<h2 id="how-cssclasses-work-in-obsidian">How cssclasses work in Obsidian<a class="headerlink" href="#how-cssclasses-work-in-obsidian" title="Permanent link">&para;</a></h2>
+<p>Obsidian lets you add a <code>cssclass</code> or <code>cssclasses</code> property to a note’s YAML frontmatter.<br />
+The value of this property is added as one or more CSS classes on the note’s main container, which themes and snippets can then use for custom styling.</p>
+<p>A minimal example:</p>
+<pre class="codehilite"><code class="language-yaml">---
+cssclass: nice-note
+---
+</code></pre>
+
+<p>You can also use several classes at once. Obsidian accepts them in different formats, such as a space‑separated string or a YAML list:</p>
+<pre class="codehilite"><code class="language-yaml">---
+cssclasses: nice-note margin-top-l
+---
+
+# or, as a list:
+
+---
+cssclasses:
+  - nice-note
+  - margin-top-l
+---
+</code></pre>
+
+<p>Olivier’s Theme declares a set of such classes and styles them consistently, so you can change the look of a note without touching any CSS.</p>
+<h2 id="niceties-provided-by-oliviers-theme">Niceties provided by Olivier’s Theme<a class="headerlink" href="#niceties-provided-by-oliviers-theme" title="Permanent link">&para;</a></h2>
+<p>Olivier’s Theme offers <strong>ready‑made cssclasses</strong> for several kinds of visual refinements, grouped in a few families:</p>
+<ul>
+<li><strong>Bases layout</strong> – control whether the Bases header is visible in Reading mode for a given note<br />
+  (<code>bases-clean</code>, <code>bases-header-on</code>).</li>
+<li><strong>Image sizing</strong> – adjust how large images appear in Reading mode and, depending on your settings, in Live Preview<br />
+  (<code>img-XS</code>, <code>img-S</code>, <code>img-M</code>, <code>img-L</code>, <code>img-XL</code>, <code>img-300</code> … <code>img-1000</code>).</li>
+<li><strong>Reading‑mode text size</strong> – make the text a bit smaller or larger <em>only in Reading mode</em><br />
+  (<code>readingMode-text-smaller</code>, <code>readingMode-text-small</code>, <code>readingMode-text-big</code>, <code>readingMode-text-bigger</code>, <code>readingMode-text-biggest</code>).</li>
+<li><strong>Specialised niceties</strong> – targeted behaviours for specific elements<br />
+  (<code>OT-step-list</code>, <code>OT-tables-style-1</code>, <code>OT-tables-style-2</code>).</li>
+</ul>
+<p>Typical uses include:</p>
+<ul>
+<li>layout tweaks on a single note (cleaner Bases header, more or less prominent images),  </li>
+<li>fine‑tuning reading comfort on dense reference notes,  </li>
+<li>highlighting checklists, procedures, or important tables with a distinctive style.</li>
+</ul>
+<p>Each cssclass is designed to be:</p>
+<ul>
+<li><strong>Combinable</strong> with others, so you can layer effects (for example <code>bases-clean</code> plus <code>readingMode-text-small</code> plus <code>img-M</code>),  </li>
+<li><strong>Safe by default</strong>, so that if you remove it, the note simply falls back to the standard theme behaviour.</li>
+</ul>
+<p>You can freely mix these theme‑specific cssclasses with your own snippets, or with classes provided by plugins and external CSS snippets.</p>
+<h2 id="using-cssclasses-in-practice">Using cssclasses in practice<a class="headerlink" href="#using-cssclasses-in-practice" title="Permanent link">&para;</a></h2>
+<p>To apply one of these niceties to a note:</p>
+<ol>
+<li>Open the note you want to style.  </li>
+<li>Add or edit the YAML block at the top (the part between the <code>---</code> lines).  </li>
+<li>Add a <code>cssclass:</code> or <code>cssclasses:</code> property and list the classes you want to use.</li>
+</ol>
+<p>For example, a note with slightly smaller Reading text and a step‑by‑step list:</p>
+<pre class="codehilite"><code class="language-yaml">---
+cssclasses:
+  - readingMode-text-small
+  - OT-step-list
+title: A note with small text and instructional steps
+---
+</code></pre>
+
+<p>Another example, a “clean” handout‑style note with medium images:</p>
+<pre class="codehilite"><code class="language-yaml">---
+cssclasses:
+  - bases-clean
+  - readingMode-text-small
+  - img-M
+---
+</code></pre>
+
+<p>You can then duplicate these patterns across similar notes, or combine them with other frontmatter properties used by your workflows and plugins.</p>
+<p>If you often reuse the same combinations, it is worth turning them into a template using Obsidian’s Templates core plugin or a community templating plugin.</p>
+<h2 id="tips-and-conventions">Tips and conventions<a class="headerlink" href="#tips-and-conventions" title="Permanent link">&para;</a></h2>
+<p>To keep cssclasses easy to understand and remember, Olivier’s Theme follows a few simple conventions:</p>
+<ul>
+<li>Theme‑specific classes use clear, thematic names instead of technical ones.  </li>
+<li>Classes are grouped by purpose (Bases, image sizing, Reading‑mode text size, specialised niceties).  </li>
+<li>Classes are additive wherever possible, so you can layer them instead of relying on a single all‑purpose “mode” class.</li>
+</ul>
+<p>A few practical tips:</p>
+<ul>
+<li>Define <code>cssclasses</code> as a YAML <strong>list</strong>, even when you only use one, to stay compatible with recent Obsidian versions.  </li>
+<li>Keep your most frequently used combinations in a template or boilerplate note, so you do not have to remember them by heart.  </li>
+<li>When something looks odd, temporarily remove individual entries from <code>cssclasses</code> to see which one is responsible.  </li>
+<li>If you later add your own classes, you can follow the same grouping and naming style so that everything stays coherent in the long run.</li>
+<li>The Metadata Menu plugin can help a lot: you can put all the classes you are using in a note and have Metadata Menu present them in a selection modal instead of editing YAML by hand.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
