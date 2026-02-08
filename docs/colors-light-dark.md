@@ -1,14 +1,14 @@
 # Light and Dark mode colors
 
-This section explains how Olivier’s Theme handles **Light** and **Dark** colors,  
+This section explains how Olivier’s Theme handles **Light** and **Dark** colors, 
 and how a few high‑level choices can restyle your vault thanks to a cascading logic.
 
-If you mainly want to “make Obsidian look nice” without touching typography,  
+If you mainly want to “make Obsidian look nice” without touching typography, 
 this is the place to start.
 
-<!-- screenshot: Style Settings – LIGHT MODE colors and DARK MODE colors sections -->
+![Light palettes showcases](assets/light_palettes_showcase.png)
 
----
+
 
 ## Light mode colors
 
@@ -27,7 +27,7 @@ Typical use:
 
 Later, you can override specific elements (accent, text color, backgrounds, highlighting) without breaking the underlying harmony.
 
-<!-- screenshot: Light mode General palette dropdown opened -->
+![light_palette_choice](assets/light_palette_choice.png)
 
 ### Accent color (Light)
 
@@ -38,7 +38,7 @@ For each Light palette, you can choose:
 - **Coordinated** – an accent that blends harmoniously with the General palette.  
 - **Alternative 1** and **Alternative 2** – related colors (often split‑complementary or triadic) that change the mood while staying in the same color “family”.
 
-If you are unsure, start with **Coordinated**.  
+If you are unsure, start with **Coordinated**.
 Switch to an alternative when you want a slightly stronger, cooler or warmer contrast without redesigning everything.
 
 <!-- screenshot: accent color selector with Coordinated / Alt1 / Alt2 -->

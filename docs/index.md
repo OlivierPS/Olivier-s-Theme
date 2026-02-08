@@ -123,15 +123,3 @@ The rest of the documentation is organised into focused pages:
 
 As the documentation evolves, this index will remain the entry point to the most up‑to‑date pages and screenshots.
 
----
-
-## If you are comfortable with CSS
-
-If you already tweak CSS or maintain your own snippets, you can treat this theme as a curated base layer:
-
-- Most colors and sizes are driven by exposed CSS variables, aligned with Obsidian’s own variables when possible.  
-- The cssclasses system lets you create local exceptions without forking the whole theme.  
-- The documentation pages often hint at the underlying variables or logic, so you can extend them in your own snippets if needed.
-
-You can safely start with the defaults, then progressively replace or augment some behaviours with your own CSS as you get comfortable with the theme’s structure.
-
