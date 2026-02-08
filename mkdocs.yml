@@ -1,0 +1,35 @@
+site_name: Olivier’s Theme for Obsidian
+site_description: User Guide for Olivier’s Theme 2.0 – palettes, reading/writing modes, cssclasses.
+site_url: https://olivierps.github.io/Olivier-s-Theme/  # adapte à ton user/org et repo
+
+repo_name: OlivierPS/Olivier-s-Theme
+repo_url: https://github.com/OlivierPS/Olivier-s-Theme
+
+theme:
+  name: mkdocs
+  # Plus tard, tu pourras passer à "material" si tu veux plus de fonctionnalités :
+  # name: material
+
+nav:
+  - Home: index.md
+  - General:
+    - General settings: general.md
+  - Colors:
+    - Light and Dark mode colors: colors-light-dark.md
+  - Reading & writing:
+    - Reading mode: reading-mode.md
+    - Writing / Editing mode: writing-mode.md
+    - Reading vs Writing – mental modes: reading-vs-writing.md
+  - cssclasses:
+    - Visual catalogue of CSS classes: css-classes.md
+    - Niceties & cssclasses: niceties-and-cssclasses.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - footnotes
+  - def_list
+  - attr_list
+  - tables
+  - codehilite

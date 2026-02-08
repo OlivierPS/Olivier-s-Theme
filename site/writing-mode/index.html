@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://olivierps.github.io/Olivier-s-Theme/writing-mode/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Writing / Editing mode - Olivier’s Theme for Obsidian</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Olivier’s Theme for Obsidian</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">General</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../general/" class="dropdown-item">General settings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Colors</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../colors-light-dark/" class="dropdown-item">Light and Dark mode colors</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reading & writing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../reading-mode/" class="dropdown-item">Reading mode</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Writing / Editing mode</a>
+</li>
+                                    
+<li>
+    <a href="../reading-vs-writing/" class="dropdown-item">Reading vs Writing – mental modes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">cssclasses</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../css-classes/" class="dropdown-item">Visual catalogue of CSS classes</a>
+</li>
+                                    
+<li>
+    <a href="../niceties-and-cssclasses/" class="dropdown-item">Niceties & cssclasses</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../reading-mode/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../reading-vs-writing/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/OlivierPS/Olivier-s-Theme/edit/master/docs/writing-mode.md" class="nav-link">Edit on OlivierPS/Olivier-s-Theme
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#writing-editing-mode" class="nav-link">Writing / Editing mode</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="writing-editing-mode">Writing / Editing mode<a class="headerlink" href="#writing-editing-mode" title="Permanent link">&para;</a></h1>
+<p>The <strong>WRITING / EDITING mode</strong> settings control how your notes look and feel while you are working on them, either in Live Preview or in Source mode.<br />
+These settings are designed to give you a clear, efficient workspace that supports your thinking while you write.</p>
+<!-- screenshot: Style Settings – Olivier’s Theme – WRITING / EDITING mode section -->
+
+<hr />
+<h3 id="typeface">Typeface<a class="headerlink" href="#typeface" title="Permanent link">&para;</a></h3>
+<p>This option selects the <strong>font used for Editing mode</strong>.</p>
+<ul>
+<li>On <strong>Default</strong>, it follows the main text font chosen in <code>Settings → Appearance → Fonts → Text font</code>. In other words, the same font is used for both Reading and Editing modes.  </li>
+<li>You can instead choose a different font specifically for writing: another serif, a clean sans‑serif, a typewriter‑style font, or even a monospaced font if you like a “code” feeling.</li>
+</ul>
+<p>The idea is to pick a font that remains comfortable for long sessions at the keyboard and that fits the way you think while writing.<br />
+It is easy to emulate a typewriter, a terminal, or any other text or Markdown editor.</p>
+<h3 id="body-text-size">Body text size<a class="headerlink" href="#body-text-size" title="Permanent link">&para;</a></h3>
+<p>This is the <strong>base size of the text in Editing mode</strong>, in pixels.</p>
+<p>The recommended default is <strong>17 px</strong>, slightly smaller than Reading (18 px),<br />
+so you see more context around the cursor without the page feeling cramped.</p>
+<p>Adjust this value if:</p>
+<ul>
+<li>the editor text looks too small or too large for your taste or your eyesight,  </li>
+<li>you are working on a small laptop or, conversely, on a large external monitor.</li>
+</ul>
+<h3 id="line-height">Line height<a class="headerlink" href="#line-height" title="Permanent link">&para;</a></h3>
+<p>Line height controls the <strong>vertical spacing</strong> between lines in Editing mode (in em).</p>
+<p>A value around <strong>1.35 em</strong> gives a slightly denser layout than in Reading, which often helps you see more lines on screen while drafting or revising.</p>
+<p>If your writing feels too tight, increase it a little;<br />
+if you want a more compact “code editor” feeling, you can reduce it slightly.</p>
+<h3 id="line-length">Line length<a class="headerlink" href="#line-length" title="Permanent link">&para;</a></h3>
+<p>This setting defines the <strong>maximum line length in the Editing pane</strong>, in em.</p>
+<p>By default, it is <strong>longer than in Reading mode</strong> (46 em vs 40 em), so you can see more text while writing.</p>
+<ul>
+<li>Reduce it if you like a very focused, column‑like page.  </li>
+<li>Increase it if you work with long sentences, many inline links, or side‑by‑side panes.</li>
+</ul>
+<!-- screenshot: Editing view at a narrow vs wide line length -->
+
+<h3 id="size-of-the-text-in-table-cells-of-body-text-size">Size of the text in table cells (% of body text size)<a class="headerlink" href="#size-of-the-text-in-table-cells-of-body-text-size" title="Permanent link">&para;</a></h3>
+<p>This option defines the <strong>text size inside table cells</strong> while editing, as a percentage of the <strong>Editing</strong> body text size.</p>
+<ul>
+<li>At <strong>90 %</strong> (the suggested default), tables stay compact and readable without overshadowing the main text.  </li>
+<li>At <strong>100 %</strong>, tables become more prominent, which helps if you edit a lot of content directly inside them.</li>
+</ul>
+<h3 id="while-editing-a-table-the-chosen-text-size-sticks">While editing a table, the chosen text size sticks<a class="headerlink" href="#while-editing-a-table-the-chosen-text-size-sticks" title="Permanent link">&para;</a></h3>
+<p>When you are actually editing text in a table cell, the text size normally returns to the same size as the body text.<br />
+The resulting “jump” in size can be distracting; this option allows you to disable that behaviour.</p>
+<ul>
+<li><strong>OFF</strong> — text in the table cell you are editing is always at 100 % of the current <strong>Editing</strong> body text size.  </li>
+<li><strong>ON</strong> — text in the table cell you are editing stays at your chosen percentage size, as set in the option above.</li>
+</ul>
+<h3 id="images-max-height-in-live-preview-in-pixels">Images max height in Live Preview (in pixels)<a class="headerlink" href="#images-max-height-in-live-preview-in-pixels" title="Permanent link">&para;</a></h3>
+<p>While you are writing, you typically want to see as much text as possible,<br />
+but you also want at least a thumbnail of your images — another reason to use <strong>Live Preview</strong> instead of raw Source mode.</p>
+<p>This setting lets you choose the <strong>maximum height of images in Live Preview</strong>, in pixels, so you can find your own compromise between visible images and available text space.</p>
+<p>The default of <strong>150 px</strong> keeps images in the “thumbnail” range: visible enough to recognise them, but small enough not to push the text off screen.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

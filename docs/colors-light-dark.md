@@ -41,7 +41,7 @@ For each Light palette, you can choose:
 If you are unsure, start with **Coordinated**.
 Switch to an alternative when you want a slightly stronger, cooler or warmer contrast without redesigning everything.
 
-<!-- screenshot: accent color selector with Coordinated / Alt1 / Alt2 -->
+![Accent colors showcase](assets/accent_colors_showcase.png)
 
 ### Body text color in Reading mode (Light)
 
@@ -50,9 +50,13 @@ This option sets the **text color for Reading mode** when Obsidian is in Light t
 - **Default** – a carefully chosen color that fits the current General palette.  
 - Other options – a range of ink‑inspired colors (dark blues, browns, greens, reds, etc.) for more personality.
 
-Combining a subtle ink color with a paper background can create very pleasant “fountain‑pen on paper” moods.
+Combining a subtle ink color with a paper background can create very pleasant “fountain‑pen on paper” moods. Here are some examples :
+
+![Text colors showcase](assets/text_colors_showcase.png)
 
 If you change this color, the Writing / Editing text color follows it (when set to Default), unless you customize it separately.
+
+**N. B. :** You’ll notice that most texts in the sidebars follow this choice, the files navigation included.
 
 ### Notes background in Reading mode (Light)
 
@@ -63,10 +67,12 @@ You can:
 - choose **None**, which uses a plain background color derived from the General palette, or  
 - select one of several **paper backgrounds**: light papers, tinted papers, brown paper, etc.
 
-Plain backgrounds work well for dense, technical notes.  
+Plain backgrounds work well for dense, technical notes. 
 Paper backgrounds are often ideal for journaling, long‑form reading or psychotherapy notes.
 
-<!-- screenshot: Reading mode with plain background vs light paper background -->
+![Paper backgrounds showcase](assets/paper_backgrounds_showcase.png)
+
+
 
 ### Paper background also in Live Preview (Light)
 
@@ -77,9 +83,11 @@ This toggle decides whether the **paper background is also used in Live Preview*
 - **OFF** – Reading uses the chosen paper (or plain) background; Live Preview uses a plain editing background. This makes the difference between Reading and Writing visually obvious.  
 - **ON** – both Reading and Live Preview share the same paper background, for a very consistent “paper notebook” look.
 
-Whatever you choose, a small indicator in the upper‑right corner of each pane always shows whether it is ready for editing, and this indicator uses the same color as the text.
+Whatever you choose, a small indicator in the upper‑right corner the pane indicates the Writing/Editing mode is ON.
 
-<!-- screenshot: same note in Reading and Live Preview, with the editing indicator visible -->
+Here’s an example of a pane with a typewriter font (American Typewriter), a blue “ribbon” writing on white paper — clearly, a writing mood :
+
+![Typewriter mood](assets/typewriter_mood.png)
 
 ### Text color in Writing / Editing mode (Light)
 
@@ -104,6 +112,10 @@ If you want to emphasise the difference between Reading and Writing, pick anothe
 - or a slightly more saturated choice if you like strong visual cues.
 
 This affects Live Preview and Source views.
+
+An example of what can be easily achieved : an 80s CRT mood (IBM Plex Mono, Terminal Green on black background):
+
+![80s terminal mood](assets/80s_terminal_mood.png)
 
 ### Text selection takes accent color (Light)
 

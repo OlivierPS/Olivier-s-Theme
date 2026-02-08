@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://olivierps.github.io/Olivier-s-Theme/reading-mode/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Reading mode - Olivier’s Theme for Obsidian</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Olivier’s Theme for Obsidian</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">General</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../general/" class="dropdown-item">General settings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Colors</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../colors-light-dark/" class="dropdown-item">Light and Dark mode colors</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reading & writing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Reading mode</a>
+</li>
+                                    
+<li>
+    <a href="../writing-mode/" class="dropdown-item">Writing / Editing mode</a>
+</li>
+                                    
+<li>
+    <a href="../reading-vs-writing/" class="dropdown-item">Reading vs Writing – mental modes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">cssclasses</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../css-classes/" class="dropdown-item">Visual catalogue of CSS classes</a>
+</li>
+                                    
+<li>
+    <a href="../niceties-and-cssclasses/" class="dropdown-item">Niceties & cssclasses</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../colors-light-dark/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../writing-mode/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/OlivierPS/Olivier-s-Theme/edit/master/docs/reading-mode.md" class="nav-link">Edit on OlivierPS/Olivier-s-Theme
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#reading-mode" class="nav-link">Reading mode</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="reading-mode">Reading mode<a class="headerlink" href="#reading-mode" title="Permanent link">&para;</a></h1>
+<p>The <strong>READING mode</strong> settings control how your notes look when you are simply reading them.<br />
+They focus on typography, tables, images and a few small behaviours that improve legibility and create a calm, book‑like page.</p>
+<!-- screenshot: Style Settings – Olivier’s Theme – READING mode section -->
+
+<hr />
+<h3 id="body-text-size">Body text size<a class="headerlink" href="#body-text-size" title="Permanent link">&para;</a></h3>
+<p>This is the <strong>base size of the main body text</strong> in Reading mode (in pixels).</p>
+<p>The <strong>18 px</strong> default is a good starting point, which feels close to a comfortable book size on most screens.<br />
+You can adjust the value according to your font, your screen and your eyesight:</p>
+<ul>
+<li>increase it if you read at some distance or on high‑resolution displays,  </li>
+<li>decrease it slightly if you prefer a denser page or work on a small laptop.</li>
+</ul>
+<h3 id="line-height">Line height<a class="headerlink" href="#line-height" title="Permanent link">&para;</a></h3>
+<p>Line height controls the <strong>vertical spacing</strong> between lines (in em).</p>
+<p>Too tight and the text feels cramped; too loose and your eye has trouble jumping from one line to the next.<br />
+A value around <strong>1.45 em</strong> usually offers a good compromise for long‑form reading.</p>
+<p>If you reduce line length, you can often reduce line height slightly as well;<br />
+if you use a font with a very large x‑height, you may want a bit more line height than with a classic book typeface.</p>
+<h3 id="line-length">Line length<a class="headerlink" href="#line-length" title="Permanent link">&para;</a></h3>
+<p>Line length is defined in <strong>em</strong>, i.e. relative to the current text size.</p>
+<p>This keeps the number of characters per line in a comfortable range even if you change the body size.<br />
+A value around <strong>40 em</strong> gives roughly 70–85 characters per line with many fonts, which is a good range for continuous reading.</p>
+<p>If the text feels too “wide” and tiring, reduce this value; if it feels too narrow or “choppy”, increase it a little.</p>
+<!-- screenshot: same note at 34em vs 42em line length -->
+
+<h3 id="size-of-the-text-in-table-cells-of-body-text-size">Size of the text in table cells (% of body text size)<a class="headerlink" href="#size-of-the-text-in-table-cells-of-body-text-size" title="Permanent link">&para;</a></h3>
+<p>This option defines the <strong>text size inside table cells</strong>, as a percentage of the Reading body text size.</p>
+<ul>
+<li>At <strong>90 %</strong> (the recommended default), tables remain clear but do not overpower the main text. It may be more practical when cells have more than a few words.  </li>
+<li>At <strong>100 %</strong>, tables feel more prominent and are easier to read when cells contain just numbers or few words.</li>
+</ul>
+<p>If your notes rely heavily on tables or Dataview outputs, you may want to experiment between 90 and 100 %.</p>
+<!-- screenshot: table at 90% vs 100% text size -->
+
+<h3 id="tables-style">Tables style<a class="headerlink" href="#tables-style" title="Permanent link">&para;</a></h3>
+<p>Here you choose the global <strong>table style for Reading mode</strong>:</p>
+<ul>
+<li><strong>Obsidian plain</strong> – the native Obsidian table style.  </li>
+<li><strong>Improved</strong> – refined header styling, better vertical alignment and adjusted text sizes.  </li>
+<li><strong>Alternate row backgrounds</strong> – same improvements plus alternating row backgrounds for large tables.</li>
+</ul>
+<p>“Improved” is a good all‑purpose choice.<br />
+If you often read wide tables or spreadsheets, “Alternate row backgrounds” makes row tracking easier.</p>
+<h3 id="lists-hover-highlight-reading-only">Lists hover highlight (Reading only)<a class="headerlink" href="#lists-hover-highlight-reading-only" title="Permanent link">&para;</a></h3>
+<p>This toggle enables a <strong>hover highlight</strong> on <strong>list items</strong> in <strong>Reading mode</strong>:</p>
+<ul>
+<li>bulleted lists  </li>
+<li>numbered lists  </li>
+<li>tasks</li>
+</ul>
+<p>When it is ON, moving the mouse over an item gives it a subtle accent background.<br />
+This makes it easier to visually follow long lists while reading, especially in dense notes.</p>
+<p>The highlight does <strong>not</strong> affect Writing / Editing mode; it is purely a reading aid.</p>
+<!-- screenshot: list with hover highlight on an item -->
+
+<h3 id="bases-hide-header-in-preview">Bases: hide header in Preview<a class="headerlink" href="#bases-hide-header-in-preview" title="Permanent link">&para;</a></h3>
+<p>Once you have finished configuring a Base inside a note, the header with its buttons often becomes unnecessary and even visually disturbing, because it breaks the flow of the text.</p>
+<p>This option lets you completely hide the Bases header in <strong>Reading (Preview) mode</strong>, so the note reads like continuous text, simply with a table or a list.</p>
+<p>When this switch is <strong>ON</strong>, you still have two easy ways to adjust a Base later:</p>
+<ul>
+<li>Open the note in <strong>Live Preview</strong>: the Bases header is always visible while you are editing.  </li>
+<li>Temporarily <strong>re‑enable the header for that note only</strong> by using the <code>cssclasses</code> property in the note’s metadata and adding <code>bases-header-on</code>:</li>
+</ul>
+<pre class="codehilite"><code class="language-yaml">cssclasses: bases-header-on
+</code></pre>
+
+<p>Conversely, if you prefer to <strong>see the Bases header in all notes by default</strong>, leave this switch <strong>OFF</strong>.</p>
+<p>You can then hide the header only in some notes by adding the <code>bases-clean</code> class in the <code>cssclasses</code> property:</p>
+<pre class="codehilite"><code class="language-yaml">cssclasses: bases-clean
+</code></pre>
+
+<p>If you are not familiar with cssclasses: it is a standard Obsidian note property that lets you activate special visual behaviors on a note‑by‑note basis, simply by listing their names in the metadata at the top of the note.</p>
+<h3 id="images-style">Images style<a class="headerlink" href="#images-style" title="Permanent link">&para;</a></h3>
+<p>You can choose among four styles:</p>
+<ul>
+<li><strong>Plain</strong> – images without frame or shadow, for a minimal look.  </li>
+<li><strong>With a frame</strong> – a simple border around the image.  </li>
+<li><strong>With a shadow</strong> – a soft drop shadow.  </li>
+<li><strong>With a frame and a shadow</strong> – both effects combined.</li>
+</ul>
+<p>Choose the style that best matches your use of images (screenshots, diagrams, photos, illustrations).</p>
+<!-- screenshot: same image displayed with the four styles -->
+
+<h3 id="images-max-height-in-reading">Images max height in Reading<a class="headerlink" href="#images-max-height-in-reading" title="Permanent link">&para;</a></h3>
+<p>This setting defines the <strong>maximum height of images in Reading mode</strong>, in pixels.</p>
+<p>It prevents very tall screenshots or photos from taking over the entire screen while reading.<br />
+You can still open or zoom images to see them in full when needed.</p>
+<ul>
+<li>A value around <strong>500–600 px</strong> works well as a default.  </li>
+<li>Use a smaller value if your notes are full of screenshots;<br />
+  use a larger one if you work with detailed diagrams or photos.</li>
+</ul>
+<p>The <em>width</em> of an image is always contained within the line length of the text column.</p>
+<hr />
+<p>In short, Reading mode is where you tune the <strong>book‑like</strong> experience:<br />
+body size, rhythm of lines, behaviour of tables and images, and the overall feeling of the page while you are simply absorbing information — reading, studying, etc.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

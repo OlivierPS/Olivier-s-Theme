@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="User Guide for Olivier’s Theme 2.0 – palettes, reading/writing modes, cssclasses.">
+        
+        <link rel="canonical" href="https://olivierps.github.io/Olivier-s-Theme/">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Olivier’s Theme for Obsidian</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Olivier’s Theme for Obsidian</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="." class="nav-link active" aria-current="page">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">General</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="general/" class="dropdown-item">General settings</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Colors</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="colors-light-dark/" class="dropdown-item">Light and Dark mode colors</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Reading & writing</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="reading-mode/" class="dropdown-item">Reading mode</a>
+</li>
+                                    
+<li>
+    <a href="writing-mode/" class="dropdown-item">Writing / Editing mode</a>
+</li>
+                                    
+<li>
+    <a href="reading-vs-writing/" class="dropdown-item">Reading vs Writing – mental modes</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">cssclasses</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="css-classes/" class="dropdown-item">Visual catalogue of CSS classes</a>
+</li>
+                                    
+<li>
+    <a href="niceties-and-cssclasses/" class="dropdown-item">Niceties & cssclasses</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="general/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/OlivierPS/Olivier-s-Theme/edit/master/docs/index.md" class="nav-link">Edit on OlivierPS/Olivier-s-Theme
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#oliviers-theme-20-user-guide" class="nav-link">Olivier’s Theme 2.0 · User Guide</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#before-you-start" class="nav-link">Before you start</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#how-this-guide-is-organised" class="nav-link">How this guide is organised</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quick-path-10minute-setup" class="nav-link">Quick path · 10‑minute setup</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#yaml" class="nav-link">```yaml</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#table-of-contents" class="nav-link">Table of contents</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="oliviers-theme-20-user-guide">Olivier’s Theme 2.0 · User Guide<a class="headerlink" href="#oliviers-theme-20-user-guide" title="Permanent link">&para;</a></h1>
+<p>Olivier’s Theme is a refined interface theme for Obsidian that focuses on legibility, calm color palettes, and a clear separation between <strong>reading</strong> and <strong>writing</strong>. It is designed for people who spend a lot of time with long notes – journaling, research, psychotherapy notes, technical writing – and who want the interface to support, not distract, their thinking.</p>
+<p>This User Guide explains how to get the most out of the theme, from the global interface settings to fine‑grained typography and per‑note cssclasses. It assumes you already know the basics of Obsidian and want to tune your workspace rather than learn Obsidian itself.</p>
+<hr />
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
+<p>To follow this guide and access all options, you will need:</p>
+<ul>
+<li>Obsidian 1.5 or later.</li>
+<li>Olivier’s Theme installed and active.</li>
+<li>The <strong>Style Settings</strong> plugin enabled, to access the theme’s configuration panels.</li>
+<li>(Optional but recommended) The <strong>Contextual Typography</strong> plugin, which lets the theme refine certain vertical spacings more precisely.</li>
+</ul>
+<p>Most of the settings described here live under <strong>Settings → Appearance → Style Settings → Olivier’s Theme</strong>.</p>
+<hr />
+<h2 id="how-this-guide-is-organised">How this guide is organised<a class="headerlink" href="#how-this-guide-is-organised" title="Permanent link">&para;</a></h2>
+<p>You do not have to read everything in order. The chapters are grouped by mental tasks:</p>
+<ul>
+<li>Start with <strong>General settings</strong> to set the overall interface size and spacing.</li>
+<li>Then pick your <strong>color palettes</strong> for Light and Dark modes.</li>
+<li>Decide how you want to separate <strong>Reading vs. Writing</strong> as activities.</li>
+<li>Tune <strong>Reading mode</strong> for a comfortable, book‑like experience.</li>
+<li>Tune <strong>Writing mode</strong> for the way you think and draft text.</li>
+<li>Finally, explore <strong>cssclasses and niceties</strong> for per‑note refinements and special layouts.</li>
+</ul>
+<p>If you are in a hurry, you can simply follow the “Quick path” below.</p>
+<hr />
+<h2 id="quick-path-10minute-setup">Quick path · 10‑minute setup<a class="headerlink" href="#quick-path-10minute-setup" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Set interface size and sidebar density</strong><br />
+   Open <strong>GENERAL settings</strong> and adjust:  </li>
+<li>“Base size for the interface texts (px)”, so sidebar text and UI labels are comfortable on your main screen.  </li>
+<li>“Spacing for the files listing”, so the file explorer feels neither cramped nor overly airy.</li>
+</ol>
+<p><img alt="sidebar_settings" src="assets/sidebar_settings.png" /></p>
+<ol>
+<li><strong>Choose your color palettes</strong><br />
+   In <strong>LIGHT MODE colors</strong>, pick a Light palette that fits your taste; a coordinated Dark palette is selected automatically.</li>
+</ol>
+<p><img alt="Light palette choice" src="assets/light_palette_choice.png" /></p>
+<ul>
+<li>
+<p>Optionally override the Dark palette if you want a different mood at night.</p>
+</li>
+<li>
+<p><strong>Tune Reading mode for comfort</strong>
+   In <strong>READING mode</strong>, adjust:  </p>
+</li>
+<li>
+<p>Body text size.  </p>
+</li>
+<li>Line height.  </li>
+<li>
+<p>Line length (in em).
+   Aim for a page that feels like a well‑set book, not a slide deck.</p>
+</li>
+<li>
+<p><strong>Tune Writing mode for ergonomics</strong>
+   In <strong>WRITING / editing mode</strong>, pick:  </p>
+</li>
+<li>
+<p>The font you prefer while typing (can differ from Reading).  </p>
+</li>
+<li>Slightly smaller or larger body size.  </li>
+<li>
+<p>Line length that fits your writing style.</p>
+</li>
+<li>
+<p><strong>Choose a paper background</strong></p>
+<p>You can read your notes written on paper. You have a choice, from subtle to parchment :</p>
+<p><img alt="Paper background choices" src="assets/Paper_backgrounds_choice.png" /></p>
+<p><br>Once this is done, you already have a coherent, comfortable setup that you can refine later.</p>
+<h6 id="cssclasses-for-special-notes">cssclasses for special notes<a class="headerlink" href="#cssclasses-for-special-notes" title="Permanent link">&para;</a></h6>
+<p>For notes that need a special layout — with or without menu for the Bases, smaller or bigger reading text, tables with or without alternating row backgrounds, etc. — you have a handful of CSS classes that you can use by adding them in the note’s Properties, like this:  </p>
+<h2 id="yaml">```yaml<a class="headerlink" href="#yaml" title="Permanent link">&para;</a></h2>
+<p>cssclasses:
+  - bases-clean
+  - readingMode-text-small</p>
+<hr />
+<p>```</p>
+</li>
+</ul>
+<hr />
+<h2 id="table-of-contents">Table of contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<p>The rest of the documentation is organised into focused pages:</p>
+<ul>
+<li>
+<p><strong>General settings</strong><br />
+  Global interface scaling, sidebar spacing, headings hierarchy, Kanban options, code wrapping, status bar, title bar breadcrumb, canvas background.<br />
+  → <code>general.md</code></p>
+</li>
+<li>
+<p><strong>Colors in Light and Dark mode</strong><br />
+  How palettes work, how Light and Dark interact, accent colors, text vs muted text, and background logic.<br />
+  → <code>colors-light-dark.md</code></p>
+</li>
+<li>
+<p><strong>Reading vs Writing – mental modes</strong><br />
+  Why Reading and Writing are treated as different activities, and how to design your personal reading and drafting environments.<br />
+  → <code>reading-vs-writing.md</code></p>
+</li>
+<li>
+<p><strong>Reading mode</strong><br />
+  Body text size, line height, line length, tables style, image style and maximum height, Bases header hiding options.<br />
+  → <code>reading-mode.md</code></p>
+</li>
+<li>
+<p><strong>Writing mode</strong><br />
+  Editor fonts, text sizes, line length and height tuned for drafting, so you see enough context around the cursor without sacrificing readability.<br />
+  → <code>writing-mode.md</code></p>
+</li>
+<li>
+<p><strong>cssclasses and niceties</strong><br />
+  Visual catalogue of cssclasses: Bases headers, image sizing, reading‑text size, specialised niceties (step lists, table styles) and how to combine them in real notes.<br />
+  → <code>css-classes.md</code>, <code>niceties-and-cssclasses.md</code></p>
+</li>
+</ul>
+<p>As the documentation evolves, this index will remain the entry point to the most up‑to‑date pages and screenshots.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-02-08 11:20:47.367486+00:00
+-->

@@ -1,0 +1,57 @@
+Collecting mkdocs
+  Using cached mkdocs-1.6.1-py3-none-any.whl.metadata (6.0 kB)
+Collecting click>=7.0 (from mkdocs)
+  Using cached click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting ghp-import>=1.0 (from mkdocs)
+  Using cached ghp_import-2.1.0-py3-none-any.whl.metadata (7.2 kB)
+Collecting jinja2>=2.11.1 (from mkdocs)
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting markdown>=3.3.6 (from mkdocs)
+  Using cached markdown-3.10.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting markupsafe>=2.0.1 (from mkdocs)
+  Using cached markupsafe-3.0.3-cp314-cp314-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Collecting mergedeep>=1.3.4 (from mkdocs)
+  Using cached mergedeep-1.3.4-py3-none-any.whl.metadata (4.3 kB)
+Collecting mkdocs-get-deps>=0.2.0 (from mkdocs)
+  Using cached mkdocs_get_deps-0.2.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting packaging>=20.5 (from mkdocs)
+  Using cached packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pathspec>=0.11.1 (from mkdocs)
+  Using cached pathspec-1.0.4-py3-none-any.whl.metadata (13 kB)
+Collecting pyyaml-env-tag>=0.1 (from mkdocs)
+  Using cached pyyaml_env_tag-1.1-py3-none-any.whl.metadata (5.5 kB)
+Collecting pyyaml>=5.1 (from mkdocs)
+  Using cached pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting watchdog>=2.0 (from mkdocs)
+  Using cached watchdog-6.0.0.tar.gz (131 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting python-dateutil>=2.8.1 (from ghp-import>=1.0->mkdocs)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting platformdirs>=2.2.0 (from mkdocs-get-deps>=0.2.0->mkdocs)
+  Using cached platformdirs-4.5.1-py3-none-any.whl.metadata (12 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.1->ghp-import>=1.0->mkdocs)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Using cached mkdocs-1.6.1-py3-none-any.whl (3.9 MB)
+Using cached click-8.3.1-py3-none-any.whl (108 kB)
+Using cached ghp_import-2.1.0-py3-none-any.whl (11 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markdown-3.10.1-py3-none-any.whl (107 kB)
+Using cached markupsafe-3.0.3-cp314-cp314-macosx_11_0_arm64.whl (12 kB)
+Using cached mergedeep-1.3.4-py3-none-any.whl (6.4 kB)
+Using cached mkdocs_get_deps-0.2.0-py3-none-any.whl (9.5 kB)
+Using cached packaging-26.0-py3-none-any.whl (74 kB)
+Using cached pathspec-1.0.4-py3-none-any.whl (55 kB)
+Using cached platformdirs-4.5.1-py3-none-any.whl (18 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (173 kB)
+Using cached pyyaml_env_tag-1.1-py3-none-any.whl (4.7 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Building wheels for collected packages: watchdog
+  Building wheel for watchdog (pyproject.toml): started
+  Building wheel for watchdog (pyproject.toml): finished with status 'error'
+Failed to build watchdog
