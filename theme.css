@@ -46,20 +46,21 @@
  */
 
 /*
-* Post‑release tweaks
-* -------------------
-* 2026-02-09
-* 	- Changed the font size of “add-on” items in Metadata Menu modal
-* 2026-02-08
-*	- Temporarily removed Art Deco and Victorian palettes from the menus, because they aren’t fully tuned
-* 2026-02-07
-* 	- Modified the Style Settings font selector for writing so that it gives a CSS class ⭢ 
-* 		- This permits the fine tuning of letter-spacing on a per-font basis
-*	- Corrected the different states and the hovering of the different buttons in the Bases menu bar
-*	- Corrected the colors of the different states in Metadata Menu modals.
-* 2026‑02‑06
-*   - Increased `--header-height` from 2.0em to 2.4em for more comfortable workspace tab bars and view headers.
-*   - Restored normal vertical space for tab icons by relying on the updated header height instead of extra padding.
+Post‑release tweaks
+-------------------
+2026-02-09
+	- Changed the font size of “add-on” items in Metadata Menu modal
+	- Compacted the YAML metadata
+2026-02-08
+- Temporarily removed Art Deco and Victorian palettes from the menus, because they aren’t fully tuned
+2026-02-07
+	- Modified the Style Settings font selector for writing so that it gives a CSS class ⭢ 
+		- This permits the fine tuning of letter-spacing on a per-font basis
+- Corrected the different states and the hovering of the different buttons in the Bases menu bar
+- Corrected the colors of the different states in Metadata Menu modals.
+2026‑02‑06
+  - Increased `--header-height` from 2.0em to 2.4em for more comfortable workspace tab bars and view headers.
+  - Restored normal vertical space for tab icons by relying on the updated header height instead of extra padding.
 */
 
 /* ========================================================================================================
@@ -5368,10 +5369,11 @@ input[type=checkbox]:hover {
 .cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def,
 .cm-line:has(.cm-hmd-frontmatter) {
 	color:			var(--OT-YAML-color);
-	padding-top:	4pt	!important;
+	/*padding-top:	4pt	!important;				09.02.2026 je préfère un affichage compact	*/
 	padding-bottom:	0	!important;
 	line-height:	1rem	!important;
 }
+
 .publish-section-header,
 .u-pop {
 	color:	var(--color-base-100);
