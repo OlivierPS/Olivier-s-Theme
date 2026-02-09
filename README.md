@@ -5,9 +5,9 @@
 An advanced interface theme for [Obsidian](https://obsidian.md/) focused on **legibility**, typography, and a calm, paper‑like writing environment.  
 It combines a rich set of color palettes with a carefully structured set of options via the Style Settings plugin.
 
-> If you enjoy long‑form thinking, journaling, research, or psychotherapy notes, this theme is designed to stay out of your way while keeping your notes beautiful and readable.
+> If you enjoy long‑form thinking, journaling, research, or simply beautiful notes in a calm environment, this theme is designed to stay out of your way while keeping your notes extremely readable.
 
-Full documentation for version 2.0 is available in the **User Guide** (see _User Guide & screenshots_ below).
+Full documentation for version 2.0 is available in the [User Guide](https://olivierps.github.io/Olivier-s-Theme/).
 
 ***
 
@@ -91,7 +91,7 @@ Once the theme and Style Settings are enabled, you will find a structured list o
 
 ## User Guide & screenshots
 
-- **Full User Guide for v2**: see the `/docs` folder, starting with [`docs/index.md`](docs/index.md).  
+- **Full User Guide for v2**: see ⭢ [this page](https://olivierps.github.io/Olivier-s-Theme/).  
 - Additional screenshots and sample notes will be added over time as the documentation evolves.
 
 ***
