@@ -48,6 +48,8 @@
 /*
 * Post‑release tweaks
 * -------------------
+* 2026-02-09
+* 	- Changed the font size of “add-on” items in Metadata Menu modal
 * 2026-02-08
 *	- Temporarily removed Art Deco and Victorian palettes from the menus, because they aren’t fully tuned
 * 2026-02-07
@@ -9111,6 +9113,9 @@ li.task-list-item {
 .value-container.is-selected {
   color:            var(--OT-color-on-accent-2);
   background-color: var(--color-accent-2);
+}
+.value-container .item-with-add-on .add-on {
+	font-size: var(--font-ui-small);
 }
 
 /* Hover sur un élément sélectionné = accent‑1 */
