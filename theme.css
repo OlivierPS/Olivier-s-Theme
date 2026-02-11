@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-11
+	- compacted vertically all the properties (metadata) block
 2026-02-09
 	- Changed the font size of “add-on” items in Metadata Menu modal
 	- Compacted the YAML metadata
@@ -605,15 +607,18 @@ body {
 	--metadata-border-width:			1px;
 	--metadata-divider-color:			var(--color-base-35);		/*	le filet de séparation des différentes valeurs				*/
 	--metadata-divider-width:			1px;
+	--metadata-gap:						0rem;
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
-  	--metadata-input-font-size:			var(--font-ui-small);
+	--metadata-input-height:			1rem;
+	--metadata-input-padding:			0 0.2rem;
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
-  	--metadata-label-font-size:			var(--font-ui-small);
 	--metadata-label-font-weight:		var(--font-semibold);
 	--metadata-label-text-color:		var(--text-muted);
 	--metadata-label-width:				var(--OT-metadata-label-width);
 	--metadata-padding:					0;
-	--metadata-property-padding:		0em 0em 0em 0.3em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
+	--metadata-property-padding:		0em 0.2em 0em 0.1em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
+  	--metadata-input-font-size:			var(--font-ui-small);
+  	--metadata-label-font-size:			var(--font-ui-small);
 
 	--modal-height:		88vh;
 	--modal-max-height:	98vh;
@@ -3924,127 +3929,6 @@ body {
 /* -------------------- Pills Colors -------------------- */
 
 
-/*  Bookmark OpSpl49 ——— Metadata links & pills (version alignée sur la palette de pills) ——— */
-
-/* 1. Meta property icons */
-.metadata-property-icon {
-  color:        var(--OT-metadata-property-icon);
-  border-radius: var(--button-radius);
-}
-.metadata-property-icon::after {
-  content: "\200B";
-  width:   var(--size-4-1);
-}
-@media (hover: hover) {
-  .metadata-property-icon:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-  }
-  .metadata-property-icon:hover .svg-icon {
-    color: var(--OT-color-on-accent-1);
-  }
-}
-
-/* 2. Internal links in meta use pill palette by default, not link palette */
-
-/* Base internal links inside properties → pill palette */
-.metadata-container .internal-link {
-  color:            var(--OT-pill-color);
-  background-color: var(--OT-pill-background);
-}
-
-/* Unresolved links: distinct text + background, mais sur le link lui-même */
-.metadata-container .internal-link.is-unresolved {
-  color:                 var(--link-unresolved-color);
-  opacity:               var(--link-unresolved-opacity);
-  filter:                var(--link-unresolved-filter);
-  text-decoration-style: var(--link-unresolved-decoration-style);
-  text-decoration-color: var(--link-unresolved-decoration-color);
-  background-color:      var(--color-accent-3);
-}
-
-/* Multi-select pills (tags, aliases, list items) */
-.multi-select-pill {
-  color:            var(--OT-pill-color);
-  background-color: var(--OT-pill-background);
-}
-
-/* Contenu intérieur légèrement décalé pour laisser la place au remove icon */
-.multi-select-pill-content {
-  margin-left: 0.6em;
-}
-
-/* Local vars for “tags” property: futur ajustement fin possible */
-.metadata-property[data-property-key="tags"] {
-  --pill-color:        var(--OT-pill-color);
-  --pill-background:   var(--OT-pill-background);
-  --pill-color-remove: var(--OT-pill-background);
-}
-
-/* Remove button suit la palette de pill */
-.metadata-container .multi-select-pill-remove-button {
-  color: var(--pill-color-remove);
-}
-
-/* Hover behavior (pills) */
-@media (hover: hover) {
-  /* Pill container hover: même traitement pour resolved/unresolved */
-  .multi-select-pill:hover {
-    --pill-color-remove:        var(--pill-color-hover);
-    color:                      var(--pill-color-hover);
-    background-color:           var(--pill-background-hover);
-  }
-
-  /* Generic internal links in properties (y compris dans les pills) → lien palette au hover */
-  .metadata-container .internal-link:hover,
-  .metadata-property-value .internal-link:hover,
-  .multi-select-pill .internal-link:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-color);
-  }
-
-  /* Unresolved links: seul le lien change de fond, pas le pill */
-  .metadata-container .internal-link.is-unresolved:hover,
-  .metadata-container .multi-select-pill .internal-link.is-unresolved:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-unresolved-color);
-  }
-
-  /* Remove button hover: suivre la palette de pill */
-  .metadata-container .multi-select-pill-remove-button:hover {
-    color: var(--pill-color-remove-hover);
-  }
-}
-
-/* Reassert pill colors inside properties with higher specificity,
-   while keeping cursor / decoration from app.css. */
-.metadata-container .metadata-property-value .internal-link {
-  color:            var(--OT-pill-color);
-  background-color: var(--OT-pill-background);
-}
-.metadata-container .metadata-property-value .internal-link.is-unresolved {
-  color:                 var(--link-unresolved-color);
-  opacity:               var(--link-unresolved-opacity);
-  filter:                var(--link-unresolved-filter);
-  text-decoration-style: var(--link-unresolved-decoration-style);
-  text-decoration-color: var(--link-unresolved-decoration-color);
-  background-color:      var(--color-accent-3);
-}
-@media (hover: hover) {
-  .metadata-container .metadata-property-value .internal-link:hover,
-  .metadata-container .multi-select-pill .internal-link:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-color);
-  }
-  .metadata-container .metadata-property-value .internal-link.is-unresolved:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-unresolved-color);
-  }
-}
-/* -------------------- ↑ Pills Colors -------------------- ↑ */
-
-
-
 /*	Bookmark	OpSpl14	 —————————————————————————————— Highlight Colors (Stabilo) —————————————————————————————— */
 .highlight-color-lightBlue {
 	--text-highlight-bg:	var(--stabilo-bleu-clair);
@@ -7058,14 +6942,6 @@ select {
     background-color: var(--OT-button-background-hover);
   }
 }
-
-/* 13. Properties panel buttons */
-@media (hover: hover) {
-  .field-btn-container:hover {
-    color:            var(--OT-hover-fg) !important;
-    background-color: var(--OT-hover-bg) !important;
-  }
-}
 /* -------------------- ↑ Boutons ↑ -------------------- */
 
 /* Bookmark		OpSpl30a --------------------	Combobox / dropdown buttons – ajustements généraux + Bases */
@@ -7098,13 +6974,13 @@ select {
 
 /*  Bookmark OpSpl31 ————————————— Icons ————————————— */
 
-/* 1. Taille et apparence des icônes de collapse / triangles */
+/* 1. Triangles de collapse, sauf ceux de Metadata Menu */
 .collapse-icon svg.svg-icon,
-.svg-icon.right-triangle {
-  width:        1.2em !important;
-  height:       auto !important;
+.svg-icon.right-triangle:not(.field-btn-container .svg-icon.right-triangle) {
+  width: 1.2em !important;
+  height: auto !important;
   padding-right: 0.3em !important;
-  stroke-width: 4px !important; /* épaisseur des traits */
+  stroke-width: 4px !important;
 }
 
 /* 2. Couleur des icônes de collapse – base, sans !important */
@@ -8398,157 +8274,187 @@ li.task-list-item {
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl49	—————————————————————————————— Metadata & links ——————————————————————————————	*/
+/*  Bookmark OpSpl49 —————————————————————————————— Metadata & links ——————————————————————————————  */
+
+.metadata-property-key {
+	align-items: center;
+}
+
 /* ─────────────────────────────
    1. Meta property icons
    ───────────────────────────── */
 
+.metadata-input-longtext {
+	line-height: var(--line-height-tight);
+   }
+
 .metadata-property-icon {
-  color:          var(--OT-metadata-property-icon);
-  border-radius:  var(--button-radius);
+  color:         var(--OT-metadata-property-icon);
+  border-radius: var(--button-radius);
 }
 
-/* Optional spacing tweak */
+/* Petit espace après l’icône (pour respirer avant le label) */
 .metadata-property-icon::after {
   content: "\200B";
-  width: var(--size-4-1);
+  width:   var(--size-4-1);
 }
 
 @media (hover: hover) {
   .metadata-property-icon:hover {
-    color:             var(--OT-color-on-accent-1);
-    background-color:  var(--color-accent-1);
+    color:            var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
   }
 
   .metadata-property-icon:hover .svg-icon {
-    color:             var(--OT-color-on-accent-1);
+    color: var(--OT-color-on-accent-1);
   }
 
-  /* Clickable icons inside property values (e.g. “open file”) */
+  /* Icônes cliquables dans les valeurs (ex. “open file”) */
   .metadata-property-value .clickable-icon:hover {
-    color:             var(--OT-color-on-accent-1);
-    background-color:  var(--color-accent-1);
+    color:            var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
   }
 }
 
 /* ─────────────────────────────
-   2. Meta internal links & pills
+   2. Meta internal links & pills (dans les propriétés)
    ───────────────────────────── */
 
-/* Base style for any internal link inside properties:
-   use pill palette by default, not link palette */
+/* Liens internes dans les propriétés : palette de pills par défaut */
 .metadata-container .internal-link {
-  color:             var(--OT-pill-color);
-  background-color:  var(--OT-pill-background);
+  color:            var(--OT-pill-color);
+  background-color: var(--OT-pill-background);
 }
 
-/* Unresolved links in properties: unresolved text + distinct default bg */
+/* Liens internes non résolus dans les propriétés */
 .metadata-container .internal-link.is-unresolved {
-  color:                    var(--link-unresolved-color);
-  opacity:                  var(--link-unresolved-opacity);
-  filter:                   var(--link-unresolved-filter);
-  text-decoration-style:    var(--link-unresolved-decoration-style);
-  text-decoration-color:    var(--link-unresolved-decoration-color);
-  background-color:         var(--color-accent-3);
+  color:                 var(--link-unresolved-color);
+  opacity:               var(--link-unresolved-opacity);
+  filter:                var(--link-unresolved-filter);
+  text-decoration-style: var(--link-unresolved-decoration-style);
+  text-decoration-color: var(--link-unresolved-decoration-color);
+  background-color:      var(--color-accent-3);
 }
 
-/* Multi-select pills (tags, aliases, list items, etc.) */
+/* Pills multi-select (tags, aliases, listes, etc.) */
 .multi-select-pill {
-  color:             var(--OT-pill-color);
-  background-color:  var(--OT-pill-background);
+  color:            var(--OT-pill-color);
+  background-color: var(--OT-pill-background);
 }
 
 .multi-select-pill-content {
   margin-left: 0.6em;
 }
 
-/* Remove button follows pill palette in metadata */
+/* Bouton de suppression suit la palette de pill */
 .metadata-container .multi-select-pill-remove-button {
   color: var(--pill-color-remove);
 }
 
-/* Tags property: local pill vars for future customization */
+/* Propriété “tags” : variables locales pour personnalisation future */
 .metadata-property[data-property-key="tags"] {
   --pill-color:        var(--OT-pill-color);
   --pill-background:   var(--OT-pill-background);
   --pill-color-remove: var(--OT-pill-background);
 }
 
-/* Hover behaviour inside meta
-   - Pill container itself: uses pill-hover palette, regardless of resolved/unresolved.
-   - Links in properties (including inside pills): use link palette.
-   - Unresolved links: stronger unresolved background, but only on the link element. */
+/* Comportement hover dans les propriétés */
 @media (hover: hover) {
-  /* Pill container hover: same for resolved and unresolved */
+  /* Hover sur la pill elle-même (résolue ou non) : palette de pill */
   .multi-select-pill:hover {
-    --pill-color-remove:  var(--pill-color-hover);
-    color:                var(--pill-color-hover);
-    background-color:     var(--pill-background-hover);
+    --pill-color-remove: var(--pill-color-hover);
+    color:               var(--pill-color-hover);
+    background-color:    var(--pill-background-hover);
   }
 
-  /* Generic internal links in properties (including inside pills) */
+  /* Hover sur les liens internes dans les propriétés (y compris dans les pills) */
   .metadata-container .internal-link:hover,
   .metadata-property-value .internal-link:hover,
   .multi-select-pill .internal-link:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-color);
+    color:            var(--link-color-hover);
+    background-color: var(--link-color);
   }
 
-  /* Unresolved links: only the link itself changes bg, not the pill */
+  /* Hover sur liens internes non résolus (dans les propriétés / pills) */
   .metadata-container .internal-link.is-unresolved:hover,
   .metadata-container .multi-select-pill .internal-link.is-unresolved:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-unresolved-color);
+    color:            var(--link-color-hover);
+    background-color: var(--link-unresolved-color);
   }
 
-  /* Remove button hover */
+  /* Hover sur bouton de suppression de pill */
   .metadata-container .multi-select-pill-remove-button:hover {
     color: var(--pill-color-remove-hover);
   }
 }
 
-/* ── Override app.css in metadata context ───────────────── */
+/* ── Renforcement de la palette pill dans les propriétés ─────────── */
 
-/* Re‑assert pill colors inside properties with higher specificity,
-   while keeping cursor/decoration/weight from app.css. */
+/* Re‑affirme la palette de pill pour les liens dans les valeurs de propriétés */
 .metadata-container .metadata-property-value .internal-link {
-  color:             var(--OT-pill-color);
-  background-color:  var(--OT-pill-background);
+  color:            var(--OT-pill-color);
+  background-color: var(--OT-pill-background);
 }
 
 .metadata-container .metadata-property-value .internal-link.is-unresolved {
-  color:                    var(--link-unresolved-color);
-  opacity:                  var(--link-unresolved-opacity);
-  filter:                   var(--link-unresolved-filter);
-  text-decoration-style:    var(--link-unresolved-decoration-style);
-  text-decoration-color:    var(--link-unresolved-decoration-color);
-  background-color:         var(--color-accent-3);
+  color:                 var(--link-unresolved-color);
+  opacity:               var(--link-unresolved-opacity);
+  filter:                var(--link-unresolved-filter);
+  text-decoration-style: var(--link-unresolved-decoration-style);
+  text-decoration-color: var(--link-unresolved-decoration-color);
+  background-color:      var(--color-accent-3);
 }
 
 @media (hover: hover) {
   .metadata-container .metadata-property-value .internal-link:hover,
   .metadata-container .multi-select-pill .internal-link:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-color);
+    color:            var(--link-color-hover);
+    background-color: var(--link-color);
   }
 
   .metadata-container .metadata-property-value .internal-link.is-unresolved:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-unresolved-color);
+    color:            var(--link-color-hover);
+    background-color: var(--link-unresolved-color);
+  }
+}
+
+/* Final override : liens des propriétés (pour app.css) */
+.metadata-property-value .internal-link {
+  color:            var(--OT-pill-color);
+  background-color: var(--OT-pill-background);
+}
+
+/* Liens non résolus : propriétés + markdown */
+.metadata-property-value .internal-link.is-unresolved,
+.markdown-rendered .internal-link.is-unresolved {
+  color: var(--link-unresolved-color);
+}
+
+@media (hover: hover) {
+  /* Hover des liens des propriétés dans les pills multi-select */
+  .metadata-container .metadata-property-value .multi-select-pill .internal-link:hover {
+    color:            var(--link-color-hover);
+    background-color: var(--link-color);
+  }
+
+  /* Hover des liens non résolus (propriétés + markdown) */
+  .metadata-property-value .internal-link.is-unresolved:hover,
+  .markdown-rendered .internal-link.is-unresolved:hover {
+    color:            var(--link-color-hover);
+    background-color: var(--link-unresolved-color) !important;
   }
 }
 
 /* ─────────────────────────────
-   3. Generic internal links
-   (outside properties)
+   3. Generic internal links (hors propriétés)
    ───────────────────────────── */
 
-/* Base internal links in rendered markdown (non-metadata) */
+/* Liens internes en lecture (hors metadata) */
 .markdown-rendered .internal-link {
   color: var(--link-color);
 }
 
-/* Unresolved internal links in rendered markdown */
+/* Liens internes non résolus en lecture */
 .markdown-rendered .internal-link.is-unresolved {
   color:                 var(--link-unresolved-color);
   opacity:               var(--link-unresolved-opacity);
@@ -8559,63 +8465,62 @@ li.task-list-item {
 
 @media (hover: hover) {
   .markdown-rendered .internal-link:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-color);
+    color:            var(--link-color-hover);
+    background-color: var(--link-color);
   }
 
   .markdown-rendered .internal-link.is-unresolved:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-unresolved-color);
+    color:            var(--link-color-hover);
+    background-color: var(--link-unresolved-color);
   }
 }
 
 /* ─────────────────────────────
-   4. Generic links & hover
-   (internal + external)
+   4. Generic links & hover (internal + external)
    ───────────────────────────── */
 
-/* External links icon: 🔗 in READING mode */
+/* Icône 🔗 après les liens externes en mode lecture */
 .markdown-rendered .external-link::after {
-  content: " 🔗";            /* EN space + link symbol */
+  content: " 🔗";         /* EN space + symbole lien */
   display: inline-block;
   font-size: 0.8em;
   line-height: 1;
 }
 
-/* External links icon: 🔗 in LIVE PREVIEW */
+/* Icône 🔗 en Live Preview (CM6) */
 .markdown-source-view.mod-cm6 .cm-link .cm-underline::after {
-  content: " 🔗";            /* EN space + link symbol */
+  content: " 🔗";
   display: inline-block;
   font-size: 0.8em;
   line-height: 1;
 }
 
-/* Neutralize core external-link background (reading + properties + editor) */
+/* Désactive le background natif des liens externes (lecture + metadata + éditeur) */
 .external-link,
 .markdown-rendered .external-link,
 .metadata-property-value .external-link,
 .markdown-source-view.mod-cm6 .cm-link .cm-underline {
-  background-image: none !important;
-  background-size: 0 !important;
-  padding-inline-end: 0 !important;
+  background-image:    none !important;
+  background-size:     0 !important;
+  padding-inline-end:  0 !important;
 }
 
-/* Optional: if you do NOT want extra underline decoration in LP */
+/* Optionnel : pas de soulignement supplémentaire en Live Preview */
 .markdown-source-view.mod-cm6 .cm-link .cm-underline {
   text-decoration: none;
 }
 
-/* Remove CM6 tiny link icon span (once is enough) */
+/* Supprime le tiny icon span de CM6 (hmd-link-icon) */
 .cm-s-obsidian span.hmd-link-icon,
 .cm-s-obsidian span.hmd-link-icon::after {
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-  content: "" !important;
+  width:    0 !important;
+  height:   0 !important;
+  opacity:  0 !important;
+  content:  "" !important;
   background: none !important;
 }
 
-/* Normal links hovered (rendered & source) */
+/* Hover global des liens (internes/externes, rendu + source) */
 @media (hover: hover) {
   a:hover,
   .external-link:hover,
@@ -8624,18 +8529,18 @@ li.task-list-item {
   .markdown-source-view.mod-cm6 .cm-url .cm-underline:hover,
   .cm-s-obsidian span.cm-link:hover,
   .cm-s-obsidian span.cm-hmd-internal-link:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-color);
+    color:            var(--link-color-hover);
+    background-color: var(--link-color);
   }
 }
 
-/* Unresolved links hovered (rendered, source, properties) */
+/* Hover des liens non résolus (rendu, source, propriétés) */
 @media (hover: hover) {
   .metadata-container .internal-link.is-unresolved:hover,
   .markdown-rendered .internal-link.is-unresolved:hover,
   .markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
-    color:             white;
-    background-color:  var(--link-unresolved-color);
+    color:            white;
+    background-color: var(--link-unresolved-color);
   }
 }
 
@@ -8643,150 +8548,25 @@ li.task-list-item {
    5. “Missing file” embeds
    ───────────────────────────── */
 
-/* Link to a non-existent image / attachment */
+/* Embed vers un fichier inexistant (image/attachment) */
 .file-embed.mod-empty-attachment,
 .file-embed.mod-generic,
 .file-embed.mod-empty {
-  color:             white !important;
-  background-color:  var(--link-unresolved-color);
-  margin-left:       25%;
-  margin-right:      25%;
+  color:            white !important;
+  background-color: var(--link-unresolved-color);
+  margin-left:      25%;
+  margin-right:     25%;
 }
 
-/* Hovered “missing file” embeds */
 @media (hover: hover) {
   .file-embed.mod-empty-attachment:hover,
   .file-embed.mod-generic:hover,
   .file-embed.mod-empty:hover {
-    color:             var(--link-unresolved-color) !important;
-    background-color:  white;
+    color:            var(--link-unresolved-color) !important;
+    background-color: white;
   }
 }
 
-/* ─────────────────────────────
-   6. Final overrides: property links & list pills
-   ───────────────────────────── */
-
-/* Default state: links in properties use pill palette,
-   overriding app.css `.metadata-property-value .internal-link` */
-.metadata-property-value .internal-link {
-  color:             var(--OT-pill-color);
-  background-color:  var(--OT-pill-background);
-}
-
-/* Unresolved links: properties + rendered markdown */
-.metadata-property-value .internal-link.is-unresolved,
-.markdown-rendered .internal-link.is-unresolved {
-  color:             var(--link-unresolved-color);
-}
-
-/* Hover: list-type property pills switch to generic link palette */
-@media (hover: hover) {
-  .metadata-container .metadata-property-value .multi-select-pill .internal-link:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-color);
-  }
-}
-
-/* Hover: unresolved links in properties and markdown */
-@media (hover: hover) {
-  .metadata-property-value .internal-link.is-unresolved:hover,
-  .markdown-rendered .internal-link.is-unresolved:hover {
-    color:             var(--link-color-hover);
-    background-color:  var(--link-unresolved-color) !important;
-  }
-}
-
-/* ─────────────────────────────
-   7. Unresolved links in pills
-   ───────────────────────────── */
-
-/* No extra pill-level background rule here, so .multi-select-pill:hover
-   always uses the pill-hover palette whether the link is resolved or not. */
-/* -------------------- ↑ metadata & links ↑ -------------------- */
-
-
-.metadata-properties-heading {
-	display: none;
-}
-
-/* Seulement les métadonnées des notes (édit/preview), pas les panneaux de plugins */
-.markdown-source-view .metadata-container,
-.markdown-preview-view .metadata-container {
-  --metadata-property-padding: 0;
-  --input-height: 1rem;
-}
-
-.markdown-source-view .metadata-input-longtext,
-.markdown-source-view .multi-select-container,
-.markdown-source-view .metadata-input-text,
-.markdown-preview-view .metadata-input-longtext,
-.markdown-preview-view .multi-select-container,
-.markdown-preview-view .metadata-input-text {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.markdown-source-view input.metadata-input-text,
-.markdown-source-view input[type='date'],
-.markdown-source-view input[type='datetime-local'],
-.markdown-source-view input[type='text'],
-.markdown-source-view input[type='search'],
-.markdown-source-view input[type='email'],
-.markdown-source-view input[type='password'],
-.markdown-source-view input[type='number'],
-.markdown-preview-view input.metadata-input-text,
-.markdown-preview-view input[type='date'],
-.markdown-preview-view input[type='datetime-local'],
-.markdown-preview-view input[type='text'],
-.markdown-preview-view input[type='search'],
-.markdown-preview-view input[type='email'],
-.markdown-preview-view input[type='password'],
-.markdown-preview-view input[type='number'] {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-
-/* Sidebar gauche/droite : métadonnées plus compactes mais pas écrasées */
-.workspace-split.mod-left-split .metadata-container,
-.workspace-split.mod-right-split .metadata-container {
-  --metadata-property-padding: 0.1rem 0 0.1rem 0.3rem; /* un peu d'air */
-  --input-height: 1.2rem;                               /* un peu plus haut que dans la note */
-}
-
-/* Inputs de propriétés dans la sidebar */
-.workspace-split.mod-left-split .metadata-input-longtext,
-.workspace-split.mod-left-split .multi-select-container,
-.workspace-split.mod-left-split .metadata-input-text,
-.workspace-split.mod-right-split .metadata-input-longtext,
-.workspace-split.mod-right-split .multi-select-container,
-.workspace-split.mod-right-split .metadata-input-text {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  line-height: 1.1;
-}
-
-/* Inputs typés dans la sidebar */
-.workspace-split.mod-left-split input.metadata-input-text,
-.workspace-split.mod-left-split input[type='date'],
-.workspace-split.mod-left-split input[type='datetime-local'],
-.workspace-split.mod-left-split input[type='text'],
-.workspace-split.mod-left-split input[type='search'],
-.workspace-split.mod-left-split input[type='email'],
-.workspace-split.mod-left-split input[type='password'],
-.workspace-split.mod-left-split input[type='number'],
-.workspace-split.mod-right-split input.metadata-input-text,
-.workspace-split.mod-right-split input[type='date'],
-.workspace-split.mod-right-split input[type='datetime-local'],
-.workspace-split.mod-right-split input[type='text'],
-.workspace-split.mod-right-split input[type='search'],
-.workspace-split.mod-right-split input[type='email'],
-.workspace-split.mod-right-split input[type='password'],
-.workspace-split.mod-right-split input[type='number'] {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-}
 
 
 /*  Bookmark OpSpl49a ————————————— file navigation (tree items, etc.) ————————————— */
@@ -9098,14 +8878,49 @@ li.task-list-item {
 
 /* 2. Bouton principal dans les propriétés (icône dans les champs) */
 .field-btn-container button.property-metadata-menu {
-  color:            var(--OT-color-on-accent-3);
-  background-color: var(--color-accent-3);
-  width:            var(--input-height);
+	display:			inline-flex;
+	align-items: 		center;
+	justify-content:	center;
+	color:         		var(--OT-color-on-accent-3);
+	background-color: 	var(--color-accent-3);
+	width:         		var(--input-height);
 }
 
-.field-btn-container:hover .property-metadata-menu {
-  color:            var(--OT-color-on-accent-1);
-  background-color: var(--color-accent-1);
+@media (hover: hover) {
+  .field-btn-container button.property-metadata-menu:hover {
+    color:            var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
+  }
+}
+/* amélioration de la visibilité des icônes */
+.field-btn-container button.property-metadata-menu .svg-icon {
+  transform: scale(1.65);        /* nettement plus grand */
+  transform-origin: center;
+  display: block;
+  width: 1.6em;                  /* élargir le bouton visuellement */
+  height: 1.4em;
+  stroke-width: 3px;           /* trait plus gras */
+  color: var(--OT-color-on-accent-3);  /* garde ta palette actuelle */
+  stroke: currentColor;
+}
+
+@media (hover: hover) {
+  .field-btn-container button.property-metadata-menu:hover .svg-icon {
+    color:  var(--OT-color-on-accent-1);
+    stroke: currentColor;
+  }
+}
+/* Chevron Metadata Menu : surcouche spécifique */
+.field-btn-container button.property-metadata-menu .svg-icon.right-triangle {
+	transform:			scale(1.6); /* agrandir le triangle lui-même */
+	transform-origin:	center;
+	stroke-width:		3.6px;   /* trait plus gras que le 3px global */
+}
+
+/* Optionnel : hover du chevron uniquement */
+.field-btn-container button.property-metadata-menu:hover .svg-icon.right-triangle {
+  color: var(--OT-color-on-accent-1);
+  stroke-width: 3.6px;
 }
 
 /* 3. Valeurs dans les modales / listes de valeurs */
@@ -9135,12 +8950,13 @@ li.task-list-item {
 }
 
 /* 4. Bouton “Add property” dans le panneau de métadonnées */
-
 .metadata-container .metadata-add-button,
 .metadata-container .metadata-add-button .text-button-icon,
 .metadata-container .metadata-add-button .text-button-label {
   color:            var(--OT-button-text-normal);
   background-color: var(--color-accent-3);
+  margin-top:		0;
+  padding:			0;
 }
 
 @media (hover: hover) {
@@ -9154,45 +8970,41 @@ li.task-list-item {
   }
 }
 
-/* 5. Boutons Metadata Menu dans les métadonnées (note, vue preview) */
-
+/* 5. Boutons Metadata Menu dans les métadonnées note, vue preview */
 .markdown-source-view .metadata-container .field-btn-container,
 .markdown-preview-view .metadata-container .field-btn-container {
-  padding-block: 0.1rem;
-  margin-block:  0;
+  /* on garde la compacité horizontale, mais on laisse plus de vertical */
+  /*padding-block: 0.15rem;*/
+  margin-block: 0;
 }
 
 .markdown-source-view .metadata-container .field-btn-container button,
 .markdown-preview-view .metadata-container .field-btn-container button {
-  height:        auto;
-  min-height:    0;
-  padding:       0 0.25rem;
-  line-height:   1;
-  display:       inline-flex;
-  align-items:   center;
-  justify-content: center;
+  /* utiliser la hauteur d’input comme garde-fou minimal */
+  min-height:		var(--input-height);
+  height:			auto;
+  padding-inline:	0.35rem;
+  /* laisser la line-height suivre la police plutôt que 1 strict */
+  line-height:		normal;
+  display:			inline-flex;
+  align-items:		center;
+  justify-content:	center;
 }
 
-.markdown-source-view .metadata-container .field-btn-container .svg-icon,
-.markdown-preview-view .metadata-container .field-btn-container .svg-icon {
-  width:  0.9em;
-  height: 0.9em;
-}
-
-/* Boutons Metadata Menu dans la sidebar : version légèrement plus haute */
+/* Boutons Metadata Menu dans la sidebar version légèrement plus haute */
 .workspace-split.mod-left-split .metadata-container .field-btn-container,
 .workspace-split.mod-right-split .metadata-container .field-btn-container {
-  padding-block: 0.15rem;
-  margin-block:  0;
+  /*padding-block: 0.2rem;*/
+  margin-block: 0;
 }
 
 .workspace-split.mod-left-split .metadata-container .field-btn-container button,
 .workspace-split.mod-right-split .metadata-container .field-btn-container button {
-  min-height:  0;
-  padding:     0 0.3rem;
-  line-height: 1.1;
-  height:      auto;
-  display:     inline-flex;
+  min-height: calc(var(--input-height) * 1.05);
+  height: auto;
+  /*padding-inline: 0.4rem;*/
+  line-height: normal;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
@@ -9205,7 +9017,7 @@ li.task-list-item {
   gap:           0.25rem;
   padding-top:    0;
   padding-bottom: 0;
-  line-height:    1rem;
+  /*line-height:    1rem;*/
 }
 
 /* Conteneur de bouton fileclass = flex horizontal */
