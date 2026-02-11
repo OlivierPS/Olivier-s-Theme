@@ -8883,7 +8883,7 @@ li.task-list-item {
 	justify-content:	center;
 	color:         		var(--OT-color-on-accent-3);
 	background-color: 	var(--color-accent-3);
-	width:         		var(--input-height);
+	width:         		1.6em;
 }
 
 @media (hover: hover) {
