@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-02-13
 	- corrected the hovering of Style Settings collapse indicators
+	- corrected the zooming inside panes, permitted by Vertical Tabs plugin
 2026-02-11
 	- compacted vertically all the properties (metadata) block
 2026-02-09
@@ -524,7 +525,7 @@ body {
 	--embed-border-bottom:		none;
 	--embed-padding:			0;	/*	0 0 0 var(--size-4-6);	*/
 
-	--file-line-width:	var(--OT-readingMode-line-width);
+	--file-line-width:			var(--OT-readingMode-line-width);
 	--file-margins:				var(--size-4-8);
 	--file-header-font-size:	var(--font-ui-small);
 	--file-header-font-weight:	400;
@@ -9470,6 +9471,28 @@ kbd {
 
 
 /*  Bookmark OpSpl57 ———————————————————— Vertical Tabs plugin ———————————————————— */
+
+/* Vertical Tabs : garder une largeur de ligne stable malgré le zoom */
+
+/* 1. Forcer la largeur calculée du plugin à rester égale à la largeur Obsidian */
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom {
+  --vt-scaled-file-line-width: var(--file-line-width);
+}
+
+/* 2. Optionnel : si tu préfères piloter directement avec tes variables OT */
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
+  .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
+  .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
+  .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
+  max-width: var(--OT-editMode-line-width);
+}
+
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
+  .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+  max-width: var(--OT-readingMode-line-width);
+}
 
 /* 7.2 Base VT rows — onglets inactifs */
 .vt-tab-container .tree-item-self.is-clickable {
