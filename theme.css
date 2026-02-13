@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-13
+	- corrected the hovering of Style Settings collapse indicators
 2026-02-11
 	- compacted vertically all the properties (metadata) block
 2026-02-09
@@ -6867,6 +6869,19 @@ select {
   padding:          2px;
 }
 
+/* Chevrons des groupes dans Style Settings */
+.style-settings-heading .style-settings-collapse-indicator .collapse-icon svg.svg-icon,
+.style-settings-heading .style-settings-collapse-indicator .svg-icon.right-triangle {
+  --nav-collapse-icon-color: var(--OT-setting-item-name);
+}
+
+.style-settings-heading .style-settings-collapse-indicator:hover .collapse-icon svg.svg-icon,
+.style-settings-heading .style-settings-collapse-indicator:hover .svg-icon.right-triangle {
+  --nav-collapse-icon-color: var(--OT-button-text-hover);
+  background-color: var(--OT-button-background-hover);
+}
+
+/*
 @media (hover: hover) {
   .style-settings-import-label:hover,
   .style-settings-copy:hover,
@@ -6875,16 +6890,8 @@ select {
     background-color: var(--OT-button-background-hover);
     text-decoration:  none;
   }
-
-  .style-settings-collapse-indicator:hover {
-    color:            var(--OT-button-text-hover);
-    background-color: var(--OT-button-background-hover);
-  }
 }
-
-.style-settings-collapse-indicator {
-  color: var(--OT-setting-item-name);
-}
+*/
 
 /* 11. Text-icon buttons (inclut has-active-menu) */
 .text-icon-button.has-active-menu,
