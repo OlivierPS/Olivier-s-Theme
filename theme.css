@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-02-15
 	- overhauled lists to make them highly customizable
+	- included lists presets into Style Settings
 2026-02-13
 	- corrected the hovering of Style Settings collapse indicators
 	- corrected the zooming inside panes, permitted by Vertical Tabs plugin
@@ -8037,19 +8038,17 @@ body {
 
 /* ---------- réglages quasi semblables à “Obsidian natif” --------- */
 body {
-  /* Gaps puce / checkbox → texte
-     Obsidian ne les expose pas explicitement, on choisit une valeur neutre. */
+  /* Gaps puce / checkbox → texte */
   --OT-bullet-text-gap:   0.65em;
   --OT-checkbox-text-gap: 0.65em;
 
-  /* Tailles de texte de listes
-     Par défaut, les listes utilisent la même taille que le texte courant. */
+  /* Font-size base (natif : tous niveaux ~ texte courant) */
   --OT-list-font-size-1:  var(--OT-readingMode-text-size);
   --OT-list-font-size-2:  var(--OT-readingMode-text-size);
   --OT-list-font-size-3:  var(--OT-readingMode-text-size);
   --OT-list-font-size-4:  var(--OT-readingMode-text-size);
 
-  /* Interligne par niveau */
+  /* Line-height (profil standard) */
   --OT-list-line-height-1: var(--line-height-normal);
   --OT-list-line-height-2: var(--line-height-normal);
   --OT-list-line-height-3: var(--line-height-normal);
@@ -8061,7 +8060,7 @@ body {
   --OT-list-item-top-3: var(--list-spacing);
   --OT-list-item-top-4: var(--list-spacing);
 
-  /* Espaces au-dessus / au-dessous des blocs de listes */
+  /* Espacement entre items (par le haut) */
   --OT-list-block-top-1:    var(--p-spacing);
   --OT-list-block-bottom-1: var(--p-spacing);
   --OT-list-block-top-2:    0;
@@ -8071,15 +8070,110 @@ body {
   --OT-list-block-top-4:    0;
   --OT-list-block-bottom-4: 0;
 
-  /* Indentation texte Reading mode
-     Obsidian met margin-inline-start: 3ch sur ul>li et ol>li niveau 1.[file:1] */
+  /* Indentation texte */
   --OT-list-numbered-indent: var(--list-indent);
 
-  /* Indentation Raw (source)
-     Obsidian branche --list-indent-source sur --list-padding-inline-start,
-     et utilise tab-size: var(--list-indent) pour l’affichage.[file:1]
-     On se contente de choisir une base raisonnable. */
+  /* Raw */
   --OT-list-indent-raw: 2ch;
+}
+
+/* Taille normale (tous niveaux ~ texte courant) */
+body.lists-font-normal {
+  --OT-list-font-size-1: var(--OT-readingMode-text-size);
+  --OT-list-font-size-2: var(--OT-readingMode-text-size);
+  --OT-list-font-size-3: var(--OT-readingMode-text-size);
+  --OT-list-font-size-4: var(--OT-readingMode-text-size);
+}
+/* Taille décroissante (hiérarchie visuelle par profondeur) */
+body.lists-font-stepdown {
+  --OT-list-font-size-1: calc(1.00 * var(--OT-readingMode-text-size));
+  --OT-list-font-size-2: calc(0.95 * var(--OT-readingMode-text-size));
+  --OT-list-font-size-3: calc(0.90 * var(--OT-readingMode-text-size));
+  --OT-list-font-size-4: calc(0.85 * var(--OT-readingMode-text-size));
+}
+
+/* Espaces verticaux « normaux » */
+body.lists-vert-normal {
+  /* Line-height : on reste sur la base du thème */
+  --OT-list-line-height-1: var(--line-height-normal);
+  --OT-list-line-height-2: var(--line-height-normal);
+  --OT-list-line-height-3: var(--line-height-normal);
+  --OT-list-line-height-4: var(--line-height-normal);
+
+  /* Espacement entre items (par le haut) */
+  --OT-list-item-top-1: 0.2rem;
+  --OT-list-item-top-2: 0.2rem;
+  --OT-list-item-top-3: 0.2rem;
+  --OT-list-item-top-4: 0.2rem;
+
+  /* Espaces au-dessus / au-dessous des blocs de listes
+     1 > 2 > 3 > 4, légèrement décroissants */
+  --OT-list-block-top-1:    0.4rem;
+  --OT-list-block-bottom-1: 0.3rem;
+
+  --OT-list-block-top-2:    0.3rem;
+  --OT-list-block-bottom-2: 0.25rem;
+
+  --OT-list-block-top-3:    0.25rem;
+  --OT-list-block-bottom-3: 0.2rem;
+
+  --OT-list-block-top-4:    0.2rem;
+  --OT-list-block-bottom-4: 0.15rem;
+}
+
+/* Espaces verticaux « serrés » */
+body.lists-vert-tight {
+  /* Line-height : interpolation vers 1.1 */
+  --OT-list-line-height-1: calc(0.75 * var(--line-height-normal) + 0.25 * 1.1);
+  --OT-list-line-height-2: calc(0.5  * var(--line-height-normal) + 0.5  * 1.1);
+  --OT-list-line-height-3: calc(0.25 * var(--line-height-normal) + 0.75 * 1.1);
+  --OT-list-line-height-4: 1.1;
+
+  /* Espacement entre items (par le haut) : de 0.1rem à 0 */
+  --OT-list-item-top-1: 0.10rem;
+  --OT-list-item-top-2: 0.06rem;
+  --OT-list-item-top-3: 0.03rem;
+  --OT-list-item-top-4: 0rem;
+
+  /* Espaces bloc : on garde ceux du profil « normal » */
+  --OT-list-block-top-1:    0.4rem;
+  --OT-list-block-bottom-1: 0.3rem;
+
+  --OT-list-block-top-2:    0.3rem;
+  --OT-list-block-bottom-2: 0.25rem;
+
+  --OT-list-block-top-3:    0.25rem;
+  --OT-list-block-bottom-3: 0.2rem;
+
+  --OT-list-block-top-4:    0.2rem;
+  --OT-list-block-bottom-4: 0.15rem;
+}
+
+/* Espaces horizontaux « normaux » (proche natif) */
+body.lists-horiz-normal {
+  --list-indent:             3ch;
+  --OT-list-numbered-indent: var(--list-indent);
+
+  --OT-bullet-text-gap:   0.65em;
+  --OT-checkbox-text-gap: 0.65em;
+}
+
+/* Espaces horizontaux « augmentés » (plus de respiration dans la gouttière) */
+body.lists-horiz-wide {
+  --list-indent:             3.5ch;
+  --OT-list-numbered-indent: var(--list-indent);
+
+  --OT-bullet-text-gap:   0.8em;
+  --OT-checkbox-text-gap: 0.8em;
+}
+
+/* Espaces horizontaux « généreux » (lecture très aérée) */
+body.lists-horiz-generous {
+  --list-indent:             4ch;
+  --OT-list-numbered-indent: var(--list-indent);
+
+  --OT-bullet-text-gap:   1em;
+  --OT-checkbox-text-gap: 1em;
 }
 
 /* -------- ↓ espacement horizontal ↓ -------- */
@@ -11374,236 +11468,341 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 
 /*	Bookmark OpSpl111	*/
 /* ==================================================================================== */
-/* —————————————————————————————— OpSpl Settings —————————————————————————————— */
 /* @settings
 name:	Olivier’s Theme
 id:		Olivier-s-Theme
 settings:
 	-
-		id:			OT-general-settings
-		title:		GENERAL settings
-		title.fr:	Réglages GÉNÉRAUX
-		title.en:	GENERAL SETTINGS
-		type:		heading
-		level:		2
-		collapsed:	true
-		description:	Sidebars text size and spacing; headings sizes; Kanban font and text size.
+		id: "OT-general-settings"
+		title: "GENERAL settings"
+		title.fr: "Réglages GÉNÉRAUX"
+		title.en: "GENERAL SETTINGS"
+		type: heading
+		level: 2
+		collapsed: true
+		description: "Sidebars text size and spacing; headings sizes; Kanban font and text size. / Taille et espacement des textes des panneaux; tailles de titres; fonte et tailles du Kanban."
+
+	# =========================
+	# Interface
+	# =========================
 	-
-			id:			OT-UI-font-size
-			title:		Base size for the interface texts [px]
-			title.fr:	Taille de base pour les caractères de l’interface [px]
-			type:		variable-number
-			default:	16
-			format:		px
+		id: "OT-UI-settings"
+		title: "Interface"
+		title.fr: "Interface"
+		type: heading
+		level: 3
+		collapsed: false
+		description: "Basic interface tweaks. / Réglages de base de l’interface."
+
 	-
-			id:			OT-filesNavigator-spacing
-			title:		Spacing for the files listing in sidepanels and the settings list in settings pane
-			title.fr:	Listing des fichiers dans les panneaux latéraux.
-			type:		class-select
-			allowEmpty:	false
-			default:	filesNavigator-spacing-medium
-			options:
-				-
-					label:		Tight
-					label.fr:	Serré
-					value:		filesNavigator-spacing-compact
-				-
-					label:		Medium
-					label.fr:	Moyen
-					value:		filesNavigator-spacing-medium
-				-
-					label:		Wide
-					label.fr:	Large
-					value:		filesNavigator-spacing-loose
-				-
-					label:		Very wide
-					label.fr:	Très large
-					value:		filesNavigator-spacing-veryLoose
+		id: "OT-UI-font-size"
+		title: "Base size for the interface texts [px]"
+		title.fr: "Taille de base pour les caractères de l’interface [px]"
+		type: variable-number
+		default: 16
+		format: px
+
 	-
-			id:			OT-headings-scaling
-			title:		Scaling of the headings and subheadings
-			title.fr:	Accroissement des titres et intertitres
-			description:	Different ways of increasing the size of headings from H6 to H1. By default, a choice “generous but not too much”
-			description.fr: Différentes façons de grader la taille des H1 à H6. Par défaut, un choix généreux, mais pas trop.
-			type: 		class-select
-			allowEmpty: false
-			default: 	headings-scaling-OpSpl
-			options:
-				-
-					label:		None
-					label.fr:	Aucun
-					value:		headings-scaling-none
-				-
-					label:		Minor second
-					label.fr:	Seconde mineure
-					value:		headings-scaling-minor-second
-				-
-					label:		Slowly
-					label.fr:	Doucement
-					value:		headings-scaling-slight
-				-
-					label:		Major second
-					label.fr:	Seconde majeure
-					value:		headings-scaling-major-second
-				-
-					label:		Olivier’s
-					value:		headings-scaling-OpSpl
-				-
-					label:		Minor third
-					label.fr:	Tierce mineure
-					value:		headings-scaling-minor-third
-				-
-					label:		Major third
-					label.fr:	Tierce majeure
-					value:		headings-scaling-major-third
+		id: "OT-filesNavigator-spacing"
+		title: "Spacing for the files listing in sidepanels and the settings list in settings pane"
+		title.fr: "Listing des fichiers dans les panneaux latéraux."
+		type: class-select
+		allowEmpty: false
+		default: filesNavigator-spacing-medium
+		options:
+			-
+				label: "Tight"
+				label.fr: "Serré"
+				value: filesNavigator-spacing-compact
+			-
+				label: "Medium"
+				label.fr: "Moyen"
+				value: filesNavigator-spacing-medium
+			-
+				label: "Wide"
+				label.fr: "Large"
+				value: filesNavigator-spacing-loose
+			-
+				label: "Very wide"
+				label.fr: "Très large"
+				value: filesNavigator-spacing-veryLoose
+
 	-
-			id:			OT-kanban-font
-			title:		Kanban — General font
-			title.fr:	Kanban — Fonte
-			description:	It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?
-			type:		variable-select
-			default:	Uberhand Pro
-			options:
-				-
-					label:	Adelle
-					value:	Adelle
-				-
-					label:	American Typewriter
-					value:	American Typewriter
-				-
-					label:	Cambria
-					value:	Cambria
-				-
-					label:	Candara
-					value:	Candara
-				-
-					label:	Comic neue
-					value:	Comic Neue Regular
-				-
-					label:	Comic sans
-					value:	Comic Sans MS
-				-
-					label:	Georgia
-					value:	Georgia
-				-
-					label:	IBM Plex Sans
-					value:	IBM Plex Sans
-				-
-					label:	IBM Plex Serif
-					value:	IBM Plex Serif
-				-
-					label:	Lato
-					value:	Lato
-				-
-					label:	Lucida Sans
-					value:	Lucida Sans Std
-				-
-					label: 	Myriad
-					value:	Myriad Pro
-				-
-					label:	Norms
-					value:	TT Norms
-				-
-					label:	Norms Condensed
-					value:	TT Norms Std Condensed
-				-
-					label: 	Noto Sans
-					value:	Noto Sans
-				-
-					label:	Officina Sans
-					value:	ITC Officina Sans Std
-				-
-					label:	Officina Sans Serif
-					value:	ITC Officina Serif Std
-				-
-					label:	Overpass
-					value:	Overpass
-				-
-					label:	Palatino Sans
-					value:	Palatino Sans Com
-				-
-					label:	Palatino Sans Informal
-					value:	Palatino Sans Informal LT Pro
-				-
-					label:	PT Sans
-					value:	PT Sans
-				-
-					label:	Stone Informal
-					value:	ITC Stone Informal Std
-				-
-					label:	Stone Sans
-					value:	ITC Stone Sans Std
-				-
-					label:	Roboto
-					value:	Roboto
-				-
-					label:	Basic sans-serif
-					label.fr:	Sans serif de base
-					value:	sans-serif
-				-
-					label:	Tisa
-					value:	Tisa Pro
-				-
-					label:	Tisa Sans
-					value:	Tisa Sans Pro
-				-
-					label:	Trebuchet
-					value:	Trebuchet MS
-				-
-					label:	Uberhand
-					value:	Uberhand Pro
-				-
-					label:	Verdana
-					value:	Verdana
+		id: "OT-tab-title-highlighted"
+		title: "Highlight current tab"
+		title.fr: "Tab courant mis en évidence"
+		description: "Highlight the name of the current note in the tab title."
+		description.fr: "Met en évidence sur le tab le nom de la fiche courante."
+		type: class-toggle
+		default: false
+
 	-
-			id:			OT-kanban-font-size
-			title:		Kanban — Size of the cards text [px]
-			title.fr:	Kanban — Taille des caractères dans les fiches [px]
-			type:		variable-number
-			default:	16
-			format:		px
+		id: "OT-suppress-title-bar-breadcrumb"
+		title: "Title Bar breadcrumb: ON / OFF"
+		title.fr: "Fil d’Ariane dans la barre de titre : ON / OFF"
+		description: "Show or hide the breadcrumb in the title bar."
+		description.fr: "Afficher ou masquer le “breadcrumb” dans la barre de titre."
+		type: class-toggle
+		default: false
+
 	-
- 			id:			OT-codeblock-linewrap-OFF
- 			title:		Suppress line wrapping within code blocks
- 			title.fr:	Supprimer les retours à la ligne dans les blocs de code
- 			type: 		class-toggle
- 			default: 	TRUE
+		id: "OT-status-bar-padding"
+		title: "Status Bar padding [px]"
+		title.fr: "Marges de la barre d’état [px]"
+		description: "Number of pixels between the status bar and the window border."
+		description.fr: "Nombre de pixels entre la “Status Bar” et le bord de la fenêtre."
+		type: variable-number
+		default: 6
+		format: px
+
 	-
- 			id:				OT-tab-title-highlighted
- 			title:			Highlight current tab
- 			title.fr:		Tab courant mis en évidence
- 			description:	Highlight the name of the current note in the tab title
- 			description.fr:	Met en évidence sur le tab le nom de la fiche courante
- 			type: 			class-toggle
- 			default: 		false
+		id: "OT-metadata-label-width"
+		title: "Width of the properties labels [em]"
+		title.fr: "Largeur des noms des champs des propriétés [em]"
+		type: variable-number
+		default: 7
+		format: em
+
 	-
- 			id:				OT-suppress-title-bar-breadcrumb
- 			title:			Suppress the Title Bar breadcrumb
- 			title.fr:		Suppression du “breadcrumb” dans la barre de titre
- 			type: 			class-toggle
- 			default: 		false
+		id: "OT-canvas-dot-pattern-hidden"
+		title: "Hide canvas dot pattern"
+		title.fr: "Cacher les points en fond des canvas"
+		description: "Hide the dotted background pattern on canvases."
+		description.fr: "Masquer le motif de points du fond des canvases."
+		type: class-toggle
+		default: false
+
+	# =========================
+	# Typography
+	# =========================
 	-
-			id:				OT-status-bar-padding
-			title:			Status Bar padding [px]
-			description:	Number of pixels between the status bar and the window border.
-			dsecription.fr:	Nombre de pixels entre la “Status Bar” et le bord de la fenêtre.
-			type:			variable-number
-			default:		6
-			format:			px
+		id: "OT-typography-settings"
+		title: "Typography"
+		title.fr: "Typographie"
+		type: heading
+		level: 3
+		collapsed: false
+		description: "Headings and lists typography. / Typographie des titres et des listes."
+
 	-
-			id:				OT-metadata-label-width
-			title:			Width of the properties labels [em]
-			description:
-			dsecription.fr:	Largeur des noms des champs des propriétés
-			type:			variable-number
-			default:		7
-			format:			em
+		id: "OT-headings-scaling"
+		title: "Headings and subheadings scaling"
+		title.fr: "Accroissement des titres et intertitres"
+		description: "Different ways of increasing the size of headings from H6 to H1. By default, a choice “generous but not too much”."
+		description.fr: "Différentes façons de grader la taille des H1 à H6. Par défaut, un choix généreux, mais pas trop."
+		type: class-select
+		allowEmpty: false
+		default: headings-scaling-OpSpl
+		options:
+			-
+				label: "None"
+				label.fr: "Aucun"
+				value: headings-scaling-none
+			-
+				label: "Minor second"
+				label.fr: "Seconde mineure"
+				value: headings-scaling-minor-second
+			-
+				label: "Slowly"
+				label.fr: "Doucement"
+				value: headings-scaling-slight
+			-
+				label: "Major second"
+				label.fr: "Seconde majeure"
+				value: headings-scaling-major-second
+			-
+				label: "Olivier’s"
+				value: headings-scaling-OpSpl
+			-
+				label: "Minor third"
+				label.fr: "Tierce mineure"
+				value: headings-scaling-minor-third
+			-
+				label: "Major third"
+				label.fr: "Tierce majeure"
+				value: headings-scaling-major-third
+
 	-
- 			id:				OT-canvas-dot-pattern-hidden
- 			title:			Hide canvas dot pattern
- 			title.fr:		Cacher les points en fond des canvas
- 			type: 			class-toggle
- 			default: 		false
+		id: "OT-lists-font-stepdown"
+		title: "Lists: Text size stepping down"
+		title.fr: "Listes : taille de texte décroissante"
+		description: "Use smaller text for deeper list levels."
+		description.fr: "Utiliser un texte plus petit pour les niveaux de liste plus profonds."
+		type: class-toggle
+		default: false
+
+	-
+		id: "OT-lists-vert-spacing"
+		title: "Lists: vertical spacing, line spacing"
+		title.fr: "Listes : espacement vertical, interligne"
+		description: "Control vertical spacing inside lists: normal / tight."
+		description.fr: "Contrôler l’espacement vertical à l’intérieur des listes : normal / serré."
+		type: class-select
+		allowEmpty: false
+		default: lists-vert-normal
+		options:
+			-
+				label: "Normal"
+				label.fr: "Normal"
+				value: lists-vert-normal
+			-
+				label: "Tight"
+				label.fr: "Serré"
+				value: lists-vert-tight
+
+	-
+		id: "OT-lists-horiz-indenting"
+		title: "Lists: Indenting"
+		title.fr: "Listes : indentation"
+		description: "Control horizontal indentation and bullet gap: normal / wide / generous."
+		description.fr: "Contrôler l’indentation horizontale et l’écart puce–texte : normale / large / généreuse."
+		type: class-select
+		allowEmpty: false
+		default: lists-horiz-normal
+		options:
+			-
+				label: "Normal"
+				label.fr: "Normale"
+				value: lists-horiz-normal
+			-
+				label: "Wide"
+				label.fr: "Large"
+				value: lists-horiz-wide
+			-
+				label: "Generous"
+				label.fr: "Généreuse"
+				value: lists-horiz-generous
+
+	# =========================
+	# Kanban plugin
+	# =========================
+	-
+		id: "OT-kanban-settings"
+		title: "Kanban plugin"
+		title.fr: "Plugin Kanban"
+		type: heading
+		level: 3
+		collapsed: false
+		description: "Kanban plugin specific styles. / Styles spécifiques pour le plugin Kanban."
+
+	-
+		id: "OT-kanban-font"
+		title: "Kanban — General font"
+		title.fr: "Kanban — Fonte"
+		description: "It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
+		description.fr: "Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
+		type: variable-select
+		default: "Uberhand Pro"
+		options:
+			-
+				label: "Adelle"
+				value: "Adelle"
+			-
+				label: "American Typewriter"
+				value: "American Typewriter"
+			-
+				label: "Cambria"
+				value: "Cambria"
+			-
+				label: "Candara"
+				value: "Candara"
+			-
+				label: "Comic neue"
+				value: "Comic Neue Regular"
+			-
+				label: "Comic sans"
+				value: "Comic Sans MS"
+			-
+				label: "Georgia"
+				value: "Georgia"
+			-
+				label: "IBM Plex Sans"
+				value: "IBM Plex Sans"
+			-
+				label: "IBM Plex Serif"
+				value: "IBM Plex Serif"
+			-
+				label: "Lato"
+				value: "Lato"
+			-
+				label: "Lucida Sans"
+				value: "Lucida Sans Std"
+			-
+				label: "Myriad"
+				value: "Myriad Pro"
+			-
+				label: "Norms"
+				value: "TT Norms"
+			-
+				label: "Norms Condensed"
+				value: "TT Norms Std Condensed"
+			-
+				label: "Noto Sans"
+				value: "Noto Sans"
+			-
+				label: "Officina Sans"
+				value: "ITC Officina Sans Std"
+			-
+				label: "Officina Sans Serif"
+				value: "ITC Officina Serif Std"
+			-
+				label: "Overpass"
+				value: "Overpass"
+			-
+				label: "Palatino Sans"
+				value: "Palatino Sans Com"
+			-
+				label: "Palatino Sans Informal"
+				value: "Palatino Sans Informal LT Pro"
+			-
+				label: "PT Sans"
+				value: "PT Sans"
+			-
+				label: "Stone Informal"
+				value: "ITC Stone Informal Std"
+			-
+				label: "Stone Sans"
+				value: "ITC Stone Sans Std"
+			-
+				label: "Roboto"
+				value: "Roboto"
+			-
+				label: "Basic sans-serif"
+				label.fr: "Sans serif de base"
+				value: "sans-serif"
+			-
+				label: "Tisa"
+				value: "Tisa Pro"
+			-
+				label: "Tisa Sans"
+				value: "Tisa Sans Pro"
+			-
+				label: "Trebuchet"
+				value: "Trebuchet MS"
+			-
+				label: "Uberhand"
+				value: "Uberhand Pro"
+			-
+				label: "Verdana"
+				value: "Verdana"
+
+	-
+		id: "OT-kanban-font-size"
+		title: "Kanban — Size of the cards text [px]"
+		title.fr: "Kanban — Taille des caractères dans les fiches [px]"
+		type: variable-number
+		default: 16
+		format: px
+
+	# =========================
+	# Code blocks (option existante)
+	# =========================
+	-
+		id: "OT-codeblock-linewrap-OFF"
+		title: "Suppress line wrapping within code blocks"
+		title.fr: "Supprimer les retours à la ligne dans les blocs de code"
+		type: class-toggle
+		default: true
 	-
 		id:			OT-LIGHT-mode-settings
 		title:		LIGHT MODE colors
