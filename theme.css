@@ -3579,7 +3579,7 @@ body {
 	--color-accent-1:					#0D3CFB	!important;
 	--color-accent-2:					#0325B0	!important;
 	--color-accent-3:					#0329C1	!important;
-	--OT-color-on-accent-1:				#var(--color-base-100)	!important;
+	--OT-color-on-accent-1:				var(--color-base-100)	!important;
 	--OT-color-muted-on-accent-1:		#A4B5FD	!important;
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#5072FC;
@@ -8344,7 +8344,7 @@ body.lists-horiz-generous {
 .markdown-rendered  ol {
   margin-block-start: var(--OT-list-block-top-1);
   margin-block-end:   var(--OT-list-block-bottom-1);
-
+}
 
 /* Bloc de niveau 2 : liste imbriquée dans un li de niveau 1 */
 .markdown-rendered ul > li > ul,
