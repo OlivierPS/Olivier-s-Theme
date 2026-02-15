@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-15
+	- overhauled lists to make them highly customizable
 2026-02-13
 	- corrected the hovering of Style Settings collapse indicators
 	- corrected the zooming inside panes, permitted by Vertical Tabs plugin
@@ -477,9 +479,8 @@ body {
 	--checkbox-color-hover:			var(--color-accent-1);
 	--checkbox-color:				var(--text-normal);
 	--checklist-done-decoration:	none;		/*	line-through;	*/
-/*	--checkbox-margin-inline-start:	0.85em;					/*	à revoir avec les listes	*/
-	--checkbox-radius:				0.3rem;
-	--checkbox-size:				0.85rem;
+	--checkbox-radius:				var(--radius-s);
+	--checkbox-size:				0.6rem;
 	--checklist-done-color:			var(--color-base-50);
 
 	--code-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 95%);
@@ -595,12 +596,6 @@ body {
 
 	--list-marker-color:	var(--text-normal);
 	--list-bullet-size:		0.4em;
-	--list-indent:			1.3em;
-	--list-spacing:			0.05rem;		/*	reset, afin de pouvoir décider de mes réglages persos ci-dessous	*/
-	--list-spacing-below:	0.8rem;		/*	en-dessous du bloc constituant une liste	*/
-    --list-spacing-1: 		0.3rem;		/*	pas utilisé; mais au cas où…	*/
-    --list-spacing-2: 		0.2rem;		/*	en-dessous du dernier item du 2ème niveau de liste	*/
-    --list-spacing-3: 		0.1rem;		/*	en-dessous du dernier item du 3ème niveau de liste	*/
 
     --menu-border-color:	var(--color-base-35);
 
@@ -5239,7 +5234,7 @@ p,
 /* ----- Checkbox -----
 	j’épaissis quelque peu le bord de la checkbox */
 	input[type=checkbox] {
-  border: 2px solid var(--checkbox-border-color);
+  border: 1.5px solid var(--checkbox-border-color);
 }
 input[type=checkbox]:hover {
 	cursor: pointer;
@@ -8038,191 +8033,268 @@ body {
 /* -------------------- Tags -------------------- */
 
 
-/*  Bookmark OpSpl47 ————————————— Lists ————————————— */
+/*  Bookmark OpSpl47 —————————————————————————————— Lists —————————————————————————————— */
 
-/* 1. Variables de base rappel (déjà définies ailleurs)
-   --list-marker-color:    var(--text-normal);
-   --list-bullet-size:     0.4em;
-   --list-indent:          1.3em;
-   --list-spacing:         0.05rem;
-   --list-spacing-below:   0.8rem;
-   --list-spacing-2:       0.2rem;
-   --list-spacing-3:       0.1rem;
-*/
+/* ---------- réglages quasi semblables à “Obsidian natif” --------- */
+body {
+  /* Gaps puce / checkbox → texte
+     Obsidian ne les expose pas explicitement, on choisit une valeur neutre. */
+  --OT-bullet-text-gap:   0.65em;
+  --OT-checkbox-text-gap: 0.65em;
 
-/* 2. Base: ul / ol, marges verticales et indentation */
-ul,
-ol {
-  margin-block: 0;
-  padding-inline-start: var(--list-indent);
+  /* Tailles de texte de listes
+     Par défaut, les listes utilisent la même taille que le texte courant. */
+  --OT-list-font-size-1:  var(--OT-readingMode-text-size);
+  --OT-list-font-size-2:  var(--OT-readingMode-text-size);
+  --OT-list-font-size-3:  var(--OT-readingMode-text-size);
+  --OT-list-font-size-4:  var(--OT-readingMode-text-size);
+
+  /* Interligne par niveau */
+  --OT-list-line-height-1: var(--line-height-normal);
+  --OT-list-line-height-2: var(--line-height-normal);
+  --OT-list-line-height-3: var(--line-height-normal);
+  --OT-list-line-height-4: var(--line-height-normal);
+
+  /* Espacement entre items (par le haut) */
+  --OT-list-item-top-1: var(--list-spacing);
+  --OT-list-item-top-2: var(--list-spacing);
+  --OT-list-item-top-3: var(--list-spacing);
+  --OT-list-item-top-4: var(--list-spacing);
+
+  /* Espaces au-dessus / au-dessous des blocs de listes */
+  --OT-list-block-top-1:    var(--p-spacing);
+  --OT-list-block-bottom-1: var(--p-spacing);
+  --OT-list-block-top-2:    0;
+  --OT-list-block-bottom-2: 0;
+  --OT-list-block-top-3:    0;
+  --OT-list-block-bottom-3: 0;
+  --OT-list-block-top-4:    0;
+  --OT-list-block-bottom-4: 0;
+
+  /* Indentation texte Reading mode
+     Obsidian met margin-inline-start: 3ch sur ul>li et ol>li niveau 1.[file:1] */
+  --OT-list-numbered-indent: var(--list-indent);
+
+  /* Indentation Raw (source)
+     Obsidian branche --list-indent-source sur --list-padding-inline-start,
+     et utilise tab-size: var(--list-indent) pour l’affichage.[file:1]
+     On se contente de choisir une base raisonnable. */
+  --OT-list-indent-raw: 2ch;
 }
 
-/* Espacement entre items */
-ul > li,
-ol > li {
-  margin-block: var(--list-spacing);
-}
-
-/* Espacement sous le bloc de liste complet */
-ul,
-ol {
-  margin-block-end: var(--list-spacing-below);
-}
-
-/* Espacement raffiné pour les listes imbriquées (2e et 3e niveaux) */
-ul ul > li:last-child,
-ol ol > li:last-child {
-  margin-block-end: var(--list-spacing-2);
-}
-
-ul ul ul > li:last-child,
-ol ol ol > li:last-child {
-  margin-block-end: var(--list-spacing-3);
-}
-
-/* 3. Marqueurs (puces & numéros) */
-ul > li::marker,
-ol > li::marker {
-  color:     var(--list-marker-color);
-  font-size: var(--list-bullet-size);
-}
-
-/* Numéros: garantir lisibilité, même avec des chiffres oldstyle */
-ol > li::marker {
-  font-size: 0.95em;
-  font-variant-numeric: lining-nums tabular-nums;
-  font-feature-settings: "lnum" 1, "onum" 0;
-}
-
-/* 4. Tasks (checkboxes) : structure et indentation */
-ul.contains-task-list,
-ol.contains-task-list {
-  list-style: none;
+/* -------- ↓ espacement horizontal ↓ -------- */
+/* Reading view — listes à puce */
+.markdown-rendered ul {
   padding-inline-start: 0;
 }
 
-li.task-list-item {
-  margin-block: var(--list-spacing);
-  padding-inline-start: 0.15em;
-  position: relative;
+.markdown-rendered ul > li {
+  margin-inline-start:  var(--list-indent);
 }
 
-/* 5. Live Preview (CM6) : alignement visuel des listes */
-.markdown-source-view.mod-cm6 .HyperMD-list-line {
-  padding-inline-start: var(--list-indent);
+.markdown-rendered ul.has-list-bullet .list-bullet {
+  float: inline-start;
+  margin-inline-start: calc(-1 * var(--OT-bullet-text-gap));
 }
 
-/* 6. États : normal / active */
-
-/* Normal: fond transparent, texte normal/muted. */
-
-/* Active: item ciblé par un lien (#id) → accent-2 + on-accent-2 */
-.markdown-rendered li:target {
-  background-color: var(--color-accent-2);
-  color:            var(--OT-color-on-accent-2);
-}
-
-/* Ne pas casser la couleur des liens à l’intérieur de l’item actif */
-.markdown-rendered li:target a {
-  color: var(--OT-color-on-accent-2);
-}
-
-/* 7. Hover optionnel (contrôlé par Style Settings)
-   Le hover ne s’applique que si body.OT-lists-hover est présent.
-*/
-
-@media (hover: hover) {
-  body.OT-lists-hover .markdown-rendered ul > li:hover,
-  body.OT-lists-hover .markdown-rendered ol > li:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
-  }
-
-  /* Liens à l’intérieur : conserver leur logique de lien au hover */
-  body.OT-lists-hover .markdown-rendered ul > li:hover a,
-  body.OT-lists-hover .markdown-rendered ol > li:hover a {
-    color: var(--link-color-hover);
-  }
-
-  /* Item actif + hover: "active + hovered" = accent-1 */
-  body.OT-lists-hover .markdown-rendered li:target:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
-  }
-
-  /* Tasks: hover sur la ligne entière, cohérent avec les checkboxes */
-  body.OT-lists-hover .markdown-rendered ul.contains-task-list > li.task-list-item:hover,
-  body.OT-lists-hover .markdown-rendered ol.contains-task-list > li.task-list-item:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
-  }
-
-  /* Checkbox au survol: palette checkbox-hover existante */
-  body.OT-lists-hover .markdown-rendered li.task-list-item:hover .task-list-item-checkbox {
-    border-color: var(--checkbox-border-color-hover);
-    color:        var(--checkbox-color-hover);
-  }
-
-  /* Liens dans une task hover: conserver la logique de lien */
-  body.OT-lists-hover .markdown-rendered li.task-list-item:hover a {
-    color: var(--link-color-hover);
-  }
-}
-
-/* 8. Lecture vs Édition : pas de fond forcé en edit */
-.markdown-source-view.mod-cm6 ul > li,
-.markdown-source-view.mod-cm6 ol > li {
-  background-color: transparent;
-}
-
-
-/* Variante "étapes" pour les listes numérotées */
-.OT-step-list ol {
-  counter-reset: step-counter;
-  list-style: none;
+/* Reading view — listes numérotées */
+.markdown-rendered ol {
   padding-inline-start: 0;
 }
 
-.OT-step-list ol > li {
-  counter-increment: step-counter;
-  position: relative;
-  padding-inline-start: 2.1em;
-  margin-block: 0.35rem;
+.markdown-rendered ol > li {
+  margin-inline-start: var(--OT-list-numbered-indent);
 }
 
-/* Badge numéroté avant chaque item */
-.OT-step-list ol > li::before {
-  content: counter(step-counter);
-  position: absolute;
-  inset-inline-start: 0;
-  top: 0.05em;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 1.4em;
-  height: 1.4em;
-  border-radius: 999px;
-
-  background-color: var(--color-accent-2);
-  color:            var(--OT-color-on-accent-2);
-  /*font-weight:      var(--font-semibold);*/
+.markdown-rendered ol > li::marker {
+  font-variant-numeric: tabular-nums;
 }
 
-/* Hover sur la ligne entière, cohérent avec ta matrice */
-@media (hover: hover) {
-  .OT-step-list ol > li:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
-  }
-
-  .OT-step-list ol > li:hover::before {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
-  }
+/* mode Raw */
+.markdown-source-view {
+  --list-indent-source: var(--OT-list-indent-raw);
 }
-/* -------------------- Lists -------------------- */
+
+/* Reading view — checklists */
+.markdown-rendered .task-list-item {
+  /* garde la même indentation globale que les autres li */
+  margin-inline-start: var(--list-indent);
+}
+
+/* Ajuste le gap entre la case et le texte */
+.markdown-rendered .task-list-item > input[type="checkbox"] {
+  margin-inline-end: var(--OT-checkbox-text-gap);
+}
+
+/*
+.markdown-rendered .task-list-item > input[type="checkbox"] {
+  width:  var(--list-bullet-size);
+  height: var(--list-bullet-size);
+}
+*/
+
+/* -------- ↓ espacement vertical ↓ -------- */
+/* Neutraliser la gestion par défaut des marges/paddings */
+.markdown-rendered ul,
+.markdown-rendered ol {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.markdown-rendered ul > li,
+.markdown-rendered ol > li {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* -------- taille du texte -------- */
+/* Niveau 1 */
+.markdown-rendered ul > li,
+.markdown-rendered ol > li {
+  font-size:   var(--OT-list-font-size-1);
+  line-height: var(--OT-list-line-height-1);
+}
+
+/* Niveau 2 */
+.markdown-rendered ul ul > li,
+.markdown-rendered ol ul > li,
+.markdown-rendered ul ol > li,
+.markdown-rendered ol ol > li {
+  font-size:   var(--OT-list-font-size-2);
+  line-height: var(--OT-list-line-height-2);
+}
+
+/* Niveau 3 */
+.markdown-rendered ul ul ul > li,
+.markdown-rendered ol ul ul > li,
+.markdown-rendered ul ol ul > li,
+.markdown-rendered ol ol ul > li,
+.markdown-rendered ul ul ol > li,
+.markdown-rendered ol ul ol > li,
+.markdown-rendered ul ol ol > li,
+.markdown-rendered ol ol ol > li {
+  font-size:   var(--OT-list-font-size-3);
+  line-height: var(--OT-list-line-height-3);
+}
+
+/* Niveau 4 (et plus profond si tu veux les traiter pareil) */
+.markdown-rendered ul ul ul ul > li,
+.markdown-rendered ol ul ul ul > li,
+.markdown-rendered ul ol ul ul > li,
+.markdown-rendered ol ol ul ul > li,
+.markdown-rendered ul ul ol ul > li,
+.markdown-rendered ol ul ol ul > li,
+.markdown-rendered ul ol ol ul > li,
+.markdown-rendered ol ol ol ul > li,
+.markdown-rendered ul ul ul ol > li,
+.markdown-rendered ol ul ul ol > li,
+.markdown-rendered ul ol ul ol > li,
+.markdown-rendered ol ol ul ol > li,
+.markdown-rendered ul ul ol ol > li,
+.markdown-rendered ol ul ol ol > li,
+.markdown-rendered ul ol ol ol > li,
+.markdown-rendered ol ol ol ol > li {
+  font-size:   var(--OT-list-font-size-4);
+  line-height: var(--OT-list-line-height-4);
+}
+
+/* -------- espace au-dessus des listes elles-mêmes -------- */
+/* Niveau 1 */
+.markdown-rendered ul > li,
+.markdown-rendered ol > li {
+  margin-block-start: var(--OT-list-item-top-1);
+}
+
+/* Niveau 2 */
+.markdown-rendered ul ul > li,
+.markdown-rendered ol ul > li,
+.markdown-rendered ul ol > li,
+.markdown-rendered ol ol > li {
+  margin-block-start: var(--OT-list-item-top-2);
+}
+
+/* Niveau 3 */
+.markdown-rendered ul ul ul > li,
+.markdown-rendered ol ul ul > li,
+.markdown-rendered ul ol ul > li,
+.markdown-rendered ol ol ul > li,
+.markdown-rendered ul ul ol > li,
+.markdown-rendered ol ul ol > li,
+.markdown-rendered ul ol ol > li,
+.markdown-rendered ol ol ol > li {
+  margin-block-start: var(--OT-list-item-top-3);
+}
+
+/* Niveau 4 */
+.markdown-rendered ul ul ul ul > li,
+.markdown-rendered ol ul ul ul > li,
+.markdown-rendered ul ol ul ul > li,
+.markdown-rendered ol ol ul ul > li,
+.markdown-rendered ul ul ol ul > li,
+.markdown-rendered ol ul ol ul > li,
+.markdown-rendered ul ol ol ul > li,
+.markdown-rendered ol ol ol ul > li,
+.markdown-rendered ul ul ul ol > li,
+.markdown-rendered ol ul ul ol > li,
+.markdown-rendered ul ol ul ol > li,
+.markdown-rendered ol ol ul ol > li,
+.markdown-rendered ul ul ol ol > li,
+.markdown-rendered ol ul ol ol > li,
+.markdown-rendered ul ol ol ol > li,
+.markdown-rendered ol ol ol ol > li {
+  margin-block-start: var(--OT-list-item-top-4);
+}
+
+/* -------- espaces au-dessus et au-dessous des lignes elles-mêmes -------- */
+/* Bloc de liste de niveau 1 (ul/ol directement dans le flux) */
+.markdown-rendered  ul,
+.markdown-rendered  ol {
+  margin-block-start: var(--OT-list-block-top-1);
+  margin-block-end:   var(--OT-list-block-bottom-1);
+
+
+/* Bloc de niveau 2 : liste imbriquée dans un li de niveau 1 */
+.markdown-rendered ul > li > ul,
+.markdown-rendered ul > li > ol,
+.markdown-rendered ol > li > ul,
+.markdown-rendered ol > li > ol {
+  margin-block-start: var(--OT-list-block-top-2);
+  margin-block-end:   var(--OT-list-block-bottom-2);
+}
+
+/* Bloc de niveau 3 : imbriqué sous une liste déjà imbriquée */
+.markdown-rendered ul ul > li > ul,
+.markdown-rendered ul ul > li > ol,
+.markdown-rendered ol ul > li > ul,
+.markdown-rendered ol ul > li > ol,
+.markdown-rendered ul ol > li > ul,
+.markdown-rendered ul ol > li > ol,
+.markdown-rendered ol ol > li > ul,
+.markdown-rendered ol ol > li > ol {
+  margin-block-start: var(--OT-list-block-top-3);
+  margin-block-end:   var(--OT-list-block-bottom-3);
+}
+
+/* Bloc de niveau 4 */
+.markdown-rendered ul ul ul ul > li,
+.markdown-rendered ol ul ul ul > li,
+.markdown-rendered ul ol ul ul > li,
+.markdown-rendered ol ol ul ul > li,
+.markdown-rendered ul ul ol ul > li,
+.markdown-rendered ol ul ol ul > li,
+.markdown-rendered ul ol ol ul > li,
+.markdown-rendered ol ol ol ul > li,
+.markdown-rendered ul ul ul ol > li,
+.markdown-rendered ol ul ul ol > li,
+.markdown-rendered ul ol ul ol > li,
+.markdown-rendered ol ol ul ol > li,
+.markdown-rendered ul ul ol ol > li,
+.markdown-rendered ol ul ol ol > li,
+.markdown-rendered ul ol ol ol > li,
+.markdown-rendered ol ol ol ol > li {
+  margin-block-start: var(--OT-list-block-top-4);
+  margin-block-end:   var(--OT-list-block-bottom-4);
+}
+/* —————————————————————————————— ↑ lists ↑  —————————————————————————————— */
 
 
 /*	Bookmark	OpSpl48	—————————————————————————————— Status bar —————————————————————————————— */
