@@ -49,7 +49,7 @@
 Post‑release tweaks
 -------------------
 2026-02-16
-	- improvements for the Source Mode Styling plugin
+	- text size in lists
 2026-02-15
 	- overhauled lists to make them highly customizable
 	- included lists presets into Style Settings
@@ -394,7 +394,7 @@ body {
 	--OT-editMode-font-family:						var(--OT-editMode-font),
     												"Comic Sans MS",
 													var(--font-default);
-	--OT-editMode-text-size:						17px;
+	--OT-editMode-text-size:						18px;
 	--OT-editMode-line-width:						46em;
 	--OT-editMode-line-height:						1.35em;
 	--OT-editMode-letter-spacing:					0em;
@@ -5065,7 +5065,7 @@ body.edit-font-Verdana {
 	--OT-editMode-letter-spacing: 0em;
 }
 
-/* Application dans l’éditeur (complète ton bloc existant) */
+/* Application dans l’éditeur */
 .cm-list-1,
 .cm-list-2,
 .cm-list-3,
@@ -8125,7 +8125,7 @@ body.lists-font-normal {
   --OT-list-font-size-4: var(--OT-readingMode-text-size);
 }
 /* Taille décroissante (hiérarchie visuelle par profondeur) */
-body.lists-font-stepdown {
+body.OT-lists-font-stepdown {
   --OT-list-font-size-1: calc(1.00 * var(--OT-readingMode-text-size));
   --OT-list-font-size-2: calc(0.95 * var(--OT-readingMode-text-size));
   --OT-list-font-size-3: calc(0.90 * var(--OT-readingMode-text-size));
@@ -11513,226 +11513,226 @@ name:	Olivier’s Theme
 id:		Olivier-s-Theme
 settings:
 	-
-		id: "OT-general-settings"
-		title: "GENERAL settings"
-		title.fr: "Réglages GÉNÉRAUX"
-		title.en: "GENERAL SETTINGS"
-		type: heading
-		level: 2
-		collapsed: true
-		description: "Sidebars text size and spacing; headings sizes; Kanban font and text size. / Taille et espacement des textes des panneaux; tailles de titres; fonte et tailles du Kanban."
+		id:				"OT-general-settings"
+		title:			"GENERAL settings"
+		title.fr:		"Réglages GÉNÉRAUX"
+		title.en:		"GENERAL SETTINGS"
+		type:			heading
+		level:			2
+		collapsed:		true
+		description:	"Sidebars text size and spacing; headings sizes; Kanban font and text size. / Taille et espacement des textes des panneaux; tailles de titres; fonte et tailles du Kanban."
 
 	# =========================
 	# Interface
 	# =========================
 	-
-		id: "OT-UI-settings"
-		title: "Interface"
-		title.fr: "Interface"
-		type: heading
-		level: 3
-		collapsed: false
-		description: "Basic interface tweaks. / Réglages de base de l’interface."
+		id:				"OT-UI-settings"
+		title:			"Interface"
+		title.fr:		"Interface"
+		type:			heading
+		level:			3
+		collapsed:		false
+		description:	"Basic interface tweaks. / Réglages de base de l’interface."
 
 	-
-		id: "OT-UI-font-size"
-		title: "Base size for the interface texts [px]"
-		title.fr: "Taille de base pour les caractères de l’interface [px]"
-		type: variable-number
-		default: 16
-		format: px
+		id:			"OT-UI-font-size"
+		title:		"Base size for the interface texts [px]"
+		title.fr:	"Taille de base pour les caractères de l’interface [px]"
+		type:		variable-number
+		default:	16
+		format:		px
 
 	-
-		id: "OT-filesNavigator-spacing"
-		title: "Spacing for the files listing in sidepanels and the settings list in settings pane"
-		title.fr: "Listing des fichiers dans les panneaux latéraux."
-		type: class-select
-		allowEmpty: false
-		default: filesNavigator-spacing-medium
+		id:			"OT-filesNavigator-spacing"
+		title:		"Spacing for the files listing in sidepanels and the settings list in settings pane"
+		title.fr:	"Listing des fichiers dans les panneaux latéraux."
+		type:		class-select
+		allowEmpty:	false
+		default:	filesNavigator-spacing-medium
 		options:
 			-
-				label: "Tight"
-				label.fr: "Serré"
-				value: filesNavigator-spacing-compact
+				label:		"Tight"
+				label.fr:	"Serré"
+				value:		filesNavigator-spacing-compact
 			-
-				label: "Medium"
-				label.fr: "Moyen"
-				value: filesNavigator-spacing-medium
+				label:		"Medium"
+				label.fr:	"Moyen"
+				value:		filesNavigator-spacing-medium
 			-
-				label: "Wide"
-				label.fr: "Large"
-				value: filesNavigator-spacing-loose
+				label:		"Wide"
+				label.fr:	"Large"
+				value:		filesNavigator-spacing-loose
 			-
-				label: "Very wide"
-				label.fr: "Très large"
-				value: filesNavigator-spacing-veryLoose
+				label:		"Very wide"
+				label.fr:	"Très large"
+				value:		filesNavigator-spacing-veryLoose
 
 	-
-		id: "OT-tab-title-highlighted"
-		title: "Highlight current tab"
-		title.fr: "Tab courant mis en évidence"
-		description: "Highlight the name of the current note in the tab title."
-		description.fr: "Met en évidence sur le tab le nom de la fiche courante."
-		type: class-toggle
-		default: false
+		id:				"OT-tab-title-highlighted"
+		title:			"Highlight current tab"
+		title.fr:		"Tab courant mis en évidence"
+		description:	"Highlight the name of the current note in the tab title."
+		description.fr:	"Met en évidence sur le tab le nom de la fiche courante."
+		type:			class-toggle
+		default:		false
 
 	-
-		id: "OT-suppress-title-bar-breadcrumb"
-		title: "Title Bar breadcrumb: ON / OFF"
-		title.fr: "Fil d’Ariane dans la barre de titre : ON / OFF"
-		description: "Show or hide the breadcrumb in the title bar."
-		description.fr: "Afficher ou masquer le “breadcrumb” dans la barre de titre."
-		type: class-toggle
-		default: false
+		id:				"OT-suppress-title-bar-breadcrumb"
+		title:			"Title Bar breadcrumb: ON / OFF"
+		title.fr:		"Fil d’Ariane dans la barre de titre : ON / OFF"
+		description:	"Show or hide the breadcrumb in the title bar."
+		description.fr:	"Afficher ou masquer le “breadcrumb” dans la barre de titre."
+		type:			class-toggle
+		default:		false
 
 	-
-		id: "OT-status-bar-padding"
-		title: "Status Bar padding [px]"
-		title.fr: "Marges de la barre d’état [px]"
-		description: "Number of pixels between the status bar and the window border."
-		description.fr: "Nombre de pixels entre la “Status Bar” et le bord de la fenêtre."
-		type: variable-number
-		default: 6
-		format: px
+		id:				"OT-status-bar-padding"
+		title:			"Status Bar padding [px]"
+		title.fr:		"Marges de la barre d’état [px]"
+		description:	"Number of pixels between the status bar and the window border."
+		description.fr:	"Nombre de pixels entre la “Status Bar” et le bord de la fenêtre."
+		type:			variable-number
+		default:		6
+		format:			px
 
 	-
-		id: "OT-metadata-label-width"
-		title: "Width of the properties labels [em]"
-		title.fr: "Largeur des noms des champs des propriétés [em]"
-		type: variable-number
-		default: 7
-		format: em
+		id:			"OT-metadata-label-width"
+		title:		"Width of the properties labels [em]"
+		title.fr:	"Largeur des noms des champs des propriétés [em]"
+		type:		variable-number
+		default:	7
+		format:		em
 
 	-
-		id: "OT-canvas-dot-pattern-hidden"
-		title: "Hide canvas dot pattern"
-		title.fr: "Cacher les points en fond des canvas"
-		description: "Hide the dotted background pattern on canvases."
+		id: 			"OT-canvas-dot-pattern-hidden"
+		title: 			"Hide canvas dot pattern"
+		title.fr:		 "Cacher les points en fond des canvas"
+		description:	 "Hide the dotted background pattern on canvases."
 		description.fr: "Masquer le motif de points du fond des canvases."
-		type: class-toggle
-		default: false
+		type: 			class-toggle
+		default: 		false
 
 	# =========================
 	# Typography
 	# =========================
 	-
-		id: "OT-typography-settings"
-		title: "Typography"
-		title.fr: "Typographie"
-		type: heading
-		level: 3
-		collapsed: false
-		description: "Headings and lists typography. / Typographie des titres et des listes."
+		id:				"OT-typography-settings"
+		title:			"Typography"
+		title.fr:		"Typographie"
+		type:			heading
+		level:			3
+		collapsed:		false
+		description:	"Headings and lists typography. / Typographie des titres et des listes."
 
 	-
-		id: "OT-headings-scaling"
-		title: "Headings and subheadings scaling"
-		title.fr: "Accroissement des titres et intertitres"
-		description: "Different ways of increasing the size of headings from H6 to H1. By default, a choice “generous but not too much”."
-		description.fr: "Différentes façons de grader la taille des H1 à H6. Par défaut, un choix généreux, mais pas trop."
-		type: class-select
-		allowEmpty: false
-		default: headings-scaling-OpSpl
+		id:				"OT-headings-scaling"
+		title:			"Headings and subheadings scaling"
+		title.fr:		"Accroissement des titres et intertitres"
+		description:	"Different ways of increasing the size of headings from H6 to H1. By default, a choice “generous but not too much”."
+		description.fr:	"Différentes façons de grader la taille des H1 à H6. Par défaut, un choix généreux, mais pas trop."
+		type:			class-select
+		allowEmpty:		false
+		default:		headings-scaling-OpSpl
 		options:
 			-
-				label: "None"
-				label.fr: "Aucun"
-				value: headings-scaling-none
+				label:		"None"
+				label.fr:	"Aucun"
+				value:		headings-scaling-none
 			-
-				label: "Minor second"
-				label.fr: "Seconde mineure"
-				value: headings-scaling-minor-second
+				label:		"Minor second"
+				label.fr:	"Seconde mineure"
+				value:		headings-scaling-minor-second
 			-
-				label: "Slowly"
-				label.fr: "Doucement"
-				value: headings-scaling-slight
+				label:		"Slowly"
+				label.fr:	"Doucement"
+				value:		headings-scaling-slight
 			-
-				label: "Major second"
-				label.fr: "Seconde majeure"
-				value: headings-scaling-major-second
+				label:		"Major second"
+				label.fr:	"Seconde majeure"
+				value:		headings-scaling-major-second
 			-
-				label: "Olivier’s"
-				value: headings-scaling-OpSpl
+				label:		"Olivier’s"
+				value:		headings-scaling-OpSpl
 			-
-				label: "Minor third"
-				label.fr: "Tierce mineure"
-				value: headings-scaling-minor-third
+				label:		"Minor third"
+				label.fr:	"Tierce mineure"
+				value:		headings-scaling-minor-third
 			-
-				label: "Major third"
-				label.fr: "Tierce majeure"
-				value: headings-scaling-major-third
+				label:		"Major third"
+				label.fr:	"Tierce majeure"
+				value:		headings-scaling-major-third
 
 	-
-		id: "OT-lists-font-stepdown"
-		title: "Lists: Text size stepping down"
-		title.fr: "Listes : taille de texte décroissante"
-		description: "Use smaller text for deeper list levels."
-		description.fr: "Utiliser un texte plus petit pour les niveaux de liste plus profonds."
-		type: class-toggle
-		default: false
+		id:				"OT-lists-font-stepdown"
+		title:			"Lists: Text size stepping down"
+		title.fr:		"Listes : taille de texte décroissante"
+		description:	"Use smaller text for deeper list levels."
+		description.fr:	"Utiliser un texte plus petit pour les niveaux de liste plus profonds."
+		type:			class-toggle
+		default:		false
 
 	-
-		id: "OT-lists-vert-spacing"
-		title: "Lists: vertical spacing, line spacing"
-		title.fr: "Listes : espacement vertical, interligne"
-		description: "Control vertical spacing inside lists: normal / tight."
-		description.fr: "Contrôler l’espacement vertical à l’intérieur des listes : normal / serré."
-		type: class-select
-		allowEmpty: false
-		default: lists-vert-normal
+		id:				"OT-lists-vert-spacing"
+		title:			"Lists: vertical spacing, line spacing"
+		title.fr:		"Listes : espacement vertical, interligne"
+		description:	"Control vertical spacing inside lists: normal / tight."
+		description.fr:	"Contrôler l’espacement vertical à l’intérieur des listes : normal / serré."
+		type:			class-select
+		allowEmpty:		false
+		default:		lists-vert-normal
 		options:
 			-
-				label: "Normal"
-				label.fr: "Normal"
-				value: lists-vert-normal
+				label:		"Normal"
+				label.fr:	"Normal"
+				value:		lists-vert-normal
 			-
-				label: "Tight"
-				label.fr: "Serré"
-				value: lists-vert-tight
+				label:		"Tight"
+				label.fr:	"Serré"
+				value:		lists-vert-tight
 
 	-
-		id: "OT-lists-horiz-indenting"
-		title: "Lists: Indenting"
-		title.fr: "Listes : indentation"
-		description: "Control horizontal indentation and bullet gap: normal / wide / generous."
-		description.fr: "Contrôler l’indentation horizontale et l’écart puce–texte : normale / large / généreuse."
-		type: class-select
-		allowEmpty: false
-		default: lists-horiz-normal
+		id:				"OT-lists-horiz-indenting"
+		title:			"Lists: Indenting"
+		title.fr:		"Listes : indentation"
+		description:	"Control horizontal indentation and bullet gap: normal / wide / generous."
+		description.fr:	"Contrôler l’indentation horizontale et l’écart puce–texte : normale / large / généreuse."
+		type:			class-select
+		allowEmpty:		false
+		default:		lists-horiz-normal
 		options:
 			-
-				label: "Normal"
-				label.fr: "Normale"
-				value: lists-horiz-normal
+				label:		"Normal"
+				label.fr:	"Normale"
+				value:		lists-horiz-normal
 			-
-				label: "Wide"
-				label.fr: "Large"
-				value: lists-horiz-wide
+				label:		"Wide"
+				label.fr:	"Large"
+				value:		lists-horiz-wide
 			-
-				label: "Generous"
-				label.fr: "Généreuse"
-				value: lists-horiz-generous
+				label:		"Generous"
+				label.fr:	"Généreuse"
+				value:		lists-horiz-generous
 
 	# =========================
 	# Kanban plugin
 	# =========================
 	-
-		id: "OT-kanban-settings"
-		title: "Kanban plugin"
-		title.fr: "Plugin Kanban"
-		type: heading
-		level: 3
-		collapsed: false
-		description: "Kanban plugin specific styles. / Styles spécifiques pour le plugin Kanban."
+		id:				"OT-kanban-settings"
+		title:			"Kanban plugin"
+		title.fr:		"Plugin Kanban"
+		type:			heading
+		level:			3
+		collapsed:		false
+		description:	"Kanban plugin specific styles. / Styles spécifiques pour le plugin Kanban."
 
 	-
-		id: "OT-kanban-font"
-		title: "Kanban — General font"
-		title.fr: "Kanban — Fonte"
-		description: "It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
-		description.fr: "Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
-		type: variable-select
-		default: "Uberhand Pro"
+		id:				"OT-kanban-font"
+		title:			"Kanban — General font"
+		title.fr:		"Kanban — Fonte"
+		description:	"It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
+		description.fr:	"Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
+		type:			variable-select
+		default:		"Uberhand Pro"
 		options:
 			-
 				label: "Adelle"
@@ -11834,33 +11834,33 @@ settings:
 		default: 16
 		format: px
 
-	# =========================
-	# Code blocks (option existante)
-	# =========================
+	# ============
+	# Code blocks
+	# ============
 	-
-		id: "OT-codeblock-linewrap-OFF"
-		title: "Suppress line wrapping within code blocks"
-		title.fr: "Supprimer les retours à la ligne dans les blocs de code"
-		type: class-toggle
-		default: true
+		id:			"OT-codeblock-linewrap-OFF"
+		title:		"Suppress line wrapping within code blocks"
+		title.fr:	"Supprimer les retours à la ligne dans les blocs de code"
+		type:		class-toggle
+		default:	true
 	-
-		id:			OT-LIGHT-mode-settings
-		title:		LIGHT MODE colors
+		id:				OT-LIGHT-mode-settings
+		title:			LIGHT MODE colors
 		title.fr:		Couleurs en mode “LIGHT”
 		description:	Colors for the “Light” base color scheme.
 		description.fr:	Réglages pour le mode «normal».
-		type:		heading
-		level:		2
-		collapsed:	true
+		type:			heading
+		level:			2
+		collapsed:		true
 	-
-			id:			OT-lightPalette
-			title:		General palette
-			title.fr:	Palette générale
+			id:				OT-lightPalette
+			title:			General palette
+			title.fr:		Palette générale
 			description:	If you want the original black and white theme, choose “Default for Obsidian”.
 			description.fr:	« Par défaut » signifie les gris neutres et le noir d’Obsidian « nature ».
-			type:		class-select
-			allowEmpty:	false
-			default:	lightPalette-Beige
+			type:			class-select
+			allowEmpty:		false
+			default:		lightPalette-Beige
 			options:
 				-
 					label:		Default for Obsidian
@@ -11940,7 +11940,7 @@ settings:
 	-
 			id:			OT-accentColor-lightMode
 			title:		Accent color
-			title.fr:		Couleur «Accent»
+			title.fr:	Couleur «Accent»
 			type:		class-select
 			allowEmpty:	false
 			default:	accentColor-lightMode-shade
@@ -11956,14 +11956,14 @@ settings:
 					label:	Alternative 2
 					value:	accentColor-lightMode-alternative-2
 	-
-			id:			OT-TextColor-lightMode
+			id:				OT-TextColor-lightMode
 			title:			Text color in Reading mode
 			title.fr:		Couleur du texte des fiches en mode Lecture / Consultation
 			description:	“Default” means the color associated with the above choosen general palette.
 			description.fr:	« Par défaut » signifie la couleur associée à la palette générale choisie ci-dessus.
-			type:		class-select
-			allowEmpty:	false
-			default:	textColor-lightMode-default
+			type:			class-select
+			allowEmpty:		false
+			default:		textColor-lightMode-default
 			options:
 				-
 					label:		Default
@@ -12006,8 +12006,8 @@ settings:
 					label.fr:	Brun
 					value:		textColor-lightMode-brown
 				-
-					label:	Cyan
-					value:	textColor-lightMode-cyan
+					label:		Cyan
+					value:		textColor-lightMode-cyan
 				-
 					label:		Emerald
 					label.fr:	Émeraude
@@ -12087,14 +12087,14 @@ settings:
 					label:		Zinc
 					value:		textColor-lightMode-zinc
 	-
-			id:			OT-pageBackground-lightMode
-			title:		Notes background in Reading mode
-			title.fr:	Fond des fiches en mode «Lecture / Consultation»
+			id:				OT-pageBackground-lightMode
+			title:			Notes background in Reading mode
+			title.fr:		Fond des fiches en mode «Lecture / Consultation»
 			description:	Different kinds of paper are available. “None” keeps the plain background determined by the palette.
 			description.fr: Un fond uni ou un choix de fonds structurés.
-			type: 		class-select
+			type: 			class-select
 			allowEmpty: 	false
-			default: 	pb-lm-none
+			default: 		pb-lm-none
 			options:
 				-
 					label:		None
@@ -12295,9 +12295,9 @@ settings:
 		title.fr:		Couleur du fond de page en mode «Écriture / Édition»
 		description:	“Default” means the background associated with the above chosen palette.
 		description.fr:	Par défaut, le fond déterminé par la palette générale choisie ci-dessus.
-		type:		class-select
-		allowEmpty:	false
-		default:	editingBackgroundColor-lightMode-default
+		type:			class-select
+		allowEmpty:		false
+		default:		editingBackgroundColor-lightMode-default
 		options:
 			-
 				label:		Default
@@ -13400,7 +13400,7 @@ settings:
 			title:		Body text size [px]
 			title.fr:	Taille des caractères [px]
 			type:		variable-number
-			default:	17
+			default:	18
 			format:		px
 	-
 			id:			OT-editMode-line-height
