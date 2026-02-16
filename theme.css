@@ -48,9 +48,12 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-16
+	- improvements for the Source Mode Styling plugin
 2026-02-15
 	- overhauled lists to make them highly customizable
 	- included lists presets into Style Settings
+	- corrected two very annoying typos
 2026-02-13
 	- corrected the hovering of Style Settings collapse indicators
 	- corrected the zooming inside panes, permitted by Vertical Tabs plugin
@@ -5073,11 +5076,14 @@ body.edit-font-Verdana {
 .cm-list-8,
 .cm-list-9,
 .cm-list-10,
-.cm-line,
 .markdown-source-view.mod-cm6 .cm-scroller,
 .markdown-source-view,
 .cm-s-obsidian {
 	font-family: var(--OT-editMode-font-family);
+	font-size: var(--OT-editMode-text-size);
+	letter-spacing: var(--OT-editMode-letter-spacing);
+}
+.cm-line {
 	font-size: var(--OT-editMode-text-size);
 	letter-spacing: var(--OT-editMode-letter-spacing);
 }
@@ -5161,6 +5167,40 @@ body.edit-font-Verdana {
     color:			inherit;
     font-weight:	var(--font-bold);
 }
+/* pour la compatibilité avec le plugin Source Mode Styling */
+/* Fallback pour l’éditeur standard uniquement */
+.markdown-source-view.mod-cm6:not(.source-mode-raw) .cm-scroller {
+  font-family: var(--OT-editMode-font-family);
+}
+/* En mode RAW, laisser les titres et les listes hériter de la fonte du plugin */
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-1,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-2,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-3,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-4,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-5,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-6,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-1,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-2,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-3,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-4,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-5,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-6,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-line,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-1,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-2,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-3,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-4,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-5,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-6,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-7,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-8,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-9,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-10
+{
+  font-family: inherit;
+}
+
+
 /*	filets sous H1 et H2
 .cm-s-obsidian .HyperMD-header-1,
 .cm-s-obsidian .HyperMD-header-2 {
