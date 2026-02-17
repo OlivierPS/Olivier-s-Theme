@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-17
+	- perfected the code for the Dynamic Outline plugin
 2026-02-16
 	- text size in lists
 2026-02-15
@@ -508,21 +510,6 @@ body {
 
 	--dropdown-background:			var(--color-accent-3);
 	--dropdown-background-hover:	var(--color-accent-1);
-
-	/*	for now (13.06.2025), I’m deliberately inhibiting the change of colors inside the modal, because it ruins the logic of the whole theme, especially in “inverted” themes, like “metallic blue”, where modals have a dark background	*/
-	--dynamic-outline-text-color:		var(--OT-menu-text-color);
-	--dynamic-outline-color:			var(--OT-menu-text-color);
-	--dynamic-outline-h1-text-color:	var(--dynamic-outline-text-color)!important;
-	--dynamic-outline-h2-text-color:	var(--dynamic-outline-text-color)!important;
-	--dynamic-outline-h3-text-color:	var(--dynamic-outline-text-color)!important;
-	--dynamic-outline-h4-text-color:	var(--dynamic-outline-text-color)!important;
-	--dynamic-outline-h5-text-color:	var(--dynamic-outline-text-color)!important;
-	--dynamic-outline-h6-text-color:	var(--dynamic-outline-text-color)!important;
-	--dynamic-outline-background:		var(--menu-background);
-	--dynamic-outline-background-accent:					lime!important;
-	--dynamic-outline-background-hover:						var(--color-accent-2)!important;
-	--dynamic-outline-background-modifier-hover-lighter:	lime!important;
-	--dynamic-outline-active-heading-background:			var(--color-accent-3)!important;
 
 	--embed-border-start:		0;
 	--embed-border-end:			1px dotted;
@@ -10533,19 +10520,254 @@ body {
 /*	---------- ↑ Note Status plugin ↑ ----------	*/
 
 
-/*	Bookmark	OpSpl66	———————————————————— Dynamic Outline plugin  ————————————————————	*/
-#dynamic-outline {
-	--dynamic-outline-active-heading-pill-color:	var(--OT-color-on-accent-3) !important;
-	--link-color:	var(--color-accent-2);
-	--text-faint:	var(--OT-menu-text-muted);
-	--dynamic-outline-h1-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h2-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h3-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h4-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h5-text-color:	var(--OT-menu-text-color);
-	--dynamic-outline-h6-text-color:	var(--OT-menu-text-color);
+/*  Bookmark  OpSpl66  —————————————————————————— Dynamic Outline plugin ——————————————————————————
+   Logique d’états alignée avec le thème :
+   - normal         : fond menu, texte nav normal/muted
+   - hover          : bg --color-accent-1, texte --OT-color-on-accent-1 / muted-on-accent-1
+   - active         : bg --color-accent-2, texte --OT-color-on-accent-2 / muted-on-accent-2
+   - active+hover   : bg --color-accent-1, texte --OT-color-on-accent-1 / muted-on-accent-1
+*/
+
+/* ---------- Variables de base pour le plugin ---------- */
+
+body {
+  /* Palette de base pour la fenêtre d’outline */
+  --dynamic-outline-background: var(--menu-background);
+  --dynamic-outline-text-color: var(--OT-menu-text-color);
+  --dynamic-outline-color: var(--OT-menu-text-color);
+
+  /* Hover générique d’un item d’outline */
+  --dynamic-outline-background-hover: var(--color-accent-1);
+
+  /* État actif (heading courant) */
+  --dynamic-outline-active-heading-background: var(--color-accent-2);
+  --dynamic-outline-active-heading-pill-color: var(--OT-color-on-accent-2) !important;
+
+  /* Poids de fonte minimum pour l’item actif */
+  --dynamic-outline-highlight-font-weight: var(--font-semibold);
 }
-/*	---------- ↑ Dynamic Outline plugin ↑ ----------	*/
+
+/* ---------- Fenêtre Dynamic Outline : typographie & densité ---------- */
+
+/* Taille de base = taille UI, pas headings */
+#dynamic-outline {
+  --dynamic-outline-font-size: var(--OT-UI-font-size);
+}
+
+/* Appliquer cette taille au contenu du menu */
+#dynamic-outline .dynamic-outline-content-container,
+#dynamic-outline .dynamic-outline-content-container li,
+#dynamic-outline .dynamic-outline-content-container a {
+  font-size: var(--dynamic-outline-font-size);
+  line-height: 1.2;
+}
+
+/* Tous les niveaux de heading ont la même taille et le même poids de base */
+#dynamic-outline li a.heading-level-1,
+#dynamic-outline li a.heading-level-2,
+#dynamic-outline li a.heading-level-3,
+#dynamic-outline li a.heading-level-4,
+#dynamic-outline li a.heading-level-5,
+#dynamic-outline li a.heading-level-6 {
+  font-size: var(--dynamic-outline-font-size);
+  font-weight: var(--font-normal);
+}
+
+/* Lignes du menu : verticalement compactes */
+#dynamic-outline li {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  color: var(--dynamic-outline-text-color);
+  background-color: transparent;
+}
+
+/* ---------- Bouton Dynamic Outline dans le header ---------- */
+
+/* État normal : suit la logique des clickable-icon de header */
+.view-header .dynamic-outline-button.clickable-icon.view-action {
+  color: var(--OT-clickable-icon-in-header);
+  background-color: transparent;
+}
+
+/* Hover (normal + hovered) */
+.view-header .dynamic-outline-button.clickable-icon.view-action:hover {
+  color: var(--icon-color-hover); /* -> --OT-color-on-accent-1 */
+  background-color: var(--color-accent-1);
+}
+
+/* Actif (outline ouvert, classe .button-active ajoutée par le plugin) */
+.view-header .dynamic-outline-button.clickable-icon.view-action.button-active {
+  color: var(--OT-color-on-accent-2);
+  background-color: var(--color-accent-2);
+  box-shadow: none;
+}
+
+/* Actif + hover */
+.view-header .dynamic-outline-button.clickable-icon.view-action.button-active:hover {
+  color: var(--OT-color-on-accent-1);
+  background-color: var(--color-accent-1);
+}
+
+/* S’assurer que l’icône SVG suit currentColor */
+.view-header .dynamic-outline-button.clickable-icon.view-action .svg-icon {
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ---------- Items d’outline : couleurs de texte par état ---------- */
+
+/* État normal : tout le menu utilise la couleur de texte d’interface */
+#dynamic-outline .dynamic-outline-content-container a {
+  color: var(--OT-menu-text-color);
+}
+
+/* ACTIF (highlight, sans hover) : fond + texte sur-accent-2 */
+#dynamic-outline li.highlight {
+  position: relative;
+  background-color: var(--color-accent-2);
+  color: var(--OT-color-on-accent-2);
+}
+
+#dynamic-outline li.highlight a {
+  color: var(--OT-color-on-accent-2);
+}
+
+/* On garde la logique de poids max prévue par le plugin, par niveau */
+#dynamic-outline li.highlight .heading-level-1 {
+  font-weight: max(
+    var(--dynamic-outline-h1-font-weight),
+    var(--dynamic-outline-highlight-font-weight)
+  );
+}
+#dynamic-outline li.highlight .heading-level-2 {
+  font-weight: max(
+    var(--dynamic-outline-h2-font-weight),
+    var(--dynamic-outline-highlight-font-weight)
+  );
+}
+#dynamic-outline li.highlight .heading-level-3 {
+  font-weight: max(
+    var(--dynamic-outline-h3-font-weight),
+    var(--dynamic-outline-highlight-font-weight)
+  );
+}
+#dynamic-outline li.highlight .heading-level-4 {
+  font-weight: max(
+    var(--dynamic-outline-h4-font-weight),
+    var(--dynamic-outline-highlight-font-weight)
+  );
+}
+#dynamic-outline li.highlight .heading-level-5 {
+  font-weight: max(
+    var(--dynamic-outline-h5-font-weight),
+    var(--dynamic-outline-highlight-font-weight)
+  );
+}
+#dynamic-outline li.highlight .heading-level-6 {
+  font-weight: max(
+    var(--dynamic-outline-h6-font-weight),
+    var(--dynamic-outline-highlight-font-weight)
+  );
+}
+
+/* HOVER (normal + hovered) : fond + texte sur-accent-1 */
+#dynamic-outline li:hover,
+#dynamic-outline li.hovered {
+  background-color: var(--color-accent-1);
+}
+
+#dynamic-outline li:hover a.heading-level-1,
+#dynamic-outline li:hover a.heading-level-2,
+#dynamic-outline li:hover a.heading-level-3,
+#dynamic-outline li:hover a.heading-level-4,
+#dynamic-outline li:hover a.heading-level-5,
+#dynamic-outline li:hover a.heading-level-6,
+#dynamic-outline li.hovered a.heading-level-1,
+#dynamic-outline li.hovered a.heading-level-2,
+#dynamic-outline li.hovered a.heading-level-3,
+#dynamic-outline li.hovered a.heading-level-4,
+#dynamic-outline li.hovered a.heading-level-5,
+#dynamic-outline li.hovered a.heading-level-6 {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* ACTIF + HOVER : on suit l’état hover */
+#dynamic-outline li.highlight:hover,
+#dynamic-outline li.highlight.hovered {
+  background-color: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+#dynamic-outline li.highlight:hover a,
+#dynamic-outline li.highlight.hovered a {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* Texte “muted” dans l’item actif, si tu ajoutes des infos annexes plus tard */
+#dynamic-outline li.highlight .muted {
+  color: var(--OT-color-muted-on-accent-2);
+}
+
+/* ---------- Pill/stripe latérale de l’élément actif ---------- */
+
+#dynamic-outline li.highlight::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: -8px;
+  width: 4px;
+  border-radius: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 22px;
+  background-color: var(--OT-color-on-accent-2);
+}
+
+#dynamic-outline li.highlight:hover::after,
+#dynamic-outline li.highlight.hovered::after {
+  background-color: var(--OT-color-on-accent-1);
+}
+
+/* ---------- Pastilles H1/H2/H3… lisibles ---------- */
+
+/* Base : petite pastille, couleur “muted” par défaut */
+.heading-level-styling-1 #dynamic-outline li::before,
+.heading-level-styling-2 #dynamic-outline li::before {
+  font-size: var(--font-smallest);
+  color: var(--OT-menu-text-muted); /* lisible sur fond normal */
+  margin-left: 0.5em;
+  margin-right: 0.25em;
+}
+
+/* Hover (ligne survolée, qu’elle soit highlight ou non) */
+#dynamic-outline li:hover::before,
+#dynamic-outline li.hovered::before {
+  color: var(--OT-color-muted-on-accent-1);
+}
+
+/* Actif (highlight, sans hover) */
+#dynamic-outline li.highlight::before {
+  color: var(--OT-color-muted-on-accent-2);
+}
+
+/* Actif + hover */
+#dynamic-outline li.highlight:hover::before,
+#dynamic-outline li.highlight.hovered::before {
+  color: var(--OT-color-muted-on-accent-1);
+}
+
+/* ---------- Icône de collapse (petite flèche) ---------- */
+
+.dynamic-outline-collapse-icon {
+  color: var(--OT-menu-text-muted);
+}
+
+#dynamic-outline li:hover .dynamic-outline-collapse-icon,
+#dynamic-outline li.hovered .dynamic-outline-collapse-icon {
+  color: var(--OT-color-muted-on-accent-1);
+}
+/*  ---------- ↑ Dynamic Outline plugin ↑ ----------  */
 
 
 /*	Bookmark	OpSpl67	———————————————————— Better Command Palette plugin  ————————————————————	*/
