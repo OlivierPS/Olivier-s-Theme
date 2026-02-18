@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-18
+	- added the option to select a “normal” line spacing, both in Reading and in Editing mode
 2026-02-17
 	- perfected the code for the Dynamic Outline plugin
 2026-02-16
@@ -486,7 +488,7 @@ body {
 	--checkbox-color:				var(--text-normal);
 	--checklist-done-decoration:	none;		/*	line-through;	*/
 	--checkbox-radius:				var(--radius-s);
-	--checkbox-size:				0.6rem;
+	--checkbox-size:				0.8rem;
 	--checklist-done-color:			var(--color-base-50);
 
 	--code-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 95%);
@@ -5151,6 +5153,12 @@ body.edit-font-Verdana {
 	font-size:		var(--OT-editMode-text-size);
     line-height:	var(--OT-editMode-line-height);
 }
+body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-sizer,
+body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-content,
+body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
+    line-height:	normal;
+}
+
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
 	line-height:	1.2em;
 }
@@ -5771,7 +5779,10 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 .markdown-preview-view {
   font-size: var(--OT-readingMode-text-size);
 }
-
+/* Si le toggle "natural" est ON, on revient au mode “normal” pour l’interligne */
+body.OT-readingMode-natural-line-height {
+  --line-height-normal: normal;
+}
 /* ---------- OpSpl Paper background ---------- */
 /* Let’s put a nice paper-like background in the preview; we can style either
 	“.markdown-preview-sizer” → just the text column
@@ -11778,6 +11789,9 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 name:	Olivier’s Theme
 id:		Olivier-s-Theme
 settings:
+	# =========================
+	# GENERAL SETTINGS
+	# =========================
 	-
 		id:				"OT-general-settings"
 		title:			"GENERAL settings"
@@ -11790,7 +11804,6 @@ settings:
 
 	# =========================
 	# Interface
-	# =========================
 	-
 		id:				"OT-UI-settings"
 		title:			"Interface"
@@ -11880,7 +11893,6 @@ settings:
 
 	# =========================
 	# Typography
-	# =========================
 	-
 		id:				"OT-typography-settings"
 		title:			"Typography"
@@ -11981,7 +11993,6 @@ settings:
 
 	# =========================
 	# Kanban plugin
-	# =========================
 	-
 		id:				"OT-kanban-settings"
 		title:			"Kanban plugin"
@@ -12100,15 +12111,16 @@ settings:
 		default: 16
 		format: px
 
-	# ============
-	# Code blocks
-	# ============
 	-
 		id:			"OT-codeblock-linewrap-OFF"
 		title:		"Suppress line wrapping within code blocks"
 		title.fr:	"Supprimer les retours à la ligne dans les blocs de code"
 		type:		class-toggle
 		default:	true
+
+	# ===================
+	# LIGHT MODE settings
+	# ===================
 	-
 		id:				OT-LIGHT-mode-settings
 		title:			LIGHT MODE colors
@@ -12741,6 +12753,9 @@ settings:
 					label:		dark Yellow
 					label.fr:	Jaune foncé
 					value:		highlight-color-strongYellow
+	# ===================
+	# DARK MODE settings
+	# ===================
 	-
 		id:				OT-DARK-mode-settings
 		title:			DARK MODE colors
@@ -13364,6 +13379,10 @@ settings:
 					label:		dark Yellow
 					label.fr:	Jaune foncé
 					value:		highlight-color-dark-strongYellow
+
+	# ======================
+	# READING mode settings
+	# ======================
 	-
 		id:				OT-READING-mode-settings
 		title:			READING mode
@@ -13379,6 +13398,16 @@ settings:
 			type:		variable-number
 			default:	18
 			format:		px
+
+	-
+			id:			OT-readingMode-natural-line-height
+			title:		"Natural line height for the chosen font"
+			title.fr:	"Interligne naturel pour la fonte choisie"
+			description:	When ON, Reading mode uses more or less the line-height intended by the font designer and the following value is ignored.
+			description.fr: ON signifie que l’interligne sera plus ou moins celui prévu par le créateur de la fonte et la valeur ci-dessous est ignorée.
+			type:		class-toggle
+			default:	false
+
 	-
 			id:			OT-readingMode-line-height
 			title:		Line height [em]
@@ -13386,6 +13415,8 @@ settings:
 			type:		variable-number
 			default:	1.45
 			format:		em
+			disableIF:
+				- OT-readingMode-natural-line-height
 	-
 			id:			OT-readingMode-line-width
 			title:		Line length [em]
@@ -13469,10 +13500,14 @@ settings:
 			type:		variable-number
 			default:	550
 			format:		px
+
+	# ================================
+	# WRITING / EDITING mode settings
+	# ================================
 	-
 		id:				OT-EDIT-mode-settings
-		title:			WRITING/EDITING mode
-		title.fr:		Mode «ÉCRITURE / ÉDITION»
+		title:			WRITING / EDITING mode
+		title.fr:		Mode «ÉCRITURE / ÉDITION»
 		description:	Adjustments for when you’re editing your notes.
 		type:			heading
 		level:			2
@@ -13668,6 +13703,15 @@ settings:
 			type:		variable-number
 			default:	18
 			format:		px
+	-
+			id:			OT-editMode-natural-line-height
+			title:		"Natural line height for the chosen font"
+			title.fr:	"Interligne naturel pour la fonte choisie"
+			description:	When ON, Editing mode uses more or less the line-height intended by the font designer and the following value is ignored.
+			description.fr: ON signifie qu’en écriture, l’interligne sera plus ou moins celui prévu par le créateur de la fonte et la valeur ci-dessous est ignorée.
+			type:		class-toggle
+			default:	false
+
 	-
 			id:			OT-editMode-line-height
 			title:		Line height [em]
