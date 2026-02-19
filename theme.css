@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-19
+	- at last, lists are as I always wanted them !
 2026-02-18
 	- added the option to select a “normal” line spacing, both in Reading and in Editing mode
 2026-02-17
@@ -3043,7 +3045,7 @@ body {
 	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 36%) !important;
 	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 28%) !important;
 	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 12%) !important;
-	--OT-color-on-accent-2:			var(--color-base-00) !important
+	--OT-color-on-accent-2:			var(--color-base-00) !important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 80%) !important;
 }
 .theme-dark.lightPalette-blue.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
@@ -8120,30 +8122,22 @@ body {
 
 /* ---------- réglages quasi semblables à “Obsidian natif” --------- */
 body {
-  /* Gaps puce / checkbox → texte */
-  --OT-bullet-text-gap:   0.65em;
+  --OT-bullet-text-gap:   0.65em;							/* Gaps puce / checkbox → texte */
   --OT-checkbox-text-gap: 0.65em;
 
-  /* Font-size base (natif : tous niveaux ~ texte courant) */
-  --OT-list-font-size-1:  var(--OT-readingMode-text-size);
+  --OT-list-font-size-1:  var(--OT-readingMode-text-size);	/* Font-size base (natif : tous niveaux ~ texte courant) */
   --OT-list-font-size-2:  var(--OT-readingMode-text-size);
   --OT-list-font-size-3:  var(--OT-readingMode-text-size);
   --OT-list-font-size-4:  var(--OT-readingMode-text-size);
 
-  /* Line-height (profil standard) */
-  --OT-list-line-height-1: var(--line-height-normal);
-  --OT-list-line-height-2: var(--line-height-normal);
-  --OT-list-line-height-3: var(--line-height-normal);
-  --OT-list-line-height-4: var(--line-height-normal);
+  --OT-list-line-height: var(--line-height-normal);		/* Line-height (profil standard) */
 
-  /* Espacement entre items (par le haut) */
-  --OT-list-item-top-1: var(--list-spacing);
+  --OT-list-item-top-1: var(--list-spacing);				/* Espacement entre items (par le haut) */
   --OT-list-item-top-2: var(--list-spacing);
   --OT-list-item-top-3: var(--list-spacing);
   --OT-list-item-top-4: var(--list-spacing);
 
-  /* Espacement entre items (par le haut) */
-  --OT-list-block-top-1:    var(--p-spacing);
+  --OT-list-block-top-1:    var(--p-spacing);				/* Espacement entre items (par le haut) */
   --OT-list-block-bottom-1: var(--p-spacing);
   --OT-list-block-top-2:    0;
   --OT-list-block-bottom-2: 0;
@@ -8152,11 +8146,9 @@ body {
   --OT-list-block-top-4:    0;
   --OT-list-block-bottom-4: 0;
 
-  /* Indentation texte */
-  --OT-list-numbered-indent: var(--list-indent);
+  --OT-list-numbered-indent: var(--list-indent);			/* Indentation texte */
 
-  /* Raw */
-  --OT-list-indent-raw: 2ch;
+  --OT-list-indent-raw: 2ch;								/* Raw */
 }
 
 /* Taille normale (tous niveaux ~ texte courant) */
@@ -8166,6 +8158,7 @@ body.lists-font-normal {
   --OT-list-font-size-3: var(--OT-readingMode-text-size);
   --OT-list-font-size-4: var(--OT-readingMode-text-size);
 }
+
 /* Taille décroissante (hiérarchie visuelle par profondeur) */
 body.OT-lists-font-stepdown {
   --OT-list-font-size-1: calc(1.00 * var(--OT-readingMode-text-size));
@@ -8176,59 +8169,43 @@ body.OT-lists-font-stepdown {
 
 /* Espaces verticaux « normaux » */
 body.lists-vert-normal {
-  /* Line-height : on reste sur la base du thème */
-  --OT-list-line-height-1: var(--line-height-normal);
-  --OT-list-line-height-2: var(--line-height-normal);
-  --OT-list-line-height-3: var(--line-height-normal);
-  --OT-list-line-height-4: var(--line-height-normal);
+  --OT-list-line-height: var(--line-height-normal);	/* Line-height : on reste sur la base du thème */
 
-  /* Espacement entre items (par le haut) */
-  --OT-list-item-top-1: 0.2rem;
-  --OT-list-item-top-2: 0.2rem;
-  --OT-list-item-top-3: 0.2rem;
-  --OT-list-item-top-4: 0.2rem;
+  --OT-list-item-top-1: 0.2em;							/* Espacement entre items (par le haut) */
+  --OT-list-item-top-2: 0.2em;
+  --OT-list-item-top-3: 0.2em;
+  --OT-list-item-top-4: 0.2em;
 
-  /* Espaces au-dessus / au-dessous des blocs de listes
-     1 > 2 > 3 > 4, légèrement décroissants */
-  --OT-list-block-top-1:    0.4rem;
-  --OT-list-block-bottom-1: 0.3rem;
+  --OT-list-block-top-1:    0.4em;						/* Espaces au-dessus / au-dessous des blocs de listes
+  --OT-list-block-bottom-1: 0.3em;						   1 > 2 > 3 > 4, légèrement décroissants */
 
-  --OT-list-block-top-2:    0.3rem;
-  --OT-list-block-bottom-2: 0.25rem;
+  --OT-list-block-top-2:    0.3em;
+  --OT-list-block-bottom-2: 0.25em;
 
-  --OT-list-block-top-3:    0.25rem;
-  --OT-list-block-bottom-3: 0.2rem;
+  --OT-list-block-top-3:    0.25em;
+  --OT-list-block-bottom-3: 0.2em;
 
-  --OT-list-block-top-4:    0.2rem;
-  --OT-list-block-bottom-4: 0.15rem;
+  --OT-list-block-top-4:    0.2em;
+  --OT-list-block-bottom-4: 0.15em;
 }
 
 /* Espaces verticaux « serrés » */
 body.lists-vert-tight {
-  /* Line-height : interpolation vers 1.1 */
-  --OT-list-line-height-1: calc(0.75 * var(--line-height-normal) + 0.25 * 1.1);
-  --OT-list-line-height-2: calc(0.5  * var(--line-height-normal) + 0.5  * 1.1);
-  --OT-list-line-height-3: calc(0.25 * var(--line-height-normal) + 0.75 * 1.1);
-  --OT-list-line-height-4: 1.1;
+	--OT-list-line-height: normal;
 
-  /* Espacement entre items (par le haut) : de 0.1rem à 0 */
-  --OT-list-item-top-1: 0.10rem;
-  --OT-list-item-top-2: 0.06rem;
-  --OT-list-item-top-3: 0.03rem;
-  --OT-list-item-top-4: 0rem;
+  --OT-list-item-top-1: 0.10em;			/* Espacement entre items (par le haut) : de 0.1rem à 0 */
+  --OT-list-item-top-2: 0.06em;
+  --OT-list-item-top-3: 0.03em;
+  --OT-list-item-top-4: 0em;
 
-  /* Espaces bloc : on garde ceux du profil « normal » */
-  --OT-list-block-top-1:    0.4rem;
-  --OT-list-block-bottom-1: 0.3rem;
-
-  --OT-list-block-top-2:    0.3rem;
-  --OT-list-block-bottom-2: 0.25rem;
-
-  --OT-list-block-top-3:    0.25rem;
-  --OT-list-block-bottom-3: 0.2rem;
-
-  --OT-list-block-top-4:    0.2rem;
-  --OT-list-block-bottom-4: 0.15rem;
+  --OT-list-block-top-1:    0.4em;			/* Espaces bloc : on garde ceux du profil « normal » */
+  --OT-list-block-bottom-1: 0.3em;
+  --OT-list-block-top-2:    0.3em;
+  --OT-list-block-bottom-2: 0.25em;
+  --OT-list-block-top-3:    0.25em;
+  --OT-list-block-bottom-3: 0.2em;
+  --OT-list-block-top-4:    0.2em;
+  --OT-list-block-bottom-4: 0.15em;
 }
 
 /* Espaces horizontaux « normaux » (proche natif) */
@@ -8327,7 +8304,7 @@ body.lists-horiz-generous {
 .markdown-rendered ul > li,
 .markdown-rendered ol > li {
   font-size:   var(--OT-list-font-size-1);
-  line-height: var(--OT-list-line-height-1);
+  line-height: var(--OT-list-line-height);
 }
 
 /* Niveau 2 */
@@ -8336,7 +8313,7 @@ body.lists-horiz-generous {
 .markdown-rendered ul ol > li,
 .markdown-rendered ol ol > li {
   font-size:   var(--OT-list-font-size-2);
-  line-height: var(--OT-list-line-height-2);
+  line-height: var(--OT-list-line-height);
 }
 
 /* Niveau 3 */
@@ -8349,7 +8326,7 @@ body.lists-horiz-generous {
 .markdown-rendered ul ol ol > li,
 .markdown-rendered ol ol ol > li {
   font-size:   var(--OT-list-font-size-3);
-  line-height: var(--OT-list-line-height-3);
+  line-height: var(--OT-list-line-height);
 }
 
 /* Niveau 4 (et plus profond si tu veux les traiter pareil) */
@@ -8370,7 +8347,7 @@ body.lists-horiz-generous {
 .markdown-rendered ul ol ol ol > li,
 .markdown-rendered ol ol ol ol > li {
   font-size:   var(--OT-list-font-size-4);
-  line-height: var(--OT-list-line-height-4);
+  line-height: var(--OT-list-line-height);
 }
 
 /* -------- espace au-dessus des listes elles-mêmes -------- */
@@ -11810,7 +11787,7 @@ settings:
 		title.fr:		"Interface"
 		type:			heading
 		level:			3
-		collapsed:		false
+		collapsed:		true
 		description:	"Basic interface tweaks. / Réglages de base de l’interface."
 
 	-
@@ -11899,7 +11876,7 @@ settings:
 		title.fr:		"Typographie"
 		type:			heading
 		level:			3
-		collapsed:		false
+		collapsed:		true
 		description:	"Headings and lists typography. / Typographie des titres et des listes."
 
 	-
@@ -11999,7 +11976,7 @@ settings:
 		title.fr:		"Plugin Kanban"
 		type:			heading
 		level:			3
-		collapsed:		false
+		collapsed:		true
 		description:	"Kanban plugin specific styles. / Styles spécifiques pour le plugin Kanban."
 
 	-
@@ -13453,14 +13430,6 @@ settings:
 					label:		Alternate row backgrounds
 					label.fr:	Avec fonds alternés
 					value:		OT-tables-alternate-rows
-	-
-			id:				OT-lists-hover
-			title:			Lists hover highlight
-			title.fr:		Mise en évidence des listes au survol
-			description:	Highlight list items (bulleted, numbered, tasks) when hovered.
-			description.fr: Met en évidence les items de liste (puces, numéros, tâches) au survol.
-			type:			class-toggle
-			default:		false
 	-
 			id:				OT-bases-hide-header-on
 			title:			"Bases: hide header in Preview"
