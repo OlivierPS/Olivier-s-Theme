@@ -1,6 +1,6 @@
 /*
- * Olivier’s Theme for Obsidian – Version 2.0
- * -------------------------------------------
+ * Olivier’s Theme for Obsidian – Version 2
+ * -----------------------------------------
  * Author        : Olivier Spinnler
  * Release date  : 2026‑02‑06
  * Target app    : Obsidian.md (desktop & mobile)
@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-02-19
 	- at last, lists are as I always wanted them !
+	- improved the hovering of the tabs
 2026-02-18
 	- added the option to select a “normal” line spacing, both in Reading and in Editing mode
 2026-02-17
@@ -6393,19 +6394,22 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 /* -------------------- ↑ Bases ↑ -------------------- */
 
 
-/*  Bookmark OpSpl28 —————————————————————————————— En-tête des panneaux —————————————————————————————— */
+/*  Bookmark OpSpl28 ——————————————————————————————
+    En-tête des panneaux (View header + Tab headers)
+    —————————————————————————————— */
+
 /* =========================================
    View header: breadcrumb + title
    ========================================= */
 
-/* Hide breadcrumb when requested */
+/* Masquer le breadcrumb quand demandé */
 .OT-suppress-title-bar-breadcrumb
   .view-header-title-parent
   :is(.view-header-breadcrumb, .view-header-breadcrumb-separator) {
   display: none;
 }
 
-/* Breadcrumb styling (links) */
+/* Breadcrumb (liens) */
 .view-header-title-parent
   :is(.view-header-breadcrumb, .view-header-breadcrumb-separator) {
   color:       var(--link-color);
@@ -6421,18 +6425,18 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
-/* Pane title: base + focus */
+/* Titre de panneau: état de base (pane non focus) */
 .view-header-title {
   color:          var(--OT-view-header-title-no-focus-color);
-  letter-spacing: 0.02em !important; /* for bold */
+  letter-spacing: 0.02em !important; /* pour le gras */
 }
 
-/* Bottom border on focused pane header */
+/* Bord inférieur du header de panneau focus */
 .is-focused .workspace-leaf.mod-active .view-header {
   border-bottom: 2px solid var(--OT-view-header-title-focus-color);
 }
 
-/* Focused pane title */
+/* Titre du panneau focus */
 .is-focused .workspace-leaf.mod-active .view-header-title {
   color:        var(--OT-view-header-title-focus-color);
   font-variant: small-caps;
@@ -6440,16 +6444,23 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   font-weight:  700;
 }
 
+
 /* =========================================
    Workspace tab headers (root + sidebars)
    ========================================= */
 
-/* Base colors for tab header icons in headers and title bar */
+/* Couleur de base des headers d’onglets (inner = source de la couleur) */
+.workspace-tab-header .workspace-tab-header-inner {
+  color:    var(--tab-text-color);
+  position: relative;
+}
+
+/* Icônes de header de vue (boutons dans la title bar) */
 .view-header .clickable-icon {
   color: var(--OT-clickable-icon-in-header);
 }
 
-/* Status icon in tab headers, default and pinned */
+/* Icône de status des tabs (root), par défaut et épinglée */
 .mod-root .workspace-tab-header-status-icon {
   color: var(--tab-text-color);
 }
@@ -6457,7 +6468,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color: inherit;
 }
 
-/* Focused pane: active tab title and icon */
+/* Pane focus: titre + icône de l’onglet actif dans ce pane */
 .is-focused .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
   color: var(--OT-view-header-title-focus-color);
 }
@@ -6465,13 +6476,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color: var(--OT-color-on-accent-2);
 }
 
-/* Base: inner defines color, children inherit */
-.workspace-tab-header .workspace-tab-header-inner {
-  color: var(--tab-text-color);
-  position: relative;
-}
-
-/* Icons always follow title color instead of --icon-color (root by défaut) */
+/* Les enfants de l’inner héritent de sa couleur (root par défaut) */
 .workspace-tab-header .workspace-tab-header-inner
   :is(.workspace-tab-header-inner-icon,
       .workspace-tab-header-status-icon,
@@ -6479,7 +6484,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color: inherit !important;
 }
 
-/* Sidebars: rebase icon color on normal state (plus sombre dans certaines palettes) */
+/* Sidebars: base des icônes = palette d’icônes standard (plus sombre) */
 .mod-left-split .workspace-tab-header .workspace-tab-header-inner
   :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
 .mod-right-split .workspace-tab-header .workspace-tab-header-inner
@@ -6487,22 +6492,22 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color: var(--icon-color) !important;
 }
 
-/* Workspace tab headers – close button visibility + layout */
+/* Bouton de fermeture: positionnement et affichage uniquement au survol */
 .workspace-tab-header .workspace-tab-header-inner-close-button {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0.2em;
-  margin: auto 0; /* vertically center between top and bottom */
+  margin: auto 0; /* centré verticalement */
   display: none;
 }
 
-/* Show close button only on hover */
+/* Afficher le “×” uniquement quand le tab est survolé */
 .workspace-tab-header:hover .workspace-tab-header-inner-close-button {
   display: block;
 }
 
-/* Ensure Metadata Menu icon stays clickable */
+/* Icône Metadata Menu toujours cliquable */
 .workspace-tab-header .metadata-menu.fileclass-icon {
   position: relative;
   z-index: 1;
@@ -6514,7 +6519,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
-/* Optional: highlighted active tab title (Style Settings toggle OT-tab-title-highlighted) */
+/* Variante optionnelle: onglet actif “highlighted” (Style Settings) */
 .OT-tab-title-highlighted
   .workspace-tab-header.is-active.mod-active
   .workspace-tab-header-inner {
@@ -6523,21 +6528,47 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   background-color: var(--color-accent-2);
 }
 
-/* -----------------------------------------
-   Root tabs (main area)
-   ----------------------------------------- */
+/* OT — Réconciliation avec app.css:
+   quand Obsidian colore .workspace-tab-header, on renvoie la couleur vers l’inner */
 
-/* Non‑active tabs: INNER hover = accent‑1 */
-@media (hover: hover) {
-  .mod-root .workspace-tab-header:not(.is-active)
-    .workspace-tab-header-inner:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-  }
+/* 1. Le conteneur n’est plus porteur visuel: il devient transparent,
+      c’est l’inner qui porte la couleur réelle. */
+body.is-focused
+  .workspace-tab-header-container
+  .workspace-tab-header {
+  color:            inherit;          /* ne force pas une couleur différente */
 }
 
-/* Active tab: INNER hover = accent‑1 (active + hover) */
+/* 2. En focus, c’est bien l’inner qui porte la couleur de tab focus d’Obsidian. */
+body.is-focused
+  .workspace-tab-header-container
+  .workspace-tab-header
+  .workspace-tab-header-inner {
+  color: var(--tab-text-color-focused);
+}
+
+/* 3. Tout le contenu texte des tabs suit toujours l’inner (titre + status + bouton). */
+body.is-focused
+  .workspace-tab-header-container
+  .workspace-tab-header
+  .workspace-tab-header-inner
+  :is(
+    .workspace-tab-header-inner-title,
+    .workspace-tab-header-status-icon,
+    .workspace-tab-header-inner-close-button
+  ) {
+  color: inherit;
+}
+
+
+/* -----------------------------------------
+   Root tabs (zone principale)
+   ----------------------------------------- */
+
+/* États hover non-actif / actif: inner = accent‑1 */
 @media (hover: hover) {
+  .mod-root .workspace-tab-header:not(.is-active)
+    .workspace-tab-header-inner:hover,
   .mod-root .workspace-tab-header.is-active
     .workspace-tab-header-inner:hover {
     color:            var(--OT-color-on-accent-1);
@@ -6545,11 +6576,16 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
-/* CRUCIAL: as soon as INNER is hovered, force title + icons to inherit */
+/* Hover hiérarchique: tout le contenu suit l’inner */
 @media (hover: hover) {
-  body
-    .mod-root
-    .workspace-tab-header
+  /* 1. L’inner porte l’état hover (accent‑1) */
+  .mod-root .workspace-tab-header .workspace-tab-header-inner:hover {
+    color:            var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
+  }
+
+  /* 2. Titre + icônes internes héritent de l’inner */
+  .mod-root .workspace-tab-header
     .workspace-tab-header-inner:hover
     :is(
       .workspace-tab-header-inner-title,
@@ -6560,23 +6596,35 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     color: inherit !important;
     background-color: transparent;
   }
+
+  /* 3. SVG internes suivent aussi la couleur (currentColor) */
+  .mod-root .workspace-tab-header
+    .workspace-tab-header-inner:hover
+    :is(
+      .workspace-tab-header-inner-icon,
+      .workspace-tab-header-status-icon,
+      .workspace-tab-header-inner-close-button
+    ) svg {
+    color:  inherit;
+    fill:   currentColor;
+    stroke: currentColor;
+  }
 }
 
-/* Mobile tap state for non‑active tab inner header = accent‑2 */
+/* Mobile tap: onglet non-actif tapé = accent‑2 */
 .workspace-tab-header:not(.is-active).mobile-tap .workspace-tab-header-inner {
   color:            var(--OT-color-on-accent-2);
   background-color: var(--color-accent-2);
 }
 
-/* Hover behaviors for active tab controls (status + close buttons) */
+/* Hover des contrôles de l’onglet actif (icône de status + “×”) */
 @media (hover: hover) {
   .mod-root .workspace-tab-header.is-active
     :is(
       .workspace-tab-header-status-icon,
       .workspace-tab-header-inner-close-button
     ):hover,
-  .mod-root
-    .workspace-tab-header.is-active
+  .mod-root .workspace-tab-header.is-active
     :is(
       .workspace-tab-header-status-icon.mod-linked,
       .workspace-tab-header-inner-close-button.mod-linked,
@@ -6591,13 +6639,13 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
-/* Completely hide close “×” on sidebar tabs (left & right) */
+/* Masquer complètement le “×” dans les sidebars */
 .mod-left-split .workspace-tab-header-inner-close-button,
 .mod-right-split .workspace-tab-header-inner-close-button {
   display: none !important;
 }
 
-/* Neutralize any "closing" click on tabs inside sidebars */
+/* Neutraliser les clics de fermeture dans les sidebars (sécurité) */
 @media (hover: hover) {
   .mod-left-split .workspace-tab-header-inner-close-button:hover,
   .mod-right-split .workspace-tab-header-inner-close-button:hover {
@@ -6606,11 +6654,47 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
+/* Root tabs – survol hiérarchique basé sur le conteneur .workspace-tab-header */
+@media (hover: hover) {
+  /* 1. Quand le conteneur est survolé, l’inner prend l’accent-1 */
+  .mod-root .workspace-tab-header:hover
+    .workspace-tab-header-inner {
+    color:            var(--OT-color-on-accent-1) !important;
+    background-color: var(--color-accent-1);
+  }
+
+  /* 2. Tout le contenu interne hérite de l’inner (texte + icônes) */
+  .mod-root .workspace-tab-header:hover
+    .workspace-tab-header-inner
+    :is(
+      .workspace-tab-header-inner-title,
+      .workspace-tab-header-inner-icon,
+      .workspace-tab-header-status-icon,
+      .workspace-tab-header-inner-close-button
+    ) {
+    color: inherit !important;
+    background-color: transparent;
+  }
+
+  /* 3. SVG internes suivent aussi la couleur de l’inner */
+  .mod-root .workspace-tab-header:hover
+    .workspace-tab-header-inner
+    :is(
+      .workspace-tab-header-inner-icon,
+      .workspace-tab-header-status-icon,
+      .workspace-tab-header-inner-close-button
+    ) svg {
+    color:  inherit;
+    fill:   currentColor;
+    stroke: currentColor;
+  }
+}
+
 /* -----------------------------------------
-   Sidebars: tab headers on left/right splits
+   Sidebars: onglets des splits gauche/droite
    ----------------------------------------- */
 
-/* Active / menu‑open tab in sidebars: accent‑2 (normal actif) */
+/* Onglet actif / menu ouvert dans les sidebars = accent‑2 */
 .mod-left-split .workspace-tab-header.has-active-menu,
 .mod-right-split .workspace-tab-header.has-active-menu,
 .mod-left-split .workspace-tab-header.is-active,
@@ -6619,7 +6703,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   background-color: var(--color-accent-2);
 }
 
-/* Active sidebar tab headers (container) = même accent‑2 */
+/* Conteneur d’onglets actif dans les sidebars = même accent‑2 */
 .mod-left-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
 .mod-right-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
 .mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active,
@@ -6628,7 +6712,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color:            var(--OT-color-on-accent-2);
 }
 
-/* Active / menu‑open sidebar tabs hovered: inner + icons = accent‑1 */
+/* Onglet sidebar actif / menu ouvert survolé: inner + icônes = accent‑1 */
 @media (hover: hover) {
   .mod-left-split .workspace-tab-header.has-active-menu:hover
     .workspace-tab-header-inner,
@@ -6651,9 +6735,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
-/* Base state: sidebar tab icons “alone”, normal (déjà plus haut) */
-
-/* Active sidebar tab icons (match active tab bg) */
+/* Icônes des onglets actifs dans les sidebars = accent‑2 */
 .mod-left-split .workspace-tab-header.is-active
   :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
 .mod-right-split .workspace-tab-header.is-active
@@ -6666,7 +6748,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   background-color: var(--color-accent-2);
 }
 
-/* Hovered sidebar tab icons for NON‑active tabs = accent‑1 */
+/* Icônes d’onglets NON-actifs survolés dans les sidebars = accent‑1 */
 @media (hover: hover) {
   .mod-left-split .workspace-tab-header:not(.is-active):not(.has-active-menu):hover
     :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
@@ -6677,7 +6759,8 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
-/* Active tab of active window: ensure icon/title follow inner on hover */
+/* Onglet actif de la fenêtre active:
+   garantir que icône + titre suivent l’inner au survol */
 @media (hover: hover) {
   body.is-focused
     .mod-active
@@ -6692,6 +6775,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     background-color: transparent;
   }
 }
+
 
 /* -----------------------------------------
    Stacked / sliding tabs (mod-stacked)
@@ -6712,31 +6796,32 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
+
 /* -----------------------------------------
    Tab header containers and borders
    ----------------------------------------- */
 
-/* Remove top/bottom borders on tab bars and ribbon */
+/* Supprimer les bordures haut/bas sur les barres d’onglets et le ruban */
 .mod-left-split .workspace-tab-header-container,
 .mod-right-split .workspace-tab-header-container,
 .workspace-ribbon.mod-left::before {
   border-bottom: none;
 }
 
-/* Remove horizontal border at bottom of sidebar view content */
+/* Supprimer la bordure horizontale en bas du contenu de sidebar */
 .workspace-split.mod-left-split .view-content,
 .workspace-split.mod-right-split .view-content,
 .workspace-split.mod-horizontal .workspace-leaf-resize-handle {
   border-bottom: none;
 }
 
-/* Add top border to tab containers in sidebars (except top-docked tabs) */
+/* Bord supérieur sur les containers d’onglets des sidebars (sauf mod-top) */
 .mod-left-split .workspace-tab-header-container:not(.mod-top) .workspace-tab-header-container,
 .mod-right-split .workspace-tab-header-container:not(.mod-top) .workspace-tab-header-container {
   border-top: 1px solid var(--color-base-35);
 }
 
-/* Retina / high DPI tweaks */
+/* Retina / high DPI: bordure plus épaisse et diviseur central plus net */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .mod-left-split .workspace-tab-header-container:not(.mod-top) .workspace-tab-header-container,
   .mod-right-split .workspace-tab-header-container:not(.mod-top) .workspace-tab-header-container {
@@ -6747,7 +6832,6 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     width: 1.5px;
   }
 }
-
 /* -------------------- ↑ En-tête des panneaux (Tab headers) ↑ -------------------- */
 
 
@@ -11664,6 +11748,11 @@ body:not(.is-mobile) .workspace-split.mod-left-split
   .recent-vaults-list-item:hover {
     color:            var(--OT-hover-fg);
     background-color: var(--OT-hover-bg);
+  }
+
+  button.mod-warning:hover {
+  	color:				white;
+   	background-color:	var(--background-modifier-error-hover);
   }
 
   /* 2.b Icônes à l’intérieur de certains conteneurs */
