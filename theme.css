@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-22
+	- continuing to correct the text selection color in dark .readingMode-text-small
+	- added option to hide the filename in transcluded files
 2026-02-19
 	- at last, lists are as I always wanted them !
 	- improved the hovering of the tabs
@@ -139,7 +142,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl42		horizontal rule
 			OpSpl43		Kanban plugin
 			OpSpl43b	Board View plugin
-			OpSpl44		FREE
+			OpSpl44		transcludes
 			OpSpl45		syntax markers
 			OpSpl46		tags
 			OpSpl47		lists
@@ -169,6 +172,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl69		TaskNotes plugin
 			OpSpl70		Smart Connections plugin
 			OpSpl71		Notebook Navigator plugin
+			OpSpl72		Repeat plugin
 
 			OpSpl80		Ambitieuse entreprise de réunir ici tout ce qui est "hover".
 
@@ -1542,7 +1546,8 @@ body {
 	--OT-button-OFF-bg:				hsl(var(--OT-theme-h), var(--OT-theme-s), 27%);
 	--OT-button-ON-bg:				var(--obsidian-violet);
 
-	--text-highlight-bg:				hsl(49, 72%, 62%);   /* #E2CB56, yellow accent, not a gray */
+	--text-highlight-bg:			hsl(49, 72%, 35%);   /* #E2CB56, yellow accent, not a gray */
+	--text-selection: 				hsla(0, 0%, 50%, 0.5)	!important;
 
 	--color-accent-1:		hsl(var(--accent-h), var(--accent-s), 50%) !important;
 	--accent-h:				268 !important;
@@ -1556,14 +1561,16 @@ body {
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 65%);
 
 	--icon-color:		hsl(var(--accent-h), 100%, 70%);
+
 }
 /*	↑ darkPalette-OBSIDIAN ↑	*/
 
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-beige,
 .theme-dark.lightPalette-Beige.darkPalette-default {
-	--color-base-100:	hsl(30, 70%, 80%);
-	--link-color:		hsl(200, 80%, 65%);  /* cooler blue, but lighter */
+	--color-base-100:		hsl(30, 70%, 80%);
+	--link-color:			hsl(200, 80%, 65%);
+	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
 }/*	↑	darkPalette-beige	↑	*/
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-black,
@@ -1748,7 +1755,7 @@ body {
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	10%)	!important;
 
 	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 5%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 25%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%)	!important;
 	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%)	!important;
 	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%)	!important;
 	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), var(--OT-theme-s), 50%)	!important;
@@ -1867,9 +1874,10 @@ body {
 	--accent-l:					30% !important;
 
 	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%) !important;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 60%) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%) !important;
 
-	--icon-color:					hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
+	--icon-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
+	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
 }
 /*	↑	darkPalette-icy	↑	*/
 /*	----------------------------------------------	*/
@@ -1945,6 +1953,7 @@ body {
 	--text-muted:		hsl(191, 55%, 40%);
     --color-base-100: 	hsl(190, 53%, 64%);
 	--link-color:		hsl(334, 100%, 75%);
+	--OT-YAML-color:	var(--text-muted);
 
 	--background-primary-alt:			hsl(var(--OT-theme-h), 7%, 16%);
 
@@ -1979,8 +1988,8 @@ body {
     --h5-color: 		hsl(224, 37%, 80%);
     --h6-color: 		hsl(223, 18%, 68%);
 
-/*	--OT-stabilo-text:	var(--text-normal);	*/
     --text-highlight-bg:	hsl(56, 83%, 96%);
+    --text-selection: hsla(var(--accent-h), var(--accent-s), 66%, 0.5)!important;
 
 	--checklist-done-color:	hsl(190, 29%, 35%);
 }/*	↑	darkPalette-LYT	↑	*/
@@ -2079,7 +2088,7 @@ body {
 
 --OT-setting-item-name:         hsl(32, 82%, 97%);
 --OT-setting-item-description:  hsl(32, 71%, 84%);
---text-highlight-bg:              hsl(31, 74%, 64%);
+--text-highlight-bg:            hsl(31, 74%, 64%);
 --OT-stabilo-text:              var(--color-base-20);
 
 --table-header-background:      hsl(32, 74%, 15%);
@@ -2108,7 +2117,7 @@ body {
 	--code-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 7%);
 	--blockquote-background-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);
 	--OT-stabilo-text:		black;
-	--text-highlight-bg:		hsl(347, 90%, 64%);
+	--text-highlight-bg:	hsl(347, 90%, 64%);
 
 	--color-accent-1:	hsl(var(--OT-theme-h), 90%, 35%) !important;
 	--accent-h:			350 !important;
@@ -2123,27 +2132,10 @@ body {
 	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 92%, 0%) !important;
 	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 92%, 5%) !important;
 
-	--icon-color:		var(--OT-color-on-accent-3);
+	--icon-color:			var(--OT-color-on-accent-3);
 	--OT-button-OFF-bg:		hsl(var(--OT-theme-h), 50%, 18%);
 	--nav-item-color:		hsl(3, 20%, 60%);
-/*
-	--OT-table-alt-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);
-	--table-header-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 13%);
-//	--text-muted:			chartreuse;
-
-
-	--blockquote-color:		hsl(var(--OT-theme-h), var(--OT-theme-s), 83%);
-//	--background-modifier-form-field:	hsl(var(--OT-theme-h), 92%, 11%);
-
-	--OT-view-header-title-no-focus-color:	hsl(var(--OT-theme-h), 68%, 31%);
-
-
-	--code-normal:			hsl(var(--OT-theme-h), 89%, 83%);
-*/
-/*
-	--OT-setting-item-name:	hsl(var(--OT-theme-h), 88%, 88%);
-	--OT-setting-item-description: hsl(var(--OT-theme-h), 89%, 79%);
-*/
+	--text-selection:		hsla(var(--OT-theme-h), 90%, 40%, 0.4)!important;
 }/*	↑	darkPalette-red	↑	*/
 
 /*	----------------------------------------------	*/
@@ -3110,15 +3102,20 @@ body {
 .theme-dark.lightPalette-artDeco.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-OBSIDIAN.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-black.accentColor-darkMode-alternative-1 {
-	--accent-h:						134	!important;
-	--accent-s:						40%	!important;
-	--accent-l:						50%	!important;
-	--color-accent-1:				#28E855	!important;
-	--color-accent-2:				#4DB264	!important;
-	--color-accent-3:				#24542F	!important;
-	--OT-color-muted-on-accent-1:	#24542F	!important;
-	--OT-color-on-accent-2:			#E0FCE7	!important;
-	--OT-color-on-accent-3:			#ADDBB7	!important;
+	--accent-h:						134 !important;
+	--accent-s:						40% !important;
+	--accent-l:						50% !important;
+
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 55%) !important;  /* #28E855 */
+	--color-accent-2:				hsl(var(--accent-h), 40%, 50%) !important;              /* #4DB264 */
+	--color-accent-3:				hsl(var(--accent-h), 40%, 24%) !important;              /* #24542F */
+
+	--OT-color-on-accent-1:			hsl(0, 0%, 0%) !important;                               /* black */
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 94%) !important;  /* #E0FCE7 */
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 76%) !important;  /* #ADDBB7 */
+
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 40%, 24%) !important;              /* #24542F */
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 40%, 24%) !important;              /* #24542F */
 }
 
 .theme-dark.lightPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
@@ -3131,17 +3128,21 @@ body {
 .theme-dark.lightPalette-artDeco.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-OBSIDIAN.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-black.accentColor-darkMode-alternative-2 {
-	--accent-h:						14	!important;
-	--accent-s:						81%	!important;
-	--accent-l:						37%	!important;
-	--color-accent-1:				#EB6E47	!important;
-	--color-accent-2:				#A93612	!important;
-	--color-accent-3:				#7B270D	!important;
-	--OT-color-on-accent-1:			#fff	!important;
-	--OT-color-muted-on-accent-1:	#9A3110	!important;
-	--OT-color-on-accent-3:			#F09275	!important;
+	--accent-h:						14 !important;
+	--accent-s:						81% !important;
+	--accent-l:						37% !important;
+
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 60%) !important;  /* #EB6E47 */
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 36%) !important;  /* #A93612 */
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 27%) !important;  /* #7B270D */
+
+	--OT-color-on-accent-1:			hsl(0, 0%, 100%) !important;                             /* #fff */
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 33%) !important;  /* #9A3110 */
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 70%) !important;  /* #F09275 */
+
 	--OT-button-ON-bg:				var(--color-accent-1);
 }
+
 .theme-dark.lightPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
 .theme-dark.lightPalette-artDeco.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
 .theme-dark.darkPalette-OBSIDIAN.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
@@ -3183,6 +3184,11 @@ body {
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), 69%, 90%) !important;              /* #F7D4EB */
 }
+.theme-dark.lightPalette-green.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-green.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection: hsla(var(--accent-h), var(--accent-s), 66%, 0.5)!important;
+}
+
 .theme-dark.lightPalette-icy.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-icy.accentColor-darkMode-shade {
 }
@@ -3204,9 +3210,9 @@ body {
 	--accent-l:																	25%		!important;
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)	!important;
 
-	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), 10%, 85%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 50%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 10%)	!important;
+	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), 10%, 20%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 35%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 10%)	!important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%)	!important;
 }
 .theme-dark.lightPalette-icy.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
@@ -3253,29 +3259,41 @@ body {
 .theme-dark.darkPalette-LYT.accentColor-darkMode-shade {
 }
 .theme-dark.darkPalette-LYT.accentColor-darkMode-alternative-1 {
-	--accent-h:						194	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						40%	!important;
-	--color-accent-1:				#99CDDD	!important;
-	--color-accent-2:				#338199	!important;
-	--color-accent-3:				#19414D	!important;
+	--accent-h:						194 !important;
+	--accent-s:						50% !important;
+	--accent-l:						40% !important;
+
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 73%) !important;
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 41%) !important;
+	--color-accent-3:				hsl(var(--accent-h), 50%, 20%) !important;
 	--OT-color-on-accent-1:			var(--color-base-05);
-	--OT-color-muted-on-accent-1:	#338199	!important;
-	--OT-color-on-accent-2:			#CCE6EE	!important;
-	--OT-color-on-accent-3:			#99CDDD	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 41%) !important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 86%) !important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 73%) !important;
+}
+.theme-dark.darkPalette-LYT.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--OT-YAML-color:	var(--color-base-40);
+	--text-selection: hsla(var(--accent-h), var(--accent-s), 66%, 0.5)!important;
 }
 .theme-dark.darkPalette-LYT.accentColor-darkMode-alternative-2 {
-	--accent-h:						151	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						40%	!important;
-	--color-accent-1:				#7FD9AD	!important;
-	--color-accent-2:				#38BA7B	!important;
-	--color-accent-3:				#1C5F3E	!important;
-	--OT-color-on-accent-1:			#0D2A1C	!important;
-	--OT-color-muted-on-accent-1:	#2C9361	!important;
-	--OT-color-on-accent-2:			#E8F8F0	!important;
-	--OT-color-on-accent-3:			#CEF0E0	!important;
+	--accent-h:						151 !important;
+	--accent-s:						50% !important;
+	--accent-l:						40% !important;
+
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 67%) !important;
+	--color-accent-2:				hsl(var(--accent-h), 56%, 48%) !important;
+	--color-accent-3:				hsl(var(--accent-h), 54%, 25%) !important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), 53%, 11%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 52%, 37%) !important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), 52%, 94%) !important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), 52%, 87%) !important;
 }
+.theme-dark.darkPalette-LYT.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--OT-YAML-color:	var(--color-base-40);
+	--text-selection: hsla(var(--accent-h), 80%, 66%, 0.4)!important;
+}
+
 .theme-dark.lightPalette-metallicBlue.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-metallicBlue.accentColor-darkMode-shade {
 	--accent-h:                                206 !important;
@@ -3355,72 +3373,108 @@ body {
 }
 .theme-dark.lightPalette-parchment.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-parchment.accentColor-darkMode-shade {
-	--accent-h:						31	!important;
-	--accent-s:						70%	!important;
-	--accent-l:						20%	!important;
-	--color-accent-1:				#DA8226	!important;
-	--color-accent-2:				#BC7120	!important;
-	--color-accent-3:				#915719	!important;
-	--OT-color-on-accent-1:			#F8E6D3;
-	--OT-color-muted-on-accent-1:	#57340F	!important;
-	--OT-color-on-accent-2:			#FAEEE2	!important;
+	--accent-h:						31  !important;
+	--accent-s:						70% !important;
+	--accent-l:						20% !important;
+
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 50%) !important;
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 43%) !important;
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 34%) !important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), 67%, 91%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 71%, 20%) !important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), 67%, 94%) !important;
+
 	--OT-button-ON-bg:				var(--color-accent-1);
 }
+
 .theme-dark.lightPalette-parchment.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-parchment.accentColor-darkMode-alternative-1 {
-	--accent-h:							211	!important;
-	--accent-s:							71%	!important;
-	--accent-l:							33%	!important;
-	--color-accent-1:					#257CDA	!important;
-	--color-accent-2:					#195391	!important;
-	--color-accent-3:					#07192C	!important;
-	--OT-color-on-accent-1:				var(--color-base-100)	!important;
-	--OT-color-muted-on-accent-1:		#144274	!important;
+	--accent-h:							211 !important;
+	--accent-s:							71% !important;
+	--accent-l:							33% !important;
+
+	--color-accent-1:					hsl(var(--accent-h), var(--accent-s), 50%) !important;  /* #257CDA */
+	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 33%) !important;  /* #195391 */
+	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 10%) !important;  /* #07192C */
+
+	--OT-color-on-accent-1:				var(--color-base-100) !important;
+	--OT-color-on-accent-2:				var(--color-base-100) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), var(--accent-s), 80%) !important;  /* #144274 */
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), var(--accent-s), 80%) !important;  /* #144274 */
+
 	--OT-button-ON-bg:					var(--color-accent-1);
+}
+.theme-dark.lightPalette-parchment.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-parchment.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection: hsla(var(--accent-h), 80%, 66%, 0.6)!important;
 }
 .theme-dark.lightPalette-parchment.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-parchment.accentColor-darkMode-alternative-2 {
-	--accent-h:							121	!important;
-	--accent-s:							50%	!important;
-	--accent-l:							30%	!important;
-	--color-accent-1:					#59C85B	!important;
-	--color-accent-2:					#267328	!important;
-	--color-accent-3:					#154016	!important;
-	--OT-color-on-accent-1:				#F2FBF2	!important;
-	--OT-color-muted-on-accent-1:		#1D5A1F	!important;
-	--OT-color-on-accent-2:				#BFEAC0	!important;
-	--OT-color-on-accent-3:				#A6E1A7	!important;
+	--accent-h:							121 !important;
+	--accent-s:							50% !important;
+	--accent-l:							30% !important;
+
+	--color-accent-1:					hsl(var(--accent-h), var(--accent-s), 57%) !important;
+	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 30%) !important;
+	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 17%) !important;
+
+	--OT-color-on-accent-1:				hsl(var(--accent-h), 57%, 96%) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 52%, 24%) !important;
+	--OT-color-on-accent-2:				hsl(var(--accent-h), 55%, 90%) !important;
+	--OT-color-on-accent-3:				hsl(var(--accent-h), 55%, 79%) !important;
+}
+.theme-dark.lightPalette-parchment.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-parchment.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection: hsla(var(--accent-h), 80%, 66%, 0.5)!important;
 }
 
 .theme-dark.lightPalette-red.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-red.accentColor-darkMode-shade {
 }
+
 .theme-dark.lightPalette-red.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-red.accentColor-darkMode-alternative-1 {
-	--accent-h:							200	!important;
-	--accent-s:							80%	!important;
-	--accent-l:							33%	!important;
-	--color-accent-1:					#47B5EB	!important;
-	--color-accent-2:					#116C99	!important;
-	--color-accent-3:					#0A415C	!important;
-	--OT-color-on-accent-1:				#05202E	!important;
-	--OT-color-muted-on-accent-1:		#0F618A	!important;
-	--OT-color-on-accent-2:				#C5E5F5	!important;
-	--OT-color-on-accent-3:				#E0F3FC	!important;
+	--accent-h:							200 !important;
+	--accent-s:							80% !important;
+	--accent-l:							33% !important;
+
+	--color-accent-1:					hsl(var(--accent-h), var(--accent-s), 60%) !important;  /* #47B5EB */
+	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 34%) !important;  /* #116C99 */
+	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 20%) !important;  /* #0A415C */
+
+	--OT-color-on-accent-1:				hsl(var(--accent-h), 71%, 10%) !important;             /* #05202E */
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%) !important;             /* #0F618A */
+	--OT-color-on-accent-2:				hsl(var(--accent-h), 67%, 87%) !important;             /* #C5E5F5 */
+	--OT-color-on-accent-3:				hsl(var(--accent-h), 83%, 94%) !important;             /* #E0F3FC */
+
 	--OT-button-ON-bg:					var(--color-accent-1);
+}
+.theme-dark.lightPalette-red.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-red.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection: hsla(var(--accent-h), 80%, 66%, 0.4)!important;
 }
 .theme-dark.lightPalette-red.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-red.accentColor-darkMode-alternative-2 {
-	--accent-h:							109	!important;
-	--accent-s:							93%	!important;
-	--accent-l:							33%	!important;
-	--color-accent-1:					#2EE109	!important;
-	--color-accent-2:					#21A006	!important;
-	--color-accent-3:					#0D3E02	!important;
-	--OT-color-on-accent-2:				#FEDAE0	!important;
-	--OT-color-on-accent-3:				#D6C6F4	!important;
+	--accent-h:							109 !important;
+	--accent-s:							93% !important;
+	--accent-l:							33% !important;
+
+	--color-accent-1:					hsl(var(--accent-h), var(--accent-s), 46%) !important;  /* #2EE109 */
+	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 33%) !important;  /* #21A006 */
+	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 13%) !important;  /* #0D3E02 */
+
+	--OT-color-on-accent-1:				hsl(var(--accent-h), var(--accent-s), 10%) !important;                          /* #FEDAE0 */
+	--OT-color-on-accent-2:				hsl(351, 96%, 92%) !important;                          /* #FEDAE0 */
+	--OT-color-on-accent-3:				hsl(257, 73%, 85%) !important;                          /* #D6C6F4 */
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%) !important;             /* #0F618A */
+
 	--OT-button-ON-bg:					var(--color-accent-1);
-	--OT-button-cta-background-normal:	#1A7F05;
+	--OT-button-cta-background-normal:	hsl(var(--accent-h), 93%, 26%) !important;             /* #1A7F05 */
+}
+.theme-dark.lightPalette-red.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-red.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection: hsla(var(--accent-h), 80%, 50%, 0.3)!important;
 }
 
 .theme-dark.lightPalette-solarized.darkPalette-default.accentColor-darkMode-shade,
@@ -3500,18 +3554,23 @@ body {
 .theme-dark.darkPalette-stone.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
 	--text-selection:	hsla(var(--accent-h), 100%, 60%, 0.15) !important;
 }
-.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-1 {
-	--accent-h:			183	!important;		/*	c’est pour la sélection du texte qu’on explicite ici en HSL la couleur d’accentuation n°2	*/
-	--accent-s:			100%	!important;
-	--accent-l:			23%	!important;
-	--color-accent-1:	#004D51	!important;
-	--color-accent-2:	#006D73	!important;
-	--color-accent-3:	#00ADB7	!important;
-	--OT-color-on-accent-1:	#40F5FF	!important;
-	--OT-color-on-accent-3:	#734000	!important;
+.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-1,
+.theme-dark.darkPalette-sunnyMemos.accentColor-darkMode-alternative-1{
+	--accent-h:							calc(var(--OT-theme-h) + 45 ) !important;
+	--accent-s:							80% !important;
+	--accent-l:							33% !important;
+
+	--color-accent-1:					hsl(var(--accent-h), var(--accent-s), 60%) !important;
+	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 34%) !important;
+	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 20%) !important;
+
+	--OT-color-on-accent-1:				hsl(var(--accent-h), 71%, 10%) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%) !important;
+	--OT-color-on-accent-2:				hsl(var(--accent-h), 67%, 87%) !important;
+	--OT-color-on-accent-3:				hsl(var(--accent-h), 83%, 94%) !important;
 }
 .theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-2 {
-	--accent-h:			243	!important;		/*	c’est pour la sélection du texte qu’on explicite ici en HSL la couleur d’accentuation n°2	*/
+	--accent-h:			243	!important;
 	--accent-s:			100%	!important;
 	--accent-l:			36%	!important;
 	--color-accent-1:	#060073	!important;
@@ -8096,8 +8155,12 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 /* -------------------- ↑ Board View plugin -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl44	—————————————————————————————— free —————————————————————————————— */
-/* -------------------- ↑ free ↑ -------------------- */
+/*	Bookmark	OpSpl44	—————————————————————————————— transcludes —————————————————————————————— */
+/* Optional: hide embed title */
+.OT-embed-hide-title .embed-title {
+	display: none;
+}
+/* -------------------- ↑ transcludes ↑ -------------------- */
 
 /*	Bookmark	OpSpl45	 —————————————————————————————— Syntax markers —————————————————————————————— */
 .cm-s-obsidian .cm-formatting-strong,
@@ -11618,6 +11681,11 @@ body {
 }
 /* ------------------------------ ↑ Notebook Navigator plugin ↑ ------------------------------	*/
 
+/*  Bookmark OpSpl72  ——————————————————— Repeat plugin  ——————————————————— */
+.repeat-filter-count {
+	font-size:	var(--font-ui-small	);	/*	I find the default of 13pts much too small	*/
+}
+
 /*  Bookmark OpSpl80  ——————————————————— correcting all hovering  ——————————————————— */
 
 /* 0. Rôles de base pour les états */
@@ -11947,6 +12015,14 @@ settings:
 		type:		variable-number
 		default:	7
 		format:		em
+
+	- 	id:				OT-embed-hide-title
+  		title: 			Hide embed titles
+  		title.fr:		Masquer le titre des transclusions
+  		description:	Hide the file name at the top of embedded notes and queries.
+  		description.fr: Masque le nom du fichier en haut des notes et requêtes incluses.
+  		type:			class-toggle
+  		default:		true
 
 	-
 		id: 			"OT-canvas-dot-pattern-hidden"
