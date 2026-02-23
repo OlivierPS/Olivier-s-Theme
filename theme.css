@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-02-23
 	- finished the revision of the text selection color in every palette
 	- added “Ideaverse” color palettes
+	- text size of the Dynamic Outline menu
 2026-02-22
 	- continuing to correct the text selection color in dark .readingMode-text-small
 	- added option to hide the filename in transcluded files
@@ -10894,13 +10895,13 @@ body {
 
   /* Poids de fonte minimum pour l’item actif */
   --dynamic-outline-highlight-font-weight: var(--font-semibold);
-}
+
 
 /* ---------- Fenêtre Dynamic Outline : typographie & densité ---------- */
 
 /* Taille de base = taille UI, pas headings */
 #dynamic-outline {
-  --dynamic-outline-font-size: var(--OT-UI-font-size);
+  --dynamic-outline-font-size:	calc(var(--OT-UI-font-size) * 0.9);
 }
 
 /* Appliquer cette taille au contenu du menu */
@@ -12211,10 +12212,10 @@ settings:
 
 	-
 		id:				"OT-suppress-title-bar-breadcrumb"
-		title:			"Title Bar breadcrumb: ON / OFF"
-		title.fr:		"Fil d’Ariane dans la barre de titre : ON / OFF"
-		description:	"Show or hide the breadcrumb in the title bar."
-		description.fr:	"Afficher ou masquer le “breadcrumb” dans la barre de titre."
+		title:			"Hidden Title Bar breadcrumb"
+		title.fr:		"Masquer le Fil d’Ariane dans la barre de titre"
+		description:	"Optionally, hide the breadcrumb in the title bar."
+		description.fr:	"Option: Masquer le “breadcrumb” dans la barre de titre."
 		type:			class-toggle
 		default:		false
 
