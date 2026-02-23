@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-23
+	- finished the revision of the text selection color in every palette
 2026-02-22
 	- continuing to correct the text selection color in dark .readingMode-text-small
 	- added option to hide the filename in transcluded files
@@ -2201,7 +2203,7 @@ body {
 
 	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%)	!important;
 
-	--text-selection:	hsla(var(--accent-h), 80%, 40%, 0.3);
+	--text-selection:	hsla(var(--OT-theme-h), 80%, 40%, 0.3);
 
 	--text-highlight-bg:	hsl(var(--OT-theme-h), 90%, 40%);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 30%, 12%); /* same as bg to "highlight" */
@@ -2293,7 +2295,6 @@ body {
 /*	----------------------------------------------	*/
 .theme-dark.darkPalette-violet,
 .theme-dark.lightPalette-violet.darkPalette-default {
-	/* --OT-theme-reference-color: #16082A; */
 	--OT-theme-h:		265;
 	--OT-theme-s:		68%;
 
@@ -2302,7 +2303,7 @@ body {
 	--color-base-35:			hsl(var(--OT-theme-h), var(--OT-theme-s), 34%);      /* #4C1D95 */
 	--color-base-40:			hsl(var(--OT-theme-h), var(--OT-theme-s), 18%);      /* #2B1155 */
 	--color-base-50:			hsl(var(--OT-theme-h), var(--OT-theme-s), 51%);      /* #6D29D5 */
-	--text-muted:				hsl(var(--OT-theme-h), 56%, 94%);                    /* #EBE2F9 */
+	--text-muted:				hsl(var(--OT-theme-h), var(--OT-theme-s), 60%);                    /* #EBE2F9 */
 	--color-base-05:			hsl(var(--OT-theme-h), var(--OT-theme-s), 23%);      /* #341363 */
 
 	--nav-item-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 63%);      /* #9160E1 */
@@ -2316,7 +2317,7 @@ body {
 	--code-normal:				hsl(var(--OT-theme-h), 57%, 80%);                    /* #C1A4EE */
 
 	--color-base-100:			hsl(var(--OT-theme-h), var(--OT-theme-s), 70%);      /* #A982E8 */
-	--link-color:				hsl(89, 73%, 70%);                                   /* #C1E882, green */
+	--link-color:				hsl(89, 73%, 40%);                                   /* #C1E882, green */
 
 	--OT-setting-item-description:	hsl(265, 38%, 56%);                                 /* #8864BD */
 
@@ -2325,6 +2326,28 @@ body {
 
 	--table-header-background:	hsl(var(--OT-theme-h), var(--OT-theme-s), 16%);      /* #270F4E */
 	--OT-table-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 11%);      /* #1D0B39 */
+
+	--text-selection:			hsla(var(--OT-theme-h), 80%, 40%, 0.5);
+
+	--accent-h:								var(--OT-theme-h) !important;
+	--accent-s:								40% !important;
+	--accent-l:								40% !important;
+
+	--color-accent-1:						hsl(var(--accent-h), var(--accent-s), 50%) !important;  /* #AC94D1 */
+	--color-accent-2:						hsl(var(--accent-h), var(--accent-s), 40%) !important;              /* #5E3D8F */
+	--color-accent-3:						hsl(var(--accent-h), var(--accent-s), 20%) !important;              /* #4E3377 */
+
+	--OT-color-on-accent-1:					hsl(var(--accent-h), 55%, 86%) !important;              /* #D8C5F4 */
+	--OT-color-muted-on-accent-1:			hsl(var(--accent-h), 38%, 0%) !important;              /* #3F295F */
+	--OT-color-on-accent-2:					hsl(var(--accent-h), 55%, 80%) !important;              /* #D8C5F4 */
+	--OT-color-muted-on-accent-2:			hsl(var(--accent-h), 38%, 0%) !important;              /* #3F295F */
+	--OT-color-on-accent-3:					hsl(var(--accent-h), 50%, 66%) !important;              /* #C8B7E1 */
+
+	--OT-button-ON-bg:						var(--color-accent-1);
+	--OT-button-cta-background-normal:		hsl(var(--accent-h), 37%, 63%) !important;              /* #9A7CC7 */
+	--OT-button-cta-text-normal:			hsl(267, 40%, 17%) !important;                          /* #27193C */
+
+	--icon-color:							hsl(var(--accent-h), var(--accent-s), 60%) !important;
 }
 /*	↑	darkPalette-violet	↑	*/
 
@@ -2340,20 +2363,33 @@ body {
 	--color-base-35:			hsl(var(--OT-theme-h), var(--OT-theme-s), 20%);    /* #333333 */
 	--color-base-40:			hsl(var(--OT-theme-h), var(--OT-theme-s), 44%);    /* #D9AF04 */
 	--color-base-50:			hsl(var(--OT-theme-h), var(--OT-theme-s), 31%);    /* #9E7F02 */
-	--text-muted:				hsl(var(--OT-theme-h), var(--OT-theme-s), 48%);    /* #F2C204 */
+	--text-muted:				hsl(var(--OT-theme-h), 80%, 35%);    /* #F2C204 */
 	--color-base-05:			hsl(var(--OT-theme-h), 98%, 12%);                  /* #3A2E01 */
+	--background-primary-alt:	hsl(var(--OT-theme-h), var(--OT-theme-s), 7%);
 
 	--nav-item-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 41%);    /* #C8A204 */
 	--code-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 15%);    /* #262626 */
 	--OT-button-OFF-bg:			hsl(var(--OT-theme-h), 96%, 18%);                  /* #5B4902 */
 
-	--color-base-100:			hsl(var(--OT-theme-h), var(--OT-theme-s), 48%);    /* #F2C204 */
-	--link-color:				hsl(227, 98%, 67%);                                 /* #607FFC, blue */
+	--color-base-100:			hsl(var(--OT-theme-h), var(--OT-theme-s), 40%);    /* #F2C204 */
+	--link-color:				hsl(227, 98%, 70%);                                 /* #607FFC, blue */
 	--checklist-done-color:		hsl(var(--OT-theme-h), 98%, 28%);                  /* #8E7202 */
 	--OT-stabilo-text:			hsl(var(--OT-theme-h), 53%, 26%);                  /* #424012 */
 
 	--table-header-background:	hsl(var(--OT-theme-h), 98%, 10%);                  /* #2E2501 */
 	--OT-table-background:		hsl(var(--OT-theme-h), 99%, 5%);                   /* #1A1500 */
+	--OT-YAML-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 28%);
+
+	--accent-h:								var(--OT-theme-h) !important;
+	--accent-s:								var(--OT-theme-s) !important;
+	--accent-l:								25% !important;
+
+	--color-accent-1:						hsl(var(--accent-h), var(--accent-s), 48%) !important;  /* #FBCB0C */
+	--color-accent-2:						hsl(var(--accent-h), var(--accent-s), 34%) !important;  /* #C09A03 */
+	--color-accent-3:						hsl(var(--accent-h), var(--accent-s), 12%) !important;              /* #6D5802 */
+
+	--OT-color-muted-on-accent-1:			hsl(var(--accent-h), 97%, 25%) !important;              /* #7E6502 */
+	--OT-color-on-accent-2:					hsl(var(--accent-h), 100%, 95%) !important;             /* #FFFAE5 */
 }
 /*	↑	darkPalette-yellow	↑	*/
 /* -------------------- ↑ DARK mode palettes -------------------- ↑ */
@@ -3556,7 +3592,7 @@ body {
 }
 .theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-sunnyMemos.accentColor-darkMode-alternative-1{
-	--accent-h:							calc(var(--OT-theme-h) + 45 ) !important;
+	--accent-h:							calc(var(--OT-theme-h) + 120 ) !important;
 	--accent-s:							80% !important;
 	--accent-l:							33% !important;
 
@@ -3569,13 +3605,26 @@ body {
 	--OT-color-on-accent-2:				hsl(var(--accent-h), 67%, 87%) !important;
 	--OT-color-on-accent-3:				hsl(var(--accent-h), 83%, 94%) !important;
 }
-.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-2 {
-	--accent-h:			243	!important;
-	--accent-s:			100%	!important;
-	--accent-l:			36%	!important;
-	--color-accent-1:	#060073	!important;
-	--color-accent-2:	#0A00B7	!important;
-	--color-accent-3:	#0E00FB	!important;
+.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-sunnyMemos.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 80%, 40%, 0.3);
+}
+.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-2,
+.theme-dark.darkPalette-sunnyMemos.accentColor-darkMode-alternative-2 {
+	--accent-h:			calc(var(--OT-theme-h) + 240 )	!important;
+	--accent-s:			50%	!important;
+	/*--accent-l:			36%	!important;*/
+	--color-accent-1:					hsl(var(--accent-h), var(--accent-s), 50%) !important;
+	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 30%) !important;
+	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 20%) !important;
+
+	--OT-color-on-accent-1:				hsl(var(--accent-h), 70%, 80%) !important;
+	--OT-color-on-accent-2:				hsl(var(--accent-h), 70%, 80%) !important;
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), 50%, 60%) !important;
+}
+.theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-sunnyMemos.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:	hsla(var(--accent-h), 80%, 50%, 0.4);
 }
 
 .theme-dark.lightPalette-Victorian-1.darkPalette-default.accentColor-darkMode-shade,
@@ -3618,80 +3667,85 @@ body {
 
 .theme-dark.lightPalette-violet.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-violet.accentColor-darkMode-shade {
-	--accent-h:								264	!important;
-	--accent-s:								40%	!important;
-	--accent-l:								40%	!important;
-	--color-accent-1:						#AC94D1	!important;
-	--color-accent-2:						#5E3D8F	!important;
-	--color-accent-3:						#4E3377	!important;
-	--OT-color-on-accent-1:					#170F24	!important;
-	--OT-color-muted-on-accent-1:			#3F295F	!important;
-	--OT-color-on-accent-2:					#D8C5F4	!important;
-	--OT-color-on-accent-3:					#C8B7E1	!important;
-	--OT-button-ON-bg:						var(--color-accent-1);
-	--OT-button-cta-background-normal:		#9A7CC7;
-	--OT-button-cta-text-normal:			#27193C;
 }
+
 .theme-dark.lightPalette-violet.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-violet.accentColor-darkMode-alternative-1 {
-	--accent-h:						84	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						30%	!important;
-	--color-accent-1:				#9BC859	!important;
-	--color-accent-2:				#5D802A	!important;
-	--color-accent-3:				#41591E	!important;
-	--OT-color-muted-on-accent-1:	#4B6622	!important;
-	--OT-color-on-accent-2:			#E0EECC	!important;
-	--OT-color-on-accent-3:			#D9EABF	!important;
-	--OT-button-ON-bg:				var(--color-accent-1);
+	--accent-h:						25 !important;
+	--accent-s:						50% !important;
+	--accent-l:						30% !important;
+}
+.theme-dark.lightPalette-violet.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-violet.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection:			hsla(var(--accent-h), 80%, 40%, 0.4);
+	--OT-YAML-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 60%);
 }
 .theme-dark.lightPalette-violet.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-violet.accentColor-darkMode-alternative-2 {
-	--accent-h:						174	!important;
-	--accent-s:						50%	!important;
-	--accent-l:						40%	!important;
-	--color-accent-1:				#99DDD6	!important;
-	--color-accent-2:				#40BFB3	!important;
-	--color-accent-3:				#26736B	!important;
-	--OT-color-muted-on-accent-1:	#2A7F77	!important;
-	--OT-color-on-accent-2:			#D9F2F0	!important;
-	--OT-color-on-accent-3:			#D9F2F0	!important;
+	--accent-h:						145 !important;
+	--accent-s:						50% !important;
+	--accent-l:						40% !important;
+	--color-accent-3:						hsl(var(--accent-h), var(--accent-s), 10%) !important;              /* #4E3377 */
+
+	--OT-color-on-accent-2:					hsl(var(--accent-h), 60%, 93%) !important;              /* #D8C5F4 */
+	--OT-color-on-accent-3:					hsl(var(--accent-h), 39%, 70%) !important;              /* #C8B7E1 */
+}
+.theme-dark.lightPalette-violet.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-violet.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:			hsla(var(--accent-h), 80%, 40%, 0.4);
+	--OT-YAML-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 60%);
 }
 
 .theme-dark.lightPalette-yellow.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-yellow.accentColor-darkMode-shade {
-	--accent-h:								48	!important;
-	--accent-s:								97%	!important;
-	--accent-l:								25%	!important;
-	--color-accent-1:						#FBCB0C	!important;
-	--color-accent-2:						#C09A03	!important;
-	--color-accent-3:						#6D5802	!important;
-	--OT-color-muted-on-accent-1:			#7E6502	!important;
-	--OT-color-on-accent-2:					#FFFAE5	!important;
 }
+
 .theme-dark.lightPalette-yellow.darkPalette-default.accentColor-darkMode-alternative-1,
 .theme-dark.darkPalette-yellow.accentColor-darkMode-alternative-1 {
-	--accent-h:							228	!important;
-	--accent-s:							97%	!important;
-	--accent-l:							35%	!important;
-	--color-accent-1:					#0D3CFB	!important;
-	--color-accent-2:					#0325B0	!important;
-	--color-accent-3:					#0329C1	!important;
-	--OT-color-on-accent-1:				var(--color-base-100)	!important;
-	--OT-color-muted-on-accent-1:		#A4B5FD	!important;
+	--accent-h:							228 !important;
+	--accent-s:							80% !important;
+	--accent-l:							35% !important;
+
+	--color-accent-1:					hsl(var(--accent-h), var(--accent-s), 51%) !important;
+	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 30%) !important;
+
+	--OT-color-on-accent-1:				hsl(var(--accent-h), 80%, 85%) !important;
+	--OT-color-on-accent-2:				hsl(var(--accent-h), 80%, 80%) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 10%) !important;
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), 80%, 64%) !important;
+
+	--icon-color:						hsl(var(--accent-h), 100%, 65%);
 	--OT-button-ON-bg:					var(--color-accent-1);
-	--OT-button-cta-background-normal:	#5072FC;
+}
+.theme-dark.lightPalette-yellow.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-yellow.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
+	--text-selection:			hsla(var(--accent-h), 80%, 40%, 0.7);
 }
 .theme-dark.lightPalette-yellow.darkPalette-default.accentColor-darkMode-alternative-2,
 .theme-dark.darkPalette-yellow.accentColor-darkMode-alternative-2 {
-	--accent-h:						318	!important;
-	--accent-s:						97%	!important;
-	--accent-l:						35%	!important;
-	--color-accent-1:				#FD71D3	!important;
-	--color-accent-2:				#C10388	!important;
-	--color-accent-3:				#7E0259	!important;
-	--OT-color-muted-on-accent-1:	#8F0264	!important;
+	--accent-h:						318 !important;
+	--accent-s:						97% !important;
+	--accent-l:						35% !important;
+
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 36%) !important;
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 24%) !important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 80%) !important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 80%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 6%) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 66%) !important;
+
+	--icon-color:						hsl(var(--accent-h), 100%, 65%);
+/*
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 25%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 28%) !important;
+
 	--OT-button-ON-bg:				var(--color-accent-1);
+*/
+}
+.theme-dark.lightPalette-yellow.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
+.theme-dark.darkPalette-yellow.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
+	--text-selection:			hsla(var(--accent-h), 80%, 40%, 0.7);
 }
 /* -------------------- ↑ DARK mode Accent Colors -------------------- ↑ */
 
