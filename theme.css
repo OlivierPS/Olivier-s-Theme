@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-02-23
 	- finished the revision of the text selection color in every palette
+	- added “Ideaverse” color palettes
 2026-02-22
 	- continuing to correct the text selection color in dark .readingMode-text-small
 	- added option to hide the filename in transcluded files
@@ -174,7 +175,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl69		TaskNotes plugin
 			OpSpl70		Smart Connections plugin
 			OpSpl71		Notebook Navigator plugin
-			OpSpl72		Repeat plugin
+			OpSpl72		Different plugins: Repeat, Folder Note
 
 			OpSpl80		Ambitieuse entreprise de réunir ici tout ce qui est "hover".
 
@@ -1007,6 +1008,72 @@ body {
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 80%, 98%)		!important;
 	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 30%)	!important;
 }/*	↑ lightPalette-icy ↑	*/
+
+.theme-light.lightPalette-ideaverse {
+	--color-base-00:			hsl(26, 32%, 82%);
+	--color-base-10:			hsl(27, 27%, 86%);
+	--color-base-20:			hsl(25, 26%, 89%);
+	--color-base-25:			hsl(25, 23%, 83%);
+	--color-base-30:			hsl(24, 18%, 80%);
+	--color-base-35:			hsl(23, 17%, 78%);
+	--color-base-40:			hsl(261, 11%, 65%);
+	--color-base-50:			hsl(261, 10%, 61%);
+	--color-base-60:			hsl(259, 11%, 55%);
+	--color-base-70:			hsl(259, 12%, 52%);
+	--color-base-100:			hsl(247, 19%, 40%);
+	--background-primary:      	hsl(25, 26%, 89%);
+	--background-primary-alt:  	hsl(27, 27%, 86%);
+	--background-secondary:    	hsl(27, 27%, 86%);
+	--background-secondary-alt:	hsl(26, 32%, 82%);
+
+	/* Texte */
+	--text-normal:  hsl(247, 19%, 40%);
+	--text-muted:   hsl(259, 11%, 55%);
+	--text-faint:   hsl(259, 12%, 52%);
+	--text-error:   hsl(343, 37%, 55%);
+	--text-success: hsl(187, 30%, 48%);
+
+	/* Accent system (teal) – à mapper sur ta logique normal/hover/active */
+	--accent-h:		187;
+	--accent-s:		35%;
+	--accent-l:		40%;
+/*
+	--color-accent-1: hsl(187, 30%, 48%);
+	--color-accent-2: hsl(187, 35%, 40%);
+	--color-accent-3: hsl(187, 25%, 70%);
+
+	--OT-color-on-accent-1:   hsl(25, 26%, 9%);
+	--OT-color-on-accent-2:   hsl(25, 26%, 9%);
+	--OT-color-muted-on-accent-1: hsl(25, 26%, 60%);
+*/
+	/* Utilitaires */
+	--canvas-color:				hsl(259, 11%, 55%);
+	--card-background-color: 	hsl(26, 32%, 82%);
+	--card-foreground-color: 	hsl(25, 26%, 89%);
+	--tab-inactive-color:    	hsl(27, 27%, 86%);
+	/*--divider-color:         	hsla(25, 23%, 83%, 0.15);*/
+	--workspace-background-translucent: hsla(26, 32%, 82%, 0.15);
+	--nav-collapse-icon-color: hsla(247, 19%, 40%, 0.3);
+	/* Sélection / surlignage / search */
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
+	--text-highlight-bg: hsl(35, 88%, 85%);
+	--search-match-background: hsl(35, 88%, 75%);
+	--search-match-border:     hsl(35, 88%, 65%);
+	/* Liens */
+	--link-color: hsl(197, 45%, 60%);
+	/* Headings (proposition AnuPpuccin-like) */
+	--h1-color: hsl(343, 37%, 55%);
+	--h2-color: hsl(19, 67%, 70%);
+	--h3-color: hsl(187, 30%, 48%);
+	--h4-color: hsl(172, 42%, 64%);
+	--h5-color: hsl(234, 82%, 85%);
+	--h6-color: hsl(267, 83%, 80%);
+
+	/* Décorations
+	--bold-color:   hsl(343, 37%, 55%);
+	--italic-color: hsl(187, 30%, 48%);
+	*/
+}/*	↑ lightPalette-ideaverse ↑	*/
 
 .theme-light.lightPalette-ivory {
 	--OT-theme-h:		42;
@@ -1883,6 +1950,82 @@ body {
 }
 /*	↑	darkPalette-icy	↑	*/
 /*	----------------------------------------------	*/
+
+/*	----------------------------------------------	*/
+.theme-dark.darkPalette-ideaverse,
+.theme-dark.lightPalette-ideaverse.darkPalette-default {
+	--color-base-00: hsl(231, 23%, 17%);
+  --color-base-10: hsl(232, 19%, 20%);
+  --color-base-20: hsl(232, 19%, 23%);
+  --color-base-25: hsl(230, 16%, 30%);
+  --color-base-30: hsl(231, 17%, 37%);
+  --color-base-35: hsl(232, 18%, 44%);
+  --color-base-40: hsl(230, 17%, 51%);
+  --color-base-50: hsl(229, 18%, 58%);
+  --color-base-60: hsl(230, 20%, 65%);
+  --color-base-70: hsl(229, 22%, 72%);
+  --color-base-100: hsl(229, 61%, 86%);
+
+  --background-primary:      hsl(232, 19%, 23%);
+  --background-primary-alt:  hsl(232, 19%, 20%);
+  --background-secondary:    hsl(232, 19%, 20%);
+  --background-secondary-alt:hsl(231, 23%, 17%);
+
+  /* Texte */
+  --text-normal:  hsl(229, 61%, 86%);
+  --text-muted:   hsl(230, 20%, 65%);
+  --text-faint:   hsl(229, 22%, 72%);
+  --text-error:   hsl(356, 72%, 71%);
+  --text-success: hsl(96, 38%, 68%);
+
+  /* Accent system (teal) */
+  --accent-h:		172;
+  --accent-s:		42%;
+  --accent-l:		55%;
+  /*
+  --color-accent-1: hsl(172, 42%, 64%);
+  --color-accent-2: hsl(172, 45%, 55%);
+  --color-accent-3: hsl(172, 40%, 78%);
+
+  --OT-color-on-accent-1:   hsl(232, 19%, 13%);
+  --OT-color-on-accent-2:   hsl(232, 19%, 13%);
+  --OT-color-muted-on-accent-1: hsl(232, 19%, 70%);
+  */
+
+  /* Utilitaires */
+  --canvas-color:      hsl(230, 20%, 65%);
+  --card-background-color:  hsl(231, 23%, 17%);
+  --card-foreground-color:  hsl(232, 19%, 23%);
+  --tab-inactive-color:     hsl(232, 19%, 20%);
+  /*--divider-color:          hsla(230, 16%, 30%, 0.15);*/
+  --workspace-background-translucent: hsla(231, 23%, 17%, 0.15);
+
+  --nav-collapse-icon-color: hsla(229, 61%, 86%, 0.3);
+
+  /* Sélection / surlignage / search */
+  --text-selection:    hsla(172, 42%, 80%, 0.30);
+  --text-highlight-bg: hsl(35, 88%, 65%);
+  --search-match-background: hsl(35, 88%, 55%);
+  --search-match-border:     hsl(35, 88%, 45%);
+
+  /* Liens */
+  --link-color: hsl(197, 45%, 60%);
+
+  /* Headings */
+  --h1-color: hsl(356, 72%, 71%);
+  --h2-color: hsl(19, 67%, 70%);
+  --h3-color: hsl(172, 42%, 64%);
+  --h4-color: hsl(187, 30%, 48%);
+  --h5-color: hsl(234, 82%, 85%);
+  --h6-color: hsl(267, 83%, 80%);
+
+  /* Décorations
+  --bold-color:   hsl(356, 72%, 71%);
+  --italic-color: hsl(172, 42%, 64%);
+  */
+}
+/*	----------------------------------------------	*/
+
 .theme-dark.darkPalette-ivory,
 .theme-dark.lightPalette-ivory.darkPalette-default {
 	--OT-theme-h:		40;
@@ -2520,6 +2663,23 @@ body {
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
+}
+
+.theme-light.lightPalette-ideaverse.accentColor-lightMode-alternative-1 {
+	--accent-h:	343	!important;
+	--accent-s:	37%	!important;
+	--accent-l:	55%	!important;
+}
+.theme-light.lightPalette-ideaverse.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
+}
+.theme-light.lightPalette-ideaverse.accentColor-lightMode-alternative-2 {
+	--accent-h:	187	!important;
+	--accent-s:	30%	!important;
+	--accent-l:	48%	!important;
+}
+.theme-light.lightPalette-ideaverse.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
+	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
 }
 
 .theme-light.lightPalette-ivory.accentColor-lightMode-shade {
@@ -11735,10 +11895,16 @@ body {
 }
 /* ------------------------------ ↑ Notebook Navigator plugin ↑ ------------------------------	*/
 
-/*  Bookmark OpSpl72  ——————————————————— Repeat plugin  ——————————————————— */
+/*  Bookmark OpSpl72  ——————————————————— Different plugins: Repeat, Folder Note  ——————————————————— */
 .repeat-filter-count {
 	font-size:	var(--font-ui-small	);	/*	I find the default of 13pts much too small	*/
 }
+
+.folder-note-underline-path .has-folder-note.view-header-breadcrumb {
+	text-decoration:	none;
+}
+/* —————————————————————————————— ↑ different plugins ↑  —————————————————————————————— */
+
 
 /*  Bookmark OpSpl80  ——————————————————— correcting all hovering  ——————————————————— */
 
@@ -12375,6 +12541,10 @@ settings:
 					label:		Icy
 					label.fr:	Glacé
 					value:		lightPalette-icy
+
+				-
+					label:		Ideaverse
+					value:		lightPalette-ideaverse
 				-
 					label:		Ivory
 					label.fr:	Ivoire
@@ -13014,6 +13184,9 @@ settings:
 					label:		Icy
 					label.fr:	Glacé
 					value:		darkPalette-icy
+				-
+					label:		Ideaverse
+					value:		darkPalette-ideaverse
 				-
 					label:		Ivory
 					label.fr:	Ivoire
