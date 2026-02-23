@@ -52,6 +52,7 @@ Post‑release tweaks
 	- finished the revision of the text selection color in every palette
 	- added “Ideaverse” color palettes
 	- text size of the Dynamic Outline menu
+	- missing `}`
 2026-02-22
 	- continuing to correct the text selection color in dark .readingMode-text-small
 	- added option to hide the filename in transcluded files
@@ -553,7 +554,7 @@ body {
 	--footnote-id-color:		var(--list-marker-color);
 	--footnote-id-delimiter:	")";	/*	".";	*/
 	--footnote-line-height:		var(--line-height-tight);
-	--footnote-size:			max(calc(0.9 * var(--OT-readingMode-text-size)), 16px);
+	--footnote-size:			max(calc(0.9 * var(--OT-readingMode-text-size)), 16pt);
 /*	--footnote-input-background:	cyan;	var(--metadata-input-background);	*/
 
 	--graph-line:		var(--color-base-100);
@@ -10895,7 +10896,7 @@ body {
 
   /* Poids de fonte minimum pour l’item actif */
   --dynamic-outline-highlight-font-weight: var(--font-semibold);
-
+}
 
 /* ---------- Fenêtre Dynamic Outline : typographie & densité ---------- */
 
