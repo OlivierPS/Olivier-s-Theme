@@ -5438,10 +5438,19 @@ body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-content,
 body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
     line-height:	normal;
 }
-/* EDIT mode : largeur pleine quand la readable line length est OFF */
+/* EDIT mode : largeur pleine quand readable line length est OFF, ou note wide-page */
+.markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-sizer,
+.markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-content,
+.markdown-source-view.mod-cm6.is-readable-line-width.wide-page
+.cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
+  max-width: none !important;
+}
 .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer,
 .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-content,
-.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-line {
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-line,
+.wide-page .markdown-source-view.mod-cm6 .cm-sizer,
+.wide-page .markdown-source-view.mod-cm6 .cm-content,
+.wide-page .markdown-source-view.mod-cm6 .cm-line {
   max-width: none;
 }
 
@@ -10084,10 +10093,18 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
   .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
   max-width: var(--OT-editMode-line-width);
 }
-
 body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
   .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
   max-width: var(--OT-readingMode-line-width);
+}
+/* EDIT mode : largeur pleine si la note a wide-page, même avec VT zoom */
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
+.markdown-source-view.mod-cm6 .cm-sizer,
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
+.markdown-source-view.mod-cm6 .cm-content,
+body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
+.markdown-source-view.mod-cm6 .cm-line {
+  max-width: none;
 }
 
 /* 7.2 Base VT rows — onglets inactifs */
