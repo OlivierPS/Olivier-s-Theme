@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-24
+	- in Edit modes (Live and Raw), the line length follows the toggle of the Readable Line Length
 2026-02-23
 	- finished the revision of the text selection color in every palette
 	- added “Ideaverse” color palettes
@@ -5435,6 +5437,12 @@ body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-sizer,
 body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-content,
 body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
     line-height:	normal;
+}
+/* EDIT mode : largeur pleine quand la readable line length est OFF */
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer,
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-content,
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-line {
+  max-width: none;
 }
 
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
