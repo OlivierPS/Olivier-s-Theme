@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-02-25
+	- all the CSS class toggles in Style Settings are now available as Obsidian commands
 2026-02-24
 	- in Edit modes (Live and Raw), the line length follows the toggle of the Readable Line Length
 2026-02-23
@@ -615,7 +617,7 @@ body {
 	--metadata-gap:						0rem;
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
 	--metadata-input-height:			1rem;
-	--metadata-input-padding:			0 0.2rem;
+	--metadata-input-padding:			var(--size-2-1) var(--size-4-1) ;
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
 	--metadata-label-font-weight:		var(--font-semibold);
 	--metadata-label-text-color:		var(--text-muted);
@@ -12235,6 +12237,7 @@ settings:
 		description.fr:	"Met en évidence sur le tab le nom de la fiche courante."
 		type:			class-toggle
 		default:		false
+		addCommand:		true
 
 	-
 		id:				"OT-suppress-title-bar-breadcrumb"
@@ -12244,6 +12247,7 @@ settings:
 		description.fr:	"Option: Masquer le “breadcrumb” dans la barre de titre."
 		type:			class-toggle
 		default:		false
+		addCommand:		true
 
 	-
 		id:				"OT-status-bar-padding"
@@ -12263,13 +12267,15 @@ settings:
 		default:	7
 		format:		em
 
-	- 	id:				OT-embed-hide-title
-  		title: 			Hide embed titles
-  		title.fr:		Masquer le titre des transclusions
-  		description:	Hide the file name at the top of embedded notes and queries.
-  		description.fr: Masque le nom du fichier en haut des notes et requêtes incluses.
-  		type:			class-toggle
-  		default:		true
+	-
+		id:				OT-embed-hide-title
+		title: 			Hide embed titles
+		title.fr:		Masquer le titre des transclusions
+		description:	Hide the file name at the top of embedded notes and queries.
+		description.fr: Masque le nom du fichier en haut des notes et requêtes incluses.
+		type:			class-toggle
+		default:		true
+		addCommand:		true
 
 	-
 		id: 			"OT-canvas-dot-pattern-hidden"
@@ -12279,6 +12285,8 @@ settings:
 		description.fr: "Masquer le motif de points du fond des canvases."
 		type: 			class-toggle
 		default: 		false
+		addCommand:		true
+
 
 	# =========================
 	# Typography
@@ -12337,6 +12345,7 @@ settings:
 		description.fr:	"Utiliser un texte plus petit pour les niveaux de liste plus profonds."
 		type:			class-toggle
 		default:		false
+		addCommand:		true
 
 	-
 		id:				"OT-lists-vert-spacing"
@@ -12506,6 +12515,7 @@ settings:
 		title.fr:	"Supprimer les retours à la ligne dans les blocs de code"
 		type:		class-toggle
 		default:	true
+		addCommand:	true
 
 	# ===================
 	# LIGHT MODE settings
@@ -12825,6 +12835,8 @@ settings:
 		description:	It’s optional to have the paper background also in “Live Preview”.
 		type:			class-toggle
 		default:		false
+		addCommand:		true
+
 	-
 		id:				OT-inkColor-lightMode
 		title:			Text color in Writing / Editing mode
@@ -13048,6 +13060,8 @@ settings:
 			title:		Text selection takes accent color
 			type:		class-toggle
 			default:	true
+			addCommand:		true
+
 	-
 			id:			OT-Light-pillsColor
 			title:		Color of the pills inside the Properties panel
@@ -13459,6 +13473,8 @@ settings:
 		description:	It’s optional to have the paper background also in Live Preview.
 		type:			class-toggle
 		default:		true
+		addCommand:		true
+
 	-
 		id:				OT-inkColor-darkMode
 		title:			Text color in Writing / Editing mode
@@ -13677,6 +13693,8 @@ settings:
 			title:		Text selection takes accent color
 			type:		class-toggle
 			default:	true
+			addCommand:	true
+
 	-
 			id:			OT-Dark-pillsColor
 			title:		Color of the pills inside the Properties panel
@@ -13803,6 +13821,7 @@ settings:
 			description.fr: ON signifie que l’interligne sera plus ou moins celui prévu par le créateur de la fonte et la valeur ci-dessous est ignorée.
 			type:		class-toggle
 			default:	false
+			addCommand:	true
 
 	-
 			id:			OT-readingMode-line-height
@@ -13857,6 +13876,8 @@ settings:
 			description.fr:	"Cache la barre d’outils/en-tête des Bases en mode Lecture. Utiliser cssclasses: bases-header-on dans une note pour la réafficher ponctuellement."
 			type:			class-toggle
 			default:		TRUE
+			addCommand:		true
+
 	-
 			id:			OT-images-rendering
 			title:		Images style
@@ -14099,6 +14120,7 @@ settings:
 			description.fr: ON signifie qu’en écriture, l’interligne sera plus ou moins celui prévu par le créateur de la fonte et la valeur ci-dessous est ignorée.
 			type:		class-toggle
 			default:	false
+			addCommand:		true
 
 	-
 			id:			OT-editMode-line-height
@@ -14131,6 +14153,8 @@ settings:
 			description.fr:	OFF ⭢ En mode Live editing, le texte de la cellule courante prend la taille du texte normal.
 			type:			class-toggle
 			default:		TRUE
+			addCommand:		true
+
 	-
 			id:			OT-img-max-height-live
 			title:		Images max height in Live Preview [in pixels]
