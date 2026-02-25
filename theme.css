@@ -12833,8 +12833,9 @@ settings:
 	-
 		id:				paperBackground-in-livePreview-LM
 		title:			Paper background also in “Live Preview” mode (Light mode)
-		title.fr		Fond papier également en mode “Live” (mode Light)
-		description:	It’s optional to have the paper background also in “Live Preview”.
+		title.fr:		"Fond papier également en mode “Live” (mode Light)"
+		description:	"Optionally the paper background can also be used in “Live Preview”."
+		description.fr:	Optionnellement, le fond papier peut aussi être utilisé lorsqu’on édite les fiches.
 		type:			class-toggle
 		default:		false
 		addCommand:		true
@@ -13473,8 +13474,9 @@ settings:
 	-
 		id:				paperBackground-in-livePreview-DM
 		title:			Paper background also in Live Preview (Dark mode)
-		title.fr		Fond papier également en mode “Live” (mode Dark)
-f		description:	It’s optional to have the paper background also in Live Preview.
+		title.fr:		Fond papier également en mode “Live” (mode Dark)
+		description:	"Optionally the paper background can also be used in “Live Preview”."
+		description.fr:	Optionnellement, le fond papier peut aussi être utilisé lorsqu’on édite les fiches.
 		type:			class-toggle
 		default:		true
 		addCommand:		true
