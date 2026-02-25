@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-02-25
 	- all the CSS class toggles in Style Settings are now available as Obsidian commands
+	- revised the description of options in the Style Settings interface
 2026-02-24
 	- in Edit modes (Live and Raw), the line length follows the toggle of the Readable Line Length
 2026-02-23
@@ -12241,7 +12242,7 @@ settings:
 
 	-
 		id:				"OT-suppress-title-bar-breadcrumb"
-		title:			"Hidden Title Bar breadcrumb"
+		title:			"Hide Title Bar breadcrumb"
 		title.fr:		"Masquer le Fil d’Ariane dans la barre de titre"
 		description:	"Optionally, hide the breadcrumb in the title bar."
 		description.fr:	"Option: Masquer le “breadcrumb” dans la barre de titre."
@@ -12831,7 +12832,8 @@ settings:
 					value:		pb-lm-parchment-1
 	-
 		id:				paperBackground-in-livePreview-LM
-		title:			Paper background also in “Live Preview” mode
+		title:			Paper background also in “Live Preview” mode (Light mode)
+		title.fr		Fond papier également en mode “Live” (mode Light)
 		description:	It’s optional to have the paper background also in “Live Preview”.
 		type:			class-toggle
 		default:		false
@@ -13057,7 +13059,8 @@ settings:
 				value:		editingBackgroundColor-lightMode-yellow
 	-
 			id:			textSelection-takesAccentColor-lightMode
-			title:		Text selection takes accent color
+			title:		Text selection takes accent color (Light mode)
+			title.fr:	La sélection prend la couleur d’accentuation (mode Light)
 			type:		class-toggle
 			default:	true
 			addCommand:		true
@@ -13469,8 +13472,9 @@ settings:
 				value:		pb-dm-parchment-1
 	-
 		id:				paperBackground-in-livePreview-DM
-		title:			Paper background also in Live Preview
-		description:	It’s optional to have the paper background also in Live Preview.
+		title:			Paper background also in Live Preview (Dark mode)
+		title.fr		Fond papier également en mode “Live” (mode Dark)
+f		description:	It’s optional to have the paper background also in Live Preview.
 		type:			class-toggle
 		default:		true
 		addCommand:		true
@@ -13690,7 +13694,8 @@ settings:
 					value:		editingBackgroundColor-darkMode-yellow
 	-
 			id:			textSelection-takesAccentColor-darkMode
-			title:		Text selection takes accent color
+			title:		Text selection takes accent color (Dark mode)
+			title.fr:	La sélection prend la couleur d’accentuation (mode Dark)
 			type:		class-toggle
 			default:	true
 			addCommand:	true
@@ -13815,8 +13820,8 @@ settings:
 
 	-
 			id:			OT-readingMode-natural-line-height
-			title:		"Natural line height for the chosen font"
-			title.fr:	"Interligne naturel pour la fonte choisie"
+			title:		"Natural line height for the chosen font (Reading)"
+			title.fr:	"Interligne naturel pour la fonte choisie (en lecture)"
 			description:	When ON, Reading mode uses more or less the line-height intended by the font designer and the following value is ignored.
 			description.fr: ON signifie que l’interligne sera plus ou moins celui prévu par le créateur de la fonte et la valeur ci-dessous est ignorée.
 			type:		class-toggle
@@ -14113,13 +14118,13 @@ settings:
 			default:	18
 			format:		px
 	-
-			id:			OT-editMode-natural-line-height
-			title:		"Natural line height for the chosen font"
-			title.fr:	"Interligne naturel pour la fonte choisie"
+			id:				OT-editMode-natural-line-height
+			title:			"Natural line height for the chosen font (Edit mode)"
+			title.fr:		"Interligne naturel pour la fonte choisie (en écriture)"
 			description:	When ON, Editing mode uses more or less the line-height intended by the font designer and the following value is ignored.
 			description.fr: ON signifie qu’en écriture, l’interligne sera plus ou moins celui prévu par le créateur de la fonte et la valeur ci-dessous est ignorée.
-			type:		class-toggle
-			default:	false
+			type:			class-toggle
+			default:		false
 			addCommand:		true
 
 	-
