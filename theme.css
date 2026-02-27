@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-02-27
 	- improved hovering for plugins who use standard Obsidian variables
+	- corrected idiosyncrasies of the Board View plugin that disrupted the collapse icons
 2026-02-25
 	- all the CSS class toggles in Style Settings are now available as Obsidian commands
 	- revised the description of options in the Style Settings interface
@@ -8391,6 +8392,42 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	color: 				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
 }
+
+/* --- Rétablir la base globale de collapse icons  --- */
+.collapse-icon {
+  /* logique globale : taille proportionnelle, flex pour aligner */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Taille via la police (cohérente avec ton 1.2em sur les SVG) */
+  width: 1.4em;
+  height: 1.4em;
+
+  /* Transition selon ta logique générale, pas celle du plugin */
+  transition: var(--anim-duration-fast) transform ease;
+}
+
+/* Les triangles internes restent tels que définis plus haut */
+.collapse-icon svg.svg-icon,
+.svg-icon.right-triangle {
+  color: var(--nav-collapse-icon-color);
+}
+
+/* --- Re-scoper le comportement spécifique du plugin au board --- */
+
+/* On ne donne sa taille fixe 20px qu’à l’intérieur du board */
+.board-view .collapse-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease; /* si tu veux garder son easing là */
+}
+
+/* Rotation uniquement pour les lignes du board */
+.board-view .board-row-wrapper.collapsed .collapse-icon {
+  transform: rotate(90deg);
+}
+
 /* -------------------- ↑ Board View plugin -------------------- ↑ */
 
 
