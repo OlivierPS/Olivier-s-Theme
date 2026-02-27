@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-02-27
 	- improved hovering for plugins who use standard Obsidian variables
 	- corrected idiosyncrasies of the Board View plugin that disrupted the collapse icons
+	- much nicer collapse icons overall, in headings in particular
 2026-02-25
 	- all the CSS class toggles in Style Settings are now available as Obsidian commands
 	- revised the description of options in the Style Settings interface
@@ -7444,37 +7445,81 @@ select {
 
 /*  Bookmark OpSpl31 ————————————— Collapse icons ————————————— */
 
-/* 1. Triangles de collapse, sauf ceux de Metadata Menu */
+/* 1. Base globale des containers d’icônes de collapse */
+.collapse-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Taille globale en fonction du texte */
+  width: 1.4rem;
+  height: 1.4rem;
+
+  /* Transition générale */
+  transition: var(--anim-duration-fast) transform ease;
+}
+
+/* 2. Triangles de collapse (sauf Metadata Menu) :
+   taille + épaisseur du trait */
 .collapse-icon svg.svg-icon,
 .svg-icon.right-triangle:not(.field-btn-container .svg-icon.right-triangle) {
   width: 1.2em !important;
   height: auto !important;
-  padding-right: 0.3em !important;
   stroke-width: 4px !important;
 }
 
-/* 2. Couleur des icônes de collapse – base, sans !important */
+/* 3. Couleur des icônes de collapse – base */
 .collapse-icon svg.svg-icon,
 .svg-icon.right-triangle {
   color: var(--nav-collapse-icon-color);
 }
 
-/* 3. Ajustement Smart Connections (liste) */
+/* 4. Ajustement Smart Connections (liste) */
 .sc-list div span svg {
   margin-top: 0.2em;
 }
 
-/* 4. Indicateurs de repli des headings en Reading view */
-.markdown-preview-view .heading-collapse-indicator,
-.markdown-rendered .heading-collapse-indicator {
-  transform: translateX(-0.5em);
+/* 5. Chevrons de headings en Reading view */
+
+/* Taille uniforme des chevrons H1–H6 */
+.markdown-preview-view .heading-collapse-indicator .svg-icon,
+.markdown-rendered .heading-collapse-indicator .svg-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke-width: 4px;
 }
 
-/* cas particulier h4 (plus à gauche) */
+/* On enlève juste le padding d’app.css */
+.markdown-preview-view .heading-collapse-indicator {
+  padding: 0;
+}
+
+/* Recul global dans la marge (tous niveaux) */
+.markdown-preview-view .heading-collapse-indicator,
+.markdown-rendered .heading-collapse-indicator {
+  margin-inline-start: -1.5rem;
+}
+
+/* Cas particulier h4 : plus à gauche encore, via ta variable */
 .markdown-preview-view h4 .heading-collapse-indicator,
 .markdown-rendered h4 .heading-collapse-indicator {
-  transform: translateX(calc(-1 * var(--h4-collapse-width)));
+  margin-inline-start: calc(-1 * var(--h4-collapse-width));
 }
+
+/* 6. Re‑scoper le comportement spécifique du plugin Board/Bases */
+
+/* Taille et transition spécifiques uniquement dans le board */
+.board-view .collapse-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+/* Rotation de l’icône uniquement pour les lignes du board repliées */
+.board-view .board-row-wrapper.collapsed .collapse-icon {
+  transform: rotate(90deg);
+}
+
 /* -------------------- ↑ Collapse icons ↑ -------------------- */
 
 
@@ -8170,7 +8215,7 @@ markdown-rendered h3 {
 
 /* === Adjustable values === */
 :root {
-	--h4-collapse-width:1.6em;	/* tweak for icon size on your theme */
+	--h4-collapse-width:2.1em;	/* tweak for icon size on your theme */
 	--h4-icon-left:		1.6em;  /* diamond sits after the collapse icon */
 	--h4-padding-left:	1.1em;  /* collapse + diamond + space */
   	--h4-icon-left:		0em;
@@ -8393,40 +8438,6 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	background-color:	var(--color-accent-1);
 }
 
-/* --- Rétablir la base globale de collapse icons  --- */
-.collapse-icon {
-  /* logique globale : taille proportionnelle, flex pour aligner */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Taille via la police (cohérente avec ton 1.2em sur les SVG) */
-  width: 1.4em;
-  height: 1.4em;
-
-  /* Transition selon ta logique générale, pas celle du plugin */
-  transition: var(--anim-duration-fast) transform ease;
-}
-
-/* Les triangles internes restent tels que définis plus haut */
-.collapse-icon svg.svg-icon,
-.svg-icon.right-triangle {
-  color: var(--nav-collapse-icon-color);
-}
-
-/* --- Re-scoper le comportement spécifique du plugin au board --- */
-
-/* On ne donne sa taille fixe 20px qu’à l’intérieur du board */
-.board-view .collapse-icon {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.2s ease; /* si tu veux garder son easing là */
-}
-
-/* Rotation uniquement pour les lignes du board */
-.board-view .board-row-wrapper.collapsed .collapse-icon {
-  transform: rotate(90deg);
-}
 
 /* -------------------- ↑ Board View plugin -------------------- ↑ */
 
@@ -10014,14 +10025,14 @@ kbd {
 
 /*	Bookmark	OpSpl54	—————————————————————————————— Other interface elements —————————————————————————————— */
 
-/*	Let’s  make collapse indicators/buttons bigger	*/
+/*	Let’s  make collapse indicators/buttons bigger
 .view-content .list-collapse-indicator svg.svg-icon,
 .view-content .collapse-indicator svg.svg-icon {
 	width:			0.8rem;
 	height:			0.8rem;
 	margin-right:	0.5rem;
 }
-
+*/
 
 /*	notamment pour le plugin “Advanced Tables”	*/
 .nav-buttons-container {
