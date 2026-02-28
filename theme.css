@@ -52,6 +52,7 @@ Post‑release tweaks
 	- added option to get color headers, via a Style Settings toggle
 	- improved colors of the Note Status plugin
 	- tweaked accent colors of the Pistacchio palette, light mode
+	- tweaked accent colors of the Icy palette, light mode
 2026-02-27
 	- improved hovering for plugins who use standard Obsidian variables
 	- corrected idiosyncrasies of the Board View plugin that disrupted the collapse icons
@@ -2675,11 +2676,18 @@ body {
 .theme-light.lightPalette-icy.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-1 {
-	--color-accent-1:	#51BB00				!important;
+	--color-accent-1:	hsl(var(--accent-h), var(--accent-l), 50% ) !important;
 	--accent-h:			94					!important;
 	--accent-s:				70%				!important;
 	--accent-l:						70%		!important;
-	--color-accent-3:	hsl(94, 100%, 92%)	!important;
+	--color-accent-3:	hsl(var(--accent-h), var(--accent-l), 94% ) 	!important;
+
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-l), 30% ) !important;
+	--OT-color-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 20% ) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 35% ) !important;
+
+	--OT-view-header-title-focus-color:	hsl(var(--accent-h), var(--accent-l), 40% );
+	--icon-color:						hsl(var(--accent-h), var(--accent-l), 40% );
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
@@ -2690,6 +2698,10 @@ body {
 	--accent-s:									100%					!important;
 	--accent-l:													90%		!important;
 	--color-accent-3:					#FFDDEC	!important;
+
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-l), 30% ) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 50% ) !important;
+	--OT-color-muted-on-accent-3:	hsl(var(--accent-h), var(--accent-l), 91% ) !important;
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
@@ -6801,6 +6813,25 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
       .workspace-tab-header-status-icon,
       .metadata-menu.fileclass-icon) {
   color: inherit !important;
+}
+
+/* Root tab ACTIF + hover : accent-1, comme partout ailleurs */
+@media (hover: hover) {
+  .mod-root .workspace-tab-header.is-active:hover .workspace-tab-header-inner {
+    background-color: var(--color-accent-1);
+    color: var(--OT-color-on-accent-1);
+  }
+
+  .mod-root .workspace-tab-header.is-active:hover
+  .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-title,
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon,
+    .workspace-tab-header-inner-close-button
+  ) {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
 }
 
 /* Sidebars: base des icônes = palette d’icônes standard (plus sombre) */
