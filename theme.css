@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-02-28
 	- added option to get color headers, via a Style Settings toggle
+	- improved colors of the Note Status plugin
 2026-02-27
 	- improved hovering for plugins who use standard Obsidian variables
 	- corrected idiosyncrasies of the Board View plugin that disrupted the collapse icons
@@ -573,14 +574,6 @@ body {
 	--header-height:	2.4em;			/*	2026‑02‑06: raise header height for more legible tab bars.	*/
 
 	--heading-spacing:			0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
-/*
-	--h1-color:	var(--text-normal);
-	--h2-color:	var(--h1-color);
-	--h3-color:	var(--text-normal);
-	--h4-color:	var(--text-normal);
-	--h5-color:	var(--text-normal);
-	--h6-color:	var(--h5-color);
-*/
 	--icon-color-active:	var(--color-base-20);
 	--icon-color-hover:		var(--OT-color-on-accent-1);
 	--icon-color:			var(--color-accent-1);
@@ -10905,70 +10898,293 @@ body {
 /*	---------- ↑ Related Notes plugin ↑ ----------	*/
 
 
-/*	Bookmark	OpSpl65	———————————————————— Note Status plugin  ————————————————————	*/
-.note-status-bar .note-status-unknown,
-.nav-file-title .note-status-unknown {
-	color:	cyan	!important;		/*	For now (2025-05-16), I can’t correct the color set by the plugin’s  author. This is to check wether he has corrected his “important!” directive.	*/
-}
-.note-status-bar {
-	height:	unset !important;
-}
-.status-group .nav-file-tag,
-.note-status-icon-container .nav-file-tag {	/*	status icons in the file navigation pane, and the files status pane	*/
-	background:	transparent;
-}
-.selectable-list-item-check {
-	--interactive-accent: var(--OT-color-on-accent-1);
-}
-.selectable-list-item.note-status-option {
-	--background-modifier-hover:	var(--color-accent-2);
-	& .selectable-list-item-check {
-	color:	var(--OT-color-on-accent-2) !important;
-	}
-}
-.selectable-list-item.note-status-option:hover {
-	--background-modifier-hover:	var(--color-accent-1);
-	& .selectable-list-item-content {
-	color:	var(--OT-color-on-accent-1) !important;
-	}
-	& .selectable-list-item-check {
-	color:	var(--OT-color-on-accent-1) !important;
-	}
+/* ---------- OpSpl65 Note Status plugin — aligné sur la logique OT ---------- */
+
+/* Palette de base pour les options de status (menu déroulant, listes, etc.)
+   normal: fond menu, texte normal/muted (Obsidian canonique)
+*/
+.note-status-options,
+.selectable-list-item,
+.status-selector {
+  background: var(--background-primary);
+  color: var(--text-normal);
 }
 
-/*
-.selectable-list-item:hover {
-	color:		var(--OT-color-on-accent-1)	!important;
-	background-color:	var(--color-accent-1)	!important;
-}*/
-.template-status-chip,
+/* État HOVER (item survolé, non actif)
+   fond: --color-accent-1
+   texte: on-accent-1 / muted-on-accent-1
+*/
+.selectable-list-item:hover:not([data-selected="true"]),
+.status-selector:hover:not(.status-selector--selected) {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+.selectable-list-item:hover .selectable-list-item-content,
+.selectable-list-item:hover .selectable-list-item-icon,
+.selectable-list-item:hover .selectable-list-item-check {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* État ACTIF (sélectionné / courant)
+   fond: --color-accent-2
+   texte: on-accent-2 / muted-on-accent-2
+*/
+.selectable-list-item[data-selected="true"],
+.status-selector--selected {
+  background: var(--color-accent-2);
+  color: var(--OT-color-on-accent-2);
+}
+
+.selectable-list-item[data-selected="true"] .selectable-list-item-content,
+.selectable-list-item[data-selected="true"] .selectable-list-item-icon,
+.selectable-list-item[data-selected="true"] .selectable-list-item-check {
+  color: var(--OT-color-on-accent-2);
+}
+
+/* ACTIF + HOVER
+   fond: --color-accent-1
+   texte: on-accent-1 / muted-on-accent-1
+*/
+.selectable-list-item[data-selected="true"]:hover,
+.status-selector--selected:hover {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+.selectable-list-item[data-selected="true"]:hover .selectable-list-item-content,
+.selectable-list-item[data-selected="true"]:hover .selectable-list-item-icon,
+.selectable-list-item[data-selected="true"]:hover .selectable-list-item-check {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* Badge dans la barre de statut (version minimaliste dans l’éditeur)
+   normal: discret, fond transparent, texte nav-muted
+*/
+.status-minimal {
+  background: transparent;
+  color: var(--OT-nav-item-muted);
+}
+
+/* hover: accent-1 + texte on-accent-1 */
+.status-minimal:hover {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+/* note-status-chip (pastille dans l’UI, déjà assez « CTA » dans le plugin)
+   on la mappe directement sur ton accent active
+   normal = actif: accent-2
+   hover = actif+hover: accent-1
+*/
 .note-status-chip {
-	--text-on-accent:	var(--OT-color-on-accent-3);
-	color:		var(--OT-color-on-accent-3);
-	background-color:	var(--color-accent-3);
+  background: var(--color-accent-2);
+  color: var(--OT-color-on-accent-2);
 }
-.selectable-list-item.template-item.enabled {
-	background-color:	var(--color-accent-2) !important;
-	& .setting-item-name {
-	color:	var(--OT-color-on-accent-2);
-	}
-	& .setting-item-description {
-	color:	var(--OT-color-on-accent-2);
-	}
-	& .selectable-list-item-check {
-	color:	var(--OT-color-on-accent-2) !important;
-	}
+
+.note-status-chip--clickable:hover {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
 }
-.selectable-list-item.template-item:hover {
-	& .setting-item-name {
-	color:	var(--OT-color-on-accent-1);
-	}
-	& .setting-item-description {
-	color:	var(--OT-color-on-accent-1);
-	}
-	& .selectable-list-item-check {
-	color:	var(--OT-color-on-accent-1) !important;
-	}
+
+/* badge « status-badge » dans les tableaux / vues
+   normal: fond neutre, texte normal
+*/
+.status-badge-container {
+  background: var(--background-primary);
+  border-color: var(--background-modifier-border);
+  color: var(--text-normal);
+}
+
+/* hover (non rempli): accent-1 */
+.status-badge-container--clickable:not(.status-badge--filled):hover {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+/* rempli = actif (accent-2) */
+.status-badge--filled {
+  background: var(--color-accent-2);
+  border-color: var(--color-accent-2);
+  color: var(--OT-color-on-accent-2);
+}
+
+/* rempli + hover = actif+hover (accent-1) */
+.status-badge--filled.status-badge-container--clickable:hover {
+  background: var(--color-accent-1);
+  border-color: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+/* template-status-chip (dans les réglages)
+   normal: neutre
+   hover: accent-1
+*/
+.template-status-chip[data-clickable="true"] {
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+  color: var(--text-normal);
+}
+
+.template-status-chip[data-clickable="true"]:hover {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+/* Items de template (liste de templates de status)
+   normal: fond menu
+   hover: accent-1
+   actif (enabled): accent-2, actif+hover: accent-1
+*/
+.template-item {
+  background: var(--background-primary-alt);
+  border-color: var(--background-modifier-border);
+}
+
+.template-item:hover:not(.enabled) {
+  background: var(--color-accent-1);
+}
+
+.template-item.enabled {
+  background: var(--color-accent-2);
+  border-color: var(--color-accent-2);
+}
+
+.template-item.enabled:hover {
+  background: var(--color-accent-1);
+  border-color: var(--color-accent-1);
+}
+/* ––––– Note Status modal: aligner les états sur la logique OT */
+
+/* Contexte du sélecteur de status */
+.status-selector-group .note-status-options {
+  background: var(--background-primary);
+}
+
+/* Lignes: état NORMAL (non sélectionné, non hover) */
+.status-selector-group .selectable-list-item.note-status-option {
+  background: transparent;
+  color: var(--text-normal);
+}
+
+/* Texte et description: normal/muted */
+.status-selector-group .note-status-option__name {
+  color: var(--text-normal);
+}
+
+.status-selector-group .note-status-option__description {
+  color: var(--text-muted);
+}
+
+/* Icône de status: garder le fond neutre même quand la ligne change de fond */
+.status-selector-group .note-status-option__icon-wrapper {
+  background: var(--background-secondary);
+  border-radius: var(--radius-s);
+  padding: 2px 4px;
+}
+
+/* Le mini-chip status-minimal à l’intérieur reste neutre */
+.status-selector-group .status-minimal {
+  background: transparent;
+  color: var(--text-normal);
+}
+
+/* HOVER (survol, non sélectionné)
+   -> fond accent-1, texte on-accent-1, mais icône reste neutre
+*/
+.status-selector-group
+  .selectable-list-item.note-status-option:hover:not([data-selected="true"]) {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+/* forcer le texte sur la bonne couleur en hover */
+.status-selector-group
+  .selectable-list-item.note-status-option:hover:not([data-selected="true"])
+  .note-status-option__name,
+.status-selector-group
+  .selectable-list-item.note-status-option:hover:not([data-selected="true"])
+  .note-status-option__description {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* icône: ne change PAS de fond en hover */
+.status-selector-group
+  .selectable-list-item.note-status-option:hover
+  .note-status-option__icon-wrapper {
+  background: var(--background-secondary);
+  color: var(--text-normal);
+}
+
+/* ACTIF (data-selected="true", non hover)
+   -> fond accent-2, texte on-accent-2
+*/
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"] {
+  background: var(--color-accent-2);
+  color: var(--OT-color-on-accent-2);
+}
+
+/* texte actif */
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]
+  .note-status-option__name,
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]
+  .note-status-option__description {
+  color: var(--OT-color-on-accent-2);
+}
+
+/* ACTIF + HOVER
+   -> fond accent-1, texte on-accent-1
+*/
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]:hover {
+  background: var(--color-accent-1);
+  color: var(--OT-color-on-accent-1);
+}
+
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]:hover
+  .note-status-option__name,
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]:hover
+  .note-status-option__description {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* Icône reste neutre même quand l’item est actif ou actif+hover */
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]
+  .note-status-option__icon-wrapper,
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]:hover
+  .note-status-option__icon-wrapper {
+  background: var(--background-secondary);
+  color: var(--text-normal);
+}
+
+/* Cocher (check icon) :
+   - normal: accent-2 (pour signaler l’état)
+   - hover: on-accent-1 quand le fond devient accent-1
+*/
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]
+  .selectable-list-item-check {
+  color: var(--OT-color-on-accent-2);
+}
+
+.status-selector-group
+  .selectable-list-item.note-status-option[data-selected="true"]:hover
+  .selectable-list-item-check {
+  color: var(--OT-color-on-accent-1);
+}
+
+/* Focus clavier: garder la logique d’outline, mais sans casser tes fonds */
+.status-selector-group
+  .selectable-list-item.note-status-option[data-focused="true"] {
+  outline: 2px solid var(--background-modifier-border-hover);
+  outline-offset: -2px;
 }
 /*	---------- ↑ Note Status plugin ↑ ----------	*/
 
