@@ -53,6 +53,7 @@ Post‑release tweaks
 	- improved colors of the Note Status plugin
 	- tweaked accent colors of the Pistacchio palette, light mode
 	- tweaked accent colors of the Icy palette, light mode
+	- improved collapse headers + some hovering in the navigation
 2026-02-27
 	- improved hovering for plugins who use standard Obsidian variables
 	- corrected idiosyncrasies of the Board View plugin that disrupted the collapse icons
@@ -529,8 +530,8 @@ body {
 	--code-size:			var(--font-smallest);
 /*	--code-radius:			var(--radius-m);	*/
 
-	--collapse-icon-color:				var(--color-accent-2);
-	--collapse-icon-color-collapsed:	var(--color-accent-2);
+	--collapse-icon-color:				var(--h1-color);
+	--collapse-icon-color-collapsed:	var(--h1-color);
 
 	--divider-color:		var(--color-base-35);
 	--divider-width:		2px;
@@ -774,12 +775,12 @@ body {
 }
 
 .theme-light.OT-colored-headings-lightMode {
-  --h1-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h2-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h3-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h4-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h5-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h6-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--h1-color: var(--OT-view-header-title-focus-color);
+	--h2-color: var(--OT-view-header-title-focus-color);
+	--h3-color: var(--OT-view-header-title-focus-color);
+	--h4-color: var(--OT-view-header-title-focus-color);
+	--h5-color: var(--OT-view-header-title-focus-color);
+	/*--h6-color: var(--OT-view-header-title-focus-color);*/
 }
 
 /*	Bookmark	OpSpl06	—————————————————————————————— base colors for a dark theme —————————————————————————————— */
@@ -835,13 +836,13 @@ body {
 	--bases-table-cell-background-disabled:	hsl(var(--OT-theme-h), 15%, 15%);
 } /*	=== ↑ dark mode tuning ↑ ===	*/
 
-.theme-light.OT-colored-headings-darkMode {
-  --h1-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h2-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h3-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h4-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h5-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-  --h6-color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+.theme-dark.OT-colored-headings-darkMode {
+	--h1-color: var(--OT-view-header-title-focus-color);
+	--h2-color: var(--OT-view-header-title-focus-color);
+	--h3-color: var(--OT-view-header-title-focus-color);
+	--h4-color: var(--OT-view-header-title-focus-color);
+	--h5-color: var(--OT-view-header-title-focus-color);
+	/*--h6-color: var(--OT-view-header-title-focus-color);*/
 }
 
 /*	Bookmark	OpSpl07	—————————————————————————————— text selection  ——————————————————————————————*/
@@ -7215,11 +7216,14 @@ button.mod-muted {
   background-color: var(--OT-button-background-normal);
 }
 
-/* 2. Button hover states
-   Remarque: les vrais <button> sont déjà pris en charge par OpSpl80
-   pour le rôle "hover" global (accent-1/on-accent-1).
-   Ici, on garde uniquement les cas où tu veux rester sur la palette OT-button.
-*/
+/* 2. Button hover states */
+@media (hover: hover) {
+	button:hover,
+	button.mod-cta:hover {
+		color:            var(--OT-hover-fg);
+    	background-color: var(--OT-hover-bg);
+	}
+}
 
 /* 3. Dropdowns & selects */
 .dropdown,
@@ -7361,7 +7365,6 @@ select {
     outline 0.15s ease-in-out,
     border 0.15s ease-in-out,
     opacity 0.15s ease-in-out;
-  cursor: pointer;
 }
 
 .checkbox-container.is-enabled {
@@ -9359,6 +9362,13 @@ body.lists-horiz-generous {
     color: var(--OT-color-on-accent-1);
   }
 
+  /* Chevron (right-triangle) sur hover : force la couleur accent-on */
+  body:not(.is-grabbing)
+  .tree-item-self.is-clickable:hover
+  .tree-item-icon .svg-icon.right-triangle {
+    color: var(--OT-color-on-accent-1);
+  }
+
   /* Flair sur hover: fond accent‑1 pour bien ressortir */
   body:not(.is-grabbing) .tree-item-self.is-clickable:hover .tree-item-flair {
     color:            var(--OT-color-on-accent-1);
@@ -11234,9 +11244,15 @@ body {
 
 body {
   /* Palette de base pour la fenêtre d’outline */
-  --dynamic-outline-background: var(--menu-background);
-  --dynamic-outline-text-color: var(--OT-menu-text-color);
-  --dynamic-outline-color: var(--OT-menu-text-color);
+	--dynamic-outline-background:		var(--menu-background);
+	--dynamic-outline-text-color:		var(--OT-menu-text-color);
+	--dynamic-outline-color:			var(--OT-menu-text-color);
+	--dynamic-outline-h1-text-color:	var(--nav-item-color)	!important;
+	--dynamic-outline-h2-text-color:	var(--nav-item-color)	!important;
+	--dynamic-outline-h3-text-color:	var(--nav-item-color)	!important;
+	--dynamic-outline-h4-text-color:	var(--nav-item-color)	!important;
+	--dynamic-outline-h5-text-color:	var(--nav-item-color)	!important;
+	--dynamic-outline-h6-text-color:	var(--nav-item-color)	!important;
 
   /* Hover générique d’un item d’outline */
   --dynamic-outline-background-hover: var(--color-accent-1);
@@ -11277,8 +11293,8 @@ body {
 
 /* Lignes du menu : verticalement compactes */
 #dynamic-outline li {
-  padding-top: 1px;
-  padding-bottom: 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   margin-top: 1px;
   margin-bottom: 1px;
   color: var(--dynamic-outline-text-color);
