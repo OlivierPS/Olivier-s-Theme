@@ -53,7 +53,8 @@ Post‑release tweaks
 	- improved colors of the Note Status plugin
 	- tweaked accent colors of the Pistacchio palette, light mode
 	- tweaked accent colors of the Icy palette, light mode
-	- improved collapse headers + some hovering in the navigation
+	- improved collapse icons + some hovering in the navigation + CTA buttons hovering
+	- cursor changes to “pointer” when hovering collapse icons
 2026-02-27
 	- improved hovering for plugins who use standard Obsidian variables
 	- corrected idiosyncrasies of the Board View plugin that disrupted the collapse icons
@@ -7569,6 +7570,24 @@ select {
 /* Rotation de l’icône uniquement pour les lignes du board repliées */
 .board-view .board-row-wrapper.collapsed .collapse-icon {
   transform: rotate(90deg);
+}
+
+/* Chevron headings (Reading/Live Preview) */
+.markdown-preview-view .heading-collapse-indicator:hover,
+.markdown-rendered .heading-collapse-indicator:hover,
+.collapse-icon:hover {
+  cursor: pointer !important;
+}
+
+/* Chevron spécifique Metadata Menu */
+.field-btn-container button.property-metadata-menu:hover .svg-icon.right-triangle {
+  cursor: pointer !important;
+}
+
+/* Chevron généraux (tree, nav, etc.) */
+.svg-icon.right-triangle:hover,
+.collapse-icon svg.svg-icon:hover {
+  cursor: pointer !important;
 }
 
 /* -------------------- ↑ Collapse icons ↑ -------------------- */
