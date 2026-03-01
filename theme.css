@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-01
+	- the text highlighting system works
 2026-02-28
 	- added option to get color headers, via a Style Settings toggle
 	- improved colors of the Note Status plugin
@@ -204,7 +206,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 *******************************************************************/
 
 /*	Bookmark	OpSpl01 —————————————————————————————— Définition des couleurs —————————————————————————————— */
-:root
+body
 {
 	--obsidian-violet:		hsl(258,  88%, 66%);
 	--favorite-blue:        hsl(246,  91%, 22%);
@@ -398,6 +400,19 @@ Bookmarks:	OpSpl01:	définition des couleurs
 	--flexoki-yellow-850: hsl(45, 95%, 16%);
 	--flexoki-yellow-900: hsl(46, 87%, 12%);
 	--flexoki-yellow-950: hsl(47, 64%, 9%);
+
+	--stabilo-bleu-clair:   hsl(196,  70%, 84%);
+	--stabilo-bleu-foncé:   hsl(197,  70%, 54%);
+	--stabilo-jaune-clair:  hsl( 48,  90%, 85%);
+	--stabilo-jaune-foncé:  hsl( 57,  86%, 60%);
+	--stabilo-orange-clair: hsl( 30, 100%, 75%);
+	--stabilo-orange-foncé: hsl( 30,  89%, 59%);
+	--stabilo-rose-clair:   hsl(347,  78%, 80%);
+	--stabilo-rose-foncé:   hsl(352,  77%, 62%);
+	--stabilo-vert-clair:   hsl(146,  55%, 80%);
+	--stabilo-vert-foncé:   hsl(161,  99%, 38%);
+	--stabilo-violet-clair: hsl(281,  29%, 64%);
+	--stabilo-violet-foncé: hsl(330,  68%, 51%);
 }/* -------------------- ↑ définition des couleurs ↑ --------------------	*/
 
 /*	Bookmark	OpSpl02	 —————————————————————————————— Theme’s variables —————————————————————————————— */
@@ -4285,103 +4300,129 @@ body {
 /* -------------------- Pills Colors -------------------- */
 
 
-/*	Bookmark	OpSpl14	 —————————————————————————————— Highlight Colors (Stabilo) —————————————————————————————— */
-.highlight-color-lightBlue {
-	--text-highlight-bg:	var(--stabilo-bleu-clair);
-	--OT-stabilo-text:	#24514C;
+/* Bookmark OpSpl14 — Highlight Colors (Stabilo) */
+
+/* Light mode presets */
+.theme-light.highlight-color-lightBlue {
+	--text-highlight-bg: var(--stabilo-bleu-clair) !important;              /* hsl(196, 70%, 84%) */
+	--OT-stabilo-text: hsl(168, 38%, 23%) !important;                       /* ~#24514C */
 }
-.highlight-color-lightYellow {
-	--text-highlight-bg:	var(--stabilo-jaune-clair);
-	/*	--OT-stabilo-text:	#987B08;	*/
+
+.theme-light.highlight-color-lightYellow {
+	--text-highlight-bg: var(--stabilo-jaune-clair) !important;             /* hsl(48, 90%, 85%) */
+	/* --OT-stabilo-text: #987B08 !important; */                             /* optionnel si tu veux foncer le texte */
 }
-.highlight-color-lightOrange {
-	--text-highlight-bg:	var(--stabilo-orange-clair);
-	/*	--OT-stabilo-text:	#FDEFE1;	*/
+
+.theme-light.highlight-color-lightOrange {
+	--text-highlight-bg: var(--stabilo-orange-clair) !important;            /* hsl(30, 100%, 75%) */
+	/* --OT-stabilo-text: #FDEFE1 !important; */                             /* texte très clair, à garder si tu veux */
 }
-.highlight-color-lightRose {
-	--text-highlight-bg:	var(--stabilo-rose-clair);
-	/*	--OT-stabilo-text:	#A5162A;	*/
+
+.theme-light.highlight-color-lightRose {
+	--text-highlight-bg: var(--stabilo-rose-clair) !important;              /* hsl(347, 78%, 80%) */
+	/* --OT-stabilo-text: #A5162A !important; */                             /* texte rouge sombre, OK si tu veux un contraste fort */
 }
-.highlight-color-lightGreen {
-	--text-highlight-bg:	var(--stabilo-vert-clair);
-	--OT-stabilo-text:	#1E3F2C;
+
+.theme-light.highlight-color-lightGreen {
+	--text-highlight-bg: var(--stabilo-vert-clair) !important;              /* hsl(146, 55%, 80%) */
+	--OT-stabilo-text: hsl(149, 35%, 19%) !important;                       /* ~#1E3F2C, bon contraste */
 }
-.highlight-color-lightViolet {
-	--text-highlight-bg:	var(--stabilo-violet-clair);
-	--OT-stabilo-text:	#E2D6E8;
+
+.theme-light.highlight-color-lightViolet {
+	--text-highlight-bg: var(--stabilo-violet-clair) !important;            /* hsl(281, 29%, 64%) */
+	/* --OT-stabilo-text: #E2D6E8 !important; */                             /* texte très clair, ok pour un look pastel */
 }
-.highlight-color-strongBlue {
-	--text-highlight-bg:	var(--stabilo-bleu-foncé);
-	--OT-stabilo-text:	#BBE4F3;
+
+.theme-light.highlight-color-strongBlue {
+	--text-highlight-bg: var(--stabilo-bleu-foncé) !important;              /* hsl(197, 70%, 54%) */
+	--OT-stabilo-text: hsl(197, 62%, 83%) !important;                       /* ~#BBE4F3, bon contraste fluomarker */
 }
-.highlight-color-strongYellow {
-	--text-highlight-bg:	var(--stabilo-jaune-foncé);
-	/*	--OT-stabilo-text:	#987B08;	*/
+
+.theme-light.highlight-color-strongYellow {
+	--text-highlight-bg: var(--stabilo-jaune-foncé) !important;             /* hsl(57, 86%, 60%) */
+	/* --OT-stabilo-text: #987B08 !important; */                             /* texte foncé, cohérent sur jaune vif */
 }
-.highlight-color-strongOrange {
-	--text-highlight-bg:	var(--stabilo-orange-foncé);
-	--OT-stabilo-text:	#FDEFE1;
+
+.theme-light.highlight-color-strongOrange {
+	--text-highlight-bg: var(--stabilo-orange-foncé) !important;            /* hsl(30, 89%, 59%) */
+	--OT-stabilo-text: hsl(27, 87%, 94%) !important;                        /* ~#FDEFE1, bon contraste */
 }
-.highlight-color-strongRose {
-	--text-highlight-bg:	var(--stabilo-rose-foncé);
-	--OT-stabilo-text:	#F5CCE0;
+
+.theme-light.highlight-color-strongRose {
+	--text-highlight-bg: var(--stabilo-rose-foncé) !important;              /* hsl(352, 77%, 62%) */
+	/* --OT-stabilo-text: #F5CCE0 !important; */                             /* ancien */
+	--OT-stabilo-text: hsl(339, 72%, 87%) !important;                       /* ~#F5CCE0 */
 }
-.highlight-color-strongGreen {
-	--text-highlight-bg:	var(--stabilo-vert-foncé);
-	--OT-stabilo-text:	#8FFEDB;
+
+.theme-light.highlight-color-strongGreen {
+	--text-highlight-bg: var(--stabilo-vert-foncé) !important;              /* hsl(161, 99%, 38%) */
+	--OT-stabilo-text: hsl(164, 96%, 78%) !important;                       /* ~#8FFEDB, très lisible */
 }
-.highlight-color-strongViolet {
-	--text-highlight-bg:	var(--stabilo-violet-foncé);
-	--OT-stabilo-text:	#F5CCE0;
+
+.theme-light.highlight-color-strongViolet {
+	--text-highlight-bg: var(--stabilo-violet-foncé) !important;            /* hsl(330, 68%, 51%) */
+	--OT-stabilo-text: hsl(339, 72%, 87%) !important;                       /* ~#F5CCE0 */
 }
-/*	--------------------------------------------------	*/
+
+/* Dark-mode presets pilotés par OT-highlight-color-dark */
 .theme-dark.highlight-color-dark-lightBlue {
-	--text-highlight-bg:	var(--stabilo-bleu-clair);
-	--OT-stabilo-text:	midnightblue;
+	--text-highlight-bg: var(--stabilo-bleu-clair) !important;              /* hsl(196, 70%, 84%) */
+	--OT-stabilo-text: hsl(240, 100%, 20%) !important;                      /* midnightblue ≈ hsl(240, 100%, 20%) */
 }
+
 .theme-dark.highlight-color-dark-lightYellow {
-	--text-highlight-bg:	var(--stabilo-jaune-clair);
-	--OT-stabilo-text:	var(--color-base-00);
+	--text-highlight-bg: var(--stabilo-jaune-clair) !important;             /* hsl(48, 90%, 85%) */
+	--OT-stabilo-text: var(--color-base-00) !important;
 }
+
 .theme-dark.highlight-color-dark-lightOrange {
-	--text-highlight-bg:	var(--stabilo-orange-clair);
-	--OT-stabilo-text:	var(--color-base-00);
+	--text-highlight-bg: var(--stabilo-orange-clair) !important;            /* hsl(30, 100%, 75%) */
+	--OT-stabilo-text: var(--color-base-00) !important;
 }
+
 .theme-dark.highlight-color-dark-lightRose {
-	--text-highlight-bg:	var(--stabilo-rose-clair);
-	--OT-stabilo-text:	var(--color-base-00);
+	--text-highlight-bg: var(--stabilo-rose-clair) !important;              /* hsl(347, 78%, 80%) */
+	--OT-stabilo-text: var(--color-base-00) !important;
 }
+
 .theme-dark.highlight-color-dark-lightGreen {
-	--text-highlight-bg:	var(--stabilo-vert-clair);
-	--OT-stabilo-text:	var(--color-base-00);
+	--text-highlight-bg: var(--stabilo-vert-clair) !important;              /* hsl(146, 55%, 80%) */
+	--OT-stabilo-text: var(--color-base-00) !important;
 }
+
 .theme-dark.highlight-color-dark-lightViolet {
-	--text-highlight-bg:	var(--stabilo-violet-clair);
-	--OT-stabilo-text:	#432C4F;
+	--text-highlight-bg: var(--stabilo-violet-clair) !important;            /* hsl(281, 29%, 64%) */
+	--OT-stabilo-text: hsl(282, 27%, 24%) !important;                       /* ~#432C4F */
 }
+
 .theme-dark.highlight-color-dark-strongBlue {
-	--text-highlight-bg:	var(--stabilo-bleu-foncé);
-	--OT-stabilo-text:	var(--text-normal);
+	--text-highlight-bg: var(--stabilo-bleu-foncé) !important;              /* hsl(197, 70%, 54%) */
+	--OT-stabilo-text: hsl(197, 62%, 83%) !important;                       /* même que strongBlue clair, bon équilibre */
 }
+
 .theme-dark.highlight-color-dark-strongYellow {
-	--text-highlight-bg:	var(--stabilo-jaune-foncé);
-	--OT-stabilo-text:	#2A280B;
+	--text-highlight-bg: var(--stabilo-jaune-foncé) !important;             /* hsl(57, 86%, 60%) */
+	--OT-stabilo-text: hsl(50, 44%, 10%) !important;                        /* ~#2A280B, très lisible */
 }
+
 .theme-dark.highlight-color-dark-strongOrange {
-	--text-highlight-bg:	var(--stabilo-orange-foncé);
-	--OT-stabilo-text:	var(--color-base-00);
+	--text-highlight-bg: var(--stabilo-orange-foncé) !important;            /* hsl(30, 89%, 59%) */
+	--OT-stabilo-text: var(--color-base-00) !important;
 }
+
 .theme-dark.highlight-color-dark-strongRose {
-	--text-highlight-bg:	var(--stabilo-rose-foncé);
-	--OT-stabilo-text:	var(--color-base-00);
+	--text-highlight-bg: var(--stabilo-rose-foncé) !important;              /* hsl(352, 77%, 62%) */
+	--OT-stabilo-text: var(--color-base-00) !important;
 }
+
 .theme-dark.highlight-color-dark-strongGreen {
-	--text-highlight-bg:	var(--stabilo-vert-foncé);
-	--OT-stabilo-text:	var(--color-base-00);
+	--text-highlight-bg: var(--stabilo-vert-foncé) !important;              /* hsl(161, 99%, 38%) */
+	--OT-stabilo-text: var(--color-base-00) !important;
 }
+
 .theme-dark.highlight-color-dark-strongViolet {
-	--text-highlight-bg:	var(--stabilo-violet-foncé);
-	--OT-stabilo-text:	var(--text-normal);
+	--text-highlight-bg: var(--stabilo-violet-foncé) !important;            /* hsl(330, 68%, 51%) */
+	--OT-stabilo-text: var(--text-normal) !important;
 }
 /* -------------------- ↑ Highlight Colors -------------------- ↑ */
 
@@ -10164,10 +10205,12 @@ kbd {
 .community-item .suggestion-highlight,
 .textLayer .mod-focused,
 .markdown-rendered mark,
+.annotationLayer .mod-focused,
 .search-result-file-matched-text,
 .cm-s-obsidian span.cm-formatting-highlight,
-.cm-s-obsidian span.cm-highlight {
-	color:				var(--OT-stabilo-text) !important;
+.cm-s-obsidian span.cm-highlight,
+.markdown-preview-view mark {
+	color:				var(--OT-stabilo-text, var(--text-normal)) !important;
 	background-color:	var(--text-highlight-bg) !important;
 }
 .markdown-rendered mark .internal-link {
@@ -13470,7 +13513,7 @@ settings:
 					label.fr:	Athmosphère
 					value:		OT-Light-pills-color-theme
 	-
-			id:				OT-highlight-color
+			id:				OT-highlight-color-light
 			title:			Highlighting color
 			title.fr:		Couleur du « Stabilo »
 			description:	“Default” chooses a color associated with the current general mood.
@@ -13531,6 +13574,7 @@ settings:
 					label:		dark Yellow
 					label.fr:	Jaune foncé
 					value:		highlight-color-strongYellow
+
 	# ===================
 	# DARK MODE settings
 	# ===================
