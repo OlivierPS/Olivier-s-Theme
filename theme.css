@@ -53,6 +53,7 @@ Post‑release tweaks
 	- added a CSS class to replace lists' bullets by arrows
 	- the Metadata Menu button in properties now hath a transparent background
 	- header row of tables has now the same style as tables header
+	- pills inside tables now have the same text size as the other cells
 2026-02-28
 	- added option to get color headers, via a Style Settings toggle
 	- improved colors of the Note Status plugin
@@ -6751,6 +6752,14 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     background: inherit;
   }
 }
+
+/* taille du texte des multi-select-pill alignée sur la table */
+.bases-view .multi-select-pill,
+.bases-view .multi-select-pill .internal-link,
+.bases-view .multi-select-pill-content {
+  font-size: var(--bases-table-font-size);
+}
+
 
 /* -------------------- Cartes Board -------------------- */
 .board-card .card-prop.clickable {
