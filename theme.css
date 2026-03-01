@@ -13462,8 +13462,8 @@ settings:
 
 	-
 			id:				OT-colored-headings-lightMode
-			title:			Colored H1 to H6 headings (light mode)
-			title.fr:		Titres colorés (H1 à H6, Light mode)
+			title:			Colored H1 to H5 headings (light mode)
+			title.fr:		Titres colorés (H1 à H5, Light mode)
 			description:	You may activate the coloring of the headings or keep them like normal text.
 			description.fr:	Vous pouvez activer la colorisation des titres H1 à H6 ou bien les laisser dans la couleur du texte courant.
 			type:			class-toggle
@@ -14108,8 +14108,8 @@ settings:
 
 	-
 			id:				OT-colored-headings-darkMode
-			title:			Colored H1 to H6 headings (dark mode)
-			title.fr:		Titres colorés (H1 à H6, Dark mode)
+			title:			Colored H1 to H5 headings (dark mode)
+			title.fr:		Titres colorés (H1 à H5, Dark mode)
 			description:	You may activate the coloring of the headings or keep them like normal text.
 			description.fr:	Vous pouvez activer la colorisation des titres H1 à H6 ou bien les laisser dans la couleur du texte courant.
 			type:			class-toggle
