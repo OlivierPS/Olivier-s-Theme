@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-03-01
 	- the text highlighting system works
+	- added a CSS class to replace lists' bullets by arrows
 2026-02-28
 	- added option to get color headers, via a Style Settings toggle
 	- improved colors of the Note Status plugin
@@ -216,19 +217,6 @@ body
 	--neutral-100: 			hsl(  0,   0%, 100%);   /* Pure white */
 	--royal-blue:           hsl(240, 100%, 32%);
 	--sky-blue:             hsl(192, 100%, 57%);
-
-	--stabilo-bleu-clair:   hsl(196,  70%, 84%);
-	--stabilo-bleu-foncé:   hsl(197,  70%, 54%);
-	--stabilo-jaune-clair:  hsl( 48,  90%, 85%);
-	--stabilo-jaune-foncé:  hsl( 57,  86%, 60%);
-	--stabilo-orange-clair: hsl( 30, 100%, 75%);
-	--stabilo-orange-foncé: hsl( 30,  89%, 59%);
-	--stabilo-rose-clair:   hsl(347,  78%, 80%);
-	--stabilo-rose-foncé:   hsl(352,  77%, 62%);
-	--stabilo-vert-clair:   hsl(146,  55%, 80%);
-	--stabilo-vert-foncé:   hsl(161,  99%, 38%);
-	--stabilo-violet-clair: hsl(281,  29%, 64%);
-	--stabilo-violet-foncé: hsl(330,  68%, 51%);
 
 	--solarized-base03:     hsl(192, 100%, 11%);
 	--solarized-base02:     hsl(192,  81%, 14%);
@@ -413,7 +401,8 @@ body
 	--stabilo-vert-foncé:   hsl(161,  99%, 38%);
 	--stabilo-violet-clair: hsl(281,  29%, 64%);
 	--stabilo-violet-foncé: hsl(330,  68%, 51%);
-}/* -------------------- ↑ définition des couleurs ↑ --------------------	*/
+}
+/* -------------------- ↑ définition des couleurs ↑ --------------------	*/
 
 /*	Bookmark	OpSpl02	 —————————————————————————————— Theme’s variables —————————————————————————————— */
 	/*	Pour avoir un premier état, même sans avoir chargé le plugin “Style Settings”.*/
@@ -12562,6 +12551,23 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 .readingMode-text-biggest {
 	--OT-readingMode-text-size:		1.3em	!important;
 	--table-text-size:				1.2em	!important;
+}
+
+/* –––––––––––––––––––– arrow-bullets –––––––––– */
+/* Flèches actives quand cssclass: arrow-bullets (Preview + Live Preview) */
+.markdown-preview-view.arrow-bullets .list-bullet:after,
+.markdown-source-view.mod-cm6.is-live-preview.arrow-bullets
+  .cm-line.HyperMD-list-line
+  .list-bullet::after {
+	content:		"⭢ ";
+	color:			var(--list-marker-color);
+	width:			auto;
+	height:			auto;
+	border:			none;
+	border-radius:	0;
+	background:		none;
+	transform:		none;
+	box-shadow:		none;
 }
 
 /*	---------- ↑ Some useful CSSCLASSES ↑ ----------	*/
