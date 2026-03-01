@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-03-01
 	- the text highlighting system works
 	- added a CSS class to replace lists' bullets by arrows
+	- the Metadata Menu button in properties now hath a transparent background
 2026-02-28
 	- added option to get color headers, via a Style Settings toggle
 	- improved colors of the Note Status plugin
@@ -9656,7 +9657,7 @@ body.lists-horiz-generous {
 	align-items: 		center;
 	justify-content:	center;
 	color:         		var(--OT-color-on-accent-3);
-	background-color: 	var(--color-accent-3);
+	background-color: 	transparent;
 	width:         		1.6em;
 }
 
