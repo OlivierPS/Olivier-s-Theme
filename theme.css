@@ -52,6 +52,7 @@ Post‑release tweaks
 	- the text highlighting system works
 	- added a CSS class to replace lists' bullets by arrows
 	- the Metadata Menu button in properties now hath a transparent background
+	- header row of tables has now the same style as tables header
 2026-02-28
 	- added option to get color headers, via a Style Settings toggle
 	- improved colors of the Note Status plugin
@@ -492,11 +493,13 @@ body {
 	--background-modifier-success:		rgb(106, 245, 161);
 	--background-primary-alt:			hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
 
-  	--bases-cards-shadow-hover:				0 0 0 2px var(--background-modifier-border-hover);
 	--bases-table-cell-background-disabled:	hsl(var(--OT-theme-h), 15%, 80%);
+	--bases-table-font-size:				calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
 	--bases-table-group-background:			var(--OT-table-alt-background);
 	--bases-table-header-background:		var(--table-header-background);
 	--bases-table-header-color:				var(--color-base-100);
+	--bases-table-header-weight:			var(--table-header-weight);
+  	--bases-cards-shadow-hover:				0 0 0 2px var(--background-modifier-border-hover);
 
 	--blockquote-border-thickness:	1px;
 	--blockquote-font-style:		italic;
@@ -6731,7 +6734,10 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   }
 }
 
-/* -------------------- Bases table header hover (ligne d’en-tête) -------------------- */
+/* -------------------- ligne d’en-tête -------------------- */
+.bases-table-header-label {
+	font-style:		italic;
+}
 @media (hover: hover) {
   .bases-td:hover .bases-table-header,
   .bases-td.mod-implicit:hover .bases-table-header {
