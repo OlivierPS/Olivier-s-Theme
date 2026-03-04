@@ -12579,7 +12579,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 	content: "⭢ ";
 	color: var(--list-marker-color);
 	font-size: 1.4em;
-	margin-left: 0.5em;
+	margin-left: 0;
 	width: auto;
 	height: auto;
 	border: none;
