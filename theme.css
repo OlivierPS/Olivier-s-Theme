@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-04
+	- improved arrows of the “arrow-bullets” CSS class
+	- suppressed them from transcluded bases
 2026-03-01
 	- the text highlighting system works
 	- added a CSS class to replace lists' bullets by arrows
@@ -10024,15 +10027,15 @@ button.canvas-menu-item {
 /*	Bookmark	OpSpl52	—————————————————————————————— KBD class —————————————————————————————— */
 kbd {
     font-family:
-    					Consolas,
-    					"Courier New",
-    					"PT Mono",
-						"Dico Code Two",
-    					"Frutiger Neue LT Pro",
-    					"Menlo",
-    					Monaco,
-    					Verdana,
-    					monospace;
+					Consolas,
+					Menlo,
+					Monaco,
+					"Courier New",
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					"Segoe UI",
+					monospace;
     font-weight:		var(--font-semibold);
 	font-size:			1.05em;
 	padding:			3px 3px 0px 3px;
@@ -12571,19 +12574,44 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 
 /* –––––––––––––––––––– arrow-bullets –––––––––– */
 /* Flèches actives quand cssclass: arrow-bullets (Preview + Live Preview) */
-.markdown-preview-view.arrow-bullets .list-bullet:after,
+/* Flèches seulement dans les notes normales, quand arrow-bullets est actif */
+.markdown-preview-view.arrow-bullets .list-bullet::after {
+	content: "⭢ ";
+	color: var(--list-marker-color);
+	font-size: 1.4em;
+	margin-left: 0.5em;
+	width: auto;
+	height: auto;
+	border: none;
+	border-radius: 0;
+	background: none;
+	transform: none;
+	box-shadow: none;
+}
+
+/* Dans une base transcluse, garder le tiret natif et désactiver la flèche */
+.markdown-preview-view.arrow-bullets .bases-list-container .list-bullet::after {
+	content: "•";          /* pas de flèche dans Bases */
+	margin-left: 0;
+	color: var(--list-marker-color);
+	font-size: 1.3em;
+}
+
+/* Live Preview uniquement */
 .markdown-source-view.mod-cm6.is-live-preview.arrow-bullets
   .cm-line.HyperMD-list-line
   .list-bullet::after {
-	content:		"⭢ ";
-	color:			var(--list-marker-color);
-	width:			auto;
-	height:			auto;
-	border:			none;
-	border-radius:	0;
-	background:		none;
-	transform:		none;
-	box-shadow:		none;
+	content: "⭢ ";
+	color: var(--list-marker-color);
+	font-size: 1.1em;      /* taille en LIVE EDIT */
+	margin-left: -0.12em;  /* décalage en LIVE EDIT */
+	width: auto;
+	height: auto;
+	border: none;
+	border-radius: 0;
+	background: none;
+	transform: none;
+	box-shadow: none;
 }
 
 /*	---------- ↑ Some useful CSSCLASSES ↑ ----------	*/
