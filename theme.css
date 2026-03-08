@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-08
+	- corrected the invisibility of the case-sensitivity indicator in the main search field
 2026-03-04
 	- improved arrows of the “arrow-bullets” CSS class
 	- suppressed them from transcluded bases
@@ -12534,6 +12536,11 @@ body:not(.is-mobile) .workspace-split.mod-left-split
     color:            var(--OT-hover-fg);
     background-color: var(--OT-hover-bg);
   }
+}
+
+.input-right-decorator.clickable-icon.is-active {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
 }
 
 /* 3. PDF thumbnails (actif + hover déjà couverts) */
