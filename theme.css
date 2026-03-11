@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-11
+	- suppressed a troublesome rule for the sorting menu in bases
 2026-03-08
 	- corrected the invisibility of the case-sensitivity indicator in the main search field
 2026-03-04
@@ -7526,11 +7528,11 @@ select {
   background-color: var(--color-accent-1);
 }
 
-/* Cas particulier : combobox Bases avec placeholder (bases-sort-property vide) */
+/* Cas particulier : combobox Bases avec placeholder (bases-sort-property vide)		2026-03-11 supprimé cette règle qui me paraît loufoque et qui troublait le fonctionnement
 .combobox-button.bases-sort-property:hover .combobox-button-label[placeholder]::before {
   content: attr(placeholder);
   color:   var(--OT-color-on-accent-1);
-}
+}*/
 
 /* Quand une propriété est choisie, le texte est du vrai contenu ⇒ la règle générique suffit */
 .combobox-button.bases-sort-property:hover .combobox-button-label {
