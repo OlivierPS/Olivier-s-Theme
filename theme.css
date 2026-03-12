@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-12
+	- in depth correction of hovering in bases and some other buttons
 2026-03-11
 	- suppressed a troublesome rule for the sorting menu in bases
 2026-03-08
@@ -6499,7 +6501,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 /*	-------------------- ↑ Tables ↑ --------------------  */
 
 
-/*  Bookmark OpSpl27 ————————————————————————— Bases ————————————————————————— */
+/* Bookmark OpSpl27 ————————————————————————— Bases ————————————————————————— */
 
 /* -------------------- Toolbar text-icon buttons (Bases, Query toolbar) -------------------- */
 
@@ -6508,14 +6510,12 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 .bases-toolbar .text-icon-button {
   color:            var(--OT-color-on-accent-3);
   background-color: var(--color-accent-3);
-}
 
-.query-toolbar .query-toolbar-item.mod-views .text-icon-button .text-button-label,
-.query-toolbar .query-toolbar-item.mod-views .text-icon-button .text-button-icon,
-.bases-toolbar .text-icon-button .text-button-label,
-.bases-toolbar .text-icon-button .text-button-icon {
-  background-color: transparent;
-  color: inherit;
+  & .text-button-label,
+  & .text-button-icon {
+    background-color: transparent;
+    color: inherit;
+  }
 }
 
 /* 2. État actif (is-active / has-active-menu): accent‑2 */
@@ -6524,36 +6524,42 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 .bases-toolbar-menu-item.mod-active {
   background-color: var(--color-accent-2);
   color:            var(--OT-color-on-accent-2);
+
+  & .text-button-label,
+  & .text-button-icon {
+    background-color: transparent;
+    color: inherit;
+  }
 }
 
 /* 3. Hover (desktop): accent‑1 — que ce soit actif ou non */
 @media (hover: hover) {
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover,
-  .bases-toolbar .text-icon-button:hover,
-  .bases-toolbar-menu-item:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
-  }
+  .query-toolbar .query-toolbar-item.mod-views .text-icon-button,
+  .bases-toolbar .text-icon-button,
+  .bases-toolbar-menu-item {
+    &:hover {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
 
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover .text-button-label,
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button:hover .text-button-icon,
-  .bases-toolbar .text-icon-button:hover .text-button-label,
-  .bases-toolbar .text-icon-button:hover .text-button-icon,
-  .bases-toolbar-menu-item:hover .bases-toolbar-menu-item-name,
-  .bases-toolbar-menu-item:hover .bases-toolbar-menu-item-info-icon {
-    background-color: transparent;
-    color: inherit;
-  }
+      & .text-button-label,
+      & .text-button-icon,
+      & .bases-toolbar-menu-item-name,
+      & .bases-toolbar-menu-item-info-icon {
+        background-color: transparent;
+        color: inherit;
+      }
+    }
 
-  /* Bouton actif + hover = hover (accent‑1) */
-  .query-toolbar .query-toolbar-item.mod-views .text-icon-button.is-active:hover,
-  .bases-toolbar .text-icon-button.is-active:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
+    /* Bouton actif + hover = hover (accent‑1) */
+    &.is-active:hover {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
   }
 }
 
 /* -------------------- Boutons imbriqués de la Bases toolbar -------------------- */
+
 /* Vue (Ce dossier, par Type) */
 .bases-toolbar .bases-toolbar-item.bases-toolbar-views-menu {
   /* État actif (menu ouvert, sans hover) */
@@ -6561,14 +6567,12 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   & .text-icon-button.is-active {
     background-color: var(--color-accent-2);
     color:            var(--OT-color-on-accent-2);
-  }
 
-  & .text-icon-button.has-active-menu .text-button-icon,
-  & .text-icon-button.has-active-menu .text-button-label,
-  & .text-icon-button.is-active .text-button-icon,
-  & .text-icon-button.is-active .text-button-label {
-    background-color: transparent;
-    color: inherit;
+    & .text-button-icon,
+    & .text-button-label {
+      background-color: transparent;
+      color: inherit;
+    }
   }
 
   /* Survol du conteneur: accent‑1 */
@@ -6576,24 +6580,24 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     &:hover {
       background-color: var(--color-accent-1);
       color:            var(--OT-color-on-accent-1);
-    }
 
-    &:hover .text-icon-button {
-      background-color: transparent;
-      color: inherit;
-    }
+      & .text-icon-button {
+        background-color: transparent;
+        color: inherit;
 
-    &:hover .text-button-icon,
-    &:hover .text-button-label {
-      background-color: transparent;
-      color: inherit;
-    }
+        & .text-button-icon,
+        & .text-button-label {
+          background-color: transparent;
+          color: inherit;
+        }
 
-    /* bouton actif + hover => accent‑1 */
-    &:hover .text-icon-button.has-active-menu,
-    &:hover .text-icon-button.is-active {
-      background-color: var(--color-accent-1);
-      color:            var(--OT-color-on-accent-1);
+        /* bouton actif + hover => accent‑1 */
+        &.has-active-menu,
+        &.is-active {
+          background-color: var(--color-accent-1);
+          color:            var(--OT-color-on-accent-1);
+        }
+      }
     }
   }
 }
@@ -6605,40 +6609,37 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   & .text-icon-button.has-active-menu {
     background-color: var(--color-accent-2);
     color:            var(--OT-color-on-accent-2);
-  }
 
-  & .text-icon-button.is-active .text-button-icon,
-  & .text-icon-button.is-active .text-button-label,
-  & .text-icon-button.is-active .flair.toolbar-badge,
-  & .text-icon-button.has-active-menu .text-button-icon,
-  & .text-icon-button.has-active-menu .text-button-label,
-  & .text-icon-button.has-active-menu .flair.toolbar-badge {
-    background-color: transparent;
-    color: inherit;
+    & .text-button-icon,
+    & .text-button-label,
+    & .flair.toolbar-badge {
+      background-color: transparent;
+      color: inherit;
+    }
   }
 
   @media (hover: hover) {
     &:hover {
       background-color: var(--color-accent-1);
       color:            var(--OT-color-on-accent-1);
-    }
 
-    &:hover .text-icon-button {
-      background-color: transparent;
-      color: inherit;
-    }
+      & .text-icon-button {
+        background-color: transparent;
+        color: inherit;
 
-    &:hover .text-button-icon,
-    &:hover .text-button-label,
-    &:hover .flair.toolbar-badge {
-      background-color: transparent;
-      color: inherit;
-    }
+        & .text-button-icon,
+        & .text-button-label,
+        & .flair.toolbar-badge {
+          background-color: transparent;
+          color: inherit;
+        }
 
-    &:hover .text-icon-button.is-active,
-    &:hover .text-icon-button.has-active-menu {
-      background-color: var(--color-accent-1);
-      color:            var(--OT-color-on-accent-1);
+        &.is-active,
+        &.has-active-menu {
+          background-color: var(--color-accent-1);
+          color:            var(--OT-color-on-accent-1);
+        }
+      }
     }
   }
 }
@@ -6650,40 +6651,63 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   & .text-icon-button.has-active-menu {
     background-color: var(--color-accent-2);
     color:            var(--OT-color-on-accent-2);
-  }
 
-  & .text-icon-button.is-active .text-button-icon,
-  & .text-icon-button.is-active .text-button-label,
-  & .text-icon-button.is-active .flair.toolbar-badge,
-  & .text-icon-button.has-active-menu .text-button-icon,
-  & .text-icon-button.has-active-menu .text-button-label,
-  & .text-icon-button.has-active-menu .flair.toolbar-badge {
-    background-color: transparent;
-    color: inherit;
+    & .text-button-icon,
+    & .text-button-label,
+    & .flair.toolbar-badge {
+      background-color: transparent;
+      color: inherit;
+    }
   }
 
   @media (hover: hover) {
     &:hover {
       background-color: var(--color-accent-1);
       color:            var(--OT-color-on-accent-1);
-    }
 
-    &:hover .text-icon-button {
-      background-color: transparent;
-      color: inherit;
-    }
+      & .text-icon-button {
+        background-color: transparent;
+        color: inherit;
 
-    &:hover .text-button-icon,
-    &:hover .text-button-label,
-    &:hover .flair.toolbar-badge {
-      background-color: transparent;
-      color: inherit;
-    }
+        & .text-button-icon,
+        & .text-button-label,
+        & .flair.toolbar-badge {
+          background-color: transparent;
+          color: inherit;
+        }
 
-    &:hover .text-icon-button.is-active,
-    &:hover .text-icon-button.has-active-menu {
-      background-color: var(--color-accent-1);
+        &.is-active,
+        &.has-active-menu {
+          background-color: var(--color-accent-1);
+          color:            var(--OT-color-on-accent-1);
+        }
+      }
+    }
+  }
+}
+
+/* -------------------- Combobox Bases (tri) -------------------- */
+/* Combobox Bases – hover cohérent pour property + direction */
+@media (hover: hover) {
+  .combobox-button.bases-sort-property,
+  .combobox-button.bases-sort-direction {
+    &:hover {
       color:            var(--OT-color-on-accent-1);
+      background-color: var(--color-accent-1);
+
+      & .combobox-button-label,
+      & .combobox-button-icon,
+      & .combobox-clear-button,
+      & .combobox-button-chevron {
+        color:            inherit;
+        background-color: transparent;
+      }
+
+      /* tous les SVG suivent currentColor, tracé inclus */
+      & .svg-icon {
+        stroke: currentColor;
+        /*fill:   currentColor;*/
+      }
     }
   }
 }
@@ -6693,88 +6717,94 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   /* état normal : accent‑3 */
   background-color: var(--color-accent-3);
   color:            var(--OT-color-on-accent-3);
-}
 
-.bases-toolbar-section-content > .text-icon-button .text-button-label,
-.bases-toolbar-section-content > .text-icon-button .text-button-icon,
-.bases-toolbar-section-content > .text-icon-button .text-button-icon .svg-icon {
-  background-color: transparent;
-  color: inherit;
-  stroke: currentColor;
-}
-
-/* éventuel état actif (si Obsidian ajoute .is-active / .has-active-menu) */
-.bases-toolbar-section-content > .text-icon-button.is-active,
-.bases-toolbar-section-content > .text-icon-button.has-active-menu {
-  background-color: var(--color-accent-2);
-  color:            var(--OT-color-on-accent-2);
-}
-
-.bases-toolbar-section-content > .text-icon-button.is-active .text-button-label,
-.bases-toolbar-section-content > .text-icon-button.is-active .text-button-icon,
-.bases-toolbar-section-content > .text-icon-button.is-active .text-button-icon .svg-icon,
-.bases-toolbar-section-content > .text-icon-button.has-active-menu .text-button-label,
-.bases-toolbar-section-content > .text-icon-button.has-active-menu .text-button-icon,
-.bases-toolbar-section-content > .text-icon-button.has-active-menu .text-button-icon .svg-icon {
-  background-color: transparent;
-  color: inherit;
-  stroke: currentColor;
-}
-
-@media (hover: hover) {
-  .bases-toolbar-section-content > .text-icon-button:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
-  }
-
-  .bases-toolbar-section-content > .text-icon-button:hover .text-button-label,
-  .bases-toolbar-section-content > .text-icon-button:hover .text-button-icon,
-  .bases-toolbar-section-content > .text-icon-button:hover .text-button-icon .svg-icon {
+  & .text-button-label,
+  & .text-button-icon,
+  & .text-button-icon .svg-icon {
     background-color: transparent;
     color: inherit;
     stroke: currentColor;
   }
 
-  .bases-toolbar-section-content > .text-icon-button.is-active:hover,
-  .bases-toolbar-section-content > .text-icon-button.has-active-menu:hover {
-    background-color: var(--color-accent-1);
-    color:            var(--OT-color-on-accent-1);
+  /* éventuel état actif (si Obsidian ajoute .is-active / .has-active-menu) */
+  &.is-active,
+  &.has-active-menu {
+    background-color: var(--color-accent-2);
+    color:            var(--OT-color-on-accent-2);
+
+    & .text-button-label,
+    & .text-button-icon,
+    & .text-button-icon .svg-icon {
+      background-color: transparent;
+      color: inherit;
+      stroke: currentColor;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+
+      & .text-button-label,
+      & .text-button-icon,
+      & .text-button-icon .svg-icon {
+        background-color: transparent;
+        color: inherit;
+        stroke: currentColor;
+      }
+    }
+
+    &.is-active:hover,
+    &.has-active-menu:hover {
+      background-color: var(--color-accent-1);
+      color:            var(--OT-color-on-accent-1);
+    }
   }
 }
 
 /* -------------------- ligne d’en-tête -------------------- */
-.bases-table-header-label {
-	font-style:		italic;
-}
-@media (hover: hover) {
-  .bases-td:hover .bases-table-header,
-  .bases-td.mod-implicit:hover .bases-table-header {
-    color:      var(--OT-color-on-accent-1);
-    background: var(--color-accent-1);
-  }
 
-  .bases-table-header-label,
-  .bases-table-header-sort {
-    color:      inherit;
-    background: inherit;
+.bases-table-header-label {
+  font-style: italic;
+}
+
+@media (hover: hover) {
+  .bases-td,
+  .bases-td.mod-implicit {
+    &:hover .bases-table-header {
+      color:      var(--OT-color-on-accent-1);
+      background: var(--color-accent-1);
+
+      & .bases-table-header-label,
+      & .bases-table-header-sort {
+        color:      inherit;
+        background: inherit;
+      }
+    }
   }
 }
 
 /* taille du texte des multi-select-pill alignée sur la table */
-.bases-view .multi-select-pill,
-.bases-view .multi-select-pill .internal-link,
-.bases-view .multi-select-pill-content {
-  font-size: var(--bases-table-font-size);
+.bases-view {
+  & .multi-select-pill,
+  & .multi-select-pill .internal-link,
+  & .multi-select-pill-content {
+    font-size: var(--bases-table-font-size);
+  }
 }
-
 
 /* -------------------- Cartes Board -------------------- */
-.board-card .card-prop.clickable {
-  text-decoration: none;
-}
-.board-card .file-name {
-  font-weight: inherit;
-  font-size: var(--font-ui-small);
+
+.board-card {
+  & .card-prop.clickable {
+    text-decoration: none;
+  }
+
+  & .file-name {
+    font-weight: inherit;
+    font-size:   var(--font-ui-small);
+  }
 }
 
 /* -------------------- ↑ Bases ↑ -------------------- */
@@ -7518,6 +7548,77 @@ select {
     background-color: var(--OT-button-background-hover);
   }
 }
+/* ----— Text-icon buttons — harmonisation globale */
+
+/* État normal : texte/icône accent‑3, fond transparent */
+.text-icon-button {
+  color:            var(--OT-color-on-accent-3);
+  background-color: transparent;
+
+  & .text-button-icon,
+  & .text-button-label {
+    color:            inherit;
+    background-color: transparent;
+
+    & .svg-icon {
+      stroke: currentColor;
+    }
+  }
+
+  /* État actif (is-active / has-active-menu) : accent‑2 */
+  &.is-active,
+  &.has-active-menu {
+    color:            var(--OT-color-on-accent-2);
+    background-color: var(--color-accent-2);
+
+    & .text-button-icon,
+    & .text-button-label {
+      color:            inherit;
+      background-color: transparent;
+
+      & .svg-icon {
+        stroke: currentColor;
+      }
+    }
+  }
+}
+
+@media (hover: hover) {
+  .text-icon-button {
+    /* Hover générique : accent‑1 */
+    &:hover {
+      color:            var(--OT-color-on-accent-1);
+      background-color: var(--color-accent-1);
+
+      & .text-button-icon,
+      & .text-button-label {
+        color:            inherit;
+        background-color: transparent;
+
+        & .svg-icon {
+          stroke: currentColor;
+        }
+      }
+    }
+
+    /* Actif + hover : on reste en accent‑1 (comme pour Bases) */
+    &.is-active:hover,
+    &.has-active-menu:hover {
+      color:            var(--OT-color-on-accent-1);
+      background-color: var(--color-accent-1);
+
+      & .text-button-icon,
+      & .text-button-label {
+        color:            inherit;
+        background-color: transparent;
+
+        & .svg-icon {
+          stroke: currentColor;
+        }
+      }
+    }
+  }
+}
 /* -------------------- ↑ Boutons ↑ -------------------- */
 
 /* Bookmark		OpSpl30a --------------------	Combobox / dropdown buttons – ajustements généraux + Bases */
@@ -7545,6 +7646,136 @@ select {
 .combobox-button.bases-sort-direction:hover .combobox-button-chevron .svg-icon,
 .combobox-button.bases-sort-direction:hover .combobox-clear-button .svg-icon {
   stroke: var(--OT-color-on-accent-1);
+}
+/* Combobox dans les rangs de Bases – hover sur la ligne */
+@media (hover: hover) {
+  .input-row-content {
+    &:hover {
+      & > .combobox-button {
+        color:            var(--OT-color-on-accent-1);
+        background-color: var(--color-accent-1);
+
+        & .combobox-button-label,
+        & .combobox-button-icon,
+        & .combobox-clear-button,
+        & .combobox-button-chevron {
+          color:            inherit;
+          background-color: transparent;
+        }
+
+        /* SVG de l’icône de type, du clear et du chevron */
+        & .svg-icon {
+          stroke: currentColor;
+          /*fill:   currentColor;*/
+        }
+      }
+    }
+  }
+}
+/* Bookmark OpSpl30a — Combobox dropdown buttons — ajustements Bases */
+
+/* 1. Placeholder des combobox Bases – état normal */
+.combobox-button.bases-sort-property,
+.combobox-button.bases-sort-direction {
+  & .combobox-button-label:empty::before {
+    /* placeholder cohérent avec ton état normal accent‑3 */
+    color: var(--OT-color-on-accent-3);
+  }
+}
+
+/* 2. Hover générique des combobox Bases (bouton lui‑même) */
+@media (hover: hover) {
+  .combobox-button.bases-sort-property,
+  .combobox-button.bases-sort-direction {
+    &:hover {
+      color:            var(--OT-color-on-accent-1);
+      background-color: var(--color-accent-1);
+
+      & .combobox-button-label,
+      & .combobox-button-icon,
+      & .combobox-clear-button,
+      & .combobox-button-chevron {
+        color:            inherit;
+        background-color: transparent;
+      }
+
+      /* placeholder quand le label est vide */
+      & .combobox-button-label:empty::before {
+        color: inherit;
+      }
+
+      /* tracé des icônes (chevron + clear) */
+      & .svg-icon {
+        stroke: currentColor;
+      }
+    }
+  }
+}
+
+/* 3. Hover sur la rangée (input-row-content) qui contient un combobox */
+@media (hover: hover) {
+  .bases-toolbar-menu-form .input-row .input-row-content {
+    &:hover {
+      & > .combobox-button {
+        color:            var(--OT-color-on-accent-1);
+        background-color: var(--color-accent-1);
+
+        & .combobox-button-label,
+        & .combobox-button-icon,
+        & .combobox-clear-button,
+        & .combobox-button-chevron {
+          color:            inherit;
+          background-color: transparent;
+        }
+
+        /* placeholder dans ce contexte aussi */
+        & .combobox-button-label:empty::before {
+          color: inherit;
+        }
+
+        & .svg-icon {
+          stroke: currentColor;
+        }
+      }
+    }
+  }
+}
+/* 1. Placeholder des combobox Bases – état normal */
+.combobox-button.bases-sort-property,
+.combobox-button.bases-sort-direction,
+.combobox-button.filter-property-select {
+  & .combobox-button-label:empty::before {
+    color: var(--OT-color-on-accent-3);
+  }
+}
+
+/* 2. Hover générique des combobox Bases (bouton lui‑même) */
+@media (hover: hover) {
+  .combobox-button.bases-sort-property,
+  .combobox-button.bases-sort-direction,
+  .combobox-button.filter-property-select {
+    &:hover {
+      color:            var(--OT-color-on-accent-1);
+      background-color: var(--color-accent-1);
+
+      & .combobox-button-label,
+      & .combobox-button-icon,
+      & .combobox-clear-button,
+      & .combobox-button-chevron {
+        color:            inherit;
+        background-color: transparent;
+      }
+
+      & .combobox-button-label:empty::before {
+        color: inherit;
+      }
+
+      /* chevron, clear ET icône de gauche suivent */
+      & .svg-icon {
+        stroke: currentColor;
+      }
+    }
+  }
 }
 /* ---------- ↑ Comboboxes ↑ ----------*/
 
