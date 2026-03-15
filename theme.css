@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-15
+	- slightly widened character spacing for the American Typewriter font
 2026-03-12
 	- in depth correction of hovering in bases and some other buttons
 2026-03-11
@@ -5124,7 +5126,7 @@ body.edit-font-Default {
 /* American Typewriter */
 body.edit-font-AmericanTypewriter {
 	--OT-editMode-font-family: "American Typewriter", "ITC American Typewriter", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0.02em;
+	--OT-editMode-letter-spacing: 0.03em;
 }
 
 /* Candara */
