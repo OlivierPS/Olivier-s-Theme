@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-18
+	- improved the visual appearance of the document search container
 2026-03-15
 	- slightly widened character spacing for the American Typewriter font
 2026-03-12
@@ -7272,6 +7274,40 @@ body.is-focused
 /* Bookmark		OpSpl29 —————————————————————————————— Container for document search/replace UI —————————————————————————————— */
 .mod-active .document-search-container {
 	background-color:	var(--background-secondary);
+}
+/* Base commune : comportement fluide, centrage */
+.document-search-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--size-4-3) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4-2);
+  background-color: var(--background-primary);
+}
+
+/* 1) Mode lecture (Preview) : aligné sur la largeur de lecture */
+.markdown-reading-view .document-search-container,
+.markdown-preview-view .document-search-container {
+  font-size: var(--OT-readingMode-text-size);          /* même base que le texte de lecture */
+  max-width: var(--OT-readingMode-line-width);         /* même longueur de ligne que la colonne */
+}
+
+/* 2) Modes d’édition (Live + Raw) : aligné sur la largeur d’édition */
+.markdown-source-view.mod-cm6 .document-search-container {
+  font-size: var(--OT-editMode-text-size);            /* même base que le texte d’édition */
+  max-width: var(--OT-editMode-line-width);           /* longueur de ligne d’édition */
+}
+
+/* Les “lignes” internes remplissent le container, dans tous les modes */
+.document-search,
+.document-replace {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 var(--size-4-3);
+  gap: var(--size-4-2);
+  box-sizing: border-box;
 }
 
 
