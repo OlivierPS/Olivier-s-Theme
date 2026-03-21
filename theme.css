@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-03-21
 	- added a shadow behind blockquotes + rendered images shadows lighter
+	- improved the contextual vertical spacing of headers
 2026-03-18
 	- improved the visual appearance of the document search container
 2026-03-15
@@ -8452,30 +8453,35 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 
 
 /*	Bookmark	OpSpl40	—————————————————————————————— Contextual typography —————————————————————————————— */
-/*	Ceci fonctionne grâce au plugin “Contextual Typography”.
-	Il est donc indispensable de le charger et de l’activer!	*/
-/* p suivant un h4, un h5 ou un h6: on supprime l’espace au-dessus	*/
-.markdown-preview-view div[data-tag-name="h4"] + div > p,
-.markdown-preview-view div[data-tag-name="h5"] + div > p,
-.markdown-preview-view div[data-tag-name="h6"] + div > p {
-	margin-top: 0rem;
+/* =========================================
+   Contextual Typography – Headings spacing
+   (Preview mode, when data-tag-name is presented by the plugin)
+   ==========================================*/
+
+/* 1. H1 "au milieu de la fiche" :
+   gros espace quand H1 suit certains blocs (hr, p, ul, ol) */
+
+.markdown-preview-view div[data-tag-name="hr"] + div[data-tag-name="h1"] > h1,
+.markdown-preview-view div[data-tag-name="p"]  + div[data-tag-name="h1"] > h1,
+.markdown-preview-view div[data-tag-name="ul"] + div[data-tag-name="h1"] > h1,
+.markdown-preview-view div[data-tag-name="ol"] + div[data-tag-name="h1"] > h1 {
+	margin-block-start: 3rem;
 }
 
-/* Heading 1 au milieu de la fiche, c’est-à-dire suivant
-	une ligne horizontale, ou un paragraphe, ou une liste non-numéroté,
-	ou une liste numérotée */
-.markdown-preview-view div[data-tag-name="hr"] + div > h1,
-.markdown-preview-view div[data-tag-name="p"] + div > h1,
-.markdown-preview-view div[data-tag-name="ul"] + div > h1,
-.markdown-preview-view div[data-tag-name="ol"] + div > h1 {
-	--heading-spacing:	3rem;
+/* 2. H2 et H3 collés au heading parent (H1 ou H2) */
+
+.markdown-preview-view div[data-tag-name="h1"] + div[data-tag-name="h2"] > h2,
+.markdown-preview-view div[data-tag-name="h1"] + div[data-tag-name="h3"] > h3,
+.markdown-preview-view div[data-tag-name="h2"] + div[data-tag-name="h3"] > h3 {
+	margin-block-start: 0rem;
 }
 
-/* Titres de niveau 2 ou 3 suivant immédiatement un titre de niveau supérieur */
-.markdown-preview-view div[data-tag-name="h1"] + div > h2,
-.markdown-preview-view div[data-tag-name="h1"] + div > h3,
-.markdown-preview-view div[data-tag-name="h2"] + div > h3 {
-	margin-top: 0rem;
+/* 3. Paragraphe collé sous les petits headings (H4–H6) */
+
+.markdown-preview-view div[data-tag-name="h4"] + div[data-tag-name="p"] > p,
+.markdown-preview-view div[data-tag-name="h5"] + div[data-tag-name="p"] > p,
+.markdown-preview-view div[data-tag-name="h6"] + div[data-tag-name="p"] > p {
+	margin-block-start: 0rem;
 }
 /* -------------------- ↑ Contextual typography ↑ -------------------- */
 
@@ -8588,7 +8594,7 @@ body.headings-scaling-major-third {
 .markdown-preview-section h1,
 markdown-rendered h1 {
 	letter-spacing:		0.01em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
-	margin-block-end:		var(--OT-space-below-h1);
+	margin-block-end:	var(--OT-space-below-h1);
 }
 
 
@@ -8598,14 +8604,14 @@ markdown-rendered h2 {
 	letter-spacing:		0.02em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
 	line-height:		1.0em;		/* vu qu’on est en petites capitales, cela n’a pas de sens que les lignes soient plus écartées que tant */
 	--heading-spacing:	1.618em;
-	margin-block-end:		var(--OT-space-below-h2);
+	margin-block-end:	var(--OT-space-below-h2);
 }
 
 .cm-header-3,
 .markdown-preview-section h3,
 markdown-rendered h3 {
 	--heading-spacing:	1.618em;
-	margin-block-end:		var(--OT-space-below-h3);
+	margin-block-end:	var(--OT-space-below-h3);
 }
 
 /* === Adjustable values === */
