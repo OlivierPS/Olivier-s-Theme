@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-21
+	- added a shadow behind blockquotes + rendered images shadows lighter
 2026-03-18
 	- improved the visual appearance of the document search container
 2026-03-15
@@ -8250,11 +8252,11 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 }
 
 .images-with-shadow img {
-	box-shadow: 6px 6px 3px grey;
+	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.15);
 }
 
 .images-with-frame-and-shadow img {
-	box-shadow: 6px 6px 3px grey;
+	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.15);
 	border: 1px solid var(--text-normal);
 	padding: 2px;
 }
@@ -8410,6 +8412,7 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 	margin: 			1em 2em;
 	padding:			0.5rem 0.75rem;
 	position:			relative;
+	box-shadow: 		6px 6px 6px rgba(0, 0, 0, 0.1);
 }
 
 .markdown-rendered blockquote:after {
