@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-03-22
 	- introduced a variable-based system to control heading parameters consistently across all modes
+	- added CSS classes and settings to mimic the visual appearance of the Bear editor
 2026-03-21
 	- added a shadow behind blockquotes + rendered images shadows lighter
 	- improved the contextual vertical spacing of headers
@@ -8458,6 +8459,15 @@ body.headings-scaling-OpSpl {
   --h5-size: 1.067em;
   --h6-size: 1.000em;
 }
+/* Bear-like heading scale */
+body.headings-scaling-Bear {
+	--h1-size: 1.75em;
+	--h2-size: 1.45em;
+	--h3-size: 1.25em;
+	--h4-size: 1.08em;
+	--h5-size: 1.02em;
+	--h6-size: 1.00em;
+}
 body.headings-scaling-none {
   --h1-size: var(--font-text-size);
   --h2-size: var(--font-text-size);
@@ -8520,6 +8530,40 @@ body.headings-scaling-major-third {
 }
 
 /* === Headings Preview & Live Preview: vertical spacing piloté par OT === */
+
+/* Bear-like vertical rhythm for headings and paragraphs */
+body.OT-bear-vertical-rythm {
+	/*--p-spacing:		0;*/
+  /* Preview headings spacing */
+  --OT-space-above-h1: 1.8rem;
+  --OT-space-above-h2: 1.3rem;
+  --OT-space-above-h3: 1.0rem;
+  --OT-space-above-h4: 0.7rem;
+  --OT-space-above-h5: 0.6rem;
+  --OT-space-above-h6: 0.6rem;
+
+  --OT-space-below-h1: 0.9rem;
+  --OT-space-below-h2: 0.7rem;
+  --OT-space-below-h3: 0.55rem;
+  --OT-space-below-h4: 0.4rem;
+  --OT-space-below-h5: 0.35rem;
+  --OT-space-below-h6: 0.3rem;
+
+  /* Live Preview / Edit headings spacing */
+  --OT-edit-heading-h1-space-above: 1.6em;
+  --OT-edit-heading-h2-space-above: 1.2em;
+  --OT-edit-heading-h3-space-above: 0.95em;
+  --OT-edit-heading-h4-space-above: 0.7em;
+  --OT-edit-heading-h5-space-above: 0.6em;
+  --OT-edit-heading-h6-space-above: 0.6em;
+
+  --OT-edit-heading-h1-space-below: var(--OT-space-below-h1);
+  --OT-edit-heading-h2-space-below: var(--OT-space-below-h2);
+  --OT-edit-heading-h3-space-below: var(--OT-space-below-h3);
+  --OT-edit-heading-h4-space-below: var(--OT-space-below-h4);
+  --OT-edit-heading-h5-space-below: var(--OT-space-below-h5);
+  --OT-edit-heading-h6-space-below: var(--OT-space-below-h6);
+}
 
 /* 0. Base : supprimer la marge haute par défaut d’Obsidian */
 .markdown-preview-view h1,
@@ -13218,6 +13262,10 @@ settings:
 				label.fr:	"Aucun"
 				value:		headings-scaling-none
 			-
+				label:		"Bear style"
+				label.fr:	"dans le style de Bear"
+				value:		headings-scaling-Bear
+			-
 				label:		"Minor second"
 				label.fr:	"Seconde mineure"
 				value:		headings-scaling-minor-second
@@ -13240,6 +13288,14 @@ settings:
 				label:		"Major third"
 				label.fr:	"Tierce majeure"
 				value:		headings-scaling-major-third
+
+	-
+		id:				"OT-bear-vertical-rythm"
+		title:			"Bear-style vertical rythm"
+		title.fr:		"Rythme vertical dans le style de Bear"
+		type:			class-toggle
+		default:		false
+		addCommand:		true
 
 	-
 		id:				"OT-lists-font-stepdown"
