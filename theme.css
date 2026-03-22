@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-03-22
 	- introduced a variable-based system to control heading parameters consistently across all modes
 	- added CSS classes and settings to mimic the visual appearance of the Bear editor
+	- added 2 fonts for Editing (Bear Sans + Avenir Next)
 2026-03-21
 	- added a shadow behind blockquotes + rendered images shadows lighter
 	- improved the contextual vertical spacing of headers
@@ -449,8 +450,8 @@ body {
 	--OT-clickable-icon-in-header:					var(--icon-color);
 	--OT-clickable-icon-in-tab-header:				var(--icon-color);
 
-	--OT-editMode-font:								var(--font-text);
-	--OT-edit-font-family:						var(--OT-editMode-font),
+	--OT-edit-font:								var(--font-text);
+	--OT-edit-font-family:						var(--OT-edit-font),
     												"Comic Sans MS",
 													var(--font-default);
 	--OT-edit-text-size:						18px;
@@ -5180,7 +5181,7 @@ body {
 
 /* Valeurs par défaut (aucune classe spéciale) */
 body {
-	--OT-edit-font-family:		var(--OT-editMode-font), Courier, var(--font-default);
+	--OT-edit-font-family:		var(--OT-edit-font), Courier, var(--font-default);
 	--OT-edit-letter-spacing:	0em;
 }
 
@@ -5194,6 +5195,18 @@ body.edit-font-Default {
 body.edit-font-AmericanTypewriter {
 	--OT-edit-font-family: "American Typewriter", "ITC American Typewriter", Courier, var(--font-default);
 	--OT-edit-letter-spacing: 0.03em;
+}
+
+/* Avenir Next */
+body.edit-font-Avenir-Next {
+	--OT-edit-font-family: "Avenir Next", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* Bear Sans */
+body.edit-font-Bear-Sans {
+	--OT-edit-font-family: "Bear Sans UI", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Candara */
@@ -5587,9 +5600,9 @@ body.edit-font-Verdana {
   font-size:    var(--OT-edit-text-size);
   line-height:  var(--OT-edit-line-height);
 }
-body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-sizer,
-body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-content,
-body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
+body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-sizer,
+body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-content,
+body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
     line-height:	normal;
 }
 /* EDIT mode : largeur pleine quand readable line length est OFF, ou note wide-page */
@@ -14823,7 +14836,7 @@ settings:
 			title:		Line length [em]
 			title.fr:	Longueur de la ligne [em]
 			type:		variable-number
-			default:	40
+			default:	46
 			format:		em
 	-
 			id:				OT-readingMode-tableText-percent
@@ -14908,7 +14921,7 @@ settings:
 		level:			2
 		collapsed:		true
 	-
-			id:				OT-editMode-font
+			id:				OT-edit-font
 			title:			Typeface
 			title.fr:		Police d’écriture
 			description:	"Default” chooses the same font as for reading. Reading font is chosen in the Appearance panel of the Settings."
@@ -14923,6 +14936,12 @@ settings:
 				-
 					label:		American Typewriter
 					value:		edit-font-AmericanTypewriter
+				-
+					label:		Avenir Next
+					value:		edit-font-Avenir-Next
+				-
+					label:		Bear Sans
+					value:		edit-font-Bear-Sans
 				-
 					label:		Candara
 					value:		edit-font-Candara
@@ -15092,14 +15111,14 @@ settings:
 					label:		Verdana
 					value:		edit-font-Verdana
 	-
-			id:			OT-editMode-text-size
+			id:			OT-edit-text-size
 			title:		Body text size [px]
 			title.fr:	Taille des caractères [px]
 			type:		variable-number
 			default:	18
 			format:		px
 	-
-			id:				OT-editMode-natural-line-height
+			id:				OT-edit-natural-line-height
 			title:			"Natural line height for the chosen font (Edit mode)"
 			title.fr:		"Interligne naturel pour la fonte choisie (en écriture)"
 			description:	When ON, Editing mode uses more or less the line-height intended by the font designer and the following value is ignored.
@@ -15109,14 +15128,14 @@ settings:
 			addCommand:		true
 
 	-
-			id:			OT-editMode-line-height
+			id:			OT-edit-line-height
 			title:		Line height [em]
 			title.fr:	Interligne [em]
 			type:		variable-number
 			default:	1.35
 			format:		em
 	-
-			id:				OT-editMode-line-width
+			id:				OT-edit-line-width
 			title:			Line length [em]
 			title.fr:		Longueur de la ligne [em]
 			description:	By default, you get longer lines than plain Obsidian.
@@ -15125,7 +15144,7 @@ settings:
 			default:		46
 			format:			em
 	-
-			id:				OT-editMode-tableText-percent
+			id:				OT-edit-tableText-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
 			title.fr:		Taille des caractères dans les tables, en pourcents du texte normal. 100 = même taille
 			description:	It’s generally practical to have a smaller text size inside table cells.
