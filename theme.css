@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-22
+	- introduced a variable-based system to control heading parameters consistently across all modes
 2026-03-21
 	- added a shadow behind blockquotes + rendered images shadows lighter
 	- improved the contextual vertical spacing of headers
@@ -149,7 +151,6 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl18:	la fonte du mode d’édition
 						la fonte “monospaced”
 			OpSpl19:	typography of the EDIT mode: font size, line length and line height
-			OpSpl20:	les headings en mode d’édition
 			OpSpl21:	autres ajustements:
 							l’espace au-dessus du texte dans les panneaux d’édition
 							les crochets des “tasks”
@@ -192,6 +193,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl48		status bar
 			OpSpl49		metadata
 			OpSpl49a	file navigation (tree items, etc.)
+			OpSpl20:	les headings en mode d’édition
 			OpSpl50		Metadata Menu plugin
 			OpSpl51		canvas
 			OpSpl52		<kbd>
@@ -445,15 +447,35 @@ body {
 	--OT-callout-gallery-gap:						5px;
 	--OT-clickable-icon-in-header:					var(--icon-color);
 	--OT-clickable-icon-in-tab-header:				var(--icon-color);
+
 	--OT-editMode-font:								var(--font-text);
-	--OT-editMode-font-family:						var(--OT-editMode-font),
+	--OT-edit-font-family:						var(--OT-editMode-font),
     												"Comic Sans MS",
 													var(--font-default);
-	--OT-editMode-text-size:						18px;
-	--OT-editMode-line-width:						46em;
-	--OT-editMode-line-height:						1.35em;
-	--OT-editMode-letter-spacing:					0em;
-	--OT-editMode-tableText-percent:				90;
+	--OT-edit-text-size:						18px;
+	--OT-edit-line-width:						46em;
+	--OT-edit-line-height:						1.35em;
+	--OT-edit-letter-spacing:					0em;
+	--OT-edit-table-text-percent:				90;
+	--OT-edit-heading-h1-space-above: 				1.8em;
+	--OT-edit-heading-h2-space-above: 				1.4em;
+	--OT-edit-heading-h3-space-above: 				1.1em;
+	--OT-edit-heading-h4-space-above: 				0.9em;
+	--OT-edit-heading-h5-space-above: 				0.8em;
+	--OT-edit-heading-h6-space-above: 				0.7em;
+  	--OT-edit-heading-h1-space-below: 				var(--OT-space-below-h1);
+  	--OT-edit-heading-h2-space-below: 				var(--OT-space-below-h2);
+  	--OT-edit-heading-h3-space-below: 				var(--OT-space-below-h3);
+  	--OT-edit-heading-h4-space-below: 				var(--OT-space-below-h4);
+  	--OT-edit-heading-h5-space-below: 				var(--OT-space-below-h5);
+  	--OT-edit-heading-h6-space-below: 				var(--OT-space-below-h6);
+   	--OT-edit-heading-h1-size-LP:					var(--h1-size);
+   	--OT-edit-heading-h2-size-LP:					var(--h2-size);
+   	--OT-edit-heading-h3-size-LP:					var(--h3-size);
+   	--OT-edit-heading-h4-size-LP:					var(--h4-size);
+   	--OT-edit-heading-h5-size-LP:					var(--h5-size);
+   	--OT-edit-heading-h6-size-LP:					var(--h6-size);
+
 	--OT-img-max-height-preview:					550px;
 	--OT-img-max-height-live:						10rem;
 	--OT-kanban-font-size:							16px;
@@ -489,7 +511,7 @@ body {
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-status-bar-padding:						6px;
 	--OT-syntax-markers:							var(--color-base-50);
-	--OT-table-line-height:							calc(var(--OT-editMode-line-height) * 1em);
+	--OT-table-line-height:							calc(var(--OT-edit-line-height) * 1em);
 	--OT-tab-background-active-hover:				var(--color-accent-1);
 	--OT-tree-item-flair-background:				var(--color-base-20);
 	--OT-tree-item-flair-color:						var(--OT-nav-item-muted);
@@ -511,7 +533,7 @@ body {
 	--background-primary-alt:			hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
 
 	--bases-table-cell-background-disabled:	hsl(var(--OT-theme-h), 15%, 80%);
-	--bases-table-font-size:				calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+	--bases-table-font-size:				calc(var(--OT-edit-text-size) * var(--OT-edit-table-text-percent) / 100);
 	--bases-table-group-background:			var(--OT-table-alt-background);
 	--bases-table-header-background:		var(--table-header-background);
 	--bases-table-header-color:				var(--color-base-100);
@@ -599,6 +621,27 @@ body {
 /*	--footnote-input-background:	cyan;	var(--metadata-input-background);	*/
 
 	--graph-line:		var(--color-base-100);
+
+	--h1-size:		clamp(2.027em, calc(0.4rem + 5.1vw),	2.986em);
+	--h2-size:		clamp(1.802em, calc(0.6rem + 3.7vw),	2.488em);
+	--h3-size:		clamp(1.602em, calc(0.8rem + 2.5vw),	2.074em);
+	--h4-size:		clamp(1.424em, calc(1rem + 3vw), 		1.728em);
+	--h5-size:		clamp(1.266em, calc(1rem + 3vw), 		1.44em);
+	--h6-size:		clamp(1.125em, calc(1rem + 3vw), 		1.2em);
+
+	--h1-variant:	normal;
+	--h2-variant:	small-caps;
+	--h3-variant:	normal;
+	--h4-variant:	normal;
+	--h5-variant:	normal;
+	--h6-variant:	normal;
+
+	--h1-style:		normal;
+	--h2-style:		normal;
+	--h3-style:		italic;
+	--h4-style:		italic;
+	--h5-style:		italic;
+	--h6-style:		italic;
 
 	--header-height:	2.4em;			/*	2026‑02‑06: raise header height for more legible tab bars.	*/
 
@@ -5118,356 +5161,356 @@ body {
 
 /* Valeurs par défaut (aucune classe spéciale) */
 body {
-	--OT-editMode-font-family:		var(--OT-editMode-font), Courier, var(--font-default);
-	--OT-editMode-letter-spacing:	0em;
+	--OT-edit-font-family:		var(--OT-editMode-font), Courier, var(--font-default);
+	--OT-edit-letter-spacing:	0em;
 }
 
 /* Default = même fonte qu’en lecture */
 body.edit-font-Default {
-	--OT-editMode-font-family: var(--font-text), Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: var(--font-text), Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* American Typewriter */
 body.edit-font-AmericanTypewriter {
-	--OT-editMode-font-family: "American Typewriter", "ITC American Typewriter", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0.03em;
+	--OT-edit-font-family: "American Typewriter", "ITC American Typewriter", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0.03em;
 }
 
 /* Candara */
 body.edit-font-Candara {
-	--OT-editMode-font-family: Candara, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Candara, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Cambria */
 body.edit-font-Cambria {
-	--OT-editMode-font-family: Cambria, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Cambria, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Cascadia Mono */
 body.edit-font-Cascadia-Mono {
-	--OT-editMode-font-family: "Cascadia Mono", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Cascadia Mono", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Courier – exception : fallback Comic Sans MS */
 body.edit-font-Courier {
-	--OT-editMode-font-family: Courier, "Comic Sans MS", var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Courier, "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* DejaVu Sans */
 body.edit-font-DejaVu-Sans {
-	--OT-editMode-font-family: "DejaVu Sans", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "DejaVu Sans", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Depot Condensed */
 body.edit-font-Depot-Condensed {
-	--OT-editMode-font-family: "Depot New Condensed", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Depot New Condensed", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Dico Mono */
 body.edit-font-Dico-Mono {
-	--OT-editMode-font-family: "Dico Mono", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Dico Mono", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* DM Sans */
 body.edit-font-DM-Sans {
-	--OT-editMode-font-family: "DM Sans", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "DM Sans", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Etica Mono */
 body.edit-font-Etica-Mono {
-	--OT-editMode-font-family: "LFT Etica Mono", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "LFT Etica Mono", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Georgia */
 body.edit-font-Georgia {
-	--OT-editMode-font-family: Georgia, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Georgia, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* iA Writer Mono */
 body.edit-font-iA-Writer-Mono {
-	--OT-editMode-font-family: "iA Writer Mono S", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "iA Writer Mono S", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* iA Writer Duo */
 body.edit-font-iA-Writer-Duo {
-	--OT-editMode-font-family: "iA Writer Duospace", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "iA Writer Duospace", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* iA Writer Quattro */
 body.edit-font-iA-Writer-Quattro {
-	--OT-editMode-font-family: "iA Writer Quattro S", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "iA Writer Quattro S", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* IBM Plex Sans */
 body.edit-font-IBM-Plex-Sans {
-	--OT-editMode-font-family: "IBM Plex Sans", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "IBM Plex Sans", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* IBM Plex Mono */
 body.edit-font-IBM-Plex-Mono {
-	--OT-editMode-font-family: "IBM Plex Mono", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "IBM Plex Mono", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* IBM Plex Serif */
 body.edit-font-IBM-Plex-Serif {
-	--OT-editMode-font-family: "IBM Plex Serif", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "IBM Plex Serif", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Inter */
 body.edit-font-Inter {
-	--OT-editMode-font-family: Inter, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Inter, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* JetBrains Mono */
 body.edit-font-JetBrains-Mono {
-	--OT-editMode-font-family: "JetBrains Mono", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "JetBrains Mono", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Lato */
 body.edit-font-Lato {
-	--OT-editMode-font-family: Lato, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Lato, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Lucida Sans */
 body.edit-font-Lucida-Sans {
-	--OT-editMode-font-family: "Lucida Sans Std", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Lucida Sans Std", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Lucida Typewriter */
 body.edit-font-Lucida-Typewriter {
-	--OT-editMode-font-family: "Lucida Typewriter Std", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0.01em;
+	--OT-edit-font-family: "Lucida Typewriter Std", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0.01em;
 }
 
 /* Maison Neue */
 body.edit-font-Maison-Neue {
-	--OT-editMode-font-family: "Maison Neue", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Maison Neue", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Maison Neue Mono */
 body.edit-font-Maison-Neue-Mono {
-	--OT-editMode-font-family: "Maison Neue Mono", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Maison Neue Mono", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Menlo */
 body.edit-font-Menlo {
-	--OT-editMode-font-family: Menlo, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Menlo, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Muli */
 body.edit-font-Muli {
-	--OT-editMode-font-family: Muli, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Muli, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Myriad */
 body.edit-font-Myriad {
-	--OT-editMode-font-family: "Myriad Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Myriad Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Nexus Typewriter */
 body.edit-font-Nexus-Typewriter {
-	--OT-editMode-font-family: "Nexus Typewriter Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0.015em;
+	--OT-edit-font-family: "Nexus Typewriter Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0.015em;
 }
 
 /* Norms */
 body.edit-font-Norms {
-	--OT-editMode-font-family: "TT Norms", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "TT Norms", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Norms Condensed */
 body.edit-font-Norms-Condensed {
-	--OT-editMode-font-family: "TT Norms Std Condensed", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "TT Norms Std Condensed", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Noto Sans */
 body.edit-font-Noto-Sans {
-	--OT-editMode-font-family: "Noto Sans", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Noto Sans", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Office Code */
 body.edit-font-Office-Code {
-	--OT-editMode-font-family: "Office Code Pro D", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Office Code Pro D", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Officina Sans */
 body.edit-font-Officina-Sans {
-	--OT-editMode-font-family: "ITC Officina Sans Std", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "ITC Officina Sans Std", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Officina Sans Serif */
 body.edit-font-Officina-Sans-Serif {
-	--OT-editMode-font-family: "ITC Officina Serif Std", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "ITC Officina Serif Std", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Overpass */
 body.edit-font-Overpass {
-	--OT-editMode-font-family: Overpass, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Overpass, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Palatino Sans */
 body.edit-font-Palatino-Sans {
-	--OT-editMode-font-family: "Palatino Sans Com", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Palatino Sans Com", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Palatino Sans Informal */
 body.edit-font-Palatino-Sans-Informal {
-	--OT-editMode-font-family: "Palatino Sans Informal LT Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Palatino Sans Informal LT Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* PT Sans */
 body.edit-font-PT-Sans {
-	--OT-editMode-font-family: "PT Sans", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "PT Sans", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Questa */
 body.edit-font-Questa {
-	--OT-editMode-font-family: Questa, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Questa, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Questa Sans */
 body.edit-font-Questa-Sans {
-	--OT-editMode-font-family: "Questa Sans", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Questa Sans", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Questa Slab */
 body.edit-font-Questa-Slab {
-	--OT-editMode-font-family: "Questa Slab", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Questa Slab", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Roboto */
 body.edit-font-Roboto {
-	--OT-editMode-font-family: Roboto, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Roboto, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Rockwell */
 body.edit-font-Rockwell {
-	--OT-editMode-font-family: Rockwell, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Rockwell, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Sans serif de base */
 body.edit-font-sans-serif {
-	--OT-editMode-font-family: sans-serif, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: sans-serif, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Siseriff */
 body.edit-font-Siseriff {
-	--OT-editMode-font-family: "Siseriff LT Std", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Siseriff LT Std", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Space Mono */
 body.edit-font-Space-Mono {
-	--OT-editMode-font-family: "Space Mono", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Space Mono", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Humanist */
 body.edit-font-Stone-Humanist {
-	--OT-editMode-font-family: "Stone Humanist ITC Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Stone Humanist ITC Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Informal */
 body.edit-font-Stone-Informal {
-	--OT-editMode-font-family: "Stone Informal ITC Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Stone Informal ITC Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Sans II */
 body.edit-font-Stone-Sans-II {
-	--OT-editMode-font-family: "Stone Sans II ITC Com", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Stone Sans II ITC Com", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Serif */
 body.edit-font-Stone-Serif {
-	--OT-editMode-font-family: "Stone Serif ITC Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Stone Serif ITC Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Source Code */
 body.edit-font-Source-Code {
-	--OT-editMode-font-family: "Source Code Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Source Code Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Source Sans 3 */
 body.edit-font-Source-Sans-3 {
-	--OT-editMode-font-family: "Source Sans 3", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Source Sans 3", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Source Serif */
 body.edit-font-Source-Serif {
-	--OT-editMode-font-family: "Source Serif Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Source Serif Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Tisa */
 body.edit-font-Tisa {
-	--OT-editMode-font-family: "Tisa Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Tisa Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Tisa Sans */
 body.edit-font-Tisa-Sans {
-	--OT-editMode-font-family: "Tisa Sans Pro", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Tisa Sans Pro", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Trebuchet */
 body.edit-font-Trebuchet {
-	--OT-editMode-font-family: "Trebuchet MS", Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: "Trebuchet MS", Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Verdana */
 body.edit-font-Verdana {
-	--OT-editMode-font-family: Verdana, Courier, var(--font-default);
-	--OT-editMode-letter-spacing: 0em;
+	--OT-edit-font-family: Verdana, Courier, var(--font-default);
+	--OT-edit-letter-spacing: 0em;
 }
 
 /* Application dans l’éditeur */
@@ -5484,13 +5527,12 @@ body.edit-font-Verdana {
 .markdown-source-view.mod-cm6 .cm-scroller,
 .markdown-source-view,
 .cm-s-obsidian {
-	font-family: var(--OT-editMode-font-family);
-	font-size: var(--OT-editMode-text-size);
-	letter-spacing: var(--OT-editMode-letter-spacing);
+	font-family: var(--OT-edit-font-family);
+	font-size: var(--OT-edit-text-size);
+	letter-spacing: var(--OT-edit-letter-spacing);
 }
 .cm-line {
-	font-size: var(--OT-editMode-text-size);
-	letter-spacing: var(--OT-editMode-letter-spacing);
+	letter-spacing: var(--OT-edit-letter-spacing);
 }
 
 /* ---------- “monospaced” font ----------
@@ -5520,10 +5562,11 @@ body.edit-font-Verdana {
 /*	Bookmark	OpSpl19	—————————————————————————————— basic typography of the EDIT mode —————————————————————————————— */
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
-	max-width:		var(--OT-editMode-line-width);
-	font-size:		var(--OT-editMode-text-size);
-    line-height:	var(--OT-editMode-line-height);
+.markdown-source-view.mod-cm6.is-readable-line-width
+  .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row):not(.HyperMD-header) {
+  max-width:    var(--OT-edit-line-width);
+  font-size:    var(--OT-edit-text-size);
+  line-height:  var(--OT-edit-line-height);
 }
 body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-sizer,
 body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-content,
@@ -5556,113 +5599,6 @@ body.OT-editMode-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(
 	font-size: var(--font-ui-small) !important;
 }
 
-/*	Bookmark	OpSpl20	 —————————————————————————————— Headings, in Edit mode —————————————————————————————— */
-/*	pour simuler, en Edit mode, le blanc sous les H1 à H6
-.cm-s-obsidian .cm-line.HyperMD-header-1 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
-	--p-spacing-empty:		var(--OT-space-below-h1);
-}
-.cm-s-obsidian .cm-line.HyperMD-header-2 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
-	--p-spacing-empty:		var(--OT-space-below-h2);
-}
-.cm-s-obsidian .cm-line.HyperMD-header-3 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
-	--p-spacing-empty:		var(--OT-space-below-h3);
-}
-.cm-s-obsidian .cm-line.HyperMD-header-4 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
-	--p-spacing-empty:		var(--OT-space-below-h4);
-}
-.cm-s-obsidian .cm-line.HyperMD-header-5 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
-	--p-spacing-empty:		var(--OT-space-below-h5);
-}
-.cm-s-obsidian .cm-line.HyperMD-header-6 + .cm-line:not(.HyperMD-header):not(:has(>br:only-child)) {
-	--p-spacing-empty:		var(--OT-space-below-h6);
-}
-*/
-.cm-s-obsidian .cm-header-1,
-.cm-s-obsidian .cm-header-2,
-.cm-s-obsidian .cm-header-3,
-.cm-s-obsidian .cm-header-4,
-.cm-s-obsidian .cm-header-5,
-.cm-s-obsidian .cm-header-6,
-.cm-s-obsidian .HyperMD-header-1,
-.cm-s-obsidian .HyperMD-header-2,
-.cm-s-obsidian .HyperMD-header-3,
-.cm-s-obsidian .HyperMD-header-4,
-.cm-s-obsidian .HyperMD-header-5,
-.cm-s-obsidian .HyperMD-header-6 {
-    font-family:	var(--OT-editMode-font-family);
-    color:			inherit;
-    font-weight:	var(--font-bold);
-}
-/* pour la compatibilité avec le plugin Source Mode Styling */
-/* Fallback pour l’éditeur standard uniquement */
-.markdown-source-view.mod-cm6:not(.source-mode-raw) .cm-scroller {
-  font-family: var(--OT-editMode-font-family);
-}
-/* En mode RAW, laisser les titres et les listes hériter de la fonte du plugin */
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-1,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-2,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-3,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-4,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-5,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-6,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-1,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-2,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-3,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-4,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-5,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .HyperMD-header-6,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-line,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-1,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-2,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-3,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-4,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-5,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-6,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-7,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-8,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-9,
-.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-list-10
-{
-  font-family: inherit;
-}
-
-
-/*	filets sous H1 et H2
-.cm-s-obsidian .HyperMD-header-1,
-.cm-s-obsidian .HyperMD-header-2 {
-	border-bottom: 	.12em solid;
-}*/
-
-.cm-s-obsidian .cm-header-1,
-.HyperMD-header-1 {
-	padding-top:	0 !important;
-  	font-size:		calc( var(--OT-editMode-text-size)*1.6 )	!important;
-	padding-bottom: var(--OT-space-below-h1) !important;
-}
-.cm-s-obsidian .cm-header-2,
-.HyperMD-header-2 {
-  	font-size:		calc( var(--OT-editMode-text-size)*1.5 )	!important;
-	padding-bottom: var(--OT-space-below-h2) !important;
-}
-.cm-s-obsidian .cm-header-3,
-.HyperMD-header-3 {
-  	font-size:		calc( var(--OT-editMode-text-size)*1.2 )	!important;
-	padding-bottom: var(--OT-space-below-h3) !important;
-}
-.cm-s-obsidian .cm-header-4,
-.HyperMD-header-4 {
-  	font-size:		calc( var(--OT-editMode-text-size)*1.05 )	!important;
-	padding-bottom: var(--OT-space-below-h4) !important;
-}
-.cm-s-obsidian .cm-header-5,
-.HyperMD-header-5 {
-	padding-bottom: var(--OT-space-below-h5) !important;
-}
-.cm-s-obsidian .cm-header-6,
-.HyperMD-header-6 {
-	padding-bottom: var(--OT-space-below-h6) !important;
-}
-/* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
 
 /*	Bookmark	OpSpl21	 —————————————————————————————— Autres ajustements —————————————————————————————— */
 /*	L’espace au-dessus du texte dans les panneaux d’édition, en mode preview et en mode d’édition	*/
@@ -6325,27 +6261,27 @@ body.OT-readingMode-natural-line-height {
 .markdown-source-view.mod-cm6 .markdown-rendered td,
 .markdown-source-view.mod-cm6 .cm-html-embed th,
 .markdown-source-view.mod-cm6 .markdown-rendered th {
-	font-size:		calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+	font-size:		calc(var(--OT-edit-text-size) * var(--OT-edit-table-text-percent) / 100);
 	line-height:	var(--OT-table-line-height);
 }
 /*	in raw mode:	*/
 .markdown-source-view.mod-cm6 .HyperMD-codeblock,
 .markdown-source-view.mod-cm6 span.cm-inline-code.cm-hmd-indented-code,
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
-	font-size:		calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+	font-size:		calc(var(--OT-edit-text-size) * var(--OT-edit-table-text-percent) / 100);
 }
 
 /* Target the input field when editing a table cell in Live Edit mode */
 .markdown-source-view.mod-cm6 .cm-table-widget .cm-content,
 .markdown-source-view.mod-cm6 .cm-table-widget .cm-line {
-	font-size:	calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+	font-size:	calc(var(--OT-edit-text-size) * var(--OT-edit-table-text-percent) / 100);
 	line-height:	var(--table-line-height);
 }
 
 /* Force inline editor to use table-scaled size */
 body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview .cm-table-widget .cm-content,
 body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview .cm-table-widget .cm-line {
-	font-size: calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100) !important;
+	font-size: calc(var(--OT-edit-text-size) * var(--OT-edit-table-text-percent) / 100) !important;
 }
 
 /* Widget d’édition de cellule */
@@ -7298,8 +7234,8 @@ body.is-focused
 
 /* 2) Modes d’édition (Live + Raw) : aligné sur la largeur d’édition */
 .markdown-source-view.mod-cm6 .document-search-container {
-  font-size: var(--OT-editMode-text-size);            /* même base que le texte d’édition */
-  max-width: var(--OT-editMode-line-width);           /* longueur de ligne d’édition */
+  font-size: var(--OT-edit-text-size);            /* même base que le texte d’édition */
+  max-width: var(--OT-edit-line-width);           /* longueur de ligne d’édition */
 }
 
 /* Les “lignes” internes remplissent le container, dans tous les modes */
@@ -8144,7 +8080,7 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 }
 /*	footnote editing in the footnotes pane: let’s use the size of the sidebars	*/
 .footnote-content .markdown-source-view.mod-cm6 .cm-line {
-	font-size:		calc(var(--OT-editMode-text-size) * var(--OT-editMode-tableText-percent) / 100);
+	font-size:		calc(var(--OT-edit-text-size) * var(--OT-edit-table-text-percent) / 100);
 /*	font-size:		var(--OT-UI-font-size);	*/
 	line-height:	var(--line-height-tight);
 }
@@ -8495,28 +8431,6 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 	* H4: bold, mais de la même grandeur que H5
 	* h3 à h6 en italique					 */
 
-body {
-	--h1-size:		clamp(2.027em, calc(0.4rem + 5.1vw),	2.986em);
-	--h2-size:		clamp(1.802em, calc(0.6rem + 3.7vw),	2.488em);
-	--h3-size:		clamp(1.602em, calc(0.8rem + 2.5vw),	2.074em);
-	--h4-size:		clamp(1.424em, calc(1rem + 3vw), 		1.728em);
-	--h5-size:		clamp(1.266em, calc(1rem + 3vw), 		1.44em);
-	--h6-size:		clamp(1.125em, calc(1rem + 3vw), 		1.2em);
-
-	--h1-variant:	normal;
-	--h2-variant:	small-caps;
-	--h3-variant:	normal;
-	--h4-variant:	normal;
-	--h5-variant:	normal;
-	--h6-variant:	normal;
-
-	--h1-style:		normal;
-	--h2-style:		normal;
-	--h3-style:		italic;
-	--h4-style:		italic;
-	--h5-style:		italic;
-	--h6-style:		italic;
-}
 
 body.headings-scaling-OpSpl {
 	--h1-size:		2.027em;
@@ -9943,6 +9857,91 @@ body.lists-horiz-generous {
 
 /* -------------------- ↑ file navigation (tree items, etc.) ↑ -------------------- */
 
+/* ===========================
+   OpSpl20 – Headings, EDIT / CM6 (LP et non-LP)
+   =========================== */
+
+/* En mode édition (vue source Markdown), on mappe les tailles LP
+   sur les variables utilisées par app.css pour les headings. */
+
+.markdown-source-view.cm-s-obsidian {
+  --h1-size: var(--OT-edit-heading-h1-size-LP);
+  --h2-size: var(--OT-edit-heading-h2-size-LP);
+  --h3-size: var(--OT-edit-heading-h3-size-LP);
+  --h4-size: var(--OT-edit-heading-h4-size-LP);
+  --h5-size: var(--OT-edit-heading-h5-size-LP);
+  --h6-size: var(--OT-edit-heading-h6-size-LP);
+}
+
+/* 2. Typo commune des headings en EDIT */
+
+.cm-s-obsidian .cm-header-1,
+.cm-s-obsidian .cm-header-2,
+.cm-s-obsidian .cm-header-3,
+.cm-s-obsidian .cm-header-4,
+.cm-s-obsidian .cm-header-5,
+.cm-s-obsidian .cm-header-6,
+.cm-s-obsidian .HyperMD-header-1,
+.cm-s-obsidian .HyperMD-header-2,
+.cm-s-obsidian .HyperMD-header-3,
+.cm-s-obsidian .HyperMD-header-4,
+.cm-s-obsidian .HyperMD-header-5,
+.cm-s-obsidian .HyperMD-header-6 {
+  font-family: var(--OT-edit-font-family);
+  color: inherit;
+  font-weight: var(--font-bold);
+}
+
+/* 3. Espacements autour des headings dans l'éditeur */
+
+/* H1 */
+.cm-s-obsidian .cm-line.HyperMD-header-1 {
+  padding-top:    var(--OT-edit-heading-h1-space-above);
+  padding-bottom: var(--OT-edit-heading-h1-space-below);
+}
+
+/* H2 */
+.cm-s-obsidian .cm-line.HyperMD-header-2 {
+  padding-top:    var(--OT-edit-heading-h2-space-above);
+  padding-bottom: var(--OT-edit-heading-h2-space-below);
+}
+
+/* H3 */
+.cm-s-obsidian .cm-line.HyperMD-header-3 {
+  padding-top:    var(--OT-edit-heading-h3-space-above);
+  padding-bottom: var(--OT-edit-heading-h3-space-below);
+}
+
+/* H4 */
+.cm-s-obsidian .cm-line.HyperMD-header-4 {
+  padding-top:    var(--OT-edit-heading-h4-space-above);
+  padding-bottom: var(--OT-edit-heading-h4-space-below);
+}
+
+/* H5 */
+.cm-s-obsidian .cm-line.HyperMD-header-5 {
+  padding-top:    var(--OT-edit-heading-h5-space-above);
+  padding-bottom: var(--OT-edit-heading-h5-space-below);
+}
+
+/* H6 */
+.cm-s-obsidian .cm-line.HyperMD-header-6 {
+  padding-top:    var(--OT-edit-heading-h6-space-above);
+  padding-bottom: var(--OT-edit-heading-h6-space-below);
+}
+
+/* 4. Pas de blanc en tout début de note */
+
+.cm-s-obsidian .cm-line.HyperMD-header-1:first-child,
+.cm-s-obsidian .cm-line.HyperMD-header-2:first-child,
+.cm-s-obsidian .cm-line.HyperMD-header-3:first-child,
+.cm-s-obsidian .cm-line.HyperMD-header-4:first-child,
+.cm-s-obsidian .cm-line.HyperMD-header-5:first-child,
+.cm-s-obsidian .cm-line.HyperMD-header-6:first-child {
+  padding-top: 0;
+}
+/* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
+
 
 /*  Bookmark OpSpl50 ———————————————————— Metadata Menu plugin ———————————————————— */
 
@@ -10556,7 +10555,7 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
   .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
   .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
-  max-width: var(--OT-editMode-line-width);
+  max-width: var(--OT-edit-line-width);
 }
 body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
   .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
@@ -10923,7 +10922,7 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 
 /* Champ de saisie principal */
 .wideInputPromptInputEl {
-  font-family: var(--OT-editMode-font-family);
+  font-family: var(--OT-edit-font-family);
 }
 
 /* Afficher plus grand le texte quand l’écran est suffisamment large */
