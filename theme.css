@@ -491,6 +491,14 @@ body {
 	--OT-metadata-label-width:						7em;
 	--OT-pill-background:							var(--color-accent-2);
 	--OT-pill-color:								var(--OT-color-on-accent-2);
+
+	--OT-raw-heading-h1-scale:						1.15;	/* H1–H3 légèrement plus grands que le corps de texte */
+	--OT-raw-heading-h2-scale:						1.12;
+	--OT-raw-heading-h3-scale:						1.08;
+	--OT-raw-heading-h4-scale:						1.0;	/* H4–H6 = texte courant */
+	--OT-raw-heading-h5-scale:						1.0;
+	--OT-raw-heading-h6-scale:						1.0;
+
 	--OT-readingMode-text-size:						18px;
 	--OT-readingMode-line-width:					40em;
 	--OT-readingMode-line-height:					1.45em;
@@ -9858,11 +9866,37 @@ body.lists-horiz-generous {
 /* -------------------- ↑ file navigation (tree items, etc.) ↑ -------------------- */
 
 /* ===========================
-   OpSpl20 – Headings, EDIT / CM6 (LP et non-LP)
+   OpSpl20 – Headings, EDIT / CM6
    =========================== */
 
-/* En mode édition (vue source Markdown), on mappe les tailles LP
-   sur les variables utilisées par app.css pour les headings. */
+/* 1. Variables pour headings en EDIT (déjà définies en OpSpl02, rappel ici à titre de repère)
+
+body {
+  --OT-edit-heading-h1-space-above: 1.8em;
+  --OT-edit-heading-h2-space-above: 1.4em;
+  --OT-edit-heading-h3-space-above: 1.1em;
+  --OT-edit-heading-h4-space-above: 0.9em;
+  --OT-edit-heading-h5-space-above: 0.8em;
+  --OT-edit-heading-h6-space-above: 0.7em;
+
+  --OT-edit-heading-h1-space-below: var(--OT-space-below-h1);
+  --OT-edit-heading-h2-space-below: var(--OT-space-below-h2);
+  --OT-edit-heading-h3-space-below: var(--OT-space-below-h3);
+  --OT-edit-heading-h4-space-below: var(--OT-space-below-h4);
+  --OT-edit-heading-h5-space-below: var(--OT-space-below-h5);
+  --OT-edit-heading-h6-space-below: var(--OT-space-below-h6);
+
+  /* Tailles LP qui pilotent --h*-size en mode édition */
+  --OT-edit-heading-h1-size-LP: var(--h1-size);
+  --OT-edit-heading-h2-size-LP: var(--h2-size);
+  --OT-edit-heading-h3-size-LP: var(--h3-size);
+  --OT-edit-heading-h4-size-LP: var(--h4-size);
+  --OT-edit-heading-h5-size-LP: var(--h5-size);
+  --OT-edit-heading-h6-size-LP: var(--h6-size);
+}
+*/
+
+/* 2. En EDIT, on mappe les tailles LP sur les variables utilisées par app.css */
 
 .markdown-source-view.cm-s-obsidian {
   --h1-size: var(--OT-edit-heading-h1-size-LP);
@@ -9873,7 +9907,7 @@ body.lists-horiz-generous {
   --h6-size: var(--OT-edit-heading-h6-size-LP);
 }
 
-/* 2. Typo commune des headings en EDIT */
+/* 3. Typographie commune des headings en EDIT */
 
 .cm-s-obsidian .cm-header-1,
 .cm-s-obsidian .cm-header-2,
@@ -9892,7 +9926,7 @@ body.lists-horiz-generous {
   font-weight: var(--font-bold);
 }
 
-/* 3. Espacements autour des headings dans l'éditeur */
+/* 4. Espacements par défaut autour des headings en EDIT */
 
 /* H1 */
 .cm-s-obsidian .cm-line.HyperMD-header-1 {
@@ -9930,15 +9964,83 @@ body.lists-horiz-generous {
   padding-bottom: var(--OT-edit-heading-h6-space-below);
 }
 
-/* 4. Pas de blanc en tout début de note */
+/* 5. H1–H3 : pas d'espace au-dessus par défaut */
 
-.cm-s-obsidian .cm-line.HyperMD-header-1:first-child,
-.cm-s-obsidian .cm-line.HyperMD-header-2:first-child,
-.cm-s-obsidian .cm-line.HyperMD-header-3:first-child,
-.cm-s-obsidian .cm-line.HyperMD-header-4:first-child,
-.cm-s-obsidian .cm-line.HyperMD-header-5:first-child,
-.cm-s-obsidian .cm-line.HyperMD-header-6:first-child {
+.cm-s-obsidian .cm-line.HyperMD-header-1,
+.cm-s-obsidian .cm-line.HyperMD-header-2,
+.cm-s-obsidian .cm-line.HyperMD-header-3 {
   padding-top: 0;
+}
+
+/* 6. Exceptions : si H1–H3 suivent immédiatement une liste ou un codeblock,
+      on rétablit l'espace au-dessus */
+
+/* Après une liste */
+.cm-s-obsidian .cm-line.HyperMD-list-line + .cm-line.HyperMD-header-1 {
+  padding-top: var(--OT-edit-heading-h1-space-above);
+}
+.cm-s-obsidian .cm-line.HyperMD-list-line + .cm-line.HyperMD-header-2 {
+  padding-top: var(--OT-edit-heading-h2-space-above);
+}
+.cm-s-obsidian .cm-line.HyperMD-list-line + .cm-line.HyperMD-header-3 {
+  padding-top: var(--OT-edit-heading-h3-space-above);
+}
+
+/* Après un codeblock */
+.cm-s-obsidian .cm-line.HyperMD-codeblock + .cm-line.HyperMD-header-1 {
+  padding-top: var(--OT-edit-heading-h1-space-above);
+}
+.cm-s-obsidian .cm-line.HyperMD-codeblock + .cm-line.HyperMD-header-2 {
+  padding-top: var(--OT-edit-heading-h2-space-above);
+}
+.cm-s-obsidian .cm-line.HyperMD-codeblock + .cm-line.HyperMD-header-3 {
+  padding-top: var(--OT-edit-heading-h3-space-above);
+}
+
+/* RAW mode – Headings -------------------- */
+
+/* H1–H3 : taille légèrement supérieure */
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-1 {
+  font-size: calc(var(--OT-edit-text-size) * var(--OT-raw-heading-h1-scale));
+  font-weight: var(--font-bold);
+}
+
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-2 {
+  font-size: calc(var(--OT-edit-text-size) * var(--OT-raw-heading-h2-scale));
+  font-weight: var(--font-bold);
+}
+
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-3 {
+  font-size: calc(var(--OT-edit-text-size) * var(--OT-raw-heading-h3-scale));
+  font-weight: var(--font-bold);
+}
+
+/* H4–H6 : même taille que le texte courant */
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-4 {
+  font-size: calc(var(--OT-edit-text-size) * var(--OT-raw-heading-h4-scale));
+  font-weight: var(--font-bold);
+}
+
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-5 {
+  font-size: calc(var(--OT-edit-text-size) * var(--OT-raw-heading-h5-scale));
+  font-weight: var(--font-bold);
+}
+
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-6 {
+  font-size: calc(var(--OT-edit-text-size) * var(--OT-raw-heading-h6-scale));
+  font-weight: var(--font-bold);
+}
+
+/* Espacements : collés au flux comme du texte pur */
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-1,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-2,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-3,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-4,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-5,
+.markdown-source-view.mod-cm6.source-mode-raw .cm-scroller .cm-header-6 {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: var(--OT-edit-line-height);
 }
 /* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
 
