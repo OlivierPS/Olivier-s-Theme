@@ -457,6 +457,7 @@ body {
 	--OT-edit-line-height:						1.35em;
 	--OT-edit-letter-spacing:					0em;
 	--OT-edit-table-text-percent:				90;
+
 	--OT-edit-heading-h1-space-above: 				1.8em;
 	--OT-edit-heading-h2-space-above: 				1.4em;
 	--OT-edit-heading-h3-space-above: 				1.1em;
@@ -469,7 +470,8 @@ body {
   	--OT-edit-heading-h4-space-below: 				var(--OT-space-below-h4);
   	--OT-edit-heading-h5-space-below: 				var(--OT-space-below-h5);
   	--OT-edit-heading-h6-space-below: 				var(--OT-space-below-h6);
-   	--OT-edit-heading-h1-size-LP:					var(--h1-size);
+
+  	--OT-edit-heading-h1-size-LP:					var(--h1-size);
    	--OT-edit-heading-h2-size-LP:					var(--h2-size);
    	--OT-edit-heading-h3-size-LP:					var(--h3-size);
    	--OT-edit-heading-h4-size-LP:					var(--h4-size);
@@ -510,12 +512,20 @@ body {
 	--OT-setting-item-name:                			var(--color-base-100);
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
+
+	--OT-space-above-h1:							1.618rem;
+	--OT-space-above-h2:							1.618rem;
+	--OT-space-above-h3:							1.618rem;
+	--OT-space-above-h4:							1.0rem;
+	--OT-space-above-h5:							1.0rem;
+	--OT-space-above-h6:							1.0rem;
 	--OT-space-below-h1:							1.0rem;
 	--OT-space-below-h2:							1.5rem;
 	--OT-space-below-h3:							0.4rem;
 	--OT-space-below-h4:							0.2rem;
 	--OT-space-below-h5:							0.2rem;
 	--OT-space-below-h6:							0.0rem;
+
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-status-bar-padding:						6px;
 	--OT-syntax-markers:							var(--color-base-50);
@@ -8430,23 +8440,23 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑ Contextual typography ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl41	—————————————————————————————— Headings to my taste ——————————————————————————————
-	* amélioration des espacements verticaux
-	* couleurs
-	* interligne
-	* filet sous les H1 et les H2
-	* les H2 et H4 en petites capitales
-	* H4: bold, mais de la même grandeur que H5
-	* h3 à h6 en italique					 */
-
+/*  Bookmark  OpSpl41  —————————————————————————————— Headings to my taste ——————————————————————————————
+ * amélioration des espacements verticaux
+ * couleurs
+ * interligne
+ * filet sous les H1 et les H2
+ * les H2 et H4 en petites capitales
+ * H4: bold, mais de la même grandeur que H5
+ * h3 à h6 en italique
+ */
 
 body.headings-scaling-OpSpl {
-	--h1-size:		2.027em;
-	--h2-size:		1.802em;
-	--h3-size:		1.266em;
-	--h4-size:		1.125em;
-	--h5-size:		1.067em;
-	--h6-size:		1.000em;
+  --h1-size: 2.027em;
+  --h2-size: 1.802em;
+  --h3-size: 1.266em;
+  --h4-size: 1.125em;
+  --h5-size: 1.067em;
+  --h6-size: 1.000em;
 }
 body.headings-scaling-none {
   --h1-size: var(--font-text-size);
@@ -8460,8 +8470,8 @@ body.headings-scaling-slight {
   --h1-size: clamp(1.125rem, 12vw - 3.7rem, 1.5rem);
   --h2-size: clamp(1.125rem, 12vw - 3.7rem, 1.4rem);
   --h3-size: clamp(1.125rem, 12vw - 3.7rem, 1.3rem);
-  --h4-size: clamp(1rem, 12vw - 3.7rem, 1.2rem);
-  --h5-size: clamp(1rem, 12vw - 3.7rem, 1.1rem);
+  --h4-size: clamp(1rem,    12vw - 3.7rem, 1.2rem);
+  --h5-size: clamp(1rem,    12vw - 3.7rem, 1.1rem);
   --h6-size: 1rem;
 }
 /* 1.067 */
@@ -8502,57 +8512,75 @@ body.headings-scaling-major-third {
 }
 
 .markdown-preview-view :is(h1,h2,h3,h4,h5,h6) {
-	line-height:	1.2;
+  line-height: 1.2;
 }
-	/*	un filet sous les H2 et H2	*/
+/* un filet sous les H1 et H2 */
 .markdown-preview-view :is(h1,h2) {
-	border-bottom: 	.12em solid;
+  border-bottom: .12em solid;
 }
 
-/*	Au-dessus des titres de niveau 1, je ne met pas d’espace vertical, car ils viennent, en principe, au haut de la fiche.
-	Pour les autres situations, c’est réglé à l’aide du plugin “Contextual typography”, ci-dessus.
-*/
+/* === Headings Preview & Live Preview: vertical spacing piloté par OT === */
+
+/* 0. Base : supprimer la marge haute par défaut d’Obsidian */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6 {
+  margin-block-start: 0; /* supprime var(--p-spacing) */
+}
+
+/* 1. H1 – styles + variables d’espacement */
 .cm-header-1,
 .markdown-preview-section h1,
-markdown-rendered h1 {
-	letter-spacing:		0.01em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
-	margin-block-end:	var(--OT-space-below-h1);
+.markdown-rendered h1 {
+  letter-spacing: 0.01em;                      /* lisibilité petites caps */
+  --heading-spacing: var(--OT-space-above-h1); /* utilisé par app.css + plugin */
+  margin-block-start: var(--OT-space-above-h1);
+  margin-block-end:   var(--OT-space-below-h1);
 }
 
-
+/* 2. H2 */
 .cm-header-2,
 .markdown-preview-section h2,
-markdown-rendered h2 {
-	letter-spacing:		0.02em;		/* à cause de la graisse et des petites capitales, pour améliorer la lisibilité */
-	line-height:		1.0em;		/* vu qu’on est en petites capitales, cela n’a pas de sens que les lignes soient plus écartées que tant */
-	--heading-spacing:	1.618em;
-	margin-block-end:	var(--OT-space-below-h2);
+.markdown-rendered h2 {
+  letter-spacing: 0.02em;
+  line-height: 1.0em;
+  --heading-spacing: var(--OT-space-above-h2);
+  margin-block-start: var(--OT-space-above-h2);
+  margin-block-end:   var(--OT-space-below-h2);
 }
 
+/* 3. H3 */
 .cm-header-3,
 .markdown-preview-section h3,
-markdown-rendered h3 {
-	--heading-spacing:	1.618em;
-	margin-block-end:	var(--OT-space-below-h3);
+.markdown-rendered h3 {
+  --heading-spacing: var(--OT-space-above-h3);
+  margin-block-start: var(--OT-space-above-h3);
+  margin-block-end:   var(--OT-space-below-h3);
 }
 
-/* === Adjustable values === */
+/* 4. H4 – espacement + taille + diamant */
 :root {
-	--h4-collapse-width:2.1em;	/* tweak for icon size on your theme */
-	--h4-icon-left:		1.6em;  /* diamond sits after the collapse icon */
-	--h4-padding-left:	1.1em;  /* collapse + diamond + space */
-  	--h4-icon-left:		0em;
-  	--h4-icon-top:		0em;	/*	0.25em;	*/
-/*	--h4-icon-size:		0.7rem;	*/
+  --h4-collapse-width: 2.1em;
+  --h4-icon-left:      0em;
+  --h4-icon-top:       0em;
+  /* --h4-icon-size:   0.7rem; */
 }
 
-/* === Common H4 base === */
 .cm-header-4,
 .markdown-preview-section h4,
 .markdown-rendered h4 {
-	--heading-spacing:	1.2em;
-  margin-block-start: 1.2em;
-  margin-block-end: var(--OT-space-below-h4);
+  --heading-spacing: var(--OT-space-above-h4);
+  margin-block-start: var(--OT-space-above-h4);
+  margin-block-end:   var(--OT-space-below-h4);
   font-size: var(--h4-size);
 }
 
@@ -8561,47 +8589,55 @@ markdown-rendered h3 {
 .markdown-preview-view h4,
 .markdown-rendered h4 {
   position: relative;
-padding-left: var(--h4-padding-left);
+  padding-left: var(--h4-padding-left);
 }
 
 /* diamond is after collapse icon */
 .markdown-preview-view h4::before,
 .markdown-rendered h4::before {
   content:  "♢";
-/*  font-family:	Helvetica;	*/
+  /* font-family: Helvetica; */
   font-style: normal;
-/*	font-size: var(--h4-size)	/*	var(--h4-icon-size);	*/
+  /* font-size: var(--h4-size);  /* var(--h4-icon-size); */ */
   position: absolute;
   left: var(--h4-icon-left);
-  top: var(--h4-icon-top);
+  top:  var(--h4-icon-top);
   z-index: 2;
   margin-right: 0.5em; /* adjust as needed */
 }
 
-/* ================= LIVE PREVIEW ONLY ================= */
-.markdown-source-view.is-live-preview .cm-header-4 {
+/* LIVE PREVIEW – H4 avec diamant, correctement aligné */
+
+/* 1. Le recul se fait sur la ligne entière */
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 {
   position: relative;
   padding-left: var(--h4-padding-left);
 }
 
-.markdown-source-view.is-live-preview .cm-header-4:not(.cm-formatting-header)::before {
+/* 2. Le diamant est accroché à la ligne, pas au span interne */
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4::before {
   content: "♢";
-/*  font-family:	Helvetica;	*/
+  /* font-family: Helvetica; */
   font-style: normal;
-/*	font-size: var(--h4-size)	/*	var(--h4-icon-size);	*/
-  margin-right: 1em;
+  /* font-size: var(--h4-size);  /* ou var(--h4-icon-size); */ */
   position: absolute;
-/*  top:	-0.2em;		*/
   left: var(--h4-icon-left);
+  top:  var(--h4-icon-top);
   z-index: 2;
+  margin-right: 0.5em;
 }
 
-/* Hide diamond + gap while actively editing in Live Preview */
-.markdown-source-view.is-live-preview .cm-active .cm-header-4::before {
+/* 3. Quand la ligne H4 est active, on supprime diamant + recul */
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active::before {
   content: none !important;
 }
-.markdown-source-view.is-live-preview .cm-active .cm-header-4 {
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active {
   padding-left: 0 !important;
+}
+
+/* 4. Assure que le span de heading ne re-déclare pas de padding gauche */
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .cm-header-4 {
+  padding-left: 0;
 }
 
 /* ================= RAW/SOURCE MODE ================= */
@@ -8610,21 +8646,49 @@ padding-left: var(--h4-padding-left);
   content: none !important;
 }
 
+/* 5. H5 */
 .cm-header-5,
 .markdown-preview-section h5,
-markdown-rendered h5 {
-	--heading-spacing:	1em;
-	margin-block-end:		var(--OT-space-below-h5);
+.markdown-rendered h5 {
+  --heading-spacing: var(--OT-space-above-h5);
+  margin-block-start: var(--OT-space-above-h5);
+  margin-block-end:   var(--OT-space-below-h5);
 }
 
+/* 6. H6 */
 .cm-header-6,
 .markdown-preview-section h6,
-markdown-rendered h6 {
-	--heading-spacing:	1em;
-	margin-bottom:		var(--OT-space-below-h6);
+.markdown-rendered h6 {
+  --heading-spacing: var(--OT-space-above-h6);
+  margin-block-start: var(--OT-space-above-h6);
+  margin-block-end:   var(--OT-space-below-h6);
 }
 
-
+/* plugin Contextual Typography : pointe sur les mêmes variables OT */
+.markdown-rendered is p,pre,table,ul,ol is h1,
+.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h1 {
+  --heading-spacing: var(--OT-space-above-h1);
+}
+.markdown-rendered is p,pre,table,ul,ol is h2,
+.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h2 {
+  --heading-spacing: var(--OT-space-above-h2);
+}
+.markdown-rendered is p,pre,table,ul,ol is h3,
+.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h3 {
+  --heading-spacing: var(--OT-space-above-h3);
+}
+.markdown-rendered is p,pre,table,ul,ol is h4,
+.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h4 {
+  --heading-spacing: var(--OT-space-above-h4);
+}
+.markdown-rendered is p,pre,table,ul,ol is h5,
+.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h5 {
+  --heading-spacing: var(--OT-space-above-h5);
+}
+.markdown-rendered is p,pre,table,ul,ol is h6,
+.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h6 {
+  --heading-spacing: var(--OT-space-above-h6);
+}
 /* -------------------- ↑ Headings to my taste ↑ -------------------- */
 
 
