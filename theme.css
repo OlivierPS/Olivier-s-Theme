@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-24
+	- improved the legibility of list views in bases
+	- suppressed the “group headers” in the board views (unofficial kanban)
 2026-03-22
 	- introduced a variable-based system to control heading parameters consistently across all modes
 	- added CSS classes and settings to mimic the visual appearance of the Bear editor
@@ -553,8 +556,11 @@ body {
 	--background-primary-alt:			hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
 
 	--bases-table-cell-background-disabled:	hsl(var(--OT-theme-h), 15%, 80%);
-	--bases-table-font-size:				calc(var(--OT-edit-text-size) * var(--OT-edit-table-text-percent) / 100);
+	--bases-table-font-size:				var(--font-small);
 	--bases-table-group-background:			var(--OT-table-alt-background);
+	--bases-group-heading-value-size: 		1.1rem;
+	--bases-group-heading-property-display: none;
+	--bases-table-group-gap: 				20px;
 	--bases-table-header-background:		var(--table-header-background);
 	--bases-table-header-color:				var(--color-base-100);
 	--bases-table-header-weight:			var(--table-header-weight);
@@ -6478,6 +6484,33 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 /* Bookmark OpSpl27 ————————————————————————— Bases ————————————————————————— */
 
+/* -------------------- vue “list” -------------------- */
+.bases-view[data-view-type="list"] {
+  --bases-table-font-size: var(--OT-readingMode-text-size);
+}
+
+.bases-list-item {
+	padding-bottom: 0;
+	line-height: 1.3em;
+}
+
+/* Vue list : headings de groupes en mode pill, sans bord explicite */
+.bases-view[data-view-type="list"] .bases-group-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0rem 0.75rem;
+  border: 1px solid var(--status-bar-border-color);
+  border-radius: 999px;
+  /*background-color: color-mix(in srgb,
+    var(--background-primary) 70%,
+    var(--color-accent-2) 30%
+  );*/
+  color: var(--OT-color-on-accent-3);
+  background-color: var(--color-accent-3);
+  font-weight: 500;
+}
+
 /* -------------------- Toolbar text-icon buttons (Bases, Query toolbar) -------------------- */
 
 /* 1. Bouton porteur du fond, labels/icônes transparents par défaut — état normal: accent‑3 */
@@ -6780,6 +6813,12 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     font-weight: inherit;
     font-size:   var(--font-ui-small);
   }
+}
+
+/* -------------------- Kanban Board -------------------- */
+/* cacher toutes les en-têtes de groupe */
+.board-row-header-bar:has(.board-row-title) {
+  display: none;
 }
 
 /* -------------------- ↑ Bases ↑ -------------------- */
@@ -13123,6 +13162,10 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 	box-shadow: none;
 }
 
+/* Dans les notes marquées avec cssclasses: [board-show-row-header], on ré-affiche les en-têtes de groupes */
+.board-show-row-header .board-row-header-bar:has(.board-row-title) {
+  display: flex;
+}
 /*	---------- ↑ Some useful CSSCLASSES ↑ ----------	*/
 
 
