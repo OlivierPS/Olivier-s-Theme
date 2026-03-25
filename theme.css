@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-25
+	- vastly improved the vertical spacing with a typographical logic based on quantums of white space
 2026-03-24
 	- improved the legibility of list views in bases
 	- suppressed the “group headers” in the board views (unofficial kanban)
@@ -153,6 +155,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl15:	définition des couleurs pour le fond du panneau d’édition
 			OpSpl16:	définition de la couleur du texte en mode d’édition
 			OpSpl17:	définition de l’icône/la pastille en haut à droite d’un panneau en mode d’édition
+			OpSpl17a:	rythme vertical
 			OpSpl18:	la fonte du mode d’édition
 						la fonte “monospaced”
 			OpSpl19:	typography of the EDIT mode: font size, line length and line height
@@ -433,6 +436,12 @@ body
 /*	Bookmark	OpSpl02	 —————————————————————————————— Theme’s variables —————————————————————————————— */
 	/*	Pour avoir un premier état, même sans avoir chargé le plugin “Style Settings”.*/
 body {
+	/*	blanc typographique	*/
+	--OT-petit-blanc:								calc(0.4   * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen:								calc(1.618 * var(--OT-petit-blanc));
+	--OT-blanc-large:								calc(1.618 * var(--OT-blanc-moyen));
+	--OT-blanc-généreux:							calc(1.618 * var(--OT-blanc-large));
+
 	--OT-bases-hide-header:							0;  /* 0 = en-tête visible, 1 = en-tête cachée par défaut */
 	--OT-blockquote-font-family:					Questa, "Stone Serif ITC Pro","Times Roman", serif;
 	--OT-blockquote-font-size:						calc(var(--OT-readingMode-text-size) * 0.95);
@@ -459,22 +468,27 @@ body {
 													var(--font-default);
 	--OT-edit-text-size:						18px;
 	--OT-edit-line-width:						46em;
-	--OT-edit-line-height:						1.35em;
+	--OT-edit-line-height:						1.35rem;
 	--OT-edit-letter-spacing:					0em;
 	--OT-edit-table-text-percent:				90;
 
-	--OT-edit-heading-h1-space-above: 				1.8em;
-	--OT-edit-heading-h2-space-above: 				1.4em;
-	--OT-edit-heading-h3-space-above: 				1.1em;
-	--OT-edit-heading-h4-space-above: 				0.9em;
-	--OT-edit-heading-h5-space-above: 				0.8em;
-	--OT-edit-heading-h6-space-above: 				0.7em;
-  	--OT-edit-heading-h1-space-below: 				var(--OT-space-below-h1);
-  	--OT-edit-heading-h2-space-below: 				var(--OT-space-below-h2);
-  	--OT-edit-heading-h3-space-below: 				var(--OT-space-below-h3);
-  	--OT-edit-heading-h4-space-below: 				var(--OT-space-below-h4);
-  	--OT-edit-heading-h5-space-below: 				var(--OT-space-below-h5);
-  	--OT-edit-heading-h6-space-below: 				var(--OT-space-below-h6);
+	/* Live Preview Edit headings spacing – branché sur le système Preview */
+
+   /* Au‑dessus : faible, on compte surtout sur la ligne vide Markdown */
+   --OT-edit-heading-h1-space-above: 				var(--OT-petit-blanc);
+   --OT-edit-heading-h2-space-above: 				var(--OT-blanc-moyen);
+   --OT-edit-heading-h3-space-above: 				var(--OT-blanc-moyen);
+   --OT-edit-heading-h4-space-above: 				var(--OT-blanc-moyen);
+   --OT-edit-heading-h5-space-above: 				var(--OT-blanc-moyen);
+   --OT-edit-heading-h6-space-above: 				var(--OT-blanc-moyen);
+
+   /* En dessous */
+   --OT-edit-heading-h1-space-below: 				var(--OT-petit-blanc);
+   --OT-edit-heading-h2-space-below: 				var(--OT-blanc-moyen);
+   --OT-edit-heading-h3-space-below: 				var(--OT-petit-blanc);
+   --OT-edit-heading-h4-space-below: 				var(--OT-petit-blanc);
+   --OT-edit-heading-h5-space-below: 				0;
+   --OT-edit-heading-h6-space-below: 				0;
 
   	--OT-edit-heading-h1-size-LP:					var(--h1-size);
    	--OT-edit-heading-h2-size-LP:					var(--h2-size);
@@ -508,7 +522,7 @@ body {
 
 	--OT-readingMode-text-size:						18px;
 	--OT-readingMode-line-width:					40em;
-	--OT-readingMode-line-height:					1.45em;
+	--OT-readingMode-line-height:					1.45rem;
 	--OT-readingMode-tableText-percent:				90;
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
 	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
@@ -518,18 +532,18 @@ body {
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
 
-	--OT-space-above-h1:							1.618rem;
-	--OT-space-above-h2:							1.618rem;
-	--OT-space-above-h3:							1.618rem;
-	--OT-space-above-h4:							1.0rem;
-	--OT-space-above-h5:							1.0rem;
-	--OT-space-above-h6:							1.0rem;
-	--OT-space-below-h1:							1.0rem;
-	--OT-space-below-h2:							1.5rem;
-	--OT-space-below-h3:							0.4rem;
-	--OT-space-below-h4:							0.2rem;
-	--OT-space-below-h5:							0.2rem;
-	--OT-space-below-h6:							0.0rem;
+	--OT-space-above-h1:							var(--OT-blanc-généreux);
+	--OT-space-below-h1:							var(--OT-blanc-large);
+	--OT-space-above-h2:							var(--OT-blanc-généreux);
+	--OT-space-below-h2:							var(--OT-blanc-large);
+	--OT-space-above-h3:							var(--OT-blanc-large);
+	--OT-space-below-h3:							var(--OT-petit-blanc);
+	--OT-space-above-h4:							var(--OT-blanc-large);
+	--OT-space-below-h4:							var(--OT-petit-blanc);
+	--OT-space-above-h5:							var(--OT-blanc-moyen);
+	--OT-space-below-h5:							0;
+	--OT-space-above-h6:							var(--OT-blanc-moyen);
+	--OT-space-below-h6:							0;
 
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-status-bar-padding:						6px;
@@ -749,8 +763,7 @@ body {
 	--nav-tag-color-active:		var(--OT-color-on-accent-2);
 	--nav-tag-color-hover:		var(--OT-color-on-accent-1);
 
-	--p-spacing:				0.5em;
-/*	--p-spacing-empty:			1rem;		/*	en mode édition, vient s’ajouter sous les headings. Ainsi, on peut coller les paragraphes sous les headings et avoir tout de même une bonne apparence en mode d’édition. 	*/
+	--p-spacing:				var(--OT-petit-blanc);
 
 	--pill-background-hover:	var(--color-accent-1);
 	--pill-color-hover:			var(--OT-color-on-accent-1);
@@ -5181,6 +5194,75 @@ body {
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à droite du panneau d’édition ↑ -------------------------	*/
 
 
+/*	Bookmark	OpSpl17a	 —————————————————————————————— Rythme vertical —————————————————————————————— */
+body.vertical-rythm-tight {
+	--OT-petit-blanc:		calc(0.3   * var(--OT-readingMode-line-height));
+	--OT-space-above-h1:	var(--OT-blanc-large);
+	--OT-space-below-h1:	var(--OT-blanc-moyen);
+	--OT-space-above-h2:	var(--OT-blanc-large);
+	--OT-space-below-h2:	var(--OT-blanc-moyen);
+	--OT-space-above-h3:	var(--OT-blanc-large);
+	--OT-space-below-h3:	var(--OT-petit-blanc);
+	--OT-space-above-h4:	var(--OT-blanc-moyen);
+	--OT-space-below-h4:	var(--OT-petit-blanc);
+	--OT-space-above-h5:	var(--OT-petit-blanc);
+	--OT-space-below-h5:	0;
+	--OT-space-above-h6:	var(--OT-petit-blanc);
+	--OT-space-below-h6:	0;
+}
+
+body.vertical-rythm-normal {
+	--OT-petit-blanc:			calc(0.4   * var(--OT-readingMode-line-height));
+}
+
+body.vertical-rythm-generous {
+	--OT-petit-blanc:		calc(0.5   * var(--OT-readingMode-line-height));
+	--OT-space-above-h1:	var(--OT-blanc-généreux);
+	--OT-space-below-h1:	var(--OT-blanc-généreux);
+	--OT-space-above-h2:	var(--OT-blanc-généreux);
+	--OT-space-below-h2:	var(--OT-blanc-large);
+	--OT-space-above-h3:	var(--OT-blanc-généreux);
+	--OT-space-below-h3:	var(--OT-blanc-moyen);
+	--OT-space-above-h4:	var(--OT-blanc-large);
+	--OT-space-below-h4:	var(--OT-blanc-moyen);
+	--OT-space-above-h5:	var(--OT-blanc-moyen);
+	--OT-space-below-h5:	0;
+	--OT-space-above-h6:	var(--OT-blanc-moyen);
+	--OT-space-below-h6:	0;
+}
+
+	/* Bear-like vertical rhythm for headings and paragraphs */
+body.vertical-rythm-Bear {
+	--OT-petit-blanc:		0.5em;
+  	--OT-space-above-h1:	1.0em;
+  	--OT-space-below-h1:	0.62em;
+  	--OT-space-above-h2:	2em;
+  	--OT-space-below-h2:	0.62em;
+  	--OT-space-above-h3:	2em;
+  	--OT-space-below-h3:	0.5em;
+  	--OT-space-above-h4:	2em;
+  	--OT-space-below-h4:	0.5em;
+  	--OT-space-above-h5:	2em;
+  	--OT-space-below-h5:	0.5em;
+  	--OT-space-above-h6:	2em;
+  	--OT-space-below-h6:	0.5em;
+
+   --OT-edit-heading-h1-space-below: 	0.5em;
+   --OT-edit-heading-h2-space-below: 	0.5em;
+   --OT-edit-heading-h3-space-below: 	0.5em;
+   --OT-edit-heading-h4-space-below: 	0.5em;
+   --OT-edit-heading-h5-space-below: 	0.5em;
+   --OT-edit-heading-h6-space-below: 	0.5em;
+}
+
+.markdown-rendered > .markdown-preview-section > .markdown-preview-pusher + div:not(.mod-ui) > :first-child, .markdown-rendered > .markdown-preview-section > .mod-ui + div:not(.mod-ui) > :first-child {
+	margin-bottom: calc(var(--OT-petit-blanc) + 0.12em);
+}
+
+
+/*	------------------------- ↑ Rythme vertical ↑ -------------------------	*/
+
+
 /*	Bookmark	OpSpl18	 —————————————————————————————— Edit mode font family and font size —————————————————————————————— */
 
 /* ------------------------- Edit mode font family + kerning (2026-02-07) ------------------------- */
@@ -6143,6 +6225,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 /* Si le toggle "natural" est ON, on revient au mode “normal” pour l’interligne */
 body.OT-readingMode-natural-line-height {
   --line-height-normal: normal;
+  --OT-petit-blanc: calc(0.45 * var(--OT-readingMode-text-size)) !important;
 }
 /* ---------- OpSpl Paper background ---------- */
 /* Let’s put a nice paper-like background in the preview; we can style either
@@ -7884,12 +7967,6 @@ select {
   margin-inline-start: -1.5rem;
 }
 
-/* Cas particulier h4 : plus à gauche encore, via ta variable */
-.markdown-preview-view h4 .heading-collapse-indicator,
-.markdown-rendered h4 .heading-collapse-indicator {
-  margin-inline-start: calc(-1 * var(--h4-collapse-width));
-}
-
 /* 6. Re‑scoper le comportement spécifique du plugin Board/Bases */
 
 /* Taille et transition spécifiques uniquement dans le board */
@@ -8513,11 +8590,11 @@ body.headings-scaling-OpSpl {
 }
 /* Bear-like heading scale */
 body.headings-scaling-Bear {
-	--h1-size: 1.75em;
-	--h2-size: 1.45em;
-	--h3-size: 1.25em;
+	--h1-size: 2em;
+	--h2-size: 1.6em;
+	--h3-size: 1.2em;
 	--h4-size: 1.08em;
-	--h5-size: 1.02em;
+	--h5-size: 1.04em;
 	--h6-size: 1.00em;
 }
 body.headings-scaling-none {
@@ -8583,40 +8660,6 @@ body.headings-scaling-major-third {
 
 /* === Headings Preview & Live Preview: vertical spacing piloté par OT === */
 
-/* Bear-like vertical rhythm for headings and paragraphs */
-body.OT-bear-vertical-rythm {
-	/*--p-spacing:		0;*/
-  /* Preview headings spacing */
-  --OT-space-above-h1: 1.8rem;
-  --OT-space-above-h2: 1.3rem;
-  --OT-space-above-h3: 1.0rem;
-  --OT-space-above-h4: 0.7rem;
-  --OT-space-above-h5: 0.6rem;
-  --OT-space-above-h6: 0.6rem;
-
-  --OT-space-below-h1: 0.9rem;
-  --OT-space-below-h2: 0.7rem;
-  --OT-space-below-h3: 0.55rem;
-  --OT-space-below-h4: 0.4rem;
-  --OT-space-below-h5: 0.35rem;
-  --OT-space-below-h6: 0.3rem;
-
-  /* Live Preview / Edit headings spacing */
-  --OT-edit-heading-h1-space-above: 1.6em;
-  --OT-edit-heading-h2-space-above: 1.2em;
-  --OT-edit-heading-h3-space-above: 0.95em;
-  --OT-edit-heading-h4-space-above: 0.7em;
-  --OT-edit-heading-h5-space-above: 0.6em;
-  --OT-edit-heading-h6-space-above: 0.6em;
-
-  --OT-edit-heading-h1-space-below: var(--OT-space-below-h1);
-  --OT-edit-heading-h2-space-below: var(--OT-space-below-h2);
-  --OT-edit-heading-h3-space-below: var(--OT-space-below-h3);
-  --OT-edit-heading-h4-space-below: var(--OT-space-below-h4);
-  --OT-edit-heading-h5-space-below: var(--OT-space-below-h5);
-  --OT-edit-heading-h6-space-below: var(--OT-space-below-h6);
-}
-
 /* 0. Base : supprimer la marge haute par défaut d’Obsidian */
 .markdown-preview-view h1,
 .markdown-preview-view h2,
@@ -8630,7 +8673,7 @@ body.OT-bear-vertical-rythm {
 .markdown-rendered h4,
 .markdown-rendered h5,
 .markdown-rendered h6 {
-  margin-block-start: 0; /* supprime var(--p-spacing) */
+	margin-block-start: 0; /* supprime var(--p-spacing) */
 }
 
 /* 1. H1 – styles + variables d’espacement */
@@ -8663,75 +8706,38 @@ body.OT-bear-vertical-rythm {
   margin-block-end:   var(--OT-space-below-h3);
 }
 
-/* 4. H4 – espacement + taille + diamant */
-:root {
-  --h4-collapse-width: 2.1em;
-  --h4-icon-left:      0em;
-  --h4-icon-top:       0em;
-  /* --h4-icon-size:   0.7rem; */
-}
-
+/* 4. H4 */
 .cm-header-4,
 .markdown-preview-section h4,
 .markdown-rendered h4 {
   --heading-spacing: var(--OT-space-above-h4);
   margin-block-start: var(--OT-space-above-h4);
   margin-block-end:   var(--OT-space-below-h4);
-  font-size: var(--h4-size);
 }
 
-/* ================= PREVIEW ================= */
-/* H4: align diamond and collapse arrow */
-.markdown-preview-view h4,
-.markdown-rendered h4 {
-  position: relative;
-  padding-left: var(--h4-padding-left);
-}
 
-/* diamond is after collapse icon */
+/* juste un diamant avant le texte, sans déplacer la colonne */
 .markdown-preview-view h4::before,
 .markdown-rendered h4::before {
-  content:  "♢";
-  /* font-family: Helvetica; */
+  content: "♢";
   font-style: normal;
-  /* font-size: var(--h4-size);  /* var(--h4-icon-size); */ */
-  position: absolute;
-  left: var(--h4-icon-left);
-  top:  var(--h4-icon-top);
-  z-index: 2;
-  margin-right: 0.5em; /* adjust as needed */
+  margin-right: 0.35em;
 }
 
-/* LIVE PREVIEW – H4 avec diamant, correctement aligné */
-
-/* 1. Le recul se fait sur la ligne entière */
+/* LP H4 */
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 {
   position: relative;
-  padding-left: var(--h4-padding-left);
+  padding-top:    var(--OT-edit-heading-h4-space-above);
+  padding-bottom: var(--OT-edit-heading-h4-space-below);
 }
 
-/* 2. Le diamant est accroché à la ligne, pas au span interne */
-.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4::before {
-  content: "♢";
-  /* font-family: Helvetica; */
-  font-style: normal;
-  /* font-size: var(--h4-size);  /* ou var(--h4-icon-size); */ */
-  position: absolute;
-  left: var(--h4-icon-left);
-  top:  var(--h4-icon-top);
-  z-index: 2;
-  margin-right: 0.5em;
-}
-
-/* 3. Quand la ligne H4 est active, on supprime diamant + recul */
+/* Quand la ligne H4 est active, on supprime diamant + recul */
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active::before {
   content: none !important;
 }
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active {
   padding-left: 0 !important;
 }
-
-/* 4. Assure que le span de heading ne re-déclare pas de padding gauche */
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .cm-header-4 {
   padding-left: 0;
 }
@@ -10045,7 +10051,7 @@ body {
   --OT-edit-heading-h4-space-below: var(--OT-space-below-h4);
   --OT-edit-heading-h5-space-below: var(--OT-space-below-h5);
   --OT-edit-heading-h6-space-below: var(--OT-space-below-h6);
-
+*/
   /* Tailles LP qui pilotent --h*-size en mode édition */
   --OT-edit-heading-h1-size-LP: var(--h1-size);
   --OT-edit-heading-h2-size-LP: var(--h2-size);
@@ -10124,13 +10130,53 @@ body {
   padding-bottom: var(--OT-edit-heading-h6-space-below);
 }
 
-/* 5. H1–H3 : pas d'espace au-dessus par défaut */
+:root {
+  /* recul de la colonne de texte en LP pour H4 */
+  --OT-h4-LP-text-indent: 1.5rem;
+}
+
+/* 1. Ligne H4 = conteneur + recul du texte */
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 {
+  position: relative;
+  padding-left: var(--OT-h4-LP-text-indent);
+}
+
+/* 2. Diamant au bord gauche de la colonne de texte */
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4::before {
+  content: "♢";
+  font-style: normal;
+  position: absolute;
+
+  /* bord gauche de la colonne de texte */
+  left: 0;
+  top: var(--OT-edit-heading-h4-space-above);
+  z-index: 0;          /* sous le chevron */
+  margin-right: 0.3em; /* espace diamant–texte */
+}
+
+/* 3. Ligne active : on supprime le diamant et on annule le recul */
+.markdown-source-view.is-live-preview
+.cm-line.HyperMD-header-4.cm-active::before {
+  content: none !important;
+}
+.markdown-source-view.is-live-preview
+.cm-line.HyperMD-header-4.cm-active {
+  padding-left: 0 !important;
+}
+
+/* 4. Le span interne ne rajoute pas de padding */
+.markdown-source-view.is-live-preview
+.cm-line.HyperMD-header-4 .cm-header-4 {
+  padding-left: 0;
+}
+
+/* 5. H1–H3 : pas d'espace au-dessus par défaut
 
 .cm-s-obsidian .cm-line.HyperMD-header-1,
 .cm-s-obsidian .cm-line.HyperMD-header-2,
 .cm-s-obsidian .cm-line.HyperMD-header-3 {
   padding-top: 0;
-}
+}*/
 
 /* 6. Exceptions : si H1–H3 suivent immédiatement une liste ou un codeblock,
       on rétablit l'espace au-dessus */
@@ -13322,13 +13368,13 @@ settings:
 				label.fr:	"dans le style de Bear"
 				value:		headings-scaling-Bear
 			-
-				label:		"Minor second"
-				label.fr:	"Seconde mineure"
-				value:		headings-scaling-minor-second
-			-
 				label:		"Slowly"
 				label.fr:	"Doucement"
 				value:		headings-scaling-slight
+			-
+				label:		"Minor second"
+				label.fr:	"Seconde mineure"
+				value:		headings-scaling-minor-second
 			-
 				label:		"Major second"
 				label.fr:	"Seconde majeure"
@@ -13346,12 +13392,29 @@ settings:
 				value:		headings-scaling-major-third
 
 	-
-		id:				"OT-bear-vertical-rythm"
-		title:			"Bear-style vertical rythm"
-		title.fr:		"Rythme vertical dans le style de Bear"
-		type:			class-toggle
-		default:		false
-		addCommand:		true
+		id:				"OT-vertical-rythm"
+		title:			"Typographical vertical rythm"
+		title.fr:		"Rythme typographique vertical"
+		description:	"Vertical white space around headings and paragraphs."
+		description.fr:	"Blanc typographique au-dessus et au-dessous des titres, intertitres et paragraphes."
+		type:			class-select
+		allowEmpty:		false
+		default:		vertical-rythm-normal
+		options:
+			-
+				label:		"Tight"
+				label.fr:	"Serré"
+				value:		vertical-rythm-tight
+			-
+				label:		"Normal"
+				value:		vertical-rythm-normal
+			-
+				label:		"Generous"
+				label.fr:	"Aéré"
+				value:		vertical-rythm-generous
+			-
+				label:		"Bear"
+				value:		vertical-rythm-Bear
 
 	-
 		id:				"OT-lists-font-stepdown"
@@ -14867,11 +14930,11 @@ settings:
 
 	-
 			id:			OT-readingMode-line-height
-			title:		Line height [em]
-			title.fr:	Interligne [em]
+			title:		Line height [rem]
+			title.fr:	Interligne [rem]
 			type:		variable-number
 			default:	1.45
-			format:		em
+			format:		rem
 			disableIF:
 				- OT-readingMode-natural-line-height
 	-
@@ -15172,11 +15235,11 @@ settings:
 
 	-
 			id:			OT-edit-line-height
-			title:		Line height [em]
-			title.fr:	Interligne [em]
+			title:		Line height [rem]
+			title.fr:	Interligne [rem]
 			type:		variable-number
 			default:	1.35
-			format:		em
+			format:		rem
 	-
 			id:				OT-edit-line-width
 			title:			Line length [em]
