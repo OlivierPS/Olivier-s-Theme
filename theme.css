@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-03-27
 	- added some CSS classes usefull for adding different sizes of visual vertical space
 	- improved the rendering of small vertical spacing classes in Live Preview mode
+	- finally: completely sanitized the whole vertical spacing system
 2026-03-26
 	- added code to change the reading/editing mode icon into a status indicator
 2026-03-25
@@ -443,10 +444,11 @@ body
 	/*	Pour avoir un premier état, même sans avoir chargé le plugin “Style Settings”.*/
 body {
 	/*	blanc typographique	*/
-	--OT-petit-blanc:								calc(0.4   * var(--OT-readingMode-line-height));
-	--OT-blanc-moyen:								calc(1.618 * var(--OT-petit-blanc));
-	--OT-blanc-large:								calc(1.618 * var(--OT-blanc-moyen));
-	--OT-blanc-généreux:							calc(1.618 * var(--OT-blanc-large));
+	--OT-blanc-mini:								calc(0.25  * var(--OT-readingMode-line-height));
+	--OT-blanc-petit:								calc(0.4   * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen:								calc(1.618 * var(--OT-blanc-petit));
+	--OT-blanc-grand:								calc(1.618 * var(--OT-blanc-moyen));
+	--OT-blanc-large:								calc(1.618 * var(--OT-blanc-grand));
 
 	--OT-bases-hide-header:							0;  /* 0 = en-tête visible, 1 = en-tête cachée par défaut */
 	--OT-blockquote-font-family:					Questa, "Stone Serif ITC Pro","Times Roman", serif;
@@ -481,7 +483,7 @@ body {
 	/* Live Preview Edit headings spacing – branché sur le système Preview */
 
    /* Au‑dessus : faible, on compte surtout sur la ligne vide Markdown */
-   --OT-edit-heading-h1-space-above: 				var(--OT-petit-blanc);
+   --OT-edit-heading-h1-space-above: 				var(--OT-blanc-petit);
    --OT-edit-heading-h2-space-above: 				var(--OT-blanc-moyen);
    --OT-edit-heading-h3-space-above: 				var(--OT-blanc-moyen);
    --OT-edit-heading-h4-space-above: 				var(--OT-blanc-moyen);
@@ -489,10 +491,10 @@ body {
    --OT-edit-heading-h6-space-above: 				var(--OT-blanc-moyen);
 
    /* En dessous */
-   --OT-edit-heading-h1-space-below: 				var(--OT-petit-blanc);
+   --OT-edit-heading-h1-space-below: 				var(--OT-blanc-petit);
    --OT-edit-heading-h2-space-below: 				var(--OT-blanc-moyen);
-   --OT-edit-heading-h3-space-below: 				var(--OT-petit-blanc);
-   --OT-edit-heading-h4-space-below: 				var(--OT-petit-blanc);
+   --OT-edit-heading-h3-space-below: 				var(--OT-blanc-petit);
+   --OT-edit-heading-h4-space-below: 				var(--OT-blanc-petit);
    --OT-edit-heading-h5-space-below: 				0;
    --OT-edit-heading-h6-space-below: 				0;
 
@@ -538,14 +540,14 @@ body {
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
 
-	--OT-space-above-h1:							var(--OT-blanc-généreux);
-	--OT-space-below-h1:							var(--OT-blanc-large);
-	--OT-space-above-h2:							var(--OT-blanc-généreux);
-	--OT-space-below-h2:							var(--OT-blanc-large);
-	--OT-space-above-h3:							var(--OT-blanc-large);
-	--OT-space-below-h3:							var(--OT-petit-blanc);
-	--OT-space-above-h4:							var(--OT-blanc-large);
-	--OT-space-below-h4:							var(--OT-petit-blanc);
+	--OT-space-above-h1:							var(--OT-blanc-large);
+	--OT-space-below-h1:							var(--OT-blanc-grand);
+	--OT-space-above-h2:							var(--OT-blanc-large);
+	--OT-space-below-h2:							var(--OT-blanc-grand);
+	--OT-space-above-h3:							var(--OT-blanc-grand);
+	--OT-space-below-h3:							var(--OT-blanc-petit);
+	--OT-space-above-h4:							var(--OT-blanc-grand);
+	--OT-space-below-h4:							var(--OT-blanc-petit);
 	--OT-space-above-h5:							var(--OT-blanc-moyen);
 	--OT-space-below-h5:							0;
 	--OT-space-above-h6:							var(--OT-blanc-moyen);
@@ -769,7 +771,7 @@ body {
 	--nav-tag-color-active:		var(--OT-color-on-accent-2);
 	--nav-tag-color-hover:		var(--OT-color-on-accent-1);
 
-	--p-spacing:				var(--OT-petit-blanc);
+	--p-spacing:				var(--OT-blanc-petit);
 
 	--pill-background-hover:	var(--color-accent-1);
 	--pill-color-hover:			var(--OT-color-on-accent-1);
@@ -5202,34 +5204,34 @@ body {
 
 /*	Bookmark	OpSpl17a	 —————————————————————————————— Rythme vertical —————————————————————————————— */
 body.vertical-rythm-tight {
-	--OT-petit-blanc:		calc(0.3   * var(--OT-readingMode-line-height));
-	--OT-space-above-h1:	var(--OT-blanc-large);
+	--OT-blanc-petit:		calc(0.3   * var(--OT-readingMode-line-height));
+	--OT-space-above-h1:	var(--OT-blanc-grand);
 	--OT-space-below-h1:	var(--OT-blanc-moyen);
-	--OT-space-above-h2:	var(--OT-blanc-large);
+	--OT-space-above-h2:	var(--OT-blanc-grand);
 	--OT-space-below-h2:	var(--OT-blanc-moyen);
-	--OT-space-above-h3:	var(--OT-blanc-large);
-	--OT-space-below-h3:	var(--OT-petit-blanc);
+	--OT-space-above-h3:	var(--OT-blanc-grand);
+	--OT-space-below-h3:	var(--OT-blanc-petit);
 	--OT-space-above-h4:	var(--OT-blanc-moyen);
-	--OT-space-below-h4:	var(--OT-petit-blanc);
-	--OT-space-above-h5:	var(--OT-petit-blanc);
+	--OT-space-below-h4:	var(--OT-blanc-petit);
+	--OT-space-above-h5:	var(--OT-blanc-petit);
 	--OT-space-below-h5:	0;
-	--OT-space-above-h6:	var(--OT-petit-blanc);
+	--OT-space-above-h6:	var(--OT-blanc-petit);
 	--OT-space-below-h6:	0;
 }
 
 body.vertical-rythm-normal {
-	--OT-petit-blanc:			calc(0.4   * var(--OT-readingMode-line-height));
+	--OT-blanc-petit:			calc(0.5   * var(--OT-readingMode-line-height));
 }
 
 body.vertical-rythm-generous {
-	--OT-petit-blanc:		calc(0.5   * var(--OT-readingMode-line-height));
-	--OT-space-above-h1:	var(--OT-blanc-généreux);
-	--OT-space-below-h1:	var(--OT-blanc-généreux);
-	--OT-space-above-h2:	var(--OT-blanc-généreux);
-	--OT-space-below-h2:	var(--OT-blanc-large);
-	--OT-space-above-h3:	var(--OT-blanc-généreux);
+	--OT-blanc-petit:		calc(0.6   * var(--OT-readingMode-line-height));
+	--OT-space-above-h1:	var(--OT-blanc-large);
+	--OT-space-below-h1:	var(--OT-blanc-large);
+	--OT-space-above-h2:	var(--OT-blanc-large);
+	--OT-space-below-h2:	var(--OT-blanc-grand);
+	--OT-space-above-h3:	var(--OT-blanc-large);
 	--OT-space-below-h3:	var(--OT-blanc-moyen);
-	--OT-space-above-h4:	var(--OT-blanc-large);
+	--OT-space-above-h4:	var(--OT-blanc-grand);
 	--OT-space-below-h4:	var(--OT-blanc-moyen);
 	--OT-space-above-h5:	var(--OT-blanc-moyen);
 	--OT-space-below-h5:	0;
@@ -5239,7 +5241,7 @@ body.vertical-rythm-generous {
 
 	/* Bear-like vertical rhythm for headings and paragraphs */
 body.vertical-rythm-Bear {
-	--OT-petit-blanc:		0.5em;
+	--OT-blanc-petit:		0.5em;
   	--OT-space-above-h1:	1.0em;
   	--OT-space-below-h1:	0.62em;
   	--OT-space-above-h2:	2em;
@@ -5262,7 +5264,7 @@ body.vertical-rythm-Bear {
 }
 
 .markdown-rendered > .markdown-preview-section > .markdown-preview-pusher + div:not(.mod-ui) > :first-child, .markdown-rendered > .markdown-preview-section > .mod-ui + div:not(.mod-ui) > :first-child {
-	margin-bottom: calc(var(--OT-petit-blanc) + 0.12em);
+	margin-bottom: calc(var(--OT-blanc-petit) + 0.12em);
 }
 
 
@@ -5753,11 +5755,6 @@ body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-
 p,
 .markdown-rendered p {
     margin-block-end:	0;
-/*	margin-block-start:	0.5em;
-    margin-inline-start:0px;
-    margin-inline-end:	0px;
-	padding-top:		0;
-	padding-bottom:		0;	*/
 }
 
 /* ----- Checkbox -----
@@ -6231,7 +6228,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 /* Si le toggle "natural" est ON, on revient au mode “normal” pour l’interligne */
 body.OT-readingMode-natural-line-height {
   --line-height-normal: normal;
-  --OT-petit-blanc: calc(0.45 * var(--OT-readingMode-text-size)) !important;
+  --OT-blanc-petit: calc(0.45 * var(--OT-readingMode-text-size)) !important;
 }
 /* ---------- OpSpl Paper background ---------- */
 /* Let’s put a nice paper-like background in the preview; we can style either
@@ -8542,40 +8539,6 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑  Blockquotes and codeblocks ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl40	—————————————————————————————— Contextual typography —————————————————————————————— */
-/* =========================================
-   Contextual Typography – Headings spacing
-   (Preview mode, when data-tag-name is presented by the plugin)
-   ==========================================*/
-
-/* 1. H1 "au milieu de la fiche" :
-   gros espace quand H1 suit certains blocs (hr, p, ul, ol) */
-
-.markdown-preview-view div[data-tag-name="hr"] + div[data-tag-name="h1"] > h1,
-.markdown-preview-view div[data-tag-name="p"]  + div[data-tag-name="h1"] > h1,
-.markdown-preview-view div[data-tag-name="ul"] + div[data-tag-name="h1"] > h1,
-.markdown-preview-view div[data-tag-name="ol"] + div[data-tag-name="h1"] > h1 {
-	margin-block-start: 3rem;
-}
-
-/* 2. H2 et H3 collés au heading parent (H1 ou H2) */
-
-.markdown-preview-view div[data-tag-name="h1"] + div[data-tag-name="h2"] > h2,
-.markdown-preview-view div[data-tag-name="h1"] + div[data-tag-name="h3"] > h3,
-.markdown-preview-view div[data-tag-name="h2"] + div[data-tag-name="h3"] > h3 {
-	margin-block-start: 0rem;
-}
-
-/* 3. Paragraphe collé sous les petits headings (H4–H6) */
-
-.markdown-preview-view div[data-tag-name="h4"] + div[data-tag-name="p"] > p,
-.markdown-preview-view div[data-tag-name="h5"] + div[data-tag-name="p"] > p,
-.markdown-preview-view div[data-tag-name="h6"] + div[data-tag-name="p"] > p {
-	margin-block-start: 0rem;
-}
-/* -------------------- ↑ Contextual typography ↑ -------------------- */
-
-
 /*  Bookmark  OpSpl41  —————————————————————————————— Headings to my taste ——————————————————————————————
  * amélioration des espacements verticaux
  * couleurs
@@ -8772,31 +8735,6 @@ body.headings-scaling-major-third {
   margin-block-end:   var(--OT-space-below-h6);
 }
 
-/* plugin Contextual Typography : pointe sur les mêmes variables OT */
-.markdown-rendered is p,pre,table,ul,ol is h1,
-.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h1 {
-  --heading-spacing: var(--OT-space-above-h1);
-}
-.markdown-rendered is p,pre,table,ul,ol is h2,
-.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h2 {
-  --heading-spacing: var(--OT-space-above-h2);
-}
-.markdown-rendered is p,pre,table,ul,ol is h3,
-.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h3 {
-  --heading-spacing: var(--OT-space-above-h3);
-}
-.markdown-rendered is p,pre,table,ul,ol is h4,
-.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h4 {
-  --heading-spacing: var(--OT-space-above-h4);
-}
-.markdown-rendered is p,pre,table,ul,ol is h5,
-.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h5 {
-  --heading-spacing: var(--OT-space-above-h5);
-}
-.markdown-rendered is p,pre,table,ul,ol is h6,
-.markdown-rendered div is .el-blockquote,.el-p,.el-pre,.el-table,.el-ul,.el-ol div is h6 {
-  --heading-spacing: var(--OT-space-above-h6);
-}
 /* -------------------- ↑ Headings to my taste ↑ -------------------- */
 
 
@@ -8810,18 +8748,217 @@ body.headings-scaling-major-third {
   border-width:		2px;
   border-image:		linear-gradient(to right, transparent 0%, var(--text-normal) 20%, var(--text-normal) 40%, var(--text-normal) 60%, var(--text-normal) 80%, transparent 100%) 1;
 }
-
-/* 	Quand des headings de niveau 3 à 6 suivent directement une ligne horizontale,
-	je préfère qu’ils soient plus proches de la ligne. Si j’utilise une ligne à cet endroit-là,
-	c’est justement pour avoir une variante de la séparation visuelle. */
-.markdown-preview-view div[data-tag-name="hr"] + div > h3,
-.markdown-preview-view div[data-tag-name="hr"] + div > h4,
-.markdown-preview-view div[data-tag-name="hr"] + div > h5,
-.markdown-preview-view div[data-tag-name="hr"] + div > h6 {
-	margin-top:		0.0em;
-	padding-top:	0.0em;
-}
 /* -------------------- ↑ horizontal rule ↑ -------------------- */
+
+
+/* =========================================================
+   OpSpl40 — Contextual vertical rhythm
+   Règles contextuelles pour Reading + Preview / Live Preview
+   ========================================================= */
+
+   body {
+     /* Headings empilés (H1→H2, H1→H3, H2→H3) */
+     --OT-space-stack-heading: var(--OT-blanc-moyen);
+
+     /* Paragraphe après H4–H6 */
+     --OT-space-after-small-heading: var(--OT-blanc-mini);
+
+     /* H2 / H3 après bloc lourd (p, ul, ol, table, pre) */
+     --OT-space-after-heavy-block: var(--OT-blanc-large);
+
+     /* H2 / H3 après blockquote */
+     --OT-space-after-quoted-block: var(--OT-blanc-moyen);
+
+     /* H2 / H3 après callout */
+     --OT-space-after-callout: var(--OT-blanc-moyen);
+
+     /* H2 / H3 après hr */
+     --OT-space-after-hr: var(--OT-blanc-large);
+
+     /* Paragraphe après liste */
+     --OT-space-after-list: var(--OT-blanc-petit);
+
+     /* Blockquote après liste */
+     --OT-space-blockquote-after-list: var(--OT-blanc-moyen);
+   }
+
+
+/* ---------------------------------------------------------
+   1. Stacked headings
+   Cases: H1→H2, H1→H3, H2→H3
+   --------------------------------------------------------- */
+
+/* Reading — incoming space on second heading */
+.markdown-preview-view :is(h1 + h2, h1 + h3, h2 + h3) {
+  margin-block-start: var(--OT-space-stack-heading);
+}
+
+/* Reading — outgoing space on first heading */
+.markdown-preview-view :is(h1:has(+ h2), h1:has(+ h3), h2:has(+ h3)) {
+  margin-block-end: 0;
+}
+
+/* Preview / Live Preview — incoming space on second heading */
+.markdown-rendered :is(
+  div.el-h1 + div.el-h2 > h2,
+  div.el-h1 + div.el-h3 > h3,
+  div.el-h2 + div.el-h3 > h3
+) {
+  margin-block-start: var(--OT-space-stack-heading);
+}
+
+/* Preview / Live Preview — outgoing space on first heading */
+.markdown-rendered :is(
+  div.el-h1:has(+ div.el-h2) > h1,
+  div.el-h1:has(+ div.el-h3) > h1,
+  div.el-h2:has(+ div.el-h3) > h2
+) {
+  margin-block-end: 0;
+}
+
+
+/* ---------------------------------------------------------
+   2. Paragraph after H4–H6
+   --------------------------------------------------------- */
+
+/* Reading — incoming space on paragraph */
+.markdown-preview-view :is(h4 + p, h5 + p, h6 + p) {
+  margin-block-start: var(--OT-space-after-small-heading);
+}
+
+/* Reading — outgoing space on small heading */
+.markdown-preview-view :is(h4:has(+ p), h5:has(+ p), h6:has(+ p)) {
+  margin-block-end: 0;
+}
+
+/* Preview / Live Preview — incoming space on paragraph */
+.markdown-rendered :is(
+  div.el-h4 + div.el-p > p,
+  div.el-h5 + div.el-p > p,
+  div.el-h6 + div.el-p > p
+) {
+  margin-block-start: var(--OT-space-after-small-heading);
+}
+
+/* Preview / Live Preview — outgoing space on small heading */
+.markdown-rendered :is(
+  div.el-h4:has(+ div.el-p) > h4,
+  div.el-h5:has(+ div.el-p) > h5,
+  div.el-h6:has(+ div.el-p) > h6
+) {
+  margin-block-end: 0;
+}
+
+
+/* ---------------------------------------------------------
+   3. H2 / H3 after heavy block
+   Blocks: p, ul, ol, table, pre
+   --------------------------------------------------------- */
+
+/* Reading */
+.markdown-preview-view :is(
+  p + h2, p + h3,
+  ul + h2, ul + h3,
+  ol + h2, ol + h3,
+  table + h2, table + h3,
+  pre + h2, pre + h3
+) {
+  margin-block-start: var(--OT-space-after-heavy-block);
+}
+
+/* Preview / Live Preview */
+.markdown-rendered :is(
+  div.el-p + div.el-h2 > h2,
+  div.el-p + div.el-h3 > h3,
+  div.el-ul + div.el-h2 > h2,
+  div.el-ul + div.el-h3 > h3,
+  div.el-ol + div.el-h2 > h2,
+  div.el-ol + div.el-h3 > h3,
+  div.el-table + div.el-h2 > h2,
+  div.el-table + div.el-h3 > h3,
+  div.el-pre + div.el-h2 > h2,
+  div.el-pre + div.el-h3 > h3
+) {
+  margin-block-start: var(--OT-space-after-heavy-block);
+}
+
+
+/* ---------------------------------------------------------
+   4. H2 / H3 after quoted block
+   Block: blockquote
+   --------------------------------------------------------- */
+
+/* Reading */
+.markdown-preview-view :is(blockquote + h2, blockquote + h3) {
+  margin-block-start: var(--OT-space-after-quoted-block);
+}
+
+/* Preview / Live Preview */
+.markdown-rendered :is(
+  div.el-blockquote + div.el-h2 > h2,
+  div.el-blockquote + div.el-h3 > h3
+) {
+  margin-block-start: var(--OT-space-after-quoted-block);
+}
+
+/* =========================================================
+   OpSpl40b — Additional contextual vertical rhythm
+   Callouts, hr, blockquotes
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. H2 / H3 after callout
+   DOM: <div class="el-div"><div class="callout">…</div></div>
+   --------------------------------------------------------- */
+
+/* Reading — la plupart des thèmes exposent .callout directement */
+.markdown-preview-view :is(.callout + h2, .callout + h3) {
+  margin-block-start: var(--OT-space-after-callout);
+}
+
+/* Preview / Live Preview — wrapper .el-div autour de .callout */
+.markdown-rendered div.el-div:has(> .callout)
+  + div.el-h2 > h2,
+.markdown-rendered div.el-div:has(> .callout)
+  + div.el-h3 > h3 {
+  margin-block-start: var(--OT-space-after-callout);
+}
+
+
+/* ---------------------------------------------------------
+   2. H2 / H3 after horizontal rule
+   DOM: <div class="el-hr"><hr></div>
+   --------------------------------------------------------- */
+
+/* Reading */
+.markdown-preview-view :is(hr + h2, hr + h3) {
+  margin-block-start: var(--OT-space-after-hr);
+}
+
+/* Preview / Live Preview */
+.markdown-rendered div.el-hr + div.el-h2 > h2,
+.markdown-rendered div.el-hr + div.el-h3 > h3 {
+  margin-block-start: var(--OT-space-after-hr);
+}
+
+
+/* ---------------------------------------------------------
+   3. H2 / H3 after blockquote
+   DOM: <div class="el-blockquote"><blockquote>…</blockquote></div>
+   (complète le bloc ‘quoted block’ précédent)
+   --------------------------------------------------------- */
+
+/* Reading */
+.markdown-preview-view :is(blockquote + h2, blockquote + h3) {
+  margin-block-start: var(--OT-space-after-quoted-block);
+}
+
+/* Preview / Live Preview */
+.markdown-rendered div.el-blockquote + div.el-h2 > h2,
+.markdown-rendered div.el-blockquote + div.el-h3 > h3 {
+  margin-block-start: var(--OT-space-after-quoted-block);
+}
+/* -------------------- ↑ Contextual typography ↑ -------------------- */
 
 
 /*	Bookmark	OpSpl43	—————————————————————————————— Kanban plugin —————————————————————————————— */
@@ -13277,30 +13414,30 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 /* tiny-spacer : espace très discret, environ 0.4 ligne */
 .tiny-spacer {
 	display:	block;
-	margin-top: 	calc( 0.4 * var(--line-height-normal));
+	margin-top: 	calc( 0.4 * var(--OT-readingMode-line-height));
 }
 .cm-line:has(.tiny-spacer) {
-	padding-top: calc(0.4 * var(--line-height-normal)) !important;
+	padding-top: calc(0.4 * var(--OT-readingMode-line-height)) !important;
 	height: 0 !important;
 }
 
 /* half-spacer : espace intermédiaire, environ 0.6 ligne */
 .half-spacer {
 	display:	block;
-	margin-top: 	calc( 0.6 * var(--line-height-normal));
+	margin-top: 	calc( 0.6 * var(--OT-readingMode-line-height));
 }
 .cm-line:has(.half-spacer) {
-  padding-top: calc(0.6 * var(--line-height-normal)) !important;
+  padding-top: calc(0.6 * var(--OT-readingMode-line-height)) !important;
   height: 0 !important;
 }
 
 /* full-spacer : presque une ligne complète */
 .full-spacer {
 	display:	block;
-	margin-top: 	calc(0.9  * var(--line-height-normal));
+	margin-top: 	calc(0.9  * var(--OT-readingMode-line-height));
 }
 .cm-line:has(.full-spacer) {
-	padding-top: calc(0.9 * var(--line-height-normal)) !important;
+	padding-top: calc(0.9 * var(--OT-readingMode-line-height)) !important;
   height: 0 !important;
 }
 
