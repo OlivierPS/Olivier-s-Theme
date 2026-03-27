@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-27
+	- added some CSS classes usefull for adding different sizes of visual vertical space
 2026-03-26
 	- added code to change the reading/editing mode icon into a status indicator
 2026-03-25
@@ -9052,16 +9054,16 @@ body {
   --OT-checkbox-text-gap: 0.65em;
 
   --OT-list-font-size-1:  var(--OT-readingMode-text-size);	/* Font-size base (natif : tous niveaux ~ texte courant) */
-  --OT-list-font-size-2:  var(--OT-readingMode-text-size);
-  --OT-list-font-size-3:  var(--OT-readingMode-text-size);
-  --OT-list-font-size-4:  var(--OT-readingMode-text-size);
+  --OT-list-font-size-2:  var(--OT-list-font-size-1);
+  --OT-list-font-size-3:  var(--OT-list-font-size-1);
+  --OT-list-font-size-4:  var(--OT-list-font-size-1);
 
-  --OT-list-line-height: var(--line-height-normal);		/* Line-height (profil standard) */
+  --OT-list-line-height: var(--line-height-normal);			/* Line-height (profil standard) */
 
   --OT-list-item-top-1: var(--list-spacing);				/* Espacement entre items (par le haut) */
-  --OT-list-item-top-2: var(--list-spacing);
-  --OT-list-item-top-3: var(--list-spacing);
-  --OT-list-item-top-4: var(--list-spacing);
+  --OT-list-item-top-2: var(--OT-list-item-top-1);
+  --OT-list-item-top-3: var(--OT-list-item-top-1);
+  --OT-list-item-top-4: var(--OT-list-item-top-1);
 
   --OT-list-block-top-1:    var(--p-spacing);				/* Espacement entre items (par le haut) */
   --OT-list-block-bottom-1: var(--p-spacing);
@@ -13269,6 +13271,26 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 /* Dans les notes marquées avec cssclasses: [board-show-row-header], on ré-affiche les en-têtes de groupes */
 .board-show-row-header .board-row-header-bar:has(.board-row-title) {
   display: flex;
+}
+/* Espacement très discret  */
+.tiny-spacer {
+	display:	block;
+	margin: 	calc( 0.4 * var(--line-height-normal));
+}
+.half-spacer {
+	display:	block;
+	margin: 	calc( 0.6 * var(--line-height-normal));
+}
+.full-spacer {
+	display:	block;
+	margin: 	calc(0.9  * var(--line-height-normal));
+}
+.micro-divider {
+	display:			block;
+	height:				0.25rem;
+	margin:				0.25rem 1.618rem;
+	border-top-width:	1px;
+	border-top-style:	solid;
 }
 /*	---------- ↑ Some useful CSSCLASSES ↑ ----------	*/
 
