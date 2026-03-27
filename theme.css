@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-03-27
 	- added some CSS classes usefull for adding different sizes of visual vertical space
+	- improved the rendering of small vertical spacing classes in Live Preview mode
 2026-03-26
 	- added code to change the reading/editing mode icon into a status indicator
 2026-03-25
@@ -5688,7 +5689,7 @@ body.edit-font-Verdana {
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 .markdown-source-view.mod-cm6.is-readable-line-width
-  .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row):not(.HyperMD-header) {
+  .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row):not(.HyperMD-header):not(.cm-html-embed) {
   max-width:    var(--OT-edit-line-width);
   font-size:    var(--OT-edit-text-size);
   line-height:  var(--OT-edit-line-height);
@@ -13272,19 +13273,38 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 .board-show-row-header .board-row-header-bar:has(.board-row-title) {
   display: flex;
 }
-/* Espacement très discret  */
+
+/* tiny-spacer : espace très discret, environ 0.4 ligne */
 .tiny-spacer {
 	display:	block;
-	margin: 	calc( 0.4 * var(--line-height-normal));
+	margin-top: 	calc( 0.4 * var(--line-height-normal));
 }
+.cm-line:has(.tiny-spacer) {
+	padding-top: calc(0.4 * var(--line-height-normal)) !important;
+	height: 0 !important;
+}
+
+/* half-spacer : espace intermédiaire, environ 0.6 ligne */
 .half-spacer {
 	display:	block;
-	margin: 	calc( 0.6 * var(--line-height-normal));
+	margin-top: 	calc( 0.6 * var(--line-height-normal));
 }
+.cm-line:has(.half-spacer) {
+  padding-top: calc(0.6 * var(--line-height-normal)) !important;
+  height: 0 !important;
+}
+
+/* full-spacer : presque une ligne complète */
 .full-spacer {
 	display:	block;
-	margin: 	calc(0.9  * var(--line-height-normal));
+	margin-top: 	calc(0.9  * var(--line-height-normal));
 }
+.cm-line:has(.full-spacer) {
+	padding-top: calc(0.9 * var(--line-height-normal)) !important;
+  height: 0 !important;
+}
+
+/* micro-divider : un très horizontal de 1px prenant très peu d’espace vertical */
 .micro-divider {
 	display:			block;
 	height:				0.25rem;
