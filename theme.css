@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-28
+	- improved the logic and wording of settings
+	- rendered numeric defaults closer to “Obsidian native”
 2026-03-27
 	- added some CSS classes usefull for adding different sizes of visual vertical space
 	- improved the rendering of small vertical spacing classes in Live Preview mode
@@ -474,9 +477,9 @@ body {
 	--OT-edit-font-family:						var(--OT-edit-font),
     												"Comic Sans MS",
 													var(--font-default);
-	--OT-edit-text-size:						18px;
-	--OT-edit-line-width:						46em;
-	--OT-edit-line-height:						1.35rem;
+	--OT-edit-text-size:						17px;
+	--OT-edit-line-width:						44em;
+	--OT-edit-line-height:						1.5rem;
 	--OT-edit-letter-spacing:					0em;
 	--OT-edit-table-text-percent:				90;
 
@@ -528,9 +531,9 @@ body {
 	--OT-raw-heading-h5-scale:						1.0;
 	--OT-raw-heading-h6-scale:						1.0;
 
-	--OT-readingMode-text-size:						18px;
-	--OT-readingMode-line-width:					40em;
-	--OT-readingMode-line-height:					1.45rem;
+	--OT-readingMode-text-size:						17px;
+	--OT-readingMode-line-width:					44em;
+	--OT-readingMode-line-height:					1.5rem;
 	--OT-readingMode-tableText-percent:				90;
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
 	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
@@ -560,7 +563,7 @@ body {
 	--OT-tab-background-active-hover:				var(--color-accent-1);
 	--OT-tree-item-flair-background:				var(--color-base-20);
 	--OT-tree-item-flair-color:						var(--OT-nav-item-muted);
-	--OT-UI-font-size:								16px;
+	--OT-UI-font-size:								13px;
 	--OT-vertical-tab-header-group-title:			var(--OT-nav-item-muted);
 	--OT-view-header-title-focus-color:				var(--color-accent-1);
 	--OT-view-header-title-no-focus-color:			var(--text-muted);
@@ -13488,7 +13491,7 @@ settings:
 		title:		"Base size for the interface texts [px]"
 		title.fr:	"Taille de base pour les caractères de l’interface [px]"
 		type:		variable-number
-		default:	16
+		default:	13
 		format:		px
 
 	-
@@ -13714,6 +13717,15 @@ settings:
 				label.fr:	"Généreuse"
 				value:		lists-horiz-generous
 
+	-
+		id:			"OT-codeblock-linewrap-OFF"
+		title:		"Suppress line wrapping within code blocks"
+		title.fr:	"Supprimer les retours à la ligne dans les blocs de code"
+		type:		class-toggle
+		default:	true
+		addCommand:	true
+
+
 	# =========================
 	# Kanban plugin
 	-
@@ -13727,8 +13739,8 @@ settings:
 
 	-
 		id:				"OT-kanban-font"
-		title:			"Kanban — General font"
-		title.fr:		"Kanban — Fonte"
+		title:			"Kanban: General font"
+		title.fr:		"Kanban : Fonte"
 		description:	"It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
 		description.fr:	"Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
 		type:			variable-select
@@ -13828,19 +13840,12 @@ settings:
 
 	-
 		id: "OT-kanban-font-size"
-		title: "Kanban — Size of the cards text [px]"
-		title.fr: "Kanban — Taille des caractères dans les fiches [px]"
+		title: "Kanban: Size of the cards text [px]"
+		title.fr: "Kanban : Taille des caractères dans les fiches [px]"
 		type: variable-number
 		default: 16
 		format: px
 
-	-
-		id:			"OT-codeblock-linewrap-OFF"
-		title:		"Suppress line wrapping within code blocks"
-		title.fr:	"Supprimer les retours à la ligne dans les blocs de code"
-		type:		class-toggle
-		default:	true
-		addCommand:	true
 
 	# ===================
 	# LIGHT MODE settings
@@ -14156,9 +14161,9 @@ settings:
 					value:		pb-lm-parchment-1
 	-
 		id:				paperBackground-in-livePreview-LM
-		title:			Paper background also in “Live Preview” mode (Light mode)
-		title.fr:		"Fond papier également en mode “Live” (mode Light)"
-		description:	"Optionally the paper background can also be used in “Live Preview”."
+		title:			Paper background also in Live Preview mode (Light mode)
+		title.fr:		"Fond papier également en mode Live (mode Light)"
+		description:	"Optionally the paper background can also be used in Live Preview."
 		description.fr:	Optionnellement, le fond papier peut aussi être utilisé lorsqu’on édite les fiches.
 		type:			class-toggle
 		default:		false
@@ -14385,7 +14390,7 @@ settings:
 
 	-
 			id:				OT-colored-headings-lightMode
-			title:			Colored H1 to H5 headings (light mode)
+			title:			Colored H1 to H5 headings (Light mode)
 			title.fr:		Titres colorés (H1 à H5, Light mode)
 			description:	You may activate the coloring of the headings or keep them like normal text.
 			description.fr:	Vous pouvez activer la colorisation des titres H1 à H6 ou bien les laisser dans la couleur du texte courant.
@@ -14809,7 +14814,7 @@ settings:
 		id:				paperBackground-in-livePreview-DM
 		title:			Paper background also in Live Preview (Dark mode)
 		title.fr:		Fond papier également en mode “Live” (mode Dark)
-		description:	"Optionally the paper background can also be used in “Live Preview”."
+		description:	"Optionally the paper background can also be used in Live Preview."
 		description.fr:	Optionnellement, le fond papier peut aussi être utilisé lorsqu’on édite les fiches.
 		type:			class-toggle
 		default:		true
@@ -15161,7 +15166,7 @@ settings:
 			title:		Body text size [px]
 			title.fr:	Taille des caractères [px]
 			type:		variable-number
-			default:	18
+			default:	17
 			format:		px
 
 	-
@@ -15179,7 +15184,7 @@ settings:
 			title:		Line height [rem]
 			title.fr:	Interligne [rem]
 			type:		variable-number
-			default:	1.45
+			default:	1.5
 			format:		rem
 			disableIF:
 				- OT-readingMode-natural-line-height
@@ -15188,7 +15193,7 @@ settings:
 			title:		Line length [em]
 			title.fr:	Longueur de la ligne [em]
 			type:		variable-number
-			default:	46
+			default:	44
 			format:		em
 	-
 			id:				OT-readingMode-tableText-percent
@@ -15467,7 +15472,7 @@ settings:
 			title:		Body text size [px]
 			title.fr:	Taille des caractères [px]
 			type:		variable-number
-			default:	18
+			default:	17
 			format:		px
 	-
 			id:				OT-edit-natural-line-height
@@ -15484,7 +15489,7 @@ settings:
 			title:		Line height [rem]
 			title.fr:	Interligne [rem]
 			type:		variable-number
-			default:	1.35
+			default:	1.5
 			format:		rem
 	-
 			id:				OT-edit-line-width
@@ -15493,7 +15498,7 @@ settings:
 			description:	By default, you get longer lines than plain Obsidian.
 			description.fr:	Par défaut, une valeur un peu plus généreuse que le « défaut » d’Obsidian.
 			type:			variable-number
-			default:		46
+			default:		44
 			format:			em
 	-
 			id:				OT-edit-tableText-percent
