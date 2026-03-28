@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-03-28
 	- improved the logic and wording of settings
 	- rendered numeric defaults closer to “Obsidian native”
+	- changed units for line height: rem ⭢ em
 2026-03-27
 	- added some CSS classes usefull for adding different sizes of visual vertical space
 	- improved the rendering of small vertical spacing classes in Live Preview mode
@@ -479,7 +480,7 @@ body {
 													var(--font-default);
 	--OT-edit-text-size:						17px;
 	--OT-edit-line-width:						44em;
-	--OT-edit-line-height:						1.5rem;
+	--OT-edit-line-height:						1.5em;
 	--OT-edit-letter-spacing:					0em;
 	--OT-edit-table-text-percent:				90;
 
@@ -533,7 +534,7 @@ body {
 
 	--OT-readingMode-text-size:						17px;
 	--OT-readingMode-line-width:					44em;
-	--OT-readingMode-line-height:					1.5rem;
+	--OT-readingMode-line-height:					1.5em;
 	--OT-readingMode-tableText-percent:				90;
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
 	--OT-ribbon-icon-color-sidebar-is-open:			var(--icon-color);
@@ -5780,9 +5781,9 @@ input[type=checkbox]:hover {
 .cm-hmd-frontmatter.cm-hmd-frontmatter.cm-def,
 .cm-line:has(.cm-hmd-frontmatter) {
 	color:			var(--OT-YAML-color);
-	/*padding-top:	4pt	!important;				09.02.2026 je préfère un affichage compact	*/
-	padding-bottom:	0	!important;
-	line-height:	1rem	!important;
+	/*padding-top:	4pt		!important;				09.02.2026 je préfère un affichage compact	*/
+	padding-bottom:	0		!important;
+	line-height:	1.1em	!important;
 }
 
 .publish-section-header,
@@ -8366,7 +8367,7 @@ img.signature {
 .image-captions-caption {
 	font-style: italic;
 	font-size: var(--font-smaller);
-	line-height: 1.2rem;
+	line-height: 1.2em;
 	padding-block: 0.6rem 0;
 	padding-inline: 0.5rem;
 	text-align: start;
@@ -10545,7 +10546,7 @@ body {
   gap:           0.25rem;
   padding-top:    0;
   padding-bottom: 0;
-  /*line-height:    1rem;*/
+  /*line-height:    1em;*/
 }
 
 /* Conteneur de bouton fileclass = flex horizontal */
@@ -10929,7 +10930,7 @@ kbd {
 }
 .empty-state-action {
 	cursor:				var(--cursor);
-/*	line-height: 		2rem;	*/
+/*	line-height: 		2em;	*/
 	color:				var(--OT-menu-text-color);
 	background-color:	var(--menu-background);
 	padding:			0.1em 0.5em;
@@ -11129,7 +11130,7 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 	--floating-toc-highlight-color:			var(--color-accent-2) !important;	/*	var(--text-highlight-bg-active);	*/
 	--floating-toc-highlight-color-rgb:		255,128,0 !important;
 	--floating-toc-line-color:				var(--OT-color-on-accent-2) !important;
-	--floating-toc-line-height:				1.2rem	!important;
+	--floating-toc-line-height:				1.2em	!important;
 /*	--floating-toc-line-width:				26rem	!important;	*/
 /*	--actual-toc-width:						26rem	!important;	*/
 	--floating-toc-response-time:			0.0s	!important;
@@ -15181,11 +15182,11 @@ settings:
 
 	-
 			id:			OT-readingMode-line-height
-			title:		Line height [rem]
-			title.fr:	Interligne [rem]
+			title:		Line height [em]
+			title.fr:	Interligne [em]
 			type:		variable-number
 			default:	1.5
-			format:		rem
+			format:		em
 			disableIF:
 				- OT-readingMode-natural-line-height
 	-
@@ -15486,11 +15487,11 @@ settings:
 
 	-
 			id:			OT-edit-line-height
-			title:		Line height [rem]
-			title.fr:	Interligne [rem]
+			title:		Line height [em]
+			title.fr:	Interligne [em]
 			type:		variable-number
 			default:	1.5
-			format:		rem
+			format:		em
 	-
 			id:				OT-edit-line-width
 			title:			Line length [em]
