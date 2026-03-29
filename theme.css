@@ -42,7 +42,7 @@
  * License
  * -------
  *   - Personal use: free.
- *   - For reuse, forks, or publication, please credit “Olivier’s Theme for Obsidian, v2.0 – Olivier Charles”.
+ *   - For reuse, forks, or publication, please credit “Olivier’s Theme for Obsidian, v2.0 – Olivier Spinnler”.
  */
 
 /*
@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-03-29
 	- reorganised and renumbered a few sections
 	- vastly improved the vertical spacing of lists and the code involved
+	- corrected the text sizing in tables
 2026-03-28
 	- improved the logic and wording of settings
 	- rendered numeric defaults closer to “Obsidian native”
@@ -15580,7 +15581,7 @@ settings:
 			default:		44
 			format:			em
 	-
-			id:				OT-edit-tableText-percent
+			id:				OT-edit-table-text-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
 			title.fr:		Taille des caractères dans les tables, en pourcents du texte normal. 100 = même taille
 			description:	It’s generally practical to have a smaller text size inside table cells.
