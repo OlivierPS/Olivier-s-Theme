@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-03-29
+	- reorganised and renumbered a few sections
 2026-03-28
 	- improved the logic and wording of settings
 	- rendered numeric defaults closer to “Obsidian native”
@@ -179,7 +181,10 @@ Bookmarks:	OpSpl01:	définition des couleurs
 							l’édition des fichiers dans la “nav bar”
 							inline title
 			OpSpl22:	les sidebars
+			OpSpl22f	search pane, nav metadata, sync history
 			OpSpl23:	suggestion panels, prompts
+			OpSpl23a	suggestion items: états communs
+			OpSpl23b	suggestion items complexes + autocomplete
 			OpSpl24:	adaptations pour le plugin “File Info”
 							autres adaptations
 			OpSpl25:	reading Mode
@@ -189,54 +194,54 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl28		en-têtes des panneaux (tab headers)
 			OpSpl29		container for document search/replace UI
 			OpSpl30		buttons
-			OpSpl30a	Combobox / dropdown buttons – ajustements généraux + Bases
-			OpSpl31		collapse icons
-			OpSpl32		menus
-			OpSpl33		settings panel
-			OpSpl34		footnotes
-			OpSpl35		images
-			OpSpl36		zoom-image
-			OpSpl37		PDFs
-			OpSpl38		other refinements
-			OpSpl39		blockquotes and codeblocks
-			OpSpl40		contextual typography
+			OpSpl31		Combobox / dropdown buttons – ajustements généraux + Bases
+			OpSpl32		collapse icons
+			OpSpl33		menus
+			OpSpl34		settings panel
+			OpSpl35		footnotes
+			OpSpl36		images
+			OpSpl37		zoom-image
+			OpSpl38		PDFs
+			OpSpl39		other refinements
+			OpSpl40		blockquotes and codeblocks
 			OpSpl41		headings to my taste
 			OpSpl42		horizontal rule
-			OpSpl43		Kanban plugin
-			OpSpl43b	Board View plugin
-			OpSpl44		transcludes
-			OpSpl45		syntax markers
-			OpSpl46		tags
-			OpSpl47		lists
-			OpSpl48		status bar
-			OpSpl49		metadata
-			OpSpl49a	file navigation (tree items, etc.)
-			OpSpl20:	les headings en mode d’édition
-			OpSpl50		Metadata Menu plugin
-			OpSpl51		canvas
-			OpSpl52		<kbd>
-			OpSpl53		calendar plugin
-			OpSpl54		other interface elements: collapse indicators
-			OpSpl55		Empty pane
-			OpSpl56		text highlighting
+			OpSpl43		contextual typography
+			OpSpl44		Kanban plugin
+			OpSpl45		Board View plugin
+			OpSpl46		transcludes
+			OpSpl47		syntax markers
+			OpSpl48		tags
+			OpSpl49		lists
+			OpSpl50		status bar
+			OpSpl51		metadata and links
+			OpSpl52		file navigation (tree items, etc.)
+			OpSpl53:	les headings en mode d’édition
+			OpSpl54		Metadata Menu plugin
+			OpSpl55		canvas
+			OpSpl56		<kbd>
+			OpSpl57		calendar plugin
+			OpSpl58		other interface elements: collapse indicators
+			OpSpl59		Empty pane
+			OpSpl60		text highlighting
 						mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition
-			OpSpl57		Vertical Tabs plugin
-			OpSpl58		Floating TOC plugin
-			OpSpl59		Recent notes plugin
-			OpSpl60		QuickAdd plugin
-			OpSpl61		Another Quick Switcher plugin
-			OpSpl62		Omnisearch plugin
-			OpSpl63		Highlight active folder section plugin
-			OpSpl64		Related Notes plugin
-			OpSpl65		Note Status plugin
-			OpSpl66		Dynamic Outline plugin
-			OpSpl67		Better Command Palette plugin
-			OpSpl68		JS Engine plugin
-			OpSpl69		TaskNotes plugin
-			OpSpl70		Smart Connections plugin
-			OpSpl71		Notebook Navigator plugin
-			OpSpl72		Different plugins: Repeat, Folder Note
-			OpSpl73		Viewing modes icons
+			OpSpl61		Vertical Tabs plugin
+			OpSpl62		Floating TOC plugin
+			OpSpl63		Recent notes plugin
+			OpSpl64		QuickAdd plugin
+			OpSpl65		Another Quick Switcher plugin
+			OpSpl66		Omnisearch plugin
+			OpSpl67		Highlight active folder section plugin
+			OpSpl68		Related Notes plugin
+			OpSpl69		Note Status plugin
+			OpSpl70		Dynamic Outline plugin
+			OpSpl71		Better Command Palette plugin
+			OpSpl72		JS Engine plugin
+			OpSpl73		TaskNotes plugin
+			OpSpl74		Smart Connections plugin
+			OpSpl75		Notebook Navigator plugin
+			OpSpl76		Different plugins: Repeat, Folder Note
+			OpSpl77		Viewing modes icons
 
 			OpSpl80		Ambitieuse entreprise de réunir ici tout ce qui est "hover".
 
@@ -246,7 +251,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 
 *******************************************************************/
 
-/*	Bookmark	OpSpl01 —————————————————————————————— Définition des couleurs —————————————————————————————— */
+/*	=== === === OpSpl01 —————————————————————————————— Définition des couleurs —————————————————————————————— */
 body
 {
 	--obsidian-violet:		hsl(258,  88%, 66%);
@@ -444,7 +449,7 @@ body
 }
 /* -------------------- ↑ définition des couleurs ↑ --------------------	*/
 
-/*	Bookmark	OpSpl02	 —————————————————————————————— Theme’s variables —————————————————————————————— */
+/*	=== === === OpSpl02	 —————————————————————————————— Theme’s variables —————————————————————————————— */
 	/*	Pour avoir un premier état, même sans avoir chargé le plugin “Style Settings”.*/
 body {
 	/*	blanc typographique	*/
@@ -570,7 +575,7 @@ body {
 	--OT-view-header-title-no-focus-color:			var(--text-muted);
 	--OT-YAML-color:								hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
 
-/*	Bookmark	OpSpl03	—————————————————————————————— Ajustement des variables “Obsidian” —————————————————————————————— */
+/*	=== === === OpSpl03	—————————————————————————————— Ajustement des variables “Obsidian” —————————————————————————————— */
 	--background-modifier-active-hover:	var(--color-accent-1);
 	--background-modifier-border:		var(--color-base-35);
 	--background-modifier-border-hover:	var(--color-accent-2);
@@ -855,7 +860,7 @@ body {
 	--interactive-accent:		var(--color-accent-2);
 	--interactive-accent-hover:	hsla( var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
 
-/*	Bookmark	OpSpl04	—————————————————————————————— Accent colors  ——————————————————————————————	*/
+/*	=== === === OpSpl04	—————————————————————————————— Accent colors  ——————————————————————————————	*/
 	--accent-h:				var(--OT-theme-h)								!important;
 	--accent-s:										50%						!important;
 	--accent-l:														70%		!important;
@@ -874,7 +879,7 @@ body {
 }
 
 
-/*	Bookmark	OpSpl05	—————————————————————————————— base colors for a light theme —————————————————————————————— */
+/*	=== === === OpSpl05	—————————————————————————————— base colors for a light theme —————————————————————————————— */
 .theme-light{
 	--OT-theme-h: 27;
 	--OT-theme-s: 35%;
@@ -903,7 +908,7 @@ body {
 	/*--h6-color: var(--OT-view-header-title-focus-color);*/
 }
 
-/*	Bookmark	OpSpl06	—————————————————————————————— base colors for a dark theme —————————————————————————————— */
+/*	=== === === OpSpl06	—————————————————————————————— base colors for a dark theme —————————————————————————————— */
 .theme-dark {
 	--OT-theme-h:		40;
 	--OT-theme-s:		25%;
@@ -965,10 +970,10 @@ body {
 	/*--h6-color: var(--OT-view-header-title-focus-color);*/
 }
 
-/*	Bookmark	OpSpl07	—————————————————————————————— text selection  ——————————————————————————————*/
+/*	=== === === OpSpl07	—————————————————————————————— text selection  ——————————————————————————————*/
 
 
-/*	Bookmark	OpSpl08	 —————————————————————————————— LIGHT mode palettes —————————————————————————————— */
+/*	=== === === OpSpl08	 —————————————————————————————— LIGHT mode palettes —————————————————————————————— */
 .theme-light.lightPalette-OBSIDIAN {
 /* tout est déjà défini dans le «par défaut» en vigueur quand le plugin “Style Settings” n’est pas actif. */
 	--OT-theme-h:	0;
@@ -1258,7 +1263,6 @@ body {
 } /*	↑ lightPalette-Beige ↑	*/
 
 /*	----------------------------------------------	*/
-/*	OpSpl9999	*/
 .theme-light.lightPalette-metallicBlue {
 	--OT-theme-h:		205;
 	--OT-theme-s:		57%;
@@ -1735,7 +1739,7 @@ body {
 } /*	↑ lightPalette-yellow ↑	*/
 
 
-/*	Bookmark	OpSpl09	 —————————————————————————————— ↓ DARK mode palettes ↓ ——————————————————————————————	*/
+/*	=== === === OpSpl09	 —————————————————————————————— ↓ DARK mode palettes ↓ ——————————————————————————————	*/
 .theme-dark.darkPalette-OBSIDIAN,
 .theme-dark.lightPalette-OBSIDIAN.darkPalette-default {
 	--OT-theme-h:		0;
@@ -2689,7 +2693,7 @@ body {
 /*	↑	darkPalette-yellow	↑	*/
 /* -------------------- ↑ DARK mode palettes -------------------- ↑ */
 
-/*	Bookmark	OpSpl09	—————————————————————————————— Accent Colors for LIGHT palettes —————————————————————————————— */
+/*	=== === === OpSpl09	—————————————————————————————— Accent Colors for LIGHT palettes —————————————————————————————— */
 .theme-light.lightPalette-artDeco.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-artDeco.accentColor-lightMode-alternative-1 {
@@ -3318,7 +3322,7 @@ body {
 }
 
 /* =======================================================================================	*/
-/*	Bookmark	OpSpl11	—————————————————————————————— Accent colors for DARK mode palettes —————————————————————————————— */
+/*	=== === === OpSpl11	—————————————————————————————— Accent colors for DARK mode palettes —————————————————————————————— */
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.lightPalette-Beige.darkPalette-default.accentColor-darkMode-shade,
 .theme-dark.darkPalette-beige.accentColor-darkMode-shade {
@@ -4074,7 +4078,7 @@ body {
 /* -------------------- ↑ DARK mode Accent Colors -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl12	—————————————————————————————— Text Colors —————————————————————————————— */
+/*	=== === === OpSpl12	—————————————————————————————— Text Colors —————————————————————————————— */
 .theme-light.textColor-lightMode-default {
 }
 .theme-light.textColor-lightMode-amber {
@@ -4334,7 +4338,7 @@ body {
 }
 /* -------------------- ↑ Text Color definitions ↑ -------------------- ↑ */
 
-/*  Bookmark OpSpl13 ——————————————————— Pills Colors (Style Settings) ——————————————————— */
+/*  === === === OpSpl13 ——————————————————— Pills Colors (Style Settings) ——————————————————— */
 
 /* Light mode variants */
 .theme-light.OT-Light-pills-color-accent {
@@ -4404,7 +4408,7 @@ body {
 /* -------------------- Pills Colors -------------------- */
 
 
-/* Bookmark OpSpl14 — Highlight Colors (Stabilo) */
+/* === === === OpSpl14 — Highlight Colors (Stabilo) */
 
 /* Light mode presets */
 .theme-light.highlight-color-lightBlue {
@@ -4531,7 +4535,7 @@ body {
 /* -------------------- ↑ Highlight Colors -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl15	 ——————————————————————————————  Edit background colors —————————————————————————————— */
+/*	=== === === OpSpl15	 ——————————————————————————————  Edit background colors —————————————————————————————— */
 .theme-light.editingBackgroundColor-lightMode-default .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-default .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-default .cm-s-obsidian {
@@ -4763,7 +4767,7 @@ body {
 /* -------------------- ↑ Edit background colors -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl16	—————————————————————————————— Edit text colors —————————————————————————————— */
+/*	=== === === OpSpl16	—————————————————————————————— Edit text colors —————————————————————————————— */
 .theme-light.inkColor-lightMode-default .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
 .theme-light.inkColor-lightMode-default .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
 .theme-light.inkColor-lightMode-default .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
@@ -5180,10 +5184,10 @@ body {
 	--link-color:			silver;
 	--link-external-color:	silver;
 }
-/* -------------------- ↑ OpSpl Edit text colors -------------------- ↑ */
+/* -------------------- ↑ Edit text colors -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl17	 —————————————————————————————— Icon signaling Edit mode —————————————————————————————— */
+/*	=== === === OpSpl17	 —————————————————————————————— Icon signaling Edit mode —————————————————————————————— */
 /* ensure positioned ancestor */
 .markdown-source-view.mod-cm6 .cm-editor {
   	position:	relative;
@@ -5206,7 +5210,7 @@ body {
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à droite du panneau d’édition ↑ -------------------------	*/
 
 
-/*	Bookmark	OpSpl17a	 —————————————————————————————— Rythme vertical —————————————————————————————— */
+/*	=== === === OpSpl17a	 —————————————————————————————— Rythme vertical —————————————————————————————— */
 body.vertical-rythm-tight {
 	--OT-blanc-petit:		calc(0.3   * var(--OT-readingMode-line-height));
 	--OT-space-above-h1:	var(--OT-blanc-grand);
@@ -5275,7 +5279,7 @@ body.vertical-rythm-Bear {
 /*	------------------------- ↑ Rythme vertical ↑ -------------------------	*/
 
 
-/*	Bookmark	OpSpl18	 —————————————————————————————— Edit mode font family and font size —————————————————————————————— */
+/*	=== === === OpSpl18	 —————————————————————————————— Edit mode font family and font size —————————————————————————————— */
 
 /* ------------------------- Edit mode font family + kerning (2026-02-07) ------------------------- */
 
@@ -5691,7 +5695,7 @@ body.edit-font-Verdana {
 }
 /*	------------------------- ↑ Edit mode fonte family and font size ↑ -------------------------	*/
 
-/*	Bookmark	OpSpl19	—————————————————————————————— basic typography of the EDIT mode —————————————————————————————— */
+/*	=== === === OpSpl19	—————————————————————————————— basic typography of the EDIT mode —————————————————————————————— */
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 .markdown-source-view.mod-cm6.is-readable-line-width
@@ -5732,7 +5736,7 @@ body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-
 }
 
 
-/*	Bookmark	OpSpl21	 —————————————————————————————— Autres ajustements —————————————————————————————— */
+/*	=== === === OpSpl21	 —————————————————————————————— Autres ajustements —————————————————————————————— */
 /*	L’espace au-dessus du texte dans les panneaux d’édition, en mode preview et en mode d’édition	*/
 .markdown-preview-view,
 .view-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller {
@@ -5880,7 +5884,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 
 
 
-/*  Bookmark OpSpl22 —————————————————————————————— Sidebars —————————————————————————————— */
+/*  === === === OpSpl22 —————————————————————————————— Sidebars —————————————————————————————— */
 
 /* Vertical spacing for file navigator items */
 .filesNavigator-spacing-compact {
@@ -6020,8 +6024,69 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 }
 /* -------------------- ↑ Sidebars ↑ -------------------- */
 
+/*  === === === OpSpl22f ————————————————————— search pane, nav metadata, sync history ————————————————— */
+/* Survol des résultats de recherche dans la sidebar */
+@media (hover: hover) {
+	.tree-item.search-result:hover {
+		& .is-clickable,
+		& .tree-item-inner {
+			color:            var(--OT-color-on-accent-1) !important;
+			background-color: var(--color-accent-1)       !important;
+		}
 
-/*  Bookmark OpSpl23 ————————————————————— panneaux de suggestions ————————————————————— */
+		& .collapse-icon svg.svg-icon {
+			color:            var(--OT-color-on-accent-1) !important;
+			background-color: var(--color-accent-1)       !important;
+		}
+	}
+}
+
+/* Sync history list */
+@media (hover: hover) {
+	.sync-history-list-item
+	  .version-group-container
+	  .version-group-item:hover {
+		color:            var(--OT-color-on-accent-1);
+		background-color: var(--color-accent-1);
+	}
+}
+
+/* Suggestions pour la recherche (petites bulles sous la search bar) */
+@media (hover: hover) {
+	.search-suggest-item.mod-group:hover,
+	.search-suggest-item.mod-group.is-selected {
+		color:            var(--OT-color-on-accent-1);
+		background-color: var(--color-accent-1);
+	}
+}
+
+/* État vide de la recherche */
+.search-empty-state {
+	color:      var(--input-placeholder-color);
+	font-style: italic;
+}
+
+/* Titre de fichier dans la nav */
+.nav-folder-title-content {
+	font-variant: small-caps;
+	font-weight:  600;
+}
+
+/* Tags dans la nav (accent-2) */
+.nav-file-tag {
+	color:            var(--OT-color-on-accent-2);
+	background-color: var(--color-accent-2);
+}
+
+/* Lisibilité des extraits dans les résultats de recherche */
+.search-result-file-matches {
+	color: var(--text-normal);
+}
+/* ------------------------------ ↑ search pane, nav metadata, sync history ↑ ------------------------------ */
+
+
+
+/*  === === === OpSpl23a ————————————————————— suggestion items: états communs ————————————————————— */
 
 /* Base selected / mobile-tap state for suggestion items (accent-2) */
 .suggestion-item.is-selected,
@@ -6070,7 +6135,10 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 		}
 	}
 }
+/* ------------------------------ ↑ suggestion items: états communs ↑ ------------------------------ */
 
+
+/*  === === === OpSpl23b ————————————————————— suggestion items complexes + autocomplete ————————————————— */
 /* Complex suggestion items — selected (accent-2) */
 .suggestion-item.mod-complex.is-selected {
 	background-color: var(--color-accent-2);
@@ -6127,89 +6195,10 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 	color:            var(--OT-color-on-accent-2);
 	background-color: var(--color-accent-2);
 }
+/* ------------------------------ ↑ suggestion items complexes + autocomplete ↑ ------------------------------ */
 
 
-/*  Bookmark OpSpl61 ————————————— Another Quick Switcher plugin ————————————— */
-
-.suggestion-item.is-selected .another-quick-switcher__item,
-.suggestion-item.is-selected .another-quick-switcher__starred_item::before {
-	/* Lisibilité > muted strict */
-	color: var(--OT-color-on-accent-2);
-}
-
-.suggestion-item.is-selected .another-quick-switcher__item__description,
-.suggestion-item.is-selected .another-quick-switcher__item__directory {
-	color: var(--OT-color-on-accent-2);
-}
-
-
-
-
-/* Survol des résultats de recherche dans la sidebar */
-@media (hover: hover) {
-	.tree-item.search-result:hover {
-		& .is-clickable,
-		& .tree-item-inner {
-			color:            var(--OT-color-on-accent-1) !important;
-			background-color: var(--color-accent-1)       !important;
-		}
-
-		& .collapse-icon svg.svg-icon {
-			color:            var(--OT-color-on-accent-1) !important;
-			background-color: var(--color-accent-1)       !important;
-		}
-	}
-}
-
-/* Sync history list */
-@media (hover: hover) {
-	.sync-history-list-item
-	  .version-group-container
-	  .version-group-item:hover {
-		color:            var(--OT-color-on-accent-1);
-		background-color: var(--color-accent-1);
-	}
-}
-
-/* Suggestions pour la recherche (petites bulles sous la search bar) */
-@media (hover: hover) {
-	.search-suggest-item.mod-group:hover,
-	.search-suggest-item.mod-group.is-selected {
-		color:            var(--OT-color-on-accent-1);
-		background-color: var(--color-accent-1);
-	}
-}
-
-/* État vide de la recherche */
-.search-empty-state {
-	color:      var(--input-placeholder-color);
-	font-style: italic;
-}
-
-/* Titre de fichier dans la nav */
-/* .nav-file-title {
-	 border-bottom: 1px dotted var(--nav-item-color);
-} */
-
-.nav-folder-title-content {
-	font-variant: small-caps;
-	font-weight:  600;
-}
-
-/* Tags dans la nav (accent-2) */
-.nav-file-tag {
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
-}
-
-/* Lisibilité des extraits dans les résultats de recherche */
-.search-result-file-matches {
-	color: var(--text-normal);
-}
-
-/* ------------------------------ ↑ Sidebars & suggestions ↑ ------------------------------ */
-
-/*	Bookmark	OpSpl24	—————————————————————————————— pour le plugin “File Info” —————————————————————————————— */
+/*	=== === === OpSpl24	—————————————————————————————— pour le plugin “File Info” —————————————————————————————— */
 .tlfFileInfoLabel,
 .tlfFileInfoButton,
 .tlfFileInfoTextArea,
@@ -6224,7 +6213,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 /*	----------------------------------------------	*/
 
 
-/*	Bookmark	OpSpl25	 —————————————————————————————— READING mode —————————————————————————————— */
+/*	=== === === OpSpl25	 —————————————————————————————— READING mode —————————————————————————————— */
 /* Une petite ligne de rien du tout, mais qui change beaucoup de choses! */
 .markdown-preview-view {
   font-size: var(--OT-readingMode-text-size);
@@ -6234,7 +6223,7 @@ body.OT-readingMode-natural-line-height {
   --line-height-normal: normal;
   --OT-blanc-petit: calc(0.45 * var(--OT-readingMode-text-size)) !important;
 }
-/* ---------- OpSpl Paper background ---------- */
+/* ---------- Paper background ---------- */
 /* Let’s put a nice paper-like background in the preview; we can style either
 	“.markdown-preview-sizer” → just the text column
 	“.markdown-preview-view” → the whole edit pane
@@ -6369,7 +6358,7 @@ body.OT-readingMode-natural-line-height {
 /* -------------------- ↑ Paper background -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl26	—————————————————————————————— Tables —————————————————————————————— */
+/*	=== === === OpSpl26	—————————————————————————————— Tables —————————————————————————————— */
 .OT-tables-style-1,
 .OT-tables-style-2,
 .OT-tables-improved,
@@ -6572,7 +6561,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 /*	-------------------- ↑ Tables ↑ --------------------  */
 
 
-/* Bookmark OpSpl27 ————————————————————————— Bases ————————————————————————— */
+/* === === === OpSpl27 ————————————————————————— Bases ————————————————————————— */
 
 /* -------------------- vue “list” -------------------- */
 .bases-view[data-view-type="list"] {
@@ -6914,7 +6903,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 /* -------------------- ↑ Bases ↑ -------------------- */
 
 
-/*  Bookmark OpSpl28 ——————————————————————————————
+/*  === === === OpSpl28 ——————————————————————————————
     En-tête des panneaux (View header + Tab headers)
     —————————————————————————————— */
 
@@ -7371,7 +7360,7 @@ body.is-focused
 /* -------------------- ↑ En-tête des panneaux (Tab headers) ↑ -------------------- */
 
 
-/* Bookmark		OpSpl29 —————————————————————————————— Container for document search/replace UI —————————————————————————————— */
+/* === === === OpSpl29 —————————————————————————————— Container for document search/replace UI —————————————————————————————— */
 .mod-active .document-search-container {
 	background-color:	var(--background-secondary);
 }
@@ -7411,7 +7400,7 @@ body.is-focused
 }
 
 
-/*  Bookmark OpSpl30 ————————————— Boutons ————————————— */
+/*  === === === OpSpl30 ————————————— Boutons ————————————— */
 
 /* 1. Generic button styles */
 button,
@@ -7759,7 +7748,7 @@ select {
 }
 /* -------------------- ↑ Boutons ↑ -------------------- */
 
-/* Bookmark		OpSpl30a --------------------	Combobox / dropdown buttons – ajustements généraux + Bases */
+/* === === === OpSpl31 --------------------	Combobox / dropdown buttons – ajustements généraux + Bases */
 
 /* Hover générique pour tous les combobox (cohérent avec ta matrice accent-1) */
 .combobox-button:hover {
@@ -7810,7 +7799,7 @@ select {
     }
   }
 }
-/* Bookmark OpSpl30a — Combobox dropdown buttons — ajustements Bases */
+/* ---------- Combobox dropdown buttons — ajustements Bases */
 
 /* 1. Placeholder des combobox Bases – état normal */
 .combobox-button.bases-sort-property,
@@ -7917,7 +7906,7 @@ select {
 }
 /* ---------- ↑ Comboboxes ↑ ----------*/
 
-/*  Bookmark OpSpl31 ————————————— Collapse icons ————————————— */
+/*  === === === OpSpl32 ————————————— Collapse icons ————————————— */
 
 /* 1. Base globale des containers d’icônes de collapse */
 .collapse-icon {
@@ -8009,7 +7998,7 @@ select {
 /* -------------------- ↑ Collapse icons ↑ -------------------- */
 
 
-/* Bookmark OpSpl32 ———————————————————— Menus ——————————————— */
+/* === === === OpSpl33 ———————————————————— Menus ——————————————— */
 
 /* Menu base (normal) */
 .menu {
@@ -8074,7 +8063,7 @@ select {
 /* -------------------- ↑ Menus ↑ -------------------- */
 
 
-/*  Bookmark OpSpl33 ——————————————————————————— Settings panel ——————————————————————————— */
+/*  === === === OpSpl34 ——————————————————————————— Settings panel ——————————————————————————— */
 
 /* Settings nav items base (vertical + horizontal) */
 .vertical-tab-nav-item,
@@ -8222,7 +8211,7 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 /* -------------------- Settings panel -------------------- */
 
 
-/*	Bookmark	OpSpl34	 ——————————————————————————————  Footnotes —————————————————————————————— */
+/*	=== === === OpSpl35	 ——————————————————————————————  Footnotes —————————————————————————————— */
 /*	let’s suppress the (paper) background image	in the footnotes view */
 .markdown-embed[data-type="footnote"],
 .markdown-embed-content.node-insert-event,
@@ -8276,7 +8265,7 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 /* -------------------- ↑ Footnotes -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl35	 ——————————————————————————————  Images, etc. —————————————————————————————— */
+/*	=== === === OpSpl36	 ——————————————————————————————  Images, etc. —————————————————————————————— */
 /* ───────────────── Images: base styles ───────────────── */
 
 /* Reading view: media as block, centered */
@@ -8412,7 +8401,7 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑ Images, etc. -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl36	 —————————————————————————————— Zoom-image —————————————————————————————— */
+/*	=== === === OpSpl37	 —————————————————————————————— Zoom-image —————————————————————————————— */
 .markdown-preview-view .internal-embed img {
 	cursor:zoom-in;}
 .markdown-preview-view .internal-embed img:active {
@@ -8441,7 +8430,7 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑ Zoom-image ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl37	 ——————————————————————————————  le nom des PDFs inclus —————————————————————————————— */
+/*	=== === === OpSpl38	 ——————————————————————————————  le nom des PDFs inclus —————————————————————————————— */
 .file-embed-title {
 	/*	font-size:		var(--font-size-normal);	*/
 	font-weight:	500;
@@ -8455,7 +8444,7 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑ PDF -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl38	—————————————————————————————— Other refinements —————————————————————————————— */
+/*	=== === === OpSpl39	—————————————————————————————— Other refinements —————————————————————————————— */
 
 /* Additional left/right padding for tag pane so hover background has some room */
 .tag-pane-tags {
@@ -8491,7 +8480,7 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑ Other refinements -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl39	—————————————————————————————— Blockquotes and codeblocks —————————————————————————————— */
+/*	=== === === OpSpl40	—————————————————————————————— Blockquotes and codeblocks —————————————————————————————— */
 /* Tout ce qui concerne les citations:
 	* le “blockquote”
 	* le style pour l’origine (l’auteur) de la citation */
@@ -8543,7 +8532,7 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑  Blockquotes and codeblocks ↑ -------------------- */
 
 
-/*  Bookmark  OpSpl41  —————————————————————————————— Headings to my taste ——————————————————————————————
+/*  === === === OpSpl41  —————————————————————————————— Headings to my taste ——————————————————————————————
  * amélioration des espacements verticaux
  * couleurs
  * interligne
@@ -8742,7 +8731,7 @@ body.headings-scaling-major-third {
 /* -------------------- ↑ Headings to my taste ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl42	—————————————————————————————— Horizontal Rule —————————————————————————————— */
+/*	=== === === OpSpl42	—————————————————————————————— Horizontal Rule —————————————————————————————— */
 .markdown-rendered hr {
   margin-top:		0.75em;
   margin-bottom:	0.75em;
@@ -8756,7 +8745,7 @@ body.headings-scaling-major-third {
 
 
 /* =========================================================
-   OpSpl40 — Contextual vertical rhythm
+=== === === OpSpl43 — Contextual vertical rhythm
    Règles contextuelles pour Reading + Preview / Live Preview
    ========================================================= */
 
@@ -8906,7 +8895,7 @@ body.headings-scaling-major-third {
 }
 
 /* =========================================================
-   OpSpl40b — Additional contextual vertical rhythm
+=== === === OpSpl43b — Additional contextual vertical rhythm
    Callouts, hr, blockquotes
    ========================================================= */
 
@@ -8965,7 +8954,7 @@ body.headings-scaling-major-third {
 /* -------------------- ↑ Contextual typography ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl43	—————————————————————————————— Kanban plugin —————————————————————————————— */
+/*	=== === === OpSpl44	—————————————————————————————— Kanban plugin —————————————————————————————— */
 body .kanban-plugin{
 	background-image:	none !important;
 	background-color:	var(--background-primary);		/* je préfère au gris d’origine	*/
@@ -9029,7 +9018,7 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 /* -------------------- ↑ Kanban plugin -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl43b	—————————————————————————————— Board View plugin —————————————————————————————— */
+/*	=== === === OpSpl45	—————————————————————————————— Board View plugin —————————————————————————————— */
 .board-column-header {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
@@ -9073,19 +9062,17 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	color: 				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
 }
-
-
 /* -------------------- ↑ Board View plugin -------------------- ↑ */
 
 
-/*	Bookmark	OpSpl44	—————————————————————————————— transcludes —————————————————————————————— */
+/*	=== === === OpSpl46	—————————————————————————————— transcludes —————————————————————————————— */
 /* Optional: hide embed title */
 .OT-embed-hide-title .embed-title {
 	display: none;
 }
 /* -------------------- ↑ transcludes ↑ -------------------- */
 
-/*	Bookmark	OpSpl45	 —————————————————————————————— Syntax markers —————————————————————————————— */
+/*	=== === === OpSpl47	 —————————————————————————————— Syntax markers —————————————————————————————— */
 .cm-s-obsidian .cm-formatting-strong,
 .cm-s-obsidian .cm-formatting-em,
 .cm-s-obsidian .cm-formatting-header,
@@ -9129,7 +9116,7 @@ ul > li::marker,
 }
 /* -------------------- ↑ Syntax markers ↑ -------------------- */
 
-/*  Bookmark OpSpl46 ————————————— Tags (inline) ————————————— */
+/*  === === === OpSpl48 ————————————— Tags (inline) ————————————— */
 
 /* 1. Variables de base (héritent des pills) */
 body {
@@ -9188,7 +9175,7 @@ body {
 /* -------------------- Tags -------------------- */
 
 
-/*  Bookmark OpSpl47 —————————————————————————————— Lists —————————————————————————————— */
+/*  === === === OpSpl49 —————————————————————————————— Lists —————————————————————————————— */
 
 /* ---------- réglages quasi semblables à “Obsidian natif” --------- */
 body {
@@ -9520,7 +9507,7 @@ body.lists-horiz-generous {
 /* —————————————————————————————— ↑ lists ↑  —————————————————————————————— */
 
 
-/*	Bookmark	OpSpl48	—————————————————————————————— Status bar —————————————————————————————— */
+/*	=== === === OpSpl50	—————————————————————————————— Status bar —————————————————————————————— */
 /* Let’s position the status bar */
 .status-bar {
   background:	none !important;
@@ -9577,7 +9564,7 @@ body.lists-horiz-generous {
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
 
-/*  Bookmark OpSpl49 —————————————————————————————— Metadata & links ——————————————————————————————  */
+/*  === === === OpSpl51 —————————————————————————————— Metadata & links ——————————————————————————————  */
 
 .metadata-property-key {
 	align-items: center;
@@ -9872,7 +9859,7 @@ body.lists-horiz-generous {
 
 
 
-/*  Bookmark OpSpl49a ————————————— file navigation (tree items, etc.) ————————————— */
+/*  === === === OpSpl52 ————————————— file navigation (tree items, etc.) ————————————— */
 
 /* 1. Flair styles dans la nav (explorateur, backlinks, etc.) */
 .tree-item-flair,
@@ -10179,7 +10166,7 @@ body.lists-horiz-generous {
 /* -------------------- ↑ file navigation (tree items, etc.) ↑ -------------------- */
 
 /* ===========================
-   OpSpl20 – Headings, EDIT / CM6
+=== === === OpSpl53 – Headings, EDIT / CM6
    =========================== */
 
 /* 1. Variables pour headings en EDIT (déjà définies en OpSpl02, rappel ici à titre de repère)
@@ -10398,7 +10385,7 @@ body {
 /* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
 
 
-/*  Bookmark OpSpl50 ———————————————————— Metadata Menu plugin ———————————————————— */
+/*  === === === OpSpl54 ———————————————————— Metadata Menu plugin ———————————————————— */
 
 /* 1. Typo globale Metadata Menu */
 .plugin-metadata-menu {
@@ -10701,7 +10688,7 @@ body {
 /* -------------------- ↑ Metadata Menu plugin ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl51	—————————————————————————————— Canvas —————————————————————————————— */
+/*	=== === === OpSpl55	—————————————————————————————— Canvas —————————————————————————————— */
 body.OT-canvas-dot-pattern-hidden {
   --canvas-dot-pattern: transparent;
 }
@@ -10760,7 +10747,7 @@ button.canvas-menu-item {
 /* -------------------- ↑ Canvas ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl52	—————————————————————————————— KBD class —————————————————————————————— */
+/*	=== === === OpSpl56	—————————————————————————————— KBD class —————————————————————————————— */
 kbd {
     font-family:
 					Consolas,
@@ -10782,7 +10769,7 @@ kbd {
 }
 
 
-/*  Bookmark OpSpl53 ———————————————————— Calendar plugin ———————————————————— */
+/*  === === === OpSpl57 ———————————————————— Calendar plugin ———————————————————— */
 
 /* 1. Style de base du panneau Calendar */
 .workspace-leaf-content[data-type="calendar"] #calendar-container.container {
@@ -10885,7 +10872,7 @@ kbd {
 /* -------------------- ↑ Calendar plugin ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl54	—————————————————————————————— Other interface elements —————————————————————————————— */
+/*	=== === === OpSpl58	—————————————————————————————— Other interface elements —————————————————————————————— */
 
 /*	Let’s  make collapse indicators/buttons bigger
 .view-content .list-collapse-indicator svg.svg-icon,
@@ -10921,7 +10908,7 @@ kbd {
 	margin-left:	0;
 }
 
-/*	Bookmark	OpSpl55	———————————————————— Empty pane	———————————————————— */
+/*	=== === === OpSpl59	———————————————————— Empty pane	———————————————————— */
 .empty-state-action-list {
 	font-size:		var(--font-text-size);
 	line-height:	var(--line-height-tight);
@@ -10944,7 +10931,7 @@ kbd {
 }
 /*	-------------------- ↑ Empty pane ↑	-------------------- */
 
-/*	Bookmark	OpSpl56	———————————————————— Text highlighting ————————————————————	*/
+/*	=== === === OpSpl60	———————————————————— Text highlighting ————————————————————	*/
 .is-flashing,
 .community-item .suggestion-highlight,
 .textLayer .mod-focused,
@@ -10994,7 +10981,7 @@ kbd {
 /*	---------- ↑ search match ↑ ----------	*/
 
 
-/*  Bookmark OpSpl57 ———————————————————— Vertical Tabs plugin ———————————————————— */
+/*  === === === OpSpl61 ———————————————————— Vertical Tabs plugin ———————————————————— */
 
 /* Vertical Tabs : garder une largeur de ligne stable malgré le zoom */
 
@@ -11113,13 +11100,12 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 :not(.vt-tab-container) .tree-item.is-tab.is-highlighted,
 :not(.vt-tab-container) .tree-item-self.is-active,
 :not(.vt-tab-container) .tree-item-self.is-selected {
-  /* gardent la logique de nav générique définie en OpSpl49a */
+  /* gardent la logique de nav générique définie en OpSpl52 */
 }
-
 /* -------------------- ↑ Vertical Tabs plugin ↑ -------------------- */
 
 
-/*	Bookmark	OpSpl52	———————————————————— Floating TOC plugin ————————————————————	*/
+/*	=== === === OpSpl62	———————————————————— Floating TOC plugin ————————————————————	*/
 .theme-light,
 .theme-dark {
 /*	--floating-toc-font-color:				var(--text-normal)	!important;	*/
@@ -11182,8 +11168,7 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 /*	---------- ↑ Floating TOC plugin ↑ ----------	*/
 
 
-/*	Bookmark	OpSpl59	———————————————————— Recent Notes plugin  ————————————————————	*/
-/* Bookmark OpSpl59 Recent Notes plugin */
+/*	=== === === OpSpl63	———————————————————— Recent Notes plugin  ————————————————————	*/
 
 /* On encapsule tout dans le conteneur du plugin pour limiter la portée */
 .recent-notes-view {
@@ -11368,12 +11353,11 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
     }
   }
 }
-
-/* ---- END OpSpl59 ---- */
+/* ---- END OpSpl63 ---- */
 /*	---------- ↑ Recent notes plugin ↑ ----------	*/
 
 
-/*  Bookmark OpSpl60 ———————————————————— QuickAdd plugin  ———————————————————— */
+/*  === === === OpSpl64 ———————————————————— QuickAdd plugin  ———————————————————— */
 
 /* Champ de saisie principal */
 .wideInputPromptInputEl {
@@ -11449,7 +11433,19 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 /* ---------- ↑ QuickAdd plugin ↑ ---------- */
 
 
-/*	Bookmark	OpSpl61	———————————————————— Another Quick Switcher plugin  ————————————————————	*/
+/*	=== === === OpSpl65	———————————————————— Another Quick Switcher plugin  ————————————————————	*/
+/* ----- états dans suggestion list -----*/
+.suggestion-item.is-selected .another-quick-switcher__item,
+.suggestion-item.is-selected .another-quick-switcher__starred_item::before {
+	color: var(--OT-color-on-accent-2);
+}
+
+.suggestion-item.is-selected .another-quick-switcher__item__description,
+.suggestion-item.is-selected .another-quick-switcher__item__directory {
+	color: var(--OT-color-on-accent-2);
+}
+
+/* ----- raffinements propres au plugin -----*/
 .another-quick-switcher__custom__item__title {
 	font-weight:	600;	/*	700 (plugin’s default) is too much for my taste	*/
 }
@@ -11471,7 +11467,7 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 /*	---------- ↑ Another Quick Switcher plugin ↑ ----------	*/
 
 
-/*  Bookmark OpSpl62 ———————————————————— Omnisearch plugin  ———————————————————— */
+/*  === === === OpSpl66 ———————————————————— Omnisearch plugin  ———————————————————— */
 
 /* Highlight dans les extraits */
 .omnisearch-default-highlight {
@@ -11540,7 +11536,7 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 /* ---------- ↑ Omnisearch plugin ↑ ---------- */
 
 
-/*	Bookmark	OpSpl63	———————————————————— Highlight active folder section plugin  ————————————————————	*/
+/*	=== === === OpSpl67	———————————————————— Highlight active folder section plugin  ————————————————————	*/
 body {
 	--highlighted-parent-folder-text-color:		var(--OT-color-on-accent-3) !important;
 	--highlighted-parent-folder-background:		var(--color-accent-3) !important;
@@ -11589,7 +11585,7 @@ body {
 /*	---------- ↑ Highlight active folder section plugin ↑ ----------	*/
 
 
-/*	Bookmark	OpSpl64	———————————————————— Related Notes plugin  ————————————————————	*/
+/*	=== === === OpSpl68	———————————————————— Related Notes plugin  ————————————————————	*/
 .related-notes-header {
 	padding:		var(--size-4-1) var(--size-4-2);
 	border-bottom:	none;
@@ -11747,7 +11743,7 @@ body {
 /*	---------- ↑ Related Notes plugin ↑ ----------	*/
 
 
-/* ---------- OpSpl65 Note Status plugin — aligné sur la logique OT ---------- */
+/* === === === OpSpl69 Note Status plugin — aligné sur la logique OT ---------- */
 
 /* Palette de base pour les options de status (menu déroulant, listes, etc.)
    normal: fond menu, texte normal/muted (Obsidian canonique)
@@ -12038,7 +12034,7 @@ body {
 /*	---------- ↑ Note Status plugin ↑ ----------	*/
 
 
-/*  Bookmark  OpSpl66  —————————————————————————— Dynamic Outline plugin ——————————————————————————
+/*  Bookmark  OpSpl70  —————————————————————————— Dynamic Outline plugin ——————————————————————————
    Logique d’états alignée avec le thème :
    - normal         : fond menu, texte nav normal/muted
    - hover          : bg --color-accent-1, texte --OT-color-on-accent-1 / muted-on-accent-1
@@ -12294,7 +12290,7 @@ body {
 /*  ---------- ↑ Dynamic Outline plugin ↑ ----------  */
 
 
-/*	Bookmark	OpSpl67	———————————————————— Better Command Palette plugin  ————————————————————	*/
+/*	=== === === OpSpl71	———————————————————— Better Command Palette plugin  ————————————————————	*/
 .better-command-palette .better-command-palette-title {
 	font-size:		var(--font-ui-large);
 	font-weight:	var(--font-medium);
@@ -12303,7 +12299,7 @@ body {
 /*	---------- ↑ Better Command Palette plugin ↑ ----------	*/
 
 
-/*	Bookmark OpSpl68 —————————————————————————————— JS Engine plugin —————————————————————————————— */
+/*	=== === === OpSpl72 —————————————————————————————— JS Engine plugin —————————————————————————————— */
 .js-engine-execution-stats-button {
 	color:				var(--OT-button-text-normal);
 	background-color:	var(--OT-button-background-normal);
@@ -12314,7 +12310,7 @@ body {
 }
 /* ---------- ↑ JS Engine plugin ↑ ----------	*/
 
-/*	Bookmark	OpSpl69	———————————————————— TaskNotes plugin ————————————————————	*/
+/*	=== === === OpSpl73	———————————————————— TaskNotes plugin ————————————————————	*/
 .tasknotes-plugin {
     --tn-font-size-xs:	calc( var(--tn-font-size-md) * 0.8);
 	--tn-font-size-sm:	calc( var(--tn-font-size-md) * 0.9);
@@ -12692,7 +12688,7 @@ body {
 }
 /* ---------- ↑ TaskNotes plugin ↑ ----------	*/
 
-/*  Bookmark OpSpl70 ————————————————————————— Smart Connections plugin ————————————————————————— */
+/*  === === === OpSpl74 ————————————————————————— Smart Connections plugin ————————————————————————— */
 
 /* Smart Connections — results list */
 
@@ -12806,7 +12802,7 @@ a.sc-result-file-title > .sc-title {
 /* ---------- ↑ Smart Connections plugin ↑ ---------- */
 
 
-/*	Bookmark OpSpl71 —————————————————————————————— Notebook Navigator plugin ——————————————————————————————
+/*	=== === === OpSpl75 —————————————————————————————— Notebook Navigator plugin ——————————————————————————————
    Goals
    - Use the same accent logic as Obsidian sidebars and headers
    - Unify hover, selected (focused), and selected (inactive) states
@@ -13070,7 +13066,7 @@ body {
 }
 /* ------------------------------ ↑ Notebook Navigator plugin ↑ ------------------------------	*/
 
-/*  Bookmark OpSpl72  ——————————————————— Different plugins: Repeat, Folder Note  ——————————————————— */
+/*  === === === OpSpl76  ——————————————————— Different plugins: Repeat, Folder Note  ——————————————————— */
 .repeat-filter-count {
 	font-size:	var(--font-ui-small	);	/*	I find the default of 13pts much too small	*/
 }
@@ -13081,7 +13077,7 @@ body {
 /* —————————————————————————————— ↑ different plugins ↑  —————————————————————————————— */
 
 
-/*  Bookmark OpSpl73  ——————————————————— Viewing modes icons  ——————————————————— */
+/*  === === === OpSpl77  ——————————————————— Viewing modes icons  ——————————————————— */
 /* swaps the icons from "action buttons" to "status indicators/toggles", and adds an icon for Source mode */
 body.OT-viewing-mode-icons {
 
@@ -13137,7 +13133,7 @@ body.OT-viewing-mode-icons {
 
 
 
-/*  Bookmark OpSpl80  ——————————————————— correcting all hovering  ——————————————————— */
+/*  === === === OpSpl80  ——————————————————— correcting all hovering  ——————————————————— */
 
 /* 0. Rôles de base pour les états */
 body {
@@ -13346,7 +13342,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 /* ---------- ↑ correcting all hovering ↑ ---------- */
 
 
-/*	Bookmark	OpSpl90	———————————————————— Some useful CSSCLASSES ————————————————————	*/
+/*	=== === === OpSpl90	———————————————————— Some useful CSSCLASSES ————————————————————	*/
 .readingMode-text-smaller {
 	--OT-readingMode-text-size:		0.8em	!important;
 	--table-text-size:				0.7em	!important;
@@ -13457,7 +13453,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 
 
 
-/*	Bookmark OpSpl111	*/
+/*	=== === === OpSpl111	*/
 /* ==================================================================================== */
 /* @settings
 name:	Olivier’s Theme
