@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-04
+	- improvements to the hovering of tabs in sidebars
 2026-04-01
 	- restored image galleries capacities, lost with a recent Obsidian update
 	- improved vertical spacing; in particular:
@@ -6961,352 +6963,309 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 
-/* =========================================
+/* -----------------------------------------
    Workspace tab headers (root + sidebars)
-   ========================================= */
+   ----------------------------------------- */
 
-/* Couleur de base des headers d’onglets (inner = source de la couleur) */
+/* Base commune : l’inner est le vrai porteur visuel */
 .workspace-tab-header .workspace-tab-header-inner {
-	color:    var(--tab-text-color);
-	position: relative;
+  color: var(--tab-text-color);
+  position: relative;
 }
 
-/* Icônes de header de vue (boutons dans la title bar) */
+/* Icônes de header dans la title bar */
 .view-header .clickable-icon {
-	color: var(--OT-clickable-icon-in-header);
+  color: var(--OT-clickable-icon-in-header);
 }
 
-/* Icône de status des tabs (root), par défaut et épinglée */
+/* Status icon root, y compris pinned */
 .mod-root .workspace-tab-header-status-icon {
-	color: var(--tab-text-color);
+  color: var(--tab-text-color);
 }
+
 .workspace-tab-header-status-icon.mod-pinned {
-	color: inherit;
+  color: inherit;
 }
 
-/* Pane focus: titre + icône de l’onglet actif dans ce pane */
+/* Onglet actif du pane focusé */
 .is-focused .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
-	color: var(--OT-view-header-title-focus-color);
+  color: var(--OT-view-header-title-focus-color);
 }
+
 .is-focused .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-icon {
-	color: var(--OT-color-on-accent-2);
+  color: var(--OT-color-on-accent-2);
 }
 
-/* Les enfants de l’inner héritent de sa couleur (root par défaut) */
-.workspace-tab-header .workspace-tab-header-inner
-	:is(.workspace-tab-header-inner-icon,
-      .workspace-tab-header-status-icon,
-      .metadata-menu.fileclass-icon) {
-	color: inherit !important;
+/* Les enfants suivent la couleur de l’inner */
+.workspace-tab-header .workspace-tab-header-inner :is(
+  .workspace-tab-header-inner-title,
+  .workspace-tab-header-inner-icon,
+  .workspace-tab-header-status-icon,
+  .workspace-tab-header-inner-close-button,
+  .metadata-menu.fileclass-icon
+) {
+  color: inherit !important;
+  background-color: transparent !important;
 }
 
-/* Root tab ACTIF + hover : accent-1, comme partout ailleurs */
+/* Les SVG des onglets suivent currentColor ; fill non forcé */
+.workspace-tab-header .workspace-tab-header-inner :is(
+  .workspace-tab-header-inner-icon,
+  .workspace-tab-header-status-icon,
+  .workspace-tab-header-inner-close-button,
+  .metadata-menu.fileclass-icon
+) .svg-icon {
+  color: inherit;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Bouton fermer : visible seulement au hover */
+.workspace-tab-header .workspace-tab-header-inner-close-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0.2em;
+  margin: auto 0;
+  display: none;
+}
+
+.workspace-tab-header:hover .workspace-tab-header-inner-close-button {
+  display: block;
+}
+
+/* Metadata Menu doit rester cliquable */
+.workspace-tab-header .metadata-menu.fileclass-icon {
+  position: relative;
+  z-index: 1;
+}
+
 @media (hover: hover) {
-	.mod-root .workspace-tab-header.is-active:hover .workspace-tab-header-inner {
-    background-color: var(--color-accent-1);
+  .workspace-tab-header:hover .workspace-tab-header-inner-close-button:hover {
     color: var(--OT-color-on-accent-1);
-	}
+  }
+}
 
-	.mod-root .workspace-tab-header.is-active:hover
-	.workspace-tab-header-inner :is(
+/* Variante optionnelle highlighted */
+.OT-tab-title-highlighted .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner {
+  --tab-text-color-focused-active-current: var(--OT-color-on-accent-2);
+  color: var(--OT-color-on-accent-2);
+  background-color: var(--color-accent-2);
+}
+
+/* Réconciliation avec app.css : on fait porter la couleur par l’inner */
+body.is-focused .workspace-tab-header-container .workspace-tab-header {
+  color: inherit;
+}
+
+body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace-tab-header-inner {
+  color: var(--tab-text-color-focused);
+}
+
+body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace-tab-header-inner :is(
+  .workspace-tab-header-inner-title,
+  .workspace-tab-header-inner-icon,
+  .workspace-tab-header-status-icon,
+  .workspace-tab-header-inner-close-button
+) {
+  color: inherit;
+}
+
+/* -----------------------------------------
+   Root tabs
+   ----------------------------------------- */
+
+@media (hover: hover) {
+  /* Hover générique root : actif ou non, c’est accent-1 */
+  .mod-root .workspace-tab-header:hover .workspace-tab-header-inner,
+  .mod-root .workspace-tab-header.is-active:hover .workspace-tab-header-inner {
+    color: var(--OT-color-on-accent-1) !important;
+    background-color: var(--color-accent-1) !important;
+  }
+
+  .mod-root .workspace-tab-header:hover .workspace-tab-header-inner :is(
     .workspace-tab-header-inner-title,
     .workspace-tab-header-inner-icon,
     .workspace-tab-header-status-icon,
     .workspace-tab-header-inner-close-button
-	) {
+  ),
+  .mod-root .workspace-tab-header.is-active:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-title,
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon,
+    .workspace-tab-header-inner-close-button
+  ) {
     color: inherit !important;
     background-color: transparent !important;
-	}
-}
+  }
 
-/* Sidebars: base des icônes = palette d’icônes standard (plus sombre) */
-.mod-left-split .workspace-tab-header .workspace-tab-header-inner
-	:is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-.mod-right-split .workspace-tab-header .workspace-tab-header-inner
-	:is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon) {
-	color: var(--icon-color) !important;
-}
-
-/* Bouton de fermeture: positionnement et affichage uniquement au survol */
-.workspace-tab-header .workspace-tab-header-inner-close-button {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0.2em;
-	margin: auto 0; /* centré verticalement */
-	display: none;
-}
-
-/* Afficher le “×” uniquement quand le tab est survolé */
-.workspace-tab-header:hover .workspace-tab-header-inner-close-button {
-	display: block;
-}
-
-/* Icône Metadata Menu toujours cliquable */
-.workspace-tab-header .metadata-menu.fileclass-icon {
-	position: relative;
-	z-index: 1;
-}
-
-@media (hover: hover) {
-	.workspace-tab-header:hover .workspace-tab-header-inner-close-button:hover {
-    color: var(--OT-color-on-accent-1);
-	}
-}
-
-/* Variante optionnelle: onglet actif “highlighted” (Style Settings) */
-.OT-tab-title-highlighted
-	.workspace-tab-header.is-active.mod-active
-	.workspace-tab-header-inner {
-	--tab-text-color-focused-active-current: var(--OT-color-on-accent-2);
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
-}
-
-/* OT — Réconciliation avec app.css:
-   quand Obsidian colore .workspace-tab-header, on renvoie la couleur vers l’inner */
-
-/* 1. Le conteneur n’est plus porteur visuel: il devient transparent,
-      c’est l’inner qui porte la couleur réelle. */
-body.is-focused
-	.workspace-tab-header-container
-	.workspace-tab-header {
-	color: inherit;          /* ne force pas une couleur différente */
-}
-
-/* 2. En focus, c’est bien l’inner qui porte la couleur de tab focus d’Obsidian. */
-body.is-focused
-	.workspace-tab-header-container
-	.workspace-tab-header
-	.workspace-tab-header-inner {
-	color: var(--tab-text-color-focused);
-}
-
-/* 3. Tout le contenu texte des tabs suit toujours l’inner (titre + status + bouton). */
-body.is-focused
-	.workspace-tab-header-container
-	.workspace-tab-header
-	.workspace-tab-header-inner
-	:is(
-    .workspace-tab-header-inner-title,
+  .mod-root .workspace-tab-header:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-icon,
     .workspace-tab-header-status-icon,
     .workspace-tab-header-inner-close-button
-	) {
-	color: inherit;
+  ) .svg-icon,
+  .mod-root .workspace-tab-header.is-active:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon,
+    .workspace-tab-header-inner-close-button
+  ) .svg-icon {
+    color: inherit !important;
+    stroke: currentColor !important;
+    fill: none !important;
+  }
 }
 
+/* Tap mobile onglet root non actif */
+.workspace-tab-header:not(.is-active).mobile-tap .workspace-tab-header-inner {
+  color: var(--OT-color-on-accent-2);
+  background-color: var(--color-accent-2);
+}
+
+/* Hover ciblé des contrôles d’onglet root */
+@media (hover: hover) {
+  .mod-root .workspace-tab-header.is-active :is(
+    .workspace-tab-header-status-icon,
+    .workspace-tab-header-inner-close-button
+  ):hover,
+  .mod-root .workspace-tab-header-inner-close-button:hover,
+  .mod-root .workspace-tab-header:hover .workspace-tab-header-inner-close-button:hover {
+    color: var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
+  }
+}
+
+/* Override explicite du non-actif root contre app.css */
+@media (hover: hover) {
+  .mod-root .workspace-tab-header-container .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+    background-color: var(--color-accent-1) !important;
+    color: var(--OT-color-on-accent-1) !important;
+  }
+
+  .mod-root .workspace-tab-header-container .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-title,
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon,
+    .workspace-tab-header-inner-close-button
+  ) {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
+
+  .mod-root .workspace-tab-header-container .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon,
+    .workspace-tab-header-inner-close-button
+  ) .svg-icon {
+    color: inherit !important;
+    stroke: currentColor !important;
+    fill: none !important;
+  }
+}
 
 /* -----------------------------------------
-   Root tabs (zone principale)
+   Sidebars
    ----------------------------------------- */
 
-/* États hover non-actif / actif: inner = accent‑1 (fallback sur inner lui-même) */
-@media (hover: hover) {
-	.mod-root .workspace-tab-header .workspace-tab-header-inner:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-	}
+/* Palette de base un peu plus sombre pour les icônes de sidebar non actives */
+.mod-left-split .workspace-tab-header .workspace-tab-header-inner :is(
+  .workspace-tab-header-inner-icon,
+  .workspace-tab-header-status-icon
+),
+.mod-right-split .workspace-tab-header .workspace-tab-header-inner :is(
+  .workspace-tab-header-inner-icon,
+  .workspace-tab-header-status-icon
+) {
+  color: var(--icon-color) !important;
+}
 
-	.mod-root .workspace-tab-header
-    .workspace-tab-header-inner:hover
-    :is(
-      .workspace-tab-header-inner-title,
-      .workspace-tab-header-inner-icon,
-      .workspace-tab-header-status-icon,
-      .workspace-tab-header-inner-close-button
-    ) {
+/* Actif / menu ouvert = accent-2 */
+.mod-left-split .workspace-tab-header:is(.is-active, .has-active-menu) .workspace-tab-header-inner,
+.mod-right-split .workspace-tab-header:is(.is-active, .has-active-menu) .workspace-tab-header-inner {
+  background-color: var(--color-accent-2);
+  color: var(--OT-color-on-accent-2);
+}
+
+.mod-left-split .workspace-tab-header:is(.is-active, .has-active-menu) .workspace-tab-header-inner :is(
+  .workspace-tab-header-inner-title,
+  .workspace-tab-header-inner-icon,
+  .workspace-tab-header-status-icon
+),
+.mod-right-split .workspace-tab-header:is(.is-active, .has-active-menu) .workspace-tab-header-inner :is(
+  .workspace-tab-header-inner-title,
+  .workspace-tab-header-inner-icon,
+  .workspace-tab-header-status-icon
+) {
+  color: inherit !important;
+  background-color: transparent !important;
+}
+
+/* Hover sidebar : quel que soit l’état, accent-1 */
+@media (hover: hover) {
+  .mod-left-split .workspace-tab-header:hover .workspace-tab-header-inner,
+  .mod-right-split .workspace-tab-header:hover .workspace-tab-header-inner {
+    background-color: var(--color-accent-1) !important;
+    color: var(--OT-color-on-accent-1) !important;
+  }
+
+  .mod-left-split .workspace-tab-header:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-title,
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon
+  ),
+  .mod-right-split .workspace-tab-header:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-title,
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon
+  ) {
     color: inherit !important;
-    background-color: transparent;
-	}
+    background-color: transparent !important;
+  }
 
-	.mod-root .workspace-tab-header
-    .workspace-tab-header-inner:hover
-    :is(
-      .workspace-tab-header-inner-icon,
-      .workspace-tab-header-status-icon,
-      .workspace-tab-header-inner-close-button
-    ) svg {
-    color:  inherit;
-    fill:   currentColor;
-    stroke: currentColor;
-	}
+  .mod-left-split .workspace-tab-header:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon
+  ) .svg-icon,
+  .mod-right-split .workspace-tab-header:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-status-icon
+  ) .svg-icon {
+    color: inherit !important;
+    stroke: currentColor !important;
+    fill: none !important;
+  }
 }
 
-/* Mobile tap: onglet non-actif tapé = accent‑2 */
-.workspace-tab-header:not(.is-active).mobile-tap .workspace-tab-header-inner {
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
-}
-
-/* Hover des contrôles de l’onglet actif (icône de status + “×”) */
-@media (hover: hover) {
-	.mod-root .workspace-tab-header.is-active
-    :is(
-      .workspace-tab-header-status-icon,
-      .workspace-tab-header-inner-close-button
-    ):hover,
-	.mod-root .workspace-tab-header.is-active
-    :is(
-      .workspace-tab-header-status-icon.mod-linked,
-      .workspace-tab-header-inner-close-button.mod-linked,
-      .workspace-tab-header-status-icon.mod-pinned,
-      .workspace-tab-header-inner-close-button.mod-pinned
-    ):hover,
-	.mod-root .workspace-tab-header-inner-close-button:hover,
-	.mod-root .workspace-tab-header:hover
-    .workspace-tab-header-inner-close-button:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-	}
-}
-
-/* Masquer complètement le “×” dans les sidebars */
+/* Le bouton fermer n’existe pas visuellement dans les sidebars */
 .mod-left-split .workspace-tab-header-inner-close-button,
 .mod-right-split .workspace-tab-header-inner-close-button {
-	display: none !important;
+  display: none !important;
 }
 
-/* Neutraliser les clics de fermeture dans les sidebars (sécurité) */
 @media (hover: hover) {
-	.mod-left-split .workspace-tab-header-inner-close-button:hover,
-	.mod-right-split .workspace-tab-header-inner-close-button:hover {
+  .mod-left-split .workspace-tab-header-inner-close-button:hover,
+  .mod-right-split .workspace-tab-header-inner-close-button:hover {
     pointer-events: none;
     opacity: 0;
-	}
+  }
 }
 
-/* Root tabs – forcer notre hover contre app.css
-   (onglets root NON actifs uniquement, au survol du conteneur) */
+/* Cas pane actif focusé : au hover, l’icône et le titre suivent bien l’inner */
 @media (hover: hover) {
-	.mod-root
-	.workspace-tab-header-container
-	.workspace-tab-header:not(.is-active):hover
-	.workspace-tab-header-inner {
+  body.is-focused .mod-active .workspace-tab-header-container .workspace-tab-header.is-active:hover .workspace-tab-header-inner :is(
+    .workspace-tab-header-inner-icon,
+    .workspace-tab-header-inner-title
+  ) {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
+}
+
+/* Override générique supplémentaire contre app.css */
+@media (hover: hover) {
+  .workspace-tab-header-container .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+    color: var(--OT-color-on-accent-1) !important;
     background-color: var(--color-accent-1) !important;
-    color:            var(--OT-color-on-accent-1);
-	}
-
-	.mod-root
-	.workspace-tab-header-container
-	.workspace-tab-header:not(.is-active):hover
-	.workspace-tab-header-inner
-	:is(
-    .workspace-tab-header-inner-title,
-    .workspace-tab-header-inner-icon,
-    .workspace-tab-header-status-icon,
-    .workspace-tab-header-inner-close-button
-	) {
-    color: inherit !important;
-    background-color: transparent;
-	}
-
-	.mod-root
-	.workspace-tab-header-container
-	.workspace-tab-header:not(.is-active):hover
-	.workspace-tab-header-inner
-	:is(
-    .workspace-tab-header-inner-icon,
-    .workspace-tab-header-status-icon,
-    .workspace-tab-header-inner-close-button
-	) svg {
-    color:  inherit;
-    fill:   currentColor;
-    stroke: currentColor;
-	}
-}
-
-
-/* -----------------------------------------
-   Sidebars: onglets des splits gauche/droite
-   ----------------------------------------- */
-
-/* Onglet actif / menu ouvert dans les sidebars = accent‑2 */
-.mod-left-split .workspace-tab-header.has-active-menu,
-.mod-right-split .workspace-tab-header.has-active-menu,
-.mod-left-split .workspace-tab-header.is-active,
-.mod-right-split .workspace-tab-header.is-active {
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
-}
-
-/* Conteneur d’onglets actif dans les sidebars = même accent‑2 */
-.mod-left-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-right-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active,
-.mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active {
-	background-color: var(--color-accent-2);
-	color:            var(--OT-color-on-accent-2);
-}
-
-/* Onglet sidebar actif / menu ouvert survolé: inner + icônes = accent‑1 */
-@media (hover: hover) {
-	.mod-left-split .workspace-tab-header.has-active-menu:hover
-    .workspace-tab-header-inner,
-	.mod-right-split .workspace-tab-header.has-active-menu:hover
-    .workspace-tab-header-inner,
-	.mod-left-split .workspace-tab-header.is-active:hover
-    .workspace-tab-header-inner,
-	.mod-right-split .workspace-tab-header.is-active:hover
-    .workspace-tab-header-inner,
-	.mod-left-split .workspace-tab-header.has-active-menu:hover
-    :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-	.mod-right-split .workspace-tab-header.has-active-menu:hover
-    :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-	.mod-left-split .workspace-tab-header.is-active:hover
-    :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-	.mod-right-split .workspace-tab-header.is-active:hover
-    :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon) {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-	}
-}
-
-/* Icônes des onglets actifs dans les sidebars = accent‑2 */
-.mod-left-split .workspace-tab-header.is-active
-	:is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-.mod-right-split .workspace-tab-header.is-active
-	:is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-.mod-left-split .workspace-tab-header.has-active-menu
-	:is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-.mod-right-split .workspace-tab-header.has-active-menu
-	:is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon) {
-	color:            var(--OT-color-on-accent-2) !important;
-	background-color: var(--color-accent-2);
-}
-
-/* Icônes d’onglets NON-actifs survolés dans les sidebars = accent‑1 */
-@media (hover: hover) {
-	.mod-left-split .workspace-tab-header:not(.is-active):not(.has-active-menu):hover
-    :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon),
-	.mod-right-split .workspace-tab-header:not(.is-active):not(.has-active-menu):hover
-    :is(.workspace-tab-header-inner-icon, .workspace-tab-header-status-icon) {
-    color:            var(--OT-color-on-accent-1) !important;
-    background-color: var(--color-accent-1);
-	}
-}
-
-/* Onglet actif de la fenêtre active:
-   garantir que icône + titre suivent l’inner au survol */
-@media (hover: hover) {
-	body.is-focused
-    .mod-active
-    .workspace-tab-header-container
-    .workspace-tab-header.is-active
-    .workspace-tab-header-inner:hover
-    :is(
-      .workspace-tab-header-inner-icon,
-      .workspace-tab-header-inner-title
-    ) {
-    color: inherit !important;
-    background-color: transparent;
-	}
-}
-/* Override direct d’app.css pour le cas non-actif */
-@media (hover: hover) {
-	.workspace-tab-header-container .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
-		color:            var(--OT-color-on-accent-1) !important;
-		background-color: var(--color-accent-1);
-	}
+  }
 }
 
 /* -----------------------------------------
@@ -10235,7 +10194,7 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-changed.is-clickable.is-selected .clickable-icon,
 .file-tree .tree-item-self.mod-changed.is-clickable.is-selected .clickable-icon .svg-icon {
 	color: var(--OT-color-on-accent-2);
-	fill: currentColor;
+	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 
@@ -10258,7 +10217,7 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-changed.is-clickable.is-selected:hover .clickable-icon,
 .file-tree .tree-item-self.mod-changed.is-clickable.is-selected:hover .clickable-icon .svg-icon {
 	color: var(--OT-color-on-accent-1);
-	fill: currentColor;
+	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 
@@ -10315,7 +10274,7 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable .file-tree-item-icon,
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable .tree-item-icon.collapse-icon .svg-icon {
 	color: var(--OT-color-on-accent-2);
-	fill: currentColor;
+	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 
@@ -10331,7 +10290,7 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable:hover .file-tree-item-icon,
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable:hover .tree-item-icon.collapse-icon .svg-icon {
 	color: var(--OT-color-on-accent-1);
-	fill: currentColor;
+	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 /* Fichier sélectionné + changed */
@@ -10346,7 +10305,7 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable .file-tree-item-icon,
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable .clickable-icon .svg-icon {
 	color: var(--OT-color-on-accent-2);
-	fill: currentColor;
+	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 
@@ -10368,7 +10327,7 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable:hover .file-tree-item-icon,
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable:hover .clickable-icon .svg-icon {
 	color: var(--OT-color-on-accent-1);
-	fill: currentColor;
+	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 
@@ -12348,7 +12307,7 @@ body {
 /* S’assurer que l’icône SVG suit currentColor */
 .view-header .dynamic-outline-button.clickable-icon.view-action .svg-icon {
 	stroke: currentColor;
-	fill: currentColor;
+	/*fill: currentColor;*/
 }
 
 /* ---------- Items d’outline : couleurs de texte par état ---------- */
