@@ -48,6 +48,11 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-06
+	- vastly improved the vertical spacing in four modes (tight, normal, generous, Bear)
+2026-04-05
+	- reorganised the presentation of settings in the Style Settings plugin
+		(moved the Kanban plugin settings to the end of the Reading mode settings)
 2026-04-04
 	- improvements to the hovering of tabs in sidebars
 2026-04-01
@@ -462,8 +467,8 @@ body
 	/*	Pour avoir un premier état, même sans avoir chargé le plugin “Style Settings”.*/
 body {
 	/*	blanc typographique	*/
-	--OT-blanc-mini:								calc(0.25  * var(--OT-readingMode-line-height));
-	--OT-blanc-petit:								calc(0.4   * var(--OT-readingMode-line-height));
+	--OT-blanc-mini: 								calc(0.18 * var(--OT-effective-reading-line-height));
+	--OT-blanc-petit:								calc(0.42 * var(--OT-effective-reading-line-height));
 	--OT-blanc-moyen:								calc(1.618 * var(--OT-blanc-petit));
 	--OT-blanc-grand:								calc(1.618 * var(--OT-blanc-moyen));
 	--OT-blanc-large:								calc(1.618 * var(--OT-blanc-grand));
@@ -516,12 +521,14 @@ body {
    --OT-edit-heading-h5-space-below: 				0;
    --OT-edit-heading-h6-space-below: 				0;
 
-		--OT-edit-heading-h1-size-LP:					var(--h1-size);
-   	--OT-edit-heading-h2-size-LP:					var(--h2-size);
-   	--OT-edit-heading-h3-size-LP:					var(--h3-size);
-   	--OT-edit-heading-h4-size-LP:					var(--h4-size);
-   	--OT-edit-heading-h5-size-LP:					var(--h5-size);
-   	--OT-edit-heading-h6-size-LP:					var(--h6-size);
+	--OT-edit-heading-h1-size-LP:					var(--h1-size);
+	--OT-edit-heading-h2-size-LP:					var(--h2-size);
+	--OT-edit-heading-h3-size-LP:					var(--h3-size);
+	--OT-edit-heading-h4-size-LP:					var(--h4-size);
+	--OT-edit-heading-h5-size-LP:					var(--h5-size);
+	--OT-edit-heading-h6-size-LP:					var(--h6-size);
+
+	--OT-effective-reading-line-height:				var(--OT-readingMode-line-height);		/* Interligne effectif pour le Reading mode */
 
 	--OT-img-max-height-preview:					550px;
 	--OT-img-max-height-live:						10rem;
@@ -558,18 +565,27 @@ body {
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
 
-	--OT-space-above-h1:							var(--OT-blanc-large);
-	--OT-space-below-h1:							var(--OT-blanc-grand);
-	--OT-space-above-h2:							var(--OT-blanc-large);
-	--OT-space-below-h2:							var(--OT-blanc-grand);
-	--OT-space-above-h3:							var(--OT-blanc-grand);
-	--OT-space-below-h3:							var(--OT-blanc-petit);
-	--OT-space-above-h4:							var(--OT-blanc-grand);
-	--OT-space-below-h4:							var(--OT-blanc-petit);
-	--OT-space-above-h5:							var(--OT-blanc-moyen);
-	--OT-space-below-h5:							0;
-	--OT-space-above-h6:							var(--OT-blanc-moyen);
-	--OT-space-below-h6:							0;
+
+	/* Golden-ratio heading grammar: above = 1.618 × below */
+
+	/* H1 */
+	--OT-space-below-h1: var(--OT-blanc-grand);
+	--OT-space-above-h1: calc(1.618 * var(--OT-space-below-h1));
+	/* H2 */
+	--OT-space-below-h2: var(--OT-blanc-moyen);
+	--OT-space-above-h2: calc(1.618 * var(--OT-space-below-h2));
+	/* H3 : the most important practical rhythm */
+	--OT-space-below-h3: var(--OT-blanc-petit);
+	--OT-space-above-h3: calc(1.618 * var(--OT-space-below-h3));
+	/* H4 */
+	--OT-space-below-h4: var(--OT-blanc-mini);
+	--OT-space-above-h4: calc(1.618 * var(--OT-space-below-h4));
+	/* H5/H6 : paragraph-like behavior */
+	--OT-space-above-h5: var(--OT-blanc-petit);
+	--OT-space-below-h5: 0;
+	--OT-space-above-h6: var(--OT-blanc-petit);
+	--OT-space-below-h6: 0;
+
 
 	--OT-stabilo-text:								var(--text-normal);
 	--OT-status-bar-padding:						6px;
@@ -5220,71 +5236,181 @@ body {
 
 
 /*	=== === === OpSpl17a	 —————————————————————————————— Rythme vertical —————————————————————————————— */
-body.vertical-rythm-tight {
-	--OT-blanc-petit:		calc(0.2   * var(--OT-readingMode-line-height));
-	--OT-space-above-h1:	var(--OT-blanc-grand);
-	--OT-space-below-h1:	var(--OT-blanc-moyen);
-	--OT-space-above-h2:	var(--OT-blanc-grand);
-	--OT-space-below-h2:	var(--OT-blanc-moyen);
-	--OT-space-above-h3:	var(--OT-blanc-grand);
-	--OT-space-below-h3:	var(--OT-blanc-petit);
-	--OT-space-above-h4:	var(--OT-blanc-moyen);
-	--OT-space-below-h4:	var(--OT-blanc-petit);
-	--OT-space-above-h5:	var(--OT-blanc-petit);
-	--OT-space-below-h5:	0;
-	--OT-space-above-h6:	var(--OT-blanc-petit);
-	--OT-space-below-h6:	0;
+/* ========================================================================== */
+/* OpSpl17a — Vertical rhythm (Reading / Preview)                             */
+/* ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 0. Base defaults                                                           */
+/* -------------------------------------------------------------------------- */
+
+body {
+	--OT-blanc-mini:  calc(0.16 * var(--OT-readingMode-line-height));
+	--OT-blanc-petit: calc(0.32 * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen: calc(1.618 * var(--OT-blanc-petit));
+	--OT-blanc-grand: calc(1.618 * var(--OT-blanc-moyen));
+	--OT-blanc-large: calc(1.618 * var(--OT-blanc-grand));
+
+	/* Paragraph rhythm */
+	--OT-space-before-paragraph: 0;
+	--OT-space-after-paragraph: 0;
+
+	/* Headings */
+	--OT-space-above-h1: var(--OT-blanc-large);
+	--OT-space-below-h1: var(--OT-blanc-moyen);
+
+	--OT-space-above-h2: var(--OT-blanc-large);
+	--OT-space-below-h2: var(--OT-blanc-moyen);
+
+	--OT-space-above-h3: var(--OT-blanc-grand);
+	--OT-space-below-h3: var(--OT-blanc-petit);
+
+	--OT-space-above-h4: var(--OT-blanc-grand);
+	--OT-space-below-h4: var(--OT-blanc-mini);
+
+	--OT-space-above-h5: var(--OT-blanc-moyen);
+	--OT-space-below-h5: 0;
+
+	--OT-space-above-h6: var(--OT-blanc-moyen);
+	--OT-space-below-h6: 0;
 }
+
+/* -------------------------------------------------------------------------- */
+/* 1. Tight                                                                   */
+/* -------------------------------------------------------------------------- */
+
+body.vertical-rythm-tight {
+	--OT-blanc-mini:  calc(0.10 * var(--OT-readingMode-line-height));
+	--OT-blanc-petit: calc(0.20 * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen: calc(1.45 * var(--OT-blanc-petit));
+	--OT-blanc-grand: calc(1.45 * var(--OT-blanc-moyen));
+	--OT-blanc-large: calc(1.45 * var(--OT-blanc-grand));
+
+	--OT-space-above-h1: var(--OT-blanc-large);
+	--OT-space-below-h1: var(--OT-blanc-moyen);
+
+	--OT-space-above-h2: var(--OT-blanc-grand);
+	--OT-space-below-h2: var(--OT-blanc-moyen);
+
+	--OT-space-above-h3: var(--OT-blanc-moyen);
+	--OT-space-below-h3: var(--OT-blanc-mini);
+
+	--OT-space-above-h4: var(--OT-blanc-grand);
+	--OT-space-below-h4: var(--OT-blanc-mini);
+
+	--OT-space-above-h5: var(--OT-blanc-moyen);
+	--OT-space-below-h5: 0;
+
+	--OT-space-above-h6: var(--OT-blanc-moyen);
+	--OT-space-below-h6: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. Normal                                                                  */
+/* -------------------------------------------------------------------------- */
 
 body.vertical-rythm-normal {
-	--OT-blanc-petit:			calc(0.5   * var(--OT-readingMode-line-height));
+	--OT-blanc-mini:  calc(0.16 * var(--OT-readingMode-line-height));
+	--OT-blanc-petit: calc(0.32 * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen: calc(1.618 * var(--OT-blanc-petit));
+	--OT-blanc-grand: calc(1.618 * var(--OT-blanc-moyen));
+	--OT-blanc-large: calc(1.618 * var(--OT-blanc-grand));
+
+	--OT-space-above-h1: var(--OT-blanc-large);
+	--OT-space-below-h1: var(--OT-blanc-moyen);
+
+	--OT-space-above-h2: var(--OT-blanc-grand);
+	--OT-space-below-h2: var(--OT-blanc-moyen);
+
+	--OT-space-above-h3: var(--OT-blanc-grand);
+	--OT-space-below-h3: var(--OT-blanc-petit);
+
+	--OT-space-above-h4: var(--OT-blanc-moyen);
+	--OT-space-below-h4: var(--OT-blanc-mini);
+
+	--OT-space-above-h5: var(--OT-blanc-moyen);
+	--OT-space-below-h5: 0;
+
+	--OT-space-above-h6: var(--OT-blanc-moyen);
+	--OT-space-below-h6: 0;
 }
+
+/* -------------------------------------------------------------------------- */
+/* 3. Generous                                                                */
+/* -------------------------------------------------------------------------- */
 
 body.vertical-rythm-generous {
-	--OT-blanc-petit:		calc(0.8   * var(--OT-readingMode-line-height));
-	--OT-space-above-h1:	var(--OT-blanc-large);
-	--OT-space-below-h1:	var(--OT-blanc-large);
-	--OT-space-above-h2:	var(--OT-blanc-large);
-	--OT-space-below-h2:	var(--OT-blanc-grand);
-	--OT-space-above-h3:	var(--OT-blanc-large);
-	--OT-space-below-h3:	var(--OT-blanc-moyen);
-	--OT-space-above-h4:	var(--OT-blanc-grand);
-	--OT-space-below-h4:	var(--OT-blanc-moyen);
-	--OT-space-above-h5:	var(--OT-blanc-moyen);
-	--OT-space-below-h5:	0;
-	--OT-space-above-h6:	var(--OT-blanc-moyen);
-	--OT-space-below-h6:	0;
+	--OT-blanc-mini:  calc(0.24 * var(--OT-readingMode-line-height));
+	--OT-blanc-petit: calc(0.62 * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen: calc(1.62 * var(--OT-blanc-petit));
+	--OT-blanc-grand: calc(1.62 * var(--OT-blanc-moyen));
+	--OT-blanc-large: calc(1.62 * var(--OT-blanc-grand));
+
+	--OT-space-above-h1: var(--OT-blanc-large);
+	--OT-space-below-h1: var(--OT-blanc-moyen);
+
+	--OT-space-above-h2: var(--OT-blanc-grand);
+	--OT-space-below-h2: var(--OT-blanc-moyen);
+
+	--OT-space-above-h3: var(--OT-blanc-grand);
+	--OT-space-below-h3: var(--OT-blanc-petit);
+
+	--OT-space-above-h4: var(--OT-blanc-grand);
+	--OT-space-below-h4: var(--OT-blanc-mini);
+
+	--OT-space-above-h5: var(--OT-blanc-moyen);
+	--OT-space-below-h5: 0;
+
+	--OT-space-above-h6: var(--OT-blanc-moyen);
+	--OT-space-below-h6: 0;
 }
 
-	/* Bear-like vertical rhythm for headings and paragraphs */
+/* -------------------------------------------------------------------------- */
+/* 4. Bear                                                                    */
+/* -------------------------------------------------------------------------- */
+
 body.vertical-rythm-Bear {
-	--OT-blanc-petit:		0.5em;
-		--OT-space-above-h1:	1.0em;
-		--OT-space-below-h1:	0.62em;
-		--OT-space-above-h2:	2em;
-		--OT-space-below-h2:	0.62em;
-		--OT-space-above-h3:	2em;
-		--OT-space-below-h3:	0.5em;
-		--OT-space-above-h4:	2em;
-		--OT-space-below-h4:	0.5em;
-		--OT-space-above-h5:	2em;
-		--OT-space-below-h5:	0.5em;
-		--OT-space-above-h6:	2em;
-		--OT-space-below-h6:	0.5em;
+	--OT-bear-step: calc(0.25 * var(--OT-readingMode-line-height));
 
-   --OT-edit-heading-h1-space-below: 	0.5em;
-   --OT-edit-heading-h2-space-below: 	0.5em;
-   --OT-edit-heading-h3-space-below: 	0.5em;
-   --OT-edit-heading-h4-space-below: 	0.5em;
-   --OT-edit-heading-h5-space-below: 	0.5em;
-   --OT-edit-heading-h6-space-below: 	0.5em;
+	--OT-blanc-mini:  calc(0.50 * var(--OT-bear-step));
+	--OT-blanc-petit: var(--OT-bear-step);
+	--OT-blanc-moyen: calc(2 * var(--OT-bear-step));
+	--OT-blanc-grand: calc(3 * var(--OT-bear-step));
+	--OT-blanc-large: calc(4 * var(--OT-bear-step));
+
+	--OT-space-above-h1: var(--OT-blanc-grand);
+	--OT-space-below-h1: var(--OT-blanc-moyen);
+
+	--OT-space-above-h2: var(--OT-blanc-moyen);
+	--OT-space-below-h2: var(--OT-blanc-moyen);
+
+	--OT-space-above-h3: var(--OT-blanc-moyen);
+	--OT-space-below-h3: var(--OT-blanc-moyen);
+
+	--OT-space-above-h4: var(--OT-blanc-petit);
+	--OT-space-below-h4: var(--OT-blanc-petit);
+
+	--OT-space-above-h5: var(--OT-blanc-petit);
+	--OT-space-below-h5: 0;
+
+	--OT-space-above-h6: var(--OT-blanc-petit);
+	--OT-space-below-h6: 0;
 }
 
-.markdown-rendered > .markdown-preview-section > .markdown-preview-pusher + div:not(.mod-ui) > :first-child, .markdown-rendered > .markdown-preview-section > .mod-ui + div:not(.mod-ui) > :first-child {
-	margin-bottom: calc(var(--OT-blanc-petit) + 0.12em);
+/* -------------------------------------------------------------------------- */
+/* 5. Paragraphs and preview blocks                                           */
+/* -------------------------------------------------------------------------- */
+
+.markdown-preview-view p,
+.markdown-rendered p {
+	margin-block-start: var(--OT-space-before-paragraph);
+	margin-block-end: var(--OT-space-after-paragraph);
 }
 
-
+.markdown-rendered .markdown-preview-section .markdown-preview-pusher div:not(.mod-ui):first-child,
+.markdown-rendered .markdown-preview-section .mod-ui div:not(.mod-ui):first-child {
+	margin-bottom: calc(var(--OT-blanc-petit) - 0.12em);
+}
 /*	------------------------- ↑ Rythme vertical ↑ -------------------------	*/
 
 
@@ -6229,8 +6355,8 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 }
 /* Si le toggle "natural" est ON, on revient au mode “normal” pour l’interligne */
 body.OT-readingMode-natural-line-height {
-	--line-height-normal: normal;
-	--OT-blanc-petit: calc(0.45 * var(--OT-readingMode-text-size)) !important;
+	--line-height-normal:				normal;
+	--OT-effective-reading-line-height:	1.4em;		/* variable servant à définir le --OT-blanc-petit qui sert ensuite de base à tout le rythme vertical du thème */
 }
 /* ---------- Paper background ---------- */
 /* Let’s put a nice paper-like background in the preview; we can style either
@@ -8600,15 +8726,179 @@ div[data-callout-metadata*="gallery"].callout > .callout-content {
 /* -------------------- ↑  Blockquotes and codeblocks ↑ -------------------- */
 
 
-/*  === === === OpSpl41  —————————————————————————————— Headings to my taste ——————————————————————————————
- * amélioration des espacements verticaux
- * couleurs
- * interligne
- * filet sous les H1 et les H2
- * les H2 et H4 en petites capitales
- * H4: bold, mais de la même grandeur que H5
- * h3 à h6 en italique
- */
+/*  === === === OpSpl41  —————————————————————————————— Headings to my taste —————————————————————————————— */
+/* ========================================================================== */
+/* OpSpl41 — Headings to my taste                                              */
+/* ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* 0. Base : ne pas neutraliser globalement la marge haute des headings       */
+/* -------------------------------------------------------------------------- */
+
+.markdown-preview-view :is(h1, h2, h3, h4, h5, h6),
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+	line-height: 1.2;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 1. H1                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.cm-header-1,
+.markdown-preview-section h1,
+.markdown-rendered h1 {
+	font-size: var(--h1-size);
+	font-weight: var(--h1-weight);
+	font-style: var(--h1-style);
+	font-variant: var(--h1-variant);
+	color: var(--h1-color);
+	font-family: var(--h1-font);
+	letter-spacing: 0.01em;
+	line-height: var(--h1-line-height);
+
+	--heading-spacing: var(--OT-space-above-h1);
+	margin-block-start: var(--OT-space-above-h1);
+	margin-block-end: var(--OT-space-below-h1);
+}
+
+/* Premier H1 */
+.markdown-preview-view h1:first-child,
+.markdown-rendered .markdown-preview-section > .el-h1:first-child h1,
+.markdown-rendered > .el-h1:first-child h1 {
+	margin-block-start: 0 !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. H2                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.cm-header-2,
+.markdown-preview-section h2,
+.markdown-rendered h2 {
+	font-size: var(--h2-size);
+	font-weight: var(--h2-weight);
+	font-style: var(--h2-style);
+	font-variant: var(--h2-variant);
+	color: var(--h2-color);
+	font-family: var(--h2-font);
+	letter-spacing: 0.02em;
+	line-height: var(--h2-line-height);
+
+	--heading-spacing: var(--OT-space-above-h2);
+	margin-block-start: var(--OT-space-above-h2);
+	margin-block-end: var(--OT-space-below-h2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. H3                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.cm-header-3,
+.markdown-preview-section h3,
+.markdown-rendered h3 {
+	font-size: var(--h3-size);
+	font-weight: var(--h3-weight);
+	font-style: var(--h3-style);
+	font-variant: var(--h3-variant);
+	color: var(--h3-color);
+	font-family: var(--h3-font);
+	line-height: var(--h3-line-height);
+
+	--heading-spacing: var(--OT-space-above-h3);
+	margin-block-start: var(--OT-space-above-h3);
+	margin-block-end: var(--OT-space-below-h3);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. H4                                                                      */
+/* -------------------------------------------------------------------------- */
+
+body {
+	--OT-h4-dot-offset: 0.8rem;
+	--OT-h4-dot-size: 0.26em;
+	--OT-h4-dot-color: currentColor;
+	--OT-h4-dot-opacity: 0.35;
+	--OT-h4-LP-text-indent: 0.95rem;
+}
+.theme-dark {
+	--OT-h4-dot-opacity: 0.26;
+}
+
+.cm-header-4,
+.markdown-preview-section h4,
+.markdown-rendered h4 {
+	font-size: var(--h4-size);
+	font-weight: var(--h4-weight);
+	font-style: var(--h4-style);
+	font-variant: var(--h4-variant);
+	color: var(--h4-color);
+	font-family: var(--h4-font);
+	line-height: var(--h4-line-height);
+	position: relative;
+	padding-left: var(--OT-h4-dot-offset);
+
+	--heading-spacing: var(--OT-space-above-h4);
+	margin-block-start: var(--OT-space-above-h4);
+	margin-block-end: var(--OT-space-below-h4);
+}
+
+.markdown-rendered h4::before,
+.markdown-preview-section h4::before {
+	content: "";
+	position: absolute;
+	left: 0.05rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: var(--OT-h4-dot-size);
+	height: var(--OT-h4-dot-size);
+	border-radius: 999px;
+	background-color: var(--OT-h4-dot-color);
+	opacity: var(--OT-h4-dot-opacity);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. H5                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.cm-header-5,
+.markdown-preview-section h5,
+.markdown-rendered h5 {
+	font-size: var(--h5-size);
+	font-weight: var(--h5-weight);
+	font-style: var(--h5-style);
+	font-variant: var(--h5-variant);
+	color: var(--h5-color);
+	font-family: var(--h5-font);
+	line-height: var(--h5-line-height);
+
+	--heading-spacing: var(--OT-space-above-h5);
+	margin-block-start: var(--OT-space-above-h5);
+	margin-block-end: var(--OT-space-below-h5);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. H6                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.cm-header-6,
+.markdown-preview-section h6,
+.markdown-rendered h6 {
+	font-size: var(--h6-size);
+	font-weight: var(--h6-weight);
+	font-style: var(--h6-style);
+	font-variant: var(--h6-variant);
+	color: var(--h6-color);
+	font-family: var(--h6-font);
+	line-height: var(--h6-line-height);
+
+	--heading-spacing: var(--OT-space-above-h6);
+	margin-block-start: var(--OT-space-above-h6);
+	margin-block-end: var(--OT-space-below-h6);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 7. Progression des tailles — à conserver                                   */
+/* -------------------------------------------------------------------------- */
 
 body.headings-scaling-OpSpl {
 	--h1-size: 2.027em;
@@ -8618,7 +8908,7 @@ body.headings-scaling-OpSpl {
 	--h5-size: 1.067em;
 	--h6-size: 1.000em;
 }
-/* Bear-like heading scale */
+
 body.headings-scaling-Bear {
 	--h1-size: 2em;
 	--h2-size: 1.6em;
@@ -8627,6 +8917,7 @@ body.headings-scaling-Bear {
 	--h5-size: 1.04em;
 	--h6-size: 1.00em;
 }
+
 body.headings-scaling-none {
 	--h1-size: var(--font-text-size);
 	--h2-size: var(--font-text-size);
@@ -8635,15 +8926,16 @@ body.headings-scaling-none {
 	--h5-size: var(--font-text-size);
 	--h6-size: var(--font-text-size);
 }
+
 body.headings-scaling-slight {
-	--h1-size: clamp(1.125rem, 12vw - 3.7rem, 1.5rem);
-	--h2-size: clamp(1.125rem, 12vw - 3.7rem, 1.4rem);
-	--h3-size: clamp(1.125rem, 12vw - 3.7rem, 1.3rem);
-	--h4-size: clamp(1rem,    12vw - 3.7rem, 1.2rem);
-	--h5-size: clamp(1rem,    12vw - 3.7rem, 1.1rem);
+	--h1-size: clamp(1.125rem, 1.2vw + 0.9rem, 1.5rem);
+	--h2-size: clamp(1.125rem, 1.1vw + 0.88rem, 1.4rem);
+	--h3-size: clamp(1.125rem, 0.9vw + 0.86rem, 1.3rem);
+	--h4-size: clamp(1rem, 0.7vw + 0.84rem, 1.2rem);
+	--h5-size: clamp(1rem, 0.4vw + 0.82rem, 1.1rem);
 	--h6-size: 1rem;
 }
-/* 1.067 */
+
 body.headings-scaling-minor-second {
 	--h1-size: 1.383em;
 	--h2-size: 1.296em;
@@ -8652,7 +8944,7 @@ body.headings-scaling-minor-second {
 	--h5-size: 1.067em;
 	--h6-size: 1.000em;
 }
-/* 1.125 */
+
 body.headings-scaling-major-second {
 	--h1-size: 1.802em;
 	--h2-size: 1.602em;
@@ -8661,7 +8953,7 @@ body.headings-scaling-major-second {
 	--h5-size: 1.125em;
 	--h6-size: 1.000em;
 }
-/* 1.2 */
+
 body.headings-scaling-minor-third {
 	--h1-size: 2.488em;
 	--h2-size: 2.074em;
@@ -8670,7 +8962,7 @@ body.headings-scaling-minor-third {
 	--h5-size: 1.2em;
 	--h6-size: 1.0em;
 }
-/* 1.25 */
+
 body.headings-scaling-major-third {
 	--h1-size: 3.052em;
 	--h2-size: 2.441em;
@@ -8680,122 +8972,10 @@ body.headings-scaling-major-third {
 	--h6-size: 1.00em;
 }
 
-.markdown-preview-view :is(h1,h2,h3,h4,h5,h6) {
-	line-height: 1.2;
+/* Filet sous H1 et H2 — si tu veux le garder */
+.markdown-preview-view :is(h1, h2) {
+	border-bottom: 0.12em solid;
 }
-/* un filet sous les H1 et H2 */
-.markdown-preview-view :is(h1,h2) {
-	border-bottom: .12em solid;
-}
-
-/* === Headings Preview & Live Preview: vertical spacing piloté par OT === */
-
-/* 0. Base : supprimer la marge haute par défaut d’Obsidian */
-.markdown-preview-view h1,
-.markdown-preview-view h2,
-.markdown-preview-view h3,
-.markdown-preview-view h4,
-.markdown-preview-view h5,
-.markdown-preview-view h6,
-.markdown-rendered h1,
-.markdown-rendered h2,
-.markdown-rendered h3,
-.markdown-rendered h4,
-.markdown-rendered h5,
-.markdown-rendered h6 {
-	margin-block-start: 0; /* supprime var(--p-spacing) */
-}
-
-/* 1. H1 – styles + variables d’espacement */
-.cm-header-1,
-.markdown-preview-section h1,
-.markdown-rendered h1 {
-	letter-spacing: 0.01em;                      /* lisibilité petites caps */
-	--heading-spacing: var(--OT-space-above-h1); /* utilisé par app.css + plugin */
-	margin-block-start: var(--OT-space-above-h1);
-	margin-block-end:   var(--OT-space-below-h1);
-}
-
-/* 2. H2 */
-.cm-header-2,
-.markdown-preview-section h2,
-.markdown-rendered h2 {
-	letter-spacing: 0.02em;
-	line-height: 1.0em;
-	--heading-spacing: var(--OT-space-above-h2);
-	margin-block-start: var(--OT-space-above-h2);
-	margin-block-end:   var(--OT-space-below-h2);
-}
-
-/* 3. H3 */
-.cm-header-3,
-.markdown-preview-section h3,
-.markdown-rendered h3 {
-	--heading-spacing: var(--OT-space-above-h3);
-	margin-block-start: var(--OT-space-above-h3);
-	margin-block-end:   var(--OT-space-below-h3);
-}
-
-/* 4. H4 */
-.cm-header-4,
-.markdown-preview-section h4,
-.markdown-rendered h4 {
-	--heading-spacing: var(--OT-space-above-h4);
-	margin-block-start: var(--OT-space-above-h4);
-	margin-block-end:   var(--OT-space-below-h4);
-}
-
-
-/* juste un diamant avant le texte, sans déplacer la colonne */
-.markdown-preview-view h4::before,
-.markdown-rendered h4::before {
-	content: "♢";
-	font-style: normal;
-	margin-right: 0.35em;
-}
-
-/* LP H4 */
-.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 {
-	position: relative;
-	padding-top:    var(--OT-edit-heading-h4-space-above);
-	padding-bottom: var(--OT-edit-heading-h4-space-below);
-}
-
-/* Quand la ligne H4 est active, on supprime diamant + recul */
-.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active::before {
-	content: none !important;
-}
-.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active {
-	padding-left: 0 !important;
-}
-.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .cm-header-4 {
-	padding-left: 0;
-}
-
-/* ================= RAW/SOURCE MODE ================= */
-/* Force-disable diamond entirely here */
-.markdown-source-view.mod-source .cm-header-4::before {
-	content: none !important;
-}
-
-/* 5. H5 */
-.cm-header-5,
-.markdown-preview-section h5,
-.markdown-rendered h5 {
-	--heading-spacing: var(--OT-space-above-h5);
-	margin-block-start: var(--OT-space-above-h5);
-	margin-block-end:   var(--OT-space-below-h5);
-}
-
-/* 6. H6 */
-.cm-header-6,
-.markdown-preview-section h6,
-.markdown-rendered h6 {
-	--heading-spacing: var(--OT-space-above-h6);
-	margin-block-start: var(--OT-space-above-h6);
-	margin-block-end:   var(--OT-space-below-h6);
-}
-
 /* -------------------- ↑ Headings to my taste ↑ -------------------- */
 
 
@@ -8812,54 +8992,29 @@ body.headings-scaling-major-third {
 /* -------------------- ↑ horizontal rule ↑ -------------------- */
 
 
-/* =========================================================
-=== === === OpSpl43 — Contextual vertical rhythm
-   Règles contextuelles pour Reading + Preview / Live Preview
-   ========================================================= */
+/* === === === OpSpl43	—————————————————————————————— Contextual vertical rhythm	—————————————————————————————— */
+/* ========================================================================== */
+/* OpSpl43 — Contextual vertical rhythm                                       */
+/* ========================================================================== */
 
 body {
-	/* Headings empilés (H1→H2, H1→H3, H2→H3) */
 	--OT-space-stack-heading: var(--OT-blanc-moyen);
-
-	/* Paragraphe après H4–H6 */
 	--OT-space-after-small-heading: var(--OT-blanc-mini);
-
-	/* H2 / H3 après bloc lourd (p, ul, ol, table, pre) */
 	--OT-space-after-heavy-block: var(--OT-blanc-large);
-
-	/* H2 / H3 après blockquote */
 	--OT-space-after-quoted-block: var(--OT-blanc-moyen);
-
-	/* H2 / H3 après callout */
 	--OT-space-after-callout: var(--OT-blanc-moyen);
-
-	/* H2 / H3 après hr */
 	--OT-space-after-hr: var(--OT-blanc-large);
-
-	/* Paragraphe après liste */
 	--OT-space-after-list: var(--OT-blanc-petit);
-
-	/* Blockquote après liste */
-	--OT-space-blockquote-after-list: var(--OT-blanc-moyen);
 }
 
+/* -------------------------------------------------------------------------- */
+/* 1. Headings empilés                                                        */
+/* -------------------------------------------------------------------------- */
 
-/* ---------------------------------------------------------
-   1. Stacked headings
-   Cases: H1→H2, H1→H3, H2→H3
-   --------------------------------------------------------- */
-
-/* Reading — incoming space on second heading */
 .markdown-preview-view :is(h1 + h2, h1 + h3, h2 + h3) {
 	margin-block-start: var(--OT-space-stack-heading);
 }
 
-/* Reading — outgoing space on first heading */
-.markdown-preview-view :is(h1:has(+ h2), h1:has(+ h3), h2:has(+ h3)) {
-	margin-block-end: 0;
-}
-
-/* Preview / Live Preview — incoming space on second heading */
 .markdown-rendered :is(
 	div.el-h1 + div.el-h2 > h2,
 	div.el-h1 + div.el-h3 > h3,
@@ -8868,31 +9023,14 @@ body {
 	margin-block-start: var(--OT-space-stack-heading);
 }
 
-/* Preview / Live Preview — outgoing space on first heading */
-.markdown-rendered :is(
-	div.el-h1:has(+ div.el-h2) > h1,
-	div.el-h1:has(+ div.el-h3) > h1,
-	div.el-h2:has(+ div.el-h3) > h2
-) {
-	margin-block-end: 0;
-}
+/* -------------------------------------------------------------------------- */
+/* 2. Paragraphe après H4 / H5 / H6                                           */
+/* -------------------------------------------------------------------------- */
 
-
-/* ---------------------------------------------------------
-   2. Paragraph after H4–H6
-   --------------------------------------------------------- */
-
-/* Reading — incoming space on paragraph */
 .markdown-preview-view :is(h4 + p, h5 + p, h6 + p) {
 	margin-block-start: var(--OT-space-after-small-heading);
 }
 
-/* Reading — outgoing space on small heading */
-.markdown-preview-view :is(h4:has(+ p), h5:has(+ p), h6:has(+ p)) {
-	margin-block-end: 0;
-}
-
-/* Preview / Live Preview — incoming space on paragraph */
 .markdown-rendered :is(
 	div.el-h4 + div.el-p > p,
 	div.el-h5 + div.el-p > p,
@@ -8901,22 +9039,10 @@ body {
 	margin-block-start: var(--OT-space-after-small-heading);
 }
 
-/* Preview / Live Preview — outgoing space on small heading */
-.markdown-rendered :is(
-	div.el-h4:has(+ div.el-p) > h4,
-	div.el-h5:has(+ div.el-p) > h5,
-	div.el-h6:has(+ div.el-p) > h6
-) {
-	margin-block-end: 0;
-}
+/* -------------------------------------------------------------------------- */
+/* 3. H2 / H3 après bloc lourd                                                */
+/* -------------------------------------------------------------------------- */
 
-
-/* ---------------------------------------------------------
-   3. H2 / H3 after heavy block
-   Blocks: p, ul, ol, table, pre
-   --------------------------------------------------------- */
-
-/* Reading */
 .markdown-preview-view :is(
 	p + h2, p + h3,
 	ul + h2, ul + h3,
@@ -8924,10 +9050,9 @@ body {
 	table + h2, table + h3,
 	pre + h2, pre + h3
 ) {
-	margin-block-start: var(--OT-space-after-heavy-block);
+	/*margin-block-start: var(--OT-space-after-heavy-block);*/
 }
 
-/* Preview / Live Preview */
 .markdown-rendered :is(
 	div.el-p + div.el-h2 > h2,
 	div.el-p + div.el-h3 > h3,
@@ -8940,21 +9065,17 @@ body {
 	div.el-pre + div.el-h2 > h2,
 	div.el-pre + div.el-h3 > h3
 ) {
-	margin-block-start: var(--OT-space-after-heavy-block);
+	/*margin-block-start: var(--OT-space-after-heavy-block);*/
 }
 
+/* -------------------------------------------------------------------------- */
+/* 4. H2 / H3 après blockquote / callout / hr                                 */
+/* -------------------------------------------------------------------------- */
 
-/* ---------------------------------------------------------
-   4. H2 / H3 after quoted block
-   Block: blockquote
-   --------------------------------------------------------- */
-
-/* Reading */
 .markdown-preview-view :is(blockquote + h2, blockquote + h3) {
 	margin-block-start: var(--OT-space-after-quoted-block);
 }
 
-/* Preview / Live Preview */
 .markdown-rendered :is(
 	div.el-blockquote + div.el-h2 > h2,
 	div.el-blockquote + div.el-h3 > h3
@@ -8962,168 +9083,26 @@ body {
 	margin-block-start: var(--OT-space-after-quoted-block);
 }
 
-/* -------------------------------------------------- */
-/* Cas des listes qui suivent directement des headings */
-/* Reading mode + Live Preview                         */
-/* -------------------------------------------------- */
-
-/* -------- Reading mode -------- */
-
-/* H1 directement suivi d’une liste */
-.markdown-rendered .el-h1:has(+ .el-ul) h1,
-.markdown-rendered .el-h1:has(+ .el-ol) h1 {
-	margin-block-end: var(--OT-blanc-petit);
-}
-
-/* H2 directement suivi d’une liste */
-.markdown-rendered .el-h2:has(+ .el-ul) h2,
-.markdown-rendered .el-h2:has(+ .el-ol) h2 {
-	margin-block-end: var(--OT-blanc-petit);
-}
-
-/* H3 directement suivi d’une liste */
-.markdown-rendered .el-h3:has(+ .el-ul) h3,
-.markdown-rendered .el-h3:has(+ .el-ol) h3 {
-	margin-block-end: var(--OT-blanc-mini);
-}
-
-/* H4 directement suivi d’une liste */
-.markdown-rendered .el-h4:has(+ .el-ul) h4,
-.markdown-rendered .el-h4:has(+ .el-ol) h4 {
-	margin-block-end: var(--OT-blanc-mini);
-}
-
-/* H5 directement suivi d’une liste */
-.markdown-rendered .el-h5:has(+ .el-ul) h5,
-.markdown-rendered .el-h5:has(+ .el-ol) h5 {
-	margin-block-end: var(--OT-blanc-mini);
-}
-
-/* H6 directement suivi d’une liste */
-.markdown-rendered .el-h6:has(+ .el-ul) h6,
-.markdown-rendered .el-h6:has(+ .el-ol) h6 {
-	margin-block-end: var(--OT-blanc-mini);
-}
-
-/* -------- Live Preview -------- */
-
-/* H1 directement suivi d’une liste */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1:has(+ .cm-line.HyperMD-list-line),
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1:has(+ .cm-line.HyperMD-list-line-1) {
-	padding-bottom: var(--OT-blanc-mini);
-}
-
-/* H2 directement suivi d’une liste */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2:has(+ .cm-line.HyperMD-list-line),
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2:has(+ .cm-line.HyperMD-list-line-1) {
-	padding-bottom: var(--OT-blanc-mini);
-}
-
-/* H3 directement suivi d’une liste */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3:has(+ .cm-line.HyperMD-list-line),
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3:has(+ .cm-line.HyperMD-list-line-1) {
-	padding-bottom: var(--OT-blanc-mini);
-}
-
-/* H4 directement suivi d’une liste */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4:has(+ .cm-line.HyperMD-list-line),
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4:has(+ .cm-line.HyperMD-list-line-1) {
-	padding-bottom: var(--OT-blanc-mini);
-}
-
-/* H5 directement suivi d’une liste */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5:has(+ .cm-line.HyperMD-list-line),
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5:has(+ .cm-line.HyperMD-list-line-1) {
-	padding-bottom: 0;
-}
-
-/* H6 directement suivi d’une liste */
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6:has(+ .cm-line.HyperMD-list-line),
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6:has(+ .cm-line.HyperMD-list-line-1) {
-	padding-bottom: 0;
-}
-
-/* ---------------------------------------------------------
-   5. Paragraph after single image
-   Aligné sur la logique existante de OpSpl36
---------------------------------------------------------- */
-body {
-	/*--OT-space-after-single-image-paragraph: calc(1.3 * var(--OT-readingMode-line-height)); other position-visibility: ;*/
-	--OT-space-after-single-image-paragraph: calc(0.75 * var(--OT-blanc-large));
-}
-
-/* Reading :
-   paragraphe courant après une image seule sur une ligne,
-   mais pas entre les lignes successives d'une galerie */
-.markdown-preview-view p:has(.image-embed):not(:has(.image-embed .image-embed))
-+ p:not(:has(.image-embed)) {
-	margin-block-start: var(--OT-space-after-single-image-paragraph);
-}
-
-/* Preview / Live Preview :
-   même logique, en tenant compte des wrappers .el-p */
-.markdown-rendered div.el-p:has(> p > .image-embed):not(:has(> p .image-embed .image-embed))
-+ div.el-p:not(:has(> p > .image-embed)) > p {
-	margin-block-start: var(--OT-space-after-single-image-paragraph);
-}
-
-
-/* =========================================================
-=== === === OpSpl43b — Additional contextual vertical rhythm
-   Callouts, hr, blockquotes
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   1. H2 / H3 after callout
-   DOM: <div class="el-div"><div class="callout">…</div></div>
-   --------------------------------------------------------- */
-
-/* Reading — la plupart des thèmes exposent .callout directement */
 .markdown-preview-view :is(.callout + h2, .callout + h3) {
 	margin-block-start: var(--OT-space-after-callout);
 }
 
-/* Preview / Live Preview — wrapper .el-div autour de .callout */
-.markdown-rendered div.el-div:has(> .callout)
-	+ div.el-h2 > h2,
-.markdown-rendered div.el-div:has(> .callout)
-	+ div.el-h3 > h3 {
+.markdown-rendered :is(
+	div.el-div:has(.callout) + div.el-h2 > h2,
+	div.el-div:has(.callout) + div.el-h3 > h3
+) {
 	margin-block-start: var(--OT-space-after-callout);
 }
 
-
-/* ---------------------------------------------------------
-   2. H2 / H3 after horizontal rule
-   DOM: <div class="el-hr"><hr></div>
-   --------------------------------------------------------- */
-
-/* Reading */
 .markdown-preview-view :is(hr + h2, hr + h3) {
 	margin-block-start: var(--OT-space-after-hr);
 }
 
-/* Preview / Live Preview */
-.markdown-rendered div.el-hr + div.el-h2 > h2,
-.markdown-rendered div.el-hr + div.el-h3 > h3 {
+.markdown-rendered :is(
+	div.el-hr + div.el-h2 > h2,
+	div.el-hr + div.el-h3 > h3
+) {
 	margin-block-start: var(--OT-space-after-hr);
-}
-
-
-/* ---------------------------------------------------------
-   3. H2 / H3 after blockquote
-   DOM: <div class="el-blockquote"><blockquote>…</blockquote></div>
-   (complète le bloc ‘quoted block’ précédent)
-   --------------------------------------------------------- */
-
-/* Reading */
-.markdown-preview-view :is(blockquote + h2, blockquote + h3) {
-	margin-block-start: var(--OT-space-after-quoted-block);
-}
-
-/* Preview / Live Preview */
-.markdown-rendered div.el-blockquote + div.el-h2 > h2,
-.markdown-rendered div.el-blockquote + div.el-h3 > h3 {
-	margin-block-start: var(--OT-space-after-quoted-block);
 }
 /* -------------------- ↑ Contextual typography ↑ -------------------- */
 
@@ -10438,43 +10417,33 @@ body {
 	padding-bottom: var(--OT-edit-heading-h6-space-below);
 }
 
-:root {
-	/* recul de la colonne de texte en LP pour H4 */
-	--OT-h4-LP-text-indent: 1.5rem;
-}
-
-/* 1. Ligne H4 = conteneur + recul du texte */
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 {
 	position: relative;
 	padding-left: var(--OT-h4-LP-text-indent);
 }
 
-/* 2. Diamant au bord gauche de la colonne de texte */
 .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4::before {
-	content: "♢";
-	font-style: normal;
+	content: "";
 	position: absolute;
-
-	/* bord gauche de la colonne de texte */
-	left: 0;
-	top: var(--OT-edit-heading-h4-space-above);
-	z-index: 0;          /* sous le chevron */
-	margin-right: 0.3em; /* espace diamant–texte */
+	left: 0.08rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: var(--OT-h4-dot-size);
+	height: var(--OT-h4-dot-size);
+	border-radius: 999px;
+	background-color: var(--OT-h4-dot-color);
+	opacity: var(--OT-h4-dot-opacity);
 }
 
-/* 3. Ligne active : on supprime le diamant et on annule le recul */
-.markdown-source-view.is-live-preview
-.cm-line.HyperMD-header-4.cm-active::before {
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active::before {
 	content: none !important;
 }
-.markdown-source-view.is-live-preview
-.cm-line.HyperMD-header-4.cm-active {
+
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4.cm-active {
 	padding-left: 0 !important;
 }
 
-/* 4. Le span interne ne rajoute pas de padding */
-.markdown-source-view.is-live-preview
-.cm-line.HyperMD-header-4 .cm-header-4 {
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .cm-header-4 {
 	padding-left: 0;
 }
 
@@ -13642,7 +13611,7 @@ settings:
 		type:			heading
 		level:			2
 		collapsed:		true
-		description:	"Sidebars text size and spacing; headings sizes; Kanban font and text size. / Taille et espacement des textes des panneaux; tailles de titres; fonte et tailles du Kanban."
+		description:	"Main settings for the interface and general typography. / Les réglages principaux pour l’interface et la typographie en général."
 
 	# =========================
 	# Interface
@@ -13660,7 +13629,7 @@ settings:
 		title:		"Base size for the interface texts [px]"
 		title.fr:	"Taille de base pour les caractères de l’interface [px]"
 		type:		variable-number
-		default:	13
+		default:	16
 		format:		px
 
 	-
@@ -13893,127 +13862,6 @@ settings:
 		type:		class-toggle
 		default:	true
 		addCommand:	true
-
-
-	# =========================
-	# Kanban plugin
-	-
-		id:				"OT-kanban-settings"
-		title:			"Kanban plugin"
-		title.fr:		"Plugin Kanban"
-		type:			heading
-		level:			3
-		collapsed:		true
-		description:	"Kanban plugin specific styles. / Styles spécifiques pour le plugin Kanban."
-
-	-
-		id:				"OT-kanban-font"
-		title:			"Kanban: General font"
-		title.fr:		"Kanban : Fonte"
-		description:	"It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
-		description.fr:	"Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
-		type:			variable-select
-		default:		"Uberhand Pro"
-		options:
-			-
-				label: "Adelle"
-				value: "Adelle"
-			-
-				label: "American Typewriter"
-				value: "American Typewriter"
-			-
-				label: "Cambria"
-				value: "Cambria"
-			-
-				label: "Candara"
-				value: "Candara"
-			-
-				label: "Comic neue"
-				value: "Comic Neue Regular"
-			-
-				label: "Comic sans"
-				value: "Comic Sans MS"
-			-
-				label: "Georgia"
-				value: "Georgia"
-			-
-				label: "IBM Plex Sans"
-				value: "IBM Plex Sans"
-			-
-				label: "IBM Plex Serif"
-				value: "IBM Plex Serif"
-			-
-				label: "Lato"
-				value: "Lato"
-			-
-				label: "Lucida Sans"
-				value: "Lucida Sans Std"
-			-
-				label: "Myriad"
-				value: "Myriad Pro"
-			-
-				label: "Norms"
-				value: "TT Norms"
-			-
-				label: "Norms Condensed"
-				value: "TT Norms Std Condensed"
-			-
-				label: "Noto Sans"
-				value: "Noto Sans"
-			-
-				label: "Officina Sans"
-				value: "ITC Officina Sans Std"
-			-
-				label: "Officina Sans Serif"
-				value: "ITC Officina Serif Std"
-			-
-				label: "Overpass"
-				value: "Overpass"
-			-
-				label: "Palatino Sans"
-				value: "Palatino Sans Com"
-			-
-				label: "Palatino Sans Informal"
-				value: "Palatino Sans Informal LT Pro"
-			-
-				label: "PT Sans"
-				value: "PT Sans"
-			-
-				label: "Stone Informal"
-				value: "ITC Stone Informal Std"
-			-
-				label: "Stone Sans"
-				value: "ITC Stone Sans Std"
-			-
-				label: "Roboto"
-				value: "Roboto"
-			-
-				label: "Basic sans-serif"
-				label.fr: "Sans serif de base"
-				value: "sans-serif"
-			-
-				label: "Tisa"
-				value: "Tisa Pro"
-			-
-				label: "Tisa Sans"
-				value: "Tisa Sans Pro"
-			-
-				label: "Trebuchet"
-				value: "Trebuchet MS"
-			-
-				label: "Uberhand"
-				value: "Uberhand Pro"
-			-
-				label: "Verdana"
-				value: "Verdana"
-
-	-
-		id: "OT-kanban-font-size"
-		title: "Kanban: Size of the cards text [px]"
-		title.fr: "Kanban : Taille des caractères dans les fiches [px]"
-		type: variable-number
-		default: 16
-		format: px
 
 
 	# ===================
@@ -15434,6 +15282,129 @@ settings:
 			type:		variable-number
 			default:	550
 			format:		px
+
+	# =========================
+	# Kanban plugin
+	-
+			id:				"OT-kanban-settings"
+			title:			"Kanban plugin"
+			title.fr:		"Plugin Kanban"
+			type:			heading
+			level:			3
+			collapsed:		true
+			description:	"Kanban plugin specific styles. / Styles spécifiques pour le plugin Kanban."
+
+	-
+			id:				"OT-kanban-font"
+			title:			"Kanban: General font"
+			title.fr:		"Kanban : Fonte"
+			description:	"It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
+			description.fr:	"Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
+			type:			variable-select
+			default:		"Uberhand Pro"
+			options:
+				-
+					label: "Adelle"
+					value: "Adelle"
+				-
+					label: "American Typewriter"
+					value: "American Typewriter"
+				-
+					label: "Cambria"
+					value: "Cambria"
+				-
+					label: "Candara"
+					value: "Candara"
+				-
+					label: "Comic neue"
+					value: "Comic Neue Regular"
+				-
+					label: "Comic sans"
+					value: "Comic Sans MS"
+				-
+					label: "Georgia"
+					value: "Georgia"
+				-
+					label: "IBM Plex Sans"
+					value: "IBM Plex Sans"
+				-
+					label: "IBM Plex Serif"
+					value: "IBM Plex Serif"
+				-
+					label: "Lato"
+					value: "Lato"
+				-
+					label: "Lucida Sans"
+					value: "Lucida Sans Std"
+				-
+					label: "Myriad"
+					value: "Myriad Pro"
+				-
+					label: "Norms"
+					value: "TT Norms"
+				-
+					label: "Norms Condensed"
+					value: "TT Norms Std Condensed"
+				-
+					label: "Noto Sans"
+					value: "Noto Sans"
+				-
+					label: "Officina Sans"
+					value: "ITC Officina Sans Std"
+				-
+					label: "Officina Sans Serif"
+					value: "ITC Officina Serif Std"
+				-
+					label: "Overpass"
+					value: "Overpass"
+				-
+					label: "Palatino Sans"
+					value: "Palatino Sans Com"
+				-
+					label: "Palatino Sans Informal"
+					value: "Palatino Sans Informal LT Pro"
+				-
+					label: "PT Sans"
+					value: "PT Sans"
+				-
+					label: "Stone Informal"
+					value: "ITC Stone Informal Std"
+				-
+					label: "Stone Sans"
+					value: "ITC Stone Sans Std"
+				-
+					label: "Roboto"
+					value: "Roboto"
+				-
+					label: "Basic sans-serif"
+					label.fr: "Sans serif de base"
+					value: "sans-serif"
+				-
+					label: "Tisa"
+					value: "Tisa Pro"
+				-
+					label: "Tisa Sans"
+					value: "Tisa Sans Pro"
+				-
+					label: "Trebuchet"
+					value: "Trebuchet MS"
+				-
+					label: "Uberhand"
+					value: "Uberhand Pro"
+				-
+					label: "Verdana"
+					value: "Verdana"
+
+	-
+			id: "OT-kanban-font-size"
+			title: "Kanban: Size of the cards text [px]"
+			title.fr: "Kanban : Taille des caractères dans les fiches [px]"
+			type: variable-number
+			default: 16
+			format: px
+
+
+
 
 	# ================================
 	# WRITING / EDITING mode settings

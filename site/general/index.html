@@ -127,6 +127,14 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#general-settings" class="nav-link">General settings</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#interface" class="nav-link">Interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#typography" class="nav-link">Typography</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -135,10 +143,14 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="general-settings">General settings<a class="headerlink" href="#general-settings" title="Permanent link">&para;</a></h1>
-<p>The <strong>GENERAL settings</strong> group controls global aspects of the interface:<br />
-the base size of UI text, the spacing of file listings in side panels, and how headings scale from H6 to H1.</p>
+<p>The <strong>GENERAL settings</strong> group controls global aspects of the theme not specifically geared towards Reading or Writing. These settings are grouped in 2 sections :</p>
+<ul>
+<li><strong>Interface</strong> — base size of UI text, the spacing of file listings in side panels, etc.</li>
+<li><strong>Typography</strong> — scaling of the headings, vertical rythm, etc.</li>
+</ul>
 <!-- screenshot: Style Settings – Olivier’s Theme – GENERAL settings section -->
 
+<h2 id="interface">Interface<a class="headerlink" href="#interface" title="Permanent link">&para;</a></h2>
 <h3 id="base-size-for-the-interface-texts-px">Base size for the interface texts (px)<a class="headerlink" href="#base-size-for-the-interface-texts-px" title="Permanent link">&para;</a></h3>
 <p>This value sets the <strong>base font size for most interface elements</strong>:</p>
 <ul>
@@ -147,12 +159,7 @@ the base size of UI text, the spacing of file listings in side panels, and how h
 <li>text in modal dialogs (settings, command palette, etc.)  </li>
 <li>tab titles at the top of each panel  </li>
 </ul>
-<p>A good default is <strong>16 px</strong>: large enough to stay readable on laptops and tablets, without feeling oversized on an external display.</p>
-<p>If the interface looks too small or too large on a given machine:</p>
-<ol>
-<li>Open <strong>Style Settings → Olivier’s Theme → GENERAL settings</strong>.  </li>
-<li>Adjust <strong>Base size for the interface texts (px)</strong> up or down by 1–2 px.  </li>
-</ol>
+<p>The default is <strong>16 px</strong>, the same as <em>Obsidian</em>’s native theme. On a typical desktop display, it may feel too small — that’s why you can adjust this value.</p>
 <p>The theme uses this value as a reference for many UI elements, so most of the interface will scale consistently with this single control.</p>
 <blockquote>
 <p>Tip: to see quickly which parts of the UI are affected, you can temporarily choose a very distinctive interface font in<br />
@@ -172,6 +179,70 @@ the base size of UI text, the spacing of file listings in side panels, and how h
 <p>If you feel that the file list looks <em>too dense</em> or <em>too airy</em>, this is the place to adjust it without changing font sizes. It may be especially useful on touch interfaces of phones and tablets.</p>
 <!-- screenshot: side panel showing the same file list with “Tight” vs “Wide” spacing -->
 
+<h3 id="viewing-mode-icons-as-status-toggles">Viewing mode icons as status toggles<a class="headerlink" href="#viewing-mode-icons-as-status-toggles" title="Permanent link">&para;</a></h3>
+<p>By default, <em>Obsidian</em> shows an open book while you’re editing and a pencil while you’re reading a note. Many people, me included, find this disturbing, even confusing. <em>Olivier’s Theme</em> brings a better solution :</p>
+<ul>
+<li>
+<p>an <strong>open book</strong> is displayed while you’re reading:<br>
+<img src="../assets/reading-mode-indicator.png" alt="Reading mode indicator" style="width:50%; height:auto;"><br></p>
+</li>
+<li>
+<p>a <strong>pencil</strong> is displayed while you’re editin in Live Mode ; furthermore, you have a dot in the upper right corner of your pannel, indicating the note is currently in <em>editing mode</em> :<br>
+    <img src="../assets/live-mode-indicators.png" alt="Live Mode indicators" style="width:50%; height:auto;"><br></p>
+</li>
+<li>
+<p>a <strong>symbol</strong> is displayed while you’re editing in Raw Mode — the “editing dot” is still there, of course :<br>
+<img src="../assets/raw-mode-indicator.png" alt="Raw mode indicator" style="width:50%; height:auto;"><br></p>
+</li>
+</ul>
+<p>If you don’t like this feature, you can switch it OFF and revert to the “original” <em>Obsidian</em> behaviour :</p>
+<p><img alt="Viewing mode — Obsidian original" src="../assets/Viewing%20mode%20%E2%80%94%20Obsidian%20original.png" /></p>
+<h3 id="highlight-current-tab">Highlight current tab<a class="headerlink" href="#highlight-current-tab" title="Permanent link">&para;</a></h3>
+<p>This option adds a stronger visual emphasis to the <strong>currently active tab</strong> in each panel.</p>
+<p>It is especially helpful when:</p>
+<ul>
+<li>you work with several tabs in the same pane, or  </li>
+<li>you use stacked tabs and want to see clearly where your keyboard focus is.</li>
+</ul>
+<p>When enabled, the active tab uses the accent color and stands out more clearly from background tabs, in addition to the active‑pane header styling.</p>
+<!-- screenshot: multiple tabs with one clearly highlighted -->
+
+<h3 id="hide-title-bar-breadcrumb">Hide Title Bar breadcrumb<a class="headerlink" href="#hide-title-bar-breadcrumb" title="Permanent link">&para;</a></h3>
+<p>Obsidian can display a breadcrumb in the title bar at the top of the window<br />
+(vault name, current note, and sometimes the active plugin view).</p>
+<p>If you find this visually noisy or redundant with the tab titles,<br />
+turning <strong>Suppress the Title Bar breadcrumb</strong> ON removes this breadcrumb while keeping the rest of the title bar intact.</p>
+<p>This frees a bit of vertical space and gives a cleaner top edge to the window.</p>
+<h3 id="status-bar-padding">Status Bar padding<a class="headerlink" href="#status-bar-padding" title="Permanent link">&para;</a></h3>
+<p>This setting adjusts the <strong>padding between the status bar and the screen right and bottom borders</strong>.</p>
+<ul>
+<li>With a padding of 0 (zero), the status bar is directly against screen border, liberating space inside the window.  </li>
+<li>Any higher values gives space between the status bar and the borders of the screen. It may be aesthetically more pleasant, but it takes space inside the window.</li>
+</ul>
+<p>Please note that you can use the <strong>Hider</strong> plugin and assign a keybord shortcut to its “Toggle status bar” command. </p>
+<!-- screenshot: status bar with minimal vs generous padding -->
+
+<h3 id="width-of-the-properties-labels">Width of the properties labels<a class="headerlink" href="#width-of-the-properties-labels" title="Permanent link">&para;</a></h3>
+<p>This option sets the <strong>width of the label column</strong> in the Properties panel.</p>
+<ul>
+<li>In the <strong>Properties section at the top of notes</strong>, increasing this width prevents long property names from being cropped or wrapped in an awkward way. The labels stay fully readable, at the cost of using a bit more horizontal space in the note pane.</li>
+<li>In the <strong>Properties sidebar view</strong>, decreasing the width makes the labels more compact and frees space for the note content itself. This can be useful if you keep the Properties panel docked in a narrow sidebar and want to maximise the visible text.</li>
+</ul>
+<p>If your property names are short, a smaller width keeps everything tight and efficient.<br />
+If you rely on longer, descriptive keys, a slightly larger width will usually make the layout clearer and more comfortable to read.</p>
+<!-- screenshot: properties panel with narrow vs wide labels, both at the top of a note and in the sidebar -->
+
+<h3 id="hide-embed-titles">Hide embed titles<a class="headerlink" href="#hide-embed-titles" title="Permanent link">&para;</a></h3>
+<p>When you <em>embed</em> — i.e. <em>transclude</em> — a note inside the current note, <em>Obsidian</em> shows the filename of the transcluded note at the top of its content. This is very often disturbing, hence the possibility to suppress this filename with this setting. It is ON by default, meaning that only the content of the transcluded note appears in your current note. Switch OFF this setting if you <strong>do</strong> want to see the filenames of your transcluded files.</p>
+<h3 id="hide-canvas-dot-pattern">Hide canvas dot pattern<a class="headerlink" href="#hide-canvas-dot-pattern" title="Permanent link">&para;</a></h3>
+<p>In Obsidian’s <strong>Canvas</strong> view, the default background shows a subtle grid of dots.  </p>
+<p>Turning <strong>Hide canvas dot pattern</strong> ON removes this dot pattern and replaces it with a plain background.<br />
+This can make complex canvases feel less busy and keeps the focus on cards, notes and connectors rather than on the grid.</p>
+<p>If you rely on the dots to align items precisely, leave this option OFF.<br />
+If you prefer a quieter visual field, enabling it often feels more “paper‑like”.</p>
+<!-- screenshot: canvas view with dot pattern vs plain background -->
+
+<h2 id="typography">Typography<a class="headerlink" href="#typography" title="Permanent link">&para;</a></h2>
 <h3 id="scaling-of-the-headings-and-subheadings">Scaling of the headings and subheadings<a class="headerlink" href="#scaling-of-the-headings-and-subheadings" title="Permanent link">&para;</a></h3>
 <p>Headings (H1–H6) already have visual cues in Olivier’s Theme: spacing, rules, weight and style.<br />
 The <strong>Scaling of the headings and subheadings</strong> option lets you decide how much their <strong>size</strong> should increase from H6 up to H1.</p>
@@ -181,7 +252,7 @@ The <strong>Scaling of the headings and subheadings</strong> option lets you dec
 <li><strong>Minor second / Major second / Minor third / …</strong> – musical‑interval based scales that progressively enlarge headings.  </li>
 <li>The “<strong>Olivier’s</strong> ” default gives a clear but not exaggerated hierarchy.</li>
 </ul>
-<p>On small laptops or tablets, you may prefer a modest scale (for example <em>Minor second</em>), while on large external monitors a stronger scale can make documents much easier to scan.</p>
+<p>On small laptops or tablets, you may prefer a modest scale (for example <em>Minor second</em>), while on large external monitors a stronger scale can make documents easier to scan.</p>
 <p>A simple tuning strategy:</p>
 <ol>
 <li>Open a long note with several levels of headings.  </li>
@@ -211,50 +282,7 @@ they will stay on a single horizontal line and can be scrolled horizontally if n
 <li>configuration files</li>
 </ul>
 <p>When the option is <strong>OFF</strong>, code blocks wrap like normal text, which can be more comfortable on narrow screens but sometimes makes code harder to read.</p>
-<!-- screenshot: same code block with wrapping on vs off -->
-
-<h3 id="highlight-current-tab">Highlight current tab<a class="headerlink" href="#highlight-current-tab" title="Permanent link">&para;</a></h3>
-<p>This option adds a stronger visual emphasis to the <strong>currently active tab</strong> in each panel.</p>
-<p>It is especially helpful when:</p>
-<ul>
-<li>you work with several tabs in the same pane, or  </li>
-<li>you use stacked tabs and want to see clearly where your keyboard focus is.</li>
-</ul>
-<p>When enabled, the active tab uses the accent color and stands out more clearly from background tabs, in addition to the active‑pane header styling.</p>
-<!-- screenshot: multiple tabs with one clearly highlighted -->
-
-<h3 id="suppress-the-title-bar-breadcrumb">Suppress the Title Bar breadcrumb<a class="headerlink" href="#suppress-the-title-bar-breadcrumb" title="Permanent link">&para;</a></h3>
-<p>Obsidian can display a breadcrumb in the title bar at the top of the window<br />
-(vault name, current note, and sometimes the active plugin view).</p>
-<p>If you find this visually noisy or redundant with the tab titles,<br />
-turning <strong>Suppress the Title Bar breadcrumb</strong> ON removes this breadcrumb while keeping the rest of the title bar intact.</p>
-<p>This frees a bit of vertical space and gives a cleaner top edge to the window.</p>
-<h3 id="status-bar-padding">Status Bar padding<a class="headerlink" href="#status-bar-padding" title="Permanent link">&para;</a></h3>
-<p>This setting adjusts the <strong>padding between the status bar and the screen right and bottom borders</strong>.</p>
-<ul>
-<li>With a padding of 0 (zero), the status bar is directly against screen border, liberating space inside the window.  </li>
-<li>Any higher values gives space between the status bar and the borders of the screen. It may be aesthetically more pleasant, but it takes space inside the window.</li>
-</ul>
-<p>Please note that you can use the <strong>Hider</strong> plugin and assign a keybord shortcut to its “Toggle status bar” command. </p>
-<!-- screenshot: status bar with minimal vs generous padding -->
-
-<h3 id="width-of-the-properties-labels">Width of the properties labels<a class="headerlink" href="#width-of-the-properties-labels" title="Permanent link">&para;</a></h3>
-<p>This option sets the <strong>width of the label column</strong> in the Properties panel.</p>
-<ul>
-<li>In the <strong>Properties section at the top of notes</strong>, increasing this width prevents long property names from being cropped or wrapped in an awkward way. The labels stay fully readable, at the cost of using a bit more horizontal space in the note pane.</li>
-<li>In the <strong>Properties sidebar view</strong>, decreasing the width makes the labels more compact and frees space for the note content itself. This can be useful if you keep the Properties panel docked in a narrow sidebar and want to maximise the visible text.</li>
-</ul>
-<p>If your property names are short, a smaller width keeps everything tight and efficient.<br />
-If you rely on longer, descriptive keys, a slightly larger width will usually make the layout clearer and more comfortable to read.</p>
-<!-- screenshot: properties panel with narrow vs wide labels, both at the top of a note and in the sidebar -->
-
-<h3 id="hide-canvas-dot-pattern">Hide canvas dot pattern<a class="headerlink" href="#hide-canvas-dot-pattern" title="Permanent link">&para;</a></h3>
-<p>In Obsidian’s <strong>Canvas</strong> view, the default background shows a subtle grid of dots.  </p>
-<p>Turning <strong>Hide canvas dot pattern</strong> ON removes this dot pattern and replaces it with a plain background.<br />
-This can make complex canvases feel less busy and keeps the focus on cards, notes and connectors rather than on the grid.</p>
-<p>If you rely on the dots to align items precisely, leave this option OFF.<br />
-If you prefer a quieter visual field, enabling it often feels more “paper‑like”.</p>
-<!-- screenshot: canvas view with dot pattern vs plain background --></div>
+<!-- screenshot: same code block with wrapping on vs off --></div>
             </div>
         </div>
 

@@ -97,7 +97,7 @@ The rest of the documentation is organised into focused pages:
 
 ##### General settings
 
-Global interface scaling, sidebar spacing, headings hierarchy, Kanban options, code wrapping, status bar, title bar breadcrumb, canvas background.<br>
+Global interface scaling, sidebar spacing, headings hierarchy, code wrapping, status bar, title bar breadcrumb, canvas background.<br>
 → [General](general.md)
 
 ##### Colors in Light and Dark mode
@@ -107,15 +107,13 @@ How palettes work, how Light and Dark interact, accent colors, text vs muted tex
 
 ##### Reading mode
 
-Body text size, line height, line length, tables style, image style and maximum height, Bases header hiding options.  
+Body text size, line height, line length, tables style, image style and maximum height, Bases header hiding options, Kanban options.  
 → [Reading mode](reading-mode.md)
 
 ##### Writing mode
 
 Editor fonts, text sizes, line length and height tuned for drafting, so you see enough context around the cursor without sacrificing readability.  
 → [Writing mode](writing-mode.md)
-
-](colors-light-dark.md)
 
 ##### Reading vs Writing – mental modes
 

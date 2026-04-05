@@ -1,9 +1,15 @@
 # General settings
 
-The **GENERAL settings** group controls global aspects of the interface:  
-the base size of UI text, the spacing of file listings in side panels, and how headings scale from H6 to H1.
+The **GENERAL settings** group controls global aspects of the theme not specifically geared towards Reading or Writing. These settings are grouped in 2 sections :
+
+* **Interface** — base size of UI text, the spacing of file listings in side panels, etc.
+* **Typography** — scaling of the headings, vertical rythm, etc.
 
 <!-- screenshot: Style Settings – Olivier’s Theme – GENERAL settings section -->
+
+
+
+## Interface
 
 ### Base size for the interface texts (px)
 
@@ -14,17 +20,16 @@ This value sets the **base font size for most interface elements**:
 - text in modal dialogs (settings, command palette, etc.)  
 - tab titles at the top of each panel  
 
-A good default is **16 px**: large enough to stay readable on laptops and tablets, without feeling oversized on an external display.
-
-If the interface looks too small or too large on a given machine:
-
-1. Open **Style Settings → Olivier’s Theme → GENERAL settings**.  
-2. Adjust **Base size for the interface texts (px)** up or down by 1–2 px.  
+The default is **16 px**, the same as *Obsidian*’s native theme. On a typical desktop display, it may feel too small — that’s why you can adjust this value.
 
 The theme uses this value as a reference for many UI elements, so most of the interface will scale consistently with this single control.
 
+
+
 > Tip: to see quickly which parts of the UI are affected, you can temporarily choose a very distinctive interface font in  
 > `Settings → Appearance → Fonts → Interface font` (for example, Courier).
+
+
 
 <!-- screenshot: a settings modal with interface font size slightly increased -->
 
@@ -43,6 +48,97 @@ If you feel that the file list looks *too dense* or *too airy*, this is the plac
 
 <!-- screenshot: side panel showing the same file list with “Tight” vs “Wide” spacing -->
 
+
+
+### Viewing mode icons as status toggles
+
+By default, *Obsidian* shows an open book while you’re editing and a pencil while you’re reading a note. Many people, me included, find this disturbing, even confusing. *Olivier’s Theme* brings a better solution :
+
+* an **open book** is displayed while you’re reading:<br>
+<img src="../assets/reading-mode-indicator.png" alt="Reading mode indicator" style="width:50%; height:auto;"><br>
+
+
+
+* a **pencil** is displayed while you’re editin in Live Mode ; furthermore, you have a dot in the upper right corner of your pannel, indicating the note is currently in *editing mode* :<br>
+	<img src="../assets/live-mode-indicators.png" alt="Live Mode indicators" style="width:50%; height:auto;"><br>
+
+
+
+* a **symbol** is displayed while you’re editing in Raw Mode — the “editing dot” is still there, of course :<br>
+<img src="../assets/raw-mode-indicator.png" alt="Raw mode indicator" style="width:50%; height:auto;"><br>
+
+If you don’t like this feature, you can switch it OFF and revert to the “original” *Obsidian* behaviour :
+
+![Viewing mode — Obsidian original](assets/Viewing mode — Obsidian original.png)
+
+
+
+### Highlight current tab
+
+This option adds a stronger visual emphasis to the **currently active tab** in each panel.
+
+It is especially helpful when:
+
+- you work with several tabs in the same pane, or  
+- you use stacked tabs and want to see clearly where your keyboard focus is.
+
+When enabled, the active tab uses the accent color and stands out more clearly from background tabs, in addition to the active‑pane header styling.
+
+<!-- screenshot: multiple tabs with one clearly highlighted -->
+
+### Hide Title Bar breadcrumb
+
+Obsidian can display a breadcrumb in the title bar at the top of the window  
+(vault name, current note, and sometimes the active plugin view).
+
+If you find this visually noisy or redundant with the tab titles,  
+turning **Suppress the Title Bar breadcrumb** ON removes this breadcrumb while keeping the rest of the title bar intact.
+
+This frees a bit of vertical space and gives a cleaner top edge to the window.
+
+### Status Bar padding
+
+This setting adjusts the **padding between the status bar and the screen right and bottom borders**.
+
+- With a padding of 0 (zero), the status bar is directly against screen border, liberating space inside the window.  
+- Any higher values gives space between the status bar and the borders of the screen. It may be aesthetically more pleasant, but it takes space inside the window.
+
+Please note that you can use the **Hider** plugin and assign a keybord shortcut to its “Toggle status bar” command. 
+
+<!-- screenshot: status bar with minimal vs generous padding -->
+
+### Width of the properties labels
+
+This option sets the **width of the label column** in the Properties panel.
+
+- In the **Properties section at the top of notes**, increasing this width prevents long property names from being cropped or wrapped in an awkward way. The labels stay fully readable, at the cost of using a bit more horizontal space in the note pane.
+- In the **Properties sidebar view**, decreasing the width makes the labels more compact and frees space for the note content itself. This can be useful if you keep the Properties panel docked in a narrow sidebar and want to maximise the visible text.
+
+If your property names are short, a smaller width keeps everything tight and efficient.  
+If you rely on longer, descriptive keys, a slightly larger width will usually make the layout clearer and more comfortable to read.
+
+<!-- screenshot: properties panel with narrow vs wide labels, both at the top of a note and in the sidebar -->
+
+### Hide embed titles
+
+When you *embed* — i.e. *transclude* — a note inside the current note, *Obsidian* shows the filename of the transcluded note at the top of its content. This is very often disturbing, hence the possibility to suppress this filename with this setting. It is ON by default, meaning that only the content of the transcluded note appears in your current note. Switch OFF this setting if you **do** want to see the filenames of your transcluded files.
+
+
+
+### Hide canvas dot pattern
+
+In Obsidian’s **Canvas** view, the default background shows a subtle grid of dots.  
+
+Turning **Hide canvas dot pattern** ON removes this dot pattern and replaces it with a plain background.  
+This can make complex canvases feel less busy and keeps the focus on cards, notes and connectors rather than on the grid.
+
+If you rely on the dots to align items precisely, leave this option OFF.  
+If you prefer a quieter visual field, enabling it often feels more “paper‑like”.
+
+<!-- screenshot: canvas view with dot pattern vs plain background -->
+
+## Typography
+
 ### Scaling of the headings and subheadings
 
 Headings (H1–H6) already have visual cues in Olivier’s Theme: spacing, rules, weight and style.  
@@ -54,7 +150,7 @@ There are several presets, including:
 - **Minor second / Major second / Minor third / …** – musical‑interval based scales that progressively enlarge headings.  
 - The “**Olivier’s** ” default gives a clear but not exaggerated hierarchy.
 
-On small laptops or tablets, you may prefer a modest scale (for example *Minor second*), while on large external monitors a stronger scale can make documents much easier to scan.
+On small laptops or tablets, you may prefer a modest scale (for example *Minor second*), while on large external monitors a stronger scale can make documents easier to scan.
 
 A simple tuning strategy:
 
@@ -99,62 +195,5 @@ When the option is **OFF**, code blocks wrap like normal text, which can be more
 
 <!-- screenshot: same code block with wrapping on vs off -->
 
-### Highlight current tab
-
-This option adds a stronger visual emphasis to the **currently active tab** in each panel.
-
-It is especially helpful when:
-
-- you work with several tabs in the same pane, or  
-- you use stacked tabs and want to see clearly where your keyboard focus is.
-
-When enabled, the active tab uses the accent color and stands out more clearly from background tabs, in addition to the active‑pane header styling.
-
-<!-- screenshot: multiple tabs with one clearly highlighted -->
-
-### Suppress the Title Bar breadcrumb
-
-Obsidian can display a breadcrumb in the title bar at the top of the window  
-(vault name, current note, and sometimes the active plugin view).
-
-If you find this visually noisy or redundant with the tab titles,  
-turning **Suppress the Title Bar breadcrumb** ON removes this breadcrumb while keeping the rest of the title bar intact.
-
-This frees a bit of vertical space and gives a cleaner top edge to the window.
-
-### Status Bar padding
-
-This setting adjusts the **padding between the status bar and the screen right and bottom borders**.
-
-- With a padding of 0 (zero), the status bar is directly against screen border, liberating space inside the window.  
-- Any higher values gives space between the status bar and the borders of the screen. It may be aesthetically more pleasant, but it takes space inside the window.
-
-Please note that you can use the **Hider** plugin and assign a keybord shortcut to its “Toggle status bar” command. 
-
-<!-- screenshot: status bar with minimal vs generous padding -->
-
-### Width of the properties labels
-
-This option sets the **width of the label column** in the Properties panel.
-
-- In the **Properties section at the top of notes**, increasing this width prevents long property names from being cropped or wrapped in an awkward way. The labels stay fully readable, at the cost of using a bit more horizontal space in the note pane.
-- In the **Properties sidebar view**, decreasing the width makes the labels more compact and frees space for the note content itself. This can be useful if you keep the Properties panel docked in a narrow sidebar and want to maximise the visible text.
-
-If your property names are short, a smaller width keeps everything tight and efficient.  
-If you rely on longer, descriptive keys, a slightly larger width will usually make the layout clearer and more comfortable to read.
-
-<!-- screenshot: properties panel with narrow vs wide labels, both at the top of a note and in the sidebar -->
 
 
-
-### Hide canvas dot pattern
-
-In Obsidian’s **Canvas** view, the default background shows a subtle grid of dots.  
-
-Turning **Hide canvas dot pattern** ON removes this dot pattern and replaces it with a plain background.  
-This can make complex canvases feel less busy and keeps the focus on cards, notes and connectors rather than on the grid.
-
-If you rely on the dots to align items precisely, leave this option OFF.  
-If you prefer a quieter visual field, enabling it often feels more “paper‑like”.
-
-<!-- screenshot: canvas view with dot pattern vs plain background -->
