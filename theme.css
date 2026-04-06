@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-04-06
 	- vastly improved the vertical spacing in four modes (tight, normal, generous, Bear)
 	- thoroughly reviewed the vertical spacing around images + improved the css classes for ad hoc spacers
+	- corrected a bug in paragraph spacing
 2026-04-05
 	- reorganised the presentation of settings in the Style Settings plugin
 		(moved the Kanban plugin settings to the end of the Reading mode settings)
@@ -5256,7 +5257,7 @@ body {
 	--OT-blanc-large: calc(1.618 * var(--OT-blanc-grand));
 
 	/* Paragraph rhythm */
-	--OT-space-before-paragraph: 0;
+	--OT-space-before-paragraph: var(--OT-blanc-petit);
 	--OT-space-after-paragraph: 0;
 
 	/* Headings */
@@ -5381,6 +5382,8 @@ body.vertical-rythm-Bear {
 	--OT-blanc-moyen: calc(2 * var(--OT-bear-step));
 	--OT-blanc-grand: calc(3 * var(--OT-bear-step));
 	--OT-blanc-large: calc(4 * var(--OT-bear-step));
+
+	--OT-space-before-paragraph: var(--OT-blanc-moyen);
 
 	--OT-space-above-h1: var(--OT-blanc-grand);
 	--OT-space-below-h1: var(--OT-blanc-moyen);
