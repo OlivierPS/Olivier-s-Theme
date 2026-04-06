@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-04-06
 	- vastly improved the vertical spacing in four modes (tight, normal, generous, Bear)
+	- thoroughly reviewed the vertical spacing around images + improved the css classes for ad hoc spacers
 2026-04-05
 	- reorganised the presentation of settings in the Style Settings plugin
 		(moved the Kanban plugin settings to the end of the Reading mode settings)
@@ -530,8 +531,9 @@ body {
 
 	--OT-effective-reading-line-height:				var(--OT-readingMode-line-height);		/* Interligne effectif pour le Reading mode */
 
-	--OT-img-max-height-preview:					550px;
+	--OT-img-max-height-preview:					550px;			/* variables concernant les images */
 	--OT-img-max-height-live:						10rem;
+
 	--OT-kanban-font-size:							16px;
 	--OT-kanban-font:								"Uberhand Pro";
 	--OT-kbd-background:							floralwhite;
@@ -599,6 +601,8 @@ body {
 	--OT-view-header-title-focus-color:				var(--color-accent-1);
 	--OT-view-header-title-no-focus-color:			var(--text-muted);
 	--OT-YAML-color:								hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
+
+
 
 /*	=== === === OpSpl03	—————————————————————————————— Ajustement des variables “Obsidian” —————————————————————————————— */
 	--background-modifier-active-hover:	var(--color-accent-1);
@@ -8358,10 +8362,13 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 
 
 /*	=== === === OpSpl36	 ——————————————————————————————  Images, etc. —————————————————————————————— */
-/* ───────────────── Images: base styles ───────────────── */
 
-/* Reading view images */
-.markdown-preview-view img {
+/* ========================================================================== */
+/* 1. Base images                                                             */
+/* ========================================================================== */
+
+.markdown-preview-view img,
+.markdown-source-view.mod-cm6 img {
 	max-height: var(--OT-img-max-height-preview);
 	inline-size: auto;
 	block-size: auto;
@@ -8369,227 +8376,319 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 	border-radius: var(--radius-s);
 }
 
-/* Live Preview images (CM6 editor) */
 .markdown-source-view.mod-cm6 img {
 	max-height: var(--OT-img-max-height-live);
-	inline-size: auto;
-	block-size: auto;
-	object-fit: contain;
-	border-radius: var(--radius-s);
 }
 
-/* -------------------- Per-note image sizing (Preview only) --------------------
-   Utilisation :
-   Dans le frontmatter de la note :
-   ---
-   cssclass: OT-img-XS   # ou OT-img-S / OT-img-M / OT-img-L / OT-img-XL
-   ---
-   Ne touche pas au Live Editing : --OT-img-max-height-live reste global.
---------------------------------------------------------------------------- */
+/* ========================================================================== */
+/* 2. Per-note image sizing (Preview only)                                    */
+/* ========================================================================== */
 
-.markdown-preview-view.img-XS	{ --OT-img-max-height-preview: 300px;}
-.markdown-preview-view.img-S 	{ --OT-img-max-height-preview: 350px;}
-.markdown-preview-view.img-M	{ --OT-img-max-height-preview: 450px;}
-.markdown-preview-view.img-L	{ --OT-img-max-height-preview: 600px;}
-.markdown-preview-view.img-XL	{ --OT-img-max-height-preview: var(--OT-img-max-height);}
+.markdown-preview-view.img-XS  { --OT-img-max-height-preview: 300px; }
+.markdown-preview-view.img-S   { --OT-img-max-height-preview: 350px; }
+.markdown-preview-view.img-M   { --OT-img-max-height-preview: 450px; }
+.markdown-preview-view.img-L   { --OT-img-max-height-preview: 600px; }
+.markdown-preview-view.img-XL  { --OT-img-max-height-preview: var(--OT-img-max-height); }
 
-.markdown-preview-view.img-300 { --OT-img-max-height-preview: 300px;}
-.markdown-preview-view.img-350 { --OT-img-max-height-preview: 350px;}
-.markdown-preview-view.img-400 { --OT-img-max-height-preview: 400px;}
-.markdown-preview-view.img-450 { --OT-img-max-height-preview: 450px;}
-.markdown-preview-view.img-500 { --OT-img-max-height-preview: 500px;}
-.markdown-preview-view.img-600 { --OT-img-max-height-preview: 600px;}
-.markdown-preview-view.img-700 { --OT-img-max-height-preview: 700px;}
-.markdown-preview-view.img-800 { --OT-img-max-height-preview: 800px;}
-.markdown-preview-view.img-900 { --OT-img-max-height-preview: 900px;}
-.markdown-preview-view.img-1000 { --OT-img-max-height-preview: 1000px;}
+.markdown-preview-view.img-300  { --OT-img-max-height-preview: 300px; }
+.markdown-preview-view.img-350  { --OT-img-max-height-preview: 350px; }
+.markdown-preview-view.img-400  { --OT-img-max-height-preview: 400px; }
+.markdown-preview-view.img-450  { --OT-img-max-height-preview: 450px; }
+.markdown-preview-view.img-500  { --OT-img-max-height-preview: 500px; }
+.markdown-preview-view.img-600  { --OT-img-max-height-preview: 600px; }
+.markdown-preview-view.img-700  { --OT-img-max-height-preview: 700px; }
+.markdown-preview-view.img-800  { --OT-img-max-height-preview: 800px; }
+.markdown-preview-view.img-900  { --OT-img-max-height-preview: 900px; }
+.markdown-preview-view.img-1000 { --OT-img-max-height-preview: 1000px; }
 
-
-/* ───────────────── Image style variants ───────────────── */
+/* ========================================================================== */
+/* 3. Image style variants                                                    */
+/* ========================================================================== */
 
 .plain-images img {
-	/* intentionally empty: hook for disabling other variants if needed */
+	/* hook volontairement vide */
 }
 
-.images-with-frame img {
+.images-with-frame img,
+.images-with-frame-and-shadow img {
 	border: 1px solid var(--text-normal);
 	padding: 2px;
 }
 
-.images-with-shadow img {
-	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.15);
-}
-
+.images-with-shadow img,
 .images-with-frame-and-shadow img {
 	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.15);
-	border: 1px solid var(--text-normal);
-	padding: 2px;
 }
 
-/* Signature/logo images: no border or shadow */
+/* Signature / logo */
 .signature img,
 img.signature {
 	border: none !important;
 	box-shadow: none !important;
+	padding: 0 !important;
 }
 
-/* === Image grid inspiré de Minimal (MIT, @kepano) + ajustements Olivier === */
+/* ========================================================================== */
+/* 4. Local image tokens                                                      */
+/* ========================================================================== */
 
-/* Variables de base */
 body {
-	--image-grid-fit:			cover;
-	--image-grid-background:	transparent;
+	--OT-img-group-gap-x:          var(--OT-blanc-mini);
+	--OT-img-group-gap-y:          var(--OT-blanc-mini);
 
-	--image-group-gap-x:		0.75rem;	/* espace horizontal entre images d’un groupe */
-	--image-group-gap-y:		0.5rem;		/* espace vertical visuel entre cellules */
-	--image-group-space-above:	1.0rem;	/* espace au-dessus d’un groupe d’images */
-	--image-group-space-below:	0.5rem;		/* espace au-dessous d’un groupe d’images */
+	--OT-img-space-above-single:   var(--OT-blanc-moyen);
+	--OT-img-space-below-single:   var(--OT-blanc-moyen);
+
+	--OT-img-space-above-caption:  var(--OT-blanc-mini);
+
+	--OT-image-grid-fit:           cover;
+	--OT-image-grid-background:    transparent;
 }
 
 @media (max-width: 400pt) {
-  body {
-  --image-group-gap-x:	0.25rem;
-  --image-group-gap-y:	0.5rem;
-  }
+	body {
+		--OT-img-group-gap-x: 0.25rem;
+	}
 }
 
-/* Variante pour contenir au lieu de couper */
 .img-grid-ratio {
-	--image-grid-fit:	contain;
+	--OT-image-grid-fit: contain;
 }
 
-/* Images embarquées */
+/* ========================================================================== */
+/* 5. Embedded images                                                         */
+/* ========================================================================== */
+
 .image-embed.is-loaded {
-	line-height:	0;
-	display:		flex;
-	align-items:	stretch;
+	display: flex;
+	align-items: stretch;
+	line-height: 0;
 }
 
 .image-embed.is-loaded img {
-  	background-color:	var(--image-grid-background);
+	background-color: var(--OT-image-grid-background);
+	object-fit: var(--OT-image-grid-fit);
 }
 
 .image-embed.is-loaded img:active {
-  	background-color:	transparent;
+	background-color: transparent;
 }
 
-/* Nettoyage des <br> inutiles autour des images */
-.markdown-preview-section > div:has(img) p:empty,
-.markdown-preview-section > div:has(img) img ~ br,
-.markdown-preview-section > div:has(img) .image-embed ~ br {
-  	display:	none;
-}
+/* ========================================================================== */
+/* 6. Image Captions plugin                                                   */
+/* ========================================================================== */
 
-/* ---------- Groupe de plusieurs images ---------- */
-
-.markdown-preview-section div:has(> .image-embed ~ .image-embed),
-.markdown-preview-section p:has(> .image-embed ~ .image-embed),
-.markdown-preview-section div:has(> img ~ img),
-.markdown-preview-section p:has(> .image-embed ~ img),
-.markdown-preview-section p:has(> img ~ .image-embed),
-.markdown-preview-section p:has(> img ~ img),
-.markdown-preview-section > div:has(img) > p {
-  	display:				grid;
-  	margin-block-start:		var(--image-group-space-above);
-  	margin-block-end:		var(--image-group-space-below);
-  	grid-column-gap:		var(--image-group-gap-x);
-  	grid-row-gap: 			0; /* l’espace vertical visuel est géré plus bas */
-  	grid-template-columns:	repeat(auto-fit, minmax(0, 1fr));
-  	align-items:			start;
-}
-
-/* Cas : div contenant des images avec un paragraphe enfant */
-.markdown-preview-section > div:has(img) > p > br {
-  display: none;
-}
-
-/* Espacement vertical visuel uniforme par cellule */
-.markdown-preview-section div:has(> .image-embed ~ .image-embed) > *,
-.markdown-preview-section p:has(> .image-embed ~ .image-embed) > *,
-.markdown-preview-section div:has(> img ~ img) > *,
-.markdown-preview-section p:has(> .image-embed ~ img) > *,
-.markdown-preview-section p:has(> img ~ .image-embed) > *,
-.markdown-preview-section p:has(> img ~ img) > * {
-  margin-bottom: var(--image-group-gap-y);
-}
-
-/* ---------- Image seule sur une ligne ---------- */
-
-/* Espace autour d’une image seule */
-.markdown-preview-section p:has(> .image-embed):not(:has(> .image-embed ~ .image-embed)),
-.markdown-preview-section p:has(> img):not(:has(> img ~ img)) {
-  	margin-block-start:	var(--image-group-space-above);
-  	margin-block-end:	var(--image-group-space-below);
-}
-
-/* Par défaut : image seule centrée */
-.markdown-preview-section p:has(> .image-embed):not(:has(> .image-embed ~ .image-embed)),
-.markdown-preview-section p:has(> img):not(:has(> img ~ img)) {
-  text-align: center;
-}
-
-.markdown-preview-section p:has(> .image-embed):not(:has(> .image-embed ~ .image-embed)) > *,
-.markdown-preview-section p:has(> img):not(:has(> img ~ img)) > * {
-  margin-inline: auto;
-}
-
-/* Variante optionnelle : image seule alignée à gauche */
-.OT-img-single-left .markdown-preview-section p:has(> .image-embed):not(:has(> .image-embed ~ .image-embed)),
-.OT-img-single-left .markdown-preview-section p:has(> img):not(:has(> img ~ img)) {
-  text-align: left;
-}
-
-.OT-img-single-left .markdown-preview-section p:has(> .image-embed):not(:has(> .image-embed ~ .image-embed)) > *,
-.OT-img-single-left .markdown-preview-section p:has(> img):not(:has(> img ~ img)) > * {
-  margin-inline: 0 auto;
-}
-
-/* ───────────────── Image Captions plugin ───────────────── */
-/* Plugin: “Image Caption / Image Captions” [figure/figcaption-based] [web:10][web:13][web:16] */
-
-.image-captions-caption {
-	font-style: italic;
-	font-size: var(--font-smaller);
-	line-height: 1.2em;
-	padding-block: 0.6rem 0;
-	padding-inline: 0.5rem;
-	text-align: start;
-}
-
-/* Extra top padding when there is a frame or shadow */
-.images-with-shadow .image-captions-caption,
-.images-with-frame-and-shadow .image-captions-caption {
-	padding-block-start: 0.8rem;
-}
-
-/* Transparent background in both themes */
-.theme-light .image-captions-figure,
-.theme-light .image-captions-caption,
-.theme-dark .image-captions-figure,
-.theme-dark .image-captions-caption {
+.image-captions-figure {
+	margin: 0;
 	background: transparent;
 }
 
-/* ───────────────── MCL Gallery Cards 0.9.2 complement ───────────────── */
-/* Reading View: gallery paragraphs inside embeds/callouts */
-
-div[data-embed-type="image"].el-embed-image.el-p {
-	margin-block-end: 1.2rem;
+.image-captions-figure > img,
+.image-captions-figure > .image-embed,
+.image-captions-figure > .internal-embed {
+	margin: 0;
 }
 
-div[data-embed-type="image"] > p,
-div[data-callout-metadata*="gallery"].callout > .callout-content > p {
-	display: flex;
-	gap: var(--OT-callout-gallery-gap);
-	margin-block: var(--OT-callout-gallery-gap) 0;
+.image-captions-caption {
+	padding-block-start: var(--OT-img-space-above-caption);
+	padding-block-end: 0;
+	padding-inline: 0.5rem;
+	font-style: italic;
+	font-size: var(--font-smaller);
+	line-height: 1.2em;
+	text-align: start;
+	background: transparent;
 }
 
-div[data-embed-type="image"].el-embed-image.el-p {
-	margin-block-start: var(--OT-callout-gallery-gap);
+.images-with-shadow .image-captions-caption,
+.images-with-frame-and-shadow .image-captions-caption {
+	padding-block-start: max(0.8rem, var(--OT-img-space-above-caption));
 }
 
-div[data-callout-metadata*="gallery"].callout > .callout-content {
-	--callout-content-padding: 0.5rem 0 0 0;
+.theme-light .image-captions-figure,
+.theme-light .image-captions-caption,
+.theme-dark  .image-captions-figure,
+.theme-dark  .image-captions-caption {
+	background: transparent;
+}
+
+/* ========================================================================== */
+/* 7. Nettoyage du HTML parasite                                              */
+/* ========================================================================== */
+
+.markdown-preview-section div:has(img) p:empty,
+.markdown-preview-section div:has(img) img + br,
+.markdown-preview-section div:has(img) .image-embed + br,
+.markdown-preview-section div:has(.image-captions-figure) .image-captions-figure + br,
+.markdown-preview-section > div:has(img) > p > br,
+.markdown-preview-section > div:has(.image-embed) > p > br,
+.markdown-preview-section > div:has(.image-captions-figure) > p > br {
+	display: none;
+}
+
+/* ========================================================================== */
+/* 8. Image seule : centrage                                                  */
+/* ========================================================================== */
+
+/*
+Ancienne version (espacement vertical porté par le paragraphe) laissée comme
+référence, mais désactivée :
+
+.markdown-preview-section > div:not(:has(> div.el-p + div.el-p))
+> p:has(> :is(.image-embed, img, .image-captions-figure))
+:not(:has(> :is(.image-embed, img, .image-captions-figure) ~ :is(.image-embed, img, .image-captions-figure))),
+.markdown-preview-section > p:has(> :is(.image-embed, img, .image-captions-figure))
+:not(:has(> :is(.image-embed, img, .image-captions-figure) ~ :is(.image-embed, img, .image-captions-figure))) {
+	margin-block-start: var(--OT-img-space-above-single);
+	margin-block-end: var(--OT-img-space-below-single);
+	text-align: center;
+}
+*/
+
+.markdown-preview-section > div:not(:has(> div.el-p + div.el-p))
+> p:has(> :is(.image-embed, img, .image-captions-figure))
+:not(:has(> :is(.image-embed, img, .image-captions-figure) ~ :is(.image-embed, img, .image-captions-figure)))
+> :is(.image-embed, img, .image-captions-figure),
+.markdown-preview-section > p:has(> :is(.image-embed, img, .image-captions-figure))
+:not(:has(> :is(.image-embed, img, .image-captions-figure) ~ :is(.image-embed, img, .image-captions-figure)))
+> :is(.image-embed, img, .image-captions-figure) {
+	margin-inline: auto;
+}
+
+/* ========================================================================== */
+/* 9. Reset global : aucune image ne porte plus l'espace "single"             */
+/* ========================================================================== */
+
+.markdown-preview-section img,
+.markdown-preview-section .image-embed,
+.markdown-preview-section .image-captions-figure {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
+
+/* ========================================================================== */
+/* 10. Galerie sur une seule ligne — version compacte                         */
+/* ========================================================================== */
+
+.markdown-preview-section
+p:has(> :is(.image-embed, img, .image-captions-figure)
+        ~ :is(.image-embed, img, .image-captions-figure)) {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	column-gap: var(--OT-img-group-gap-x);
+	row-gap: 0;
+	align-items: start;
+
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
+
+/* Les « cellules » de la ligne ne portent plus de blanc vertical propre */
+.markdown-preview-section
+p:has(> :is(.image-embed, img, .image-captions-figure)
+        ~ :is(.image-embed, img, .image-captions-figure)) > * {
+	margin-block: 0 !important;
+}
+
+/* ========================================================================== */
+/* 11. Galerie multiligne — DOM actuel d’Obsidian (compacte)                  */
+/* ========================================================================== */
+
+/* Lignes de galerie en grille, sans espace de groupe */
+
+.markdown-preview-section div:has(.image-embed .image-embed),
+.markdown-preview-section p:has(.image-embed .image-embed),
+.markdown-preview-section div:has(img img),
+.markdown-preview-section p:has(.image-embed img),
+.markdown-preview-section p:has(img .image-embed),
+.markdown-preview-section p:has(img img),
+.markdown-preview-section div:has(img) p {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	grid-column-gap: var(--OT-img-group-gap-x);
+	grid-row-gap: 0;
+	align-items: start;
+
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
+
+/* On supprime le <br> technique qui sépare les images dans le p */
+.markdown-preview-section div:has(img) p br {
+	display: none;
+}
+
+/* ========================================================================== */
+/* 12. Neutralisation des marges « single image » dans les galeries           */
+/* ========================================================================== */
+
+/* Images dans une galerie (1 ligne ou multi-lignes) : aucune marge verticale
+   propre. Le contexte gère l'espace de groupe. */
+
+.markdown-preview-section
+p:has(> :is(.image-embed, img, .image-captions-figure)
+        ~ :is(.image-embed, img, .image-captions-figure))
+> :is(.image-embed, img, .image-captions-figure),
+.markdown-preview-section
+div:has(.image-embed .image-embed)
+> :is(.image-embed, img, .image-captions-figure),
+.markdown-preview-section
+p:has(.image-embed .image-embed)
+> :is(.image-embed, img, .image-captions-figure),
+.markdown-preview-section
+div:has(img img) > img,
+.markdown-preview-section
+p:has(.image-embed img)
+> :is(.image-embed, img),
+.markdown-preview-section
+p:has(img .image-embed)
+> :is(.image-embed, img),
+.markdown-preview-section
+p:has(img img) > img {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
+
+/* Toute ligne .el-p qui contient une image reçoit le y gap,
+   avec ou sans Image Captions */
+
+.markdown-preview-section > .el-p > p:has(> .image-embed),
+.markdown-preview-section > .el-p > p:has(> img),
+.markdown-preview-section > .el-p > p:has(> .image-captions-figure),
+.markdown-preview-section > .el-p > p:has(> .image-embed > .image-captions-figure) {
+	margin-block-end: var(--OT-img-group-gap-y) !important;
+	/* outline: 2px solid red; */
+}
+
+/* Petit blanc au-dessus de toutes les images en preview
+   (isolées ou en galerie, façon Minimal) */
+
+.markdown-preview-view .markdown-preview-section
+:is(img, .image-embed) {
+	margin-block-start: var(--OT-img-space-above-single) !important;
+	/* outline: 2px solid red; */
+}
+
+/* ========================================================================== */
+/* 13. Cas particulier : image manquante                                      */
+/* ========================================================================== */
+
+/*
+Markup observé :
+<div class="el-p">
+	<p>
+		<span class="internal-embed is-loaded file-embed mod-empty">...</span><br>
+	</p>
+</div>
+
+Ce n’est pas une vraie image-embed.
+On lui donne donc le même rythme qu’à une image seule.
+*/
+
+.markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty),
+.markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty-attachment) {
+	margin-block-start: var(--OT-img-space-above-single);
+	margin-block-end:   var(--OT-img-space-below-single);
 }
 
 /* -------------------- ↑ Images, etc. -------------------- ↑ */
@@ -9004,7 +9103,7 @@ body {
 	--OT-space-after-quoted-block: var(--OT-blanc-moyen);
 	--OT-space-after-callout: var(--OT-blanc-moyen);
 	--OT-space-after-hr: var(--OT-blanc-large);
-	--OT-space-after-list: var(--OT-blanc-petit);
+	--OT-space-after-list: var(--OT-blanc-moyen);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -9104,6 +9203,15 @@ body {
 ) {
 	margin-block-start: var(--OT-space-after-hr);
 }
+
+/* OpSpl43 — « image qui n’existe pas » (file-embed.mod-empty) */
+.markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty),
+.markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty-attachment) {
+  /* Calé sur ton rythme de petits blocs visuels */
+  margin-block-start: var(--OT-blanc-moyen);
+  margin-block-end: var(--OT-blanc-petit);
+}
+
 /* -------------------- ↑ Contextual typography ↑ -------------------- */
 
 
@@ -13558,38 +13666,82 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 	- tiny-spacer
 	- half-spacer
 	- full-spacer	*/
+	/* Classes de blanc vertical calibré */
+
 .markdown-preview-view .el-p:has(.tiny-spacer, .half-spacer, .full-spacer) p {
-  	line-height:	0;
-  	margin-block:	0;
-  	min-height:		0;
+		line-height: 0;
+		margin-block: 0;
+		min-height: 0;
 }
 
-.markdown-preview-view .el-p:has(.tiny-spacer, .half-spacer, .full-spacer) p > br {
-  display: none;
+.markdown-preview-view .el-p:has(.tiny-spacer, .half-spacer, .full-spacer) p br {
+		display: none;
 }
 
-.markdown-preview-view .tiny-spacer {
-  	display:	block;
-  	height:		calc(0.2 * var(--OT-readingMode-line-height));
-}
-.markdown-preview-view .half-spacer {
-  	display:	block;
-  	height:		calc(0.5 * var(--OT-readingMode-line-height));
-  /*height: 0.1rem;*/
-}
-.markdown-preview-view .full-spacer {
-  	display:	block;
-  	height:		calc(0.9 * var(--OT-readingMode-line-height));
+.markdown-preview-view .tiny-spacer  { display: block; height: calc(0.2 * var(--OT-readingMode-line-height)); }
+.markdown-preview-view .half-spacer  { display: block; height: calc(0.5 * var(--OT-readingMode-line-height)); }
+.markdown-preview-view .full-spacer  { display: block; height: calc(0.9 * var(--OT-readingMode-line-height)); }
+
+/* micro-divider : trait fin centré dans un blanc vertical calibré */
+/* Le paragraphe porteur ne doit pas ajouter sa propre hauteur */
+.markdown-preview-view .el-p:has(> p > .micro-divider) > p {
+	line-height: 0;
+	margin-block: 0;
 }
 
-/* micro-divider : un trait horizontal de 1px prenant très peu d’espace vertical */
+/* Le <br> automatique d’Obsidian ne doit pas créer de ligne supplémentaire */
+.markdown-preview-view .el-p:has(> p > .micro-divider) > p > br {
+	display: none;
+}
+
+/* Le micro-divider garde sa propre hauteur calibrée */
 .micro-divider {
-	display:			block;
-	height:				0.25rem;
-	margin:				0.25rem 1.618rem;
-	border-top-width:	1px;
-	border-top-style:	solid;
+	display: block;
+	height: calc(var(--OT-blanc-petit) * 2 + 1px);
+	margin: 0 1.618rem;
+	position: relative;
 }
+
+/* Le trait centré */
+.micro-divider::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-0.5px);
+	border-top: 1px solid currentColor;
+	opacity: 0.45;
+}
+
+/* ==========================================================================
+   Images alignées à gauche dans une note portant cssclass: img-left
+   ========================================================================== */
+
+.markdown-preview-view.img-left .markdown-preview-section p:has(> .image-embed),
+.markdown-preview-view.img-left .markdown-preview-section p:has(> img),
+.markdown-preview-view.img-left .markdown-preview-section p:has(> .image-captions-figure) {
+	text-align: left !important;
+}
+
+/* L’embed ne doit plus se comporter comme un élément centré/étiré */
+.markdown-preview-view.img-left .markdown-preview-section p
+> :is(.image-embed, img, .image-captions-figure) {
+	margin-inline: 0 !important;
+}
+
+/* Cas principal de ton DOM : le span.image-embed */
+.markdown-preview-view.img-left .markdown-preview-section .image-embed.is-loaded {
+	display: inline-flex;
+	justify-content: flex-start;
+}
+
+/* Sécurité : l’image elle-même reste alignée au flux normal */
+.markdown-preview-view.img-left .markdown-preview-section .image-embed.is-loaded img,
+.markdown-preview-view.img-left .markdown-preview-section > .el-p > p > img {
+	margin-inline: 0 !important;
+}
+
 /*	---------- ↑ Some useful CSSCLASSES ↑ ----------	*/
 
 
