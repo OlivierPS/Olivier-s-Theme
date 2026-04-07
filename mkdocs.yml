@@ -6,7 +6,7 @@ repo_name: OlivierPS/Olivier-s-Theme
 repo_url: https://github.com/OlivierPS/Olivier-s-Theme
 
 theme:
-  name: mkdocs
+  name: material
   # Plus tard, tu pourras passer à "material" si tu veux plus de fonctionnalités :
   # name: material
 
