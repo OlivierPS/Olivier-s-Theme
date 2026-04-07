@@ -10,12 +10,11 @@ This User Guide explains how to get the most out of the theme, from the global i
 
 To follow this guide and access all options, you will need:
 
-- Obsidian 1.5 or later.
-- Olivier’s Theme installed and active.
-- The **Style Settings** plugin enabled, to access the theme’s configuration panels.
-- (Optional but recommended) The **Contextual Typography** plugin, which lets the theme refine certain vertical spacings more precisely.
+- [Obsidian](https://obsidian.md/) 1.5 or later.
+- [Olivier’s Theme](https://github.com/OlivierPS/Olivier-s-Theme) installed and active.
+- The **[Style Settings](obsidian://show-plugin?id=obsidian-style-settings)** plugin enabled, to access the theme’s configuration panels.
 
-Most of the settings described here live under **Settings → Appearance → Style Settings → Olivier’s Theme**.
+The settings described here live under **Settings → Appearance → Style Settings → Olivier’s Theme**.
 
 ---
 
@@ -23,12 +22,11 @@ Most of the settings described here live under **Settings → Appearance → Sty
 
 You do not have to read everything in order. The chapters are grouped by mental tasks:
 
-- Start with **General settings** to set the overall interface size and spacing.
-- Then pick your **color palettes** for Light and Dark modes.
-- Decide how you want to separate **Reading vs. Writing** as activities.
-- Tune **Reading mode** for a comfortable, book‑like experience.
-- Tune **Writing mode** for the way you think and draft text.
-- Finally, explore **cssclasses and niceties** for per‑note refinements and special layouts.
+- Start with **[General](general.md) settings** to set global choices about the **interface** and the **typography**.
+- Then pick your **[color palette](colors-light-dark.md)** for **Light** mode. The **Dark** mode palette is automatically derived from your choice, but you do have the possibility to choose a different one if you so wish.
+- Tune **[Reading mode](reading-mode.md)** for a comfortable, book‑like experience.
+- Tune **[Writing mode](writing-mode.md)** to your prefered writing environment.
+- Finally, explore **[cssclasses and niceties](niceties-and-cssclasses.md)** for per‑note refinements and special layouts.
 
 If you are in a hurry, you can simply follow the “Quick path” below.
 
@@ -36,12 +34,19 @@ If you are in a hurry, you can simply follow the “Quick path” below.
 
 ## Quick path ⬩ 5‑minute setup
 
-1. **Set interface size and sidebar density**  
-   Open **GENERAL settings** and adjust:  
-   - “Base size for the interface texts (px)”, so sidebar text and UI labels are comfortable on your main screen.  
-   - “Spacing for the files listing”, so the file explorer feels neither cramped nor overly airy.
+The theme’s default are very close to those of the standard Obsidian interface. However, you may prefer different settings depending on the device you are using — whether a smartphone, tablet, laptop or desktop monitor.
 
-   ![sidebar_settings](assets/sidebar_settings.png)
+**N. B. :** only the most relevant settings are described here ; for more details, see the detailed pages.<br>
+
+
+
+1. **Set interface choices**  
+   Open **GENERAL settings > Interface** and adjust:  
+
+   1. “Base size for the interface texts (px)”, so sidebar text and UI labels are comfortable on your screen.  
+   2. “Spacing for the files listing”, so the file explorer feels right for your view and current conditions.
+
+   ![sidebar settings](assets/sidebar_settings.png)
 
    
 
@@ -69,17 +74,17 @@ If you are in a hurry, you can simply follow the “Quick path” below.
 
 5. **Choose a paper background**
 
-	You can read your notes written on paper. You have a choice, from subtle to parchment :
+  You can read your notes written on paper. You have a choice, from subtle to parchment :
 
-	![Paper background choices](assets/Paper_backgrounds_choice.png)
+  ![Paper background choices](assets/Paper_backgrounds_choice.png)
 
-	<br>Once this is done, you already have a coherent, comfortable setup that you can refine later.
+  <br>Once this is done, you already have a coherent, comfortable setup that you can refine later.
 
-	
+  
 
-	###### cssclasses for special notes
+  ###### cssclasses for special notes
 
-	For notes that need a special layout — with or without menu for the Bases, smaller or bigger reading text, tables with or without alternating row backgrounds, etc. — you have a handful of CSS classes that you can use by adding them in the note’s Properties, like this:  
+  For notes that need a special layout — with or without menu for the Bases, smaller or bigger reading text, tables with or without alternating row backgrounds, etc. — you have a handful of CSS classes that you can use by adding them in the note’s Properties, like this:  
 
 ```yaml
 ---
