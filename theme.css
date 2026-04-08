@@ -13779,7 +13779,8 @@ settings:
 		type:			heading
 		level:			2
 		collapsed:		true
-		description:	"Main settings for the interface and general typography. / Les réglages principaux pour l’interface et la typographie en général."
+		description:	"Main settings for the interface, general typography and kanban boards."
+		description.fr:	"Les réglages principaux pour l’interface, la typographie en général et les kanbans."
 
 	# =========================
 	# Interface
@@ -13790,7 +13791,8 @@ settings:
 		type:			heading
 		level:			3
 		collapsed:		true
-		description:	"Basic interface tweaks. / Réglages de base de l’interface."
+		description:	"Basic interface tweaks."
+		description.fr: "Réglages de base de l’interface."
 
 	-
 		id:			"OT-UI-font-size"
@@ -13802,8 +13804,8 @@ settings:
 
 	-
 		id:			"OT-filesNavigator-spacing"
-		title:		"Spacing for the files listing in sidepanels and the settings list in settings pane"
-		title.fr:	"Listing des fichiers dans les panneaux latéraux."
+		title:		"Spacing for items in sidepanels and settings panel"
+		title.fr:	"Espacement des listes dans les panneaux latéraux et le panneau des settings."
 		type:		class-select
 		allowEmpty:	false
 		default:	filesNavigator-spacing-medium
@@ -13827,9 +13829,10 @@ settings:
 
 	-
 		id:				OT-viewing-mode-icons
-		title:			"Viewing mode icons as status toggles"
+		title:			"Viewing mode icon as a true status indicator"
 		title.fr:		"L’icône du mode indique le status"
-		description:	"Replace the default “Current view” icons by mode-specific status indicators (Source, Live Preview, Reading) and align their hover state with the global accent system."
+		description:	"ON: The indicator on the right of the pane title bar becomes a true mode indicator (Reading / Live Preview / Raw Source). Switch OFF if you prefer the default Obsidian behaviour."
+		description.fr:	"ON: l’icône d’état du panneau courant, à droite de la barre de titre, indique le mode actuel (Lecture / Live Preview / Source). Mettre à OFF pour avoir le comportement par défaut d’Obsidian."
 		type:			class-toggle
 		default:		true
 		addCommand:		true
@@ -13901,7 +13904,8 @@ settings:
 		type:			heading
 		level:			3
 		collapsed:		true
-		description:	"Headings and lists typography. / Typographie des titres et des listes."
+		description:	"Typography settings for all modes."
+		description.fr:	"Réglage typographiques pour tous les modes."
 
 	-
 		id:				"OT-headings-scaling"
