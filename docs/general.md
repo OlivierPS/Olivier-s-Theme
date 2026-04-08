@@ -1,13 +1,14 @@
 # General settings
 
-The **GENERAL settings** group controls global aspects of the theme not specifically geared towards Reading or Writing. These settings are grouped in 2 sections :
+The **GENERAL settings** group controls global aspects of the theme not specifically geared towards Reading or Writing. These settings are grouped in 3 sections :
 
 * **Interface** — base size of UI text, the spacing of file listings in side panels, etc.
 * **Typography** — scaling of the headings, vertical rythm, etc.
+* **Kanbans** — typeface, text size and width of the lanes
 
-<!-- screenshot: Style Settings – Olivier’s Theme – GENERAL settings section -->
 
 
+![General settings](assets/general_settings.png)
 
 ## Interface
 
@@ -33,7 +34,7 @@ The theme uses this value as a reference for many UI elements, so most of the in
 
 <!-- screenshot: a settings modal with interface font size slightly increased -->
 
-### Spacing for the files listing
+### Spacing for items in sidepanels and settings panel
 
 This option controls the **vertical spacing of file rows** in the side panels (file explorer, search results in sidebars, etc.), as well as some lists in the settings panel.
 
@@ -42,30 +43,23 @@ You can choose between four presets:
 - **Tight** – rows are compact, useful if you want to see as many files as possible at once.  
 - **Medium** (default) – a balanced spacing that works well on most screens.  
 - **Wide** – more breathing room between items.  
-- **Very wide** – very generous spacing, comfortable on large monitors or when you prefer a relaxed layout.
-
-If you feel that the file list looks *too dense* or *too airy*, this is the place to adjust it without changing font sizes. It may be especially useful on touch interfaces of phones and tablets.
-
-<!-- screenshot: side panel showing the same file list with “Tight” vs “Wide” spacing -->
+- **Very wide** – very generous spacing, comfortable on large monitors or maybe for tapping items on a touchscreen.
 
 
 
-### Viewing mode icons as status toggles
-
-By default, *Obsidian* shows an open book while you’re editing and a pencil while you’re reading a note. Many people, me included, find this disturbing, even confusing. *Olivier’s Theme* brings a better solution :
-
-* an **open book** is displayed while you’re reading:<br>
-<img src="../assets/reading-mode-indicator.png" alt="Reading mode indicator" style="width:50%; height:auto;"><br>
+![sidepanels-listings](assets/sidepanels-listings.png)
 
 
 
-* a **pencil** is displayed while you’re editin in Live Mode ; furthermore, you have a dot in the upper right corner of your pannel, indicating the note is currently in *editing mode* :<br>
-	<img src="../assets/live-mode-indicators.png" alt="Live Mode indicators" style="width:50%; height:auto;"><br>
+### Viewing mode icon as a true status indicator
 
+On the right of the title bar, there’s an icon in relation with the current mode of the current pane. By default, *Obsidian* shows an open book while you’re editing and a pencil while you’re reading a note. Many people, me included, find this disturbing, even confusing. *Olivier’s Theme* brings a better solution :
 
+* an **open book** is displayed while you’re reading:<br>![reading-mode-indicator](assets/reading-mode-indicator.png)
 
-* a **symbol** is displayed while you’re editing in Raw Mode — the “editing dot” is still there, of course :<br>
-<img src="../assets/raw-mode-indicator.png" alt="Raw mode indicator" style="width:50%; height:auto;"><br>
+* a **pencil** is displayed while you’re editin in Live Mode ; furthermore, you have a dot in the upper right corner of your pannel, indicating the note is currently in *editing mode* :<br>![live-mode-indicators](assets/live-mode-indicators.png)
+
+* a **symbol** is displayed while you’re editing in Raw Mode — the “editing dot” is still there, of course :<br>![raw-mode-indicator](assets/raw-mode-indicator.png)
 
 If you don’t like this feature, you can switch it OFF and revert to the “original” *Obsidian* behaviour :
 
@@ -139,7 +133,7 @@ If you prefer a quieter visual field, enabling it often feels more “paper‑li
 
 ## Typography
 
-### Scaling of the headings and subheadings
+### Headings and subheadings scaling
 
 Headings (H1–H6) already have visual cues in Olivier’s Theme: spacing, rules, weight and style.  
 The **Scaling of the headings and subheadings** option lets you decide how much their **size** should increase from H6 up to H1.
@@ -162,23 +156,27 @@ A simple tuning strategy:
 
 
 
-The following two options apply to the **Kanban** community plugin.
+### Typographical vertical rythm
 
-### Kanban – General font
+Controls the overall vertical spacing between headings, paragraphs and block elements. A tighter rhythm puts more information on screen; a more generous rhythm creates a calmer, airier page. The “Tight” setting suits small screens, “Generous” gives a book‑like feel on larger displays, and “Bear” reproduces the regular rhythm many people enjoy in the Bear Markdown editor.
 
-The **General font** setting lets you choose the typeface used for column titles and card text in Kanban boards.
+### Lists: Text size stepping down
 
-You can keep it aligned with your main text font for a unified look,  
-or pick a more playful font (for example a handwritten style) to give your boards a distinct personality.
+When this option is OFF, all list levels use the same text size as the body text. When it is ON, list items from level 1 to level 4 become progressively, subtly smaller, so deep nesting stays visually lighter without losing readability.
 
-<!-- screenshot: Kanban board showing two different fonts -->
 
-### Kanban – Size of the cards text (px)
 
-This setting controls the **text size inside Kanban cards**, in pixels.  
+### Lists: vertical spacing, line spacing
 
-If your boards feel cramped or hard to read, increase this value slightly.  
-If you use very dense boards with many cards, decreasing it can help fit more information on screen without scrolling.
+Controls the vertical spacing between list items and the line height inside multi‑line items. Normal keeps lists close to the surrounding text; Tight packs more items on screen. If you work with long checklists or nested lists, Tight can reduce scrolling at the cost of a denser look.
+
+
+
+### Lists: Indenting
+
+Sets how far list bullets, numbers and nested levels are indented horizontally. Normal matches a classic document layout; Wide and Generous give more room to nested content. If you use deeply nested lists, a wider indent helps keep the structure legible, especially on larger screens.
+
+
 
 ### Suppress line wrapping within code blocks
 
@@ -197,3 +195,26 @@ When the option is **OFF**, code blocks wrap like normal text, which can be more
 
 
 
+## Kanbans (plugin + Board View)
+
+### Kanban – General font
+
+The **General font** setting lets you choose the typeface used for column titles and card text in Kanban boards.
+
+You can keep it aligned with your main text font for a unified look,  
+or pick a more playful font (for example a handwritten style) to give your boards a distinct personality.
+
+<!-- screenshot: Kanban board showing two different fonts -->
+
+### Kanban – Size of the cards text (px)
+
+This setting controls the **text size inside Kanban cards**, in pixels.  
+
+If your boards feel cramped or hard to read, increase this value slightly.  
+If you use very dense boards with many cards, decreasing it can help fit more information on screen without scrolling.
+
+
+
+### Kanban – width of the lanes (em)
+
+The Kanban plugin has its own setting for lane width; this option applies specifically to the Board View plugin. It defines the width of Kanban lanes in em units. Narrower lanes display more columns simultaneously but may increase card height; wider lanes make long card titles and descriptions easier to read, at the cost of showing fewer columns side by side.

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head><!-- <editor>
+      <sidebar width="238"/>
+      <column name="text" width="874"/>
+    </editor> -->
+    <title>Olivier’s Theme outline</title>
+    <dateCreated>Wed, 08 Apr 2026 19:55:16 GMT</dateCreated>
+    <expansionState>1,3,5,10</expansionState>
+    <vertScrollState>0</vertScrollState>
+    <windowTop>901</windowTop>
+    <windowLeft>3</windowLeft>
+    <windowRight>898</windowRight>
+    <windowBottom>1950</windowBottom>
+  </head>
+  <body>
+    <outline text="Olivier’s Theme documentation"/>
+    <outline text="Home">
+      <outline text="index"/>
+    </outline>
+    <outline text="General">
+      <outline text="General settings"/>
+    </outline>
+    <outline text="Colors">
+      <outline text="Reading mode"/>
+      <outline text="Writing / Editing mode"/>
+      <outline text="Light and Dark mode colors"/>
+      <outline text="Reading vous. Writing — mental modes"/>
+    </outline>
+    <outline text="cssclasses">
+      <outline text="CSS classes and niceties"/>
+      <outline text="Niceties &amp; cssclasses"/>
+    </outline>
+  </body>
+</opml>
