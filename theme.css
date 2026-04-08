@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-08
+	- corrected the missing space before h1 headings
+	- added settings for the Board View plugin
 2026-04-06
 	- vastly improved the vertical spacing in four modes (tight, normal, generous, Bear)
 	- thoroughly reviewed the vertical spacing around images + improved the css classes for ad hoc spacers
@@ -535,8 +538,9 @@ body {
 	--OT-img-max-height-preview:					550px;			/* variables concernant les images */
 	--OT-img-max-height-live:						10rem;
 
-	--OT-kanban-font-size:							16px;
 	--OT-kanban-font:								"Uberhand Pro";
+	--OT-kanban-font-size:							17px;
+	--OT-kanban-lane-width:							20em;
 	--OT-kbd-background:							floralwhite;
 	--OT-kbd:										hsl(var(--OT-theme-h), var(--OT-theme-s), 32%);
 	--OT-menu-text-color:							var(--nav-item-color);
@@ -7023,25 +7027,6 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	}
 }
 
-/* -------------------- Cartes Board -------------------- */
-
-.board-card {
-	& .card-prop.clickable {
-    text-decoration: none;
-	}
-
-	& .file-name {
-    font-weight: inherit;
-    font-size:   var(--font-ui-small);
-	}
-}
-
-/* -------------------- Kanban Board -------------------- */
-/* cacher toutes les en-têtes de groupe */
-.board-row-header-bar:has(.board-row-title) {
-	display: none;
-}
-
 /* -------------------- ↑ Bases ↑ -------------------- */
 
 
@@ -8863,13 +8848,6 @@ On lui donne donc le même rythme qu’à une image seule.
 	margin-block-end: var(--OT-space-below-h1);
 }
 
-/* Premier H1 */
-.markdown-preview-view h1:first-child,
-.markdown-rendered .markdown-preview-section > .el-h1:first-child h1,
-.markdown-rendered > .el-h1:first-child h1 {
-	margin-block-start: 0 !important;
-}
-
 /* -------------------------------------------------------------------------- */
 /* 2. H2                                                                      */
 /* -------------------------------------------------------------------------- */
@@ -9279,10 +9257,31 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 	color: 				var(--OT-color-on-accent-1);
 	background-color:	var(--color-accent-1);
 }
+
 /* -------------------- ↑ Kanban plugin -------------------- ↑ */
 
 
 /*	=== === === OpSpl45	—————————————————————————————— Board View plugin —————————————————————————————— */
+body {
+	--board-view-column-width:		var(--OT-kanban-lane-width);
+}
+.board-card {
+	& .card-prop.clickable {
+		text-decoration: none;
+	}
+
+	& .file-name {
+		font-family:	var(--OT-kanban-font), "P22 Eaglefeather", "Tekton Pro", "Palatino Sans Com", "Arial Narrow", "Helvetica Neue",sans-serif !important;
+		font-weight: 	var(--font-semibold);
+		font-size:   	var(--OT-kanban-font-size);
+	}
+}
+
+/* cacher toutes les en-têtes de groupe */
+.board-row-header-bar:has(.board-row-title) {
+	display: none;
+}
+
 .board-column-header {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
@@ -13879,7 +13878,6 @@ settings:
 		default: 		false
 		addCommand:		true
 
-
 	# =========================
 	# Typography
 	-
@@ -14017,6 +14015,134 @@ settings:
 		type:		class-toggle
 		default:	true
 		addCommand:	true
+
+	# =========================
+	# Kanban plugin + Board View plugin
+	-
+			id:				"OT-kanban-settings"
+			title:			"Kanbans (plugin + Board View)"
+			type:			heading
+			level:			3
+			collapsed:		true
+			description:	"Kanbans oriented settings."
+			description.fr:	"Réglages pour les kanbans"
+
+	-
+			id:				"OT-kanban-font"
+			title:			"Kanban: General font"
+			title.fr:		"Kanban : Fonte"
+			description:	"It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
+			description.fr:	"Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
+			type:			variable-select
+			default:		"Uberhand Pro"
+			options:
+				-
+					label: "Adelle"
+					value: "Adelle"
+				-
+					label: "American Typewriter"
+					value: "American Typewriter"
+				-
+					label: "Cambria"
+					value: "Cambria"
+				-
+					label: "Candara"
+					value: "Candara"
+				-
+					label: "Comic neue"
+					value: "Comic Neue Regular"
+				-
+					label: "Comic sans"
+					value: "Comic Sans MS"
+				-
+					label: "Georgia"
+					value: "Georgia"
+				-
+					label: "IBM Plex Sans"
+					value: "IBM Plex Sans"
+				-
+					label: "IBM Plex Serif"
+					value: "IBM Plex Serif"
+				-
+					label: "Lato"
+					value: "Lato"
+				-
+					label: "Lucida Sans"
+					value: "Lucida Sans Std"
+				-
+					label: "Myriad"
+					value: "Myriad Pro"
+				-
+					label: "Norms"
+					value: "TT Norms"
+				-
+					label: "Norms Condensed"
+					value: "TT Norms Std Condensed"
+				-
+					label: "Noto Sans"
+					value: "Noto Sans"
+				-
+					label: "Officina Sans"
+					value: "ITC Officina Sans Std"
+				-
+					label: "Officina Sans Serif"
+					value: "ITC Officina Serif Std"
+				-
+					label: "Overpass"
+					value: "Overpass"
+				-
+					label: "Palatino Sans"
+					value: "Palatino Sans Com"
+				-
+					label: "Palatino Sans Informal"
+					value: "Palatino Sans Informal LT Pro"
+				-
+					label: "PT Sans"
+					value: "PT Sans"
+				-
+					label: "Stone Informal"
+					value: "ITC Stone Informal Std"
+				-
+					label: "Stone Sans"
+					value: "ITC Stone Sans Std"
+				-
+					label: "Roboto"
+					value: "Roboto"
+				-
+					label: "Basic sans-serif"
+					label.fr: "Sans serif de base"
+					value: "sans-serif"
+				-
+					label: "Tisa"
+					value: "Tisa Pro"
+				-
+					label: "Tisa Sans"
+					value: "Tisa Sans Pro"
+				-
+					label: "Trebuchet"
+					value: "Trebuchet MS"
+				-
+					label: "Uberhand"
+					value: "Uberhand Pro"
+				-
+					label: "Verdana"
+					value: "Verdana"
+
+	-
+			id:			"OT-kanban-font-size"
+			title:		"Kanbans: Size of the cards text [px]"
+			title.fr:	"Kanbans : Taille des caractères dans les fiches [px]"
+			type:		variable-number
+			default:	17
+			format:		px
+
+	-
+			id:			"OT-kanban-lane-width"
+			title:		"Kanbans: width of the lanes [em]"
+			title.fr:	"Kanbans: largeur des colonnes [em]"
+			type:		variable-number
+			default:	20
+			format:		em
 
 
 	# ===================
@@ -15437,126 +15563,6 @@ settings:
 			type:		variable-number
 			default:	550
 			format:		px
-
-	# =========================
-	# Kanban plugin
-	-
-			id:				"OT-kanban-settings"
-			title:			"Kanban plugin"
-			title.fr:		"Plugin Kanban"
-			type:			heading
-			level:			3
-			collapsed:		true
-			description:	"Kanban plugin specific styles. / Styles spécifiques pour le plugin Kanban."
-
-	-
-			id:				"OT-kanban-font"
-			title:			"Kanban: General font"
-			title.fr:		"Kanban : Fonte"
-			description:	"It may be nice to choose a different font for the Kanban. Why not a font mimicking handwriting?"
-			description.fr:	"Il peut être intéressant de choisir une fonte différente pour le Kanban, par exemple une écriture manuscrite."
-			type:			variable-select
-			default:		"Uberhand Pro"
-			options:
-				-
-					label: "Adelle"
-					value: "Adelle"
-				-
-					label: "American Typewriter"
-					value: "American Typewriter"
-				-
-					label: "Cambria"
-					value: "Cambria"
-				-
-					label: "Candara"
-					value: "Candara"
-				-
-					label: "Comic neue"
-					value: "Comic Neue Regular"
-				-
-					label: "Comic sans"
-					value: "Comic Sans MS"
-				-
-					label: "Georgia"
-					value: "Georgia"
-				-
-					label: "IBM Plex Sans"
-					value: "IBM Plex Sans"
-				-
-					label: "IBM Plex Serif"
-					value: "IBM Plex Serif"
-				-
-					label: "Lato"
-					value: "Lato"
-				-
-					label: "Lucida Sans"
-					value: "Lucida Sans Std"
-				-
-					label: "Myriad"
-					value: "Myriad Pro"
-				-
-					label: "Norms"
-					value: "TT Norms"
-				-
-					label: "Norms Condensed"
-					value: "TT Norms Std Condensed"
-				-
-					label: "Noto Sans"
-					value: "Noto Sans"
-				-
-					label: "Officina Sans"
-					value: "ITC Officina Sans Std"
-				-
-					label: "Officina Sans Serif"
-					value: "ITC Officina Serif Std"
-				-
-					label: "Overpass"
-					value: "Overpass"
-				-
-					label: "Palatino Sans"
-					value: "Palatino Sans Com"
-				-
-					label: "Palatino Sans Informal"
-					value: "Palatino Sans Informal LT Pro"
-				-
-					label: "PT Sans"
-					value: "PT Sans"
-				-
-					label: "Stone Informal"
-					value: "ITC Stone Informal Std"
-				-
-					label: "Stone Sans"
-					value: "ITC Stone Sans Std"
-				-
-					label: "Roboto"
-					value: "Roboto"
-				-
-					label: "Basic sans-serif"
-					label.fr: "Sans serif de base"
-					value: "sans-serif"
-				-
-					label: "Tisa"
-					value: "Tisa Pro"
-				-
-					label: "Tisa Sans"
-					value: "Tisa Sans Pro"
-				-
-					label: "Trebuchet"
-					value: "Trebuchet MS"
-				-
-					label: "Uberhand"
-					value: "Uberhand Pro"
-				-
-					label: "Verdana"
-					value: "Verdana"
-
-	-
-			id: "OT-kanban-font-size"
-			title: "Kanban: Size of the cards text [px]"
-			title.fr: "Kanban : Taille des caractères dans les fiches [px]"
-			type: variable-number
-			default: 16
-			format: px
 
 
 
