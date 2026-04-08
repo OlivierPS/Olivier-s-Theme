@@ -52,6 +52,7 @@ Post‑release tweaks
 	- corrected the missing space before h1 headings
 	- added settings for the Board View plugin
 	- adjusted font size in the Board View
+	- styled the metadata title when properties are shown at the top of notes
 2026-04-06
 	- vastly improved the vertical spacing in four modes (tight, normal, generous, Bear)
 	- thoroughly reviewed the vertical spacing around images + improved the css classes for ad hoc spacers
@@ -9837,6 +9838,14 @@ body.lists-horiz-generous {
 .metadata-property-key {
 	align-items: center;
 }
+.metadata-properties-title
+{
+	font-size:		var(--h4-size);
+	font-style: 	var(--h4-style);
+	font-weight:	var(--h4-weight);
+	color:			var(--h4-color);
+}
+
 
 /* ─────────────────────────────
    1. Meta property icons
