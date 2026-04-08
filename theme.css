@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-04-08
 	- corrected the missing space before h1 headings
 	- added settings for the Board View plugin
+	- adjusted font size in the Board View
 2026-04-06
 	- vastly improved the vertical spacing in four modes (tight, normal, generous, Bear)
 	- thoroughly reviewed the vertical spacing around images + improved the css classes for ad hoc spacers
@@ -9265,18 +9266,22 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 body {
 	--board-view-column-width:		var(--OT-kanban-lane-width);
 }
+.board-card .metadata-property,
+.board-card .metadata-property-value,
+.board-card .metadata-property-value * {
+	font-size:	calc(0.9 * var(--OT-kanban-font-size));
+}
+
 .board-card {
 	& .card-prop.clickable {
 		text-decoration: none;
-	}
-
+		}
 	& .file-name {
 		font-family:	var(--OT-kanban-font), "P22 Eaglefeather", "Tekton Pro", "Palatino Sans Com", "Arial Narrow", "Helvetica Neue",sans-serif !important;
 		font-weight: 	var(--font-semibold);
 		font-size:   	var(--OT-kanban-font-size);
-	}
+		}
 }
-
 /* cacher toutes les en-têtes de groupe */
 .board-row-header-bar:has(.board-row-title) {
 	display: none;
