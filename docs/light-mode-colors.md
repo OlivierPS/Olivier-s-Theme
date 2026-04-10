@@ -18,7 +18,7 @@ Typical use:
 
 Later, you can override specific elements (accent, text color, backgrounds, highlighting) without breaking the underlying harmony.
 
-
+[⭢ Samples](color-samples-light.md/#general-palette)
 
 
 
@@ -44,7 +44,7 @@ Combining a subtle ink color with a paper background can create very pleasant �
 
 **Note:** most texts in the sidebars, including the file navigation, follow this choice.
 
-<!-- ⭢ Samples -->
+[⭢ Samples](color-samples-light.md/#light-reading-text-color)
 
 ### Notes background in Reading mode
 

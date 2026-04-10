@@ -5,22 +5,20 @@ Use this page as a gallery linked from the **Light mode colors** guide.
 
 ## General palette <a id="light-general-palette"></a>
 
-Short explanation of what the samples show (1–2 sentences).
+Some of the colors you can choose for the general mood of your vault in Light Mode. There are quite a few more !
 
-<!-- Example: grid of screenshots showing several Light palettes -->
-![Beige palette](assets/light-palette-beige.png)
-![Icy palette](assets/light-palette-icy.png)
-![Paradiso palette](assets/light-palette-paradiso.png)
+![general_palette_01](assets/general_palette_01.png)
+
+![general_palette_02](assets/general_palette_02.png)
+![general_palette_03](assets/general_palette_03.png)
 
 ---
 
-## Body text color in Reading mode <a id="light-reading-text-color"></a>
+## Text color in Reading mode <a id="light-reading-text-color"></a>
 
-Brief explanation of what varies here (ink colors on the same background).
+A few of the text inks you can choose with this parameter. They are shown on a paper background to give an idea of the “pen on paper” feeling.
 
-![Reading text – dark blue](assets/light-reading-text-dark-blue.png)
-![Reading text – brown](assets/light-reading-text-brown.png)
-![Reading text – green](assets/light-reading-text-green.png)
+![text_colors_showcase](assets/text_colors_showcase.png)
 
 ---
 

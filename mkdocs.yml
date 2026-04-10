@@ -24,6 +24,8 @@ nav:
   - cssclasses:
     - Visual catalogue of CSS classes: css-classes.md
     - Niceties & cssclasses: niceties-and-cssclasses.md
+  - samples:
+    - color-samples-light.md
 
 markdown_extensions:
   - toc:
