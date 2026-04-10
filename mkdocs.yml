@@ -7,8 +7,6 @@ repo_url: https://github.com/OlivierPS/Olivier-s-Theme
 
 theme:
   name: material
-  # Plus tard, tu pourras passer à "material" si tu veux plus de fonctionnalités :
-  # name: material
 
 nav:
   - Home: index.md
