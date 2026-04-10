@@ -15,7 +15,8 @@ nav:
   - General:
     - General settings: general.md
   - Colors:
-    - Light and Dark mode colors: colors-light-dark.md
+    - Light mode colors: light-mode-colors.md
+    - Dark mode colors: dark-mode-colors
   - Reading & writing:
     - Reading mode: reading-mode.md
     - Writing / Editing mode: writing-mode.md

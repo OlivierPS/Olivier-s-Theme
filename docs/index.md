@@ -130,10 +130,14 @@ The rest of this documentation is organised into focused pages:
 Global interface scaling, sidebar spacing, headings hierarchy, code wrapping, status bar, title bar breadcrumb, canvas background.<br>
 → [General](general.md)
 
-##### Colors in Light and Dark mode
+##### Colors in Light mode
 
-How palettes work, how Light and Dark interact, accent colors, text vs muted text, and background logic.<br>
-→ [Colors, light and dark modes](colors-light-dark.md)
+How to set the mood and the visual clues in Light mode. You can choose a paper background for your notes.<br>
+→ [Light mode colors](light-mode-colors.md)
+
+##### Colors in Dark mode
+
+Exact replica of Light mode settings. You can either let the theme follow the choices you made for the Light mode or design a distinct setup for the Dark mode.<br>⭢ [Dark mode colors](dark-mode-colors.md)
 
 ##### Reading mode
 
