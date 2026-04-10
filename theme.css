@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-10
+	- corrected active, non focused icons in sidebars
 2026-04-08
 	- corrected the missing space before h1 headings
 	- added settings for the Board View plugin
@@ -6116,6 +6118,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 	letter-spacing: 0.01em;
 }
 
+
 /* === Navigation: états normal / hover / active === */
 
 @media (hover: hover) {
@@ -7406,6 +7409,12 @@ body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace
     background-color: var(--color-accent-1);
 	}
 }
+
+.mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+  color: var(--OT-color-on-accent-2) !important;
+}
+
 
 
 /* -----------------------------------------
@@ -14721,42 +14730,6 @@ settings:
 			addCommand:	true
 
 	-
-			id:			OT-Light-pillsColor
-			title:		Color of the pills inside the Properties panel
-			title.fr:	Couleur des “pills” dans le panneau des propriétés
-			type:		class-select
-			allowEmpty:	false
-			default:	OT-Light-pills-color-accent
-			options:
-				-
-					label:		Accent color
-					label.fr:	Couleur d’accentuation
-					value:		OT-Light-pills-color-accent
-				-
-					label:		Same as normal text
-					label.fr:	Comme le texte normal
-					value:		OT-Light-pills-color-text
-				-
-					label:		Same as links
-					label.fr:	Comme le texte normal
-					value:		OT-Light-pills-color-link
-				-
-					label:		Black
-					label.fr:	Noir
-					value:		OT-Light-pills-color-black
-				-
-					label:		Grey
-					label.fr:	Gris
-					value:		OT-Light-pills-color-grey
-				-
-					label:		White
-					label.fr:	Blanc
-					value:		OT-Light-pills-color-white
-				-
-					label:		Theme’s tone
-					label.fr:	Athmosphère
-					value:		OT-Light-pills-color-theme
-	-
 			id:				OT-highlight-color-light
 			title:			Highlighting color
 			title.fr:		Couleur du « Stabilo »
@@ -14818,6 +14791,43 @@ settings:
 					label:		dark Yellow
 					label.fr:	Jaune foncé
 					value:		highlight-color-strongYellow
+
+	-
+			id:			OT-Light-pillsColor
+			title:		Color of the pills inside the Properties panel
+			title.fr:	Couleur des “pills” dans le panneau des propriétés
+			type:		class-select
+			allowEmpty:	false
+			default:	OT-Light-pills-color-accent
+			options:
+				-
+					label:		Accent color
+					label.fr:	Couleur d’accentuation
+					value:		OT-Light-pills-color-accent
+				-
+					label:		Same as normal text
+					label.fr:	Comme le texte normal
+					value:		OT-Light-pills-color-text
+				-
+					label:		Same as links
+					label.fr:	Comme le texte normal
+					value:		OT-Light-pills-color-link
+				-
+					label:		Black
+					label.fr:	Noir
+					value:		OT-Light-pills-color-black
+				-
+					label:		Grey
+					label.fr:	Gris
+					value:		OT-Light-pills-color-grey
+				-
+					label:		White
+					label.fr:	Blanc
+					value:		OT-Light-pills-color-white
+				-
+					label:		Theme’s tone
+					label.fr:	Athmosphère
+					value:		OT-Light-pills-color-theme
 
 	# ===================
 	# DARK MODE settings
@@ -15367,42 +15377,7 @@ settings:
 			default:	true
 			addCommand:	true
 
-	-
-			id:			OT-Dark-pillsColor
-			title:		Color of the pills inside the Properties panel
-			title.fr:	Couleur des “pills” dans le panneau des propriétés
-			type:		class-select
-			allowEmpty:	false
-			default:	OT-Dark-pills-color-accent
-			options:
-				-
-					label:		Accent color
-					label.fr:	Couleur d’accentuation
-					value:		OT-Dark-pills-color-accent
-				-
-					label:		Same as normal text
-					label.fr:	Comme le texte normal
-					value:		OT-Dark-pills-color-text
-				-
-					label:		Same as links
-					label.fr:	Comme le texte normal
-					value:		OT-Dark-pills-color-link
-				-
-					label:		Black
-					label.fr:	Noir
-					value:		OT-Dark-pills-color-black
-				-
-					label:		Grey
-					label.fr:	Gris
-					value:		OT-Dark-pills-color-grey
-				-
-					label:		White
-					label.fr:	Blanc
-					value:		OT-Dark-pills-color-white
-				-
-					label:		Theme’s tone
-					label.fr:	Athmosphère
-					value:		OT-Dark-pills-color-theme
+
 	-
 			id:				OT-highlight-color-dark
 			title:			Highlighting color
@@ -15465,6 +15440,44 @@ settings:
 					label:		dark Yellow
 					label.fr:	Jaune foncé
 					value:		highlight-color-dark-strongYellow
+
+	-
+			id:			OT-Dark-pillsColor
+			title:		Color of the pills inside the Properties panel
+			title.fr:	Couleur des “pills” dans le panneau des propriétés
+			type:		class-select
+			allowEmpty:	false
+			default:	OT-Dark-pills-color-accent
+			options:
+				-
+					label:		Accent color
+					label.fr:	Couleur d’accentuation
+					value:		OT-Dark-pills-color-accent
+				-
+					label:		Same as normal text
+					label.fr:	Comme le texte normal
+					value:		OT-Dark-pills-color-text
+				-
+					label:		Same as links
+					label.fr:	Comme le texte normal
+					value:		OT-Dark-pills-color-link
+				-
+					label:		Black
+					label.fr:	Noir
+					value:		OT-Dark-pills-color-black
+				-
+					label:		Grey
+					label.fr:	Gris
+					value:		OT-Dark-pills-color-grey
+				-
+					label:		White
+					label.fr:	Blanc
+					value:		OT-Dark-pills-color-white
+				-
+					label:		Theme’s tone
+					label.fr:	Athmosphère
+					value:		OT-Dark-pills-color-theme
+
 
 	# ======================
 	# READING mode settings
