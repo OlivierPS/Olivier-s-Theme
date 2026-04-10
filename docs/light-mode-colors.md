@@ -29,7 +29,7 @@ The **accent color** is used for interactive elements: buttons, tabs, hover stat
 - **Coordinated** – an accent that blends harmoniously with the current palette.
 - **Alternative 1** and **Alternative 2** – related colors (often split‑complementary or triadic) that change the mood while staying in harmony.
 
-<!-- ⭢ Samples -->
+[⭢ Samples](color-samples-light.md/#accent-color)
 
 
 
@@ -57,7 +57,7 @@ You can:
 
 The background you choose here will greatly influence the overall atmosphere of your vault. Select it according to your preferences, and to your current mood and mindset.
 
-<!-- ⭢ Samples -->
+[⭢ Samples](color-samples-light.md/#light-reading-background)
 
 ### Paper background also in Live Preview
 
@@ -91,7 +91,7 @@ On **Default**, it uses the background derived from the General palette. If you 
 
 This affects both Live Preview and Source views. It can be used, for example, to create an 80s CRT mood (terminal green ink on black or very dark background).
 
-<!-- ⭢ Samples -->
+[⭢ Samples](color-samples-light.md/#light-editing-background)
 
 ### Colored H1 to H5 headings
 
@@ -112,7 +112,9 @@ The default value is:
 - harmonious with the General palette, and  
 - inspired by real‑world Stabilo markers.
 
-If you want your highlights to be more striking, you can select another color here (light vs strong, and several hues).
+  If you want your highlights to be more striking, you can select another color here (light vs strong, and several hues).
+
+[⭢ Samples](color-samples-light.md/#light-highlighting-color)
 
 ### Color of the pills inside the Properties panel
 
@@ -128,3 +130,5 @@ You can choose whether they:
 - use a theme‑tinted option (lighter or darker) to blend more softly.
 
 If you rely heavily on tags and metadata, it is worth trying a few options to find the right level of prominence.
+
+[⭢ Samples](color-samples-light.md/#light-pills-color)

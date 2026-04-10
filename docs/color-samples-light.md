@@ -5,7 +5,7 @@ Use this page as a gallery linked from the **Light mode colors** guide.
 
 ## General palette <a id="light-general-palette"></a>
 
-Some of the colors you can choose for the general mood of your vault in Light Mode. There are quite a few more !
+Some of the colors you can choose for the general mood of your vault in **Light Mode**. There are quite a few more !
 
 ![general_palette_01](assets/general_palette_01.png)
 
@@ -13,6 +13,18 @@ Some of the colors you can choose for the general mood of your vault in Light Mo
 ![general_palette_03](assets/general_palette_03.png)
 
 ---
+
+## Accent color <a id="accent-color"></a>
+
+The 3 accent color shown for the **Parchment** general palette. To better show the effects, the options “Color H1 to H5 headings” and “Text selection takes accent color” has both been activated.
+
+![Accent color](assets/light-parchment-accent-color-shade.png)
+
+![Accent color 1](assets/light-parchment-accent-color-accent-1.png)
+
+![Color accent 2](assets/light-parchment-accent-color-accent-2.png)
+
+----------------------------------------------
 
 ## Text color in Reading mode <a id="light-reading-text-color"></a>
 
@@ -24,42 +36,74 @@ A few of the text inks you can choose with this parameter. They are shown on a p
 
 ## Notes background in Reading mode <a id="light-reading-background"></a>
 
-![Plain background](assets/light-reading-bg-plain.png)
-![Paper background 1](assets/light-reading-bg-paper-1.png)
-![Paper background 2](assets/light-reading-bg-paper-2.png)
-![Brown paper](assets/light-reading-bg-brown-paper.png)
+**Parchment** general palette, *different notes background* :
 
----
+* **None** — means a plain background as defined by the palette.
 
-## Paper background also in Live Preview <a id="light-paper-live-preview"></a>
+![Parchment palette — plain note background](assets/parchment-note-background-plain.png)
 
-Show the contrast ON vs OFF for the same note.
+* **Paper 1** :
 
-![Paper in Reading only](assets/light-paper-reading-only.png)
-![Paper in Reading and Live Preview](assets/light-paper-reading-and-live.png)
+![Parchment, Paper 1 note background](assets/parchment-note-background-paper-1.png)
+
+* **Paper 2** :
+
+![Parchment, Paper 2 note background](assets/parchment-note-background-paper-2.png)
+
+* **Paper 6** :
+
+![Parchment, Paper 6 note background](assets/parchment-note-background-paper-6.png)
+
+* **Parchment** :
+
+![parchment palette, parchment note background](assets/parchment-note-background-parchment.png)
 
 ---
 
 ## Notes background in Writing / Editing mode <a id="light-editing-background"></a>
 
-Examples of editing “moods” (CRT, typewriter, quiet ivory, etc.).
+Examples of editing “moods” than can be obtained by changing the background color of the note at the same time as the color of the text is changed and possibly the typeface.
 
-![CRT style](assets/light-editing-bg-crt.png)
-![Typewriter style](assets/light-editing-bg-typewriter.png)
-![Soft ivory](assets/light-editing-bg-ivory.png)
+Beige palette, default background and text color, Charter typeface :
+
+![Beige palette, default background, default text color](assets/beige-palette-default-background-default-text-color.png)
+
+Beige palette, **snow white** background, **dark blue** text, **American Typewriter** typeface :
+
+![Beige palette, snow white background, dark blue ink](assets/beige-palette-snow-white-background-dark-blue-text-color.png)
+
+Beige palette, **black** background, **terminal green** text, **IBM Plex mono** typeface :
+
+![Beige palette, black background, terminal green text](assets/beige-palette-black-background-terminal green-text-color.png) 
+
+Beige palette, **light green** background, **emerald green** text, **Palatino Sans** typeface :
+
+![Beige palette, light green background, emerald green text](assets/beige-palette-light-green-background-emerald-green-text-color.png) 
 
 ---
 
 ## Highlighting color <a id="light-highlighting-color"></a>
 
-![Highlight – classic yellow](assets/light-highlight-yellow.png)
-![Highlight – blue](assets/light-highlight-blue.png)
-![Highlight – rose](assets/light-highlight-rose.png)
+Just some samples of different highlighting colors. Note how the text remain legible in all situations.
+
+![highlighting in classic yellow](assets/highlighting-classic-yellow.png)
+
+![highlighting in dark blue](assets/highlighting-dark-blue.png)
+
+![highlighting in light orange](assets/highlighting-light-orange.png)
+
+![Hightlightin in light rose](assets/highlighting-light-rose.png)
 
 ---
 
 ## Color of the pills inside the Properties panel <a id="light-pills-color"></a>
 
-![Pills – accent color](assets/light-pills-accent.png)
-![Pills – text color](assets/light-pills-text.png)
-![Pills – theme tone](assets/light-pills-theme.png)
+![Pills 1](assets/pills-1.png)
+
+![Pills 2](assets/pills-2.png)
+
+![Pills 3](assets/pills-3.png)
+
+![Pills 4](assets/pills-4.png)
+
+![Pills 5](assets/pills-5.png)
