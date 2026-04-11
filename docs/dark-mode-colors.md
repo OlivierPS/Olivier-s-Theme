@@ -38,7 +38,7 @@ If you change the Reading background, this default text color is **not** adjuste
 
 [⭢ Samples](color-samples-dark.md/#dark-reading-text-color)
 
-
+For the full list of available colors and some inspiration, look ⭢ [here](text-colors.md)
 
 ### Notes background in Reading mode
 
@@ -73,7 +73,7 @@ This option sets the **ink color while editing** in Dark mode.
 
 This gives you an additional mean of knowing immediately wether a particular note is in *Reading* or in *Editing* mode.
 
-
+For the full list of available colors and some inspiration, look ⭢ [here](text-colors.md)
 
 ### Notes background in Writing / Editing mode
 

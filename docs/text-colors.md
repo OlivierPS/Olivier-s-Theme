@@ -22,5 +22,16 @@ On the following screenshots, you’ll see different ideas for inspiration. The 
 
 By leaving all the choices at their “default” settings, you will have an experience where the two modes – Editing and Reading – are very similar :
 
+![text-color-suggestions-01](assets/text-color-suggestions-01.png)
 
+###### Second capture — Reading on paper
 
+In most palettes (light beige displayed here), if you simply choose a paper background (Paper 2 displayed) for Reading, the difference between editing and reading mode becomes very obvious :
+
+![text-color-suggestions-02](assets/text-color-suggestions-02.png)
+
+###### Third capture — Playing with ink color
+
+Another way to obtain a subtle but clear difference between editing and reading is to play with the text color. For example: keep the default color for reading, and choose a more active one for writing.
+
+![text-color-suggestions-03](assets/text-color-suggestions-03.png)

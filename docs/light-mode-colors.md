@@ -53,8 +53,7 @@ Combining a subtle ink color with a paper background can create very pleasant �
 
 [⭢ Samples](color-samples-light.md/#light-reading-text-color)
 
-Here’s the full list of available colors :
-
+For the full list of available colors and some inspiration, look ⭢ [here](text-colors.md)
 
 ### Notes background in Reading mode
 
@@ -90,6 +89,8 @@ Typical reasons to diverge:
 
 - to make Reading vs Writing immediately distinguishable,  
 - simply for variety and personal preference.
+
+For the full list of available colors and some inspiration, look ⭢ [here](text-colors.md)
 
 ### Notes background in Writing / Editing mode
 
