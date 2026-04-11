@@ -31,22 +31,15 @@ Samples of “ink on dark” combinations: soft beiges, cyans, terminal-like gre
 
 ## Notes background in Reading mode <a id="dark-reading-background"></a>
 
-Examples of different Reading backgrounds for a single Dark palette.
+The 3  **black papers** available as backgrounds for your notes in Reading mode :
 
-![Plain dark background](assets/dark-reading-bg-plain.png)
-![Dark paper 1](assets/dark-reading-bg-paper-1.png)
-![Dark paper 2](assets/dark-reading-bg-paper-2.png)
-![Almost-black paper](assets/dark-reading-bg-black-paper.png)
+![black_paper_1](assets/black_paper_1.png)
 
----
+![black_paper_2](assets/black_paper_2.png)
 
-## Notes background in Writing / Editing mode <a id="dark-editing-background"></a>
+![black_paper_3](assets/black_paper_3.png)
 
-A few Editing “moods” combining background, ink color and typeface.
 
-![Console-like editing](assets/dark-editing-bg-console.png)
-![Soft dark paper editing](assets/dark-editing-bg-soft-paper.png)
-![Cool blue editing](assets/dark-editing-bg-blue.png)
 
 ---
 

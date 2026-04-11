@@ -47,11 +47,13 @@ This controls the **background behind your notes in Reading mode**.
 You can:
 
 - keep the default dark background derived from the current (Dark) palette, or  
-- choose one of the available **dark paper** backgrounds (including textured, brown or almost‑black papers).
+- choose one of the available **paper** backgrounds, three of them being **black** ones.
+
+[⭢ Samples](color-samples-dark.md/#dark-reading-background)
 
 Dark paper backgrounds usually feel less “screen‑like” and can make long reading sessions at night more comfortable.
 
-<!-- ⭢ Samples -->
+
 
 ### Paper background also in Live Preview
 
@@ -69,13 +71,15 @@ This option sets the **ink color while editing** in Dark mode.
 - **Default** – follows the Reading text color chosen above.  
 - Custom choices – the same palette of colors, if you want a distinct ink only for Writing.
 
-A common pattern is to keep a softer ink for Reading and a slightly brighter one for Editing, so code‑like notes or outlines “pop” more while you write.
+This gives you an additional mean of knowing immediately wether a particular note is in *Reading* or in *Editing* mode.
+
+
 
 ### Notes background in Writing / Editing mode
 
 Here you choose the **background of the note while editing**.
 
-On **Default**, it uses a background coordinated with the Dark General palette.  
+On **Default**, it uses a background coordinated with the Dark General palette.
 To emphasise the difference between Reading and Writing, you can:
 
 - choose a background that is slightly lighter or darker than the Reading background,  

@@ -25,6 +25,7 @@ nav:
   - samples:
     - color-samples-light.md
     - color-samples-dark.md
+    - text-colors.md
 
 markdown_extensions:
   - toc:

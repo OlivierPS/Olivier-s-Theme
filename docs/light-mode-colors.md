@@ -16,9 +16,12 @@ Typical use:
 2. Pick a palette that matches your taste (for example *Beige*, *Icy*, *Paradiso*, etc.).  
 3. Keep the rest on **Default** for now.
 
-Later, you can override specific elements (accent, text color, backgrounds, highlighting) without breaking the underlying harmony.
+  Later, you can override specific elements (accent, text color, backgrounds, highlighting) without breaking the underlying harmony.
+
 
 [⭢ Samples](color-samples-light.md/#light-general-palette)
+
+​	
 
 
 
@@ -28,6 +31,7 @@ The **accent color** is used for interactive elements: buttons, tabs, hover stat
 
 - **Coordinated** – an accent that blends harmoniously with the current palette.
 - **Alternative 1** and **Alternative 2** – related colors (often split‑complementary or triadic) that change the mood while staying in harmony.
+
 
 [⭢ Samples](color-samples-light.md/#accent-color)
 
@@ -46,7 +50,11 @@ Combining a subtle ink color with a paper background can create very pleasant �
 
 **Note:** most texts in the sidebars, including the file navigation, follow this choice.
 
+
 [⭢ Samples](color-samples-light.md/#light-reading-text-color)
+
+Here’s the full list of available colors :
+
 
 ### Notes background in Reading mode
 
@@ -58,6 +66,7 @@ You can:
 - select one of several **paper backgrounds**: light papers, tinted papers, brown paper, black‑paper variants, horizontal textures, parchment.
 
 The background you choose here will greatly influence the overall atmosphere of your vault. Select it according to your preferences, and to your current mood and mindset.
+
 
 [⭢ Samples](color-samples-light.md/#light-reading-background)
 
