@@ -7,13 +7,13 @@ Dark mode colors define the “night personality” of your vault. They mirror t
 The **General palette** controls the overall atmosphere when Obsidian is in Dark theme.  
 You have two main approaches:
 
-- **Default \< light mode** – the Dark palette is automatically derived from the current Light palette, keeping a clear relationship between both modes.  
+- **Default < light mode** – the Dark palette is automatically derived from the current Light palette, keeping a clear relationship between both modes.  
 - A specific Dark palette – choose an explicit Dark palette when you want a different night mood (for example more contrast, cooler tones, or a “terminal” feeling).
 
 Some Dark palettes exist only in Dark mode and must be selected explicitly (for example *LYT* or other special palettes).  
 Once chosen, the Dark General palette behaves like its Light counterpart: it defines coordinated accent, text colors, backgrounds and highlight colors for Dark mode.
 
-<!-- ⭢ Samples -->
+[⭢ Samples](color-samples-dark.md/#dark-general-palette)
 
 ### Accent color
 
@@ -23,18 +23,22 @@ For each Dark palette, you can choose:
 - **Coordinated** – an accent that fits the current Dark palette.  
 - **Alternative 1** and **Alternative 2** – related colors with more or less contrast, for a slightly different mood.
 
-<!-- ⭢ Samples -->
+
 
 ### Text color in Reading mode
 
-This option sets the **text color for Reading mode**.
+ This option sets the **text color for Reading mode**.
 
-- **Default** – a color chosen to be clearly readable and soft on the default Dark background.  
-- Other options – a range of “ink on dark” colors (terminal greens, cyans, blues, warm light beiges, etc.).
+- **Default** – a color chosen to work well with the *default* Dark background of the current palette.
+- Other options – a range of “inks” and “terminal-like” colors that you can choose to suit your taste or to adapt to the background, if you have changed it. 
 
-As in Light mode, if you change this color, the Writing / Editing text color will follow it, as long as it is set to Default.
+If you change the Reading background, this default text color is **not** adjusted automatically. In that case, you may want to pick another ink color so that text remains comfortable to read.  If you change this color, the Writing / Editing text color follows it (when set to Default), unless you customize it separately.
 
-<!-- ⭢ Samples -->
+**Note:** most texts in the sidebars, including the file navigation, follow this choice.
+
+[⭢ Samples](color-samples-dark.md/#dark-reading-text-color)
+
+
 
 ### Notes background in Reading mode
 
@@ -51,7 +55,7 @@ Dark paper backgrounds usually feel less “screen‑like” and can make long r
 
 ### Paper background also in Live Preview
 
-If you have chosen a paper background for Reading mode, this toggle controls whether the **same paper background is also used in Live Preview**.
+If you have chosen a paper background for Reading mode, this toggle controls whether the **chosen paper background is also used in Live Preview**.
 
 - **ON** – Reading and Live Preview share the same paper background, which gives a unified “dark notebook” feeling.  
 - **OFF** – Live Preview keeps a plain editing background; the difference between Reading and Writing becomes more obvious.
@@ -115,5 +119,4 @@ You can choose whether they:
 - use a theme‑tinted variant that blends more discreetly with the background.
 
 If you work mainly in Dark mode with many tags and metadata, this setting strongly influences the perceived visual noise: do not hesitate to experiment a bit.
-
 

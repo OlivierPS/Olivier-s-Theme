@@ -24,6 +24,7 @@ nav:
     - Niceties & cssclasses: niceties-and-cssclasses.md
   - samples:
     - color-samples-light.md
+    - color-samples-dark.md
 
 markdown_extensions:
   - toc:

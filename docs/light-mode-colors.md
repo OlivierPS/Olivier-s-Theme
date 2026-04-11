@@ -18,7 +18,7 @@ Typical use:
 
 Later, you can override specific elements (accent, text color, backgrounds, highlighting) without breaking the underlying harmony.
 
-[⭢ Samples](color-samples-light.md/#general-palette)
+[⭢ Samples](color-samples-light.md/#light-general-palette)
 
 
 
@@ -37,8 +37,10 @@ The **accent color** is used for interactive elements: buttons, tabs, hover stat
 
 *Olivier’s Theme* allows you to have different colors for Reading and for Editing. This option specifically sets the **text color for Reading mode**.
 
-- **Default** – a carefully chosen color that fits the current palette.  
-- Other options – a range of ink‑inspired colors (dark blues, browns, greens, reds, etc.) for more personality.
+- **Default** – a color chosen to work well with the *default* background of the current palette.
+- Other options –a range of “inks” and “terminal-like” colors that you can choose to suit your taste or to adapt to the background, if you have changed it. 
+
+If you change the Reading background, this default text color is **not** adjusted automatically. In that case, you may want to pick another text color so that text remains comfortable to read.
 
 Combining a subtle ink color with a paper background can create very pleasant “fountain‑pen on paper” moods. If you change this color, the Writing / Editing text color follows it (when set to Default), unless you customize it separately.
 
@@ -112,7 +114,8 @@ The default value is:
 - harmonious with the General palette, and  
 - inspired by real‑world Stabilo markers.
 
-  If you want your highlights to be more striking, you can select another color here (light vs strong, and several hues).
+
+If you want your highlights to be more striking, you can select another color here (light vs strong, and several hues).
 
 [⭢ Samples](color-samples-light.md/#light-highlighting-color)
 

@@ -92,7 +92,7 @@ Just some samples of different highlighting colors. Note how the text remain leg
 
 ![highlighting in light orange](assets/highlighting-light-orange.png)
 
-![Hightlightin in light rose](assets/highlighting-light-rose.png)
+![Highlighting in light rose](assets/highlighting-light-rose.png)
 
 ---
 
