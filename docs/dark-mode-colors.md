@@ -25,7 +25,7 @@ For each Dark palette, you can choose:
 
 
 
-### Text color in Reading mode
+### Text color in Reading mode <a id="text-color-reading-mode"></a>
 
  This option sets the **text color for Reading mode**.
 

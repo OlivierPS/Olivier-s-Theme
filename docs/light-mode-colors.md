@@ -37,7 +37,7 @@ The **accent color** is used for interactive elements: buttons, tabs, hover stat
 
 
 
-### Text color in Reading mode
+### Text color in Reading mode <a id="text-color-reading-mode"></a>
 
 *Olivier’s Theme* allows you to have different colors for Reading and for Editing. This option specifically sets the **text color for Reading mode**.
 
@@ -80,7 +80,7 @@ Whatever you choose, a small indicator in the upper‑right corner of the pane s
 
 ### Text color in Writing / Editing mode
 
-This option sets the **ink color while editing**.
+This option sets the **text color while editing**.
 
 - **Default** – follows the Reading text color you chose above.  
 - Custom choices – the same palette of ink‑like colors, if you want a distinct color for Writing.

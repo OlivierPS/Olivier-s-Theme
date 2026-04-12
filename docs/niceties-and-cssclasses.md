@@ -40,7 +40,8 @@ Olivier’s Theme declares a set of such classes and styles them consistently, s
 Olivier’s Theme offers **ready‑made cssclasses** for several kinds of visual refinements, grouped in a few families:
 
 - **Bases layout** – control whether the Bases header is visible in Reading mode for a given note  
-  (`bases-clean`, `bases-header-on`).
+  (`bases-clean`, `bases-header-on`).<br>For a short, practical guide focused on how Base headers appear in Reading mode, see [Displaying Bases](displaying-bases.md).
+
 - **Image sizing** – adjust how large images appear in Reading mode and, depending on your settings, in Live Preview  
   (`img-XS`, `img-S`, `img-M`, `img-L`, `img-XL`, `img-300` … `img-1000`).
 - **Reading‑mode text size** – make the text a bit smaller or larger *only in Reading mode*  
@@ -48,18 +49,18 @@ Olivier’s Theme offers **ready‑made cssclasses** for several kinds of visual
 - **Specialised niceties** – targeted behaviours for specific elements  
   (`OT-step-list`, `OT-tables-style-1`, `OT-tables-style-2`).
 
-Typical uses include:
+  Typical uses include:
 
 - layout tweaks on a single note (cleaner Bases header, more or less prominent images),  
 - fine‑tuning reading comfort on dense reference notes,  
 - highlighting checklists, procedures, or important tables with a distinctive style.
 
-Each cssclass is designed to be:
+  Each cssclass is designed to be:
 
 - **Combinable** with others, so you can layer effects (for example `bases-clean` plus `readingMode-text-small` plus `img-M`),  
 - **Safe by default**, so that if you remove it, the note simply falls back to the standard theme behaviour.
 
-You can freely mix these theme‑specific cssclasses with your own snippets, or with classes provided by plugins and external CSS snippets.
+  You can freely mix these theme‑specific cssclasses with your own snippets, or with classes provided by plugins and external CSS snippets.
 
 ## Using cssclasses in practice
 

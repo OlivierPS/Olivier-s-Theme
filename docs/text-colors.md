@@ -1,14 +1,18 @@
 # Text colors
 
-Wherever there is the possibility to choose a text color, you have the same large selection :
+Wherever there is the possibility to choose a text color, you have the same large selection.
 
 ![text_colors_menu](assets/text_colors_menu.png)
+
+You can choose these text colors from the **[Text color in Reading mode](light-mode-colors.md#text-color-reading-mode)** and **[Text color in Writing / Editing mode](dark-mode-colors.md#text-color-reading-mode)** sections of the Light and Dark color settings.
 
 Not every color is suitable for every background —  that’s  why you have so many options. All these colors are available for text
 
 * in Reading and in Editing / Writing modes
 
 * in Light mode and in Dark mode.
+
+  
 
   
 

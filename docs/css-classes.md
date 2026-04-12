@@ -49,7 +49,7 @@ cssclasses:
 ---
 ```
 
-Visual idea: the same note as above, but with the Bases header removed so the text starts directly.
+If you want to see how these classes change a real note, the [Displaying Bases](displaying-bases.md) page shows concrete examples with screenshots.
 
 ---
 

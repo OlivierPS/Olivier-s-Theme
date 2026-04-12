@@ -16,10 +16,12 @@ nav:
   - Colors:
     - Light mode colors: light-mode-colors.md
     - Dark mode colors: dark-mode-colors.md
+    - Text colors: text-colors.md
   - Reading & writing:
     - Reading mode: reading-mode.md
     - Writing / Editing mode: writing-mode.md
     - Reading vs Writing – mental modes: reading-vs-writing.md
+    - Displaying Bases: displaying-bases.md
   - cssclasses:
     - Visual catalogue of CSS classes: css-classes.md
     - Niceties & cssclasses: niceties-and-cssclasses.md

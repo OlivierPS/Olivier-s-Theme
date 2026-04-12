@@ -26,7 +26,7 @@ You can adjust the value according to your font, your screen and your eyesight:
 This toggle lets the font decide its own *natural* line height in Reading mode.  
 When it is **ON**, the theme uses the line spacing designed by the typeface itself, and the manual **Line height** setting below is effectively ignored.  
 This often produces a slightly tighter page, which can work well on small screens or with fonts designed for dense text.  
-If the lines feel too close to each other, you may adjust the **Line lenght** (see below) until everything “feels right”. You can also turn this option **OFF** again and fine‑tune the **Line height** yourself.
+If the lines feel too close to each other, you may adjust the **Line length** (see below) until everything “feels right”. You can also turn this option **OFF** again and fine‑tune the **Line height** yourself.
 
 ### Line height
 
@@ -95,7 +95,7 @@ You can then hide the header only in some notes by adding the `bases-clean` clas
 cssclasses: bases-clean
 ```
 
-If you are not familiar with cssclasses: it is a standard Obsidian note property that lets you activate special visual behaviors on a note‑by‑note basis, simply by listing their names in the metadata at the top of the note.
+For a visual, step‑by‑step explanation of how Base headers behave in Reading mode — and how to combine the global setting with the `bases-clean` and `bases-header-on` cssclasses — see [Displaying Bases](displaying-bases.md).
 
 ### Images style
 
