@@ -3,6 +3,8 @@
 Olivier’s Theme treats **Reading** and **Writing** as two different mental activities.  
 Each gets its own visual environment, so you can optimise both without compromise.
 
+If you are unsure about the exact meaning of “Reading mode”, “Writing/Editing mode”, “Live Preview” or “Source mode”, you can check the [Glossary](glossary.md) for concise definitions.
+
 ---
 
 ## Reading: a typographic page

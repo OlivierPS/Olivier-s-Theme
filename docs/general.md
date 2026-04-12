@@ -1,5 +1,7 @@
 # General settings
 
+This page assumes you are familiar with basic Obsidian interface terms (panes, tabs, sidebars, status bar, Canvas, Properties). If needed, see the [Glossary](glossary.md) for short explanations.
+
 The **GENERAL settings** group controls global aspects of the theme not specifically geared towards Reading or Writing. These settings are grouped in 3 sections :
 
 * **Interface** — base size of UI text, the spacing of file listings in side panels, etc.

@@ -12,6 +12,7 @@ nav:
   - Home: index.md
   - General:
     - General settings: general.md
+    - glossary.md
   - Colors:
     - Light mode colors: light-mode-colors.md
     - Dark mode colors: dark-mode-colors.md

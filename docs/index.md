@@ -14,7 +14,9 @@ To follow this guide and access all options, you will need:
 - [Olivier’s Theme](https://github.com/OlivierPS/Olivier-s-Theme) installed and active.
 - The **[Style Settings](obsidian://show-plugin?id=obsidian-style-settings)** plugin enabled, to access the theme’s configuration panels.
 
-The settings described here live under **Settings → Appearance → Style Settings → Olivier’s Theme**.
+  The settings described here live under **Settings → Appearance → Style Settings → Olivier’s Theme**.
+
+If some of the Obsidian terms used in this guide feel unfamiliar, you can refer to the dedicated [Glossary](glossary.md) at any time.
 
 ______________________________________________________________________
 
@@ -23,12 +25,14 @@ ______________________________________________________________________
 You do not have to read everything in order. The chapters are grouped by mental tasks:
 
 - Start with **[General](general.md) settings** to set global choices about the **interface** and the **typography**.
-- Then pick your **[color palette](colors-light-dark.md)** for **Light** mode. The **Dark** mode palette is automatically derived from your choice, but you do have the possibility to choose a different one if you so wish.
+- Then pick your **[color palette](light-mode-colors.md)** for **Light** mode. The **Dark** mode palette is automatically derived from your choice, but you do have the possibility to choose a different one if you so wish.
 - Tune **[Reading mode](reading-mode.md)** for a comfortable, book‑like experience.
 - Tune **[Writing mode](writing-mode.md)** to your prefered writing environment.
 - Finally, explore **[cssclasses and niceties](niceties-and-cssclasses.md)** for per‑note refinements and special layouts.
 
-If you are in a hurry, you can simply follow the “Quick path” below.
+  If you are in a hurry, you can simply follow the “Quick path” below.
+
+- The [Glossary](glossary.md) defines the main terms used throughout the documentation, such as Reading mode, Writing/Editing mode, Live Preview, Source mode, and cssclasses.
 
 ______________________________________________________________________
 

@@ -1,5 +1,7 @@
 # Reading mode
 
+If you are unsure about terms like Reading mode, Writing/Editing mode, Live Preview or Source mode, you can check the [Glossary](glossary.md) for quick definitions.
+
 The **READING mode** settings control how your notes look when you are simply reading them.  
 They focus on typography, tables, images and a few small behaviours that improve legibility and create a calm, book‑like page.
 
@@ -16,6 +18,15 @@ You can adjust the value according to your font, your screen and your eyesight:
 
 - increase it if you read at some distance or on high‑resolution displays,  
 - decrease it slightly if you prefer a denser page or work on a small laptop.
+
+
+
+### Natural line height for the chosen font
+
+This toggle lets the font decide its own *natural* line height in Reading mode.  
+When it is **ON**, the theme uses the line spacing designed by the typeface itself, and the manual **Line height** setting below is effectively ignored.  
+This often produces a slightly tighter page, which can work well on small screens or with fonts designed for dense text.  
+If the lines feel too close to each other, you may adjust the **Line lenght** (see below) until everything “feels right”. You can also turn this option **OFF** again and fine‑tune the **Line height** yourself.
 
 ### Line height
 
@@ -60,20 +71,6 @@ Here you choose the global **table style for Reading mode**:
 “Improved” is a good all‑purpose choice.  
 If you often read wide tables or spreadsheets, “Alternate row backgrounds” makes row tracking easier.
 
-### Lists hover highlight (Reading only)
-
-This toggle enables a **hover highlight** on **list items** in **Reading mode**:
-
-- bulleted lists  
-- numbered lists  
-- tasks
-
-When it is ON, moving the mouse over an item gives it a subtle accent background.  
-This makes it easier to visually follow long lists while reading, especially in dense notes.
-
-The highlight does **not** affect Writing / Editing mode; it is purely a reading aid.
-
-<!-- screenshot: list with hover highlight on an item -->
 
 ### Bases: hide header in Preview
 
@@ -113,7 +110,7 @@ Choose the style that best matches your use of images (screenshots, diagrams, ph
 
 <!-- screenshot: same image displayed with the four styles -->
 
-### Images max height in Reading
+### Images max height
 
 This setting defines the **maximum height of images in Reading mode**, in pixels.
 
@@ -124,9 +121,8 @@ You can still open or zoom images to see them in full when needed.
 - Use a smaller value if your notes are full of screenshots;  
   use a larger one if you work with detailed diagrams or photos.
 
-The *width* of an image is always contained within the line length of the text column.
+  The *width* of an image is always contained within the line length of the text column.
 
----
+----------------------------------------------
 
-In short, Reading mode is where you tune the **book‑like** experience:  
-body size, rhythm of lines, behaviour of tables and images, and the overall feeling of the page while you are simply absorbing information — reading, studying, etc.
+Colors and backgrounds for Reading mode are configured separately in the **[LIGHT MODE colors](light-mode-colors.md)** and **[DARK MODE colors](dark-mode-colors.md)** sections (text color, Reading background, paper backgrounds, paper background also in Live Preview). Once you are happy with this Reading layout, you can fine‑tune those options to match your preferred “paper and ink” mood.

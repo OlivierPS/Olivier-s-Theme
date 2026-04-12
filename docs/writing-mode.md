@@ -3,7 +3,7 @@
 The **WRITING / EDITING mode** settings control how your notes look and feel while you are working on them, either in Live Preview or in Source mode.  
 These settings are designed to give you a clear, efficient workspace that supports your thinking while you write.
 
-<!-- screenshot: Style Settings – Olivier’s Theme – WRITING / EDITING mode section -->
+If you are unsure about the exact meaning of “Reading mode”, “Writing/Editing mode”, “Live Preview” or “Source mode”, you can check the [Glossary](glossary.md) for concise definitions.
 
 ---
 
@@ -28,6 +28,15 @@ Adjust this value if:
 
 - the editor text looks too small or too large for your taste or your eyesight,  
 - you are working on a small laptop or, conversely, on a large external monitor.
+
+
+
+### Natural line height for the chosen font
+This toggle lets the font decide its own *natural* line height while editing.  
+When it is **ON**, the editor uses the line spacing designed by the typeface itself, and the manual **Line height** setting below is effectively ignored.  
+If the lines feel too tight or too loose for your taste, adjust the **Line length** or turn this option **OFF** again and fine‑tune the **Line height** slider yourself.
+
+
 
 ### Line height
 
@@ -72,3 +81,8 @@ but you also want at least a thumbnail of your images — another reason to use 
 This setting lets you choose the **maximum height of images in Live Preview**, in pixels, so you can find your own compromise between visible images and available text space.
 
 The default of **150 px** keeps images in the “thumbnail” range: visible enough to recognise them, but small enough not to push the text off screen.
+
+----------------------------------------------
+
+Colors and backgrounds for Writing / Editing mode (ink color, editing background, paper background also in Live Preview) are configured in the **[LIGHT MODE colors](light-mode-colors.md)** and **[DARK MODE colors](dark-mode-colors.md)** sections. Once your Writing layout feels right, you can adjust those options to create your preferred “editor mood”.
+
