@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-20
+	- tuned text sizes in the sidebar, particularly bases
 2026-04-11
 	- cleaned some color definitions
 2026-04-10
@@ -6104,7 +6106,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 /* Texte légèrement plus petit dans les sidebars */
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split {
-	font-size: calc(var(--OT-UI-font-size) * 0.9);
+	/*font-size: calc(var(--OT-UI-font-size) * 0.9);*/
 }
 
 /* Icônes un peu réduites */
@@ -6722,9 +6724,15 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	--bases-table-font-size: var(--OT-readingMode-text-size);
 }
 
-.bases-list-item {
-	padding-bottom: 0;
-	line-height: 1.3em;
+.workspace-leaf .bases-view[data-view-type="list"] {
+	/*--bases-table-font-size: var(--OT-UI-font-size);*/
+}
+.workspace-leaf .bases-rendered-value {
+	font-size:	var(--OT-UI-font-size) !important;
+}
+
+.bases-list-item-properties {
+	line-height: 1.2em ;
 }
 
 /* Vue list : headings de groupes en mode pill, sans bord explicite */

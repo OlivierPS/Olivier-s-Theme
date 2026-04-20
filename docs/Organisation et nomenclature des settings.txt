@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opml version="2.0">
-  <head><!-- <editor scale-mac="1.25">
+  <head><!-- <editor scale-mac="1.1">
       <sidebar width="216"/>
-      <column name="text" width="731"/>
+      <column name="text" width="826"/>
       <column name="StyleSettingsID" width="344"/>
     </editor> -->
     <title>Organisation et nomenclature des settings</title>
-    <dateCreated>Wed, 08 Apr 2026 20:22:16 GMT</dateCreated>
+    <dateCreated>Tue, 14 Apr 2026 05:35:36 GMT</dateCreated>
     <expansionState>1,2,12,19,23,36,48,58</expansionState>
-    <vertScrollState>6</vertScrollState>
-    <windowTop>2563</windowTop>
+    <vertScrollState>0</vertScrollState>
+    <windowTop>683</windowTop>
     <windowLeft>3</windowLeft>
-    <windowRight>1105</windowRight>
-    <windowBottom>3672</windowBottom>
+    <windowRight>1197</windowRight>
+    <windowBottom>2032</windowBottom>
   </head>
   <body>
     <outline text="Organisation et nomenclature des settings"/>
@@ -20,7 +20,7 @@
       <outline text="Interface">
         <outline text="Base size for the interface texts [px]" StyleSettingsID="OT-UI-font-size"/>
         <outline text="Spacing for the files listing in sidepanels and the settings list in settings pane" _note="  * Tight ⭢ `filesNavigator-spacing-compact`&#10;  * Medium ⭢ `filesNavigator-spacing-medium`&#10;  * Wide ⭢ `filesNavigator-spacing-loose`&#10;  * Very wide ⭢ `filesNavigator-spacing-veryLoose`" StyleSettingsID="OT-filesNavigator-spacing"/>
-        <outline text="Viewing mode icons as status toggles" StyleSettingsID="OT-viewing-mode-icons"/>
+        <outline text="Viewing mode icon as a true status indicator" StyleSettingsID="OT-viewing-mode-icons"/>
         <outline text="Highlight current tab" StyleSettingsID="OT-tab-title-highlighted"/>
         <outline text="Hide Title Bar breadcrumb" StyleSettingsID="OT-suppress-title-bar-breadcrumb"/>
         <outline text="Status Bar padding [px]" StyleSettingsID="OT-status-bar-padding"/>
@@ -53,8 +53,8 @@
       <outline text="Notes background in Writing / Editing mode" _note="	* Default ⭢ `editingBackgroundColor-lightMode-default`&#10;	* Beige ⭢ `editingBackgroundColor-lightMode-beige`&#10;	* light Beige ⭢ `editingBackgroundColor-lightMode-lightBeige`&#10;	* Black ⭢ `editingBackgroundColor-lightMode-black`&#10;	* sky Blue ⭢ `editingBackgroundColor-lightMode-sky`&#10;	* cobalt Blue ⭢ `editingBackgroundColor-lightMode-cobaltBlue`&#10;	* light Blue ⭢ `editingBackgroundColor-lightMode-AliceBlue`&#10;	* Green ⭢ `editingBackgroundColor-lightMode-green`&#10;	* light Green ⭢ `editingBackgroundColor-lightMode-lightGreen`&#10;	* light Grey ⭢ `editingBackgroundColor-lightMode-grey`&#10;	* Ivory ⭢ `editingBackgroundColor-lightMode-ivory`&#10;	* Red ⭢ `editingBackgroundColor-lightMode-red`&#10;	* light Red ⭢ `editingBackgroundColor-lightMode-lightRed`&#10;	* Rose ⭢ `editingBackgroundColor-lightMode-rose`&#10;	* pale Rose ⭢ `editingBackgroundColor-lightMode-lightRose`&#10;	* White ⭢ `editingBackgroundColor-lightMode-white`&#10;	* snow White ⭢ `editingBackgroundColor-lightMode-snowWhite`&#10;	* WordPerfect ⭢ `editingBackgroundColor-lightMode-WordPerfect`&#10;	* Yellow ⭢ `editingBackgroundColor-lightMode-yellow`" StyleSettingsID="OT-editingBackgroundColor-lightMode"/>
       <outline text="Colored H1 to H5 headings (light mode)" StyleSettingsID="OT-colored-headings-lightMode"/>
       <outline text="Text selection takes accent color (Light mode)" StyleSettingsID="textSelection-takesAccentColor-lightMode"/>
-      <outline text="Color of the pills inside the Properties panel (light mode)" _note="	* Accent color ⭢ `OT-Light-pills-color-accent`&#10;	* Same as normal text ⭢ `OT-Light-pills-color-text`&#10;	* Same as links ⭢ `OT-Light-pills-color-link`&#10;	* Black ⭢ `OT-Light-pills-color-black`&#10;	* Grey ⭢ `OT-Light-pills-color-grey`&#10;	* White ⭢ `OT-Light-pills-color-white`&#10;	* Theme’s tone ⭢ `OT-Light-pills-color-theme`" StyleSettingsID="OT-Light-pillsColor"/>
       <outline text="Highlighting color (light mode)" _note="	* Default ⭢ `highlight-color-default`&#10;	* light Blue ⭢ `highlight-color-lightBlue`&#10;	* dark Blue ⭢ `highlight-color-strongBlue`&#10;	* light Green ⭢ `highlight-color-lightGreen`&#10;	* dark Green ⭢ `highlight-color-strongGreen`&#10;	* light Orange ⭢ `highlight-color-lightOrange`&#10;	* dark Orange ⭢ `highlight-color-strongOrange`&#10;	* light Rose ⭢ `highlight-color-lightRose`&#10;	* dark Rose ⭢ `highlight-color-strongRose`&#10;	* light Violet ⭢ `highlight-color-lightViolet`&#10;	* dark Violet ⭢ `highlight-color-strongViolet`&#10;	* classic Yellow ⭢ `highlight-color-lightYellow`&#10;	* dark Yellow ⭢ `highlight-color-strongYellow`" StyleSettingsID="OT-highlight-color-light"/>
+      <outline text="Color of the pills inside the Properties panel (light mode)" _note="	* Accent color ⭢ `OT-Light-pills-color-accent`&#10;	* Same as normal text ⭢ `OT-Light-pills-color-text`&#10;	* Same as links ⭢ `OT-Light-pills-color-link`&#10;	* Black ⭢ `OT-Light-pills-color-black`&#10;	* Grey ⭢ `OT-Light-pills-color-grey`&#10;	* White ⭢ `OT-Light-pills-color-white`&#10;	* Theme’s tone ⭢ `OT-Light-pills-color-theme`" StyleSettingsID="OT-Light-pillsColor"/>
     </outline>
     <outline text="DARK MODE colors" StyleSettingsID="OT-DARK-mode-settings">
       <outline text="General palette" _note="	* Default &lt; light mode ⭢ `darkPalette-default`&#10;	* Beige ⭢ `darkPalette-beige`&#10;	* Black ⭢ `darkPalette-black`&#10;	* Blue ⭢ `darkPalette-blue`&#10;	* metallic Blue ⭢ `darkPalette-metallicBlue`&#10;	* Brown ⭢ `darkPalette-brown`&#10;	* CRT 80s — Amber ⭢ `darkPalette-crt80s-amber`&#10;	* CRT 80s — Green ⭢ `darkPalette-crt80s-green`&#10;	* Green ⭢ `darkPalette-green`&#10;	* olive Green ⭢ `darkPalette-oliveGreen`&#10;	* Icy ⭢ `darkPalette-icy`&#10;	* Ideaverse ⭢ `darkPalette-ideaverse`&#10;	* Ivory ⭢ `darkPalette-ivory`&#10;	* LYT ⭢ `darkPalette-LYT`&#10;	* Obsidian ⭢ `darkPalette-OBSIDIAN`&#10;	* Parchment ⭢ `darkPalette-parchment`&#10;	* Red ⭢ `darkPalette-red`&#10;	* Solarized ⭢ `darkPalette-solarized`&#10;	* Stone ⭢ `darkPalette-stone`&#10;	* Sunny memos ⭢ `darkPalette-sunnyMemos`&#10;	* Violet ⭢ `darkPalette-violet`&#10;	* Yellow ⭢ `darkPalette-yellow`" StyleSettingsID="OT-darkPalette"/>
@@ -66,8 +66,8 @@
       <outline text="Notes background in Writing/Editing mode" _note="	* Default ⭢ `editingBackgroundColor-darkMode-default`&#10;	* Beige ⭢ `editingBackgroundColor-darkMode-beige`&#10;	* light Beige ⭢ `editingBackgroundColor-darkMode-lightBeige`&#10;	* Black ⭢ `editingBackgroundColor-darkMode-black`&#10;	* cobalt Blue ⭢ `editingBackgroundColor-darkMode-cobaltBlue`&#10;	* sky Blue ⭢ `editingBackgroundColor-darkMode-sky`&#10;	* pale Blue ⭢ `editingBackgroundColor-darkMode-AliceBlue`&#10;	* Green ⭢ `editingBackgroundColor-darkMode-green`&#10;	* light Green ⭢ `editingBackgroundColor-darkMode-lightGreen`&#10;	* light Grey ⭢ `editingBackgroundColor-darkMode-grey`&#10;	* Ivory ⭢ `editingBackgroundColor-darkMode-ivory`&#10;	* Red ⭢ `editingBackgroundColor-darkMode-red`&#10;	* light Red ⭢ `editingBackgroundColor-darkMode-lightRed`&#10;	* Rose ⭢ `editingBackgroundColor-darkMode-rose`&#10;	* pale Rose ⭢ `editingBackgroundColor-darkMode-lightRose`&#10;	* White ⭢ `editingBackgroundColor-darkMode-white`&#10;	* snow White ⭢ `editingBackgroundColor-darkMode-snowWhite`&#10;	* WordPerfect ⭢ `editingBackgroundColor-darkMode-WordPerfect`&#10;	* Yellow ⭢ `editingBackgroundColor-darkMode-yellow`" StyleSettingsID="OT-editingBackgroundColor-darkMode"/>
       <outline text="Colored H1 to H5 headings (dark mode)" StyleSettingsID="OT-colored-headings-darkMode"/>
       <outline text="Text selection takes accent color (Dark mode)" StyleSettingsID="textSelection-takesAccentColor-darkMode"/>
-      <outline text="Color of the pills inside the Properties panel" _note="	* Accent color ⭢ `OT-Dark-pills-color-accent`&#10;	* Same as normal text ⭢ `OT-Dark-pills-color-text`&#10;	* Same as links ⭢ `OT-Dark-pills-color-link`&#10;	* Black ⭢ `OT-Dark-pills-color-black`&#10;	* Grey ⭢ `OT-Dark-pills-color-grey`&#10;	* White ⭢ `OT-Dark-pills-color-white`&#10;	* Theme’s tone ⭢ `OT-Dark-pills-color-theme`" StyleSettingsID="OT-Dark-pillsColor"/>
       <outline text="Highlighting color (dark mode)" _note="	* Default ⭢ `highlight-color-dark-default`&#10;	* light Blue ⭢ `highlight-color-dark-lightBlue`&#10;	* dark Blue ⭢ `highlight-color-dark-strongBlue`&#10;	* light Green ⭢ `highlight-color-dark-lightGreen`&#10;	* dark Green ⭢ `highlight-color-dark-strongGreen`&#10;	* light Orange ⭢ `highlight-color-dark-lightOrange`&#10;	* dark Orange ⭢ `highlight-color-dark-strongOrange`&#10;	* light Pink ⭢ `highlight-color-dark-lightRose`&#10;	* dark Pink ⭢ `highlight-color-dark-strongRose`&#10;	* light Violet ⭢ `highlight-color-dark-lightViolet`&#10;	* dark Violet ⭢ `highlight-color-dark-strongViolet`&#10;	* classic Yellow ⭢ `highlight-color-dark-lightYellow`&#10;	* dark Yellow ⭢ `highlight-color-dark-strongYellow`" StyleSettingsID="OT-highlight-color-dark"/>
+      <outline text="Color of the pills inside the Properties panel" _note="	* Accent color ⭢ `OT-Dark-pills-color-accent`&#10;	* Same as normal text ⭢ `OT-Dark-pills-color-text`&#10;	* Same as links ⭢ `OT-Dark-pills-color-link`&#10;	* Black ⭢ `OT-Dark-pills-color-black`&#10;	* Grey ⭢ `OT-Dark-pills-color-grey`&#10;	* White ⭢ `OT-Dark-pills-color-white`&#10;	* Theme’s tone ⭢ `OT-Dark-pills-color-theme`" StyleSettingsID="OT-Dark-pillsColor"/>
     </outline>
     <outline text="READING mode" StyleSettingsID="OT-READING-mode-settings">
       <outline text="Body text size [px]" StyleSettingsID="OT-readingMode-text-size"/>
