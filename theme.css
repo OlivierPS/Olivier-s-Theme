@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-21
+	- when the relevant option is activated, H1 to H5 are colored also in editing mode
 2026-04-20
 	- tuned text sizes in the sidebar, particularly bases
 2026-04-11
@@ -10520,7 +10522,7 @@ body {
 .cm-s-obsidian .HyperMD-header-5,
 .cm-s-obsidian .HyperMD-header-6 {
 	font-family: var(--OT-edit-font-family);
-	color: inherit;
+	/*color: inherit;*/
 	font-weight: var(--font-bold);
 }
 
@@ -10670,6 +10672,35 @@ body {
 	padding-bottom: 0;
 	line-height: var(--OT-edit-line-height);
 }
+
+/* Colored headings in Live Preview
+   Only when the matching mode option is enabled.
+   Compact version, but with strict Light/Dark isolation. */
+
+   body:is(.theme-light.OT-colored-headings-lightMode,
+           .theme-dark.OT-colored-headings-darkMode)
+   .markdown-source-view.mod-cm6.is-live-preview
+   .cm-line:is(.HyperMD-header-1,
+               .HyperMD-header-2,
+               .HyperMD-header-3,
+               .HyperMD-header-4,
+               .HyperMD-header-5)
+   .cm-header:not(.cm-formatting-header) {
+	/* fallback neutre, on spécialise juste après */
+   }
+
+   /* Mapping niveaux → couleurs */
+   body:is(.theme-light.OT-colored-headings-lightMode,
+           .theme-dark.OT-colored-headings-darkMode)
+   .markdown-source-view.mod-cm6.is-live-preview
+   .cm-line.HyperMD-header-1 .cm-header:not(.cm-formatting-header) { color: var(--h1-color); }
+
+   body:is(.theme-light.OT-colored-headings-lightMode,
+           .theme-dark.OT-colored-headings-darkMode)
+   .markdown-source-view.mod-cm6.is-live-preview
+   .cm-line.HyperMD-header-2 .cm-header:not(.cm-formatting-header) { color: var(--h2-color); }
+
+   /* etc. jusqu’à h5… */
 /* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
 
 
