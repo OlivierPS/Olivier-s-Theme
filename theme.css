@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-04-22
 	- discreet shadow behind status bar
+	- corrected the hovering of status bar items for certain plugins
 2026-04-21
 	- when the relevant option is activated, H1 to H5 are colored also in editing mode
 2026-04-20
@@ -9800,105 +9801,272 @@ body.lists-horiz-generous {
 /* —————————————————————————————— ↑ lists ↑  —————————————————————————————— */
 
 
-/*	=== === === OpSpl50	—————————————————————————————— Status bar —————————————————————————————— */
+/*  === === ===  OpSpl50  ——————————————————————————————
+    Status bar (position, items, hover, plugins)
+    ---------------------------------------------------------
+    Grammaire d’états :
+    - normal           : bg  = --status-bar-background
+                         fg  = --status-bar-text-color
+    - normal + hover   : bg  = --color-accent-1
+                         fg  = --OT-color-on-accent-1
+    - (éventuel actif) : bg  = --color-accent-2
+                         fg  = --OT-color-on-accent-2
+   --------------------------------------------------------- */
 
-/* Positioning and elevation tokens */
+/*  Positioning / elevation tokens
+    Différenciés light/dark pour un flottant subtil
+   --------------------------------------------------------- */
+
 .theme-light {
-	--OT-status-bar-shadow-group:
-		0 1px 2px rgba(0, 0, 0, 0.04),
-		0 6px 18px rgba(0, 0, 0, 0.07);
+  --OT-status-bar-shadow-group:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 6px 18px rgba(0, 0, 0, 0.07);
 
-	--OT-status-bar-shadow-item:
-		0 1px 2px rgba(0, 0, 0, 0.06),
-		0 4px 10px rgba(0, 0, 0, 0.08);
+  --OT-status-bar-shadow-item:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 4px 10px rgba(0, 0, 0, 0.08);
 
-	--OT-status-bar-shadow-item-hover:
-		0 1px 2px rgba(0, 0, 0, 0.08),
-		0 6px 14px rgba(0, 0, 0, 0.12);
+  --OT-status-bar-shadow-item-hover:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
 .theme-dark {
-	--OT-status-bar-shadow-group:
-		0 2px 6px rgba(0, 0, 0, 0.18),
-		0 10px 24px rgba(0, 0, 0, 0.28);
+  --OT-status-bar-shadow-group:
+    0 2px 6px rgba(0, 0, 0, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.28);
 
-	--OT-status-bar-shadow-item:
-		0 1px 2px rgba(0, 0, 0, 0.18),
-		0 4px 12px rgba(0, 0, 0, 0.24);
+  --OT-status-bar-shadow-item:
+    0 1px 2px rgba(0, 0, 0, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.24);
 
-	--OT-status-bar-shadow-item-hover:
-		0 2px 4px rgba(0, 0, 0, 0.24),
-		0 8px 18px rgba(0, 0, 0, 0.34);
+  --OT-status-bar-shadow-item-hover:
+    0 2px 4px rgba(0, 0, 0, 0.24),
+    0 8px 18px rgba(0, 0, 0, 0.34);
 }
 
-/* Let’s position the status bar */
+/*  Root status bar
+    - flotte en bas à droite
+    - laisse les items porter le fond principal
+   --------------------------------------------------------- */
+
 .status-bar {
-	background:	none !important;
-	border:		none !important;
-	width:		auto !important;
-	padding:		0 !important;
-	display:		flex;
-	gap:			var(--size-2-2);
-	position:		fixed;
-	bottom:		var(--OT-status-bar-padding);
-	right:		var(--OT-status-bar-padding);
-	left:			auto;
-	z-index:		1000;
-	border-radius:	calc(var(--status-bar-radius) + 2px);
-	box-shadow:		var(--OT-status-bar-shadow-group);
+  background: none !important;
+  border: none !important;
+  width: auto !important;
+  padding: 0 !important;
+
+  display: flex;
+  gap: var(--size-2-2); /* espace horizontal entre les pills */
+
+  position: fixed;
+  bottom: var(--OT-status-bar-padding);
+  right: var(--OT-status-bar-padding);
+  left: auto;
+  z-index: 1000;
+
+  border-radius: calc(var(--status-bar-radius) + 2px);
+  box-shadow: var(--OT-status-bar-shadow-group);
 }
 
-/* Ombre de groupe derrière la status bar */
-.status-bar {
-	box-shadow:
-		0 2px 6px rgba(0, 0, 0, 0.10),
-		0 10px 28px rgba(0, 0, 0, 0.18);
-	border-radius: calc(var(--radius-m) + 2px);
-}
+/*  Dark mode : support flottant légèrement teinté + blur
+   --------------------------------------------------------- */
 
-/* Dark mode: subtle floating group support */
 .theme-dark .status-bar {
-	background-color: color-mix(in srgb, var(--background-secondary) 78%, transparent);
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
+  background-color: color-mix(in srgb, var(--background-secondary) 78%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Individual items remain the main visual carriers */
+/*  Status bar items
+    - chaque item est une pill cliquable avec son ombre
+   --------------------------------------------------------- */
+
 .status-bar-item {
-	background-color:	var(--status-bar-background);
-	color:				var(--status-bar-text-color);
-	border-radius:		var(--status-bar-radius);
-	padding:				var(--size-2-3) var(--size-2-3);
-	border:				var(--status-bar-border-width) solid var(--status-bar-border-color);
-	display:				flex;
-	align-items:			center;
-	box-shadow:			var(--OT-status-bar-shadow-item);
+  background-color: var(--status-bar-background);
+  color: var(--status-bar-text-color);
+  border-radius: var(--status-bar-radius);
+  padding: var(--size-2-3) var(--size-2-3);
+  border: var(--status-bar-border-width) solid var(--status-bar-border-color);
+
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+
+  box-shadow: var(--OT-status-bar-shadow-item);
 }
 
+/* Dernier item : pas de gap interne superflu */
 .status-bar-item:last-child {
-	gap: 0;
+  gap: 0;
 }
 
-/* Sync status icon: keep it aligned with the item color logic */
+/*  Sync status icon
+    - alignée sur la couleur de l’item, y compris quand “success”
+   --------------------------------------------------------- */
+
 .status-bar-item .sync-status-icon.mod-success {
-	color: inherit;
+  color: inherit;
 }
 
-/* Hover: same OT state grammar as elsewhere */
-.status-bar-item:hover,
-.status-bar-item.mod-clickable:hover {
-	color:				var(--OT-color-on-accent-1) !important;
-	background-color:	var(--color-accent-1);
-	box-shadow:			var(--OT-status-bar-shadow-item-hover);
+/*  Hover générique des items
+    - même logique que pour les boutons / nav : accent-1 + on-accent-1
+    - .mod-clickable reste couvert par les mêmes règles
+   --------------------------------------------------------- */
+
+@media (hover: hover) {
+  .status-bar-item:hover,
+  .status-bar-item.mod-clickable:hover {
+    color: var(--OT-color-on-accent-1) !important;
+    background-color: var(--color-accent-1);
+    box-shadow: var(--OT-status-bar-shadow-item-hover);
+  }
+
+  /* Icônes et sous-éléments suivent l’item, sans repeindre leur fond */
+  .status-bar-item:hover .mod-clickable,
+  .status-bar-item:hover .sync-status-icon,
+  .status-bar-item:hover .sync-status-icon.mod-success,
+  .status-bar-item.mod-clickable:hover .sync-status-icon,
+  .status-bar-item.mod-clickable:hover .sync-status-icon.mod-success {
+    color: inherit;
+    background-color: transparent;
+  }
 }
 
-.status-bar-item:hover .mod-clickable,
-.status-bar-item:hover .sync-status-icon,
-.status-bar-item:hover .sync-status-icon.mod-success,
-.status-bar-item.mod-clickable:hover .sync-status-icon,
-.status-bar-item.mod-clickable:hover .sync-status-icon.mod-success {
-	color: inherit;
-	background-color: transparent;
+/*  === Plugins spécifiques dans la status bar =========================
+    Note Status, Smart Connections, Plugin Update Tracker
+    Tous mappés sur la même grammaire d’états, via cascade.
+    -------------------------------------------------------------------- */
+
+/*  1. Note Status — badge dans la status bar
+    - override propre du pseudo-élément :before du plugin
+    - on utilise --status-accent comme variable locale
+   -------------------------------------------------------------------- */
+
+.status-badge--accent:before {
+       background: transparent;
+   }
+
+@media (hover: hover) {
+  .status-bar-item.plugin-note-status:hover {
+    /* accent-1 en hover */
+    --status-accent: var(--color-accent-1);
+    color: var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
+    box-shadow: var(--OT-status-bar-shadow-item-hover);
+  }
+
+  /* pastille interne : suit la variable locale du status */
+  .status-bar-item.plugin-note-status:hover .status-badge--accent::before {
+    background: var(--status-accent) !important;
+  }
+
+  /* Tous les descendants héritent de la couleur de l’item */
+  .status-bar-item.plugin-note-status:hover,
+  .status-bar-item.plugin-note-status:hover * {
+    color: inherit;
+  }
+
+  /* Wrappers internes restent transparents pour laisser voir la pill */
+  .status-bar-item.plugin-note-status:hover .status-badge-container,
+  .status-bar-item.plugin-note-status:hover .status-badge-item,
+  .status-bar-item.plugin-note-status:hover .status-bar-group-row,
+  .status-bar-item.plugin-note-status:hover .status-bar-group-container,
+  .status-bar-item.plugin-note-status:hover .status-bar-status-item {
+    background-color: inherit;
+    border-color: transparent;
+  }
+
+  /* SVG éventuels dans Note Status suivent currentColor */
+  .status-bar-item.plugin-note-status:hover .svg-icon,
+  .status-bar-item.plugin-note-status:hover .svg-icon * {
+    color: inherit;
+    fill: currentColor;
+    stroke: currentColor;
+  }
+}
+
+/*  2. Plugin Update Tracker — icône de prise avec chip numérique
+   -------------------------------------------------------------------- */
+
+@media (hover: hover) {
+  /* L’item porte le fond + la couleur de texte */
+  .status-bar-item.plugin-obsidian-plugin-update-tracker:hover {
+    color: var(--OT-color-on-accent-1);
+    background-color: var(--color-accent-1);
+    box-shadow: var(--OT-status-bar-shadow-item-hover);
+  }
+
+  /* Conteneur interne : hérite sans repeindre */
+  .status-bar-item.plugin-obsidian-plugin-update-tracker:hover
+  .plugin-update-tracker-icon {
+    color: inherit;
+    background-color: inherit;
+  }
+
+  /* Icône SVG : suit currentColor (fill + stroke) */
+  .status-bar-item.plugin-obsidian-plugin-update-tracker:hover
+  .plugin-update-tracker-icon-plug-icon {
+    color: inherit;
+    fill: currentColor;
+    stroke: currentColor;
+  }
+
+  /* Chip numérique : suit la couleur de texte */
+  .status-bar-item.plugin-obsidian-plugin-update-tracker:hover
+  .plugin-update-tracker-icon-chip {
+    color: inherit;
+    background-color: inherit;
+  }
+}
+
+/*  3. Smart Connections — “Smart Environment status”
+    - aligné sur la status bar, mais le plugin force son propre hover.
+    - on reprend la main proprement avec :has() + cascade.
+   -------------------------------------------------------------------- */
+
+/* Base : même palette que la status bar (état normal) */
+.smart-env-status-container {
+  color: var(--status-bar-text-color);
+  background-color: var(--status-bar-background);
+}
+
+/* Hover : tout passe par l’item status-bar, via :has() */
+@media (hover: hover) {
+
+  /* Reprendre la main sur la règle du plugin
+     (.status-bar-item:has(.smart-env-status-container):hover) */
+  .status-bar-item:has(.smart-env-status-container):hover {
+    background-color: var(--color-accent-1) !important;
+    color: var(--OT-color-on-accent-1) !important;
+    box-shadow: var(--OT-status-bar-shadow-item-hover);
+  }
+
+  /* Le lien interne remplit l’item, mais ne repeint pas par-dessus */
+  .status-bar-item:has(.smart-env-status-container):hover
+  .smart-env-status-container {
+    color: inherit;
+    background-color: transparent;
+  }
+
+  /* Tous les descendants héritent de la couleur de l’item */
+  .status-bar-item:has(.smart-env-status-container):hover
+  .smart-env-status-container *,
+  .status-bar-item:has(.smart-env-status-container):hover
+  .smart-env-status-container svg,
+  .status-bar-item:has(.smart-env-status-container):hover
+  .smart-env-status-container svg * {
+    color: inherit;
+    background-color: inherit;
+    fill: currentColor;
+    stroke: currentColor;
+  }
+
+  /* Indicator éventuel : suit la palette, personnalisable si besoin */
+  .status-bar-item:has(.smart-env-status-container):hover
+  .smart-env-status-indicator {
+    /* border-color: currentColor;  // optionnel, si tu veux un anneau */
+  }
 }
 
 /* -------------------- ↑ Status bar ↑ -------------------- */
@@ -12205,7 +12373,7 @@ body {
 */
 .status-badge-container {
 	background: var(--background-primary);
-	border-color: var(--background-modifier-border);
+	border:	none;
 	color: var(--text-normal);
 }
 
