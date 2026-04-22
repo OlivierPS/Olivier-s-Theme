@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-22
+	- discreet shadow behind status bar
 2026-04-21
 	- when the relevant option is activated, H1 to H5 are colored also in editing mode
 2026-04-20
@@ -9799,6 +9801,36 @@ body.lists-horiz-generous {
 
 
 /*	=== === === OpSpl50	—————————————————————————————— Status bar —————————————————————————————— */
+
+/* Positioning and elevation tokens */
+.theme-light {
+	--OT-status-bar-shadow-group:
+		0 1px 2px rgba(0, 0, 0, 0.04),
+		0 6px 18px rgba(0, 0, 0, 0.07);
+
+	--OT-status-bar-shadow-item:
+		0 1px 2px rgba(0, 0, 0, 0.06),
+		0 4px 10px rgba(0, 0, 0, 0.08);
+
+	--OT-status-bar-shadow-item-hover:
+		0 1px 2px rgba(0, 0, 0, 0.08),
+		0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.theme-dark {
+	--OT-status-bar-shadow-group:
+		0 2px 6px rgba(0, 0, 0, 0.18),
+		0 10px 24px rgba(0, 0, 0, 0.28);
+
+	--OT-status-bar-shadow-item:
+		0 1px 2px rgba(0, 0, 0, 0.18),
+		0 4px 12px rgba(0, 0, 0, 0.24);
+
+	--OT-status-bar-shadow-item-hover:
+		0 2px 4px rgba(0, 0, 0, 0.24),
+		0 8px 18px rgba(0, 0, 0, 0.34);
+}
+
 /* Let’s position the status bar */
 .status-bar {
 	background:	none !important;
@@ -9806,52 +9838,69 @@ body.lists-horiz-generous {
 	width:		auto !important;
 	padding:		0 !important;
 	display:		flex;
-	gap:			var(--size-2-2); /* Gaps between the items */
+	gap:			var(--size-2-2);
 	position:		fixed;
 	bottom:		var(--OT-status-bar-padding);
 	right:		var(--OT-status-bar-padding);
 	left:			auto;
 	z-index:		1000;
+	border-radius:	calc(var(--status-bar-radius) + 2px);
+	box-shadow:		var(--OT-status-bar-shadow-group);
 }
-/* Create a pill-style for each individual item */
+
+/* Ombre de groupe derrière la status bar */
+.status-bar {
+	box-shadow:
+		0 2px 6px rgba(0, 0, 0, 0.10),
+		0 10px 28px rgba(0, 0, 0, 0.18);
+	border-radius: calc(var(--radius-m) + 2px);
+}
+
+/* Dark mode: subtle floating group support */
+.theme-dark .status-bar {
+	background-color: color-mix(in srgb, var(--background-secondary) 78%, transparent);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+/* Individual items remain the main visual carriers */
 .status-bar-item {
-	background-color: var(--status-bar-background);
-	color:			var(--status-bar-text-color);
-	border-radius:	var(--status-bar-radius);
-	padding:			var(--size-2-3) var(--size-2-3);
-	border:			var(--status-bar-border-width) solid var(--status-bar-border-color);
-	display:			flex;
-	align-items:		center;
+	background-color:	var(--status-bar-background);
+	color:				var(--status-bar-text-color);
+	border-radius:		var(--status-bar-radius);
+	padding:				var(--size-2-3) var(--size-2-3);
+	border:				var(--status-bar-border-width) solid var(--status-bar-border-color);
+	display:				flex;
+	align-items:			center;
+	box-shadow:			var(--OT-status-bar-shadow-item);
 }
 
 .status-bar-item:last-child {
 	gap: 0;
 }
 
-/*	sync status icon: if it remains in the “text success” color, it’s not always visible. It’s more convenient to let it in the color of the other status bar items	*/
-/*.status-bar-item .sync-status-icon.mod-success {
-	color: var(--status-bar-text-color);
-}*/
-.status-bar-item:hover {
-    color:				var(--OT-color-on-accent-1);
-    background-color:	var(--color-accent-1);
-    & .mod-clickable {
-		color: 				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
-    }
-	& .sync-status-icon {
-		color: 				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
-	}
-	& .sync-status-icon.mod-success {
-		color: 				var(--OT-color-on-accent-1);
-		background-color:	var(--color-accent-1);
-	}
+/* Sync status icon: keep it aligned with the item color logic */
+.status-bar-item .sync-status-icon.mod-success {
+	color: inherit;
 }
+
+/* Hover: same OT state grammar as elsewhere */
+.status-bar-item:hover,
 .status-bar-item.mod-clickable:hover {
-		color: 				var(--OT-color-on-accent-1) !important;
-		background-color:	var(--color-accent-1);
+	color:				var(--OT-color-on-accent-1) !important;
+	background-color:	var(--color-accent-1);
+	box-shadow:			var(--OT-status-bar-shadow-item-hover);
 }
+
+.status-bar-item:hover .mod-clickable,
+.status-bar-item:hover .sync-status-icon,
+.status-bar-item:hover .sync-status-icon.mod-success,
+.status-bar-item.mod-clickable:hover .sync-status-icon,
+.status-bar-item.mod-clickable:hover .sync-status-icon.mod-success {
+	color: inherit;
+	background-color: transparent;
+}
+
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
 
