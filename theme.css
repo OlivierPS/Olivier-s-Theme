@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-04-22
 	- discreet shadow behind status bar
 	- corrected the hovering of status bar items for certain plugins
+	- some cosmetics on kanban boards (board view unofficial plugin)
 2026-04-21
 	- when the relevant option is activated, H1 to H5 are colored also in editing mode
 2026-04-20
@@ -9296,6 +9297,11 @@ body {
 .board-card .metadata-property-value,
 .board-card .metadata-property-value * {
 	font-size:	calc(0.9 * var(--OT-kanban-font-size));
+	border-bottom: none;
+}
+
+.board-card .metadata-input-longtext {
+	border-top: 1px solid var(--text-muted) !important;
 }
 
 .board-card {
@@ -9943,7 +9949,7 @@ body.lists-horiz-generous {
     - on utilise --status-accent comme variable locale
    -------------------------------------------------------------------- */
 
-.status-badge--accent:before {
+.status-badge--accent::before {
        background: transparent;
    }
 
