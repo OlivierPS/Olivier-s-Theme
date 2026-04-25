@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-25
+	- improved the logic of the line height in Edit modes
 2026-04-22
 	- discreet shadow behind status bar
 	- corrected the hovering of status bar items for certain plugins
@@ -511,15 +513,16 @@ body {
 	--OT-clickable-icon-in-header:					var(--icon-color);
 	--OT-clickable-icon-in-tab-header:				var(--icon-color);
 
-	--OT-edit-font:								var(--font-text);
-	--OT-edit-font-family:						var(--OT-edit-font),
-    												"Comic Sans MS",
-													var(--font-default);
-	--OT-edit-text-size:						17px;
-	--OT-edit-line-width:						44em;
-	--OT-edit-line-height:						1.5em;
-	--OT-edit-letter-spacing:					0em;
-	--OT-edit-table-text-percent:				90;
+	--OT-edit-font:									var(--font-text);
+	--OT-edit-font-family:							var(--OT-edit-font),
+	    												"Comic Sans MS",
+														var(--font-default);
+	--OT-edit-text-size:							17px;
+	--OT-edit-line-width:							44em;
+	--OT-edit-line-height:							1.5em;
+	--OT-effective-edit-line-height: 				var(--OT-edit-line-height);
+	--OT-edit-letter-spacing:						0em;
+	--OT-edit-table-text-percent:					90;
 
 	/* Live Preview Edit headings spacing – branché sur le système Preview */
 
@@ -5856,27 +5859,45 @@ body.edit-font-Verdana {
 }
 /*	------------------------- ↑ Edit mode fonte family and font size ↑ -------------------------	*/
 
+
 /*	=== === === OpSpl19	—————————————————————————————— basic typography of the EDIT mode —————————————————————————————— */
+/* Font size, line length and line height                                     */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------
+Interligne effectif du mode Edit
+------------------------- */
+
+/* Par défaut, on applique la valeur choisie dans les réglages. */
+body {
+	--OT-effective-edit-line-height: var(--OT-edit-line-height);
+}
+
+/* Si le toggle "natural" est ON, on laisse le navigateur / la fonte
+   déterminer un interligne normal. */
+body.OT-edit-natural-line-height {
+	--OT-effective-edit-line-height: normal;
+}
+
+/* -------------------------
+EDIT mode — largeur de ligne
+------------------------- */
+
+/* Readable Line Length ON : la largeur suit le réglage du thème */
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
-.markdown-source-view.mod-cm6.is-readable-line-width
-	.cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row):not(.HyperMD-header):not(.cm-html-embed) {
-	max-width:    var(--OT-edit-line-width);
-	font-size:    var(--OT-edit-text-size);
-	line-height:  var(--OT-edit-line-height);
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row):not(.HyperMD-header):not(.cm-html-embed) {
+	max-width: var(--OT-edit-line-width);
 }
-body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-sizer,
-body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-content,
-body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
-    line-height:	normal;
-}
-/* EDIT mode : largeur pleine quand readable line length est OFF, ou note wide-page */
+
+/* Note wide-page : on neutralise la largeur lisible */
 .markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-sizer,
 .markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-content,
-.markdown-source-view.mod-cm6.is-readable-line-width.wide-page
-.cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
+.markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
 	max-width: none !important;
 }
+
+/* Readable Line Length OFF, ou note wide-page : pleine largeur */
 .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer,
 .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-content,
 .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-line,
@@ -5886,16 +5907,47 @@ body.OT-edit-natural-line-height .markdown-source-view.mod-cm6 .cm-line:not(.cm-
 	max-width: none;
 }
 
-.markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
-	line-height:	1.2em;
+/* -------------------------
+EDIT mode — typographie générale
+------------------------- */
+
+/* Le scroller est un niveau structurant important dans app.css.
+   Il doit participer lui aussi à la logique d'interligne, sinon
+   le rendu varie selon l'état de Readable Line Length. */
+.markdown-source-view.mod-cm6 .cm-scroller {
+	font-size: var(--OT-edit-text-size);
+	letter-spacing: var(--OT-edit-letter-spacing);
+	line-height: var(--OT-effective-edit-line-height);
 }
 
-/*	Pour l’affichage du code du plugin Templater	*/
+/* Conteneurs principaux du contenu éditable */
+.markdown-source-view.mod-cm6 .cm-sizer,
+.markdown-source-view.mod-cm6 .cm-content {
+	font-size: var(--OT-edit-text-size);
+	line-height: var(--OT-effective-edit-line-height);
+}
+
+/* Lignes ordinaires */
+.markdown-source-view.mod-cm6 .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
+	letter-spacing: var(--OT-edit-letter-spacing);
+	line-height: var(--OT-effective-edit-line-height);
+}
+
+/* -------------------------
+Cas particuliers
+------------------------- */
+
+/* Lignes de tableaux : plus compactes et plus stables */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-table-row {
+	line-height: 1.2em;
+}
+
+/* Affichage des commandes Templater */
 .templater-command-bg.cm-line {
 	line-height: 1.1em !important;
 	font-size: var(--font-ui-small) !important;
 }
-
+/* ------------------------------ ↑ OpSpl19 ↑ -------------------- */
 
 /*	=== === === OpSpl21	 —————————————————————————————— Autres ajustements —————————————————————————————— */
 /*	L’espace au-dessus du texte dans les panneaux d’édition, en mode preview et en mode d’édition	*/
