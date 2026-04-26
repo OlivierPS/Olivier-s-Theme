@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-26
+	- tuning of some colors
 2026-04-25
 	- improved the logic of the line height in Edit modes
 2026-04-22
@@ -932,9 +934,9 @@ body {
 	--color-accent:		var(--color-accent-2)	!important;	/*	Afin que les plugins restent dans ma logique, autant que possible.	*/
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 95%);
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 80%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 80%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 96%);
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 88%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 88%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%);
 }
 
@@ -1011,9 +1013,9 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s), 10%) !important;
 
 	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), 100%, 7%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 100%, 14%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 100%, 14%);
 	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), 100%, 2%)	!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 100%, 8%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 100%, 8%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 65%);
 
 	--OT-button-OFF-bg:	hsl(var(--OT-theme-h), 40%, 30%);
@@ -1185,7 +1187,7 @@ body {
 	--color-accent-3:	hsl(var(--accent-h),	var(--accent-s),	90%)	!important;
 	--OT-color-on-accent-1:			hsl(var(--accent-h), 80%, 98%)		!important;
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 90%, 98%)		!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 25%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 25%);
 	--icon-color:	hsl(var(--OT-theme-h), var(--OT-theme-s), 30%);
 	--icon-color:	var(--color-base-100);
 }
@@ -1217,9 +1219,9 @@ body {
 	--accent-l:						70%		!important;
 
 	--OT-color-on-accent-1:			white		!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 93%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 93%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 80%, 98%)		!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 30%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 30%);
 }/*	↑ lightPalette-icy ↑	*/
 
 .theme-light.lightPalette-ideaverse {
@@ -1306,9 +1308,9 @@ body {
 	--color-accent-3:	hsl(var(--accent-h),	var(--accent-s),	90%)	!important;
 
 	--OT-color-on-accent-1:			white	!important;
-	--OT-color-muted-on-accent-1:	hsl(42, var(--accent-s), 40%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(42, var(--accent-s), 40%);
 	--OT-color-on-accent-2:			var(--color-base-100);
-	--OT-color-muted-on-accent-2:	hsl(42, 50%, 55%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(42, 50%, 55%);
 
 	--icon-color:		hsl(var(--accent-h), 70%, 44%);
 	--metadata-background:	hsl(var(--OT-theme-h), 100%, 95%);;
@@ -1400,9 +1402,9 @@ body {
 	--accent-s:								95%							!important;
 	--accent-l:													66%		!important;
 
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 70%, 85%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 70%, 85%);
 	--OT-color-on-accent-2:			hsl(9, 50%, 40%);
-	--OT-color-muted-on-accent-2:	var(--color-base-00)	!important;
+	--OT-color-muted-on-accent-2:	var(--color-base-00);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 30%, 30%);
 
 	--nav-item-color:	hsl(29, 100%, 48%);
@@ -1496,8 +1498,8 @@ body {
 	--accent-s:								66%							!important;
 	--accent-l:													66%		!important;
 
-	--OT-color-muted-on-accent-1:	hsl(37, 38%, 78%)	!important;
-	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 25%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(37, 38%, 78%);
+	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 25%);
 
 	--OT-table-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 93%);
 	--OT-table-alt-background:	hsl(var(--OT-theme-h), 80%, 90%);
@@ -1569,10 +1571,10 @@ body {
 	--accent-s:						93%	!important;
 	--color-accent-1:	hsl(var(--accent-h),	var(--accent-s),	40%)	!important;
 
-	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 98%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 92%)	!important;
-	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 98%)	!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 92%)	!important;
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 98%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 92%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 98%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 92%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 50%);
 } /*	↑ lightPalette-red	*/
 
@@ -1654,7 +1656,7 @@ body {
 	--OT-color-on-accent-1:			hsl(0, 0%, 100%);
 	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 9%, 83%);
 	--OT-color-on-accent-2:			hsl(0, 0%, 92%);
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 30%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 30%);
 	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), 6%, 28%);
 
 	--text-selection:	hsla(var(--OT-theme-h), var(--OT-theme-s), 40%, 0.2);
@@ -1689,8 +1691,8 @@ body {
 	--accent-l:												65%		!important;
 	--color-accent-3:	hsl(	var(--accent-h),	100%,	87%)	!important;
 
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 75%)	!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 35%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 75%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 35%);
 
 	--text-highlight-bg:	var(--stabilo-orange-foncé);
 	--OT-stabilo-text:	hsl(var(--OT-theme-h), 100%, 94%);
@@ -1733,7 +1735,7 @@ body {
 	/* On-accent / muted-on-accent */
 	/* --OT-color-on-accent-1: #fff !important; */
 	--OT-color-on-accent-2:        	var(--color-base-00);
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 82%) !important; /* #D9B4FA */
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 82%); /* #D9B4FA */
 	--OT-color-on-accent-3:        	hsl(var(--OT-theme-h), var(--OT-theme-s), 42%);           /* #6D0EC3 */
 
 	/* Stabilo */
@@ -1779,16 +1781,17 @@ body {
 	--OT-color-on-accent-1:			hsl(8, 73%, 26%);
 	--OT-color-on-accent-2:			hsl(0, 0%, 100%);
 	--OT-color-on-accent-3:			hsl(32, 81%, 29%) !important;
-	--OT-color-muted-on-accent-1:	hsl(35, 92%, 33%) !important;
+	--OT-color-muted-on-accent-1:	hsl(35, 92%, 33%);
 
 	/* STABILO */
 	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 65%);	/* #FFE655, near ref */
 
 	/* COMPONENTS */
-	--code-background:				hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);	/* #FEF3C7 */
-	--OT-button-OFF-bg:				hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);	/* #FEEFB6 */
-	--nav-item-color:				hsl(var(--OT-theme-h), var(--OT-theme-s), 30%);	/* #937603 approx */
-	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);	/* #FEEFB6 */
+	--code-background:				hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
+	--OT-button-OFF-bg:				hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);
+	--nav-item-color:				hsl(var(--OT-theme-h), var(--OT-theme-s), 28%);
+	--OT-nav-item-muted:			hsl(var(--OT-theme-h), var(--OT-theme-s), 44%);
+	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);
 	--OT-view-header-title-focus-color:		hsl(22, 80%, 37%);
 	--OT-view-header-title-no-focus-color:	hsl(35, 18%, 45%);
 
@@ -1834,9 +1837,9 @@ body {
 	--accent-l:				25% !important;
 
 	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 90%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
 	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%) !important;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 60%) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 60%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 65%);
 
 	--icon-color:		hsl(var(--accent-h), 100%, 70%);
@@ -1887,9 +1890,9 @@ body {
 
 	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 70%) !important;
 	--OT-color-on-accent-1:			black !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 20%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 20%);
 	--OT-color-on-accent-2:			black;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 20%) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 20%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h),	var(--OT-theme-s), 40%);
 
 	--icon-color:	hsl(var(--OT-theme-h),	0%,	60%);
@@ -1902,7 +1905,7 @@ body {
 	--color-accent-3:		hsl(259, 81%, 45%) !important;
 
 	--OT-color-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 100%) !important;
-	--OT-color-muted-on-accent-1:	hsl(251, 81%, 51%) !important;
+	--OT-color-muted-on-accent-1:	hsl(251, 81%, 51%);
 	--OT-color-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 100%) !important;
 	--OT-color-on-accent-3:	hsl(var(--OT-theme-h), var(--OT-theme-s), 100%) !important;
 
@@ -1943,7 +1946,7 @@ body {
 	--OT-color-on-accent-1:		hsl(var(--OT-theme-h), 77%, 96%) !important;
 	--OT-color-on-accent-2:		hsl(var(--OT-theme-h), 77%, 96%) !important;
 	--OT-color-on-accent-3:		hsl(var(--OT-theme-h), 87%, 85%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 11%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 11%);
 
 	--code-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 17%);
 	--background-modifier-form-field:	hsl(var(--OT-theme-h), var(--OT-theme-s), 10%);
@@ -1987,7 +1990,7 @@ body {
 	--color-accent-3:		hsl(var(--accent-h), var(--accent-s), 22%) !important;      /* #5C300A */
 
 	--OT-color-on-accent-1:		hsl(var(--OT-theme-h), 57%, 88%) !important;              /* #F1DCC9 */
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 22%) !important;  /* #5C300A */
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 22%);  /* #5C300A */
 	--OT-color-on-accent-2:		hsl(var(--OT-theme-h), 55%, 95%) !important;              /* #F8EDE4 */
 	--OT-color-on-accent-3:		hsl(var(--OT-theme-h), 63%, 85%) !important;              /* #F3D2B6 */
 
@@ -2033,11 +2036,11 @@ body {
 	--accent-l:																	30%	!important;
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	10%)	!important;
 
-	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 5%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%)	!important;
-	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%)	!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%)	!important;
-	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), var(--OT-theme-s), 50%)	!important;
+	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), var(--OT-theme-s), 5%);
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
+	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%);
+	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
 
 	--text-selection:	hsla(var(--accent-h), 80%, 40%, 0.3);
 
@@ -2153,7 +2156,7 @@ body {
 	--accent-l:					30% !important;
 
 	--OT-color-on-accent-2:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%) !important;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 70%);
 
 	--icon-color:			hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
 	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
@@ -2273,9 +2276,9 @@ body {
 
 
 	--OT-color-on-accent-1:			var(--color-base-00)			!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%, 16%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%, 16%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 100%, 94%)	!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 100%, 70%) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 100%, 70%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 65%);
 
 	/* ICONS & SELECTION */
@@ -2324,9 +2327,9 @@ body {
 	--accent-l:				61% !important;
 
 	--OT-color-on-accent-1:			var(--color-base-100);
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%);
 	--OT-color-on-accent-2:			var(--color-base-05);
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%);
 	--OT-color-on-accent-3:			var(--color-base-100);
 
 	--icon-color:					var(--color-accent-1);
@@ -2409,7 +2412,7 @@ body {
 
 	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 6%) !important;
 	--OT-color-on-accent-1:			hsl(var(--accent-h), 34%, 5%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 35%, 26%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 35%, 26%);
 
 	--text-selection:	hsla(var(--OT-theme-h), 80%, 33%, 0.25);
 	--text-highlight-bg:  var(--stabilo-vert-foncé);
@@ -2482,8 +2485,8 @@ body {
 	--OT-color-on-accent-2:	hsl(var(--OT-theme-h), 93%, 80%) !important;
 	--OT-color-on-accent-3:	hsl(var(--OT-theme-h), 70%, 60%) !important;
 
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 92%, 0%) !important;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 92%, 5%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 92%, 0%);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 92%, 5%);
 
 	--icon-color:			var(--OT-color-on-accent-3);
 	--OT-button-OFF-bg:		hsl(var(--OT-theme-h), 50%, 18%);
@@ -2552,7 +2555,7 @@ body {
 	--accent-s:												76%							!important;
 	--accent-l:																	52%		!important;
 
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 80%);
 
 	--text-selection:	hsla(var(--OT-theme-h), 80%, 40%, 0.3);
 
@@ -2590,7 +2593,7 @@ body {
 	--color-accent-3:	hsl(var(--OT-theme-h),	var(--accent-s),	18%)	!important;
 
 	--OT-color-on-accent-1:			hsl(0, 0%, 80%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 9%, 70%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 9%, 70%);
 	--OT-color-on-accent-2:			hsl(0, 0%, 80%)	!important;
 	--OT-color-on-accent-3:			hsl(var(--OT-theme-h), 9%, 75%) !important;
 
@@ -2689,9 +2692,9 @@ body {
 	--color-accent-3:						hsl(var(--accent-h), var(--accent-s), 20%) !important;
 
 	--OT-color-on-accent-1:					hsl(var(--accent-h), 55%, 86%) !important;
-	--OT-color-muted-on-accent-1:			hsl(var(--accent-h), 38%, 0%) !important;
+	--OT-color-muted-on-accent-1:			hsl(var(--accent-h), 38%, 0%);
 	--OT-color-on-accent-2:					hsl(var(--accent-h), 55%, 80%) !important;
-	--OT-color-muted-on-accent-2:			hsl(var(--accent-h), 38%, 0%) !important;
+	--OT-color-muted-on-accent-2:			hsl(var(--accent-h), 38%, 0%);
 	--OT-color-on-accent-3:					hsl(var(--accent-h), 50%, 66%) !important;
 
 	--OT-button-ON-bg:						var(--color-accent-1);
@@ -2739,7 +2742,7 @@ body {
 	--color-accent-2:						hsl(var(--accent-h), var(--accent-s), 34%) !important;
 	--color-accent-3:						hsl(var(--accent-h), var(--accent-s), 12%) !important;
 
-	--OT-color-muted-on-accent-1:			hsl(var(--accent-h), 97%, 25%) !important;
+	--OT-color-muted-on-accent-1:			hsl(var(--accent-h), 97%, 25%);
 	--OT-color-on-accent-2:					hsl(var(--accent-h), 100%, 95%) !important;
 }
 /*	↑	darkPalette-yellow	↑	*/
@@ -2763,7 +2766,7 @@ body {
 	--accent-s:			88%	!important;
 	--accent-l:			55%	!important;
 	--color-accent-3:				#CF0067	!important;
-	--OT-color-muted-on-accent-1:	#27E0F1	!important;
+	--OT-color-muted-on-accent-1:	#27E0F1;
 	--OT-color-on-accent-2:			#F7FEFE	!important;
 	--OT-color-on-accent-3:			#97F0F8	!important;
 }
@@ -2803,8 +2806,8 @@ body {
 	--accent-l:									45%		!important;
 	--color-accent-3:	hsl(	125,	100%,	92%)	!important;
 
-	--OT-color-muted-on-accent-1:	hsl(125, 40%, 76%)	!important;
-	--OT-color-muted-on-accent-2:	#306935	!important;
+	--OT-color-muted-on-accent-1:	hsl(125, 40%, 76%);
+	--OT-color-muted-on-accent-2:	#306935;
 	--OT-color-on-accent-3:			#00770A	!important;
 }
 .theme-light.lightPalette-blue.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
@@ -2824,17 +2827,17 @@ body {
 .theme-light.lightPalette-green.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-green.accentColor-lightMode-alternative-1 {
-	--color-accent-1:				#0E219A	!important;
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 33%)	!important;
 	--accent-h:						232	!important;
 	--accent-s:						83%	!important;
 	--accent-l:						63%	!important;
-	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	94%)	!important;
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 94%);
 
-	--OT-color-on-accent-1:			#EEF0FD	!important;
-	--OT-color-muted-on-accent-1:	#BFC7F9	!important;
-	--OT-color-on-accent-2:			#EEF0FD	!important;
-	--OT-color-muted-on-accent-2:	#DEE2FC	!important;
-	--OT-color-on-accent-3:			#0B1A7B	!important;
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 96%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 86%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 96%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 90%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 26%);
 }
 .theme-light.lightPalette-green.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), 65%, 0.25);
@@ -2859,9 +2862,9 @@ body {
 	--accent-l:						70%		!important;
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-l), 94% ) 	!important;
 
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-l), 30% ) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-l), 30% );
 	--OT-color-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 20% ) !important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 35% ) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 35% );
 
 	--OT-view-header-title-focus-color:	hsl(var(--accent-h), var(--accent-l), 40% );
 	--icon-color:						hsl(var(--accent-h), var(--accent-l), 40% );
@@ -2877,8 +2880,8 @@ body {
 	--color-accent-3:					#FFDDEC	!important;
 
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-l), 30% ) !important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 50% ) !important;
-	--OT-color-muted-on-accent-3:	hsl(var(--accent-h), var(--accent-l), 91% ) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-l), 50% );
+	--OT-color-muted-on-accent-3:	hsl(var(--accent-h), var(--accent-l), 91% );
 }
 .theme-light.lightPalette-icy.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
@@ -2914,9 +2917,9 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	97%)	!important;
 
 	--OT-color-on-accent-1:			var(--color-base-00);
-	--OT-color-muted-on-accent-1:	hsla(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-muted-on-accent-1:	hsla(var(--accent-h), var(--accent-s), 90%);
 	--OT-color-on-accent-2:			var(--color-base-20);
-	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 90%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 30%, 30%);
 
 	--icon-color:	var(--color-accent-1);
@@ -2934,9 +2937,9 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	94%)	!important;
 
 	--OT-color-on-accent-1:			var(--color-base-00);
-	--OT-color-muted-on-accent-1:	hsla(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-muted-on-accent-1:	hsla(var(--accent-h), var(--accent-s), 90%);
 	--OT-color-on-accent-2:			var(--color-base-00);
-	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 25%)	!important;
+	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 25%);
 }
 .theme-light.lightPalette-ivory.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), 90%, 70%, 0.2);
@@ -2955,9 +2958,9 @@ body {
 	--color-accent-3:	hsl(	var(--accent-h),	60%,	93%)	!important;
 
 	--OT-color-on-accent-1:			hsl(0, 0%, 100%);
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 40%, 80%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 40%, 80%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 40%, 15%);
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 55%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 50%, 35%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 40%, 15%);
 }
 .theme-light.lightPalette-lightBeige.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
@@ -2973,7 +2976,7 @@ body {
 	--OT-color-on-accent-1:			hsl(0, 0%, 100%);
 	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 40%, 80%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 40%, 15%);
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 55%);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 40%, 30%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 80%, 15%);
 
 	--dynamic-outline-background-hover:				var(--color-accent-2)!important;
@@ -3023,9 +3026,9 @@ body {
 	--color-accent-3:				#D6F5DD	!important;
 
 	--OT-color-on-accent-1:			#F1FCF4	!important;
-	--OT-color-muted-on-accent-1:	#D6F5DD	!important;
+	--OT-color-muted-on-accent-1:	#D6F5DD;
 	--OT-color-on-accent-2:			#F1FCF4	!important;
-	--OT-color-muted-on-accent-2:	#D6F5DD	!important;
+	--OT-color-muted-on-accent-2:	#D6F5DD;
 	--OT-color-on-accent-3:			#145223	!important;
 
 }
@@ -3040,9 +3043,9 @@ body {
 	--color-accent-3:				#F7E7B9	!important;
 
 	--OT-color-on-accent-1:			#72570C	!important;
-	--OT-color-muted-on-accent-1:	#A98012	!important;
+	--OT-color-muted-on-accent-1:	#A98012;
 	--OT-color-on-accent-2:			#FEFCF6	!important;
-	--OT-color-muted-on-accent-2:	#FDFAF0	!important;
+	--OT-color-muted-on-accent-2:	#FDFAF0;
 	--OT-color-on-accent-3:			hsl(44, 90%, 30%)	!important;
 
 	--OT-view-header-title-focus-color:	hsl(44, 90%, 45%);
@@ -3068,7 +3071,7 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	95%)	!important;
 
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 25%);
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 40%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 40%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 40%, 30%);
 	--icon-color:	var(--color-accent-1);
 }
@@ -3082,7 +3085,7 @@ body {
 	--accent-l:									   80%		!important;
 	--color-accent-3:				hsl(249, 80%, 96%)	!important;
 
-	--OT-color-muted-on-accent-1:	#FFC355	!important;
+	--OT-color-muted-on-accent-1:	#FFC355;
 	--OT-color-on-accent-2:			#fff	!important;
 	--OT-color-on-accent-3:			#0B00E6	!important;
 	--dynamic-outline-background-hover:				hsl(249, 80%, 90%)!important;
@@ -3100,7 +3103,7 @@ body {
 	--accent-l:						50%	!important;
 	--color-accent-3:				#DCE5EF	!important;
 
-	--OT-color-muted-on-accent-1:	#BACBDE	!important;
+	--OT-color-muted-on-accent-1:	#BACBDE;
 	--OT-color-on-accent-2:			#F3F6FA	!important;
 	--OT-color-on-accent-3:			#527CAD	!important;
 }
@@ -3113,7 +3116,7 @@ body {
 	--accent-l:						50%	!important;
 	--color-accent-3:				#E6DCEF	!important;
 	--OT-color-on-accent-1:			#F7F3FA	!important;
-	--OT-color-muted-on-accent-1:	#D6C5E4	!important;
+	--OT-color-muted-on-accent-1:	#D6C5E4;
 	--OT-color-on-accent-2:			#fff	!important;
 	--OT-color-on-accent-3:			#69428A	!important;
 }
@@ -3134,7 +3137,7 @@ body {
 	--color-accent-3:				hsl(217, 59%, 87%)	!important;
 
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 90%, 95%);
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 80%, 85%) !important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 80%, 85%);
 	--OT-color-on-accent-3:			hsl(217, 59%, 30%)	!important;
 }
 .theme-light.lightPalette-parchment.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
@@ -3147,7 +3150,7 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	90%)	!important;
 
 	--OT-color-on-accent-2:			#F8E4F6	!important;
-	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 80%)	!important;
+	--OT-color-muted-on-accent-2:	hsla(var(--accent-h), var(--accent-s), 80%);
 }
 .theme-light.lightPalette-parchment.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), 65%, 0.25);
@@ -3156,30 +3159,32 @@ body {
 .theme-light.lightPalette-pistachio.accentColor-lightMode-shade {
 }
 .theme-light.lightPalette-pistachio.accentColor-lightMode-alternative-1 {
-	--color-accent-1:				hsl( var(--accent-h),var(--accent-s), 35%) !important;
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 35%)	!important;
 	--accent-h:						318	!important;
 	--accent-s:						35%	!important;
 	--accent-l:						55%	!important;
-	--color-accent-3:				#EBD7E5	!important;
-	--OT-color-on-accent-1:			#FCF9FB	!important;
-	--OT-color-muted-on-accent-1:	#D5A9C8	!important;
-	--OT-color-on-accent-2:			#F1E2ED	!important;
-	--OT-color-on-accent-3:			#562949	!important;
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 90%);
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 98%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 80%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 94%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 82%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 26%);
 }
 .theme-light.lightPalette-pistachio.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), 50%, 65%, 0.25);
 }
 .theme-light.lightPalette-pistachio.accentColor-lightMode-alternative-2 {
 	--accent-h:						228	!important;
-	--accent-s:						45%	!important;
-	--accent-l:						50%	!important;
-	--color-accent-1:				hsl( var(--accent-h),var(--accent-s), 35%) !important;
-	/*--color-accent-2:				#314281	!important;*/
-	--color-accent-3:				hsl( var(--accent-h),var(--accent-s), 94%) !important;
-	--OT-color-on-accent-1:			#F8F9FD	!important;
-	--OT-color-muted-on-accent-1:	#D3D9EE	!important;
-	--OT-color-on-accent-2:			#EDEFF7	!important;
-	--OT-color-on-accent-3:			#314281	!important;
+	--accent-s:						52%	!important;
+	--accent-l:						60%	!important;
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 40%) !important;
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 94%);
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 98%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 88%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 95%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 82%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 35%);
 }
 .theme-light.lightPalette-pistachio.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), 70%, 65%, 0.25);
@@ -3190,28 +3195,30 @@ body {
 	--accent-h:						200	!important;
 	--accent-s:						81%	!important;
 	--accent-l:						63%	!important;
-	--color-accent-1:				#18A1E5	!important;
-	--color-accent-2:				#54BAED	!important;
-	--color-accent-3:				#CFECFA	!important;
-	--OT-color-on-accent-1:			#FDFEFF	!important;
-	--OT-color-muted-on-accent-1:	#08354B	!important;
-	--OT-color-on-accent-2:			#FDFEFF	!important;
-	--OT-color-on-accent-3:			#1380B7	!important;
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 50%);
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 63%);
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 90%);
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 99%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 80%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 99%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 88%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%);
 }
 .theme-light.lightPalette-red.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), 65%, 0.25);
 }
 .theme-light.lightPalette-red.accentColor-lightMode-alternative-2 {
-	--accent-h:						140 !important;
+	--accent-h:						140	!important;
 	--accent-s:						81%	!important;
 	--accent-l:						70%	!important;
-	--color-accent-1:				#17D555	!important;
-	--color-accent-2:				#73F09C	!important;
-	--color-accent-3:				#CFFADD	!important;
-	--OT-color-on-accent-1:			white	!important;
-	--OT-color-muted-on-accent-1:	#084B1E	!important;
-	--OT-color-on-accent-2:			#073D13	!important;
-	--OT-color-on-accent-3:			#0B6A2A	!important;
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 46%);
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 70%);
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 90%);
+	--OT-color-on-accent-1:			hsl(0, 0%, 100%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 16%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 15%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 35%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 23%);
 }
 .theme-light.lightPalette-red.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), 65%, 0.25);
@@ -3226,7 +3233,7 @@ body {
 	--color-accent-1:				var(--solarized-violet)	!important;
 	--color-accent-2:				var(--solarized-blue)	!important;
 	--color-accent-3:				var(--solarized-base2)	!important;
-	--OT-color-muted-on-accent-1:	var(--solarized-base03)	!important;
+	--OT-color-muted-on-accent-1:	var(--solarized-base03);
 	--OT-color-on-accent-2:         var(--solarized-base3)	!important;
 	--OT-color-on-accent-3:         var(--solarized-base03)	!important;
 }
@@ -3238,7 +3245,7 @@ body {
 	--color-accent-2:				var(--solarized-violet)	!important;
 	--color-accent-3:				var(--solarized-base2)	!important;
 	--OT-color-on-accent-1:			var(--solarized-base2)	!important;
-	--OT-color-muted-on-accent-1:	var(--solarized-base03)	!important;
+	--OT-color-muted-on-accent-1:	var(--solarized-base03);
 	--OT-color-on-accent-2:         var(--solarized-base3)	!important;
 	--OT-color-on-accent-3:         var(--solarized-base03)	!important;
 }
@@ -3254,7 +3261,7 @@ body {
 /*	--accent-l:													50%	!important;	*/
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	92%)	!important;
 
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 90%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 60%, 40%);
 
 }
@@ -3269,9 +3276,9 @@ body {
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	90%)	!important;
 
 	--OT-color-on-accent-1:	#fff	!important;
-	--OT-color-muted-on-accent-2:	#E5F0C3	!important;
 	--OT-color-on-accent-2:	#fff	!important;
-	--OT-color-on-accent-3:	#495816	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 80%);
+	--OT-color-on-accent-3:	hsl(var(--accent-h), var(--accent-s), 25%)	!important;
 }
 .theme-light.lightPalette-stone.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), 90%, var(--accent-l), 0.2);
@@ -3299,10 +3306,10 @@ body {
 	--color-accent-3:	hsl(153, 70%, 84%)	!important;
 
 	--OT-color-on-accent-1:				white;
-	--OT-color-muted-on-accent-1:		hsl(153, 50%, 90%);
-	--OT-color-on-accent-2:				#09442A;
-	--OT-color-muted-on-accent-2:		hsl(153, 75%, 30%);
-	--OT-color-on-accent-3:				hsl(153, 95%, 20%);
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 50%, 90%);
+	--OT-color-on-accent-2:				hsl(var(--accent-h), 75%, 15%);
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), 75%, 30%);
+	--OT-color-on-accent-3:				hsl(var(--accent-h), 95%, 20%);
 
 	--OT-view-header-title-focus-color:	#11804E;
 }
@@ -3316,11 +3323,16 @@ body {
 	--accent-h:						152	!important;
 	--accent-s:						87%	!important;
 	--accent-l:						58%	!important;
-	--color-accent-3:				#D4FCE9	!important;
-	--OT-color-on-accent-1:			white	!important;
-	--OT-color-muted-on-accent-1:	#35F198	!important;
-	--OT-color-on-accent-2:			var(--nav-item-color)	!important;
-	--OT-color-on-accent-3:			#076438	!important;
+
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 40%) !important;
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), var(--accent-l)) !important;
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 92%);
+
+	--OT-color-on-accent-1:			hsl(0, 0%, 100%);
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 80%);
+	--OT-color-on-accent-2:			var(--nav-item-color);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 30%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 21%);
 	--OT-button-ON-bg:				var(--color-accent-1);
 }
 .theme-light.lightPalette-violet.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
@@ -3330,12 +3342,14 @@ body {
 	--accent-h:						32	!important;
 	--accent-s:						87%	!important;
 	--accent-l:						58%	!important;
-	--color-accent-1:				#EF8815	!important;
-	--color-accent-2:				#F2A247	!important;
-	--color-accent-3:				#FBE1C4	!important;
-	--OT-color-muted-on-accent-1:	#94530A	!important;
-	--OT-color-on-accent-2:			#FDF1E4	!important;
-	--OT-color-on-accent-3:			#C36D0E	!important;
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 51%);
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 61%);
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 87%);
+
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 80%);
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 97%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 88%);
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 41%);
 }
 .theme-light.lightPalette-violet.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), 65%, 0.25);
@@ -3346,13 +3360,13 @@ body {
 	--accent-h:						231		!important;
 	--accent-s:						100%	!important;
 	--accent-l:						70%		!important;
-	--color-accent-1:				#0026EF!important;
-	--color-accent-2:				#677FFF	!important;
-	--color-accent-3:				#D9DEF2	!important;
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 47%) !important;
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 70%);
+	--color-accent-3:				hsl(var(--accent-h), 56%, 94%) !important;
 	--OT-color-on-accent-1:			var(--color-base-00);
-	--OT-color-muted-on-accent-1:	#CDD5FF;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 90%);
 	--OT-color-on-accent-2:			var(--color-base-00);
-	--OT-color-on-accent-3:			#0023DE;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 44%) !important;
 }
 .theme-light.lightPalette-yellow.accentColor-lightMode-alternative-1.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), 65%, 0.25);
@@ -3360,14 +3374,16 @@ body {
 .theme-light.lightPalette-yellow.accentColor-lightMode-alternative-2 {
 	--accent-h:						171		!important;
 	--accent-s:						100%	!important;
-	--accent-l:						70%		!important;
-	--color-accent-1:				#00BBA2	!important;
-	--color-accent-2:				#00EECF	!important;
-	--color-accent-3:				#C3F2E7	!important;
-	--OT-color-on-accent-1:			white	!important;
-	--OT-color-muted-on-accent-1:	#00FFDE	!important;
-	--OT-color-on-accent-2:			#005245	!important;
-	--OT-color-on-accent-3:			#005245	!important;
+	/*--accent-l:						80%		!important;*/
+	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 37%)	!important;
+	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 70%)	!important;
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 95%)	!important;
+
+	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 50%)	!important;
+	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 20%)	!important;
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 30%)	!important;
+	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 30%)	!important;
 }
 .theme-light.lightPalette-yellow.accentColor-lightMode-alternative-2.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--accent-h), var(--accent-s), 65%, 0.25);
@@ -3391,9 +3407,9 @@ body {
 	--color-accent-3:	hsla(var(--accent-h),	var(--accent-s),	10%)	!important;
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
-	--OT-color-muted-on-accent-1:	var(--color-base-100)	!important;
+	--OT-color-muted-on-accent-1:	var(--color-base-100);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
-	--OT-color-muted-on-accent-2:	var(--color-base-100)	!important;
+	--OT-color-muted-on-accent-2:	var(--color-base-100);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
 }
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
@@ -3411,9 +3427,9 @@ body {
 	--color-accent-3:	hsla(var(--accent-h),	var(--accent-s),	10%)	!important;
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 80%)	!important;
-	--OT-color-muted-on-accent-1:	var(--color-base-100)	!important;
+	--OT-color-muted-on-accent-1:	var(--color-base-100);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 80%)	!important;
-	--OT-color-muted-on-accent-2:	var(--color-base-100)	!important;
+	--OT-color-muted-on-accent-2:	var(--color-base-100);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 90%)	!important;
 }
 .theme-dark.lightPalette-lightBeige.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
@@ -3437,7 +3453,7 @@ body {
 	--color-accent-2:				hsl(var(--accent-h), 94%, 39%) !important;
 	--color-accent-3:				hsl(var(--accent-h), 95%, 26%) !important;
 	--OT-color-on-accent-1:			hsl(28, 89%, 95%) !important;
-	--OT-color-muted-on-accent-1:	hsl(27, 94%, 17%) !important;
+	--OT-color-muted-on-accent-1:	hsl(27, 94%, 17%);
 	--OT-color-on-accent-2:			hsl(28, 96%, 87%) !important;
 	--OT-color-on-accent-3:			hsl(28, 94%, 73%) !important;
 }
@@ -3494,9 +3510,9 @@ body {
 	--color-accent-2:					hsl(var(--accent-h), var(--accent-s), 45%) !important;
 	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 20%) !important;
 	--OT-color-on-accent-1:				hsl(var(--accent-h), var(--accent-s), 91%) !important;
-	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), var(--accent-s), 8%) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), var(--accent-s), 8%);
 	--OT-color-on-accent-2:				hsl(var(--accent-h), var(--accent-s), 85%) !important;
-	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), var(--accent-s), 70%) !important;
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), var(--accent-s), 70%);
 	--OT-color-on-accent-3:				hsl(var(--accent-h), var(--accent-s), 77%) !important;
 
 	--OT-button-ON-bg:					var(--color-accent-1);
@@ -3530,8 +3546,8 @@ body {
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 94%) !important;  /* #E0FCE7 */
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 76%) !important;  /* #ADDBB7 */
 
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 40%, 24%) !important;              /* #24542F */
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 40%, 24%) !important;              /* #24542F */
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 40%, 24%);              /* #24542F */
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), 40%, 24%);              /* #24542F */
 }
 
 .theme-dark.lightPalette-OBSIDIAN.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
@@ -3553,7 +3569,7 @@ body {
 	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 27%) !important;  /* #7B270D */
 
 	--OT-color-on-accent-1:			hsl(0, 0%, 100%) !important;                             /* #fff */
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 33%) !important;  /* #9A3110 */
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 33%);  /* #9A3110 */
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 70%) !important;  /* #F09275 */
 
 	--OT-button-ON-bg:				var(--color-accent-1);
@@ -3579,7 +3595,7 @@ body {
 	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 50%) !important;
 	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 20%) !important;
 	--OT-color-on-accent-1:			hsl(var(--accent-h), 100%, 90%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 66%, 80%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 66%, 80%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 66%, 87%) !important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 88%, 77%) !important;
 
@@ -3627,8 +3643,8 @@ body {
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)	!important;
 
 	--OT-color-on-accent-1:			hsl(var(--OT-theme-h), 10%, 20%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 35%)	!important;
-	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 10%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), 50%, 35%);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), 50%, 10%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 40%)	!important;
 }
 .theme-dark.lightPalette-icy.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
@@ -3648,7 +3664,7 @@ body {
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)		!important;
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s),	8%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%,				24%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%,				24%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s),	40%)	!important;
 }
 .theme-dark.lightPalette-ivory.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
@@ -3664,7 +3680,7 @@ body {
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	7%)		!important;
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s),	90%)	!important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%,				24%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 100%,				24%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s),	40%)	!important;
 }
 .theme-dark.lightPalette-ivory.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
@@ -3683,7 +3699,7 @@ body {
 	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 41%) !important;
 	--color-accent-3:				hsl(var(--accent-h), 50%, 20%) !important;
 	--OT-color-on-accent-1:			var(--color-base-05);
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 41%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 41%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 86%) !important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 73%) !important;
 }
@@ -3701,7 +3717,7 @@ body {
 	--color-accent-3:				hsl(var(--accent-h), 54%, 25%) !important;
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), 53%, 11%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 52%, 37%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 52%, 37%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 52%, 94%) !important;
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 52%, 87%) !important;
 }
@@ -3720,7 +3736,7 @@ body {
 	--color-accent-2:                          hsl(var(--accent-h), var(--accent-s), 28%) !important;
 	--color-accent-3:                          hsl(var(--accent-h), var(--accent-s), 25%) !important;
 	--OT-color-on-accent-1:                   hsl(var(--accent-h), var(--accent-s), 84%) !important;
-	--OT-color-muted-on-accent-1:             hsl(var(--accent-h), var(--accent-s), 11%) !important;
+	--OT-color-muted-on-accent-1:             hsl(var(--accent-h), var(--accent-s), 11%);
 	--OT-color-on-accent-2:                   hsl(var(--accent-h), var(--accent-s), 84%) !important;
 	--OT-button-ON-bg:                        hsl(var(--accent-h), var(--accent-s), 41%);
 	--OT-button-cta-background-normal:        hsl(var(--accent-h), var(--accent-s), 41%);
@@ -3737,7 +3753,7 @@ body {
 	--color-accent-1:                      hsl(var(--accent-h), var(--accent-s), 60%) !important;
 	--color-accent-2:                      hsl(var(--accent-h), var(--accent-s), 33%) !important;
 	--color-accent-3:                      hsl(var(--accent-h), var(--accent-s), 20%) !important;
-	--OT-color-muted-on-accent-1:          hsl(var(--accent-h), var(--accent-s), 30%) !important;
+	--OT-color-muted-on-accent-1:          hsl(var(--accent-h), var(--accent-s), 30%);
 	--OT-color-on-accent-2:                hsl(var(--accent-h), var(--accent-s), 90%) !important;
 	--OT-color-on-accent-3:                hsl(var(--accent-h), var(--accent-s), 80%) !important;
 }
@@ -3754,7 +3770,7 @@ body {
 	--color-accent-1:                      hsl(var(--accent-h), var(--accent-s), 63%) !important;
 	--color-accent-2:                      hsl(var(--accent-h), var(--accent-s), 40%) !important;
 	--color-accent-3:                      hsl(var(--accent-h), var(--accent-s), 10%) !important;
-	--OT-color-muted-on-accent-1:          hsl(var(--accent-h), var(--accent-s), 37%) !important;
+	--OT-color-muted-on-accent-1:          hsl(var(--accent-h), var(--accent-s), 37%);
 }
 .theme-dark.lightPalette-metallicBlue.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
 .theme-dark.darkPalette-metallicBlue.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
@@ -3798,7 +3814,7 @@ body {
 	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 34%) !important;
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), 67%, 91%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 71%, 20%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 71%, 20%);
 	--OT-color-on-accent-2:			hsl(var(--accent-h), 67%, 94%) !important;
 
 	--OT-button-ON-bg:				var(--color-accent-1);
@@ -3816,8 +3832,8 @@ body {
 
 	--OT-color-on-accent-1:				var(--color-base-100) !important;
 	--OT-color-on-accent-2:				var(--color-base-100) !important;
-	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), var(--accent-s), 80%) !important;  /* #144274 */
-	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), var(--accent-s), 80%) !important;  /* #144274 */
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), var(--accent-s), 80%);  /* #144274 */
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), var(--accent-s), 80%);  /* #144274 */
 
 	--OT-button-ON-bg:					var(--color-accent-1);
 }
@@ -3836,7 +3852,7 @@ body {
 	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 17%) !important;
 
 	--OT-color-on-accent-1:				hsl(var(--accent-h), 57%, 96%) !important;
-	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 52%, 24%) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 52%, 24%);
 	--OT-color-on-accent-2:				hsl(var(--accent-h), 55%, 90%) !important;
 	--OT-color-on-accent-3:				hsl(var(--accent-h), 55%, 79%) !important;
 }
@@ -3860,7 +3876,7 @@ body {
 	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 20%) !important;  /* #0A415C */
 
 	--OT-color-on-accent-1:				hsl(var(--accent-h), 71%, 10%) !important;             /* #05202E */
-	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%) !important;             /* #0F618A */
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%);             /* #0F618A */
 	--OT-color-on-accent-2:				hsl(var(--accent-h), 67%, 87%) !important;             /* #C5E5F5 */
 	--OT-color-on-accent-3:				hsl(var(--accent-h), 83%, 94%) !important;             /* #E0F3FC */
 
@@ -3883,7 +3899,7 @@ body {
 	--OT-color-on-accent-1:				hsl(var(--accent-h), var(--accent-s), 10%) !important;                          /* #FEDAE0 */
 	--OT-color-on-accent-2:				hsl(351, 96%, 92%) !important;                          /* #FEDAE0 */
 	--OT-color-on-accent-3:				hsl(257, 73%, 85%) !important;                          /* #D6C6F4 */
-	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%) !important;             /* #0F618A */
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%);             /* #0F618A */
 
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	hsl(var(--accent-h), 93%, 26%) !important;             /* #1A7F05 */
@@ -3902,7 +3918,7 @@ body {
 	--color-accent-2:					var(--solarized-base00)	!important;
 	--color-accent-3:					var(--solarized-base02)	!important;
 	--OT-color-on-accent-1:				var(--solarized-base2)	!important;
-	--OT-color-muted-on-accent-1:		var(--solarized-base02)	!important;
+	--OT-color-muted-on-accent-1:		var(--solarized-base02);
 	--OT-color-on-accent-2:				var(--solarized-base03)	!important;
 	--OT-color-on-accent-3:				var(--solarized-base2)	!important;
 	--OT-button-cta-text-normal:		var(--solarized-base03);
@@ -3917,7 +3933,7 @@ body {
 	--color-accent-2:						var(--solarized-blue)	!important;
 	--color-accent-3:						var(--solarized-blue)	!important;
 	--OT-color-on-accent-1:					var(--solarized-base03)	!important;
-	--OT-color-muted-on-accent-1:			var(--solarized-base01)	!important;
+	--OT-color-muted-on-accent-1:			var(--solarized-base01);
 	--OT-color-on-accent-2:					var(--solarized-base02)	!important;
 	--OT-color-on-accent-3:					var(--solarized-base2)	!important;
 	--OT-button-cta-background-normal:		var(--solarized-cyan);
@@ -3931,7 +3947,7 @@ body {
 	--color-accent-2:						var(--solarized-yellow)	!important;
 	--color-accent-3:						var(--solarized-yellow)	!important;
 	--OT-color-on-accent-1:					var(--solarized-base03)	!important;
-	--OT-color-muted-on-accent-1:			var(--solarized-base01)	!important;
+	--OT-color-muted-on-accent-1:			var(--solarized-base01);
 	--OT-color-on-accent-2:					var(--solarized-base02)	!important;
 	--OT-color-on-accent-3:					var(--solarized-base2)	!important;
 	--OT-button-cta-background-normal:		var(--solarized-orange);
@@ -3948,7 +3964,7 @@ body {
 	--accent-l:							30%	!important;
 	--color-accent-3:				hsl(var(--accent-h),	var(--accent-s),	10%)	!important;
 
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 15%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 15%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--accent-s), 50%)	!important;
 }
 .theme-dark.lightPalette-stone.darkPalette-default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
@@ -3963,7 +3979,7 @@ body {
 	--accent-l:						30%	!important;
 	--color-accent-3:	hsl(var(--accent-h), var(--accent-s),	10%)	!important;
 
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%)	!important;
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 23%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), var(--OT-theme-s), 50%)	!important;
 }
 .theme-dark.lightPalette-stone.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
@@ -3981,7 +3997,7 @@ body {
 	--color-accent-3:					hsl(var(--accent-h), var(--accent-s), 20%) !important;
 
 	--OT-color-on-accent-1:				hsl(var(--accent-h), 71%, 10%) !important;
-	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 30%);
 	--OT-color-on-accent-2:				hsl(var(--accent-h), 67%, 87%) !important;
 	--OT-color-on-accent-3:				hsl(var(--accent-h), 83%, 94%) !important;
 }
@@ -4000,7 +4016,7 @@ body {
 
 	--OT-color-on-accent-1:				hsl(var(--accent-h), 70%, 80%) !important;
 	--OT-color-on-accent-2:				hsl(var(--accent-h), 70%, 80%) !important;
-	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), 50%, 60%) !important;
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), 50%, 60%);
 }
 .theme-dark.lightPalette-sunnyMemos.darkPalette-default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
 .theme-dark.darkPalette-sunnyMemos.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
@@ -4016,7 +4032,7 @@ body {
 	--color-accent-2:					#009920	!important;
 	--color-accent-3:					#00881C	!important;
 	--OT-color-on-accent-1:				#00330A	!important;
-	--OT-color-muted-on-accent-1:		#007718	!important;
+	--OT-color-muted-on-accent-1:		#007718;
 	--OT-button-ON-bg:					var(--color-accent-1);
 	--OT-button-cta-background-normal:	#00BB26;
 }
@@ -4041,7 +4057,7 @@ body {
 	--color-accent-2:				#F2B531	!important;
 	--color-accent-3:				#A2720A	!important;
 	--OT-color-on-accent-1:			var(--color-base-20)	!important;
-	--OT-color-muted-on-accent-1:	#C2880C	!important;
+	--OT-color-muted-on-accent-1:	#C2880C;
 	--OT-color-on-accent-2:			var(--color-base-20)	!important;
 }
 
@@ -4091,8 +4107,8 @@ body {
 
 	--OT-color-on-accent-1:				hsl(var(--accent-h), 80%, 85%) !important;
 	--OT-color-on-accent-2:				hsl(var(--accent-h), 80%, 80%) !important;
-	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 10%) !important;
-	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), 80%, 64%) !important;
+	--OT-color-muted-on-accent-1:		hsl(var(--accent-h), 80%, 10%);
+	--OT-color-muted-on-accent-2:		hsl(var(--accent-h), 80%, 64%);
 
 	--icon-color:						hsl(var(--accent-h), 100%, 65%);
 	--OT-button-ON-bg:					var(--color-accent-1);
@@ -4112,13 +4128,13 @@ body {
 
 	--OT-color-on-accent-1:			hsl(var(--accent-h), var(--accent-s), 80%) !important;
 	--OT-color-on-accent-2:			hsl(var(--accent-h), var(--accent-s), 80%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 6%) !important;
-	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 66%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 6%);
+	--OT-color-muted-on-accent-2:	hsl(var(--accent-h), var(--accent-s), 66%);
 
 	--icon-color:						hsl(var(--accent-h), 100%, 65%);
 /*
 	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 25%) !important;
-	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 28%) !important;
+	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), var(--accent-s), 28%);
 
 	--OT-button-ON-bg:				var(--color-accent-1);
 */
@@ -7458,6 +7474,96 @@ body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace
     color: var(--OT-color-on-accent-1) !important;
     background-color: var(--color-accent-1) !important;
   }
+}
+
+/* =========================================================
+   Workspace tab headers — l’inner porte la couleur,
+   l’icône hérite toujours, au repos comme au survol
+   ========================================================= */
+
+/* 1. Le porteur visuel */
+.workspace-tab-header .workspace-tab-header-inner {
+	color: inherit;
+}
+
+/* 2. Tous les enfants héritent réellement */
+.workspace-tab-header .workspace-tab-header-inner-title,
+.workspace-tab-header .workspace-tab-header-inner-icon,
+.workspace-tab-header .workspace-tab-header-status-icon,
+.workspace-tab-header .workspace-tab-header-inner-close-button,
+.workspace-tab-header .workspace-tab-header-inner-icon .svg-icon,
+.workspace-tab-header .workspace-tab-header-status-icon .svg-icon,
+.workspace-tab-header .workspace-tab-header-inner-close-button .svg-icon {
+	color: inherit !important;
+	background-color: transparent !important;
+}
+
+/* 3. Les SVG suivent currentColor */
+.workspace-tab-header .workspace-tab-header-inner-icon .svg-icon,
+.workspace-tab-header .workspace-tab-header-status-icon .svg-icon,
+.workspace-tab-header .workspace-tab-header-inner-close-button .svg-icon {
+	stroke: currentColor !important;
+	fill: none !important;
+	opacity: 1;
+}
+
+/* 4. Etat normal root */
+.mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+	color: var(--text-normal) !important;
+	background-color: transparent !important;
+}
+
+/* 5. Etat hover root : accent-1 */
+@media (hover: hover) {
+	.mod-root .workspace-tab-header:hover .workspace-tab-header-inner,
+	.mod-root .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+	.mod-root .workspace-tab-header.is-active:hover .workspace-tab-header-inner {
+		color: var(--OT-color-on-accent-1) !important;
+		background-color: var(--color-accent-1) !important;
+	}
+}
+
+/* 6. Etat actif root : accent-2 */
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
+	color: var(--OT-color-on-accent-2) !important;
+	background-color: var(--color-accent-2) !important;
+}
+
+/* 7. Si pane actif + fenêtre focus + onglet actif :
+      garder ta logique éventuelle de titre focus */
+body.is-focused .mod-root .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner {
+	color: var(--OT-color-on-accent-2) !important;
+}
+
+/* 8. Empêcher les recolorations natives directes sur l’icône */
+body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace-tab-header-inner-icon,
+body.is-focused .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+body.is-focused .mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.workspace-tab-header .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon,
+.workspace-tab-header:hover .workspace-tab-header-inner-icon {
+	color: inherit !important;
+}
+
+/* 9. Même chose pour les sidebars, si tu veux la même matrice */
+.mod-left-split .workspace-tab-header .workspace-tab-header-inner,
+.mod-right-split .workspace-tab-header .workspace-tab-header-inner {
+	color: var(--text-normal) !important;
+}
+
+.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner,
+.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner {
+	color: var(--OT-color-on-accent-2) !important;
+	background-color: var(--color-accent-2) !important;
+}
+
+@media (hover: hover) {
+	.mod-left-split .workspace-tab-header:hover .workspace-tab-header-inner,
+	.mod-right-split .workspace-tab-header:hover .workspace-tab-header-inner,
+	.mod-left-split .workspace-tab-header.is-active:hover .workspace-tab-header-inner,
+	.mod-right-split .workspace-tab-header.is-active:hover .workspace-tab-header-inner {
+		color: var(--OT-color-on-accent-1) !important;
+		background-color: var(--color-accent-1) !important;
+	}
 }
 
 /* -----------------------------------------
