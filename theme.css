@@ -48,6 +48,10 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-27
+	- tweaked font and font sizes in bases, especially in transcluded bases
+	- corrected hovering of the active tab
+	- tuned down colors in the light yellow palette, alternative accent color 2
 2026-04-26
 	- tuning of some colors
 2026-04-25
@@ -3373,7 +3377,7 @@ body {
 }
 .theme-light.lightPalette-yellow.accentColor-lightMode-alternative-2 {
 	--accent-h:						171		!important;
-	--accent-s:						100%	!important;
+	--accent-s:						80%	!important;
 	/*--accent-l:						80%		!important;*/
 	--color-accent-1:				hsl(var(--accent-h), var(--accent-s), 37%)	!important;
 	--color-accent-2:				hsl(var(--accent-h), var(--accent-s), 70%)	!important;
@@ -6793,39 +6797,52 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 /* === === === OpSpl27 ————————————————————————— Bases ————————————————————————— */
 
+/* Bases : valeurs metadata sur la typo de la base */
+.bases-view {
+	--metadata-input-font: var(--font-text);
+	--metadata-input-font-size: var(--bases-table-font-size);
+}
+
+.bases-view .metadata-property-value,
+.bases-view .metadata-property-value .metadata-input-text,
+.bases-view .metadata-property-value .metadata-input-number,
+.bases-view .metadata-property-value .metadata-link-inner,
+.bases-view .metadata-property-value .multi-select-container,
+.bases-view .metadata-property-value .multi-select-input,
+.bases-view .metadata-property-value input {
+	font-family:	inherit;
+	font-size:		inherit;
+	line-height:	inherit;
+}
+
 /* -------------------- vue “list” -------------------- */
-.bases-view[data-view-type="list"] {
+/* Bases list embarquées dans le markdown / transclues */
+.workspace-leaf-content[data-type="markdown"] .bases-view[data-view-type="list"] {
 	--bases-table-font-size: var(--OT-readingMode-text-size);
 }
 
-.workspace-leaf .bases-view[data-view-type="list"] {
-	/*--bases-table-font-size: var(--OT-UI-font-size);*/
-}
-.workspace-leaf .bases-rendered-value {
-	font-size:	var(--OT-UI-font-size) !important;
+/* Bases list ouvertes dans un panneau Bases */
+.workspace-leaf-content[data-type="bases"] .bases-view[data-view-type="list"] {
+	--bases-table-font-size: var(--OT-UI-font-size);
 }
 
 .bases-list-item-properties {
-	line-height: 1.2em ;
+	line-height: 1.2em;
 }
 
 /* Vue list : headings de groupes en mode pill, sans bord explicite */
 .bases-view[data-view-type="list"] .bases-group-heading {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.35rem;
-	padding: 0rem 0.75rem;
-	border: 1px solid var(--status-bar-border-color);
-	border-radius: 999px;
-	/*background-color: color-mix(in srgb,
-    var(--background-primary) 70%,
-    var(--color-accent-2) 30%
-	);*/
-	color: var(--OT-color-on-accent-3);
-	background-color: var(--color-accent-3);
-	font-weight: 500;
+	display:			inline-flex;
+	align-items:		center;
+	gap:				0.35rem;
+	padding:			0rem 0.75rem;
+	border:				1px solid var(--status-bar-border-color);
+	border-radius:		999px;
+	color:				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
+	font-weight:		500;
+	line-height:		1.2;
 }
-
 /* -------------------- Toolbar text-icon buttons (Bases, Query toolbar) -------------------- */
 
 /* 1. Bouton porteur du fond, labels/icônes transparents par défaut — état normal: accent‑3 */
@@ -7195,12 +7212,12 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color: inherit;
 }
 
-/* Onglet actif du pane focusé */
-.is-focused .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
+/* Onglet actif du pane focus : seulement hors hover */
+.is-focused .workspace-tab-header.is-active.mod-active:not(:hover) .workspace-tab-header-inner-title {
   color: var(--OT-view-header-title-focus-color);
 }
 
-.is-focused .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-icon {
+.is-focused .workspace-tab-header.is-active.mod-active:not(:hover) .workspace-tab-header-inner-icon {
   color: var(--OT-color-on-accent-2);
 }
 
@@ -7364,6 +7381,31 @@ body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace
     .workspace-tab-header-status-icon,
     .workspace-tab-header-inner-close-button
   ) .svg-icon {
+    color: inherit !important;
+    stroke: currentColor !important;
+    fill: none !important;
+  }
+}
+
+@media (hover: hover) {
+  body.is-focused .mod-root .workspace-tab-header.is-active.mod-active:hover .workspace-tab-header-inner {
+    background-color: var(--color-accent-1) !important;
+    color: var(--OT-color-on-accent-1) !important;
+  }
+
+  body.is-focused .mod-root .workspace-tab-header.is-active.mod-active:hover
+    :is(.workspace-tab-header-inner-title,
+        .workspace-tab-header-inner-icon,
+        .workspace-tab-header-status-icon,
+        .workspace-tab-header-inner-close-button) {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
+
+  body.is-focused .mod-root .workspace-tab-header.is-active.mod-active:hover
+    :is(.workspace-tab-header-inner-icon,
+        .workspace-tab-header-status-icon,
+        .workspace-tab-header-inner-close-button) .svg-icon {
     color: inherit !important;
     stroke: currentColor !important;
     fill: none !important;
