@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-04-28
+	- corrected the color of the current active tab
 2026-04-27
 	- tweaked font and font sizes in bases, especially in transcluded bases
 	- corrected hovering of the active tab
@@ -1388,15 +1390,15 @@ body {
 /*	----------------------------------------------	*/
 .theme-light.lightPalette-Orange {
 		/*	--OT-theme-reference-color:	orange;	*/
-	--OT-theme-h:		39;
-	--OT-theme-s:		100%;
-	--color-base-00:	#FDF6E8;
-	--color-base-05:	#FFD7B8;
-	--color-base-20:	#FFE1C9;
-	--color-base-35:	hsl(var(--OT-theme-h), 80%, 50%);
-	--color-base-40:	#FC6E00;
-	--color-base-50:	#F0B36A;
-	--text-muted:		hsl(29, 50%, 55%);
+	--OT-theme-h:		26;
+	--OT-theme-s:		84%;
+	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 95%);
+	--color-base-05:	hsl(var(--OT-theme-h), var(--OT-theme-s), 86.078%);
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 89.412%);
+	--color-base-35:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
+	--color-base-40:	hsl(var(--OT-theme-h), var(--OT-theme-s), 49.412%);
+	--color-base-50:	hsl(var(--OT-theme-h), var(--OT-theme-s), 67.843%);
+	--text-muted:		hsl(var(--OT-theme-h), 50%, 55%);
 	--color-base-100:	hsl(203, 30%, 26%);
 
 	--link-color:		hsl(113, 45%, 40%);
@@ -1407,8 +1409,8 @@ body {
 	--accent-l:													66%		!important;
 
 	--OT-color-muted-on-accent-1:	hsl(var(--accent-h), 70%, 85%);
-	--OT-color-on-accent-2:			hsl(9, 50%, 40%);
-	--OT-color-muted-on-accent-2:	var(--color-base-00);
+	--OT-color-on-accent-2:			var(--color-base-00);
+	--OT-color-muted-on-accent-2:	hsl(var(--OT-theme-h), var(--OT-theme-s), 50%);
 	--OT-color-on-accent-3:			hsl(var(--accent-h), 30%, 30%);
 
 	--nav-item-color:	hsl(29, 100%, 48%);
@@ -7218,7 +7220,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 .is-focused .workspace-tab-header.is-active.mod-active:not(:hover) .workspace-tab-header-inner-icon {
-  color: var(--OT-color-on-accent-2);
+  /*color: var(--OT-color-on-accent-2);*/
 }
 
 /* Les enfants suivent la couleur de l’inner */
@@ -7229,7 +7231,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   .workspace-tab-header-inner-close-button,
   .metadata-menu.fileclass-icon
 ) {
-  color: inherit !important;
+  /*color: inherit !important;*/
   background-color: transparent !important;
 }
 
@@ -7536,7 +7538,7 @@ body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace
 .workspace-tab-header .workspace-tab-header-inner-icon .svg-icon,
 .workspace-tab-header .workspace-tab-header-status-icon .svg-icon,
 .workspace-tab-header .workspace-tab-header-inner-close-button .svg-icon {
-	color: inherit !important;
+	/*color: inherit !important;*/
 	background-color: transparent !important;
 }
 
@@ -7567,8 +7569,9 @@ body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace
 
 /* 6. Etat actif root : accent-2 */
 .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
-	color: var(--OT-color-on-accent-2) !important;
+	/*		color: var(--OT-color-on-accent-2) !important;
 	background-color: var(--color-accent-2) !important;
+	*/
 }
 
 /* 7. Si pane actif + fenêtre focus + onglet actif :
