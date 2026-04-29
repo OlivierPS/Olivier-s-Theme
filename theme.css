@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-04-29
 	- added the choice between three types of horizontal dividers
+	- corrected a problem with the color of icons in the tab content of the active tab with focus
 2026-04-28
 	- corrected the color of the current active tab
 2026-04-27
@@ -7213,7 +7214,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 .workspace-tab-header-status-icon.mod-pinned {
-  color: inherit;
+  /*color: inherit;*/
 }
 
 /* Onglet actif du pane focus : seulement hors hover */
@@ -7284,7 +7285,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 /* Réconciliation avec app.css : on fait porter la couleur par l’inner */
 body.is-focused .workspace-tab-header-container .workspace-tab-header {
-  color: inherit;
+  /*color: inherit;*/
 }
 
 body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace-tab-header-inner {
@@ -7297,7 +7298,7 @@ body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace
   .workspace-tab-header-status-icon,
   .workspace-tab-header-inner-close-button
 ) {
-  color: inherit;
+	color:	var(--tab-text-color-focused-active-current);
 }
 
 /* -----------------------------------------
