@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-05-02
 	- modified the horizontal dividers
+	- fixed a regression and improved code for horizontal dividers
 2026-04-29
 	- added the choice between three types of horizontal dividers
 	- corrected a problem with the color of icons in the tab content of the active tab with focus
@@ -9295,21 +9296,24 @@ body.headings-scaling-major-third {
 /* -------------------- ↑ Headings to my taste ↑ -------------------- */
 
 
-/*	=== === === OpSpl42	—————————————————————————————— Horizontal Rule ——————————————————————————————
-   Séparateurs typographiques pour les règles Markdown (---)
+/*	=== === === OpSpl42	—————————————————————————————— Horizontal Rule —————————————————————————————— */
+/* ========================================================================== */
+/* Séparateurs typographiques pour les règles Markdown (---)				*/
+/* ========================================================================== */
+/* --------------------------------------------------------------------------
+   0. Variables de base
 -------------------------------------------------------------------------- */
-/* -------------------- ↓ horizontal rule ↓ -------------------- */
 
 body {
-	--hr-color: var(--text-normal);
+	--hr-color:				var(--text-normal);
 
 	/* Branché sur la grammaire verticale du thème */
-	--OT-sep-space-before: var(--OT-blanc-grand);
-	--OT-sep-space-after:  var(--OT-blanc-grand);
+	--OT-sep-space-before:	var(--OT-blanc-grand);
+	--OT-sep-space-after:	var(--OT-blanc-grand);
 
 	/* Ajustements optiques */
-	--OT-sep-symbol-shift-y-reading: -50%;
-	--OT-sep-symbol-shift-y-live:    -50%;
+	--OT-sep-symbol-shift-y-reading:	-56%;
+	--OT-sep-symbol-shift-y-live:		-52%;
 
 	--OT-sep-01-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 13' aria-hidden='true'%3E%3Cline x1='0' y1='6.5' x2='96' y2='6.5' fill='none' stroke='currentColor' stroke-width='1.25'/%3E%3Cline x1='144' y1='6.5' x2='240' y2='6.5' fill='none' stroke='currentColor' stroke-width='1.25'/%3E%3Crect x='103.88' y='4.38' width='4.24' height='4.24' transform='translate(26.45 76.86) rotate(-45)' fill='currentColor'/%3E%3Crect x='115.76' y='2.26' width='8.49' height='8.49' transform='translate(30.55 86.76) rotate(-45)' fill='currentColor'/%3E%3Crect x='131.88' y='4.38' width='4.24' height='4.24' transform='translate(34.65 96.66) rotate(-45)' fill='currentColor'/%3E%3C/svg%3E");
 
@@ -9317,239 +9321,197 @@ body {
 
 	--OT-sep-03-svg: url('data:image/svg+xml,<svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 34"><path d="M78.071,23.121c-7.216-3.38-17.128-7.838-27.094-11.472-9.982-3.62-19.943-5.273-27.633-5.29C12.398,6.359.293,11.892.293,18.871c0,7.251,12.406,12.845,23.356,12.845,16.605,0,23.667-8.524,23.891-8.756-.698.619-9.621,5.476-23.891,5.476-10.278,0-22.564-2.556-22.564-9.565,0-8.135,15.363-9.567,22.259-9.56,6.691-.019,16.463,2.653,26.221,6.22,9.772,3.561,19.595,7.461,26.76,10.817,8.864,4.132,21.574,7.477,33.355,7.496h.017c7.757,0,13.85-1.883,19.258-7.283-4.336,4.342-12.126,5.7-19.274,5.708-10.779.011-23.149-5.18-31.609-9.147ZM140.353,2.282c-16.602,0-23.664,8.53-23.891,8.756.7-.617,9.621-5.473,23.891-5.479,10.284,0,22.566,2.562,22.566,9.57,0,8.131-15.363,9.561-22.259,9.561-6.69.022-16.468-2.661-26.224-6.225-9.773-3.566-19.593-7.461-26.756-10.817C78.817,3.518,66.104.173,54.325.156h-.016c-7.76,0-13.847,1.883-19.255,7.281,4.331-4.336,12.123-5.697,19.271-5.7,10.777-.016,23.15,5.167,31.605,9.14,7.218,3.38,17.135,7.838,27.095,11.471,9.982,3.623,19.943,5.274,27.636,5.292,10.946,0,23.046-5.535,23.046-12.511,0-7.248-12.401-12.848-23.354-12.848Z"/></svg>');
 
-	--OT-sep-01-max-width: 30em;
-	--OT-sep-01-height:    1em;
-	--OT-sep-01-side-gap:  2em;
-	--OT-sep-01-width:     min(100%, var(--OT-sep-01-max-width), calc(100% - 2 * var(--OT-sep-01-side-gap)));
+	--OT-sep-01-max-width:	24em;
+	--OT-sep-01-side-gap:	2em;
+	--OT-sep-01-width:		min(100%, var(--OT-sep-01-max-width), calc(100% - 2 * var(--OT-sep-01-side-gap)));
+	--OT-sep-01-height:		2em;
 
-	--OT-sep-02-max-width: 30em;
-	--OT-sep-02-height:    0.78462em;
-	--OT-sep-02-side-gap:  2em;
-	--OT-sep-02-width:     min(100%, var(--OT-sep-02-max-width), calc(100% - 2 * var(--OT-sep-02-side-gap)));
+	--OT-sep-02-max-width:	30em;
+	--OT-sep-02-side-gap:	2em;
+	--OT-sep-02-width:		min(100%, var(--OT-sep-02-max-width), calc(100% - 2 * var(--OT-sep-02-side-gap)));
+	--OT-sep-02-height:		1em;
 
-	--OT-sep-03-max-width: 10em;
-	--OT-sep-03-height:    1.25em;
-	--OT-sep-03-side-gap:  2em;
-	--OT-sep-03-width:     min(100%, var(--OT-sep-03-max-width), calc(100% - 2 * var(--OT-sep-03-side-gap)));
+	--OT-sep-03-max-width:	24em;
+	--OT-sep-03-side-gap:	2em;
+	--OT-sep-03-width:		min(100%, var(--OT-sep-03-max-width), calc(100% - 2 * var(--OT-sep-03-side-gap)));
+	--OT-sep-03-height:		2em;
+
 }
 
-/* Base simple sans variante */
+/* Base commune pour les hr */
 .markdown-rendered hr {
-	margin-top:     0.75em;
-	margin-bottom:  0.75em;
-	border:         none;
-	height:         0;
-	border-bottom:  2px solid;
-	border-width:   2px;
-	border-image:   linear-gradient(
-		to right,
-		transparent 0%,
-		var(--text-normal) 20%,
-		var(--text-normal) 40%,
-		var(--text-normal) 60%,
-		var(--text-normal) 80%,
-		transparent 100%
-	) 1;
+	margin-top:		var(--OT-sep-space-before);
+	margin-bottom:	var(--OT-sep-space-after);
+	border:			none;
+	height:			0;
+	border-bottom:	2px solid;
+	border-width:	2px;
+	border-image:	linear-gradient(
+						to right,
+						transparent 0,
+						var(--text-normal) 20%,
+						var(--text-normal) 40%,
+						var(--text-normal) 60%,
+						var(--text-normal) 80%,
+						transparent 100%
+					) 1;
 }
+
+body.OT-sep-01 {
+	--OT-sep-00-svg:		var(--OT-sep-01-svg);
+	--OT-sep-00-max-width:	var(--OT-sep-01-max-width);
+	--OT-sep-00-side-gap:	var(--OT-sep-01-side-gap);
+	--OT-sep-00-width:		var(--OT-sep-01-width);
+	--OT-sep-00-height:		var(--OT-sep-01-height);
+}
+body.OT-sep-02 {
+	--OT-sep-00-svg:		var(--OT-sep-02-svg);
+	--OT-sep-00-max-width:	var(--OT-sep-02-max-width);
+	--OT-sep-00-side-gap:	var(--OT-sep-02-side-gap);
+	--OT-sep-00-width:		var(--OT-sep-02-width);
+	--OT-sep-00-height:		var(--OT-sep-02-height);
+}
+body.OT-sep-03 {
+	--OT-sep-00-svg:		var(--OT-sep-03-svg);
+	--OT-sep-00-max-width:	var(--OT-sep-03-max-width);
+	--OT-sep-00-side-gap:	var(--OT-sep-03-side-gap);
+	--OT-sep-00-width:		var(--OT-sep-03-width);
+	--OT-sep-00-height:		var(--OT-sep-03-height);
+}
+
+
+/* Reading view : ligne + SVG centré */
+
+:is(body, .view-content, .markdown-preview-view)[class*="OT-sep-"] .markdown-rendered hr,
+.markdown-preview-view[class*="OT-sep-"] hr
+{
+	margin-top:		var(--OT-sep-space-before);
+	margin-bottom:	var(--OT-sep-space-after);
+	border:			none;
+	background:		none;
+	opacity:		1;
+	position:		relative;
+	overflow:		visible;
+	height:			var(--OT-sep-00-height);
+}
+
+
+/* Pseudo-élément commun */
+:is(body, .view-content, .markdown-preview-view)[class*="OT-sep-"] .markdown-rendered hr::after,
+.markdown-preview-view[class*="OT-sep-"] hr::after
+{
+	content:				"";
+	position:				absolute;
+	left:					50%;
+	top:					50%;
+	transform:				translate(-50%, var(--OT-sep-symbol-shift-y-reading));
+	background-repeat:		no-repeat;
+	background-position:	center;
+	background-size:		contain;
+	width:					var(--OT-sep-00-width);
+	height:					var(--OT-sep-00-height);
+	background-color:		var(--text-normal);
+	-webkit-mask-image:		var(--OT-sep-00-svg);
+	mask-image:				var(--OT-sep-00-svg);
+	-webkit-mask-repeat:	no-repeat;
+	mask-repeat:			no-repeat;
+	-webkit-mask-position:	center;
+	mask-position:			center;
+	-webkit-mask-size:		contain;
+	mask-size:				contain;
+}
+
+
+/* Wrapper de ligne : respiration verticale seulement */
+:is(body, .markdown-source-view.mod-cm6, .OT-sep-01, .OT-sep-02, .OT-sep-03)[class*="OT-sep-"]
+  .markdown-source-view.mod-cm6 .cm-line.hr,
+.markdown-source-view.mod-cm6[class*="OT-sep-"]
+  .cm-line.hr
+{
+	margin-top:		var(--OT-sep-space-before);
+	margin-bottom:	var(--OT-sep-space-after);
+	line-height:	normal;
+	height:			auto;
+	overflow:		visible;
+	position:		relative;
+}
+
+:is(body, .markdown-source-view.mod-cm6, .OT-sep-01, .OT-sep-02, .OT-sep-03)[class*="OT-sep-"]
+  .markdown-source-view.mod-cm6 .cm-line.hr > hr,
+.markdown-source-view.mod-cm6[class*="OT-sep-"]
+  .cm-line.hr > hr
+{
+	border:		none;
+	margin:		0;
+	background:	none;
+	opacity:	1;
+	position:	relative;
+	overflow:	visible;
+	height:		var(--OT-sep-00-height);
+}
+
+/* Pseudo-élément commun en Live Preview */
+:is(body, .markdown-source-view.mod-cm6, .OT-sep-01, .OT-sep-02, .OT-sep-03)[class*="OT-sep-"]
+  .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
+.markdown-source-view.mod-cm6[class*="OT-sep-"]
+  .cm-line.hr > hr::after
+{
+	content:				"";
+	position:				absolute;
+	left:					50%;
+	top:					50%;
+	transform:				translate(-50%, var(--OT-sep-symbol-shift-y-live));
+	background-repeat:		no-repeat;
+	background-position:	center;
+	background-size:		contain;
+	width:					var(--OT-sep-00-width);
+	height:					var(--OT-sep-00-height);
+	background-color:		var(--text-normal);
+	-webkit-mask-image:		var(--OT-sep-00-svg);
+	mask-image:				var(--OT-sep-00-svg);
+	-webkit-mask-repeat:	no-repeat;
+	mask-repeat:			no-repeat;
+	-webkit-mask-position:	center;
+	mask-position:			center;
+	-webkit-mask-size:		contain;
+	mask-size:				contain;
+}
+
 
 /* --------------------------------------------------------------------------
-   Reading view : base commune
--------------------------------------------------------------------------- */
-
-body.OT-sep-01 .markdown-rendered hr,
-body.OT-sep-02 .markdown-rendered hr,
-body.OT-sep-03 .markdown-rendered hr,
-.markdown-preview-view.OT-sep-01 hr,
-.markdown-preview-view.OT-sep-02 hr,
-.markdown-preview-view.OT-sep-03 hr {
-	margin-top:    var(--OT-sep-space-before);
-	margin-bottom: var(--OT-sep-space-after);
-	border:        none;
-	background:    none;
-	position:      relative;
-	overflow:      visible;
-}
-
-body.OT-sep-01 .markdown-rendered hr::after,
-body.OT-sep-02 .markdown-rendered hr::after,
-body.OT-sep-03 .markdown-rendered hr::after,
-.markdown-preview-view.OT-sep-01 hr::after,
-.markdown-preview-view.OT-sep-02 hr::after,
-.markdown-preview-view.OT-sep-03 hr::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-}
-
-/* Variante 01 */
-body.OT-sep-01 .markdown-rendered hr,
-.markdown-preview-view.OT-sep-01 hr {
-	height: var(--OT-sep-01-height);
-}
-
-body.OT-sep-01 .markdown-rendered hr::after,
-.markdown-preview-view.OT-sep-01 hr::after {
-	transform: translate(-50%, var(--OT-sep-symbol-shift-y-reading));
-	width: var(--OT-sep-01-width);
-	height: var(--OT-sep-01-height);
-	background-image: var(--OT-sep-01-svg);
-}
-
-/* Variante 02 */
-body.OT-sep-02 .markdown-rendered hr,
-.markdown-preview-view.OT-sep-02 hr {
-	height: var(--OT-sep-02-height);
-}
-
-body.OT-sep-02 .markdown-rendered hr::after,
-.markdown-preview-view.OT-sep-02 hr::after {
-	transform: translate(-50%, var(--OT-sep-symbol-shift-y-reading));
-	width: var(--OT-sep-02-width);
-	height: var(--OT-sep-02-height);
-	background-image: var(--OT-sep-02-svg);
-}
-
-/* Variante 03 */
-body.OT-sep-03 .markdown-rendered hr,
-.markdown-preview-view.OT-sep-03 hr {
-	height: var(--OT-sep-03-height);
-}
-
-body.OT-sep-03 .markdown-rendered hr::after,
-.markdown-preview-view.OT-sep-03 hr::after {
-	transform: translate(-50%, var(--OT-sep-symbol-shift-y-reading));
-	width: var(--OT-sep-03-width);
-	height: var(--OT-sep-03-height);
-	background-image: var(--OT-sep-03-svg);
-}
-
-/* --------------------------------------------------------------------------
-   Live Preview : base commune
--------------------------------------------------------------------------- */
-
-body.OT-sep-01 .markdown-source-view.mod-cm6 .cm-line.hr,
-body.OT-sep-02 .markdown-source-view.mod-cm6 .cm-line.hr,
-body.OT-sep-03 .markdown-source-view.mod-cm6 .cm-line.hr,
-.markdown-source-view.mod-cm6.OT-sep-01 .cm-line.hr,
-.markdown-source-view.mod-cm6.OT-sep-02 .cm-line.hr,
-.markdown-source-view.mod-cm6.OT-sep-03 .cm-line.hr {
-	margin-top:    var(--OT-sep-space-before);
-	margin-bottom: var(--OT-sep-space-after);
-	line-height:   normal;
-	height:        auto;
-	overflow:      visible;
-	position:      relative;
-}
-
-body.OT-sep-01 .markdown-source-view.mod-cm6 .cm-line.hr > hr,
-body.OT-sep-02 .markdown-source-view.mod-cm6 .cm-line.hr > hr,
-body.OT-sep-03 .markdown-source-view.mod-cm6 .cm-line.hr > hr,
-.markdown-source-view.mod-cm6.OT-sep-01 .cm-line.hr > hr,
-.markdown-source-view.mod-cm6.OT-sep-02 .cm-line.hr > hr,
-.markdown-source-view.mod-cm6.OT-sep-03 .cm-line.hr > hr {
-	border:     none;
-	margin:     0;
-	background: none;
-	position:   relative;
-	overflow:   visible;
-}
-
-body.OT-sep-01 .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
-body.OT-sep-02 .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
-body.OT-sep-03 .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
-.markdown-source-view.mod-cm6.OT-sep-01 .cm-line.hr > hr::after,
-.markdown-source-view.mod-cm6.OT-sep-02 .cm-line.hr > hr::after,
-.markdown-source-view.mod-cm6.OT-sep-03 .cm-line.hr > hr::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-}
-
-/* Variante 01 */
-body.OT-sep-01 .markdown-source-view.mod-cm6 .cm-line.hr > hr,
-.markdown-source-view.mod-cm6.OT-sep-01 .cm-line.hr > hr {
-	height: var(--OT-sep-01-height);
-}
-
-body.OT-sep-01 .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
-.markdown-source-view.mod-cm6.OT-sep-01 .cm-line.hr > hr::after {
-	transform: translate(-50%, var(--OT-sep-symbol-shift-y-live));
-	width: var(--OT-sep-01-width);
-	height: var(--OT-sep-01-height);
-	background-image: var(--OT-sep-01-svg);
-}
-
-/* Variante 02 */
-body.OT-sep-02 .markdown-source-view.mod-cm6 .cm-line.hr > hr,
-.markdown-source-view.mod-cm6.OT-sep-02 .cm-line.hr > hr {
-	height: var(--OT-sep-02-height);
-}
-
-body.OT-sep-02 .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
-.markdown-source-view.mod-cm6.OT-sep-02 .cm-line.hr > hr::after {
-	transform: translate(-50%, var(--OT-sep-symbol-shift-y-live));
-	width: var(--OT-sep-02-width);
-	height: var(--OT-sep-02-height);
-	background-image: var(--OT-sep-02-svg);
-}
-
-/* Variante 03 */
-body.OT-sep-03 .markdown-source-view.mod-cm6 .cm-line.hr > hr,
-.markdown-source-view.mod-cm6.OT-sep-03 .cm-line.hr > hr {
-	height: var(--OT-sep-03-height);
-}
-
-body.OT-sep-03 .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
-.markdown-source-view.mod-cm6.OT-sep-03 .cm-line.hr > hr::after {
-	transform: translate(-50%, var(--OT-sep-symbol-shift-y-live));
-	width: var(--OT-sep-03-width);
-	height: var(--OT-sep-03-height);
-	background-image: var(--OT-sep-03-svg);
-}
-
-/* --------------------------------------------------------------------------
-   Footnotes : toujours une ligne discrète, jamais un ornement
+   4. Footnotes : toujours une ligne discrète, jamais un ornement
 -------------------------------------------------------------------------- */
 
 .markdown-rendered .footnotes > hr,
 .markdown-preview-view .footnotes > hr,
 .view-content .markdown-rendered .footnotes > hr,
 .markdown-source-view.mod-cm6 .footnotes > hr {
-	margin-top:    var(--OT-blanc-grand);
-	margin-bottom: var(--OT-blanc-mini);
-	border:        none;
-	height:        1px;
-	background: linear-gradient(
-		to right,
-		transparent,
-		color-mix(in srgb, var(--hr-color) 58%, transparent) 22%,
-		color-mix(in srgb, var(--hr-color) 58%, transparent) 78%,
-		transparent
-	);
-	opacity: 1;
-	overflow: visible;
-	position: relative;
+	margin-top:		var(--OT-blanc-grand);
+	margin-bottom:	var(--OT-blanc-mini);
+	border:			none;
+	height:			1px;
+	background:		linear-gradient(
+						to right,
+						transparent,
+						color-mix(in srgb, var(--hr-color) 58%, transparent) 22%,
+						color-mix(in srgb, var(--hr-color) 58%, transparent) 78%,
+						transparent
+					);
+	opacity:		1;
+	overflow:		visible;
+	position:		relative;
 }
 
+/* Annuler explicitement tout ornement décoratif */
 .markdown-rendered .footnotes > hr::after,
 .markdown-preview-view .footnotes > hr::after,
 .view-content .markdown-rendered .footnotes > hr::after,
 .markdown-source-view.mod-cm6 .footnotes > hr::after {
-	content: none;
-	background: none;
-	-webkit-mask-image: none;
-	mask-image: none;
+	content:			none;
+	background:			none;
+	-webkit-mask-image:	none;
+	mask-image:			none;
 }
-
-
 /* -------------------- ↑ horizontal rule ↑ -------------------- */
 
 
