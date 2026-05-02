@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-05-02
 	- modified the horizontal dividers
 	- fixed a regression and improved code for horizontal dividers
+	- added new variants for the horizontal dividers
 2026-04-29
 	- added the choice between three types of horizontal dividers
 	- corrected a problem with the color of icons in the tab content of the active tab with focus
@@ -9300,10 +9301,10 @@ body.headings-scaling-major-third {
 /* ========================================================================== */
 /* Séparateurs typographiques pour les règles Markdown (---)				*/
 /* ========================================================================== */
+
 /* --------------------------------------------------------------------------
    0. Variables de base
 -------------------------------------------------------------------------- */
-
 body {
 	--hr-color:				var(--text-normal);
 
@@ -9312,30 +9313,64 @@ body {
 	--OT-sep-space-after:	var(--OT-blanc-grand);
 
 	/* Ajustements optiques */
-	--OT-sep-symbol-shift-y-reading:	-56%;
-	--OT-sep-symbol-shift-y-live:		-52%;
+	--OT-sep-symbol-shift-y-reading:	-50%;
+	--OT-sep-symbol-shift-y-live:		-50%;
 
-	--OT-sep-01-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 13' aria-hidden='true'%3E%3Cline x1='0' y1='6.5' x2='96' y2='6.5' fill='none' stroke='currentColor' stroke-width='1.25'/%3E%3Cline x1='144' y1='6.5' x2='240' y2='6.5' fill='none' stroke='currentColor' stroke-width='1.25'/%3E%3Crect x='103.88' y='4.38' width='4.24' height='4.24' transform='translate(26.45 76.86) rotate(-45)' fill='currentColor'/%3E%3Crect x='115.76' y='2.26' width='8.49' height='8.49' transform='translate(30.55 86.76) rotate(-45)' fill='currentColor'/%3E%3Crect x='131.88' y='4.38' width='4.24' height='4.24' transform='translate(34.65 96.66) rotate(-45)' fill='currentColor'/%3E%3C/svg%3E");
+/* ---------- Variante 01 : simple ligne, comme les footnotes ---------- */
+	--OT-sep-01-svg:		none;
+	--OT-sep-01-max-width:	100%;
+	--OT-sep-01-side-gap:	0em;
+	--OT-sep-01-width:		100%;
+	--OT-sep-01-height:		3px;
 
-	--OT-sep-02-svg: url('data:image/svg+xml,<svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 17"><path d="M432.88,6.68c-18.53-.22-66.48-5.88-66.48-5.88-5.1.22-8.54,6.16-8.54,6.16h-9.21c-.53-3.22-2.63-5.63-5.15-5.63s-4.62,2.41-5.15,5.63h-8.58c-.52-3.22-2.62-5.63-5.15-5.63s-4.62,2.41-5.15,5.63h-8.58c-.53-3.22-2.63-5.63-5.15-5.63s-4.62,2.41-5.15,5.63h-7.77c-2.98-5.73-10.9-6.53-10.9-6.53-7.19,3.6-62.02,6.29-62.02,6.29L0,8.53l219.91,1.93c14.98-1,61.93,6.11,61.93,6.11,10.21-2.22,10.77-5.99,10.77-5.99h8.11c.65,2.97,2.65,5.15,5.04,5.15s4.39-2.18,5.04-5.15h8.8c.65,2.97,2.65,5.15,5.04,5.15s4.39-2.18,5.04-5.15h8.8c.65,2.97,2.65,5.15,5.04,5.15s4.39-2.18,5.04-5.15h9.21c2.66,4.88,8.54,5.44,8.54,5.44,2.89-2,66.25-5.44,66.25-5.44l217.44-2-217.1-1.89h-.02Z"/></svg>');
-
-	--OT-sep-03-svg: url('data:image/svg+xml,<svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 34"><path d="M78.071,23.121c-7.216-3.38-17.128-7.838-27.094-11.472-9.982-3.62-19.943-5.273-27.633-5.29C12.398,6.359.293,11.892.293,18.871c0,7.251,12.406,12.845,23.356,12.845,16.605,0,23.667-8.524,23.891-8.756-.698.619-9.621,5.476-23.891,5.476-10.278,0-22.564-2.556-22.564-9.565,0-8.135,15.363-9.567,22.259-9.56,6.691-.019,16.463,2.653,26.221,6.22,9.772,3.561,19.595,7.461,26.76,10.817,8.864,4.132,21.574,7.477,33.355,7.496h.017c7.757,0,13.85-1.883,19.258-7.283-4.336,4.342-12.126,5.7-19.274,5.708-10.779.011-23.149-5.18-31.609-9.147ZM140.353,2.282c-16.602,0-23.664,8.53-23.891,8.756.7-.617,9.621-5.473,23.891-5.479,10.284,0,22.566,2.562,22.566,9.57,0,8.131-15.363,9.561-22.259,9.561-6.69.022-16.468-2.661-26.224-6.225-9.773-3.566-19.593-7.461-26.756-10.817C78.817,3.518,66.104.173,54.325.156h-.016c-7.76,0-13.847,1.883-19.255,7.281,4.331-4.336,12.123-5.697,19.271-5.7,10.777-.016,23.15,5.167,31.605,9.14,7.218,3.38,17.135,7.838,27.095,11.471,9.982,3.623,19.943,5.274,27.636,5.292,10.946,0,23.046-5.535,23.046-12.511,0-7.248-12.401-12.848-23.354-12.848Z"/></svg>');
-
-	--OT-sep-01-max-width:	24em;
-	--OT-sep-01-side-gap:	2em;
-	--OT-sep-01-width:		min(100%, var(--OT-sep-01-max-width), calc(100% - 2 * var(--OT-sep-01-side-gap)));
-	--OT-sep-01-height:		2em;
-
-	--OT-sep-02-max-width:	30em;
-	--OT-sep-02-side-gap:	2em;
-	--OT-sep-02-width:		min(100%, var(--OT-sep-02-max-width), calc(100% - 2 * var(--OT-sep-02-side-gap)));
+	/* ---------- Variante 02 : ligne effilée ---------- */
+	--OT-sep-02-svg:		url('data:image/svg+xml,<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 900 8"><path d="M1,4c180,0,269-2.5,449-2.5s268,2.5,448,2.5c-180,0-268,2.5-448,2.5S181,4,1,4Z"/></svg>');
+	--OT-sep-02-max-width: 	40em;
 	--OT-sep-02-height:		1em;
+	--OT-sep-02-side-gap:	0em;
+	--OT-sep-02-width:		min(100%, var(--OT-sep-06-max-width), calc(100% - 2 * var(--OT-sep-06-side-gap)));
 
-	--OT-sep-03-max-width:	24em;
-	--OT-sep-03-side-gap:	2em;
-	--OT-sep-03-width:		min(100%, var(--OT-sep-03-max-width), calc(100% - 2 * var(--OT-sep-03-side-gap)));
-	--OT-sep-03-height:		2em;
+	/* ---------- Variante 03 : minimal triple-dot ---------- */
+	--OT-sep-03-svg: url('data:image/svg+xml,<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 29 7"><circle cx="2.5" cy="3.5" r="2.2"/><circle cx="14.5" cy="3.5" r="3.1"/><circle cx="26.5" cy="3.5" r="2.2"/></svg>');
+	--OT-sep-03-max-width: 8em;
+	--OT-sep-03-side-gap: 2em;
+	--OT-sep-03-width: min(100%, var(--OT-sep-04-max-width), calc(100% - 2 * var(--OT-sep-04-side-gap)));
+	--OT-sep-03-height: 0.95em;
 
+	/* ---------- Variante 04 : bulles ---------- */
+	--OT-sep-04-svg:		url('data:image/svg+xml,<svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 17"><path d="M432.88,6.68c-18.53-.22-66.48-5.88-66.48-5.88-5.1.22-8.54,6.16-8.54,6.16h-9.21c-.53-3.22-2.63-5.63-5.15-5.63s-4.62,2.41-5.15,5.63h-8.58c-.52-3.22-2.62-5.63-5.15-5.63s-4.62,2.41-5.15,5.63h-8.58c-.53-3.22-2.63-5.63-5.15-5.63s-4.62,2.41-5.15,5.63h-7.77c-2.98-5.73-10.9-6.53-10.9-6.53-7.19,3.6-62.02,6.29-62.02,6.29L0,8.53l219.91,1.93c14.98-1,61.93,6.11,61.93,6.11,10.21-2.22,10.77-5.99,10.77-5.99h8.11c.65,2.97,2.65,5.15,5.04,5.15s4.39-2.18,5.04-5.15h8.8c.65,2.97,2.65,5.15,5.04,5.15s4.39-2.18,5.04-5.15h8.8c.65,2.97,2.65,5.15,5.04,5.15s4.39-2.18,5.04-5.15h9.21c2.66,4.88,8.54,5.44,8.54,5.44,2.89-2,66.25-5.44,66.25-5.44l217.44-2-217.1-1.89h-.02Z"/></svg>');
+	--OT-sep-04-max-width:	30em;
+	--OT-sep-04-side-gap:	2em;
+	--OT-sep-04-width:		min(100%, var(--OT-sep-02-max-width), calc(100% - 2 * var(--OT-sep-02-side-gap)));
+	--OT-sep-04-height:		1em;
+
+	/* ---------- Variante 05 : diamants ---------- */
+	--OT-sep-05-svg:		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 13' aria-hidden='true'%3E%3Cline x1='0' y1='6.5' x2='96' y2='6.5' fill='none' stroke='currentColor' stroke-width='1.25'/%3E%3Cline x1='144' y1='6.5' x2='240' y2='6.5' fill='none' stroke='currentColor' stroke-width='1.25'/%3E%3Crect x='103.88' y='4.38' width='4.24' height='4.24' transform='translate(26.45 76.86) rotate(-45)' fill='currentColor'/%3E%3Crect x='115.76' y='2.26' width='8.49' height='8.49' transform='translate(30.55 86.76) rotate(-45)' fill='currentColor'/%3E%3Crect x='131.88' y='4.38' width='4.24' height='4.24' transform='translate(34.65 96.66) rotate(-45)' fill='currentColor'/%3E%3C/svg%3E");
+	--OT-sep-05-max-width:	30em;
+	--OT-sep-05-height:		1.5em;
+	--OT-sep-05-side-gap:	2em;
+	--OT-sep-05-width:		min(100%, var(--OT-sep-01-max-width), calc(100% - 2 * var(--OT-sep-01-side-gap)));
+
+	/* ---------- Variante 06 : art déco géométrique ---------- */
+	--OT-sep-06-svg: 		url('data:image/svg+xml,<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 690 18"><defs><style> .st0 { fill: none; stroke: %23000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.4px; } </style></defs><g><line class="st0" x1="1" y1="9" x2="317" y2="9"/><line class="st0" x1="373" y1="9" x2="689" y2="9"/><path class="st0" d="M317,9l16-8,12,8-12,8-16-8Z"/><path class="st0" d="M373,9l-16-8-12,8,12,8,16-8Z"/></g><circle cx="345" cy="9" r="2.2"/></svg>');
+	--OT-sep-06-max-width:	40em;
+	--OT-sep-06-height:		2em;
+	--OT-sep-06-side-gap:	2em;
+	--OT-sep-06-width:		min(100%, var(--OT-sep-05-max-width), calc(100% - 2 * var(--OT-sep-05-side-gap)));
+
+	/* ---------- Variante 07 : fleuron léger ---------- */
+	--OT-sep-07-svg:		url('data:image/svg+xml,<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 690 18"><defs><style> .st0 { fill: none; stroke: %23000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.3px; } </style></defs><g><line class="st0" x1="1" y1="9" x2="311" y2="9"/><line class="st0" x1="379" y1="9" x2="689" y2="9"/><path class="st0" d="M311,9c10,0,12-8,20-8,6,0,8,4,14,8-6,4-8,8-14,8-8,0-10-8-20-8"/><path class="st0" d="M379,9c-10,0-12-8-20-8-6,0-8,4-14,8,6,4,8,8,14,8,8,0,10-8,20-8"/></g><circle cx="345" cy="9" r="1.8"/></svg>');
+	--OT-sep-07-max-width: 	40em;
+	--OT-sep-07-height:		1.2em;
+	--OT-sep-07-side-gap:	2em;
+	--OT-sep-07-width:		min(100%, var(--OT-sep-06-max-width), calc(100% - 2 * var(--OT-sep-06-side-gap)));
+
+	/* ---------- Variante 08 : fleuron décoratif ---------- */
+	--OT-sep-08-svg:		url('data:image/svg+xml,<svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 34"><path d="M78.071,23.121c-7.216-3.38-17.128-7.838-27.094-11.472-9.982-3.62-19.943-5.273-27.633-5.29C12.398,6.359.293,11.892.293,18.871c0,7.251,12.406,12.845,23.356,12.845,16.605,0,23.667-8.524,23.891-8.756-.698.619-9.621,5.476-23.891,5.476-10.278,0-22.564-2.556-22.564-9.565,0-8.135,15.363-9.567,22.259-9.56,6.691-.019,16.463,2.653,26.221,6.22,9.772,3.561,19.595,7.461,26.76,10.817,8.864,4.132,21.574,7.477,33.355,7.496h.017c7.757,0,13.85-1.883,19.258-7.283-4.336,4.342-12.126,5.7-19.274,5.708-10.779.011-23.149-5.18-31.609-9.147ZM140.353,2.282c-16.602,0-23.664,8.53-23.891,8.756.7-.617,9.621-5.473,23.891-5.479,10.284,0,22.566,2.562,22.566,9.57,0,8.131-15.363,9.561-22.259,9.561-6.69.022-16.468-2.661-26.224-6.225-9.773-3.566-19.593-7.461-26.756-10.817C78.817,3.518,66.104.173,54.325.156h-.016c-7.76,0-13.847,1.883-19.255,7.281,4.331-4.336,12.123-5.697,19.271-5.7,10.777-.016,23.15,5.167,31.605,9.14,7.218,3.38,17.135,7.838,27.095,11.471,9.982,3.623,19.943,5.274,27.636,5.292,10.946,0,23.046-5.535,23.046-12.511,0-7.248-12.401-12.848-23.354-12.848Z"/></svg>');
+	--OT-sep-08-max-width:	24em;
+	--OT-sep-08-height:		2em;
+	--OT-sep-08-side-gap:	2em;
+	--OT-sep-08-width:		min(100%, var(--OT-sep-03-max-width), calc(100% - 2 * var(--OT-sep-03-side-gap)));
 }
 
 /* Base commune pour les hr */
@@ -9357,28 +9392,77 @@ body {
 					) 1;
 }
 
-body.OT-sep-01 {
+body.OT-sep-01,
+:is(.markdown-preview-view, .markdown-source-view).sep-01 {
 	--OT-sep-00-svg:		var(--OT-sep-01-svg);
 	--OT-sep-00-max-width:	var(--OT-sep-01-max-width);
 	--OT-sep-00-side-gap:	var(--OT-sep-01-side-gap);
 	--OT-sep-00-width:		var(--OT-sep-01-width);
 	--OT-sep-00-height:		var(--OT-sep-01-height);
 }
-body.OT-sep-02 {
-	--OT-sep-00-svg:		var(--OT-sep-02-svg);
-	--OT-sep-00-max-width:	var(--OT-sep-02-max-width);
-	--OT-sep-00-side-gap:	var(--OT-sep-02-side-gap);
-	--OT-sep-00-width:		var(--OT-sep-02-width);
-	--OT-sep-00-height:		var(--OT-sep-02-height);
-}
-body.OT-sep-03 {
-	--OT-sep-00-svg:		var(--OT-sep-03-svg);
-	--OT-sep-00-max-width:	var(--OT-sep-03-max-width);
-	--OT-sep-00-side-gap:	var(--OT-sep-03-side-gap);
-	--OT-sep-00-width:		var(--OT-sep-03-width);
-	--OT-sep-00-height:		var(--OT-sep-03-height);
+
+body.OT-sep-02,
+:is(.markdown-preview-view, .markdown-source-view).sep-02 {
+  	--OT-sep-00-svg:		var(--OT-sep-02-svg);
+  	--OT-sep-00-max-width:	var(--OT-sep-02-max-width);
+  	--OT-sep-00-side-gap:	var(--OT-sep-02-side-gap);
+  	--OT-sep-00-width:		var(--OT-sep-02-width);
+  	--OT-sep-00-height:		var(--OT-sep-02-height);
 }
 
+body.OT-sep-03,
+:is(.markdown-preview-view, .markdown-source-view).sep-03 {
+  	--OT-sep-00-svg:		var(--OT-sep-03-svg);
+  	--OT-sep-00-max-width:	var(--OT-sep-03-max-width);
+  	--OT-sep-00-side-gap:	var(--OT-sep-03-side-gap);
+  	--OT-sep-00-width:		var(--OT-sep-03-width);
+  	--OT-sep-00-height:		var(--OT-sep-03-height);
+}
+
+body.OT-sep-04,
+:is(.markdown-preview-view, .markdown-source-view).sep-04 {
+  	--OT-sep-00-svg:		var(--OT-sep-04-svg);
+  	--OT-sep-00-max-width:	var(--OT-sep-04-max-width);
+  	--OT-sep-00-side-gap:	var(--OT-sep-04-side-gap);
+  	--OT-sep-00-width:		var(--OT-sep-04-width);
+  	--OT-sep-00-height:		var(--OT-sep-04-height);
+}
+
+body.OT-sep-05,
+:is(.markdown-preview-view, .markdown-source-view).sep-05 {
+  	--OT-sep-00-svg:		var(--OT-sep-05-svg);
+  	--OT-sep-00-max-width:	var(--OT-sep-05-max-width);
+  	--OT-sep-00-side-gap:	var(--OT-sep-05-side-gap);
+  	--OT-sep-00-width:		var(--OT-sep-05-width);
+  	--OT-sep-00-height:		var(--OT-sep-05-height);
+}
+
+body.OT-sep-06,
+:is(.markdown-preview-view, .markdown-source-view).sep-06 {
+  	--OT-sep-00-svg:		var(--OT-sep-06-svg);
+  	--OT-sep-00-max-width:	var(--OT-sep-06-max-width);
+  	--OT-sep-00-side-gap:	var(--OT-sep-06-side-gap);
+  	--OT-sep-00-width:		var(--OT-sep-06-width);
+  	--OT-sep-00-height:		var(--OT-sep-06-height);
+}
+
+body.OT-sep-07,
+:is(.markdown-preview-view, .markdown-source-view).sep-07 {
+  	--OT-sep-00-svg:		var(--OT-sep-07-svg);
+  	--OT-sep-00-max-width:	var(--OT-sep-07-max-width);
+  	--OT-sep-00-side-gap:	var(--OT-sep-07-side-gap);
+  	--OT-sep-00-width:		var(--OT-sep-07-width);
+  	--OT-sep-00-height:		var(--OT-sep-07-height);
+}
+
+body.OT-sep-08,
+:is(.markdown-preview-view, .markdown-source-view).sep-08 {
+  --OT-sep-00-svg:			var(--OT-sep-08-svg);
+  --OT-sep-00-max-width:	var(--OT-sep-08-max-width);
+  --OT-sep-00-side-gap:		var(--OT-sep-08-side-gap);
+  --OT-sep-00-width:		var(--OT-sep-08-width);
+  --OT-sep-00-height:		var(--OT-sep-08-height);
+}
 
 /* Reading view : ligne + SVG centré */
 
@@ -9423,10 +9507,9 @@ body.OT-sep-03 {
 
 
 /* Wrapper de ligne : respiration verticale seulement */
-:is(body, .markdown-source-view.mod-cm6, .OT-sep-01, .OT-sep-02, .OT-sep-03)[class*="OT-sep-"]
-  .markdown-source-view.mod-cm6 .cm-line.hr,
-.markdown-source-view.mod-cm6[class*="OT-sep-"]
-  .cm-line.hr
+body[class*="OT-sep-"] .markdown-source-view.mod-cm6 .cm-line.hr,
+.markdown-source-view.mod-cm6[class*="OT-sep-"] .cm-line.hr,
+.markdown-source-view.mod-cm6[class*="sep-"] .cm-line.hr
 {
 	margin-top:		var(--OT-sep-space-before);
 	margin-bottom:	var(--OT-sep-space-after);
@@ -9436,11 +9519,8 @@ body.OT-sep-03 {
 	position:		relative;
 }
 
-:is(body, .markdown-source-view.mod-cm6, .OT-sep-01, .OT-sep-02, .OT-sep-03)[class*="OT-sep-"]
-  .markdown-source-view.mod-cm6 .cm-line.hr > hr,
-.markdown-source-view.mod-cm6[class*="OT-sep-"]
-  .cm-line.hr > hr
-{
+body[class*="OT-sep-"] .markdown-source-view.mod-cm6 .cm-line.hr > hr,
+.markdown-source-view.mod-cm6[class*="OT-sep-"] .cm-line.hr > hr {
 	border:		none;
 	margin:		0;
 	background:	none;
@@ -9451,10 +9531,8 @@ body.OT-sep-03 {
 }
 
 /* Pseudo-élément commun en Live Preview */
-:is(body, .markdown-source-view.mod-cm6, .OT-sep-01, .OT-sep-02, .OT-sep-03)[class*="OT-sep-"]
-  .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
-.markdown-source-view.mod-cm6[class*="OT-sep-"]
-  .cm-line.hr > hr::after
+body[class*="OT-sep-"] .markdown-source-view.mod-cm6 .cm-line.hr > hr::after,
+.markdown-source-view.mod-cm6[class*="OT-sep-"] .cm-line.hr > hr::after
 {
 	content:				"";
 	position:				absolute;
@@ -9477,6 +9555,43 @@ body.OT-sep-03 {
 	mask-size:				contain;
 }
 
+/* --------------------------------------------------------------------------
+Variante 01 : même ligne que les footnotes
+- globale via Style Settings, sauf si une note a déjà un override local sep-0x
+- locale via cssclasses: sep-01
+-------------------------------------------------------------------------- */
+
+body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr,
+body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr,
+.markdown-preview-view.sep-01 hr,
+.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr {
+	margin-top: var(--OT-sep-space-before);
+	margin-bottom: var(--OT-sep-space-after);
+	border: none !important;
+	height: 3px !important;
+	background: linear-gradient(
+		to right,
+		transparent,
+		color-mix(in srgb, var(--hr-color) 58%, transparent) 22%,
+		color-mix(in srgb, var(--hr-color) 58%, transparent) 78%,
+		transparent
+	) !important;
+	opacity: 1;
+	overflow: visible;
+	position: relative;
+}
+
+/* Annuler l’ornement décoratif commun seulement pour la vraie variante 01 */
+body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr::after,
+body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr::after,
+.markdown-preview-view.sep-01 hr::after,
+.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr::after {
+	content: none !important;
+	display: none !important;
+	background: none !important;
+	-webkit-mask-image: none !important;
+	mask-image: none !important;
+}
 
 /* --------------------------------------------------------------------------
    4. Footnotes : toujours une ligne discrète, jamais un ornement
@@ -9489,7 +9604,7 @@ body.OT-sep-03 {
 	margin-top:		var(--OT-blanc-grand);
 	margin-bottom:	var(--OT-blanc-mini);
 	border:			none;
-	height:			1px;
+	height:			3px;
 	background:		linear-gradient(
 						to right,
 						transparent,
@@ -14738,6 +14853,31 @@ settings:
 				label:		Variant 3
 				label.fr:	Variante 3
 				value:		OT-sep-03
+
+			-
+				label:		Variant 4
+				label.fr:	Variante 4
+				value:		OT-sep-04
+
+			-
+				label:		Variant 5
+				label.fr:	Variante 5
+				value:		OT-sep-05
+
+			-
+				label:		Variant 6
+				label.fr:	Variante 6
+				value:		OT-sep-06
+
+			-
+				label:		Variant 7
+				label.fr:	Variante 7
+				value:		OT-sep-07
+
+			-
+				label:		Variant 8
+				label.fr:	Variante 8
+				value:		OT-sep-08
 
 	-
 		id:			"OT-codeblock-linewrap-OFF"
