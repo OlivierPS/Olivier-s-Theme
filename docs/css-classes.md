@@ -89,14 +89,14 @@ All the rulers available in the **Style Settings** interface (**GENERAL setting
 
 | CSS class | Visual result       |
 | :-------- | :------------------ |
-| sep-01    | simple line         |
-| sep-02    | tapered line        |
-| sep-03    | minimal triple dots |
-| sep-04    | bubbles             |
-| sep-05    | diamonds            |
-| sep-06    | geometric Art Déco  |
-| sep-07    | light fleuron       |
-| sep-08    | decorative fleuron  |
+| `sep-01`    | simple line         |
+| `sep-02`    | tapered line        |
+| `sep-03`    | minimal triple dots |
+| `sep-04`    | bubbles             |
+| `sep-05`    | diamonds            |
+| `sep-06`    | geometric Art Déco  |
+| `sep-07`    | light fleuron       |
+| `sep-08`    | decorative fleuron  |
 
 ---
 
@@ -181,4 +181,3 @@ cssclasses:
 
 In practice, most notes will only need one to three cssclasses.  
 You can always start small and add more only when there is a clear visual need.
-
