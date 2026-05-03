@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-03
+	- added horizontal separators definitions in Style Settings interface
 2026-05-02
 	- modified the horizontal dividers
 	- fixed a regression and improved code for horizontal dividers
@@ -14842,41 +14844,41 @@ settings:
 		default:		OT-sep-01
 		options:
 			-
-				label:		Variant 1
-				label.fr:	Variante 1
+				label:		Simple line
+				label.fr:	Ligne simple
 				value:		OT-sep-01
 			-
-				label:		Variant 2
-				label.fr:	Variante 2
+				label:		Tapered line
+				label.fr:	Ligne effilée
 				value:		OT-sep-02
 			-
-				label:		Variant 3
-				label.fr:	Variante 3
+				label:		Triple dots
+				label.fr:	Triple points
 				value:		OT-sep-03
 
 			-
-				label:		Variant 4
-				label.fr:	Variante 4
+				label:		Bubbles
+				label.fr:	Bulles
 				value:		OT-sep-04
 
 			-
-				label:		Variant 5
-				label.fr:	Variante 5
+				label:		Diamonds
+				label.fr:	Diamants
 				value:		OT-sep-05
 
 			-
-				label:		Variant 6
-				label.fr:	Variante 6
+				label:		Art Deco
+				label.fr:	Art déco
 				value:		OT-sep-06
 
 			-
-				label:		Variant 7
-				label.fr:	Variante 7
+				label:		Light fleuron
+				label.fr:	Fleuron léger
 				value:		OT-sep-07
 
 			-
-				label:		Variant 8
-				label.fr:	Variante 8
+				label:		Decorative fleuron
+				label.fr:	Fleuron décoratif
 				value:		OT-sep-08
 
 	-
