@@ -47,6 +47,10 @@ The 3  **black papers** available as backgrounds for your notes in Reading mod
 
 Examples of highlight colors that stay readable over dark backgrounds.
 
+<!-- zzz 
+
 ![Dark highlight – yellow](assets/dark-highlight-yellow.png)
 ![Dark highlight – blue](assets/dark-highlight-blue.png)
 ![Dark highlight – violet](assets/dark-highlight-violet.png)
+
+-->

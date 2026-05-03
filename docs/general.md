@@ -180,6 +180,14 @@ Sets how far list bullets, numbers and nested levels are indented horizontally. 
 
 
 
+### Text separators
+
+There’s a choice of  8 different styles of horizontal separators (`hr` in HTML). From a discrete line (default) to a decorative fleuron. For a detailed description, see [this page](horizontal-rulers.md).
+
+These seperators can also be used on a note-per-note basis, using the “[cssclasses](css-classes.md)” mechanism.
+
+
+
 ### Suppress line wrapping within code blocks
 
 When this option is **ON**, code blocks in Reading mode will **not wrap long lines**:  

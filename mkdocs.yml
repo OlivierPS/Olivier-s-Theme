@@ -22,6 +22,7 @@ nav:
     - Writing / Editing mode: writing-mode.md
     - Reading vs Writing – mental modes: reading-vs-writing.md
     - Displaying Bases: displaying-bases.md
+    - Decorative separators: horizontal-rulers.md
   - cssclasses:
     - Visual catalogue of CSS classes: css-classes.md
     - Niceties & cssclasses: niceties-and-cssclasses.md

@@ -33,7 +33,7 @@ cssclasses:
 
 Visual idea: a note where the Bases header is clearly visible above the main content.
 
-[image:1]
+<!-- [image] -->
 
 ### `bases-clean`
 
@@ -65,7 +65,7 @@ These classes control **how large images appear** in Reading mode (and, dependin
 
 Visual idea: same image repeated five times, from very small (`img-XS`) to very large (`img-XL`).
 
-[image:3]
+<!-- [image] -->
 
 ### Fixed widths: `img-300` … `img-1000`
 
@@ -79,7 +79,24 @@ Practical uses:
 
 Visual idea: a row or column of the same image rendered at 300, 500, 700 and 1000 px.
 
-[image:4]
+<!-- [image] -->
+
+----------------------------------------------
+
+## Horizontal rulers
+
+All the rulers available in the **Style Settings** interface (**GENERAL settings > Typography > Text separators**) can be used on a per-note basis. Here’s the table of the available classes and the corresponding rulers :
+
+| CSS class | Visual result       |
+| :-------- | :------------------ |
+| sep-01    | simple line         |
+| sep-02    | tapered line        |
+| sep-03    | minimal triple dots |
+| sep-04    | bubbles             |
+| sep-05    | diamonds            |
+| sep-06    | geometric Art Déco  |
+| sep-07    | light fleuron       |
+| sep-08    | decorative fleuron  |
 
 ---
 
@@ -103,7 +120,9 @@ By applying these classes to such notes, you can tune them visually to your liki
 
 Visual idea: the same paragraph rendered with five different Reading‑mode sizes, from “smaller” to “biggest”.
 
-[image:8]
+<!-- [image] -->
+
+
 
 ---
 
@@ -118,7 +137,7 @@ These classes change **specific elements** of the note.
 
 Visual idea: a numbered list where each item looks like a distinct step card.
 
-[image:9]
+<!-- [image] -->
 
 ### `OT-tables-style-1` and `OT-tables-style-2`
 
@@ -132,7 +151,7 @@ On some notes, you may want to disable alternating rows, while on others you may
 
 Visual idea: a table with subtle alternating row colours and an emphasised header row.
 
-[image:10]
+<!-- [image] -->
 
 #### `OT-tables-style-2`
 
@@ -141,7 +160,7 @@ Visual idea: a table with subtle alternating row colours and an emphasised heade
 
 Visual idea: a table with a different border and background treatment than `OT-tables-style-1`.
 
-[image:11]
+<!-- [image] -->
 
 ---
 
