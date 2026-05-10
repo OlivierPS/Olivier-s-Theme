@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-10
+	- tuned the light mode, editing mode, background colors
+	- added a couple of fonts in the selection for writing
 2026-05-03
 	- added horizontal separators definitions in Style Settings interface
 2026-05-02
@@ -4634,7 +4637,7 @@ body {
 .theme-light.editingBackgroundColor-lightMode-beige .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-beige .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-beige .cm-s-obsidian {
-	background-color:	#f5deb3;
+	background-color:	hsl(35, 25%, 88%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-black .CodeMirror pre.CodeMirror-line,
@@ -4646,67 +4649,73 @@ body {
 .theme-light.editingBackgroundColor-lightMode-cobaltBlue .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-cobaltBlue .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-cobaltBlue .cm-s-obsidian  {
-	background-color:	#0E1E41;
+	background-color:	hsl(221, 65%, 15%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-green .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-green .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-green .cm-s-obsidian  {
-	background-color:	#A6F4C2;
+	background-color:	hsla(142, 78%, 80%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-grey .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-grey .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-grey .cm-s-obsidian {
-	background-color:	#E9E9E9;
+	background-color:	hsl(0, 0%, 91%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-ivory .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-ivory .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-ivory .cm-s-obsidian {
-	background-color:	#f5f2e7;
+	background-color:	hsl(36, 30%, 92%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-lightBeige .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-lightBeige .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-lightBeige .cm-s-obsidian  {
-	background-color:	#FBF0D9;
+	background-color:	hsl(40, 25%, 94%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-lightGreen .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-lightGreen .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-lightGreen .cm-s-obsidian  {
-	background-color:	#F0FDF4;
+	background-color:	hsl(130, 20%, 94%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-lightRed .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-lightRed .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-lightRed .cm-s-obsidian  {
-	background-color:	#FFE0E0;
+	background-color:	hsl(5, 35%, 94%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-lightRose .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-lightRose .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-lightRose .cm-s-obsidian {
-	background-color:	hsl(349.09, 100%, 95.686%);
+	background-color:	hsl(340, 40%, 94%);
+}
+
+.theme-light.editingBackgroundColor-lightMode-lightYellow .CodeMirror pre.CodeMirror-line,
+.theme-light.editingBackgroundColor-lightMode-lightYellow .markdown-source-view .cm-line,
+.theme-light.editingBackgroundColor-lightMode-lightYellow .cm-s-obsidian  {
+	background-color:	hsl(50, 55%, 88%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-red .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-red .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-red .cm-s-obsidian  {
-	background-color:	#FFA3A3;
+	background-color:	hsla(5, 90%, 88%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-rose .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-rose .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-rose .cm-s-obsidian {
-	background-color: hsl(350, 90%, 92%);
+	background-color: hsl(345, 60%, 92%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-sky .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-sky .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-sky .cm-s-obsidian  {
-	background-color:	#B0EFFF;
+	background-color:	hsla(200, 55%, 84%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-snowWhite .CodeMirror pre.CodeMirror-line,
@@ -4718,7 +4727,7 @@ body {
 .theme-light.editingBackgroundColor-lightMode-yellow .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-yellow .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-yellow .cm-s-obsidian  {
-	background-color:	rgb(255, 246, 207);
+	background-color:	hsl(48, 50%, 84%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-white .CodeMirror pre.CodeMirror-line,
@@ -4730,7 +4739,7 @@ body {
 .theme-light.editingBackgroundColor-lightMode-WordPerfect .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-WordPerfect .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-WordPerfect .cm-s-obsidian  {
-	background-color:	#0000A8;
+	background-color:	hsl(240, 100%, 32.941%);
 }
 
 /*	--------------------------------------------------------------------------------	*/
@@ -5480,49 +5489,49 @@ body.vertical-rythm-Bear {
 
 /* Valeurs par défaut (aucune classe spéciale) */
 body {
-	--OT-edit-font-family:		var(--OT-edit-font), Courier, var(--font-default);
+	--OT-edit-font-family:		var(--OT-edit-font), "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing:	0em;
 }
 
 /* Default = même fonte qu’en lecture */
 body.edit-font-Default {
-	--OT-edit-font-family: var(--font-text), Courier, var(--font-default);
+	--OT-edit-font-family: var(--font-text), "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* American Typewriter */
 body.edit-font-AmericanTypewriter {
-	--OT-edit-font-family: "American Typewriter", "ITC American Typewriter", Courier, var(--font-default);
+	--OT-edit-font-family: "American Typewriter", "ITC American Typewriter", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0.03em;
 }
 
 /* Avenir Next */
 body.edit-font-Avenir-Next {
-	--OT-edit-font-family: "Avenir Next", Courier, var(--font-default);
+	--OT-edit-font-family: "Avenir Next", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Bear Sans */
 body.edit-font-Bear-Sans {
-	--OT-edit-font-family: "Bear Sans UI", Courier, var(--font-default);
+	--OT-edit-font-family: "Bear Sans UI", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Candara */
 body.edit-font-Candara {
-	--OT-edit-font-family: Candara, Courier, var(--font-default);
+	--OT-edit-font-family: Candara, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Cambria */
 body.edit-font-Cambria {
-	--OT-edit-font-family: Cambria, Courier, var(--font-default);
+	--OT-edit-font-family: Cambria, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Cascadia Mono */
 body.edit-font-Cascadia-Mono {
-	--OT-edit-font-family: "Cascadia Mono", Courier, var(--font-default);
+	--OT-edit-font-family: "Cascadia Mono", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
@@ -5534,313 +5543,343 @@ body.edit-font-Courier {
 
 /* DejaVu Sans */
 body.edit-font-DejaVu-Sans {
-	--OT-edit-font-family: "DejaVu Sans", Courier, var(--font-default);
+	--OT-edit-font-family: "DejaVu Sans", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* DejaVu Sans Mono*/
+body.edit-font-DejaVu-Sans-Mono {
+	--OT-edit-font-family: "DejaVu Sans Mono", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* DejaVu Serif */
+body.edit-font-DejaVu-Serif {
+	--OT-edit-font-family: "DejaVu Serif", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Depot Condensed */
 body.edit-font-Depot-Condensed {
-	--OT-edit-font-family: "Depot New Condensed", Courier, var(--font-default);
+	--OT-edit-font-family: "Depot New Condensed", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Dico Mono */
 body.edit-font-Dico-Mono {
-	--OT-edit-font-family: "Dico Mono", Courier, var(--font-default);
+	--OT-edit-font-family: "Dico Mono", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* DM Sans */
 body.edit-font-DM-Sans {
-	--OT-edit-font-family: "DM Sans", Courier, var(--font-default);
+	--OT-edit-font-family: "DM Sans", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Etica Mono */
 body.edit-font-Etica-Mono {
-	--OT-edit-font-family: "LFT Etica Mono", Courier, var(--font-default);
+	--OT-edit-font-family: "LFT Etica Mono", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Georgia */
 body.edit-font-Georgia {
-	--OT-edit-font-family: Georgia, Courier, var(--font-default);
+	--OT-edit-font-family: Georgia, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* iA Writer Mono */
 body.edit-font-iA-Writer-Mono {
-	--OT-edit-font-family: "iA Writer Mono S", Courier, var(--font-default);
+	--OT-edit-font-family: "iA Writer Mono S", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* iA Writer Duo */
 body.edit-font-iA-Writer-Duo {
-	--OT-edit-font-family: "iA Writer Duospace", Courier, var(--font-default);
+	--OT-edit-font-family: "iA Writer Duospace", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* iA Writer Quattro */
 body.edit-font-iA-Writer-Quattro {
-	--OT-edit-font-family: "iA Writer Quattro S", Courier, var(--font-default);
+	--OT-edit-font-family: "iA Writer Quattro S", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* IBM Plex Sans */
 body.edit-font-IBM-Plex-Sans {
-	--OT-edit-font-family: "IBM Plex Sans", Courier, var(--font-default);
+	--OT-edit-font-family: "IBM Plex Sans", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* IBM Plex Mono */
 body.edit-font-IBM-Plex-Mono {
-	--OT-edit-font-family: "IBM Plex Mono", Courier, var(--font-default);
+	--OT-edit-font-family: "IBM Plex Mono", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* IBM Plex Serif */
 body.edit-font-IBM-Plex-Serif {
-	--OT-edit-font-family: "IBM Plex Serif", Courier, var(--font-default);
+	--OT-edit-font-family: "IBM Plex Serif", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Inter */
 body.edit-font-Inter {
-	--OT-edit-font-family: Inter, Courier, var(--font-default);
+	--OT-edit-font-family: Inter, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* JetBrains Mono */
 body.edit-font-JetBrains-Mono {
-	--OT-edit-font-family: "JetBrains Mono", Courier, var(--font-default);
+	--OT-edit-font-family: "JetBrains Mono", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Lato */
 body.edit-font-Lato {
-	--OT-edit-font-family: Lato, Courier, var(--font-default);
+	--OT-edit-font-family: Lato, "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* Lexend */
+body.edit-font-Lexend {
+	--OT-edit-font-family: Lexend, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Lucida Sans */
 body.edit-font-Lucida-Sans {
-	--OT-edit-font-family: "Lucida Sans Std", Courier, var(--font-default);
+	--OT-edit-font-family: "Lucida Sans Std", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Lucida Typewriter */
 body.edit-font-Lucida-Typewriter {
-	--OT-edit-font-family: "Lucida Typewriter Std", Courier, var(--font-default);
+	--OT-edit-font-family: "Lucida Typewriter Std", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0.01em;
 }
 
 /* Maison Neue */
 body.edit-font-Maison-Neue {
-	--OT-edit-font-family: "Maison Neue", Courier, var(--font-default);
+	--OT-edit-font-family: "Maison Neue", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Maison Neue Mono */
 body.edit-font-Maison-Neue-Mono {
-	--OT-edit-font-family: "Maison Neue Mono", Courier, var(--font-default);
+	--OT-edit-font-family: "Maison Neue Mono", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Menlo */
 body.edit-font-Menlo {
-	--OT-edit-font-family: Menlo, Courier, var(--font-default);
+	--OT-edit-font-family: Menlo, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Muli */
 body.edit-font-Muli {
-	--OT-edit-font-family: Muli, Courier, var(--font-default);
+	--OT-edit-font-family: Muli, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Myriad */
 body.edit-font-Myriad {
-	--OT-edit-font-family: "Myriad Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Myriad Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Nexus Typewriter */
 body.edit-font-Nexus-Typewriter {
-	--OT-edit-font-family: "Nexus Typewriter Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Nexus Typewriter Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0.015em;
 }
 
 /* Norms */
 body.edit-font-Norms {
-	--OT-edit-font-family: "TT Norms", Courier, var(--font-default);
+	--OT-edit-font-family: "TT Norms", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Norms Condensed */
 body.edit-font-Norms-Condensed {
-	--OT-edit-font-family: "TT Norms Std Condensed", Courier, var(--font-default);
+	--OT-edit-font-family: "TT Norms Std Condensed", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Noto Sans */
 body.edit-font-Noto-Sans {
-	--OT-edit-font-family: "Noto Sans", Courier, var(--font-default);
+	--OT-edit-font-family: "Noto Sans", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Office Code */
 body.edit-font-Office-Code {
-	--OT-edit-font-family: "Office Code Pro D", Courier, var(--font-default);
+	--OT-edit-font-family: "Office Code Pro D", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Officina Sans */
 body.edit-font-Officina-Sans {
-	--OT-edit-font-family: "ITC Officina Sans Std", Courier, var(--font-default);
+	--OT-edit-font-family: "ITC Officina Sans Std", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Officina Sans Serif */
 body.edit-font-Officina-Sans-Serif {
-	--OT-edit-font-family: "ITC Officina Serif Std", Courier, var(--font-default);
+	--OT-edit-font-family: "ITC Officina Serif Std", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Overpass */
 body.edit-font-Overpass {
-	--OT-edit-font-family: Overpass, Courier, var(--font-default);
+	--OT-edit-font-family: Overpass, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Palatino Sans */
 body.edit-font-Palatino-Sans {
-	--OT-edit-font-family: "Palatino Sans Com", Courier, var(--font-default);
+	--OT-edit-font-family: "Palatino Sans Com", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Palatino Sans Informal */
 body.edit-font-Palatino-Sans-Informal {
-	--OT-edit-font-family: "Palatino Sans Informal LT Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Palatino Sans Informal LT Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* PT Sans */
 body.edit-font-PT-Sans {
-	--OT-edit-font-family: "PT Sans", Courier, var(--font-default);
+	--OT-edit-font-family: "PT Sans", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Questa */
 body.edit-font-Questa {
-	--OT-edit-font-family: Questa, Courier, var(--font-default);
+	--OT-edit-font-family: Questa, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Questa Sans */
 body.edit-font-Questa-Sans {
-	--OT-edit-font-family: "Questa Sans", Courier, var(--font-default);
+	--OT-edit-font-family: "Questa Sans", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Questa Slab */
 body.edit-font-Questa-Slab {
-	--OT-edit-font-family: "Questa Slab", Courier, var(--font-default);
+	--OT-edit-font-family: "Questa Slab", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Roboto */
 body.edit-font-Roboto {
-	--OT-edit-font-family: Roboto, Courier, var(--font-default);
+	--OT-edit-font-family: Roboto, "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* Roboto Mono */
+body.edit-font-Roboto-Mono {
+	--OT-edit-font-family: "Roboto Mono", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* Roboto */
+body.edit-font-Roboto-Slab {
+	--OT-edit-font-family: "Roboto Slab", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Rockwell */
 body.edit-font-Rockwell {
-	--OT-edit-font-family: Rockwell, Courier, var(--font-default);
+	--OT-edit-font-family: Rockwell, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Sans serif de base */
 body.edit-font-sans-serif {
-	--OT-edit-font-family: sans-serif, Courier, var(--font-default);
+	--OT-edit-font-family: sans-serif, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Siseriff */
 body.edit-font-Siseriff {
-	--OT-edit-font-family: "Siseriff LT Std", Courier, var(--font-default);
+	--OT-edit-font-family: "Siseriff LT Std", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Space Mono */
 body.edit-font-Space-Mono {
-	--OT-edit-font-family: "Space Mono", Courier, var(--font-default);
+	--OT-edit-font-family: "Space Mono", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Humanist */
 body.edit-font-Stone-Humanist {
-	--OT-edit-font-family: "Stone Humanist ITC Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Stone Humanist ITC Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Informal */
 body.edit-font-Stone-Informal {
-	--OT-edit-font-family: "Stone Informal ITC Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Stone Informal ITC Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Sans II */
 body.edit-font-Stone-Sans-II {
-	--OT-edit-font-family: "Stone Sans II ITC Com", Courier, var(--font-default);
+	--OT-edit-font-family: "Stone Sans II ITC Com", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Stone Serif */
 body.edit-font-Stone-Serif {
-	--OT-edit-font-family: "Stone Serif ITC Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Stone Serif ITC Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Source Code */
 body.edit-font-Source-Code {
-	--OT-edit-font-family: "Source Code Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Source Code Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Source Sans 3 */
 body.edit-font-Source-Sans-3 {
-	--OT-edit-font-family: "Source Sans 3", Courier, var(--font-default);
+	--OT-edit-font-family: "Source Sans 3", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Source Serif */
 body.edit-font-Source-Serif {
-	--OT-edit-font-family: "Source Serif Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Source Serif Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Tisa */
 body.edit-font-Tisa {
-	--OT-edit-font-family: "Tisa Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Tisa Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Tisa Sans */
 body.edit-font-Tisa-Sans {
-	--OT-edit-font-family: "Tisa Sans Pro", Courier, var(--font-default);
+	--OT-edit-font-family: "Tisa Sans Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Trebuchet */
 body.edit-font-Trebuchet {
-	--OT-edit-font-family: "Trebuchet MS", Courier, var(--font-default);
+	--OT-edit-font-family: "Trebuchet MS", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
 /* Verdana */
 body.edit-font-Verdana {
-	--OT-edit-font-family: Verdana, Courier, var(--font-default);
+	--OT-edit-font-family: Verdana, "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
@@ -15501,10 +15540,6 @@ settings:
 				label.fr:	Noir
 				value:		editingBackgroundColor-lightMode-black
 			-
-				label:		sky Blue
-				label.fr:	Bleu ciel
-				value:		editingBackgroundColor-lightMode-sky
-			-
 				label:		cobalt Blue
 				label.fr:	Bleu cobalt
 				value:		editingBackgroundColor-lightMode-cobaltBlue
@@ -15512,6 +15547,10 @@ settings:
 				label:		light Blue
 				label.fr:	Bleu pâle
 				value:		editingBackgroundColor-lightMode-AliceBlue
+			-
+				label:		sky Blue
+				label.fr:	Bleu ciel
+				value:		editingBackgroundColor-lightMode-sky
 			-
 				label:		Green
 				label.fr:	Vert
@@ -15554,6 +15593,10 @@ settings:
 			-
 				label:		WordPerfect
 				value:		editingBackgroundColor-lightMode-WordPerfect
+			-
+				label:		light Yellow
+				label.fr:	Jaune pâle
+				value:		editingBackgroundColor-lightMode-lightYellow
 			-
 				label:		Yellow
 				label.fr:	Jaune
@@ -16475,6 +16518,10 @@ settings:
 					label:		Avenir Next
 					value:		edit-font-Avenir-Next
 				-
+					label:		Base sans serif
+					label.fr:	Sans serif de base
+					value:		edit-font-sans-serif
+				-
 					label:		Bear Sans
 					value:		edit-font-Bear-Sans
 				-
@@ -16492,6 +16539,12 @@ settings:
 				-
 					label:		DejaVu Sans
 					value:		edit-font-DejaVu-Sans
+				-
+					label:		DejaVu Sans Mono
+					value:		edit-font-DejaVu-Sans-Mono
+				-
+					label:		DejaVu Serif
+					value:		edit-font-DejaVu-Serif
 				-
 					label:		Depot Condensed
 					value:		edit-font-Depot-Condensed
@@ -16534,6 +16587,9 @@ settings:
 				-
 					label:		Lato
 					value:		edit-font-Lato
+				-
+					label:		Lexend
+					value:		edit-font-Lexend
 				-
 					label:		Lucida Sans
 					value:		edit-font-Lucida-Sans
@@ -16601,14 +16657,26 @@ settings:
 					label:		Roboto
 					value:		edit-font-Roboto
 				-
+					label:		Roboto Mono
+					value:		edit-font-Roboto-Mono
+				-
+					label:		Roboto Slab
+					value:		edit-font-Roboto-Slab
+				-
 					label:		Rockwell
 					value:		edit-font-Rockwell
 				-
-					label:		Sans serif de base
-					value:		edit-font-sans-serif
-				-
 					label:		Siseriff
 					value:		edit-font-Siseriff
+				-
+					label:		Source Code
+					value:		edit-font-Source-Code
+				-
+					label:		Source Sans 3
+					value:		edit-font-Source-Sans-3
+				-
+					label:		Source Serif
+					value:		edit-font-Source-Serif
 				-
 					label:		Space Mono
 					value:		edit-font-Space-Mono
@@ -16624,15 +16692,6 @@ settings:
 				-
 					label:		Stone Serif
 					value:		edit-font-Stone-Serif
-				-
-					label:		Source Code
-					value:		edit-font-Source-Code
-				-
-					label:		Source Sans 3
-					value:		edit-font-Source-Sans-3
-				-
-					label:		Source Serif
-					value:		edit-font-Source-Serif
 				-
 					label:		Tisa
 					value:		edit-font-Tisa
