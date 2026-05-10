@@ -5571,6 +5571,24 @@ body.edit-font-Dico-Mono {
 	--OT-edit-letter-spacing: 0em;
 }
 
+/* Dico Mono Slab*/
+body.edit-font-Dico-Mono-Slab {
+	--OT-edit-font-family: "Dico Mono Slab", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* Dico Slab */
+body.edit-font-Dico-Slab {
+	--OT-edit-font-family: "Dico Slab", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* DM Mono */
+body.edit-font-DM-Mono {
+	--OT-edit-font-family: "DM Mono", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
 /* DM Sans */
 body.edit-font-DM-Sans {
 	--OT-edit-font-family: "DM Sans", "Comic Sans MS", var(--font-default);
@@ -5699,7 +5717,7 @@ body.edit-font-Nexus-Typewriter {
 
 /* Norms */
 body.edit-font-Norms {
-	--OT-edit-font-family: "TT Norms", "Comic Sans MS", var(--font-default);
+	--OT-edit-font-family: "TT Norms", "TT Norms Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
@@ -5727,8 +5745,8 @@ body.edit-font-Officina-Sans {
 	--OT-edit-letter-spacing: 0em;
 }
 
-/* Officina Sans Serif */
-body.edit-font-Officina-Sans-Serif {
+/* Officina Serif */
+body.edit-font-Officina-Serif {
 	--OT-edit-font-family: "ITC Officina Serif Std", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
@@ -5811,6 +5829,24 @@ body.edit-font-Siseriff {
 	--OT-edit-letter-spacing: 0em;
 }
 
+/* Source Code */
+body.edit-font-Source-Code {
+	--OT-edit-font-family: "Source Code Pro", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* Source Sans 3 */
+body.edit-font-Source-Sans-3 {
+	--OT-edit-font-family: "Source Sans 3", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
+/* Source Serif 4*/
+body.edit-font-Source-Serif {
+	--OT-edit-font-family: "Source Serif 4", "Comic Sans MS", var(--font-default);
+	--OT-edit-letter-spacing: 0em;
+}
+
 /* Space Mono */
 body.edit-font-Space-Mono {
 	--OT-edit-font-family: "Space Mono", "Comic Sans MS", var(--font-default);
@@ -5838,24 +5874,6 @@ body.edit-font-Stone-Sans-II {
 /* Stone Serif */
 body.edit-font-Stone-Serif {
 	--OT-edit-font-family: "Stone Serif ITC Pro", "Comic Sans MS", var(--font-default);
-	--OT-edit-letter-spacing: 0em;
-}
-
-/* Source Code */
-body.edit-font-Source-Code {
-	--OT-edit-font-family: "Source Code Pro", "Comic Sans MS", var(--font-default);
-	--OT-edit-letter-spacing: 0em;
-}
-
-/* Source Sans 3 */
-body.edit-font-Source-Sans-3 {
-	--OT-edit-font-family: "Source Sans 3", "Comic Sans MS", var(--font-default);
-	--OT-edit-letter-spacing: 0em;
-}
-
-/* Source Serif */
-body.edit-font-Source-Serif {
-	--OT-edit-font-family: "Source Serif Pro", "Comic Sans MS", var(--font-default);
 	--OT-edit-letter-spacing: 0em;
 }
 
@@ -16552,6 +16570,15 @@ settings:
 					label:		Dico Mono
 					value:		edit-font-Dico-Mono
 				-
+					label:		Dico Mono Slab
+					value:		edit-font-Dico-Mono-Slab
+				-
+					label:		Dico Slab
+					value:		edit-font-Dico-Slab
+				-
+					label:		DM Mono
+					value:		edit-font-DM-Mono
+				-
 					label:		DM Sans
 					value:		edit-font-DM-Sans
 				-
@@ -16630,8 +16657,8 @@ settings:
 					label:		Officina Sans
 					value:		edit-font-Officina-Sans
 				-
-					label:		Officina Sans Serif
-					value:		edit-font-Officina-Sans-Serif
+					label:		Officina Serif
+					value:		edit-font-Officina-Serif
 				-
 					label:		Overpass
 					value:		edit-font-Overpass
@@ -16675,7 +16702,7 @@ settings:
 					label:		Source Sans 3
 					value:		edit-font-Source-Sans-3
 				-
-					label:		Source Serif
+					label:		Source Serif 4
 					value:		edit-font-Source-Serif
 				-
 					label:		Space Mono
