@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-11
+	- corrected a problem with the color of the text in tabs
+	- tuned the yellow and light yellow backgrounds for editing panes
 2026-05-10
 	- tuned the light mode, editing mode, background colors
 	- added a couple of fonts in the selection for writing
@@ -2923,6 +2926,7 @@ body {
 }
 
 .theme-light.lightPalette-ivory.accentColor-lightMode-shade {
+	--OT-view-header-title-focus-color:	hsl(42, 80%, 60%);
 }
 .theme-light.lightPalette-ivory.accentColor-lightMode-shade.textSelection-takesAccentColor-lightMode {
 	--text-selection:	hsla(var(--OT-theme-h), 90%, 70%, 0.5);
@@ -4697,7 +4701,7 @@ body {
 .theme-light.editingBackgroundColor-lightMode-lightYellow .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-lightYellow .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-lightYellow .cm-s-obsidian  {
-	background-color:	hsl(50, 55%, 88%);
+	background-color:	hsl(42, 100%, 92%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-red .CodeMirror pre.CodeMirror-line,
@@ -4727,7 +4731,7 @@ body {
 .theme-light.editingBackgroundColor-lightMode-yellow .CodeMirror pre.CodeMirror-line,
 .theme-light.editingBackgroundColor-lightMode-yellow .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-yellow .cm-s-obsidian  {
-	background-color:	hsl(48, 50%, 84%);
+	background-color:	hsl(42, 100%, 88%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-white .CodeMirror pre.CodeMirror-line,
@@ -7346,23 +7350,11 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   background-color: var(--color-accent-2);
 }
 
-/* Réconciliation avec app.css : on fait porter la couleur par l’inner */
-body.is-focused .workspace-tab-header-container .workspace-tab-header {
-  /*color: inherit;*/
-}
 
 body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace-tab-header-inner {
   color: var(--tab-text-color-focused);
 }
 
-body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace-tab-header-inner :is(
-  .workspace-tab-header-inner-title,
-  .workspace-tab-header-inner-icon,
-  .workspace-tab-header-status-icon,
-  .workspace-tab-header-inner-close-button
-) {
-	color:	var(--tab-text-color-focused-active-current);
-}
 
 /* -----------------------------------------
    Root tabs
