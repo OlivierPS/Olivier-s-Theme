@@ -51,6 +51,7 @@ Post‑release tweaks
 2026-05-11
 	- corrected a problem with the color of the text in tabs
 	- tuned the yellow and light yellow backgrounds for editing panes
+	- corrected the color of icons in tabs
 2026-05-10
 	- tuned the light mode, editing mode, background colors
 	- added a couple of fonts in the selection for writing
@@ -7275,15 +7276,25 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
   color: var(--OT-clickable-icon-in-header);
 }
 
-/* Status icon root, y compris pinned */
+/* Status icon root, y compris pinned — suivent toujours la couleur du tab */
 .mod-root .workspace-tab-header-status-icon {
-  color: var(--tab-text-color);
+  /* Ne porte plus de couleur propre : tout vient de .workspace-tab-header-inner */
+  color: inherit !important;
 }
 
+/* Version pinned : même logique, jamais de couleur autonome */
 .workspace-tab-header-status-icon.mod-pinned {
-  /*color: inherit;*/
+  color: inherit !important;
 }
 
+/* En root, on verrouille l'héritage depuis l'inner sur l'icône elle-même */
+.mod-root .workspace-tab-header .workspace-tab-header-inner
+  .workspace-tab-header-status-icon,
+.mod-root .workspace-tab-header .workspace-tab-header-inner
+  .workspace-tab-header-status-icon .svg-icon {
+  color: inherit !important;
+  stroke: currentColor !important;
+}
 /* Onglet actif du pane focus : seulement hors hover */
 .is-focused .workspace-tab-header.is-active.mod-active:not(:hover) .workspace-tab-header-inner-title {
   color: var(--OT-view-header-title-focus-color);
@@ -7475,18 +7486,6 @@ body.is-focused .workspace-tab-header-container .workspace-tab-header .workspace
 /* -----------------------------------------
    Sidebars
    ----------------------------------------- */
-
-/* Palette de base un peu plus sombre pour les icônes de sidebar non actives */
-.mod-left-split .workspace-tab-header .workspace-tab-header-inner :is(
-  .workspace-tab-header-inner-icon,
-  .workspace-tab-header-status-icon
-),
-.mod-right-split .workspace-tab-header .workspace-tab-header-inner :is(
-  .workspace-tab-header-inner-icon,
-  .workspace-tab-header-status-icon
-) {
-  color: var(--icon-color) !important;
-}
 
 /* Actif / menu ouvert = accent-2 */
 .mod-left-split .workspace-tab-header:is(.is-active, .has-active-menu) .workspace-tab-header-inner,
