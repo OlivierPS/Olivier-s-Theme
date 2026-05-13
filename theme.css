@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-13
+	- small tweaks for the vertical tabs plugin and for the publish modal
 2026-05-11
 	- corrected a problem with the color of the text in tabs
 	- tuned the yellow and light yellow backgrounds for editing panes
@@ -236,7 +238,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 							“tree-item-flair”
 							les pastilles indicatives sur la feuille de publication
 							YAML metadata
-							les petits boutons sur la feuille de publication
+							les petits boutons et les fichiers nouveaux, sur la feuille de publication
 							l’édition des fichiers dans la “nav bar”
 							inline title
 			OpSpl22:	les sidebars
@@ -6112,6 +6114,11 @@ input[type=checkbox]:hover {
 		color: 				var(--OT-color-on-accent-1);
 		background-color:	var(--color-accent-1);
 	}
+}
+/*	Dans le modal de publication, les noms des nouveaux fichiers.	*/
+.file-tree .mod-new.is-selected {
+    background-color: rgba(var(--background-modifier-success-rgb), 0.2);
+    color:	var(--color-green);
 }
 /*	certains indicateurs dans le modal de sélection des Themes	*/
 .flair.mod-pop {
@@ -12223,6 +12230,12 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 :not(.vt-tab-container) .tree-item-self.is-active,
 :not(.vt-tab-container) .tree-item-self.is-selected {
 	/* gardent la logique de nav générique définie en OpSpl52 */
+}
+
+/* Une règle supplémentaire pour le cas particulier d'un tab qui est en évidence sans qu'on ait cliqué dessus */
+.obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .tree-item-self {
+    color:				var(--OT-color-on-accent-1);
+    background-color:	var(--color-accent-1);
 }
 /* -------------------- ↑ Vertical Tabs plugin ↑ -------------------- */
 
