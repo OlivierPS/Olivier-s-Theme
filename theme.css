@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-05-14
 	- corrected a button in bases header
+	- added Amasis font as a choice for writing and for kanbans
 2026-05-13
 	- small tweaks for the vertical tabs plugin and for the publish modal
 2026-05-11
@@ -5508,6 +5509,11 @@ body.edit-font-Default {
 	--OT-edit-letter-spacing: 0em;
 }
 
+/* Amasis */
+body.edit-font-Amasis {
+	--OT-edit-font-family: "Amasis MT Pro", "Amasis eText", "Comic Sans MS", var(--font-default);
+}
+
 /* American Typewriter */
 body.edit-font-AmericanTypewriter {
 	--OT-edit-font-family: "American Typewriter", "ITC American Typewriter", "Comic Sans MS", var(--font-default);
@@ -9886,6 +9892,7 @@ body {
 .board-card .metadata-property-value * {
 	font-size:	calc(0.9 * var(--OT-kanban-font-size));
 	border-bottom: none;
+	line-height:	normal;
 }
 
 .board-card .metadata-input-longtext {
@@ -14975,6 +14982,9 @@ settings:
 					label: "Adelle"
 					value: "Adelle"
 				-
+					label: "Amasis"
+					value: "Amasis MT Pro"
+				-
 					label: "American Typewriter"
 					value: "American Typewriter"
 				-
@@ -16534,6 +16544,9 @@ settings:
 					label:		Default
 					label.fr:	Par défaut
 					value:		edit-font-Default
+				-
+					label:		Amasis
+					value:		edit-font-Amasis
 				-
 					label:		American Typewriter
 					value:		edit-font-AmericanTypewriter
