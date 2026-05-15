@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-15
+	- corrected a bug with footnotes text size + buttons in Style Settings plugin
 2026-05-14
 	- corrected a button in bases header
 	- added Amasis font as a choice for writing and for kanbans
@@ -763,7 +765,7 @@ body {
 	--footnote-id-color:		var(--list-marker-color);
 	--footnote-id-delimiter:	")";	/*	".";	*/
 	--footnote-line-height:		var(--line-height-tight);
-	--footnote-size:			max(calc(0.9 * var(--OT-readingMode-text-size)), 16pt);
+	--footnote-size:			calc(0.85 * var(--OT-readingMode-text-size));
 /*	--footnote-input-background:	cyan;	var(--metadata-input-background);	*/
 
 	--graph-line:		var(--color-base-100);
@@ -7971,14 +7973,29 @@ select {
 /* 10. Style Settings plugin command buttons */
 .style-settings-import-label,
 .style-settings-copy,
-.style-settings-download {
+.style-settings-download,
+.style-settings-export,
+.style-settings-import {
 	color:            var(--OT-button-text-normal);
 	background-color: var(--OT-button-background-normal);
 	text-align:       center;
 	text-decoration:  none;
 	border-radius:    4px;
 	margin:           2px;
-	padding:          2px;
+	padding-block:    1px;
+	padding-inline:   4px;
+}
+
+@media (hover: hover) {
+	.style-settings-import-label:hover,
+	.style-settings-copy:hover,
+	.style-settings-download:hover,
+	.style-settings-export:hover,
+	.style-settings-import:hover {
+		color:            var(--OT-color-on-accent-1);
+		background-color: var(--color-accent-1);
+		text-decoration:  none;
+	}
 }
 
 /* Chevrons des groupes dans Style Settings */
@@ -7987,23 +8004,13 @@ select {
 	--nav-collapse-icon-color: var(--OT-setting-item-name);
 }
 
-.style-settings-heading .style-settings-collapse-indicator:hover .collapse-icon svg.svg-icon,
-.style-settings-heading .style-settings-collapse-indicator:hover .svg-icon.right-triangle {
-	--nav-collapse-icon-color: var(--OT-button-text-hover);
-	background-color: var(--OT-button-background-hover);
-}
-
-/*
 @media (hover: hover) {
-	.style-settings-import-label:hover,
-	.style-settings-copy:hover,
-	.style-settings-download:hover {
-    color:            var(--OT-button-text-hover);
-    background-color: var(--OT-button-background-hover);
-    text-decoration:  none;
+	.style-settings-heading .style-settings-collapse-indicator:hover .collapse-icon svg.svg-icon,
+	.style-settings-heading .style-settings-collapse-indicator:hover .svg-icon.right-triangle {
+		--nav-collapse-icon-color: var(--OT-button-text-hover);
+		background-color:          var(--OT-button-background-hover);
 	}
 }
-*/
 
 /* 11. Text-icon buttons (inclut has-active-menu) */
 .text-icon-button.has-active-menu,
@@ -8632,21 +8639,28 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 	}
 }
 
-/* ── Style Settings: import/export buttons ───────────────────────── */
+/* Footnote list items: enforce --footnote-size in all modes */
 
-.style-settings-export,
-.style-settings-import {
-	color: var(--OT-button-text-normal);
-	background-color: var(--OT-button-background-normal);
-	border-radius: 4px !important;
-	padding-block: 1px;
-	padding-inline: 4px;
+/* Reading mode */
+.markdown-preview-view .footnotes ol,
+.markdown-preview-view .footnotes ol li,
+.markdown-preview-view .footnotes ol li p {
+  font-size: var(--footnote-size);
+  line-height: var(--footnote-line-height);
 }
 
-.style-settings-export:hover,
-.style-settings-import:hover {
-	color: var(--OT-color-on-accent-1);
-	background-color: var(--color-accent-1);
+/* Live Preview — footnote pane */
+.footnote-content .markdown-rendered ol,
+.footnote-content .markdown-rendered ol li,
+.footnote-content .markdown-rendered ol li p {
+  font-size: var(--footnote-size);
+  line-height: var(--footnote-line-height);
+}
+
+/* Isolation du stepdown si OT-lists-font-stepdown est actif */
+.markdown-preview-view .footnotes ol li,
+.footnote-content .markdown-rendered ol li {
+  font-size: var(--footnote-size) !important;
 }
 /* -------------------- ↑ Footnotes -------------------- ↑ */
 
