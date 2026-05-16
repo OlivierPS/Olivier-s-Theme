@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-05-16
 	- added rules offering the possibility to specify the inline specified class for HR
+	- debugged edge cases of the inline HR styling
 2026-05-15
 	- corrected a bug with footnotes text size + buttons in Style Settings plugin
 2026-05-14
@@ -9561,8 +9562,8 @@ body.OT-sep-08,
 
 
 /* Pseudo-élément commun */
-:is(body, .view-content, .markdown-preview-view)[class*="OT-sep-"] .markdown-rendered hr::after,
-.markdown-preview-view[class*="OT-sep-"] hr::after
+:is(body, .view-content, .markdown-preview-view)[class*="OT-sep-"] .markdown-rendered hr:not([class*="sep-"])::after,
+.markdown-preview-view[class*="OT-sep-"] hr:not([class*="sep-"])::after
 {
 	content:				"";
 	position:				absolute;
@@ -9641,31 +9642,31 @@ Variante 01 : même ligne que les footnotes
 - locale via cssclasses: sep-01
 -------------------------------------------------------------------------- */
 
-body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr,
-body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr,
-.markdown-preview-view.sep-01 hr,
-.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr {
-	margin-top: var(--OT-sep-space-before);
-	margin-bottom: var(--OT-sep-space-after);
-	border: none !important;
-	height: 3px !important;
-	background: linear-gradient(
+body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr:not([class*="sep-"]),
+body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr:not([class*="sep-"]),
+.markdown-preview-view.sep-01 hr:not([class*="sep-"]),
+.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr:not([class*="sep-"]) {
+    margin-top: var(--OT-sep-space-before);
+    margin-bottom: var(--OT-sep-space-after);
+    border: none !important;
+    height: 3px !important;
+    background: linear-gradient(
 		to right,
 		transparent,
 		color-mix(in srgb, var(--hr-color) 58%, transparent) 22%,
 		color-mix(in srgb, var(--hr-color) 58%, transparent) 78%,
 		transparent
 	) !important;
-	opacity: 1;
-	overflow: visible;
-	position: relative;
+    opacity: 1;
+    overflow: visible;
+    position: relative;
 }
 
 /* Annuler l’ornement décoratif commun seulement pour la vraie variante 01 */
-body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
-body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
-.markdown-preview-view.sep-01 hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
-.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after {
+body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr:not(.sep-01):not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
+body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr:not(.sep-01):not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
+.markdown-preview-view.sep-01 hr:not(.sep-01):not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
+.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr:not(.sep-01):not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after {
     content: none !important;
     display: none !important;
     background: none !important;
@@ -9831,6 +9832,73 @@ body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-
   mask-size: contain;
 }
 
+/* ::after pour les <hr class="sep-0x"> inline en Reading mode */
+.markdown-preview-view .el-hr hr[class*="sep-"]::after,
+.markdown-rendered .el-hr hr[class*="sep-"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, var(--OT-sep-symbol-shift-y-reading));
+  width: var(--OT-sep-00-width);
+  height: var(--OT-sep-00-height);
+  background-color: var(--text-normal);
+  -webkit-mask-image: var(--OT-sep-00-svg);
+  mask-image: var(--OT-sep-00-svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.markdown-preview-view .el-hr hr.sep-01,
+.markdown-rendered .el-hr hr.sep-01 {
+  border: none !important;
+  height: 3px !important;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--hr-color) 58%, transparent) 22%,
+    color-mix(in srgb, var(--hr-color) 58%, transparent) 78%,
+    transparent
+  ) !important;
+  opacity: 1;
+  overflow: visible;
+  position: relative;
+}
+
+.markdown-preview-view .el-hr hr.sep-01::after,
+.markdown-rendered .el-hr hr.sep-01::after {
+  content: none !important;
+  display: none !important;
+}
+
+.cm-html-embed hr.sep-01 {
+  border: none !important;
+  height: 3px !important;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--hr-color) 58%, transparent) 22%,
+    color-mix(in srgb, var(--hr-color) 58%, transparent) 78%,
+    transparent
+  ) !important;
+  opacity: 1;
+  overflow: visible;
+  position: relative;
+}
+
+.cm-html-embed hr.sep-01::after {
+  content: none !important;
+  display: none !important;
+}
+
+
 /* --------------------------------------------------------------------------
    4. Footnotes : toujours une ligne discrète, jamais un ornement
 -------------------------------------------------------------------------- */
@@ -9860,10 +9928,10 @@ body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-
 .markdown-preview-view .footnotes > hr::after,
 .view-content .markdown-rendered .footnotes > hr::after,
 .markdown-source-view.mod-cm6 .footnotes > hr::after {
-	content:			none;
-	background:			none;
-	-webkit-mask-image:	none;
-	mask-image:			none;
+	content:			none !important;
+	background:			none !important;
+	-webkit-mask-image:	none !important;
+	mask-image:			none !important;
 }
 /* -------------------- ↑ horizontal rule ↑ -------------------- */
 
