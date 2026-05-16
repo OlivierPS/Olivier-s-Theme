@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-16
+	- added rules offering the possibility to specify the inline specified class for HR
 2026-05-15
 	- corrected a bug with footnotes text size + buttons in Style Settings plugin
 2026-05-14
@@ -9660,15 +9662,173 @@ body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-
 }
 
 /* Annuler l’ornement décoratif commun seulement pour la vraie variante 01 */
-body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr::after,
-body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr::after,
-.markdown-preview-view.sep-01 hr::after,
-.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr::after {
-	content: none !important;
-	display: none !important;
-	background: none !important;
-	-webkit-mask-image: none !important;
-	mask-image: none !important;
+body.OT-sep-01 .markdown-preview-view:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
+body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08) .cm-line.hr > hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
+.markdown-preview-view.sep-01 hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after,
+.markdown-source-view.mod-cm6.sep-01 .cm-line.hr > hr:not(.sep-02):not(.sep-03):not(.sep-04):not(.sep-05):not(.sep-06):not(.sep-07):not(.sep-08)::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Inline separators — classe sur le <hr> lui-même
+   Reading mode : .el-hr hr.sep-0x
+   Live Preview : .cm-html-embed hr.sep-0x
+   -------------------------------------------------------------------------- */
+
+/* 1. Redéfinir les variables sur l'élément en Reading mode */
+
+.markdown-preview-view .el-hr hr.sep-01 {
+  --OT-sep-00-svg: var(--OT-sep-01-svg);
+  --OT-sep-00-width: var(--OT-sep-01-width);
+  --OT-sep-00-height: var(--OT-sep-01-height);
+  --OT-sep-00-max-width: var(--OT-sep-01-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-01-side-gap);
+}
+.markdown-preview-view .el-hr hr.sep-02 {
+  --OT-sep-00-svg: var(--OT-sep-02-svg);
+  --OT-sep-00-width: var(--OT-sep-02-width);
+  --OT-sep-00-height: var(--OT-sep-02-height);
+  --OT-sep-00-max-width: var(--OT-sep-02-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-02-side-gap);
+}
+.markdown-preview-view .el-hr hr.sep-03 {
+  --OT-sep-00-svg: var(--OT-sep-03-svg);
+  --OT-sep-00-width: var(--OT-sep-03-width);
+  --OT-sep-00-height: var(--OT-sep-03-height);
+  --OT-sep-00-max-width: var(--OT-sep-03-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-03-side-gap);
+}
+.markdown-preview-view .el-hr hr.sep-04 {
+  --OT-sep-00-svg: var(--OT-sep-04-svg);
+  --OT-sep-00-width: var(--OT-sep-04-width);
+  --OT-sep-00-height: var(--OT-sep-04-height);
+  --OT-sep-00-max-width: var(--OT-sep-04-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-04-side-gap);
+}
+.markdown-preview-view .el-hr hr.sep-05 {
+  --OT-sep-00-svg: var(--OT-sep-05-svg);
+  --OT-sep-00-width: var(--OT-sep-05-width);
+  --OT-sep-00-height: var(--OT-sep-05-height);
+  --OT-sep-00-max-width: var(--OT-sep-05-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-05-side-gap);
+}
+.markdown-preview-view .el-hr hr.sep-06 {
+  --OT-sep-00-svg: var(--OT-sep-06-svg);
+  --OT-sep-00-width: var(--OT-sep-06-width);
+  --OT-sep-00-height: var(--OT-sep-06-height);
+  --OT-sep-00-max-width: var(--OT-sep-06-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-06-side-gap);
+}
+.markdown-preview-view .el-hr hr.sep-07 {
+  --OT-sep-00-svg: var(--OT-sep-07-svg);
+  --OT-sep-00-width: var(--OT-sep-07-width);
+  --OT-sep-00-height: var(--OT-sep-07-height);
+  --OT-sep-00-max-width: var(--OT-sep-07-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-07-side-gap);
+}
+.markdown-preview-view .el-hr hr.sep-08 {
+  --OT-sep-00-svg: var(--OT-sep-08-svg);
+  --OT-sep-00-width: var(--OT-sep-08-width);
+  --OT-sep-00-height: var(--OT-sep-08-height);
+  --OT-sep-00-max-width: var(--OT-sep-08-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-08-side-gap);
+}
+
+/* 2. Redéfinir les variables sur l'élément en Live Preview */
+
+.cm-html-embed hr.sep-01 {
+  --OT-sep-00-svg: var(--OT-sep-01-svg);
+  --OT-sep-00-width: var(--OT-sep-01-width);
+  --OT-sep-00-height: var(--OT-sep-01-height);
+  --OT-sep-00-max-width: var(--OT-sep-01-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-01-side-gap);
+}
+.cm-html-embed hr.sep-02 {
+  --OT-sep-00-svg: var(--OT-sep-02-svg);
+  --OT-sep-00-width: var(--OT-sep-02-width);
+  --OT-sep-00-height: var(--OT-sep-02-height);
+  --OT-sep-00-max-width: var(--OT-sep-02-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-02-side-gap);
+}
+.cm-html-embed hr.sep-03 {
+  --OT-sep-00-svg: var(--OT-sep-03-svg);
+  --OT-sep-00-width: var(--OT-sep-03-width);
+  --OT-sep-00-height: var(--OT-sep-03-height);
+  --OT-sep-00-max-width: var(--OT-sep-03-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-03-side-gap);
+}
+.cm-html-embed hr.sep-04 {
+  --OT-sep-00-svg: var(--OT-sep-04-svg);
+  --OT-sep-00-width: var(--OT-sep-04-width);
+  --OT-sep-00-height: var(--OT-sep-04-height);
+  --OT-sep-00-max-width: var(--OT-sep-04-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-04-side-gap);
+}
+.cm-html-embed hr.sep-05 {
+  --OT-sep-00-svg: var(--OT-sep-05-svg);
+  --OT-sep-00-width: var(--OT-sep-05-width);
+  --OT-sep-00-height: var(--OT-sep-05-height);
+  --OT-sep-00-max-width: var(--OT-sep-05-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-05-side-gap);
+}
+.cm-html-embed hr.sep-06 {
+  --OT-sep-00-svg: var(--OT-sep-06-svg);
+  --OT-sep-00-width: var(--OT-sep-06-width);
+  --OT-sep-00-height: var(--OT-sep-06-height);
+  --OT-sep-00-max-width: var(--OT-sep-06-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-06-side-gap);
+}
+.cm-html-embed hr.sep-07 {
+  --OT-sep-00-svg: var(--OT-sep-07-svg);
+  --OT-sep-00-width: var(--OT-sep-07-width);
+  --OT-sep-00-height: var(--OT-sep-07-height);
+  --OT-sep-00-max-width: var(--OT-sep-07-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-07-side-gap);
+}
+.cm-html-embed hr.sep-08 {
+  --OT-sep-00-svg: var(--OT-sep-08-svg);
+  --OT-sep-00-width: var(--OT-sep-08-width);
+  --OT-sep-00-height: var(--OT-sep-08-height);
+  --OT-sep-00-max-width: var(--OT-sep-08-max-width);
+  --OT-sep-00-side-gap: var(--OT-sep-08-side-gap);
+}
+
+/* 3. Rendu ::after pour .cm-html-embed (non couvert par les règles globales) */
+
+.cm-html-embed hr[class^="sep-"],
+.cm-html-embed hr[class*=" sep-"] {
+  border: none !important;
+  background: none !important;
+  opacity: 1;
+  overflow: visible;
+  position: relative;
+  height: var(--OT-sep-00-height);
+  margin-top: var(--OT-sep-space-before);
+  margin-bottom: var(--OT-sep-space-after);
+}
+
+.cm-html-embed hr[class^="sep-"]::after,
+.cm-html-embed hr[class*=" sep-"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, var(--OT-sep-symbol-shift-y-live, -50%));
+  width: var(--OT-sep-00-width);
+  height: var(--OT-sep-00-height);
+  background-color: var(--text-normal);
+  -webkit-mask-image: var(--OT-sep-00-svg);
+  mask-image: var(--OT-sep-00-svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 /* --------------------------------------------------------------------------
