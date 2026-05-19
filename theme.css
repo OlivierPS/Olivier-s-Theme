@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-19
+	- some tweaks for the community modal
 2026-05-16
 	- added rules offering the possibility to specify the inline specified class for HR
 	- debugged edge cases of the inline HR styling
@@ -8604,6 +8606,21 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 	line-height: 1.3;
 	position:    relative;
 }
+/* La description des plugins (“Readme.md”)	*/
+.community-modal-info-desc {
+    font-size:		var(--font-ui-medium);
+    line-height:	var(--line-height-tight);
+    margin-top:		var(--size-4-2);
+    /*color:			crimson;*/
+    font-style: 	italic;
+}
+.community-modal-readme {
+	--OT-list-font-size-1:	var(--OT-font-ui-medium);
+	--OT-list-font-size-2:	var(--OT-font-ui-medium);
+	--OT-list-font-size-3:	var(--OT-font-ui-medium);
+	--OT-list-font-size-4:	var(--OT-font-ui-medium);
+	--font-text-size:		var(--font-ui-medium);
+}
 /* -------------------- Settings panel -------------------- */
 
 
@@ -10210,17 +10227,24 @@ body {
 /* -------------------- ↑ transcludes ↑ -------------------- */
 
 /*	=== === === OpSpl47	 —————————————————————————————— Syntax markers —————————————————————————————— */
+/* Syntaxe fine : rendre les marqueurs très discrets */
 .cm-s-obsidian .cm-formatting-strong,
 .cm-s-obsidian .cm-formatting-em,
-.cm-s-obsidian .cm-formatting-header,
 .cm-s-obsidian span.cm-footref.cm-inline-footnote.cm-formatting-inline-footnote,
 .cm-s-obsidian span.cm-footref.cm-hmd-barelink.cm-formatting,
 .cm-s-obsidian span.cm-formatting-image,
-.cm-s-obsidian span.cm-formatting-link-string,
+.cm-s-obsidian span.cm-formatting-link-string {
+	color:       var(--OT-syntax-markers);
+	font-weight: var(--font-extralight);
+	font-size:   0.8em;
+}
+
+/* Syntaxe de structure : rester discret, mais à taille normale */
+.cm-s-obsidian .cm-formatting-header,
 .cm-s-obsidian span.cm-formatting-link {
-	color:			var(--OT-syntax-markers);	/*	À l’origine, c’était du “text-faint” et ça	m’ennuyait beaucoup, car il y en avait partout, du “text-faint”!	*/
-	font-weight:	var(--font-extralight);
-	font-size: 		0.8em;
+	color:       var(--OT-syntax-markers);
+	font-weight: var(--font-extralight);
+	/* pas de font-size: on garde la taille courante du contexte */
 }
 
 /* le texte marqué au Stabilo, entre les paires de “==”; je lui ajoute un peu d’espace horizontal pour respirer	*/
