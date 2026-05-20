@@ -52,6 +52,7 @@ Post‑release tweaks
 	- added rule for the hovering of the status bar button from the Workspace++ plugin
 	- tuned some backgrounds + added a brown as a choice for Editing mode background
 	- corrected the logic of colors in tab headers in different states
+	- suppressed the display of the close icon on hovering of sidebar tabs
 2026-05-19
 	- some tweaks for the community modal
 2026-05-16
@@ -7599,6 +7600,15 @@ body.is-focused {
 		display: none;
 	}
 }
+
+@media (hover: hover) {
+	.mod-left-split .workspace-tab-header:hover .workspace-tab-header-inner-close-button,
+	.mod-right-split .workspace-tab-header:hover .workspace-tab-header-inner-close-button {
+		display: none !important;
+		pointer-events: none;
+	}
+}
+
 
 /* Hover sidebar, quel que soit l’état : accent-1 */
 @media (hover: hover) {
