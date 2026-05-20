@@ -7613,15 +7613,16 @@ body.is-focused {
 			.workspace-tab-header-inner-title,
 			.workspace-tab-header-inner-icon,
 			.workspace-tab-header-status-icon {
-				color: inherit;
-				background-color: transparent;
+				color:            var(--OT-color-on-accent-1);
+				background-color: var(--color-accent-1);
 			}
 
 			.workspace-tab-header-inner-icon .svg-icon,
 			.workspace-tab-header-status-icon .svg-icon {
-				color: inherit;
-				stroke: currentColor;
-				fill: none;
+				color:				var(--OT-color-on-accent-1);
+				background-color:	var(--color-accent-1);
+				stroke:				currentColor;
+				fill:				none;
 			}
 		}
 
@@ -7636,14 +7637,16 @@ body.is-focused {
 @media (hover: hover) {
 	body.is-focused .mod-active .workspace-tab-header-container .workspace-tab-header.is-active:hover {
 		.workspace-tab-header-inner {
-			color: var(--OT-color-on-accent-1);
-			background-color: var(--color-accent-1);
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
 		}
 
 		.workspace-tab-header-inner-icon,
 		.workspace-tab-header-inner-title {
-			color: inherit;
-			background-color: transparent;
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
+			stroke:				currentColor;
+			fill:				none;
 		}
 	}
 }
