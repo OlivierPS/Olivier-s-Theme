@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-05-20
 	- added rule for the hovering of the status bar button from the Workspace++ plugin
+	- tuned some backgrounds + added a brown as a choice for Editing mode background
 2026-05-19
 	- some tweaks for the community modal
 2026-05-16
@@ -1171,11 +1172,12 @@ body {
 	--OT-theme-s:		50%;
 	--color-base-50:	hsl(var(--OT-theme-h), var(--OT-theme-s), 76%);
 }/* ↑ lightPalette-lightBeige ↑ */
+
 .theme-light.lightPalette-blue {
 	--OT-theme-h:		215;
 	--OT-theme-s:		90%;
-	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 90%);
-	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);
+	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 94%);
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 90%);
 
 	--link-color:		hsl(95, 45%, 35%);
 
@@ -1229,6 +1231,7 @@ body {
 }
 /*	↑ lightPalette-green ↑	*/
 /*	----------------------------------------------	*/
+
 .theme-light.lightPalette-icy {
 	--OT-theme-h:		210;
 	--OT-theme-s:		100%;
@@ -4693,6 +4696,12 @@ body {
 .theme-light.editingBackgroundColor-lightMode-lightBeige .markdown-source-view .cm-line,
 .theme-light.editingBackgroundColor-lightMode-lightBeige .cm-s-obsidian  {
 	background-color:	hsl(40, 25%, 94%);
+}
+
+.theme-light.editingBackgroundColor-lightMode-brown .CodeMirror pre.CodeMirror-line,
+.theme-light.editingBackgroundColor-lightMode-brown .markdown-source-view .cm-line,
+.theme-light.editingBackgroundColor-lightMode-brown .cm-s-obsidian  {
+	background-color:	 hsl(33 40% 84%);
 }
 
 .theme-light.editingBackgroundColor-lightMode-lightGreen .CodeMirror pre.CodeMirror-line,
@@ -15882,6 +15891,10 @@ settings:
 				label:		sky Blue
 				label.fr:	Bleu ciel
 				value:		editingBackgroundColor-lightMode-sky
+			-
+				label:		Brown
+				label.fr:	Brun
+				value:		editingBackgroundColor-lightMode-brown
 			-
 				label:		Green
 				label.fr:	Vert
