@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-20
+	- added rule for the hovering of the status bar button from the Workspace++ plugin
 2026-05-19
 	- some tweaks for the community modal
 2026-05-16
@@ -10936,6 +10938,36 @@ body.lists-horiz-generous {
   }
 }
 
+/* 4. Workspace++ status item
+--------------------------------------------------------------------
+- Le plugin injecte plusieurs spans internes + une icône Lucide outline.
+- On aligne le hover sur la grammaire OT de la status bar.
+- Important : ne PAS forcer fill: currentColor sur le SVG, sinon l’icône devient pleine.
+-------------------------------------------------------------------- */
+
+@media (hover: hover) {
+	.status-bar-item.plugin-workspace-plus-plus:hover {
+		color: var(--OT-color-on-accent-1) !important;
+		background-color: var(--color-accent-1);
+		box-shadow: var(--OT-status-bar-shadow-item-hover);
+	}
+
+	.status-bar-item.plugin-workspace-plus-plus:hover .wpp-status-icon,
+	.status-bar-item.plugin-workspace-plus-plus:hover .wpp-status-group,
+	.status-bar-item.plugin-workspace-plus-plus:hover .wpp-status-separator,
+	.status-bar-item.plugin-workspace-plus-plus:hover .wpp-status-name {
+		color: inherit;
+		background-color: transparent;
+	}
+
+	.status-bar-item.plugin-workspace-plus-plus:hover .wpp-status-icon svg,
+	.status-bar-item.plugin-workspace-plus-plus:hover .wpp-status-icon svg * {
+		color: inherit;
+		stroke: currentColor;
+		fill: none;
+		background-color: transparent;
+	}
+}
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
 
