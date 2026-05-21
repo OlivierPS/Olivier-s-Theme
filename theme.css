@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-21
+	- added a CSS class permitting to extend bases across the whole width of the pane, even with “Readable line length” ON
 2026-05-20
 	- added rule for the hovering of the status bar button from the Workspace++ plugin
 	- tuned some backgrounds + added a brown as a choice for Editing mode background
@@ -14850,6 +14852,55 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 .markdown-preview-view.img-left .markdown-preview-section > .el-p > p > img {
 	margin-inline: 0 !important;
 }
+
+/* =========================================================
+   Bases pleine largeur du panneau
+   ========================================================= */
+
+   /* Le panneau réel de lecture devient le container de référence */
+   .markdown-reading-view .markdown-preview-view {
+     container-name: OT-note-pane;
+     container-type: inline-size;
+   }
+
+   .markdown-source-view.mod-cm6 .cm-scroller {
+     container-name: OT-note-pane;
+     container-type: inline-size;
+   }
+
+   /* Note avec cssclass: bases-full-width */
+   /* Reading mode */
+   .markdown-preview-view.is-readable-line-width.bases-full-width .bases-embed {
+     --OT-bases-pane-width: 100cqi;
+     --OT-bases-readable-width: var(--file-line-width);
+     --OT-bases-edge-padding: 0px;
+
+     --bases-embed-width: calc(var(--OT-bases-pane-width) - 2 * var(--OT-bases-edge-padding));
+     --bases-embed-transform: translateX(
+       min(
+         0px,
+         calc(
+           (
+             var(--OT-bases-readable-width)
+             - var(--OT-bases-pane-width)
+             + 2 * var(--OT-bases-edge-padding)
+           ) / 2
+         )
+       )
+     );
+   }
+
+   .markdown-source-view.mod-cm6.is-readable-line-width.bases-full-width .cm-content > .bases-embed,
+   .markdown-source-view.mod-cm6.is-readable-line-width.bases-full-width .cm-content > .cm-lang-base {
+     --OT-bases-pane-width: 100cqi;
+     --OT-bases-readable-width: var(--OT-edit-line-width, var(--file-line-width));
+     --OT-bases-edge-padding: 0px;
+
+     --bases-embed-width: calc(var(--OT-bases-pane-width) - 2 * var(--OT-bases-edge-padding));
+     --bases-embed-transform: translateX(
+					min(0px, calc((var(--OT-bases-readable-width) - var(--OT-bases-pane-width) + 2 * var(--OT-bases-edge-padding) ) / 2))
+     );
+   }
 
 /*	---------- ↑ Some useful CSSCLASSES ↑ ----------	*/
 
