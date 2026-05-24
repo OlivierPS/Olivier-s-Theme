@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-24
+	- completely overhauled the horizontal spacing system
+	- CSS classes are available to adjust width of tables and bases independantly
 2026-05-22
 	- unfortunately, the tweak permitting transcluded bases to extend to the whole pane width introduced a problem with tables editing;
 		so, I prefer to remove it, until I find a better solution
@@ -249,6 +252,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl16:	définition de la couleur du texte en mode d’édition
 			OpSpl17:	définition de l’icône/la pastille en haut à droite d’un panneau en mode d’édition
 			OpSpl17a:	rythme vertical
+			OpSpl17b	largeur des éléments
 			OpSpl18:	la fonte du mode d’édition
 						la fonte “monospaced”
 			OpSpl19:	typography of the EDIT mode: font size, line length and line height
@@ -564,7 +568,7 @@ body {
 	    												"Comic Sans MS",
 														var(--font-default);
 	--OT-edit-text-size:							17px;
-	--OT-edit-line-width:							44em;
+	--OT-line-width-editing:						44rem;
 	--OT-edit-line-height:							1.5em;
 	--OT-effective-edit-line-height: 				var(--OT-edit-line-height);
 	--OT-edit-letter-spacing:						0em;
@@ -581,7 +585,7 @@ body {
    --OT-edit-heading-h6-space-above: 				var(--OT-blanc-moyen);
 
    /* En dessous */
-   --OT-edit-heading-h1-space-below: 				var(--OT-blanc-petit);
+   --OT-edit-heading-h1-space-below: 				var(--OT-blanc-moyen);
    --OT-edit-heading-h2-space-below: 				var(--OT-blanc-moyen);
    --OT-edit-heading-h3-space-below: 				var(--OT-blanc-petit);
    --OT-edit-heading-h4-space-below: 				var(--OT-blanc-petit);
@@ -602,7 +606,7 @@ body {
 
 	--OT-kanban-font:								"Uberhand Pro";
 	--OT-kanban-font-size:							17px;
-	--OT-kanban-lane-width:							20em;
+	--OT-kanban-lane-width:							20rem;
 	--OT-kbd-background:							floralwhite;
 	--OT-kbd:										hsl(var(--OT-theme-h), var(--OT-theme-s), 32%);
 	--OT-menu-text-color:							var(--nav-item-color);
@@ -623,7 +627,7 @@ body {
 	--OT-raw-heading-h6-scale:						1.0;
 
 	--OT-readingMode-text-size:						17px;
-	--OT-readingMode-line-width:					44em;
+	--OT-line-width-reading:						44rem;
 	--OT-readingMode-line-height:					1.5em;
 	--OT-readingMode-tableText-percent:				90;
 	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--icon-color);
@@ -757,7 +761,7 @@ body {
 	--embed-border-bottom:		none;
 	--embed-padding:			0;	/*	0 0 0 var(--size-4-6);	*/
 
-	--file-line-width:			var(--OT-readingMode-line-width);
+	--file-line-width:			var(--OT-line-width-reading);
 	--file-margins:				var(--size-4-8);
 	--file-header-font-size:	var(--font-ui-small);
 	--file-header-font-weight:	400;
@@ -5315,24 +5319,23 @@ body {
 
 
 /*	=== === === OpSpl17	 —————————————————————————————— Icon signaling Edit mode —————————————————————————————— */
-/* ensure positioned ancestor */
 .markdown-source-view.mod-cm6 .cm-editor {
-		position:	relative;
-		overflow:	visible;
+	position: relative;
+	overflow: visible;
 }
 
-/* guaranteed-visible dot in the top-right */
 .markdown-source-view.mod-cm6 .cm-editor::before {
-		content:			"";
-		position:			absolute;
-		top:				calc(var(--file-margins) / 2);
-		right:				calc(var(--file-margins) / 2);
-		width:				calc(var(--file-margins)/2);
-		height:				calc(var(--file-margins)/2);
-		border-radius:		999px;
-		background-color:	var(--text-normal);
-		pointer-events:		none;
-		z-index:			9999;
+	content: "";
+	position: absolute;
+	top:		0.5em;
+	left: 		calc(var(--OT-content-margin-start-editing) + var(--OT-line-width-editing) + 0.5rem);
+	width:		0.75em;
+	height:		0.75em;
+	border-radius: 999px;
+	background-color: var(--text-normal);
+	pointer-events: none;
+	z-index: 9999;
+	/*font-size: var(--OT-edit-text-size);*/
 }
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à droite du panneau d’édition ↑ -------------------------	*/
 
@@ -5516,6 +5519,580 @@ body.vertical-rythm-Bear {
 	margin-bottom: calc(var(--OT-blanc-petit) - 0.12em);
 }
 /*	------------------------- ↑ Rythme vertical ↑ -------------------------	*/
+
+/*══════════════════════════════════════════════════════════════════
+  OpSpl17b — Minimal width logic transplanted into OT theme
+══════════════════════════════════════════════════════════════════*/
+
+body {
+	--OT-content-margin-reading:		auto;
+	--OT-content-margin-editing:		auto;
+	--OT-max-width:						88%;
+	--OT-content-margin-start-reading:	max(
+											calc(50% - var(--OT-line-width-reading)/2),
+											calc(50% - var(--OT-max-width)/2) );
+	--OT-content-margin-start-editing:	max(
+											calc(50% - var(--OT-line-width-editing)/2),
+											calc(50% - var(--OT-max-width)/2) );
+	--OT-line-width-wide-reading:		calc(var(--OT-line-width-reading) + 12.5%);
+	--OT-line-width-wide-editing:		calc(var(--OT-line-width-reading) + 12.5%);
+	--OT-content-line-width-reading:	min(var(--OT-line-width-reading), var(--OT-max-width));
+	--OT-content-line-width-editing:	min(var(--OT-line-width-editing), var(--OT-max-width));
+	--map-header-padding:				2px;
+}
+
+/* Line widths ------------------------------------ */
+/* Set overall context to 100% width */
+.markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer {
+  	max-width:		100%;
+  	margin-inline:	auto;
+  	width:			100%;
+}
+
+/* Prevent x overflow when line numbers are on
+.markdown-source-view.mod-cm6 .cm-sizer {
+		overflow-x:	hidden;
+} */
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
+  	max-width:	100%;
+  	width:		100%;
+}
+
+/* Set inner content to line width */
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div {
+  	max-width:		var(--OT-max-width);
+  	width:			var(--OT-line-width-reading);
+  	margin-inline:	var(--OT-content-margin-reading) !important;
+}
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer > .inline-title,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer > .embedded-backlinks,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer > .metadata-container {
+	max-width:		var(--OT-max-width);
+	width:			var(--OT-line-width-editing);
+	margin-inline:	var(--OT-content-margin-editing) !important;
+}
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > *:not(div) {
+	max-width: var(--OT-content-line-width-editing);
+	margin-inline: var(--OT-content-margin-editing) !important;
+}
+
+/* File margins ------------------------------------ */
+.is-readable-line-width {
+  	--file-margins:	1rem 0 0 0;
+}
+
+.is-mobile .markdown-preview-view {
+  	--folding-offset:	0;
+}
+
+/* With line numbers */
+.minimal-line-nums .workspace-leaf-content[data-type=markdown] {
+  	--file-margins:	var(--size-4-8) var(--size-4-8) var(--size-4-8) 48px;
+}
+.minimal-line-nums .workspace-leaf-content[data-type=markdown].is-rtl {
+  	--file-margins:	var(--size-4-8) 48px var(--size-4-8) var(--size-4-8);
+}
+.minimal-line-nums .workspace-leaf-content[data-type=markdown] .is-readable-line-width {
+  	--file-margins:	1rem 0 0 var(--folding-offset);
+}
+.minimal-line-nums .workspace-leaf-content[data-type=markdown] .is-readable-line-width.is-rtl {
+  	--file-margins:	1rem var(--folding-offset) 0 0;
+}
+
+.minimal-line-nums .mod-right-split .markdown-preview-view,
+.minimal-line-nums .mod-right-split .markdown-source-view.mod-cm6 .cm-scroller,
+.minimal-line-nums .mod-left-split .markdown-preview-view,
+.minimal-line-nums .mod-left-split .markdown-source-view.mod-cm6 .cm-scroller {
+  	--file-margins:	var(--size-4-5) var(--size-4-5) var(--size-4-5) 48px;
+}
+
+.view-content .reader-mode-content.is-readable-line-width .markdown-preview-sizer {
+  	max-width:	var(--OT-max-width);
+  	width:		var(--OT-line-width-reading);
+}
+
+/* Embeds ------------------------------------ */
+.markdown-preview-view .inline-embed {
+  	--OT-max-width:	100%;
+}
+
+/* Content rules ------------------------------------
+
+   The benefit of this approach is that it covers all levels
+   of specificity wherever the helper is applied: global,
+   per file, and element-level.
+
+   It means we don't have to write long specific selectors
+   like `.table-100.markdown-source-view...`
+*/
+body {
+	--OT-container-table-width-reading:		calc(var(--OT-line-width-reading) + var(--table-drag-space)*2);
+	--OT-container-table-width-editing:		calc(var(--OT-line-width-editing) + var(--table-drag-space)*2);
+	--OT-container-table-max-width:			var(--OT-max-width);
+	--OT-container-table-margin-reading:	calc(var(--OT-content-margin-start-reading) - var(--table-drag-space));
+	--OT-container-table-margin-editing:	calc(var(--OT-content-margin-start-editing) - var(--table-drag-space));
+	--table-max-width:						none;
+	--table-width:							auto;
+	--OT-table-margin-reading:				inherit;
+	--OT-table-margin-editing:				inherit;
+	--table-wrapper-width:					fit-content;
+	--table-drag-space:						16px;
+	--table-drag-padding:					var(--table-drag-space);
+
+	--OT-container-bases-width-reading:      var(--OT-line-width-reading);
+	--OT-container-bases-width-editing:      var(--OT-line-width-editing);
+	--OT-container-bases-max-width:          var(--OT-max-width);
+	--OT-container-bases-margin-reading:     var(--OT-content-margin-reading);
+	--OT-container-bases-margin-editing:     var(--OT-content-margin-editing);
+
+	--bases-embed-width:                     100%;
+	--bases-embed-max-width:                 100%;
+	--bases-embed-margin:                    0;
+
+	--container-dataview-table-width:		var(--OT-line-width-reading);
+
+	--container-img-width:					var(--OT-line-width-reading);
+	--container-img-max-width:				var(--OT-max-width);
+	--img-max-width:						100%;
+	--img-width:							auto;
+	/* because external images don't have a container */
+	--img-margin-start:				var(--OT-content-margin-start-reading);
+	--img-line-width:				var(--OT-content-line-width-reading);
+	--container-chart-width:		var(--OT-line-width-reading);
+	--container-chart-max-width:	var(--OT-max-width);
+	--chart-max-width:				none;
+	--chart-width:					auto;
+	--container-map-width:			var(--OT-line-width-reading);
+	--container-map-max-width:		var(--OT-max-width);
+	--map-max-width:				none;
+	--map-width:					auto;
+	--container-iframe-width:		var(--OT-line-width-reading);
+	--container-iframe-max-width:	var(--OT-max-width);
+	--iframe-max-width:				none;
+	--iframe-width:					auto;
+  /* Entire page */
+}
+
+body .wide {
+	--table-drag-padding:					0;
+	--OT-line-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-line-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-table-width-reading:		calc(var(--OT-line-width-wide-reading) + var(--table-drag-space)*2);
+	--OT-container-table-width-editing:		calc(var(--OT-line-width-wide-editing) + var(--table-drag-space)*2);
+	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
+	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
+	--OT-container-bases-width-reading:		var(--OT-line-width-wide-reading);
+	--OT-container-bases-width-editing:		var(--OT-line-width-wide-editing);
+	--container-dataview-table-width:		var(--OT-line-width-wide-reading);
+	--container-img-width:					var(--OT-line-width-wide-reading);
+	--container-iframe-width:				var(--OT-line-width-wide-reading);
+	--container-map-width:					var(--OT-line-width-wide-reading);
+	--container-chart-width:				var(--OT-line-width-wide-reading);
+}
+
+
+body .max {
+	--table-drag-padding:					0;
+	--OT-line-width-reading:				var(--OT-max-width);
+	--OT-line-width-editing:				var(--OT-max-width);
+	--OT-container-table-width-reading:		var(--OT-max-width);
+	--OT-container-table-width-editing:		var(--OT-max-width);
+	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
+	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
+	--OT-container-bases-width-reading:		var(--OT-max-width);
+	--OT-container-bases-width-editing:		var(--OT-max-width);
+	--container-dataview-table-width:		var(--OT-max-width);
+	--container-img-width:					var(--OT-max-width);
+	--container-iframe-width:				var(--OT-max-width);
+	--container-map-width:					var(--OT-max-width);
+	--container-chart-width:				var(--OT-max-width);
+}
+
+table.dataview {
+  	--table-min-width:	min(var(--OT-line-width-reading),var(--OT-max-width));
+}
+
+.cards table.dataview {
+  	--table-width:		100%;
+  	--table-min-width:	none;
+}
+
+
+.is-mobile {
+  	--table-drag-space:				16px;
+  	--OT-container-table-max-width:	calc(100% - var(--OT-container-table-margin-reading));
+}
+
+.maximize-tables-auto {
+  	--OT-container-table-max-width:			100%;
+  	--OT-container-table-width-reading:		100%;
+  	--OT-container-table-width-editing:		100%;
+  	--container-dataview-table-width:		100%;
+  	--OT-container-table-margin-reading:	0;
+  	--OT-container-table-margin-editing:	0;
+  	--table-drag-padding:					var(--table-drag-space) 0;
+  	--table-max-width:						100%;
+  	--OT-table-margin-reading:				var(--OT-content-margin-start-reading) auto;
+  	--OT-table-margin-editing:				var(--OT-content-margin-start-editing) auto;
+  	--table-width:							auto;
+}
+.maximize-tables-auto .cards {
+  	--OT-container-table-max-width:	var(--OT-max-width);
+}
+.maximize-tables-auto .cards .block-language-dataview {
+	--OT-table-margin-reading:	auto;
+  	--OT-table-margin-editing:	auto;
+}
+
+.maximize-tables {
+  	--OT-container-table-max-width:			100%;
+  	--OT-container-table-width-reading:				100%;
+  	--OT-container-table-margin-reading:	0;
+  	--table-drag-padding:					var(--table-drag-space) 0;
+  	--table-min-width:						min(var(--OT-line-width-reading), var(--OT-max-width));
+  	--table-max-width:						100%;
+  	--OT-table-margin-reading:				auto;
+  	--OT-table-margin-editing:				auto;
+  	--table-width:							auto;
+  	--table-edge-cell-padding-first:		8px;
+  	--table-edge-cell-padding-last:			8px;
+  	--table-wrapper-width:					auto;
+}
+
+.table-wide,
+.table-max,
+.table-100 {
+  	--table-max-width:	100%;
+  	--table-width:		100%;
+}
+
+.table-wide {
+	--OT-container-table-width-reading:		var(--OT-line-width-wide-reading);
+  	--OT-container-table-width-editing:		var(--OT-line-width-wide-editing);
+  	--container-dataview-table-width:		var(--OT-line-width-wide-reading);
+  	--OT-container-table-margin-reading:	auto;
+  	--OT-container-table-margin-editing:	auto;
+  	--table-edge-cell-padding-first:		0px;
+}
+
+.table-max {
+	--OT-container-table-width-reading:		var(--OT-max-width);
+  	--OT-container-table-width-editing:		var(--OT-max-width);
+  	--OT-container-table-max-width:			calc(var(--OT-max-width) + var(--table-drag-space)*2);
+  	--container-dataview-table-width:		var(--OT-max-width);
+  	--OT-container-table-margin-reading:	auto;
+  	--OT-container-table-margin-editing:	auto;
+  	--table-edge-cell-padding-first:		0px;
+  	--OT-table-margin-reading:				0;
+  	--OT-table-margin-editing:				0;
+}
+
+.table-100 {
+	--OT-container-table-width-reading:		100%;
+  	--OT-container-table-width-editing:		100%;
+  	--container-dataview-table-width:		100%;
+  	--OT-container-table-max-width:			100%;
+  	--OT-container-table-margin-reading:	0;
+  	--OT-container-table-margin-editing:	0;
+  	--table-edge-cell-padding-first:		16px;
+  	--table-edge-cell-padding-last:			16px;
+  	--OT-table-margin-reading:				0;
+  	--OT-table-margin-editing:				0;
+  	--table-drag-padding:					var(--table-drag-space) 0;
+  	--table-wrapper-width:					min(fit-content, 100%);
+}
+.table-100 .table-col-btn {
+  	cursor:				default !important;
+  	margin-top:			8px;
+  	height:				var(--table-header-size);
+  	inset-inline-start:	calc(100% - var(--table-drag-handle-size) - 4px) !important;
+}
+.table-100 .markdown-source-view.mod-cm6, .table-100.markdown-source-view.mod-cm6 {
+  	--table-drag-handle-background-active:	transparent;
+}
+.table-100 .markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle, .table-100.markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle {
+  	inset-inline-end:	calc(100% - var(--table-drag-handle-size)) !important;
+}
+
+.img-wide,
+.img-max,
+.img-100 {
+  	--img-max-width:	100%;
+  	--img-width:		100%;
+}
+
+.img-wide {
+  	--container-img-width:	var(--OT-line-width-wide-reading);
+  	--img-line-width:		var(--OT-line-width-wide-reading);
+  	--img-margin-start:		calc(50% - var(--OT-line-width-wide-reading)/2);
+}
+
+.img-max {
+  	--container-img-width:	var(--OT-max-width);
+  	--img-line-width:		var(--OT-max-width);
+  	--img-margin-start:		calc(50% - var(--OT-max-width)/2);
+}
+
+.img-100 {
+  	--container-img-width:		100%;
+  	--container-img-max-width:	100%;
+  	--img-line-width:			100%;
+  	--img-margin-start:			0;
+}
+
+.map-wide,
+.map-max,
+.map-100 {
+  	--map-max-width:	100%;
+  	--map-width:		100%;
+}
+
+.map-wide {
+  	--container-map-width:	var(--OT-line-width-wide-reading);
+}
+
+.map-max {
+  	--container-map-width:	var(--OT-max-width);
+}
+
+.map-100 {
+  	--container-map-width:		100%;
+  	--container-map-max-width:	100%;
+  	--map-header-padding:		var(--size-4-2);
+}
+.map-100 .bases-view[data-view-type=map] {
+  	--bases-embed-border-radius:	0;
+}
+
+.chart-wide,
+.chart-max,
+.chart-100 {
+  	--chart-max-width:	100%;
+  	--chart-width:		100%;
+}
+
+.chart-wide {
+  	--container-chart-width:	var(--OT-line-width-wide-reading);
+}
+
+.chart-max {
+  	--container-chart-width:	var(--OT-max-width);
+}
+
+.chart-100 {
+  	--container-chart-width:		100%;
+  	--container-chart-max-width:	100%;
+}
+
+.iframe-wide,
+.iframe-max,
+.iframe-100 {
+  	--iframe-max-width:	100%;
+  	--iframe-width:		100%;
+}
+
+.iframe-wide {
+  	--container-iframe-width:	var(--OT-line-width-wide-reading);
+}
+
+.iframe-max {
+  	--container-iframe-width:	var(--OT-max-width);
+}
+
+.iframe-100 {
+  	--container-iframe-width:		100%;
+  	--container-iframe-max-width:	100%;
+}
+
+.bases-wide {
+	--OT-container-bases-width-reading:    var(--OT-line-width-wide-reading);
+	--OT-container-bases-width-editing:    var(--OT-line-width-wide-editing);
+	--OT-container-bases-max-width:        var(--OT-max-width);
+	--OT-container-bases-margin-reading:   auto;
+	--OT-container-bases-margin-editing:   auto;
+}
+
+.bases-max {
+	--OT-container-bases-width-reading:    var(--OT-max-width);
+	--OT-container-bases-width-editing:    var(--OT-max-width);
+	--OT-container-bases-max-width:        var(--OT-max-width);
+	--OT-container-bases-margin-reading:   auto;
+	--OT-container-bases-margin-editing:   auto;
+}
+
+.bases-100 {
+	--OT-container-bases-width-reading:    100%;
+	--OT-container-bases-width-editing:    100%;
+	--OT-container-bases-max-width:        100%;
+	--OT-container-bases-margin-reading:   0;
+	--OT-container-bases-margin-editing:   0;
+	--bases-cards-embed-padding:			0 12px;
+  	--bases-header-padding-end:				var(--size-4-2);
+  	--bases-header-padding-start:			var(--size-4-2);
+}
+.bases-100 .bases-view[data-view-type=table] {
+  	--bases-embed-border-width:		0;
+  	--bases-embed-border-radius:	0;
+}
+
+
+/* Block widths ------------------------------------
+
+   Because we are using :has() this method requires
+   Obsidian installer 1.1.9 or above. However it means the
+   code no longer requires Contextual Typography plugin.
+*/
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer .cm-table-widget,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(table) {
+	width:					var(--OT-container-table-width-reading);
+	max-width:				var(--OT-container-table-max-width);
+	margin-inline:			var(--OT-container-table-margin-reading) !important;
+	padding-inline-start:	var(--table-drag-padding);
+	padding-inline-end:		var(--table-drag-padding);
+	/*border-inline: 2px solid red;*/
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .cm-table-widget,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(table) {
+	width:					var(--OT-container-table-width-editing);
+	max-width:				var(--OT-container-table-max-width);
+	margin-inline:			var(--OT-container-table-margin-editing) !important;
+	padding-inline-start:	var(--table-drag-padding);
+	padding-inline-end:		var(--table-drag-padding);
+}
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer .el-table {
+	margin-inline:			var(--OT-container-table-margin-reading) !important;
+	padding-inline-start:	var(--table-drag-padding);
+	padding-inline-end:		var(--table-drag-padding);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .el-table {
+	margin-inline:			var(--OT-container-table-margin-editing) !important;
+	padding-inline-start:	var(--table-drag-padding);
+	padding-inline-end:		var(--table-drag-padding);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .table-wrapper,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer .table-wrapper {
+	width:	var(--table-wrapper-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > :has(> :is(.block-language-dataview, .block-language-dataviewjs) table),
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > :has(> :is(.block-language-dataview, .block-language-dataviewjs) table) {
+	width:		var(--container-dataview-table-width);
+	max-width:	var(--OT-container-table-max-width);
+}
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .bases-embed,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(:is(.block-language-base, .bases-embed)){
+	max-width:     var(--OT-container-bases-max-width);
+	width:         var(--OT-container-bases-width-reading);
+	margin-inline: var(--OT-container-bases-margin-reading) !important;
+	/*border-inline: 2px solid lime;*/
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .bases-embed,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(:is(.block-language-base, .bases-embed)){
+	max-width:     var(--OT-container-bases-max-width);
+	width:         var(--OT-container-bases-width-editing);
+	margin-inline: var(--OT-container-bases-margin-editing) !important;
+}
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer table {
+	width:			var(--table-width);
+	max-width:		var(--table-max-width);
+	margin-inline:	var(--OT-table-margin-reading);
+	min-width:		var(--table-min-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content table {
+	width:			var(--table-width);
+	max-width:		var(--table-max-width);
+	margin-inline:	var(--OT-table-margin-editing);
+	min-width:		var(--table-min-width);
+}
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer .block-language-dataviewjs > :is(p, h1, h2, h3, h4, h5, h6) {
+	width:			var(--OT-line-width-reading);
+	margin-inline:	var(--OT-content-margin-reading);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .block-language-dataviewjs > :is(p, h1, h2, h3, h4, h5, h6) {
+	width:			var(--OT-line-width-editing);
+	margin-inline:	var(--OT-content-margin-editing);
+}
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer .block-language-dataviewjs > .dataview-error {
+	margin:	0 auto;
+	width:	var(--OT-content-line-width-reading);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .block-language-dataviewjs > .dataview-error {
+	margin:	0 auto;
+	width:	var(--OT-content-line-width-editing);
+}
+
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer .dataview.dataview-error-box {
+	margin-inline:	var(--OT-table-margin-reading);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .dataview.dataview-error-box {
+	margin-inline:	var(--OT-table-margin-editing);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .image-embed,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .image-embed {
+	padding-top:	0.25rem;
+	padding-bottom:	0.25rem;
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .image-embed,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(.image-embed),
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .image-embed,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(.image-embed) {
+	width:		var(--container-img-width);
+	max-width:	var(--container-img-max-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .image-embed img,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(.image-embed) img,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .image-embed img,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(.image-embed) img {
+  	max-width:	var(--img-max-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > img,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > img {
+  	max-width:				var(--img-line-width);
+  	margin-inline-start:	var(--img-margin-start) !important;
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(> .block-language-dataviewjs canvas, > .block-language-chart),
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(> .block-language-dataviewjs canvas, > .block-language-chart) {
+  	width:		var(--container-chart-width);
+  	max-width:	var(--container-chart-max-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(> .block-language-dataviewjs canvas, > .block-language-chart) canvas,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(> .block-language-dataviewjs canvas, > .block-language-chart) canvas {
+  	max-width:	var(--chart-max-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(.bases-view[data-view-type=map]),
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(.bases-view[data-view-type=map]) {
+  	width:							var(--container-map-width);
+  	max-width:						var(--container-map-max-width);
+  	--bases-header-padding-end:		var(--map-header-padding);
+  	--bases-header-padding-start:	var(--map-header-padding);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(.bases-view[data-view-type=map]) iframe,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(.bases-view[data-view-type=map]) iframe {
+  	max-width:	var(--map-max-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(> :is(iframe, .cm-html-embed)),
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(> :is(iframe, .cm-html-embed)) {
+  	width:		var(--container-iframe-width);
+  	max-width:	var(--container-iframe-max-width);
+}
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(> :is(iframe, .cm-html-embed)) iframe,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(> :is(iframe, .cm-html-embed)) iframe {
+  	max-width:	var(--iframe-max-width);
+}
+
+.borders-none {
+  	--divider-width:		0px;
+  	--tab-outline-width:	0px;
+}
+
+	body:is(.borders-none) .mod-root .workspace-tab-header-container:is(div, :hover) {
+  --tab-outline-width: 0px;
+}
+
+/* —————————————————————————————— ↑ Width system overhaul ↑ —————————————————————————————— */
 
 
 /*	=== === === OpSpl18	 —————————————————————————————— Edit mode font family and font size —————————————————————————————— */
@@ -6005,34 +6582,6 @@ body {
    déterminer un interligne normal. */
 body.OT-edit-natural-line-height {
 	--OT-effective-edit-line-height: normal;
-}
-
-/* -------------------------
-EDIT mode — largeur de ligne
-------------------------- */
-
-/* Readable Line Length ON : la largeur suit le réglage du thème */
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row):not(.HyperMD-header):not(.cm-html-embed) {
-	max-width: var(--OT-edit-line-width);
-}
-
-/* Note wide-page : on neutralise la largeur lisible */
-.markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-sizer,
-.markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-content,
-.markdown-source-view.mod-cm6.is-readable-line-width.wide-page .cm-line:not(.cm-hmd-frontmatter):not(.HyperMD-table-row) {
-	max-width: none !important;
-}
-
-/* Readable Line Length OFF, ou note wide-page : pleine largeur */
-.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer,
-.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-content,
-.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-line,
-.wide-page .markdown-source-view.mod-cm6 .cm-sizer,
-.wide-page .markdown-source-view.mod-cm6 .cm-content,
-.wide-page .markdown-source-view.mod-cm6 .cm-line {
-	max-width: none;
 }
 
 /* -------------------------
@@ -7698,13 +8247,13 @@ body.is-focused {
 .markdown-reading-view .document-search-container,
 .markdown-preview-view .document-search-container {
 	font-size: var(--OT-readingMode-text-size);          /* même base que le texte de lecture */
-	max-width: var(--OT-readingMode-line-width);         /* même longueur de ligne que la colonne */
+	max-width: var(--OT-line-width-reading);         /* même longueur de ligne que la colonne */
 }
 
 /* 2) Modes d’édition (Live + Raw) : aligné sur la largeur d’édition */
 .markdown-source-view.mod-cm6 .document-search-container {
 	font-size: var(--OT-edit-text-size);            /* même base que le texte d’édition */
-	max-width: var(--OT-edit-line-width);           /* longueur de ligne d’édition */
+	max-width: var(--OT-line-width-editing);           /* longueur de ligne d’édition */
 }
 
 /* Les “lignes” internes remplissent le container, dans tous les modes */
@@ -11536,7 +12085,7 @@ body {
 }
 */
 
-/* 2. En EDIT, on mappe les tailles LP sur les variables utilisées par app.css */
+/* 2. En EDIT, on mappe les tailles Live Preview sur les variables utilisées par app.css */
 
 .markdown-source-view.cm-s-obsidian {
 	--h1-size: var(--OT-edit-heading-h1-size-LP);
@@ -11573,6 +12122,10 @@ body {
 	padding-top:    var(--OT-edit-heading-h1-space-above);
 	padding-bottom: var(--OT-edit-heading-h1-space-below);
 }
+.markdown-source-view.mod-cm6 .cm-line:has(.cm-header.cm-header-1) {
+	padding-bottom: var(--OT-edit-heading-h1-space-below);
+}
+
 
 /* H2 */
 .cm-s-obsidian .cm-line.HyperMD-header-2 {
@@ -12356,11 +12909,11 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
 	.markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
 	.markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
-	max-width: var(--OT-edit-line-width);
+	max-width: var(--OT-line-width-editing);
 }
 body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom
 	.markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
-	max-width: var(--OT-readingMode-line-width);
+	max-width: var(--OT-line-width-reading);
 }
 /* EDIT mode : largeur pleine si la note a wide-page, même avec VT zoom */
 body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
@@ -15305,11 +15858,11 @@ settings:
 
 	-
 			id:			"OT-kanban-lane-width"
-			title:		"Kanbans: width of the lanes [em]"
-			title.fr:	"Kanbans: largeur des colonnes [em]"
+			title:		"Kanbans: width of the lanes [rem]"
+			title.fr:	"Kanbans: largeur des colonnes [rem]"
 			type:		variable-number
 			default:	20
-			format:		em
+			format:		rem
 
 
 	# ===================
@@ -16666,12 +17219,12 @@ settings:
 			disableIF:
 				- OT-readingMode-natural-line-height
 	-
-			id:			OT-readingMode-line-width
-			title:		Line length [em]
-			title.fr:	Longueur de la ligne [em]
+			id:			OT-line-width-reading
+			title:		Line length [rem]
+			title.fr:	Longueur de la ligne [rem]
 			type:		variable-number
 			default:	44
-			format:		em
+			format:		rem
 	-
 			id:				OT-readingMode-tableText-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
@@ -17000,14 +17553,14 @@ settings:
 			default:	1.5
 			format:		em
 	-
-			id:				OT-edit-line-width
-			title:			Line length [em]
-			title.fr:		Longueur de la ligne [em]
+			id:				OT-line-width-editing
+			title:			Line length [rem]
+			title.fr:		Longueur de la ligne [rem]
 			description:	By default, you get longer lines than plain Obsidian.
 			description.fr:	Par défaut, une valeur un peu plus généreuse que le « défaut » d’Obsidian.
 			type:			variable-number
 			default:		44
-			format:			em
+			format:			rem
 	-
 			id:				OT-edit-table-text-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
