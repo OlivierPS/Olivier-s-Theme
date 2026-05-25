@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-25
+	- corrected the positionning of the Editing mode indicator
 2026-05-24
 	- completely overhauled the horizontal spacing system
 	- CSS classes are available to adjust width of tables and bases independantly
@@ -5319,23 +5321,25 @@ body {
 
 
 /*	=== === === OpSpl17	 —————————————————————————————— Icon signaling Edit mode —————————————————————————————— */
-.markdown-source-view.mod-cm6 .cm-editor {
+.markdown-source-view.mod-cm6 {
 	position: relative;
+}
+
+.markdown-source-view.mod-cm6 .cm-editor {
 	overflow: visible;
 }
 
-.markdown-source-view.mod-cm6 .cm-editor::before {
-	content: "";
-	position: absolute;
-	top:		0.5em;
-	left: 		calc(var(--OT-content-margin-start-editing) + var(--OT-line-width-editing) + 0.5rem);
-	width:		0.75em;
-	height:		0.75em;
-	border-radius: 999px;
-	background-color: var(--text-normal);
-	pointer-events: none;
-	z-index: 9999;
-	/*font-size: var(--OT-edit-text-size);*/
+.markdown-source-view.mod-cm6::before {
+	content:			"";
+	position:			absolute;
+	top:				0.5em;
+	right:				0.5em;
+	width:				0.75em;
+	height:				0.75em;
+	border-radius:		999px;
+	background-color:	var(--text-normal);
+	pointer-events:		none;
+	z-index:			9999;
 }
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à droite du panneau d’édition ↑ -------------------------	*/
 
