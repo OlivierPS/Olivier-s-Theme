@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-05-25
 	- corrected the positionning of the Editing mode indicator
+	- corrected the whole logic for the positionning of tables, in all cases (cssclasses) and every mode
 2026-05-24
 	- completely overhauled the horizontal spacing system
 	- CSS classes are available to adjust width of tables and bases independantly
@@ -5333,7 +5334,7 @@ body {
 	content:			"";
 	position:			absolute;
 	top:				0.5em;
-	right:				0.5em;
+	right:				calc(var(--size-4-4) + 0.5em);
 	width:				0.75em;
 	height:				0.75em;
 	border-radius:		999px;
@@ -5634,18 +5635,18 @@ body {
    like `.table-100.markdown-source-view...`
 */
 body {
-	--OT-container-table-width-reading:		calc(var(--OT-line-width-reading) + var(--table-drag-space)*2);
-	--OT-container-table-width-editing:		calc(var(--OT-line-width-editing) + var(--table-drag-space)*2);
+	--OT-container-table-width-reading:		var(--OT-line-width-reading);
+	--OT-container-table-width-editing:		var(--OT-line-width-editing);
 	--OT-container-table-max-width:			var(--OT-max-width);
-	--OT-container-table-margin-reading:	calc(var(--OT-content-margin-start-reading) - var(--table-drag-space));
-	--OT-container-table-margin-editing:	calc(var(--OT-content-margin-start-editing) - var(--table-drag-space));
-	--table-max-width:						none;
+	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
+	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
+	--table-max-width:						100%;
 	--table-width:							auto;
-	--OT-table-margin-reading:				inherit;
-	--OT-table-margin-editing:				inherit;
+	--OT-table-margin-reading:				0;
+	--OT-table-margin-editing:				0;
 	--table-wrapper-width:					fit-content;
 	--table-drag-space:						16px;
-	--table-drag-padding:					var(--table-drag-space);
+	--table-drag-padding:					0;
 
 	--OT-container-bases-width-reading:      var(--OT-line-width-reading);
 	--OT-container-bases-width-editing:      var(--OT-line-width-editing);
@@ -5685,8 +5686,9 @@ body .wide {
 	--table-drag-padding:					0;
 	--OT-line-width-reading:				var(--OT-line-width-wide-reading);
 	--OT-line-width-editing:				var(--OT-line-width-wide-editing);
-	--OT-container-table-width-reading:		calc(var(--OT-line-width-wide-reading) + var(--table-drag-space)*2);
-	--OT-container-table-width-editing:		calc(var(--OT-line-width-wide-editing) + var(--table-drag-space)*2);
+	--OT-container-table-width-reading:		var(--OT-line-width-wide-reading);
+	--OT-container-table-width-editing:		var(--OT-line-width-wide-editing);
+	--OT-container-table-max-width:			var(--OT-max-width);
 	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
 	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
 	--OT-container-bases-width-reading:		var(--OT-line-width-wide-reading);
@@ -5705,6 +5707,7 @@ body .max {
 	--OT-line-width-editing:				var(--OT-max-width);
 	--OT-container-table-width-reading:		var(--OT-max-width);
 	--OT-container-table-width-editing:		var(--OT-max-width);
+	--OT-container-table-max-width:			var(--OT-max-width);
 	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
 	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
 	--OT-container-bases-width-reading:		var(--OT-max-width);
@@ -5738,7 +5741,7 @@ table.dataview {
   	--container-dataview-table-width:		100%;
   	--OT-container-table-margin-reading:	0;
   	--OT-container-table-margin-editing:	0;
-  	--table-drag-padding:					var(--table-drag-space) 0;
+  	--table-drag-padding:					0;
   	--table-max-width:						100%;
   	--OT-table-margin-reading:				var(--OT-content-margin-start-reading) auto;
   	--OT-table-margin-editing:				var(--OT-content-margin-start-editing) auto;
@@ -5756,7 +5759,7 @@ table.dataview {
   	--OT-container-table-max-width:			100%;
   	--OT-container-table-width-reading:				100%;
   	--OT-container-table-margin-reading:	0;
-  	--table-drag-padding:					var(--table-drag-space) 0;
+  	--table-drag-padding:					0;
   	--table-min-width:						min(var(--OT-line-width-reading), var(--OT-max-width));
   	--table-max-width:						100%;
   	--OT-table-margin-reading:				auto;
@@ -5771,12 +5774,17 @@ table.dataview {
 .table-max,
 .table-100 {
   	--table-max-width:	100%;
-  	--table-width:		100%;
+  	--table-width:		auto;
+  	--OT-table-margin-reading:	0;
+  	--OT-table-margin-editing:	0;
+  	--table-drag-padding:	0;
+  	--table-wrapper-width:	fit-content;
 }
 
 .table-wide {
 	--OT-container-table-width-reading:		var(--OT-line-width-wide-reading);
   	--OT-container-table-width-editing:		var(--OT-line-width-wide-editing);
+  	--OT-container-table-max-width:			var(--OT-max-width);
   	--container-dataview-table-width:		var(--OT-line-width-wide-reading);
   	--OT-container-table-margin-reading:	auto;
   	--OT-container-table-margin-editing:	auto;
@@ -5786,7 +5794,7 @@ table.dataview {
 .table-max {
 	--OT-container-table-width-reading:		var(--OT-max-width);
   	--OT-container-table-width-editing:		var(--OT-max-width);
-  	--OT-container-table-max-width:			calc(var(--OT-max-width) + var(--table-drag-space)*2);
+  	--OT-container-table-max-width:			var(--OT-max-width);
   	--container-dataview-table-width:		var(--OT-max-width);
   	--OT-container-table-margin-reading:	auto;
   	--OT-container-table-margin-editing:	auto;
@@ -5806,8 +5814,8 @@ table.dataview {
   	--table-edge-cell-padding-last:			16px;
   	--OT-table-margin-reading:				0;
   	--OT-table-margin-editing:				0;
-  	--table-drag-padding:					var(--table-drag-space) 0;
-  	--table-wrapper-width:					min(fit-content, 100%);
+  	--table-drag-padding:					0;
+  	--table-wrapper-width:					fit-content;
 }
 .table-100 .table-col-btn {
   	cursor:				default !important;
@@ -5979,7 +5987,8 @@ table.dataview {
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .table-wrapper,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .table-wrapper {
-	width:	var(--table-wrapper-width);
+	width:		var(--table-wrapper-width);
+	max-width:	100%;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > :has(> :is(.block-language-dataview, .block-language-dataviewjs) table),
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > :has(> :is(.block-language-dataview, .block-language-dataviewjs) table) {
@@ -6010,6 +6019,16 @@ table.dataview {
 	max-width:		var(--table-max-width);
 	margin-inline:	var(--OT-table-margin-editing);
 	min-width:		var(--table-min-width);
+}
+
+/* Source / RAW mode: raw Markdown table rows start at the left edge of the pane. */
+.markdown-source-view.mod-cm6:not(.is-live-preview).is-readable-line-width
+  .cm-contentContainer.cm-contentContainer
+  > .cm-content
+  > .HyperMD-table-row {
+	width:		100%;
+	max-width:	none;
+	margin-inline:	0 !important;
 }
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .block-language-dataviewjs > :is(p, h1, h2, h3, h4, h5, h6) {
 	width:			var(--OT-line-width-reading);
