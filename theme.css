@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-05-29
 	- improved the left alignement of images in Live Preview
+	- corrected colors of active tabs in sidebars
 2026-05-25
 	- corrected the positionning of the Editing mode indicator
 	- corrected the whole logic for the positionning of tables, in all cases (cssclasses) and every mode
@@ -688,6 +689,7 @@ body {
 	--background-primary-alt:		var(--color-base-10);
 	--background-secondary:			var(--color-base-20);
 	--background-secondary-alt:		var(--color-base-05);
+	--background-modifier-hover:	var(--color-accent-1);
 	--text-normal:					var(--color-base-100);
 	--text-muted:					var(--color-base-70);
 	--text-faint:					var(--color-base-50);
@@ -817,10 +819,11 @@ body {
 
 	--header-height:	2.4em;			/*	2026‑02‑06: raise header height for more legible tab bars.	*/
 
-	--heading-spacing:			0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
+	--heading-spacing:		0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
 	--icon-color-active:	var(--color-base-20);
 	--icon-color-hover:		var(--OT-color-on-accent-1);
 	--icon-color:			var(--color-accent-1);
+	--icon-color-focused:	var(--OT-color-on-accent-2);
 
 	--indentation-guide-color:	var(--color-accent);	/*	rgba(var(--mono-rgb-100), 0.12);	*/
 	--indentation-guide-color:	var(--color-base-50);
@@ -6838,6 +6841,29 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 
 
 /*  === === === OpSpl22 —————————————————————————————— Sidebars —————————————————————————————— */
+
+/* Sidebar tabs */
+
+.mod-left-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
+.mod-right-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
+.mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active,
+.mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active {
+	color: var(--OT-color-on-accent-1);
+	background-color: var(--color-accent-1);
+}
+
+body.is-focused .workspace-sidebar .workspace-tab-header-container .workspace-tab-header.is-active {
+	color: var(--OT-color-on-accent-1);
+	background-color: var(--color-accent-1);
+}
+
+body.is-focused .mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+body.is-focused .mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+body.is-focused .mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+body.is-focused .mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+	color: var(--OT-color-on-accent-1);
+}
+
 
 /* Vertical spacing for file navigator items */
 .filesNavigator-spacing-compact {
@@ -14297,7 +14323,6 @@ body {
 
     --interactive-accent:			var(--color-accent-1);
     --interactive-accent-hover:		var(--OT-color-on-accent-1);
-    --background-modifier-hover:	var(--color-accent-1);
 /*	--tn-text-muted:				var(--OT-color-muted-on-accent-1);	*/
     --tn-interactive-accent:		var(--color-accent-2);
     --tn-interactive-hover:			var(--color-accent-1);
