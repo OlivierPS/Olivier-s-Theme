@@ -6844,24 +6844,64 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 
 /* Sidebar tabs */
 
-.mod-left-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-right-split .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active,
-.mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active {
+/* État actif normal : accent-2 */
+.mod-left-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.has-active-menu,
+.mod-right-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.has-active-menu,
+.mod-left-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.is-active,
+.mod-right-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.is-active {
+	color: var(--OT-color-on-accent-2);
+	background-color: var(--color-accent-2);
+}
+
+/* État actif dans un groupe de tabs focalisé : accent-1 */
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active {
 	color: var(--OT-color-on-accent-1);
 	background-color: var(--color-accent-1);
 }
 
-body.is-focused .workspace-sidebar .workspace-tab-header-container .workspace-tab-header.is-active {
+/* Sidebar tabs: détails internes du tab actif focalisé */
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner {
 	color: var(--OT-color-on-accent-1);
 	background-color: var(--color-accent-1);
 }
 
-body.is-focused .mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-body.is-focused .mod-left-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title,
-body.is-focused .mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-body.is-focused .mod-right-split .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-container,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-container,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-icon,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-icon,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-close-button,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-close-button,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-title,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-title,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-container,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-container,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-icon,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-icon,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-close-button,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-close-button {
 	color: var(--OT-color-on-accent-1);
+	background-color: var(--color-accent-1);
+}
+
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .svg-icon,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .svg-icon,
+.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .svg-icon,
+.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .svg-icon {
+	color: var(--OT-color-on-accent-1);
+	stroke: currentColor;
+	fill: none;
 }
 
 
@@ -8009,7 +8049,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 /* Onglet actif du pane focus : hors hover, pas de fond en root */
-.is-focused .workspace-tab-header.is-active.mod-active:not(:hover) {
+.is-focused .workspace-split.mod-root .workspace-tab-header.is-active.mod-active:not(:hover) {
 	.workspace-tab-header-inner {
 		color: var(--tab-text-color-focused-active);
 		background-color: transparent;
@@ -8040,7 +8080,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 /* Variante optionnelle : seulement si activée via Style Settings */
 .OT-tab-title-highlighted {
-	.workspace-tab-header.is-active.mod-active:not(:hover) {
+	.workspace-split.mod-root .workspace-tab-header.is-active.mod-active:not(:hover) {
 		.workspace-tab-header-inner {
 			--tab-text-color-focused-active-current: var(--OT-color-on-accent-2);
 			color: var(--OT-color-on-accent-2);
@@ -8070,9 +8110,10 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 /* Valeur par défaut quand la fenêtre a le focus */
 body.is-focused {
-	.workspace-tab-header-container .workspace-tab-header .workspace-tab-header-inner {
-		color: var(--tab-text-color-focused);
-	}
+    .workspace-split.mod-root .workspace-tab-header-container
+    .workspace-tab-header .workspace-tab-header-inner {
+        color: var(--tab-text-color-focused);
+    }
 }
 
 /* -------------------- Root tabs -------------------- */
