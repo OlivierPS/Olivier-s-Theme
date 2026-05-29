@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-05-29
+	- improved the left alignement of images in Live Preview
 2026-05-25
 	- corrected the positionning of the Editing mode indicator
 	- corrected the whole logic for the positionning of tables, in all cases (cssclasses) and every mode
@@ -1767,15 +1769,14 @@ body {
 	--OT-theme-s:		86%;
 
 	/* Bases */
-	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 96%);  /* #F5ECFE */
-	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 90%);  /* #E5CDFB */
-	--color-base-05:	hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);  /* #DDBDFA */
-	--color-base-35:	hsl(var(--OT-theme-h), var(--OT-theme-s), 58%);  /* #9736F0 */
-	--color-base-40:	hsl(var(--OT-theme-h), var(--OT-theme-s), 58%);  /* #9736F0 */
-	--color-base-50:	hsl(var(--OT-theme-h), var(--OT-theme-s), 68%);  /* #B97EF5 */
-
-	--text-muted:		hsl(var(--OT-theme-h), var(--OT-theme-s), 38%);  /* #650CB4 */
-	--color-base-100:	hsl(var(--OT-theme-h), var(--OT-theme-s), 29%); /* #4B0B8B */
+	--color-base-00:	hsl(var(--OT-theme-h), var(--OT-theme-s), 96%);
+	--color-base-20:	hsl(var(--OT-theme-h), var(--OT-theme-s), 90%);
+	--color-base-05:	hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);
+	--color-base-35:	hsl(var(--OT-theme-h), var(--OT-theme-s), 58%);
+	--color-base-40:	hsl(var(--OT-theme-h), var(--OT-theme-s), 58%);
+	--color-base-50:	hsl(var(--OT-theme-h), var(--OT-theme-s), 68%);
+	--text-muted:		hsl(var(--OT-theme-h), var(--OT-theme-s), 38%);
+	--color-base-100:	hsl(var(--OT-theme-h), var(--OT-theme-s), 29%);
 	--link-color:		var(--obsidian-violet);
 
 	/* Accent system */
@@ -1783,26 +1784,27 @@ body {
 	--accent-h:						272 !important;
 	--accent-s:						87% !important;
 	--accent-l:						70% !important;
-	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 90%) !important; /* #E9D4FC */
+	--color-accent-3:				hsl(var(--accent-h), var(--accent-s), 90%) !important;
 
 	/* On-accent / muted-on-accent */
 	/* --OT-color-on-accent-1: #fff !important; */
 	--OT-color-on-accent-2:        	var(--color-base-00);
-	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 82%); /* #D9B4FA */
-	--OT-color-on-accent-3:        	hsl(var(--OT-theme-h), var(--OT-theme-s), 42%);           /* #6D0EC3 */
+	--OT-color-muted-on-accent-1:	hsl(var(--OT-theme-h), var(--OT-theme-s), 82%);
+	--OT-color-on-accent-3:        	hsl(var(--OT-theme-h), var(--OT-theme-s), 42%);
 
 	/* Stabilo */
-	--OT-stabilo-text:	hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);  /* #EDDCFD */
-	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 67%);  /* #B56DF5 */
+	--OT-stabilo-text:	hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
+	--text-highlight-bg:	hsl(var(--OT-theme-h), var(--OT-theme-s), 67%);
 
 	/* Code & buttons */
-	--code-background:				hsl(var(--accent-h), var(--accent-s), 90%); /* #E9D4FC */
-	--OT-button-OFF-bg:				hsl(var(--OT-theme-h), var(--OT-theme-s), 82%); /* #D9B4FA */
+	--code-background:				hsl(var(--accent-h), var(--accent-s), 90%);
+	--OT-button-OFF-bg:				hsl(var(--OT-theme-h), var(--OT-theme-s), 82%);
 
 	/* Nav & tables */
-	--nav-item-color:				hsl(var(--OT-theme-h), var(--OT-theme-s), 45%); /* #7111D2 */
-	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 88%); /* #DDBDFA */
-	--OT-table-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 92%); /* #E8D6FC */
+	--nav-item-color:				hsl(var(--OT-theme-h), var(--OT-theme-s), 45%);
+	--table-header-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 88%);
+	--OT-table-background:			hsl(var(--OT-theme-h), var(--OT-theme-s), 92%);
+	--OT-table-alt-background:		hsl(var(--OT-theme-h), var(--OT-theme-s), 89.5%);
 }/*	↑ lightPalette-violet ↑	*/
 
 
@@ -6076,6 +6078,39 @@ table.dataview {
   	max-width:				var(--img-line-width);
   	margin-inline-start:	var(--img-margin-start) !important;
 }
+
+/* Live Preview — aligner le conteneur image sur la colonne de texte,
+   sans forcer l'image à remplir la colonne */
+.markdown-source-view.mod-cm6.is-readable-line-width.is-live-preview
+.cm-contentContainer .internal-embed.media-embed.image-embed {
+	display: block;
+	width: fit-content !important;
+	max-width: var(--OT-content-line-width-editing) !important;
+	margin-inline: 0 !important;
+	margin-inline-start: var(--OT-content-margin-start-editing) !important;
+	padding-inline: 0 !important;
+	overflow: visible !important;
+}
+
+/* Le wrapper suit simplement le conteneur */
+.markdown-source-view.mod-cm6.is-readable-line-width.is-live-preview
+.cm-contentContainer .internal-embed.media-embed.image-embed .image-wrapper {
+	display: block;
+	width: fit-content !important;
+	max-width: 100% !important;
+	overflow: visible !important;
+}
+
+/* Surcharge locale de la largeur forcée des image-embed en Live Preview */
+.markdown-source-view.mod-cm6.is-readable-line-width.is-live-preview
+.cm-contentContainer > .cm-content > .image-embed {
+	width: fit-content !important;
+	max-width: var(--OT-content-line-width-editing) !important;
+}
+
+
+
+
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(> .block-language-dataviewjs canvas, > .block-language-chart),
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(> .block-language-dataviewjs canvas, > .block-language-chart) {
   	width:		var(--container-chart-width);
