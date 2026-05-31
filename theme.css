@@ -52,6 +52,7 @@ Post‑release tweaks
 	- improved the left alignement of images in Live Preview
 	- corrected colors of active tabs in sidebars
 	- improved hovering of tabs
+	--modified the groups titles size for bases
 2026-05-25
 	- corrected the positionning of the Editing mode indicator
 	- corrected the whole logic for the positionning of tables, in all cases (cssclasses) and every mode
@@ -707,7 +708,7 @@ body {
 	--bases-table-cell-background-disabled:	hsl(var(--OT-theme-h), 15%, 80%);
 	--bases-table-font-size:				var(--font-small);
 	--bases-table-group-background:			var(--OT-table-alt-background);
-	--bases-group-heading-value-size: 		1.1rem;
+	--bases-group-heading-value-size: 		1rem;
 	--bases-group-heading-property-display: none;
 	--bases-table-group-gap: 				20px;
 	--bases-table-header-background:		var(--table-header-background);
@@ -872,8 +873,8 @@ body {
 	--metadata-label-width:				var(--OT-metadata-label-width);
 	--metadata-padding:					0;
 	--metadata-property-padding:		0em 0.2em 0em 0.1em; /*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
-		--metadata-input-font-size:			var(--font-ui-small);
-		--metadata-label-font-size:			var(--font-ui-small);
+	--metadata-input-font-size:			var(--font-ui-small);
+	--metadata-label-font-size:			var(--font-ui-small);
 
 	--modal-height:		88vh;
 	--modal-max-height:	98vh;
@@ -7601,6 +7602,16 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	font-size:		inherit;
 	line-height:	inherit;
 }
+/* -------------------- Les en-têtes de groupes prennent des valeurs différentes selon que la base est dans un panneau latéral ou pas -------------------- */
+.mod-sidedock .bases-view[data-view-type="list"] .bases-group-heading .bases-group-value,
+.mod-sidedock .bases-view[data-view-type="cards"] .bases-group-heading .bases-group-value {
+	--bases-group-heading-value-size:	var(--font-ui-small);
+}
+.mod-sidedock .bases-view[data-view-type="table"] .bases-group-heading .bases-group-value {
+	--bases-group-heading-value-size:	var(--font-ui-medium);
+}
+
+
 
 /* -------------------- vue “list” -------------------- */
 /* Bases list embarquées dans le markdown / transclues */
