@@ -50,6 +50,8 @@ Post‑release tweaks
 -------------------
 2026-06-01
 	- increased text sizes in the settings window
+	- reverted text sizes in the settings window (sorry…)
+	- discrete border around dropdowns and some buttons
 2026-05-29
 	- improved the left alignement of images in Live Preview
 	- corrected colors of active tabs in sidebars
@@ -3381,6 +3383,7 @@ body {
 }
 
 .theme-light.lightPalette-violet.accentColor-lightMode-shade {
+	--color-accent-1:	hsl(var(--accent-h),	60%,	55%)				!important;
 }
 .theme-light.lightPalette-violet.accentColor-lightMode-alternative-1 {
 	--accent-h:						152	!important;
@@ -8453,6 +8456,7 @@ button.mod-muted {
 select {
 	color:            var(--OT-button-text-normal);
 	background-color: var(--OT-button-background-normal);
+	border:				1px solid var(--color-accent-2);
 }
 
 @media (hover: hover) {
@@ -8600,14 +8604,15 @@ select {
 .style-settings-download,
 .style-settings-export,
 .style-settings-import {
-	color:            var(--OT-button-text-normal);
-	background-color: var(--OT-button-background-normal);
-	text-align:       center;
-	text-decoration:  none;
-	border-radius:    4px;
-	margin:           2px;
-	padding-block:    1px;
-	padding-inline:   4px;
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
+	text-align:			center;
+	text-decoration: 	none;
+	border-radius:   	4px;
+	margin:          	2px;
+	padding-block:   	1px;
+	padding-inline:  	4px;
+	border:				1px solid var(--color-accent-2);
 }
 
 @media (hover: hover) {
@@ -8816,6 +8821,7 @@ select {
     }
 	}
 }
+
 /* ---------- Combobox dropdown buttons — ajustements Bases */
 
 /* 1. Placeholder des combobox Bases – état normal */
@@ -9092,12 +9098,12 @@ select {
 }
 .setting-page-title,
 .setting-item-name {
-    font-size: 		var(--font-ui-medium);
+    /*font-size: 		var(--font-ui-medium);*/
     font-weight: 	var(--font-semibold);
 }
 .setting-item-description,
 .setting-item-heading .setting-item-description {
-	font-size: var(--font-ui-medium);
+	/*font-size: var(--font-ui-medium);*/
 }
 
 
