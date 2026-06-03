@@ -48,6 +48,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-06-03
+	- changed the editing mode indicator at the top right of the editing pane into an icon
+	- changed the way editing text color is defined
 2026-06-01
 	- increased text sizes in the settings window
 	- reverted text sizes in the settings window (sorry…)
@@ -613,8 +616,16 @@ body {
 
 	--OT-effective-reading-line-height:				var(--OT-readingMode-line-height);		/* Interligne effectif pour le Reading mode */
 
+	--OT-icon-live-preview:				url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-tool-icon lucide-pen-tool"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"/><path d="m2.3 2.3 7.286 7.286"/><circle cx="11" cy="11" r="2"/></svg>');
+	--OT-icon-live-preview-rotation:	-90deg;
+	--OT-icon-raw-source:				url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml-icon lucide-code-xml"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>');
+	--OT-icon-raw-source-rotation:		0deg;
+	--OT-icon-edit-mode-size: 			var(--icon-m);
+
 	--OT-img-max-height-preview:					550px;			/* variables concernant les images */
 	--OT-img-max-height-live:						10rem;
+
+	--OT-edit-ink-current:							var(--text-normal);		/* afin de pouvoir changer la couleur du texte édité, tout en gardant le `--text-normal` par défaut de la palette*/
 
 	--OT-kanban-font:								"Uberhand Pro";
 	--OT-kanban-font-size:							17px;
@@ -4914,419 +4925,240 @@ body {
 
 
 /*	=== === === OpSpl16	—————————————————————————————— Edit text colors —————————————————————————————— */
-.theme-light.inkColor-lightMode-default .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-default .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-default .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color: var(--text-normal);
+/* règle générique light */
+.theme-light[class*="inkColor-lightMode-"] .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light[class*="inkColor-lightMode-"] .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-light[class*="inkColor-lightMode-"] .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
+	color: var(--OT-edit-ink-current);
 }
 
-.theme-light.inkColor-lightMode-amber .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-amber .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-amber .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#D97706;
+/* règle générique dark */
+.theme-dark[class*="inkColor-darkMode-"] .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark[class*="inkColor-darkMode-"] .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
+.theme-dark[class*="inkColor-darkMode-"] .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
+	color: var(--OT-edit-ink-current);
 }
 
-.theme-light.inkColor-lightMode-black .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-black .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-black .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:			black;
-	--link-color:	var(--obsidian-violet);
+.theme-light.inkColor-lightMode-amber {
+	--OT-edit-ink-current: oklch(66.6% 0.157 58.3deg);
 }
-
-.theme-light.inkColor-lightMode-blue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-blue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-blue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--blue);
-	--text-normal:	var(--blue) !important;
+.theme-light.inkColor-lightMode-black {
+	--OT-edit-ink-current:	black;
+	--link-color:			var(--obsidian-violet);
 }
-
-.theme-light.inkColor-lightMode-brown .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-brown .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-brown .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#542200;
+.theme-light.inkColor-lightMode-blue {
+	--OT-edit-ink-current:	var(--blue);
 }
-
-.theme-light.inkColor-lightMode-cyan .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-cyan .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-cyan .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#2D9EC6;
+.theme-light.inkColor-lightMode-brown {
+	--OT-edit-ink-current:	oklch(32% 0.0859 48.9deg);
 }
-
-.theme-light.inkColor-lightMode-egg .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-egg .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-egg .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:			#FCE69F;
-	--text-faint:	#9FB5FC;
+.theme-light.inkColor-lightMode-cyan {
+	--OT-edit-ink-current:	oklch(65.5% 0.113 227deg);
 }
-
-.theme-light.inkColor-lightMode-emerald .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-emerald .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-emerald .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#009B77;
+.theme-light.inkColor-lightMode-egg {
+	--OT-edit-ink-current:	oklch(92.7% 0.0925 92.9deg);
+	--text-faint:			oklch(78.3% 0.105 271deg);
 }
-
-.theme-light.inkColor-lightMode-favoriteBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-favoriteBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-favoriteBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--favorite-blue);
+.theme-light.inkColor-lightMode-emerald {
+	--OT-edit-ink-current:	oklch(61.3% 0.123 169deg);
 }
-
-.theme-light.inkColor-lightMode-fuchsia .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-fuchsia .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-fuchsia .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#F400A0;
+.theme-light.inkColor-lightMode-favoriteBlue {
+	--OT-edit-ink-current:	var(--favorite-blue);
 }
-
-.theme-light.inkColor-lightMode-green .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-green .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-green .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#0F7635;
+.theme-light.inkColor-lightMode-fuchsia {
+	--OT-edit-ink-current:	oklch(63.7% 0.265 350deg);
 }
-
-.theme-light.inkColor-lightMode-indigo .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-indigo .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-indigo .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#4b0082;
+.theme-light.inkColor-lightMode-green {
+	--OT-edit-ink-current:	oklch(49.6% 0.133 149deg);
 }
-
-.theme-light.inkColor-lightMode-lightBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-lightBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-lightBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--light-blue);
+.theme-light.inkColor-lightMode-indigo {
+	--OT-edit-ink-current:	oklch(33.9% 0.179 302deg);
 }
-
-.theme-light.inkColor-lightMode-darkBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-darkBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-darkBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--dark-blue);
+.theme-light.inkColor-lightMode-lightBlue {
+	--OT-edit-ink-current:	var(--light-blue);
 }
-
-.theme-light.inkColor-lightMode-lime .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-lime .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-lime .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#00EE00;
+.theme-light.inkColor-lightMode-darkBlue {
+	--OT-edit-ink-current:	var(--dark-blue);
 }
-
-.theme-light.inkColor-lightMode-orange .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-orange .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-orange .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#E65C1C;
+.theme-light.inkColor-lightMode-lime {
+	--OT-edit-ink-current:	oklch(82.2% 0.28 142deg);
 }
-
-.theme-light.inkColor-lightMode-pink .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-pink .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-pink .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#F953A7;
+.theme-light.inkColor-lightMode-orange {
+	--OT-edit-ink-current:	oklch(64.5% 0.185 41.3deg);
 }
-
-.theme-light.inkColor-lightMode-purple .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-purple .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-purple .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#5300A4;
+.theme-light.inkColor-lightMode-pink {
+	--OT-edit-ink-current:	oklch(69.1% 0.215 353deg);
 }
-
-.theme-light.inkColor-lightMode-red .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-red .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-red .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#DA032A;
+.theme-light.inkColor-lightMode-purple {
+	--OT-edit-ink-current:	oklch(38.5% 0.211 295deg);
 }
-
-.theme-light.inkColor-lightMode-darkRed .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-darkRed .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-darkRed .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#a33e16;
+.theme-light.inkColor-lightMode-red {
+	--OT-edit-ink-current: oklch(56.1% 0.226 23.8deg);
 }
-
-.theme-light.inkColor-lightMode-rose .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-rose .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-rose .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#FA74B8;
+.theme-light.inkColor-lightMode-darkRed {
+	--OT-edit-ink-current:	oklch(49.8% 0.143 24deg);
 }
-
-.theme-light.inkColor-lightMode-royalBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-royalBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-royalBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--royal-blue);
+.theme-light.inkColor-lightMode-rose {
+	--OT-edit-ink-current:	oklch(73.7% 0.179 351deg);
 }
-
-.theme-light.inkColor-lightMode-silver .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-silver .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-silver .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:					silver;
+.theme-light.inkColor-lightMode-royalBlue {
+	--OT-edit-ink-current:	var(--royal-blue);
+}
+.theme-light.inkColor-lightMode-silver {
+	--OT-edit-ink-current:	silver;
 	--link-color:			white;
 	--link-external-color:	white;
 }
-
-.theme-light.inkColor-lightMode-skyBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-skyBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-skyBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--sky-blue);
+.theme-light.inkColor-lightMode-skyBlue {
+	--OT-edit-ink-current:	var(--sky-blue);
 }
-
-.theme-light.inkColor-lightMode-solarized-base00 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base00 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base00 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base00);
+.theme-light.inkColor-lightMode-solarized-base00 {
+	--OT-edit-ink-current:	var(--solarized-base00);
 }
-
-.theme-light.inkColor-lightMode-solarized-base01 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base01 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base01 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base01);
+.theme-light.inkColor-lightMode-solarized-base01 {
+	--OT-edit-ink-current:	var(--solarized-base01);
 }
-
-.theme-light.inkColor-lightMode-solarized-base02 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base02 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base02 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base02);
+.theme-light.inkColor-lightMode-solarized-base02 {
+	--OT-edit-ink-current:	var(--solarized-base02);
 }
-
-.theme-light.inkColor-lightMode-solarized-base03 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base03 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-solarized-base03 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base03);
+.theme-light.inkColor-lightMode-solarized-base03 {
+	--OT-edit-ink-current:	var(--solarized-base03);
 }
-
-.theme-light.inkColor-lightMode-teal .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-teal .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-teal .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#0C8C81;
+.theme-light.inkColor-lightMode-teal {
+	--OT-edit-ink-current:	oklch(57.7% 0.0995 185deg);
 }
-
-.theme-light.inkColor-lightMode-terminalGreen .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-terminalGreen .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-terminalGreen .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#22C55E;
+.theme-light.inkColor-lightMode-terminalGreen {
+	--OT-edit-ink-current:	oklch(72.3% 0.192 150deg);
 }
-
-.theme-light.inkColor-lightMode-violet .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-violet .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-violet .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#7f00ff;
+.theme-light.inkColor-lightMode-violet {
+	--OT-edit-ink-current:	oklch(52.9% 0.293 294deg);
 }
-
-.theme-light.inkColor-lightMode-white .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-white .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-white .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:					#FFFFFF;
+.theme-light.inkColor-lightMode-white {
+	--OT-edit-ink-current:	#FFFFFF;
 	--link-color:			silver;
 	--link-external-color:	silver;
 }
-
-.theme-light.inkColor-lightMode-yellow .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-yellow .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-yellow .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:						#FBCD15;
-	--link-color:				#15CDFB;
-	--link-external-color:		#15CDFB;
+.theme-light.inkColor-lightMode-yellow {
+	--OT-edit-ink-current:		oklch(86.4% 0.174 92deg);
+	--link-color:				oklch(78.7% 0.143 222deg);
+	--link-external-color:		oklch(78.7% 0.143 222deg);
 }
-
-.theme-light.inkColor-lightMode-zinc .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-zinc .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-light.inkColor-lightMode-zinc .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:					#909096;
+.theme-light.inkColor-lightMode-zinc {
+	--OT-edit-ink-current:	oklch(65.5% 0.0088 286deg);
 	--link-color:			silver;
 	--link-external-color:	silver;
 }
 
 /*	----------------------------------------------------------------------	*/
 
-.theme-dark.inkColor-darkMode-default .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-default .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-default .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--text-normal);
+.theme-dark.inkColor-darkMode-default {
+	--OT-edit-ink-current:	var(--text-normal);
 }
-
-.theme-dark.inkColor-darkMode-amber .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-amber .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-amber .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#D97706;
+.theme-dark.inkColor-darkMode-amber {
+	--OT-edit-ink-current:	oklch(66.6% 0.157 58.3deg);
 }
-
-.theme-dark.inkColor-darkMode-black .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-black .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-black .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	black;
+.theme-dark.inkColor-darkMode-black {
+	--OT-edit-ink-current:	black;
 }
-
-.theme-dark.inkColor-darkMode-blue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-blue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-blue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--blue);
+.theme-dark.inkColor-darkMode-blue {
+	--OT-edit-ink-current:	var(--blue);
 }
-
-.theme-dark.inkColor-darkMode-brown .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-brown .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-brown .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#542200;
+.theme-dark.inkColor-darkMode-brown {
+	--OT-edit-ink-current:	oklch(32% 0.0859 48.9deg);
 }
-
-.theme-dark.inkColor-darkMode-cyan .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-cyan .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-cyan .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#2D9EC6;
+.theme-dark.inkColor-darkMode-cyan {
+	--OT-edit-ink-current:	oklch(65.5% 0.113 227deg);
 }
-
-.theme-dark.inkColor-darkMode-egg .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-egg .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-egg .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#FCE69F;
-	--text-faint:	#9FB5FC;
+.theme-dark.inkColor-darkMode-egg {
+	--OT-edit-ink-current:	oklch(92.7% 0.0925 92.9deg);
+	--text-faint:			oklch(78.3% 0.105 271deg);
 }
-
-.theme-dark.inkColor-darkMode-emerald .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-emerald .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-emerald .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#009B77;
+.theme-dark.inkColor-darkMode-emerald {
+	--OT-edit-ink-current:	oklch(61.3% 0.123 169deg);
 }
-
-.theme-dark.inkColor-darkMode-favoriteBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-favoriteBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-favoriteBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--favorite-blue);
+.theme-dark.inkColor-darkMode-favoriteBlue {
+	--OT-edit-ink-current:	var(--favorite-blue);
 }
-
-.theme-dark.inkColor-darkMode-fuchsia .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-fuchsia .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-fuchsia .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#F400A0;
+.theme-dark.inkColor-darkMode-fuchsia {
+	--OT-edit-ink-current:	oklch(63.7% 0.265 350deg);
 }
-
-.theme-dark.inkColor-darkMode-green .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-green .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-green .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#0F7635;
+.theme-dark.inkColor-darkMode-green {
+	--OT-edit-ink-current:	oklch(49.6% 0.133 149deg);
 }
-
-.theme-dark.inkColor-darkMode-indigo .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-indigo .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-indigo .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#4b0082;
+.theme-dark.inkColor-darkMode-indigo {
+	--OT-edit-ink-current:	oklch(33.9% 0.179 302deg);
 }
-
-.theme-dark.inkColor-darkMode-lightBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-lightBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-lightBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#00CCFF;
+.theme-dark.inkColor-darkMode-lightBlue {
+	--OT-edit-ink-current:	var(--light-blue);
 }
-
-.theme-dark.inkColor-darkMode-lime .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-lime .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-lime .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#00EE00;
+.theme-dark.inkColor-darkMode-darkBlue {
+	--OT-edit-ink-current:	var(--dark-blue);
 }
-
-.theme-dark.inkColor-darkMode-orange .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-orange .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-orange .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#E65C1C;
+.theme-dark.inkColor-darkMode-lime {
+	--OT-edit-ink-current:	oklch(82.2% 0.28 142deg);
 }
-
-.theme-dark.inkColor-darkMode-pink .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-pink .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-pink .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#F953A7;
+.theme-dark.inkColor-darkMode-orange {
+	--OT-edit-ink-current:	oklch(64.5% 0.185 41.3deg);
 }
-
-.theme-dark.inkColor-darkMode-purple .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-purple .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-purple .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#5300A4;
+.theme-dark.inkColor-darkMode-pink {
+	--OT-edit-ink-current:	oklch(69.1% 0.215 353deg);
 }
-
-.theme-dark.inkColor-darkMode-red .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-red .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-red .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#DA032A;
+.theme-dark.inkColor-darkMode-purple {
+	--OT-edit-ink-current:	oklch(38.5% 0.211 295deg);
 }
-
-.theme-dark.inkColor-darkMode-rose .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-rose .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-rose .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#FA74B8;
+.theme-dark.inkColor-darkMode-red {
+	--OT-edit-ink-current: oklch(56.1% 0.226 23.8deg);
 }
-
-.theme-dark.inkColor-darkMode-royalBlue .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-royalBlue .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-royalBlue .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--royal-blue);
+.theme-dark.inkColor-darkMode-darkRed {
+	--OT-edit-ink-current:	oklch(49.8% 0.143 24deg);
 }
-
-.theme-dark.inkColor-darkMode-silver .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-silver .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-silver .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:					silver;
+.theme-dark.inkColor-darkMode-rose {
+	--OT-edit-ink-current:	oklch(73.7% 0.179 351deg);
+}
+.theme-dark.inkColor-darkMode-royalBlue {
+	--OT-edit-ink-current:	var(--royal-blue);
+}
+.theme-dark.inkColor-darkMode-silver {
+	--OT-edit-ink-current:	silver;
 	--link-color:			white;
 	--link-external-color:	white;
 }
-
-.theme-dark.inkColor-darkMode-sky .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-sky .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-sky .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#77A9D0;
+.theme-dark.inkColor-darkMode-skyBlue {
+	--OT-edit-ink-current:	var(--sky-blue);
 }
-
-.theme-dark.inkColor-darkMode-solarized-base0 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base0 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base0 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base0);
+.theme-dark.inkColor-darkMode-solarized-base0 {
+	--OT-edit-ink-current:	var(--solarized-base0);
 }
-
-.theme-dark.inkColor-darkMode-solarized-base1 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base1 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base1 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base1);
+.theme-dark.inkColor-darkMode-solarized-base1 {
+	--OT-edit-ink-current:	var(--solarized-base1);
 }
-
-.theme-dark.inkColor-darkMode-solarized-base2 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base2 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base2 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base2);
+.theme-dark.inkColor-darkMode-solarized-base2 {
+	--OT-edit-ink-current:	var(--solarized-base2);
 }
-
-.theme-dark.inkColor-darkMode-solarized-base3 .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base3 .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-solarized-base3 .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	var(--solarized-base3);
+.theme-dark.inkColor-darkMode-solarized-base3 {
+	--OT-edit-ink-current:	var(--solarized-base3);
 }
-
-.theme-dark.inkColor-darkMode-teal .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-teal .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-teal .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#0C8C81;
+.theme-dark.inkColor-darkMode-teal {
+	--OT-edit-ink-current:	oklch(57.7% 0.0995 185deg);
 }
-
-.theme-dark.inkColor-darkMode-terminalGreen .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-terminalGreen .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-terminalGreen .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#22C55E;
+.theme-dark.inkColor-darkMode-terminalGreen {
+	--OT-edit-ink-current:	oklch(72.3% 0.192 150deg);
 }
-
-.theme-dark.inkColor-darkMode-violet .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-violet .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-violet .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:	#7f00ff;
+.theme-dark.inkColor-darkMode-violet {
+	--OT-edit-ink-current:	oklch(52.9% 0.293 294deg);
 }
-
-.theme-dark.inkColor-darkMode-white .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-white .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-white .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:					#FFFFFF;
+.theme-dark.inkColor-darkMode-white {
+	--OT-edit-ink-current:	#FFFFFF;
 	--link-color:			silver;
 	--link-external-color:	silver;
 }
-
-.theme-dark.inkColor-darkMode-yellow .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-yellow .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-yellow .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:				#FBCD15;
-	--link-color:		#15CDFB;
+.theme-dark.inkColor-darkMode-yellow {
+	--OT-edit-ink-current:		oklch(86.4% 0.174 92deg);
+	--link-color:				oklch(78.7% 0.143 222deg);
+	--link-external-color:		oklch(78.7% 0.143 222deg);
 }
-
-.theme-dark.inkColor-darkMode-zinc .CodeMirror pre.CodeMirror-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-zinc .markdown-source-view .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]),
-.theme-dark.inkColor-darkMode-zinc .cm-s-obsidian .cm-line:not(.HyperMD-task-line[data-task="x"]):not(.HyperMD-task-line[data-task="X"]) {
-	color:					#909096;
+.theme-dark.inkColor-darkMode-zinc {
+	--OT-edit-ink-current:	oklch(65.5% 0.0088 286deg);
 	--link-color:			silver;
 	--link-external-color:	silver;
 }
@@ -5334,25 +5166,39 @@ body {
 
 
 /*	=== === === OpSpl17	 —————————————————————————————— Icon signaling Edit mode —————————————————————————————— */
-.markdown-source-view.mod-cm6 {
-	position: relative;
-}
-
 .markdown-source-view.mod-cm6 .cm-editor {
 	overflow: visible;
 }
 
+.markdown-source-view.mod-cm6 {
+	position: relative;
+}
+
+.markdown-source-view.is-live-preview {
+	--OT-icon-edit-mode-current: 			var(--OT-icon-live-preview);
+	--OT-icon-edit-mode-current-rotation:	var(--OT-icon-live-preview-rotation);
+}
+
+.markdown-source-view:not(.is-live-preview) {
+	--OT-icon-edit-mode-current: var(--OT-icon-raw-source);
+	--OT-icon-edit-mode-current-rotation:	var(--OT-icon-raw-source-rotation);
+}
 .markdown-source-view.mod-cm6::before {
 	content:			"";
 	position:			absolute;
 	top:				0.5em;
 	right:				calc(var(--size-4-4) + 0.5em);
-	width:				0.75em;
-	height:				0.75em;
-	border-radius:		999px;
-	background-color:	var(--text-normal);
+	width:				var(--OT-icon-edit-mode-size);
+	height:				var(--OT-icon-edit-mode-size);
+	color:				var(--OT-edit-ink-current, var(--text-normal));
+	background-color:	currentColor;
 	pointer-events:		none;
 	z-index:			9999;
+
+	-webkit-mask:		var(--OT-icon-edit-mode-current) center / contain no-repeat;
+	mask:				var(--OT-icon-edit-mode-current) center / contain no-repeat;
+	transform:			rotate(var(--OT-icon-edit-mode-current-rotation));
+	transform-origin:	center;
 }
 /*	------------------------- ↑ icône indiquant le mode “édition”, en haut à droite du panneau d’édition ↑ -------------------------	*/
 
@@ -9098,14 +8944,8 @@ select {
 }
 .setting-page-title,
 .setting-item-name {
-    /*font-size: 		var(--font-ui-medium);*/
-    font-weight: 	var(--font-semibold);
+	font-weight: 	var(--font-semibold);
 }
-.setting-item-description,
-.setting-item-heading .setting-item-description {
-	/*font-size: var(--font-ui-medium);*/
-}
-
 
 /* Base icon style */
 .vertical-tab-nav-item-icon,
@@ -15168,6 +15008,9 @@ body.OT-viewing-mode-icons {
 	height: var(--icon-size);
 	width: var(--icon-size);
 	background-color: var(--icon-color);
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
 	mask-position: center;
 	mask-repeat: no-repeat;
 	mask-size: contain;
@@ -15175,12 +15018,18 @@ body.OT-viewing-mode-icons {
 
 /* Source mode */
 .workspace-leaf-content[data-mode='source']:not(:has(> .view-content > .markdown-source-view.is-live-preview)) .view-action[aria-label~="editing"]::before {
-	mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNvZGUteG1sLWljb24gbHVjaWRlLWNvZGUteG1sIj48cGF0aCBkPSJtMTggMTYgNC00LTQtNCIvPjxwYXRoIGQ9Im02IDgtNCA0IDQgNCIvPjxwYXRoIGQ9Im0xNC41IDQtNSAxNiIvPjwvc3ZnPg==");
+	-webkit-mask-image: var(--OT-icon-raw-source);
+	mask-image: var(--OT-icon-raw-source);
+	transform: rotate(var(--OT-icon-raw-source-rotation));
+	transform-origin: center;
 }
 
 /* Live Preview */
 .workspace-leaf-content[data-mode='source']:has(> .view-content > .markdown-source-view.is-live-preview) .view-action[aria-label~="editing"]::before {
-	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z'/%3E%3C/svg%3E");
+	-webkit-mask-image: var(--OT-icon-live-preview);
+	mask-image: var(--OT-icon-live-preview);
+	transform: rotate(var(--OT-icon-live-preview-rotation));
+	transform-origin: center;
 }
 
 /* Reading */
@@ -16839,7 +16688,7 @@ settings:
 				-
 					label:		sky Blue
 					label.fr:	Bleu ciel
-					value:		textColor-darkMode-sky
+					value:		textColor-darkMode-skyBlue
 				-
 					label:		light Blue
 					label.fr:	Bleu clair
@@ -17035,7 +16884,7 @@ settings:
 			-
 				label:		sky Blue
 				label.fr:	Bleu ciel
-				value:		inkColor-darkMode-sky
+				value:		inkColor-darkMode-skyBlue
 			-
 				label:		light Blue
 				label.fr:	Bleu clair
