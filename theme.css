@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-06-04
 	- improved vertical spacing between certain elements
+	- added spacing above and below transcluded bases
 2026-06-03
 	- changed the editing mode indicator at the top right of the editing pane into an icon
 	- changed the way editing text color is defined
@@ -9118,7 +9119,7 @@ body {
 	--OT-img-group-gap-y:          var(--OT-blanc-mini);
 
 	--OT-img-space-above-single:   var(--OT-blanc-moyen);
-	--OT-img-space-below-single:   var(--OT-blanc-moyen);
+	--OT-img-space-below-single:   var(--OT-blanc-moyen);	/* 05.06.2026 aucun effet */
 
 	--OT-img-space-above-caption:  var(--OT-blanc-mini);
 
@@ -10442,15 +10443,6 @@ body {
 ) {
     margin-block-start: var(--OT-blanc-moyen);
 }
-
-/* « image qui n’existe pas » (file-embed.mod-empty) */
-.markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty),
-.markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty-attachment) {
-  /* Calé sur ton rythme de petits blocs visuels */
-  margin-block-start: var(--OT-blanc-moyen);
-  margin-block-end: var(--OT-blanc-petit);
-}
-
 /* -------------------- ↑ Contextual typography ↑ -------------------- */
 
 
@@ -10600,6 +10592,22 @@ body {
 /* Optional: hide embed title */
 .OT-embed-hide-title .embed-title {
 	display: none;
+}
+
+/* Blanc normal au-dessus des bases transcluses */
+
+/* Reading mode */
+.markdown-preview-section .internal-embed[src$=".base"],
+.markdown-preview-view .markdown-preview-sizer div:has(> .bases-view) {
+	margin-block-start: var(--OT-blanc-normal);
+	margin-block-end: var(--OT-blanc-normal);
+}
+
+/* Live Preview */
+.markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > .cm-content > .bases-embed,
+.markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > .cm-content > div:has(:is(.block-language-base, .bases-embed)),
+.markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > .cm-content div:has(> .bases-view) {
+	margin-block-start: var(--OT-blanc-normal);
 }
 /* -------------------- ↑ transcludes ↑ -------------------- */
 
