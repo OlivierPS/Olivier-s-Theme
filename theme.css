@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-06-04
+	- improved vertical spacing between certain elements
 2026-06-03
 	- changed the editing mode indicator at the top right of the editing pane into an icon
 	- changed the way editing text color is defined
@@ -353,31 +355,32 @@ Bookmarks:	OpSpl01:	définition des couleurs
 
 /*	=== === === OpSpl01 —————————————————————————————— Définition des couleurs —————————————————————————————— */
 body {
-	--obsidian-violet:		hsl(258,  88%, 66%);
-	--favorite-blue:        hsl(246,  91%, 22%);
-	--dark-blue:            hsl(233,  54%, 28%);
-	--blue:                 hsl(246,  74%, 43%);
-	--light-blue:           hsl(211,  50%, 77%);
-	--neutral-100: 			hsl(  0,   0%, 100%);   /* Pure white */
-	--royal-blue:           hsl(240, 100%, 32%);
-	--sky-blue:             hsl(192, 100%, 57%);
+	--obsidian-violet:		rgb(139, 92, 246);			/*	c’est la définition la plus “officielle” que j’aie pu trouver */
+	--favorite-blue:        oklch(25.2% 0.157  271deg);
+	--dark-blue:            oklch(32.2% 0.118  272deg);
+	--blue:                 oklch(39.8% 0.23   273deg);
+	--light-blue:           oklch(80.7% 0.0535 251deg);
+	--neutral-100: 			oklch(100%  0        0deg); /*	Pure white */
+	--royal-blue:          	oklch(32.3% 0.224  264deg);
+	--sky-blue:             oklch(80.4% 0.142  221deg);
 
-	--solarized-base03:     hsl(192, 100%, 11%);
-	--solarized-base02:     hsl(192,  81%, 14%);
-	--solarized-base01:     hsl(194,  14%, 40%);
-	--solarized-base00:     hsl(196,  13%, 45%);
-	--solarized-base0:      hsl(186,   8%, 55%);
-	--solarized-base1:      hsl(180,   7%, 60%);
-	--solarized-base2:      hsl( 46,  42%, 88%);
-	--solarized-base3:      hsl( 44,  87%, 94%);
-	--solarized-yellow:     hsl( 45, 100%, 35%);
-	--solarized-orange:     hsl( 18 , 80%, 44%);
-	--solarized-red:        hsl(  1,  71%, 52%);
-	--solarized-magenta:    hsl(331,  64%, 52%);
-	--solarized-violet:     hsl(237,  43%, 60%);
-	--solarized-blue:       hsl(205,  69%, 49%);
-	--solarized-cyan:       hsl(175,  59%, 40%);
-	--solarized-green:      hsl( 68, 100%, 30%);
+	--solarized-base03:  oklch(0.279 0.045 236.9);
+	--solarized-base02:  oklch(0.321 0.054 231.3);
+	--solarized-base01:  oklch(0.589 0.039 222.1);
+	--solarized-base00:  oklch(0.629 0.041 222.1);
+	--solarized-base0:   oklch(0.708 0.030 209.5);
+	--solarized-base1:   oklch(0.757 0.029 205.3);
+	--solarized-base2:   oklch(0.929 0.041  95.1);
+	--solarized-base3:   oklch(0.968 0.030  95.0);
+
+	--solarized-yellow:  oklch(0.746 0.169 79.6);
+	--solarized-orange:  oklch(0.665 0.188 50.8);
+	--solarized-red:     oklch(0.647 0.215 27.4);
+	--solarized-magenta: oklch(0.674 0.214 339.3);
+	--solarized-violet:  oklch(0.632 0.153 274.4);
+	--solarized-blue:    oklch(0.657 0.181 248.8);
+	--solarized-cyan:    oklch(0.739 0.118 196.3);
+	--solarized-green:   oklch(0.754 0.146 116.1);
 
 	--color-action: hsl(175, 57%, 33%);
 	--color-bg-hover: hsl(141, 42%, 91%);
@@ -410,128 +413,6 @@ body {
 	--color-ui-normal: hsl(51, 21%, 88%);
 	--color-ye: hsl(45, 99%, 34%);
 	--color-ye-hover: hsl(45, 82%, 45%);
-	--flexoki-50: hsl(51, 33%, 92%);
-	--flexoki-100: hsl(51, 21%, 88%);
-	--flexoki-150: hsl(50, 14%, 83%);
-	--flexoki-200: hsl(55, 10%, 79%);
-	--flexoki-200-rgb: 206,205,195;
-	--flexoki-300: hsl(49, 7%, 70%);
-	--flexoki-400: hsl(47, 4%, 61%);
-	--flexoki-500: hsl(43, 3%, 52%);
-	--flexoki-600: hsl(50, 3%, 42%);
-	--flexoki-700: hsl(45, 2%, 33%);
-	--flexoki-800: hsl(30, 3%, 24%);
-	--flexoki-850: hsl(40, 3%, 20%);
-	--flexoki-900: hsl(30, 3%, 15%);
-	--flexoki-950: hsl(30, 4%, 11%);
-	--flexoki-black: hsl(0, 3%, 6%);
-	--flexoki-black-rgb: 16,15,15;
-	--flexoki-blue-50: hsl(175, 22%, 90%);
-	--flexoki-blue-100: hsl(199, 42%, 84%);
-	--flexoki-blue-150: hsl(201, 49%, 78%);
-	--flexoki-blue-200: hsl(203, 50%, 72%);
-	--flexoki-blue-300: hsl(204, 47%, 59%);
-	--flexoki-blue-400: hsl(208, 49%, 50%);
-	--flexoki-blue-500: hsl(210, 57%, 45%);
-	--flexoki-blue-600: hsl(212, 68%, 39%);
-	--flexoki-blue-700: hsl(212, 69%, 33%);
-	--flexoki-blue-800: hsl(212, 65%, 24%);
-	--flexoki-blue-850: hsl(212, 62%, 20%);
-	--flexoki-blue-900: hsl(212, 53%, 15%);
-	--flexoki-blue-950: hsl(210, 38%, 10%);
-	--flexoki-cyan-50: hsl(141, 42%, 91%);
-	--flexoki-cyan-100: hsl(158, 47%, 83%);
-	--flexoki-cyan-150: hsl(164, 48%, 75%);
-	--flexoki-cyan-200: hsl(167, 46%, 68%);
-	--flexoki-cyan-300: hsl(170, 43%, 55%);
-	--flexoki-cyan-400: hsl(175, 49%, 45%);
-	--flexoki-cyan-500: hsl(175, 52%, 39%);
-	--flexoki-cyan-600: hsl(175, 57%, 33%);
-	--flexoki-cyan-700: hsl(176, 59%, 27%);
-	--flexoki-cyan-800: hsl(175, 56%, 20%);
-	--flexoki-cyan-850: hsl(176, 52%, 16%);
-	--flexoki-cyan-900: hsl(174, 45%, 13%);
-	--flexoki-cyan-950: hsl(172, 32%, 9%);
-	--flexoki-green-50: hsl(62, 48%, 87%);
-	--flexoki-green-100: hsl(66, 45%, 79%);
-	--flexoki-green-150: hsl(68, 42%, 71%);
-	--flexoki-green-200: hsl(69, 41%, 64%);
-	--flexoki-green-300: hsl(70, 36%, 51%);
-	--flexoki-green-400: hsl(72, 46%, 41%);
-	--flexoki-green-500: hsl(73, 62%, 34%);
-	--flexoki-green-600: hsl(73, 84%, 27%);
-	--flexoki-green-700: hsl(73, 87%, 22%);
-	--flexoki-green-800: hsl(73, 83%, 16%);
-	--flexoki-green-850: hsl(73, 79%, 13%);
-	--flexoki-green-900: hsl(73, 67%, 11%);
-	--flexoki-green-950: hsl(73, 43%, 8%);
-	--flexoki-magenta-50: hsl(358, 93%, 95%);
-	--flexoki-magenta-100: hsl(345, 88%, 90%);
-	--flexoki-magenta-150: hsl(339, 84%, 85%);
-	--flexoki-magenta-200: hsl(338, 78%, 80%);
-	--flexoki-magenta-300: hsl(335, 66%, 69%);
-	--flexoki-magenta-400: hsl(329, 54%, 59%);
-	--flexoki-magenta-500: hsl(327, 45%, 49%);
-	--flexoki-magenta-600: hsl(326, 55%, 41%);
-	--flexoki-magenta-700: hsl(326, 54%, 34%);
-	--flexoki-magenta-800: hsl(326, 53%, 26%);
-	--flexoki-magenta-850: hsl(325, 49%, 21%);
-	--flexoki-magenta-900: hsl(325, 43%, 16%);
-	--flexoki-magenta-950: hsl(325, 31%, 11%);
-	--flexoki-orange-50: hsl(31, 100%, 90%);
-	--flexoki-orange-100: hsl(27, 98%, 84%);
-	--flexoki-orange-150: hsl(27, 95%, 78%);
-	--flexoki-orange-200: hsl(25, 92%, 72%);
-	--flexoki-orange-300: hsl(24, 81%, 61%);
-	--flexoki-orange-400: hsl(23, 70%, 51%);
-	--flexoki-orange-500: hsl(23, 73%, 46%);
-	--flexoki-orange-600: hsl(22, 80%, 41%);
-	--flexoki-orange-700: hsl(22, 82%, 34%);
-	--flexoki-orange-800: hsl(22, 79%, 25%);
-	--flexoki-orange-850: hsl(22, 75%, 20%);
-	--flexoki-orange-900: hsl(22, 66%, 15%);
-	--flexoki-orange-950: hsl(24, 47%, 10%);
-	--flexoki-paper: hsl(48, 100%, 97%);
-	--flexoki-paper-rgb: 254,252,240;
-	--flexoki-purple-50: hsl(340, 17%, 93%);
-	--flexoki-purple-100: hsl(274, 27%, 88%);
-	--flexoki-purple-150: hsl(259, 36%, 85%);
-	--flexoki-purple-200: hsl(257, 39%, 80%);
-	--flexoki-purple-300: hsl(254, 37%, 71%);
-	--flexoki-purple-400: hsl(251, 40%, 64%);
-	--flexoki-purple-500: hsl(254, 37%, 54%);
-	--flexoki-purple-600: hsl(259, 42%, 43%);
-	--flexoki-purple-700: hsl(259, 42%, 37%);
-	--flexoki-purple-800: hsl(259, 40%, 27%);
-	--flexoki-purple-850: hsl(260, 38%, 22%);
-	--flexoki-purple-900: hsl(261, 34%, 17%);
-	--flexoki-purple-950: hsl(258, 23%, 11%);
-	--flexoki-red-50: hsl(17, 100%, 92%);
-	--flexoki-red-100: hsl(13, 100%, 87%);
-	--flexoki-red-150: hsl(11, 96%, 81%);
-	--flexoki-red-200: hsl(9, 89%, 76%);
-	--flexoki-red-300: hsl(7, 75%, 64%);
-	--flexoki-red-400: hsl(5, 61%, 54%);
-	--flexoki-red-500: hsl(4, 57%, 48%);
-	--flexoki-red-600: hsl(3, 62%, 42%);
-	--flexoki-red-700: hsl(3, 63%, 36%);
-	--flexoki-red-800: hsl(3, 59%, 27%);
-	--flexoki-red-850: hsl(3, 56%, 21%);
-	--flexoki-red-900: hsl(3, 49%, 16%);
-	--flexoki-red-950: hsl(3, 36%, 11%);
-	--flexoki-yellow-50: hsl(46, 84%, 88%);
-	--flexoki-yellow-100: hsl(46, 83%, 80%);
-	--flexoki-yellow-150: hsl(46, 80%, 72%);
-	--flexoki-yellow-200: hsl(46, 79%, 65%);
-	--flexoki-yellow-300: hsl(45, 73%, 53%);
-	--flexoki-yellow-400: hsl(45, 82%, 45%);
-	--flexoki-yellow-500: hsl(46, 93%, 39%);
-	--flexoki-yellow-600: hsl(45, 99%, 34%);
-	--flexoki-yellow-700: hsl(45, 99%, 28%);
-	--flexoki-yellow-800: hsl(45, 98%, 20%);
-	--flexoki-yellow-850: hsl(45, 95%, 16%);
-	--flexoki-yellow-900: hsl(46, 87%, 12%);
-	--flexoki-yellow-950: hsl(47, 64%, 9%);
 
 	--stabilo-bleu-clair:   hsl(196,  70%, 84%);
 	--stabilo-bleu-foncé:   hsl(197,  70%, 54%);
@@ -552,8 +433,9 @@ body {
 	/*	Pour avoir un premier état, même sans avoir chargé le plugin “Style Settings”.*/
 body {
 	/*	blanc typographique	*/
-	--OT-blanc-mini: 								calc(0.18 * var(--OT-effective-reading-line-height));
-	--OT-blanc-petit:								calc(0.42 * var(--OT-effective-reading-line-height));
+	--OT-blanc-mini: 								calc(0.18 * var(--OT-blanc-normal));
+	--OT-blanc-petit:								calc(0.42 * var(--OT-blanc-normal));
+	--OT-blanc-normal:								var(--OT-effective-reading-line-height);
 	--OT-blanc-moyen:								calc(1.618 * var(--OT-blanc-petit));
 	--OT-blanc-grand:								calc(1.618 * var(--OT-blanc-moyen));
 	--OT-blanc-large:								calc(1.618 * var(--OT-blanc-grand));
@@ -620,7 +502,7 @@ body {
 	--OT-icon-live-preview-rotation:	-90deg;
 	--OT-icon-raw-source:				url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml-icon lucide-code-xml"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>');
 	--OT-icon-raw-source-rotation:		0deg;
-	--OT-icon-edit-mode-size: 			var(--icon-m);
+	--OT-icon-edit-mode-size: 			calc(1.2 * var(--OT-edit-text-size));
 
 	--OT-img-max-height-preview:					550px;			/* variables concernant les images */
 	--OT-img-max-height-live:						10rem;
@@ -9584,6 +9466,7 @@ On lui donne donc le même rythme qu’à une image seule.
 /*	line-height: 		1.5em;	*/
 	margin: 			1em 2em;
 	padding:			0.5rem 0.75rem;
+	margin-bottom:		var(--OT-space-after-quoted-block);
 	position:			relative;
 	box-shadow: 		6px 6px 6px rgba(0, 0, 0, 0.1);
 }
@@ -10434,13 +10317,13 @@ body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-
 /* ========================================================================== */
 
 body {
-	--OT-space-stack-heading: var(--OT-blanc-moyen);
-	--OT-space-after-small-heading: var(--OT-blanc-mini);
-	--OT-space-after-heavy-block: var(--OT-blanc-large);
-	--OT-space-after-quoted-block: var(--OT-blanc-moyen);
-	--OT-space-after-callout: var(--OT-blanc-moyen);
-	--OT-space-after-hr: var(--OT-blanc-large);
-	--OT-space-after-list: var(--OT-blanc-moyen);
+	--OT-space-stack-heading:		var(--OT-blanc-moyen);
+	--OT-space-after-small-heading:	var(--OT-blanc-mini);
+	--OT-space-after-heavy-block:	var(--OT-blanc-large);
+	--OT-space-after-quoted-block:	var(--OT-blanc-normal);
+	--OT-space-after-callout:		var(--OT-blanc-large);
+	--OT-space-after-hr:			var(--OT-blanc-large);
+	--OT-space-after-list:			var(--OT-blanc-moyen);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -10505,43 +10388,62 @@ body {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 4. H2 / H3 après blockquote / callout / hr                                 */
+/* 4. H2 à H6 après blockquote / callout / hr                                 */
 /* -------------------------------------------------------------------------- */
 
-.markdown-preview-view :is(blockquote + h2, blockquote + h3) {
+.markdown-preview-view :is(blockquote + h2, blockquote + h3, blockquote + 4, blockquote + h5, blockquote + h6) {
 	margin-block-start: var(--OT-space-after-quoted-block);
 }
 
 .markdown-rendered :is(
 	div.el-blockquote + div.el-h2 > h2,
-	div.el-blockquote + div.el-h3 > h3
+	div.el-blockquote + div.el-h3 > h3,
+	div.el-blockquote + div.el-h4 > h4,
+	div.el-blockquote + div.el-h5 > h5,
+	div.el-blockquote + div.el-h6 > h6
 ) {
 	margin-block-start: var(--OT-space-after-quoted-block);
 }
 
-.markdown-preview-view :is(.callout + h2, .callout + h3) {
+.markdown-preview-view :is(.callout + h2, .callout + h3, .callout + h4, .callout + h5, .callout + h6) {
 	margin-block-start: var(--OT-space-after-callout);
 }
 
 .markdown-rendered :is(
 	div.el-div:has(.callout) + div.el-h2 > h2,
-	div.el-div:has(.callout) + div.el-h3 > h3
+	div.el-div:has(.callout) + div.el-h3 > h3,
+	div.el-div:has(.callout) + div.el-h4 > h4,
+	div.el-div:has(.callout) + div.el-h5 > h5,
+	div.el-div:has(.callout) + div.el-h6 > h6
 ) {
 	margin-block-start: var(--OT-space-after-callout);
 }
 
-.markdown-preview-view :is(hr + h2, hr + h3) {
+.markdown-preview-view :is(hr + h2, hr + h3, hr + h4, hr + h5, hr + h6) {
 	margin-block-start: var(--OT-space-after-hr);
 }
 
 .markdown-rendered :is(
 	div.el-hr + div.el-h2 > h2,
-	div.el-hr + div.el-h3 > h3
+	div.el-hr + div.el-h3 > h3,
+	div.el-hr + div.el-h4 > h4,
+	div.el-hr + div.el-h5 > h5,
+	div.el-hr + div.el-h6 > h6
 ) {
 	margin-block-start: var(--OT-space-after-hr);
 }
 
-/* OpSpl43 — « image qui n’existe pas » (file-embed.mod-empty) */
+/* 4b. H3–H6 after hr: tighter than H2 */
+.markdown-rendered :is(
+    div.el-hr + div.el-h3 > h3,
+    div.el-hr + div.el-h4 > h4,
+    div.el-hr + div.el-h5 > h5,
+    div.el-hr + div.el-h6 > h6
+) {
+    margin-block-start: var(--OT-blanc-moyen);
+}
+
+/* « image qui n’existe pas » (file-embed.mod-empty) */
 .markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty),
 .markdown-preview-section p:has(> .internal-embed.file-embed.mod-empty-attachment) {
   /* Calé sur ton rythme de petits blocs visuels */
