@@ -48,6 +48,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-06-05
+	- corrected colors of the “Another QuickSwitcher plugin” modal
 2026-06-04
 	- improved vertical spacing between certain elements
 	- added spacing above and below transcluded bases
@@ -6889,6 +6891,20 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 			color:            var(--color-accent-1);
 			background-color: var(--OT-color-on-accent-1);
 		}
+
+		& .another-quick-switcher__item {
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
+		}
+		& .another-quick-switcher__item__description {
+			color:				var(--OT-color-muted-on-accent-1);
+			background-color:	var(--color-accent-1);
+		}
+		& .another-quick-switcher__item__directory {
+			color:				var(--OT-color-muted-on-accent-1);
+			background-color:	var(--color-accent-1);
+		}
+
 	}
 }
 /* ------------------------------ ↑ suggestion items: états communs ↑ ------------------------------ */
