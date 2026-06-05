@@ -6891,7 +6891,6 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 			color:            var(--color-accent-1);
 			background-color: var(--OT-color-on-accent-1);
 		}
-
 		& .another-quick-switcher__item {
 			color:				var(--OT-color-on-accent-1);
 			background-color:	var(--color-accent-1);
@@ -6904,7 +6903,10 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 			color:				var(--OT-color-muted-on-accent-1);
 			background-color:	var(--color-accent-1);
 		}
-
+		& another-quick-switcher__starred_item::before {
+			color:            var(--color-accent-1);
+			background-color: var(--OT-color-on-accent-1);
+		}
 	}
 }
 /* ------------------------------ ↑ suggestion items: états communs ↑ ------------------------------ */
