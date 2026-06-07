@@ -50,6 +50,7 @@ Post‑release tweaks
 -------------------
 2026-06-07
 	- debugged the “tables” section; all the styles work, comprised the CSSCLASSES
+	- more reasonable chevrons
 2026-06-06
 	- beginning of the transition of the color model: “hsl” ⭢ “oklch”
 	- corrected every use of `--text-faint` that I could still spot
@@ -8726,9 +8727,9 @@ select {
    taille + épaisseur du trait */
 .collapse-icon svg.svg-icon,
 .svg-icon.right-triangle:not(.field-btn-container .svg-icon.right-triangle) {
-	width: 1.2em !important;
+	width: 1.0em !important;
 	height: auto !important;
-	stroke-width: 4px !important;
+	stroke-width: 2.5px !important;
 }
 
 /* 3. Couleur des icônes de collapse – base */
@@ -8747,9 +8748,9 @@ select {
 /* Taille uniforme des chevrons H1–H6 */
 .markdown-preview-view .heading-collapse-indicator .svg-icon,
 .markdown-rendered .heading-collapse-indicator .svg-icon {
-	width: 1.1rem;
-	height: 1.1rem;
-	stroke-width: 4px;
+	width:			1.0rem;
+	height:			1.0rem;
+	stroke-width:	2.5px;
 }
 
 /* On enlève juste le padding d’app.css */
@@ -8892,9 +8893,13 @@ select {
 .setting-item.mod-navigable .setting-item-chevron {
 	color: var(--OT-settings-submenu-chevron-color);
 }
-.setting-item.mod-navigable .setting-item-chevron .svg-icon {
-	color: inherit;
-	stroke: currentColor;
+.setting-item.mod-navigable .setting-item-chevron .svg-icon,
+.setting-page-back-button .svg-icon {
+    width: 1.1em;
+    height: auto;
+    stroke-width: 3px;
+	/*color: inherit;*/
+    stroke: currentColor;
 }
 
 /* Active state (desktop), item lui-même = accent-2 */
@@ -12305,7 +12310,7 @@ body {
 }
 /* amélioration de la visibilité des icônes */
 .field-btn-container button.property-metadata-menu .svg-icon {
-	transform: scale(1.65);        /* nettement plus grand */
+	transform: scale(1.3);        /* nettement plus grand */
 	transform-origin: center;
 	display: block;
 	width: 1.6em;                  /* élargir le bouton visuellement */
@@ -12323,15 +12328,15 @@ body {
 }
 /* Chevron Metadata Menu : surcouche spécifique */
 .field-btn-container button.property-metadata-menu .svg-icon.right-triangle {
-	transform:			scale(1.6); /* agrandir le triangle lui-même */
+	transform:			scale(1.3); /* agrandir le triangle lui-même */
 	transform-origin:	center;
-	stroke-width:		3.6px;   /* trait plus gras que le 3px global */
+	stroke-width:		3px;
 }
 
 /* Optionnel : hover du chevron uniquement */
 .field-btn-container button.property-metadata-menu:hover .svg-icon.right-triangle {
 	color: var(--OT-color-on-accent-1);
-	stroke-width: 3.6px;
+	stroke-width: 3px;
 }
 
 /* 3. Valeurs dans les modales / listes de valeurs */
