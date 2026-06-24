@@ -1,128 +1,102 @@
 # Reading mode
 
-If you are unsure about terms like Reading mode, Writing/Editing mode, Live Preview or Source mode, you can check the [Glossary](glossary.md) for quick definitions.
+If needed, see the [Glossary](glossary.md) for quick definitions of terms such as Reading mode, Writing mode, Live Preview, and Source mode.
 
-The **READING mode** settings control how your notes look when you are simply reading them.  
-They focus on typography, tables, images and a few small behaviours that improve legibility and create a calm, book‑like page.
+The **READING mode** settings control how notes look when you are simply reading them.
 
-<!-- screenshot: Style Settings – Olivier’s Theme – READING mode section -->
+In version 3, this area gives you finer control over typography, tables, Bases, and images, with the goal of making long-form reading calmer, clearer, and easier to sustain on any screen.
 
 ---
 
 ### Body text size
 
-This is the **base size of the main body text** in Reading mode (in pixels).
+This setting defines the base size of the main text in Reading mode.
 
-The **18 px** default is a good starting point, which feels close to a comfortable book size on most screens.  
-You can adjust the value according to your font, your screen and your eyesight:
-
-- increase it if you read at some distance or on high‑resolution displays,  
-- decrease it slightly if you prefer a denser page or work on a small laptop.
-
-
+The default is **18 px**, which is a good starting point on most screens. Increase it if you read at some distance or on a high-resolution display; decrease it slightly if you prefer a denser page or work on a smaller laptop.
 
 ### Natural line height for the chosen font
 
-This toggle lets the font decide its own *natural* line height in Reading mode.  
-When it is **ON**, the theme uses the line spacing designed by the typeface itself, and the manual **Line height** setting below is effectively ignored.  
-This often produces a slightly tighter page, which can work well on small screens or with fonts designed for dense text.  
-If the lines feel too close to each other, you may adjust the **Line length** (see below) until everything “feels right”. You can also turn this option **OFF** again and fine‑tune the **Line height** yourself.
+When this option is on, the theme uses the line spacing intended by the font itself.
 
-### Line height
+In that case, the manual **Line height** setting below is ignored. This often gives a slightly tighter page, which can work well on smaller screens or with fonts designed for dense reading.
 
-Line height controls the **vertical spacing** between lines (in em).
-
-Too tight and the text feels cramped; too loose and your eye has trouble jumping from one line to the next.  
-A value around **1.45 em** usually offers a good compromise for long‑form reading.
-
-If you reduce line length, you can often reduce line height slightly as well;  
-if you use a font with a very large x‑height, you may want a bit more line height than with a classic book typeface.
+If the lines feel too close, you can either reduce the line length a little or turn this option off and adjust the line height manually.
 
 ### Line length
 
-Line length is defined in **em**, i.e. relative to the current text size.
+This setting controls the width of the text column in `em`.
 
-This keeps the number of characters per line in a comfortable range even if you change the body size.  
-A value around **40 em** gives roughly 70–85 characters per line with many fonts, which is a good range for continuous reading.
+In earlier versions, the intention was to keep line length tied to the body text size so that a good balance would automatically follow when you changed the font size. Due to technical limitations in CSS, this link is not as tight as it should be.
 
-If the text feels too “wide” and tiring, reduce this value; if it feels too narrow or “choppy”, increase it a little.
+In practice, once you have found a combination you like, you will usually need to readjust **Line length** if you later change **Body text size**. This is a small inconvenience, and the theme author apologises for it.
 
-<!-- screenshot: same note at 34em vs 42em line length -->
+As a starting point, around **40 em** often gives a comfortable reading measure with many fonts.
+
+If the text feels too wide and tiring, reduce it a little. If it feels too narrow or choppy, increase it slightly.
 
 ### Size of the text in table cells (% of body text size)
 
-This option defines the **text size inside table cells**, as a percentage of the Reading body text size.
+This setting controls the text size inside table cells, relative to the Reading body text size.
 
-- At **90 %** (the recommended default), tables remain clear but do not overpower the main text. It may be more practical when cells have more than a few words.  
-- At **100 %**, tables feel more prominent and are easier to read when cells contain just numbers or few words.
+- **90%** is the recommended default. It keeps tables clear without making them compete too much with the main text.
+- **100%** makes tables more prominent and can work well when cells contain mostly short values or numbers.
 
-If your notes rely heavily on tables or Dataview outputs, you may want to experiment between 90 and 100 %.
-
-<!-- screenshot: table at 90% vs 100% text size -->
+If your notes rely heavily on tables or Dataview outputs, it is worth trying both.
 
 ### Tables style
 
-Here you choose the global **table style for Reading mode**:
+This setting defines the global table style in Reading mode:
 
-- **Obsidian plain** – the native Obsidian table style.  
-- **Improved** – refined header styling, better vertical alignment and adjusted text sizes.  
-- **Alternate row backgrounds** – same improvements plus alternating row backgrounds for large tables.
+- **Obsidian plain** — the native Obsidian table style.
+- **Improved** — refined headers, better vertical alignment, and adjusted text sizes.
+- **Alternate row backgrounds** — the same improvements, plus alternating row backgrounds for easier row tracking.
 
-“Improved” is a good all‑purpose choice.  
-If you often read wide tables or spreadsheets, “Alternate row backgrounds” makes row tracking easier.
-
+**Improved** is a good default. If you often read wide tables, **Alternate row backgrounds** can make them easier to scan.
 
 ### Bases: hide header in Preview
 
-Once you have finished configuring a Base inside a note, the header with its buttons often becomes unnecessary and even visually disturbing, because it breaks the flow of the text.
+Once a Base is configured, its header and controls are often no longer useful while reading.
 
-This option lets you completely hide the Bases header in **Reading (Preview) mode**, so the note reads like continuous text, simply with a table or a list.
+This option hides the Base header in **Reading mode**, so the note feels more continuous and less interrupted by interface elements.
 
-When this switch is **ON**, you still have two easy ways to adjust a Base later:
+When it is on, the header still reappears automatically in **Live Preview**, where those controls remain useful for editing.
 
-- Open the note in **Live Preview**: the Bases header is always visible while you are editing.  
-- Temporarily **re‑enable the header for that note only** by using the `cssclasses` property in the note’s metadata and adding `bases-header-on`:
+You can also override this note by note:
 
-```yaml
-cssclasses: bases-header-on
-```
+- `bases-header-on` keeps the header visible
+- `bases-clean` hides it even if headers are normally shown
 
-Conversely, if you prefer to **see the Bases header in all notes by default**, leave this switch **OFF**.
+For a visual explanation, see [Displaying Bases](displaying-bases.md).
 
-You can then hide the header only in some notes by adding the `bases-clean` class in the `cssclasses` property:
+### Tables width and Bases width
 
-```yaml
-cssclasses: bases-clean
-```
+The horizontal behaviour of tables and Bases can be adjusted note by note with dedicated cssclasses.
 
-For a visual, step‑by‑step explanation of how Base headers behave in Reading mode — and how to combine the global setting with the `bases-clean` and `bases-header-on` cssclasses — see [Displaying Bases](displaying-bases.md).
+This is especially useful if you want to keep prose comfortably narrow while giving structured content more horizontal space in specific notes. See the [CSS classes reference](css-classes.md).
 
 ### Images style
 
-You can choose among four styles:
+This setting lets you choose one of four image styles:
 
-- **Plain** – images without frame or shadow, for a minimal look.  
-- **With a frame** – a simple border around the image.  
-- **With a shadow** – a soft drop shadow.  
-- **With a frame and a shadow** – both effects combined.
+- **Plain** — no frame or shadow
+- **With a frame** — a simple border
+- **With a shadow** — a soft shadow
+- **With a frame and a shadow** — both effects together
 
-Choose the style that best matches your use of images (screenshots, diagrams, photos, illustrations).
-
-<!-- screenshot: same image displayed with the four styles -->
+Choose the one that best fits the kind of images you use most often, such as screenshots, diagrams, photos, or illustrations.
 
 ### Images max height
 
-This setting defines the **maximum height of images in Reading mode**, in pixels.
+This setting defines the maximum height of images in Reading mode.
 
-It prevents very tall screenshots or photos from taking over the entire screen while reading.  
-You can still open or zoom images to see them in full when needed.
+It prevents very tall screenshots or photos from taking over the whole screen while reading. You can still open or zoom them when needed.
 
-- A value around **500–600 px** works well as a default.  
-- Use a smaller value if your notes are full of screenshots;  
-  use a larger one if you work with detailed diagrams or photos.
+A value around **500–600 px** is a good default. Use a smaller value if your notes contain many screenshots, or a larger one if you often work with detailed diagrams or photos.
 
-  The *width* of an image is always contained within the line length of the text column.
+The width of an image always remains constrained by the text column.
 
-----------------------------------------------
+---
 
-Colors and backgrounds for Reading mode are configured separately in the **[LIGHT MODE colors](light-mode-colors.md)** and **[DARK MODE colors](dark-mode-colors.md)** sections (text color, Reading background, paper backgrounds, paper background also in Live Preview). Once you are happy with this Reading layout, you can fine‑tune those options to match your preferred “paper and ink” mood.
+Colors and backgrounds for Reading mode are configured separately in **[Light mode colors](light-mode-colors.md)** and **[Dark mode colors](dark-mode-colors.md)**.
+
+Once the layout feels right, you can fine-tune those pages to choose the reading atmosphere you want.

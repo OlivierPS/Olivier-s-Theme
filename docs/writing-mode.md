@@ -1,88 +1,78 @@
 # Writing / Editing mode
 
-The **WRITING / EDITING mode** settings control how your notes look and feel while you are working on them, either in Live Preview or in Source mode.  
-These settings are designed to give you a clear, efficient workspace that supports your thinking while you write.
+The **WRITING / EDITING mode** settings control how notes look while you work in **Live Preview** or **Source mode**.
 
-If you are unsure about the exact meaning of “Reading mode”, “Writing/Editing mode”, “Live Preview” or “Source mode”, you can check the [Glossary](glossary.md) for concise definitions.
+In version 3, this area gives you finer control over the editor’s typography, spacing, tables, and images, so you can shape a writing environment that feels calm, dense, spacious, technical, or typewriter-like.
+
+If needed, see the [Glossary](glossary.md) for short definitions of terms such as Reading mode, Writing mode, Live Preview, and Source mode.
 
 ---
 
 ### Typeface
 
-This option selects the **font used for Editing mode**.
+This setting selects the font used in Editing mode.
 
-- On **Default**, it follows the main text font chosen in `Settings → Appearance → Fonts → Text font`. In other words, the same font is used for both Reading and Editing modes.  
-- You can instead choose a different font specifically for writing: another serif, a clean sans‑serif, a typewriter‑style font, or even a monospaced font if you like a “code” feeling.
+- **Default** follows the main text font chosen in `Settings → Appearance → Fonts → Text font`.
+- You can also choose a different font specifically for writing, such as another serif, a clean sans-serif, a typewriter-style face, or even a monospaced font.
 
-The idea is to pick a font that remains comfortable for long sessions at the keyboard and that fits the way you think while writing.  
-It is easy to emulate a typewriter, a terminal, or any other text or Markdown editor.
+The goal is simply to choose a font that stays comfortable during long writing sessions and fits the way you think while drafting.
 
 ### Body text size
 
-This is the **base size of the text in Editing mode**, in pixels.
+This setting defines the base text size in Editing mode.
 
-The recommended default is **17 px**, slightly smaller than Reading (18 px),  
-so you see more context around the cursor without the page feeling cramped.
+The recommended default is **17 px**, slightly smaller than in Reading mode, so you can keep more context around the cursor without making the page feel cramped.
 
-Adjust this value if:
-
-- the editor text looks too small or too large for your taste or your eyesight,  
-- you are working on a small laptop or, conversely, on a large external monitor.
-
-
+Increase it if the editor feels too small on your screen, or reduce it slightly if you want a denser writing view.
 
 ### Natural line height for the chosen font
-This toggle lets the font decide its own *natural* line height while editing.  
-When it is **ON**, the editor uses the line spacing designed by the typeface itself, and the manual **Line height** setting below is effectively ignored.  
-If the lines feel too tight or too loose for your taste, adjust the **Line length** or turn this option **OFF** again and fine‑tune the **Line height** slider yourself.
 
+When this option is on, the editor uses the line spacing intended by the font itself.
 
+In that case, the manual **Line height** setting below is ignored. If the result feels too tight or too loose, you can either adjust the line length or turn this option off and fine-tune the line height manually.
 
 ### Line height
 
-Line height controls the **vertical spacing** between lines in Editing mode (in em).
+This setting controls the vertical space between lines in Editing mode.
 
-A value around **1.35 em** gives a slightly denser layout than in Reading, which often helps you see more lines on screen while drafting or revising.
-
-If your writing feels too tight, increase it a little;  
-if you want a more compact “code editor” feeling, you can reduce it slightly.
+A value around **1.35 em** usually gives a slightly denser layout than in Reading mode, which helps keep more context visible while drafting or revising.
 
 ### Line length
 
-This setting defines the **maximum line length in the Editing pane**, in em.
+This setting controls the maximum line length in the editor, in `em`.
 
-By default, it is **longer than in Reading mode** (46 em vs 40 em), so you can see more text while writing.
+The default is longer than in Reading mode, so you can see more text while writing.
 
-- Reduce it if you like a very focused, column‑like page.  
-- Increase it if you work with long sentences, many inline links, or side‑by‑side panes.
+In earlier versions, the intention was to keep line length tied more closely to the body text size. Due to technical limitations in CSS, this link is not as tight as it should be.
 
-<!-- screenshot: Editing view at a narrow vs wide line length -->
+In practice, once you have found a combination you like, you will usually need to readjust **Line length** if you later change **Body text size**. This is a small inconvenience, and the theme author apologises for it.
+
+Reduce the value if you prefer a narrow, focused writing column. Increase it if you work with long sentences, many inline links, or side-by-side panes.
 
 ### Size of the text in table cells (% of body text size)
 
-This option defines the **text size inside table cells** while editing, as a percentage of the **Editing** body text size.
+This setting controls the text size inside table cells while editing, relative to the Editing body text size.
 
-- At **90 %** (the suggested default), tables stay compact and readable without overshadowing the main text.  
-- At **100 %**, tables become more prominent, which helps if you edit a lot of content directly inside them.
+- **90%** is the suggested default. It keeps tables compact and readable without making them too prominent.
+- **100%** makes tables easier to edit if you work in them frequently.
 
 ### While editing a table, the chosen text size sticks
 
-When you are actually editing text in a table cell, the text size normally returns to the same size as the body text.  
-The resulting “jump” in size can be distracting; this option allows you to disable that behaviour.
+Normally, when you edit a table cell, the text returns to the full body text size.
 
-- **OFF** — text in the table cell you are editing is always at 100 % of the current **Editing** body text size.  
-- **ON** — text in the table cell you are editing stays at your chosen percentage size, as set in the option above.
+That size jump can be distracting. This option lets you keep the chosen table text size even while editing the cell itself.
+
+- **OFF** — the active cell returns to 100% of the Editing body text size.
+- **ON** — the active cell keeps the chosen percentage size.
 
 ### Images max height in Live Preview (in pixels)
 
-While you are writing, you typically want to see as much text as possible,  
-but you also want at least a thumbnail of your images — another reason to use **Live Preview** instead of raw Source mode.
+This setting controls the maximum height of images in Live Preview.
 
-This setting lets you choose the **maximum height of images in Live Preview**, in pixels, so you can find your own compromise between visible images and available text space.
+While writing, you often want to keep images visible without letting them take over the screen. The default of **150 px** keeps them in a thumbnail range: large enough to recognise, small enough to preserve space for text.
 
-The default of **150 px** keeps images in the “thumbnail” range: visible enough to recognise them, but small enough not to push the text off screen.
+---
 
-----------------------------------------------
+Colors and backgrounds for Writing / Editing mode are configured separately in **[Light mode colors](light-mode-colors.md)** and **[Dark mode colors](dark-mode-colors.md)**.
 
-Colors and backgrounds for Writing / Editing mode (ink color, editing background, paper background also in Live Preview) are configured in the **[LIGHT MODE colors](light-mode-colors.md)** and **[DARK MODE colors](dark-mode-colors.md)** sections. Once your Writing layout feels right, you can adjust those options to create your preferred “editor mood”.
-
+Once the layout feels right, you can adjust those pages to choose the editor atmosphere you want.

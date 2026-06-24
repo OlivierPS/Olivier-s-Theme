@@ -1,15 +1,12 @@
-# CSS classes and niceties
+# CSS classes reference
 
-This page shows the main **cssclasses provided by Olivier’s Theme**, with a short description and a visual example for each family.  
-To use them, add them to the `cssclasses` property in your note’s properties / YAML block.
+This page lists the **cssclasses provided by Olivier’s Theme**, with a short description for each family.
 
-```yaml
----
-cssclasses:
-  - bases-clean
-  - img-M
----
-```
+In version 3, this area has grown: existing classes are more coherent, and new ones make it easier to control note‑specific layouts, spacing, Bases, tables, and images without changing your global settings.
+
+Some classes are also compatible with other themes that use similar conventions (for example, table and chart width helpers inspired by the Minimal theme).
+
+For a more narrative guide focused on how to use these classes in practice, see [Niceties & cssclasses](niceties-and-cssclasses.md).
 
 ---
 
@@ -25,10 +22,10 @@ Use this when you normally hide Bases headers, but want to keep them visible in 
 Example frontmatter:
 
 ```yaml
----
+***
 cssclasses:
   - bases-header-on
----
+***
 ```
 
 Visual idea: a note where the Bases header is clearly visible above the main content.
@@ -43,13 +40,55 @@ Use this when you prefer a clean, uninterrupted reading flow, where the note rea
 Example frontmatter:
 
 ```yaml
----
+***
 cssclasses:
   - bases-clean
----
+***
 ```
 
 If you want to see how these classes change a real note, the [Displaying Bases](displaying-bases.md) page shows concrete examples with screenshots.
+
+---
+
+## Bases width
+
+These classes control **the width of Bases** in a given note, without changing your global settings. They mirror the behaviour of similar width helpers for tables in other themes.
+
+### `bases-wide`
+
+- Makes the Base wider than the default text column.  
+- Useful when a Base is the main focus of the note and you want more horizontal space for columns.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - bases-wide
+***
+```
+
+Visual idea: a note where the Base extends further than the main text column, but still leaves margins on both sides.
+
+<!-- [image] -->
+
+### `bases-max`
+
+- Expands the Base to the maximum width available in the note.  
+- Best suited for very wide Bases, dashboards, or when you want the table to read like a full‑width view.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - bases-max
+***
+```
+
+Visual idea: a Base aligned with the note margins, using all horizontal space in Reading mode.
+
+<!-- [image] -->
 
 ---
 
@@ -81,22 +120,83 @@ Visual idea: a row or column of the same image rendered at 300, 500, 700 and 100
 
 <!-- [image] -->
 
-----------------------------------------------
+---
+
+## Advanced image layouts
+
+These classes complement the existing `img-…` sizes by controlling **image position and layout**.
+
+### `img-left`
+
+- Floats the image to the left of the text in Reading mode.  
+- Works best for small or medium images paired with short paragraphs.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - img-left
+  - img-M
+***
+```
+
+Visual idea: an image aligned to the left, with text flowing neatly on the right.
+
+<!-- [image] -->
+
+### `img-wide` and `img-max`
+
+- `img-wide` makes images slightly wider than the main text column, without going all the way to the edges.  
+- `img-max` pushes images to the maximum width available in the note, ideal for screenshots, diagrams, or full‑bleed illustrations.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - img-wide
+***
+```
+
+Visual idea: the same image rendered at normal width, then wider, then full‑width.
+
+<!-- [image] -->
+
+### `img-grid-ratio`
+
+- Adjusts the aspect ratio of images arranged in a grid, so they line up cleanly.  
+- Useful when you have several screenshots or photos in the same note and want a more consistent gallery‑like layout.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - img-grid-ratio
+***
+```
+
+Visual idea: a grid of images with matching proportions, instead of mixed heights.
+
+<!-- [image] -->
+
+---
 
 ## Horizontal rulers
 
-All the rulers available in the **Style Settings** interface (**GENERAL settings > Typography > Text separators**) can be used on a per-note basis. Here’s the table of the available classes and the corresponding rulers :
+All the rulers available in the **Style Settings** interface (**GENERAL settings > Typography > Text separators**) can be used on a per-note basis. Here’s the table of the available classes and the corresponding rulers:
 
 | CSS class | Visual result       |
 | :-------- | :------------------ |
-| `sep-01`    | simple line         |
-| `sep-02`    | tapered line        |
-| `sep-03`    | minimal triple dots |
-| `sep-04`    | bubbles             |
-| `sep-05`    | diamonds            |
-| `sep-06`    | geometric Art Déco  |
-| `sep-07`    | light fleuron       |
-| `sep-08`    | decorative fleuron  |
+| `sep-01`  | simple line         |
+| `sep-02`  | tapered line        |
+| `sep-03`  | minimal triple dots |
+| `sep-04`  | bubbles             |
+| `sep-05`  | diamonds            |
+| `sep-06`  | geometric Art Déco  |
+| `sep-07`  | light fleuron       |
+| `sep-08`  | decorative fleuron  |
 
 ---
 
@@ -113,71 +213,101 @@ These classes adjust **text size in Reading mode only**, without affecting Editi
 
 - Progressively increase the text size in Reading mode.  
 - Great for lecture notes, coaching sessions, or when you are reading at a distance from the screen.  
-- They can also make the text more legible when you put your note in a sidebar, where the text is made smaller by design. Setting the class to `readingMode-text-big` or higher counteracts this behaviour.
+- They can also make the text feel closer to a printed book when combined with generous line height.
 
-Advanced users often keep indexes, orientation maps, and reference material in sidebars.  
-By applying these classes to such notes, you can tune them visually to your liking and to the current situation.
-
-Visual idea: the same paragraph rendered with five different Reading‑mode sizes, from “smaller” to “biggest”.
-
-<!-- [image] -->
-
-
-
----
-
-## Specialised niceties
-
-These classes change **specific elements** of the note.
-
-### `OT-step-list`
-
-- Styles numbered lists as **step‑by‑step procedures**.  
-- Typically adds clearer numbering, spacing, and alignment to each step, making instructions easier to follow.
-
-Visual idea: a numbered list where each item looks like a distinct step card.
-
-<!-- [image] -->
-
-### `OT-tables-style-1` and `OT-tables-style-2`
-
-These classes let you enforce a **specific table style per note**, overriding the global `READING mode → Tables style` setting.  
-On some notes, you may want to disable alternating rows, while on others you may *require* them, even if they are turned off globally.
-
-#### `OT-tables-style-1`
-
-- Applies a first alternate table style (borders, zebra stripes, header emphasis, etc.).  
-- Useful for structured data, checklists, or any content that benefits from clear row separation.
-
-Visual idea: a table with subtle alternating row colours and an emphasised header row.
-
-<!-- [image] -->
-
-#### `OT-tables-style-2`
-
-- Applies a second table style, more contrasted or more “notebook‑like”, depending on your taste.  
-- Handy when you want a particular table to stand out from the rest of the page.
-
-Visual idea: a table with a different border and background treatment than `OT-tables-style-1`.
-
-<!-- [image] -->
-
----
-
-## How to combine cssclasses
-
-You can combine several cssclasses in the same note to get exactly the layout you want.
-
-Example: a handout‑style note with slightly smaller Reading text and medium images:
+Example frontmatter:
 
 ```yaml
----
+***
 cssclasses:
-  - bases-clean
-  - readingMode-text-small
-  - img-M
----
+  - readingMode-text-bigger
+***
 ```
 
-In practice, most notes will only need one to three cssclasses.  
-You can always start small and add more only when there is a clear visual need.
+Visual idea: the same note rendered with progressively larger body text in Reading mode.
+
+<!-- [image] -->
+
+---
+
+## Table styles
+
+These classes change how **Markdown tables** and embedded HTML tables are rendered, without touching the underlying content.
+
+### `OT-tables-native`
+
+- Keeps table styling close to Obsidian’s native look, while still aligning borders and spacing with the theme.  
+- A good default if you prefer a subtle, familiar appearance.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - OT-tables-native
+***
+```
+
+Visual idea: a table that looks similar to Obsidian’s default, but with slightly cleaner borders and alignment.
+
+<!-- [image] -->
+
+### `OT-tables-improved`
+
+- Applies a more refined table layout: clearer separation between columns, consistent internal borders, and improved header styling.  
+- Useful for notes where tables are the main structure and need to be easy to scan.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - OT-tables-improved
+***
+```
+
+Visual idea: the same table rendered once with the default style and once with improved borders and headers.
+
+<!-- [image] -->
+
+### `OT-tables-alternate-rows`
+
+- Adds alternating row backgrounds on top of the improved table styling.  
+- Helps with long tables where it is easy to lose track of which row you are reading.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - OT-tables-alternate-rows
+***
+```
+
+Visual idea: a striped table where every other row has a slightly tinted background.
+
+<!-- [image] -->
+
+---
+
+## Lists and bullets
+
+### `arrow-bullets`
+
+- Replaces the default list markers with arrow‑style bullets in Reading mode.  
+- Works on regular lists only.
+- Typical use : MOCs, index notes, etc.
+
+Example frontmatter:
+
+```yaml
+***
+cssclasses:
+  - arrow-bullets
+***
+```
+
+Visual idea: a list where each bullet is a subtle arrow instead of a dot.
+
+<!-- [image] -->
+

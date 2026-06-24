@@ -1,17 +1,27 @@
 # Dark mode colors
 
-Dark mode colors define the “night personality” of your vault. They mirror the Light mode options, but tuned for dark backgrounds, with one important extra: a **General palette** setting that can either follow your Light choice or define an independent Dark mood.
+Dark mode colors define the “night personality” of your vault. In version 3, they benefit from the same OKLCH-based color system as Light mode, with palettes and accents specifically tuned for dark surfaces.
+
+The settings mirror the Light mode options, but with one important capability : you can let the  **General palette** follow your Light-mode choice or you can choose different palette that “sticks”, independant from your Light-mode palette.
+
+## New in version 3
+
+Version 3 refines the Dark palettes, improves their internal balance, and adds new palette families.
+
+Some Dark palettes are designed to stay closely related to their Light counterpart, while others can create a more distinctive night environment. In many cases, the palette logic is now calmer, clearer, and can be easily tuned.
 
 ### General palette
 
-The **General palette** controls the overall atmosphere when Obsidian is in Dark theme.  
+The **General palette** controls the overall atmosphere when Obsidian is in Dark theme.
+
 You have two main approaches:
 
-- **Default < light mode** – the Dark palette is automatically derived from the current Light palette, keeping a clear relationship between both modes.  
-- A specific Dark palette – choose an explicit Dark palette when you want a different night mood (for example more contrast, cooler tones, or a “terminal” feeling).
+- **Default < Light mode** — the Dark palette is automatically derived from the current Light palette, keeping a coherent relationship between both modes.
+- **A specific Dark palette** — choose an explicit Dark palette when you want a different night mood, for example more contrast, cooler tones, warmer paper-like darkness, or a terminal-like atmosphere.
 
-Some Dark palettes exist only in Dark mode and must be selected explicitly (for example *LYT* or other special palettes).  
-Once chosen, the Dark General palette behaves like its Light counterpart: it defines coordinated accent, text colors, backgrounds and highlight colors for Dark mode.
+Some palettes are available only in Dark mode and must be selected explicitly. Once chosen, the Dark General palette defines a coordinated set of accent, text, backgrounds, and highlight colors for Dark mode.
+
+For a thorough description of the different palettes, see [Palettes](palettes-descriptions.md)
 
 [⭢ Samples](color-samples-dark.md/#dark-general-palette)
 

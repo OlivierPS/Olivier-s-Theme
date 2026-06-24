@@ -1,8 +1,8 @@
-# Niceties & cssclasses
+# Niceties & cssclasses guide
 
 This page explains the **extra visual niceties** offered by Olivier’s Theme, and how to enable them in your notes using the `cssclass` / `cssclasses` property in YAML frontmatter.
 
-It complements the more detailed descriptions in the “cssclasses and niceties” catalogue by focusing on *how* to use these classes in practice and how they fit into your workflows.
+It is a practical guide to using these classes in everyday work: how cssclasses behave in Obsidian, common combinations, and typical use cases. For a complete list of all available classes, see the [CSS classes reference](css-classes.md).
 
 ## How cssclasses work in Obsidian
 

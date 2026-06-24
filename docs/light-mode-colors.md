@@ -1,14 +1,34 @@
 # Light mode colors
 
-Light mode colors define the “daytime personality” of your vault. They work with a cascading logic: one high‑level choice (the General palette) sets a coherent set of accent, text, backgrounds and highlight colors, which you can then override when needed.
+Light mode colors define the “daytime personality” of your vault. In version 3, they are built on a more advanced color system — OKLCH —, which makes palette behaviour more coherent and gives finer control over hue and intensity.
 
+They still work with a cascading logic: one high-level choice (the General palette) sets a coherent combination of accent, text, backgrounds, and highlighting, which you can then override when needed.
 
+### New in version 3
+
+Version 3 improves the existing palettes and adds several new ones.
+
+Most palettes now offer better balance and more refined accent behaviour. Some also let you control the strength of the color atmosphere more precisely. Particularly interesting palettes :
+
+* a “Custom” palette where you can set with simple ease the whole appearance of the vault. Any color from the color wheel can be set, as well as its intensity (vividness).
+* an Art Deco inspired palette.
+
+For a thorough description of the different palettes, see [Palettes](palettes-descriptions.md)
+
+The new palette families include classic-inspired options such as LYT, Ideaverse, Solarized, Obsidian, and Art Deco, as well as a more experimental palette giving access to a very wide hue range across the full color wheel.
+
+### How color works in version 3
+Palettes in version 3 are designed to give each vault a clear visual atmosphere rather than just a different accent color.
+
+Most palettes let you adjust how intense that atmosphere feels, from very discreet to more expressive, using a single slider instead of a long list of separate options.
+
+By default, the same palette applies to both Reading and Writing modes, so the whole workspace feels coherent. If you prefer, you can still diverge and choose different backgrounds and text colors for Reading and for Writing, on top of the palette.
 
 ### General palette
 
 The **General palette** is the main lever for the overall atmosphere of your vault in Light mode. Choosing a palette here automatically sets a coordinated accent, text colors, note backgrounds and highlight color for Light mode, and also selects a related Dark palette. For the rest of this page, it will be your **Current palette**.
 
-As long as you leave the other Light mode color options on **Default**, this single choice is enough to give your vault a coherent look.
+As long as you leave the other Light mode color options on **Default**, this single choice is enough to give your vault a coherent look. In many palettes, version 3 also lets you adjust the intensity of the color atmosphere, from discreet to more expressive.
 
 Typical use:
 
