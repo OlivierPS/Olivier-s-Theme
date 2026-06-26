@@ -33,11 +33,14 @@
  *       • hovered (any)    : background = --color-accent-1, text = --OT-color-on-accent-1 / --OT-color-muted-on-accent-1
  *       • active / current : background = --color-accent-2, text = --OT-color-on-accent-2 / --OT-color-muted-on-accent-2.
  *
- * Changelog (2.0)
+ * Changelog (3.0)
  * ---------------
- *   - Refactored and extended color palettes for both light and dark modes (including “metallicBlue”, “parchment”, “pistachio”, and others).
- *   - Improved metadata layout, tables, search highlights, and property pills for heavy everyday use.
- *   - Added or refreshed support for numerous plugins (Metadata Menu, Vertical Tabs, Canvas, Smart Connections, etc.).
+ *	- Implementation of the OKLCH color model.
+ *	- New palettes
+ *	- Better management of line length ⭢ implementation of different widths for tables and bases
+ *	- New styles for vertical separators (hr)
+ *	- New CSS classes
+ *	- Overall improvement of all the code ⭢ simplification of the coloring, more sensible exceptions
  *
  * License
  * -------
@@ -48,217 +51,9 @@
 /*
 Post‑release tweaks
 -------------------
-2026-06-09
-	- thinned the vertical separator in tables
-2026-06-07
-	- debugged the “tables” section; all the styles work, comprised the CSSCLASSES
-	- more reasonable chevrons
-2026-06-06
-	- beginning of the transition of the color model: “hsl” ⭢ “oklch”
-	- corrected every use of `--text-faint` that I could still spot
-2026-06-05
-	- corrected colors of the “Another QuickSwitcher plugin” modal
-	- added a visual clue for heading 2 in Live Preview
-2026-06-04
-	- improved vertical spacing between certain elements
-	- added spacing above and below transcluded bases
-2026-06-03
-	- changed the editing mode indicator at the top right of the editing pane into an icon
-	- changed the way editing text color is defined
-2026-06-01
-	- increased text sizes in the settings window
-	- reverted text sizes in the settings window (sorry…)
-	- discrete border around dropdowns and some buttons
-2026-05-29
-	- improved the left alignement of images in Live Preview
-	- corrected colors of active tabs in sidebars
-	- improved hovering of tabs
-	--modified the groups titles size for bases
-2026-05-25
-	- corrected the positionning of the Editing mode indicator
-	- corrected the whole logic for the positionning of tables, in all cases (cssclasses) and every mode
-2026-05-24
-	- completely overhauled the horizontal spacing system
-	- CSS classes are available to adjust width of tables and bases independantly
-2026-05-22
-	- unfortunately, the tweak permitting transcluded bases to extend to the whole pane width introduced a problem with tables editing;
-		so, I prefer to remove it, until I find a better solution
-2026-05-21
-	- added a CSS class permitting to extend bases across the whole width of the pane, even with “Readable line length” ON
-2026-05-20
-	- added rule for the hovering of the status bar button from the Workspace++ plugin
-	- tuned some backgrounds + added a brown as a choice for Editing mode background
-	- corrected the logic of colors in tab headers in different states
-	- suppressed the display of the close icon on hovering of sidebar tabs
-2026-05-19
-	- some tweaks for the community modal
-2026-05-16
-	- added rules offering the possibility to specify the inline specified class for HR
-	- debugged edge cases of the inline HR styling
-2026-05-15
-	- corrected a bug with footnotes text size + buttons in Style Settings plugin
-2026-05-14
-	- corrected a button in bases header
-	- added Amasis font as a choice for writing and for kanbans
-2026-05-13
-	- small tweaks for the vertical tabs plugin and for the publish modal
-2026-05-11
-	- corrected a problem with the color of the text in tabs
-	- tuned the yellow and light yellow backgrounds for editing panes
-	- corrected the color of icons in tabs
-2026-05-10
-	- tuned the light mode, editing mode, background colors
-	- added a couple of fonts in the selection for writing
-2026-05-03
-	- added horizontal separators definitions in Style Settings interface
-2026-05-02
-	- modified the horizontal dividers
-	- fixed a regression and improved code for horizontal dividers
-	- added new variants for the horizontal dividers
-2026-04-29
-	- added the choice between three types of horizontal dividers
-	- corrected a problem with the color of icons in the tab content of the active tab with focus
-2026-04-28
-	- corrected the color of the current active tab
-2026-04-27
-	- tweaked font and font sizes in bases, especially in transcluded bases
-	- corrected hovering of the active tab
-	- tuned down colors in the light yellow palette, alternative accent color 2
-2026-04-26
-	- tuning of some colors
-2026-04-25
-	- improved the logic of the line height in Edit modes
-2026-04-22
-	- discreet shadow behind status bar
-	- corrected the hovering of status bar items for certain plugins
-	- some cosmetics on kanban boards (board view unofficial plugin)
-2026-04-21
-	- when the relevant option is activated, H1 to H5 are colored also in editing mode
-2026-04-20
-	- tuned text sizes in the sidebar, particularly bases
-2026-04-11
-	- cleaned some color definitions
-2026-04-10
-	- corrected active, non focused icons in sidebars
-2026-04-08
-	- corrected the missing space before h1 headings
-	- added settings for the Board View plugin
-	- adjusted font size in the Board View
-	- styled the metadata title when properties are shown at the top of notes
-2026-04-06
-	- vastly improved the vertical spacing in four modes (tight, normal, generous, Bear)
-	- thoroughly reviewed the vertical spacing around images + improved the css classes for ad hoc spacers
-	- corrected a bug in paragraph spacing
-2026-04-05
-	- reorganised the presentation of settings in the Style Settings plugin
-		(moved the Kanban plugin settings to the end of the Reading mode settings)
-2026-04-04
-	- improvements to the hovering of tabs in sidebars
-2026-04-01
-	- restored image galleries capacities, lost with a recent Obsidian update
-	- improved vertical spacing; in particular:
-		- space between an image and the following paragraph
-		- increased differences between “tight”, “normal” and “generous” vertical spacing
-2026-03-29
-	- reorganised and renumbered a few sections
-	- vastly improved the vertical spacing of lists and the code involved
-	- corrected the text sizing in tables
-2026-03-28
-	- improved the logic and wording of settings
-	- rendered numeric defaults closer to “Obsidian native”
-	- changed units for line height: rem ⭢ em
-2026-03-27
-	- added some CSS classes usefull for adding different sizes of visual vertical space
-	- improved the rendering of small vertical spacing classes in Live Preview mode
-	- finally: completely sanitized the whole vertical spacing system
-2026-03-26
-	- added code to change the reading/editing mode icon into a status indicator
-2026-03-25
-	- vastly improved the vertical spacing with a typographical logic based on quantums of white space
-2026-03-24
-	- improved the legibility of list views in bases
-	- suppressed the “group headers” in the board views (unofficial kanban)
-2026-03-22
-	- introduced a variable-based system to control heading parameters consistently across all modes
-	- added CSS classes and settings to mimic the visual appearance of the Bear editor
-	- added 2 fonts for Editing (Bear Sans + Avenir Next)
-2026-03-21
-	- added a shadow behind blockquotes + rendered images shadows lighter
-	- improved the contextual vertical spacing of headers
-2026-03-18
-	- improved the visual appearance of the document search container
-2026-03-15
-	- slightly widened character spacing for the American Typewriter font
-2026-03-12
-	- in depth correction of hovering in bases and some other buttons
-2026-03-11
-	- suppressed a troublesome rule for the sorting menu in bases
-2026-03-08
-	- corrected the invisibility of the case-sensitivity indicator in the main search field
-2026-03-04
-	- improved arrows of the “arrow-bullets” CSS class
-	- suppressed them from transcluded bases
-2026-03-01
-	- the text highlighting system works
-	- added a CSS class to replace lists' bullets by arrows
-	- the Metadata Menu button in properties now hath a transparent background
-	- header row of tables has now the same style as tables header
-	- pills inside tables now have the same text size as the other cells
-2026-02-28
-	- added option to get color headers, via a Style Settings toggle
-	- improved colors of the Note Status plugin
-	- tweaked accent colors of the Pistacchio palette, light mode
-	- tweaked accent colors of the Icy palette, light mode
-	- improved collapse icons + some hovering in the navigation + CTA buttons hovering
-	- cursor changes to “pointer” when hovering collapse icons
-2026-02-27
-	- improved hovering for plugins who use standard Obsidian variables
-	- corrected idiosyncrasies of the Board View plugin that disrupted the collapse icons
-	- much nicer collapse icons overall, in headings in particular
-2026-02-25
-	- all the CSS class toggles in Style Settings are now available as Obsidian commands
-	- revised the description of options in the Style Settings interface
-2026-02-24
-	- in Edit modes (Live and Raw), the line length follows the toggle of the Readable Line Length
-2026-02-23
-	- finished the revision of the text selection color in every palette
-	- added “Ideaverse” color palettes
-	- text size of the Dynamic Outline menu
-	- missing `}`
-2026-02-22
-	- continuing to correct the text selection color in dark .readingMode-text-small
-	- added option to hide the filename in transcluded files
-2026-02-19
-	- at last, lists are as I always wanted them !
-	- improved the hovering of the tabs
-2026-02-18
-	- added the option to select a “normal” line spacing, both in Reading and in Editing mode
-2026-02-17
-	- perfected the code for the Dynamic Outline plugin
-2026-02-16
-	- text size in lists
-2026-02-15
-	- overhauled lists to make them highly customizable
-	- included lists presets into Style Settings
-	- corrected two very annoying typos
-2026-02-13
-	- corrected the hovering of Style Settings collapse indicators
-	- corrected the zooming inside panes, permitted by Vertical Tabs plugin
-2026-02-11
-	- compacted vertically all the properties (metadata) block
-2026-02-09
-	- Changed the font size of “add-on” items in Metadata Menu modal
-	- Compacted the YAML metadata
-2026-02-08
-- Temporarily removed Art Deco and Victorian palettes from the menus, because they aren’t fully tuned
-2026-02-07
-	- Modified the Style Settings font selector for writing so that it gives a CSS class ⭢ 
-		- This permits the fine tuning of letter-spacing on a per-font basis
-- Corrected the different states and the hovering of the different buttons in the Bases menu bar
-- Corrected the colors of the different states in Metadata Menu modals.
-2026‑02‑06
-	- Increased `--header-height` from 2.0em to 2.4em for more comfortable workspace tab bars and view headers.
-	- Restored normal vertical space for tab icons by relying on the updated header height instead of extra padding.
+2026-06-26
+	- tweaks, in Art Deco palette in particular
+	- Vertical Tabs plugin: better definition of the icons color
 */
 
 /* ========================================================================================================
@@ -1326,6 +1121,11 @@ body {
 	/* stabilo : ambre chic */
 	--OT-highlight-bg:	oklch(34% 0.06	72);
 	--OT-highlight-fg:	oklch(90% 0.11 72);
+
+	/* ajustements*/
+	--tab-text-color-focused:		var(--color-base-20);
+	--icon-color:					var(--color-base-20);
+	--OT-clickable-icon-in-header:	var(--color-base-30);
 }
 
 .theme-light.lightPalette-ArtDeco.accentColor-lightMode-shade {
@@ -1333,14 +1133,19 @@ body {
 	--color-accent-2: oklch(76.0% 0.105 72) !important;
 	--color-accent-3: oklch(98.0% 0.020 78) !important;
 
-	--OT-color-on-accent-1: oklch(97.0% 0.015 92) !important;
-	--OT-color-muted-on-accent-1: oklch(88.0% 0.030 82) !important;
-	--OT-color-on-accent-2: oklch(26.0% 0.030 52) !important;
-	--OT-color-muted-on-accent-2: oklch(42.0% 0.040 58) !important;
+	--OT-color-on-accent-1: 		oklch(97.0% 0.015 92) !important;
+	--OT-color-muted-on-accent-1:	oklch(88.0% 0.030 82) !important;
+	--OT-color-on-accent-2: 		oklch(97.0% 0.015 92) !important;
+	--OT-color-muted-on-accent-2:	oklch(92.0% 0.030 82) !important;
 }
 .theme-light.lightPalette-ArtDeco.accentColor-lightMode-alternative-1 {
+	--OT-color-on-accent-2: 		oklch(97.0%	0.015 92) !important;
+	--OT-color-muted-on-accent-2:	oklch(95%		0.015	var(--OT-accent-h)) !important;
 }
 .theme-light.lightPalette-ArtDeco.accentColor-lightMode-alternative-2 {
+	--OT-color-muted-on-accent-1:	oklch(95%		0.015	var(--OT-accent-h)) !important;
+	--OT-color-on-accent-2: 		oklch(97.0% 0.015 92) !important;
+	--OT-color-muted-on-accent-2:	oklch(95%		0.015	var(--OT-accent-h)) !important;
 }
 /*	↑ lightPalette-ArtDeco ↑	*/
 
@@ -7966,6 +7771,11 @@ button.mod-muted {
 	background-color: var(--OT-button-background-normal);
 }
 
+button.mod-destructive.mod-cta {
+	background-color:	var(--background-modifier-error);
+	color:				var(--modal-background);
+}
+
 /* 2. Button hover states */
 @media (hover: hover) {
 	button:hover,
@@ -7973,6 +7783,12 @@ button.mod-muted {
 		color:            var(--OT-hover-fg);
     	background-color: var(--OT-hover-bg);
 	}
+}
+@media (hover: hover) {
+	button.mod-destructive.mod-cta:hover {
+		color:            var(--OT-hover-fg);
+    	background-color: var(--OT-hover-bg);
+  }
 }
 
 /* 3. Dropdowns & selects */
@@ -12650,6 +12466,11 @@ body {
 
 
 /*  === === === OpSpl61 ———————————————————— Vertical Tabs plugin ———————————————————— */
+
+/* Couleur des icônes: la même que sur le ruban quand la sidebar de gauche est ouverte */
+.obsidian-vertical-tabs-toolbar .clickable-icon {
+	color:	var(--OT-ribbon-icon-color-sidebar-is-open);
+}
 
 /* Vertical Tabs : garder une largeur de ligne stable malgré le zoom */
 
