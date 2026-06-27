@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-06-27
+	- refined the code of the tab bar + panes headers, icons comprised
 2026-06-26
 	- tweaks, in Art Deco palette in particular
 	- Vertical Tabs plugin: better definition of the icons color
@@ -437,6 +439,7 @@ body {
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
 
+	--OT-view-header-title-color-focused-active-current:	var(--OT-prominent-text);
 
 
 	/* Golden-ratio heading grammar: above = 1.618 × below */
@@ -475,7 +478,6 @@ body {
 	--OT-tree-item-flair-color:						var(--OT-nav-item-muted);
 	--OT-UI-font-size:								18px;
 	--OT-prominent-text: 							oklch(0.52  0.18  var(--OT-accent-h));
-	--OT-view-header-title-no-focus-color:			var(--text-muted);
 	--OT-YAML-color:								oklch(0.58 calc(var(--OT-themeLight-c) * 3) var(--OT-themeLight-h));
 
 
@@ -733,11 +735,12 @@ body {
 
 	--tab-stacked-text-transform:	rotate(180deg);
 
-	--tab-text-color:							var(--OT-nav-item-muted); 	/*	il n’y a que quand la fenêtre n’a pas le focus qu’on voit cette couleur	*/
-	--tab-text-color-active:					var(--text-muted);			/*	les tabs en avant plan, mais quand la fenêtre n’a pas le focus	*/
+	--tab-text-color:							var(--OT-nav-item-muted);
+	--tab-text-color-active:					var(--OT-nav-item-muted);
 	--tab-text-color-focused:					var(--OT-nav-item-muted);
-	--tab-text-color-focused-active:			var(--OT-view-header-title-no-focus-color);
-	--tab-text-color-focused-active-current:	var(--OT-prominent-text);
+	--tab-text-color-focused-active:			var(--nav-item);
+	--tab-text-color-focused-highlighted:		lime;						/* je ne sais pas où ça se trouve*/
+	--tab-text-color-focused-active-current:	var(--OT-prominent-text);	/* le tab où est le curseur*/
 
 	--table-background:					var(--OT-table-background);
 	/*--table-border-color:				lime;*/
@@ -1123,6 +1126,7 @@ body {
 	--OT-highlight-fg:	oklch(90% 0.11 72);
 
 	/* ajustements*/
+	/*--tab-text-color-active:		red;*/
 	--tab-text-color-focused:		var(--color-base-20);
 	--icon-color:					var(--color-base-20);
 	--OT-clickable-icon-in-header:	var(--color-base-30);
@@ -1495,7 +1499,7 @@ body {
 	--OT-button-ON-bg:						var(--color-accent-1);
 	--OT-search-settings-item-name:			var(--nav-item-color);
 	--OT-setting-item-description:			oklch(0.470 0.035 var(--OT-themeLight-h));
-	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
 */
 }
 /*	↑ lightPalette-MetallicBlue ↑	*/
@@ -1840,7 +1844,7 @@ body {
 	--OT-settings-group-title:				var(--color-stone-200);
 	--icon-color:							var(--color-stone-600);
 	/*--OT-prominent-text:					oklch(0.52  0.18  var(--OT-accent-h));*/
-	--OT-view-header-title-no-focus-color:	var(--color-stone-500);
+	--OT-view-header-title-color-focused-active-current:	var(--color-stone-500);
 
 	--table-header-background:		var(--color-stone-300);
 	--OT-table-background:			var(--color-stone-100);
@@ -2136,7 +2140,7 @@ body {
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color:                           oklch(78.0% min(var(--OT-accent-c), 0.190)  var(--OT-accent-h));
 	--toggle-thumb-color:                   var(--color-accent-1);
-	--OT-view-header-title-no-focus-color:  var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current:  var(--color-accent-2);
 	--OT-setting-item-description:          oklch(66.0% 0.045  var(--OT-themeDark-h));
 	--metadata-label-text-color:            oklch(67.0% calc(var(--OT-theme-c-structure-dark) * 0.95)  var(--OT-accent-h));
 
@@ -2224,7 +2228,7 @@ body {
 	--OT-syntax-markers                      : var(--color-neutral-500);
 	--OT-setting-item-description            : var(--color-neutral-500);
 	--OT-settings-group-title                : var(--color-neutral-700);
-	--OT-view-header-title-no-focus-color    : var(--color-neutral-500);
+	--OT-view-header-title-color-focused-active-current    : var(--color-neutral-500);
 
 	/* ---- icônes et liens ---- */
 	--icon-color                             : var(--color-neutral-400);
@@ -2391,7 +2395,7 @@ body {
 	--icon-color:						oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
 	--toggle-thumb-color:				var(--color-accent-1);
 	--OT-prominent-text:				oklch(76.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
-	--OT-view-header-title-no-focus-color:
+	--OT-view-header-title-color-focused-active-current:
 										var(--color-accent-2);
 	--OT-setting-item-description:		oklch(66.0% 0.050 var(--OT-themeDark-h));
 	--metadata-label-text-color:		oklch(67.0% calc(var(--OT-theme-c-structure-dark) * 0.95) var(--OT-accent-h));
@@ -2490,7 +2494,7 @@ body {
 	/* ------------------------------------------------------------------ */
 	--icon-color:							oklch(68.0% min(var(--OT-accent-c), 0.135) var(--OT-accent-h));
 	--OT-prominent-text:					oklch(69.0% min(var(--OT-accent-c), 0.130) var(--OT-accent-h));
-	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
 	--OT-setting-item-description:			oklch(51.0% 0.038 var(--OT-themeLight-h));
 	--metadata-label-text-color:			oklch(53.0% calc(var(--OT-theme-c-structure) * 0.85) var(--OT-accent-h));
 
@@ -2568,7 +2572,7 @@ body {
 	--toggle-thumb-color:					oklch(30%	0.05	72);
 	--OT-button-OFF-bg:						oklch(40%	0.01	72);
 	--OT-prominent-text:					oklch(77.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
-	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
 	--OT-setting-item-description:			oklch(67.0% 0.050 var(--OT-themeDark-h));
 	--metadata-label-text-color:			oklch(68.0% calc(var(--OT-theme-c-structure-dark) * 0.95) var(--OT-accent-h));
 
@@ -2669,7 +2673,7 @@ body {
 
 	--icon-color: oklch(67.0% min(var(--OT-accent-c), 0.135) var(--OT-accent-h));
 	--OT-prominent-text: oklch(68.0% min(var(--OT-accent-c), 0.130) var(--OT-accent-h));
-	--OT-view-header-title-no-focus-color: var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current: var(--color-accent-2);
 	--OT-setting-item-description: oklch(50.0% 0.038 var(--OT-themeLight-h));
 	--metadata-label-text-color: oklch(52.0% calc(var(--OT-theme-c-structure) * 0.85) var(--OT-accent-h));
 
@@ -2749,7 +2753,7 @@ body {
 	--icon-color: oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
 	--toggle-thumb-color: var(--color-accent-1);
 	--OT-prominent-text: oklch(76.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
-	--OT-view-header-title-no-focus-color: var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current: var(--color-accent-2);
 	--OT-setting-item-description: oklch(66.0% 0.050 var(--OT-themeDark-h));
 	--metadata-label-text-color: oklch(67.0% calc(var(--OT-theme-c-structure-dark) * 0.95) var(--OT-accent-h));
 
@@ -3072,7 +3076,7 @@ body {
 	/*--OT-button-ON-bg:						var(--color-accent-1);*/
 	--OT-search-settings-item-name:			var(--nav-item-color);
 	--OT-setting-item-description:			oklch(66% 0.035 var(--OT-themeDark-h));
-	--OT-view-header-title-no-focus-color:	var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
 
 		/* Fond des panneaux : acier sombre, moins noir */
 		--color-base-00:		oklch(22% 0.012 235);
@@ -3380,7 +3384,7 @@ body {
 	--OT-syntax-markers                      : var(--color-stone-500);
 	--OT-setting-item-description            : var(--color-stone-500);
 	--OT-settings-group-title                : var(--color-stone-700);
-	--OT-view-header-title-no-focus-color    : var(--color-stone-500);
+	--OT-view-header-title-color-focused-active-current    : var(--color-stone-500);
 
 	/* ---- icônes et liens ---- */
 	--icon-color                             : var(--color-stone-400);
@@ -3530,7 +3534,7 @@ body {
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color               : oklch(78.0%  min(var(--OT-accent-c), 0.195)  var(--OT-accent-h));
 	--toggle-thumb-color       : var(--color-accent-1);
-	--OT-view-header-title-no-focus-color : var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current : var(--color-accent-2);
 	--OT-setting-item-description : oklch(66.0%  0.050  var(--OT-themeDark-h));
 	--metadata-label-text-color   : oklch(67.0%  calc(var(--OT-theme-c-structure-dark) * 0.95)  var(--OT-accent-h));
 
@@ -3630,7 +3634,7 @@ body {
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color                  : oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
 	--toggle-thumb-color          : var(--color-accent-1);
-	--OT-view-header-title-no-focus-color : var(--color-accent-2);
+	--OT-view-header-title-color-focused-active-current : var(--color-accent-2);
 	--OT-setting-item-description : oklch(66.0% 0.050 var(--OT-themeDark-h));
 	--metadata-label-text-color   : oklch(67.0% calc(var(--OT-theme-c-structure-dark) * 0.95) var(--OT-accent-h));
 
@@ -7264,10 +7268,6 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     En-tête des panneaux (View header + Tab headers)
     —————————————————————————————— */
 
-/* =========================================
-   View header: breadcrumb + title
-   ========================================= */
-
 /* Masquer le breadcrumb quand demandé */
 .OT-suppress-title-bar-breadcrumb
 	.view-header-title-parent
@@ -7283,7 +7283,6 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	font-weight: var(--font-normal);
 	padding-top: 2pt;
 }
-
 @media (hover: hover) {
 	.view-header-title-parent {
 		.view-header-breadcrumb:hover {
@@ -7293,36 +7292,35 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	}
 }
 
-/* Titre de panneau : état de base (pane non focus) */
+/* épaississement des traits verticaux séparants les tabs d’arrière-plan */
+.workspace .mod-root .workspace-tab-header-inner::after {
+	width:		1.5px;
+	/*height:	22px;*/
+}
+
+
+/* Régions (4) et (5), fenêtre AVEC et SANS focus */
 .view-header-title {
-	color: var(--OT-view-header-title-no-focus-color);
-	letter-spacing: 0.02em !important; /* pour le gras */
+	color:			var(--OT-view-header-title-color-focused-active);
+	letter-spacing:	0.02em !important; /* pour le gras */
 }
 
-/* Bord inférieur du header de panneau focus */
+/* Région (5), fenêtre AVEC focus */
 .is-focused .workspace-leaf.mod-active {
-	.view-header {
-		border-bottom: 3px solid var(--OT-prominent-text);
-	}
-
 	.view-header-title {
-		color: var(--OT-prominent-text);
-		font-variant: small-caps;
-		font-size: var(--font-ui-large);
-		font-weight: 700;
+		color:			var(--OT-view-header-title-color-focused-active-current);
+		font-variant:	small-caps;
+		font-size:		var(--font-ui-large);
+		font-weight:	700;
+	}
+	/* Bord inférieur du titre */
+	.view-header {
+		border-bottom: 3px solid var(--OT-view-header-title-color-focused-active-current);
 	}
 }
 
-/* Icônes de header dans la title bar */
-.view-header {
-	.clickable-icon {
-		color: var(--OT-clickable-icon-in-header);
-	}
-}
-
-/* -------------------- Workspace tab headers -------------------- */
-
-/* Base commune : l’inner est le vrai porteur visuel */
+/* régions (1), (2) et (3), fenêtre AVEC et SANS focus */
+/* les icônes dans les sidebars */
 .workspace-tab-header {
 	.workspace-tab-header-inner {
 		position: relative;
@@ -7352,30 +7350,77 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 	/* Bouton fermer visible seulement au hover */
 	.workspace-tab-header-inner-close-button {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0.2em;
-		margin: auto 0;
-		display: none;
+		display:	none;
+		position:	absolute;
+		top:		0;
+		bottom:		0;
+		right:		0.2em;
+		margin:		auto 0;
 	}
 
 	&:hover .workspace-tab-header-inner-close-button {
-		display: block;
+		display:	block;
 	}
 
 	/* Metadata Menu doit rester cliquable */
 	.metadata-menu.fileclass-icon {
-		position: relative;
-		z-index: 1;
+		position:	relative;
+		z-index:	1;
 	}
 }
 
-/* Status icon root, y compris pinned : suivent toujours la couleur du tab */
+
+/* Icônes de header dans la title bar, fenêtre AVEC ou SANS focus */
+.view-header {
+	.clickable-icon {
+		color: var(--OT-clickable-icon-in-header);
+	}
+}
+
+/* Région (3), fenêtre AVEC focus */
+.is-focused .workspace-split.mod-root .workspace-tab-header.is-active.mod-active:not(:hover) {
+	.workspace-tab-header-inner {
+		color:				var(--tab-text-color-focused-active-current);
+		background-color:	transparent;
+	}
+
+	.workspace-tab-header-inner-title {
+		color:				var(--tab-text-color-focused-active-current);
+	}
+
+	.workspace-tab-header-inner-icon,
+	.workspace-tab-header-status-container,
+	.workspace-tab-header-status-icon,
+	.workspace-tab-header-inner-close-button,
+	.metadata-menu.fileclass-icon {
+		color: inherit;
+		color:				var(--tab-text-color-focused-active-current);
+		background-color:	transparent;
+	}
+
+	.workspace-tab-header-inner-icon .svg-icon,
+	.workspace-tab-header-status-icon .svg-icon,
+	.workspace-tab-header-inner-close-button .svg-icon,
+	.metadata-menu.fileclass-icon .svg-icon {
+		color:				var(--tab-text-color-focused-active-current);
+		stroke:				currentColor;
+		fill:				none;
+	}
+}
+
+/* Régions (1) et (2), fenêtre AVEC focus */
+body.is-focused {
+	.workspace-split.mod-root .workspace-tab-header-container
+	.workspace-tab-header .workspace-tab-header-inner {
+		color:	var(--tab-text-color-focused-active);
+	}
+}
+
+/* Icônes en région (1), fenêtre AVEC et SANS focus */
 .mod-root {
 	.workspace-tab-header-status-icon,
 	.workspace-tab-header-status-icon.mod-pinned {
-		color: inherit;
+		color: 				var(--tab-text-color-focused-active);
 	}
 
 	.workspace-tab-header-status-icon .svg-icon,
@@ -7386,37 +7431,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	}
 }
 
-/* Onglet actif du pane focus : hors hover, pas de fond en root */
-.is-focused .workspace-split.mod-root .workspace-tab-header.is-active.mod-active:not(:hover) {
-	.workspace-tab-header-inner {
-		color: var(--tab-text-color-focused-active);
-		background-color: transparent;
-	}
-
-	.workspace-tab-header-inner-title {
-		color: var(--OT-prominent-text);
-	}
-
-	.workspace-tab-header-inner-icon,
-	.workspace-tab-header-status-container,
-	.workspace-tab-header-status-icon,
-	.workspace-tab-header-inner-close-button,
-	.metadata-menu.fileclass-icon {
-		color: inherit;
-		background-color: transparent;
-	}
-
-	.workspace-tab-header-inner-icon .svg-icon,
-	.workspace-tab-header-status-icon .svg-icon,
-	.workspace-tab-header-inner-close-button .svg-icon,
-	.metadata-menu.fileclass-icon .svg-icon {
-		color: inherit;
-		stroke: currentColor;
-		fill: none;
-	}
-}
-
-/* Variante optionnelle : seulement si activée via Style Settings */
+/* Région (3), fenêtre AVEC et SANS focus, Highlight Current Tab est ON */
 .OT-tab-title-highlighted {
 	.workspace-split.mod-root .workspace-tab-header.is-active.mod-active:not(:hover) {
 		.workspace-tab-header-inner {
@@ -7447,31 +7462,15 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	}
 }
 
-/* Valeur par défaut quand la fenêtre a le focus */
-body.is-focused {
-    .workspace-split.mod-root .workspace-tab-header-container
-    .workspace-tab-header .workspace-tab-header-inner {
-        color: var(--tab-text-color-focused);
-    }
-}
 
-/* épaississement des traits verticaux séparants les tabs d’arrière-plan */
-.workspace .mod-root .workspace-tab-header-inner::after {
-	width:				1.5px;
-	/*background-color:	var(--tab-divider-color);*/
-	/*content:			'';*/
-	/*height:				22px;*/
-}
-
-/* -------------------- Root tabs -------------------- */
-
-/* Hover générique root, actif ou non : accent-1 */
+/* -------------------- Hovering -------------------- */
+/* région (1) */
 @media (hover: hover) {
 	.mod-root {
 		.workspace-tab-header:hover .workspace-tab-header-inner,
 		.workspace-tab-header.is-active:hover .workspace-tab-header-inner {
-			color: var(--OT-color-on-accent-1);
-			background-color: var(--color-accent-1);
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
 		}
 
 		.workspace-tab-header:hover .workspace-tab-header-inner {
@@ -7479,17 +7478,17 @@ body.is-focused {
 			.workspace-tab-header-inner-icon,
 			.workspace-tab-header-status-icon,
 			.workspace-tab-header-inner-close-button {
-				background-color: var(--color-accent-1);
-				color: var(--OT-color-on-accent-1);
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
 			}
 
 			.workspace-tab-header-inner-icon .svg-icon,
 			.workspace-tab-header-status-icon .svg-icon,
 			.workspace-tab-header-inner-close-button .svg-icon {
-				background-color: var(--color-accent-1);
-				color: var(--OT-color-on-accent-1);
-				stroke: currentColor;
-				fill: none;
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
+				stroke:				currentColor;
+				fill:				none;
 			}
 		}
 
@@ -7498,46 +7497,46 @@ body.is-focused {
 			.workspace-tab-header-inner-icon,
 			.workspace-tab-header-status-icon,
 			.workspace-tab-header-inner-close-button {
-				background-color: var(--color-accent-1);
-				color: var(--OT-color-on-accent-1);
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
 			}
 
 			.workspace-tab-header-inner-icon .svg-icon,
 			.workspace-tab-header-status-icon .svg-icon,
 			.workspace-tab-header-inner-close-button .svg-icon {
-				background-color: var(--color-accent-1);
-				color: var(--OT-color-on-accent-1);
-				stroke: currentColor;
-				fill: none;
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
+				stroke:				currentColor;
+				fill:				none;
 			}
 		}
 	}
 }
 
-/* Hover du tab actif focalisé : accent-1 */
+/* Région (3) */
 @media (hover: hover) {
 	body.is-focused {
 		.mod-root .workspace-tab-header.is-active.mod-active:hover {
 			.workspace-tab-header-inner {
-				background-color: var(--color-accent-1);
-				color: var(--OT-color-on-accent-1);
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
 			}
 
 			.workspace-tab-header-inner-title,
 			.workspace-tab-header-inner-icon,
 			.workspace-tab-header-status-icon,
 			.workspace-tab-header-inner-close-button {
-				background-color: var(--color-accent-1);
-				color: var(--OT-color-on-accent-1);
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
 			}
 
 			.workspace-tab-header-inner-icon .svg-icon,
 			.workspace-tab-header-status-icon .svg-icon,
 			.workspace-tab-header-inner-close-button .svg-icon {
-				background-color: var(--color-accent-1);
-				color: var(--OT-color-on-accent-1);
-				stroke: currentColor;
-				fill: none;
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
+				stroke:				currentColor;
+				fill:				none;
 			}
 		}
 	}
@@ -7546,55 +7545,38 @@ body.is-focused {
 /* Tap mobile : onglet root non actif */
 .workspace-tab-header:not(.is-active).mobile-tap {
 	.workspace-tab-header-inner {
-		color: var(--OT-color-on-accent-2);
-		background-color: var(--color-accent-2);
+		color:				var(--OT-color-on-accent-2);
+		background-color:	var(--color-accent-2);
 	}
 }
 
-/* Hover ciblé des contrôles d’onglet root */
-@media (hover: hover) {
-	.mod-root {
-		.workspace-tab-header.is-active {
-			.workspace-tab-header-status-icon:hover,
-			.workspace-tab-header-inner-close-button:hover {
-				color: var(--OT-color-on-accent-1);
-				background-color: var(--color-accent-1);
-			}
-		}
-
-		.workspace-tab-header:hover .workspace-tab-header-inner-close-button:hover {
-			color: var(--OT-color-on-accent-1);
-			background-color: var(--color-accent-1);
-		}
-	}
-}
-
-/* Override explicite du non-actif root contre app.css */
+/* Région (2) */
 @media (hover: hover) {
 	.mod-root .workspace-tab-header-container .workspace-tab-header:not(.is-active):hover {
 		.workspace-tab-header-inner {
-			background-color: var(--color-accent-1);
-			color: var(--OT-color-on-accent-1);
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
 		}
 
 		.workspace-tab-header-inner-title,
 		.workspace-tab-header-inner-icon,
 		.workspace-tab-header-status-icon,
 		.workspace-tab-header-inner-close-button {
-			background-color: var(--color-accent-1);
-			color: var(--OT-color-on-accent-1);
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
 		}
 
 		.workspace-tab-header-inner-icon .svg-icon,
 		.workspace-tab-header-status-icon .svg-icon,
 		.workspace-tab-header-inner-close-button .svg-icon {
-			background-color: var(--color-accent-1);
-			color: var(--OT-color-on-accent-1);
-			stroke: currentColor;
-			fill: none;
+			color:				var(--OT-color-on-accent-1);
+			background-color:	var(--color-accent-1);
+			stroke:				currentColor;
+			fill:				none;
 		}
 	}
 }
+
 
 /* -------------------- Sidebars -------------------- */
 
