@@ -53,6 +53,7 @@ Post‑release tweaks
 -------------------
 2026-06-27
 	- refined the code of the tab bar + panes headers, icons comprised
+	- icons color when the window is UNfocused
 2026-06-26
 	- tweaks, in Art Deco palette in particular
 	- Vertical Tabs plugin: better definition of the icons color
@@ -6213,6 +6214,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 .sidebar-toggle-button,
 .workspace-tabs.mod-top {
 	--tab-container-background: var(--titlebar-background);
+	--icon-color:				var(--tab-text-color);
 }
 
 /* Survol du nom du coffre (en bas de la sidebar de gauche) */
