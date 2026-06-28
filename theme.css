@@ -53,6 +53,7 @@ Post‑release tweaks
 -------------------
 2026-06-28
 	- vastly improved the icons coloring
+	- improved the appearance of the settings groups in the Style Settings pannel
 2026-06-27
 	- refined the code of the tab bar + panes headers, icons comprised
 	- icons color when the window is UNfocused
@@ -156,6 +157,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl75		Notebook Navigator plugin
 			OpSpl76		Different plugins: Repeat, Folder Note
 			OpSpl77		Viewing modes icons
+			OpSpl78		Style Settings plugin
 
 			OpSpl80		Ambitieuse entreprise de réunir ici tout ce qui est "hover".
 
@@ -12376,10 +12378,6 @@ kbd {
 	color:              currentColor; /* ensure it follows button text color */
 	fill:               currentColor; /* SVG paths use currentColor in Obsidian icons */
 }
-/*	sans cette ligne, les "collapse indicators" disparaissaient dans le panneau des settings du plugin Style Settings	*/
-.style-settings-heading[data-level="0"] + .style-settings-container .style-settings-collapse-indicator {
-	margin-left:	0;
-}
 
 /*	=== === === OpSpl59	———————————————————— Empty pane	———————————————————— */
 .empty-state-action-list {
@@ -14646,7 +14644,45 @@ body.OT-viewing-mode-icons {
 }
 /* —————————————————————————————— ↑ Viewing modes icons ↑  —————————————————————————————— */
 
+/*  === === === OpSpl78  ——————————————————— Style Settings plugin  ——————————————————— */
+/* Arborescence des groupes */
 
+.style-settings-container {
+	--ss-indent-step: 1rem;
+}
+
+/* headings */
+.style-settings-heading[data-level="2"] > .setting-item-info {
+	padding-inline-start: calc(var(--ss-indent-step) * 1);
+}
+
+.style-settings-heading[data-level="3"] > .setting-item-info {
+	padding-inline-start: calc(var(--ss-indent-step) * 2);
+}
+
+/* contenu direct du groupe */
+.style-settings-heading[data-level="2"] + .style-settings-container > * {
+	margin-inline-start: calc(var(--ss-indent-step) * 1);
+}
+
+.style-settings-heading[data-level="3"] + .style-settings-container > * {
+	margin-inline-start: calc(var(--ss-indent-step) * 2);
+}
+
+.setting-item-heading {
+	background-color:	var(--setting-items-background);
+	padding-top:		0.2rem;
+	padding-bottom:		0.2rem;
+}
+
+/*	sans cette ligne, les "collapse indicators" disparaissaient dans le panneau des settings du plugin Style Settings	*/
+.style-settings-heading[data-level="0"] + .style-settings-container .style-settings-collapse-indicator {
+	margin-left:	0;
+}
+.style-settings-collapse-indicator {
+	top:	0.2rem
+}
+/* —————————————————————————————— ↑ Style Settings plugin ↑  —————————————————————————————— */
 
 /*  === === === OpSpl80  ——————————————————— correcting all hovering  ——————————————————— */
 
