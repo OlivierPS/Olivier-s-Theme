@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-06-28
+	- vastly improved the icons coloring
 2026-06-27
 	- refined the code of the tab bar + panes headers, icons comprised
 	- icons color when the window is UNfocused
@@ -346,8 +348,6 @@ body {
 														transparent   );
 	--OT-callout-preamble-color:					var(--OT-YAML-color);
 	--OT-callout-gallery-gap:						5px;
-	--OT-clickable-icon-in-header:					var(--icon-color);
-	--OT-clickable-icon-in-tab-header:				var(--icon-color);
 
 	--OT-edit-font:									var(--font-text);
 	--OT-edit-font-family:							var(--OT-edit-font),
@@ -400,6 +400,22 @@ body {
 
 	--OT-folder-note-indicator-color:				var(--color-accent-2);	/* pour le plugin Folder Note		*/
 
+	--OT-icon-color-input-decorator:				var(--icon-color);
+	--OT-icon-color-list-item-part:					var(--icon-color);			/* je ne sais pas à quoi ça correspond */
+	--OT-icon-color-metadata-property:				var(--icon-color);
+	--OT-icon-color-nav-buttons:					var(--icon-color);
+	--OT-icon-color-pane-actions:					var(--icon-color);
+	--OT-icon-color-ribbon-sidebar-closed:			var(--OT-icon-color-ribbon-sidebar-open);
+	--OT-icon-color-ribbon-sidebar-open:			var(--OT-icon-color-view-header);
+	--OT-icon-color-search-row:						var(--OT-tree-item-color);
+	--OT-icon-color-settings-control:				var(--icon-color);
+	--OT-icon-color-tab-header:						var(--icon-color);
+	--OT-icon-color-tree-flair-action:				var(--icon-color);			/* boutons des noms de groupes dans le panneau du plugin Vertical Tabs */
+	--OT-icon-color-tree-item:						var(--icon-color);
+	--OT-icon-color-view-header:					var(--icon-color);
+	--OT-icon-color-window-unfocused:				var(--text-muted);
+	--OT-icon-color-workspace-drawer:				var(--icon-color);
+
 	--OT-kanban-font:								"Uberhand Pro";
 	--OT-kanban-font-size:							17px;
 	--OT-kanban-lane-width:							20rem;
@@ -407,11 +423,10 @@ body {
 	--OT-kbd:										var(--color-base-100);
 	--OT-menu-text-color:							var(--nav-item-color);
 	--OT-menu-text-muted:							var(--text-muted);
-	--OT-metadata-property-icon:					var(--icon-color);
+	--OT-metadata-label-width:						7em;
 	--OT-nav-folder-title-color:					var(--color-base-100);
 	--OT-nav-item-muted:							var(--text-muted);
 	--OT-nav-item-vertical-padding:					var(--size-4-1);
-	--OT-metadata-label-width:						7em;
 	--OT-pill-background:							var(--color-accent-2);
 	--OT-pill-color:								var(--OT-color-on-accent-2);
 
@@ -426,8 +441,6 @@ body {
 	--OT-line-width-reading:						44rem;
 	--OT-readingMode-line-height:					1.5em;
 	--OT-readingMode-tableText-percent:				90;
-	--OT-ribbon-icon-color-sidebar-is-open:			var(--OT-clickable-icon-in-header);
-	--OT-ribbon-icon-color-sidebar-is-collapsed:	var(--OT-ribbon-icon-color-sidebar-is-open);
 
 	--OT-search-settings-item-name:					var(--OT-setting-item-name);
 
@@ -439,6 +452,8 @@ body {
 
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
+
+	--OT-tree-item-color:							var(--nav-item-color);
 
 	--OT-view-header-title-color-focused-active-current:	var(--OT-prominent-text);
 
@@ -619,28 +634,28 @@ body {
 	--h5-style:		italic;
 	--h6-style:		italic;
 
-	--header-height:	2.4em;			/*	2026‑02‑06: raise header height for more legible tab bars.	*/
+	--header-height:					2.4em;			/*	2026‑02‑06: raise header height for more legible tab bars.	*/
 
-	--heading-spacing:		0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
-	--icon-color-active:	var(--color-base-20);
-	--icon-color-hover:		var(--OT-color-on-accent-1);
-	--icon-color:			var(--color-accent-1);
-	--icon-color-focused:	var(--OT-color-on-accent-2);
+	--heading-spacing:					0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
+	--icon-color-active:				var(--color-base-20);
+	--icon-color-hover:					var(--OT-color-on-accent-1);
+	--icon-color:						oklch(0.60	clamp(0.15, var(--OT-accent-c),		0.33)	var(--OT-accent-h)) ;
+	--icon-color-focused:				var(--OT-color-on-accent-2);
 
-	--indentation-guide-color:	var(--color-accent);	/*	rgba(var(--mono-rgb-100), 0.12);	*/
-	--indentation-guide-color:	var(--OT-syntax-markers);
+	--indentation-guide-color:			var(--color-accent);	/*	rgba(var(--mono-rgb-100), 0.12);	*/
+	--indentation-guide-color:			var(--OT-syntax-markers);
 
-	--inline-title-color:		var(--h1-color);
-	--inline-title-font:		var(--font-monospace);
-	--inline-title-line-height:	0em;
-	--inline-title-size:		var(--OT-readingMode-text-size);
-	--inline-title-style:		normal;
-	--inline-title-variant:		normal;
-	--inline-title-weight:		400;
+	--inline-title-color:				var(--h1-color);
+	--inline-title-font:				var(--font-monospace);
+	--inline-title-line-height:			0em;
+	--inline-title-size:				var(--OT-readingMode-text-size);
+	--inline-title-style:				normal;
+	--inline-title-variant:				normal;
+	--inline-title-weight:				400;
 
-	--input-placeholder-color:	grey;
+	--input-placeholder-color:			grey;
 
-	--line-height-normal:		var(--OT-readingMode-line-height);
+	--line-height-normal:				var(--OT-readingMode-line-height);
 
 	--link-color-hover: 				var(--color-base-00);
 	--link-external-color:				var(--link-color);
@@ -652,10 +667,10 @@ body {
  	--link-external-decoration:			none;
  	--link-external-decoration-hover:	none;
 
-	--list-marker-color:	var(--text-normal);
-	--list-bullet-size:		0.4em;
+	--list-marker-color:				var(--text-normal);
+	--list-bullet-size:					0.4em;
 
-    --menu-border-color:	var(--color-base-30);
+    --menu-border-color:				var(--color-base-30);
 
 	--metadata-background: 				var(--color-base-00);
 	--metadata-border-color:			var(--color-base-30);		/*	le pourtour du tableau, quand “border-width” est plus que 0	*/
@@ -715,7 +730,7 @@ body {
 
 	--prompt-max-height:	80vh;
 
-	--search-icon-color:			var(--OT-clickable-icon-in-header);
+	--search-icon-color:			var(--OT-icon-color-view-header);
 
 /*	--sidebar-markdown-font-size:	calc(var(--OT-readingMode-text-size) * 0.9);	*/
 
@@ -850,7 +865,7 @@ body {
 	- --OT-accent-h     = teinte effectivement utilisée pour les accents
 	- Les palettes simples ne touchent pas --OT-accent-h : il suit la palette
 	- Les alternatives 1/2 ne changent que --OT-accent-h
-	- Les palettes sophistiquées peuvent toujours surcharger color-accent-* en OpSpl10
+	- Les palettes sophistiquées peuvent toujours surcharger color-accent-*
 */
 
 .theme-light {
@@ -913,6 +928,9 @@ body {
 	--OT-color-on-accent-2:		oklch(24% 0.03 var(--OT-accent-h));
 	--OT-color-muted-on-accent-2:	oklch(38% 0.03 var(--OT-accent-h));
 	--OT-color-on-accent-3:		oklch(92% 0.01 var(--OT-accent-h));
+
+	--icon-color:				oklch(0.90	clamp(0.15, var(--OT-accent-c),		0.33)	var(--OT-accent-h)) ;
+
 }
 .theme-dark.accentColor-darkMode-alternative-1 {
 	--OT-accent-h: var(--OT-accent-h-alt-1) !important;
@@ -1046,7 +1064,7 @@ body {
 	--link-color:		var(--obsidian-violet);
 
 	/* Icônes : violet Obsidian soutenu, indépendant de la luminosité de l'accent */
-	--icon-color:		oklch(0.50		min(var(--OT-accent-c), 0.22)		var(--OT-accent-h));
+	/*--icon-color:		oklch(0.50		min(var(--OT-accent-c), 0.22)		var(--OT-accent-h));*/
 
 
 	/* Défaut : accents retenus, clairs */
@@ -1130,13 +1148,13 @@ body {
 	/*--tab-text-color-active:		red;*/
 	--tab-text-color-focused:		var(--color-base-20);
 	--icon-color:					var(--color-base-20);
-	--OT-clickable-icon-in-header:	var(--color-base-30);
+	--OT-icon-color-view-header:	var(--color-base-30);
 }
 
 .theme-light.lightPalette-ArtDeco.accentColor-lightMode-shade {
-	--color-accent-1: oklch(62.0% 0.115 72) !important;
-	--color-accent-2: oklch(76.0% 0.105 72) !important;
-	--color-accent-3: oklch(98.0% 0.020 78) !important;
+	--color-accent-1:				oklch(62.0% 0.115 72) !important;
+	--color-accent-2:				oklch(76.0% 0.105 72) !important;
+	--color-accent-3:				oklch(98.0% 0.020 78) !important;
 
 	--OT-color-on-accent-1: 		oklch(97.0% 0.015 92) !important;
 	--OT-color-muted-on-accent-1:	oklch(88.0% 0.030 82) !important;
@@ -1288,8 +1306,8 @@ body {
 
      --tab-text-color-focused:		oklch(0.938 0.022 63);
      --icon-color:					oklch(0.938 0.022 63);
-     --OT-clickable-icon-in-header:	var(--color-accent-1);
-     /*--OT-ribbon-icon-color-sidebar-is-open:	var(--color-accent-1);*/
+     --OT-icon-color-view-header:	var(--color-accent-1);
+     /*--OT-icon-color-ribbon-sidebar-open:	var(--color-accent-1);*/
 
      /* ── Accents variables ─────────────────────────────────────── */
      --color-accent-1: oklch(0.430 min(var(--OT-accent-c), 0.105) var(--OT-accent-h)) !important;
@@ -2842,7 +2860,7 @@ body {
 	/* ── Éléments UI fixes ─────────────────────────────────────── */
 	--tab-text-color-focused:        oklch(84.0% 0.022 63);
 	--icon-color:                    oklch(84.0% 0.022 63);
-	--OT-clickable-icon-in-header:   var(--color-accent-1);
+	--OT-icon-color-view-header:   var(--color-accent-1);
 
 	/* ── Accents variables ─────────────────────────────────────── */
 	--color-accent-1: oklch(58.0% min(var(--OT-accent-c), 0.105) var(--OT-accent-h)) !important;
@@ -3647,7 +3665,73 @@ body {
 /*	↑	darkPalette-Yellow	↑	*/
 /* -------------------- ↑ DARK mode palettes -------------------- ↑ */
 
-/*	=== === === OpSpl10	—————————————————————————————— LIBRE —————————————————————————————— */
+/*	=== === === OpSpl10	—————————————————————————————— Icônes —————————————————————————————— */
+
+/* Icône des items d’arborescence, par exemple dans l’explorateur de fichiers
+   Les collapse icons ont généralement leur propre traitement ailleurs. */
+.tree-item-self .tree-item-icon {
+	color:	var(--OT-icon-color-tree-item);
+}
+
+/* Boutons en haut des panneaux de navigation */
+.nav-buttons-container .clickable-icon {
+	color:	var(--OT-icon-color-nav-buttons);
+}
+
+/* Actions en haut des panneaux de travail
+   Sélecteur assez large :	peut attraper plusieurs boutons du header de panneau. */
+.workspace-tab-header-container .clickable-icon {
+	color:	var(--OT-icon-color-pane-actions);
+}
+
+/* Icônes interactives dans les réglages */
+.setting-item-control .clickable-icon {
+	color:	var(--OT-icon-color-settings-control);
+}
+
+/* Icônes dans les lignes du panneau de recherche */
+.search-row .clickable-icon {
+	color:	var(--OT-icon-color-search-row);
+}
+
+/* Icône cliquable dans la partie droite d’un champ de saisie ou de recherche */
+.input-right-decorator.clickable-icon {
+	color:	var(--OT-icon-color-input-decorator);
+}
+
+/* Certaines parties de liste cliquables, selon le composant */
+.list-item-part.clickable-icon {
+	color:	var(--OT-icon-color-list-item-part);
+}
+
+/* Actions de tiroir, par exemple help / settings dans certaines zones du workspace */
+.workspace-drawer-vault-actions .clickable-icon {
+	color:	var(--OT-icon-color-workspace-drawer);
+}
+
+/* Icônes du ruban quand la sidebar gauche est repliée */
+.workspace-ribbon.mod-left.is-collapsed .clickable-icon {
+	color:	var(--OT-icon-color-ribbon-sidebar-closed);
+}
+
+/* Icônes du ruban quand la sidebar est affichée */
+.side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed),
+.side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed) {
+	color:	var(--OT-icon-color-ribbon-sidebar-open);
+}
+
+/* boutons des noms de groupes dans le panneau du plugin Vertical Tabs */
+.tree-item-flair-outer .clickable-icon {
+	color:	var(--OT-icon-color-tree-flair-action);
+}
+
+/*	quand la fenêtre principale n’a pas le focus */
+body:not(.is-focused) {
+	--icon-color:		var(--OT-icon-color-window-unfocused)	!important;
+	/*--text-normal:				red	!important;*/
+}
+
+/* ---------- ↑ icônes ↑ ---------- */
 
 /*	=== === === OpSpl11	—————————————————————————————— LIBRE —————————————————————————————— */
 
@@ -6081,18 +6165,6 @@ input[type=checkbox]:hover {
 	text-align:		right;
 	padding-bottom:	1em;
 }
-.workspace-ribbon.mod-left.is-collapsed .clickable-icon {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
-}
-.side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed),
-.side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed) {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-open);
-}
-/*	pour afficher un filet de séparation entre le ruban et le panneau de gauche, dans les thèmes qui le requièrent	*/
-/*
-.lightPalette-MetallicBlue .workspace-ribbon {
-	border-right:	var(--divider-width) solid var(--color-base-00);
-}*/
 .side-dock-settings .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover,
 .side-dock-actions .side-dock-ribbon-action:not(.is-sidedock-collapsed):hover {
 	color:	var(--OT-color-on-accent-1);
@@ -6135,66 +6207,43 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 
 /* Sidebar tabs */
 
-/* État actif normal : accent-2 */
-.mod-left-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-right-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-left-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.is-active,
-.mod-right-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header.is-active {
-	color: var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
+/* Sidebar tab headers: active tab in left/right split */
+:is(.mod-left-split, .mod-right-split)
+.workspace-tab-header:is(.is-active, .has-active-menu) {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
 }
 
-/* État actif dans un groupe de tabs focalisé : accent-1 */
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active {
-	color: var(--OT-color-on-accent-1);
-	background-color: var(--color-accent-1);
+/* Same, but when the tab group itself is focused */
+:is(.mod-left-split, .mod-right-split)
+.workspace-tabs.mod-active
+.workspace-tab-header:is(.is-active, .has-active-menu) {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
 }
 
-/* Sidebar tabs: détails internes du tab actif focalisé */
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner {
-	color: var(--OT-color-on-accent-1);
-	background-color: var(--color-accent-1);
+/* Règle prise de App.css: */
+body.is-focused .mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+body.is-focused .mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+	color:				var(--OT-color-on-accent-1);
 }
 
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-container,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-container,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-icon,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-status-icon,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-close-button,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-close-button,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-title,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-title,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-icon,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-container,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-container,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-icon,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-status-icon,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-close-button,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .workspace-tab-header-inner-close-button {
-	color: var(--OT-color-on-accent-1);
-	background-color: var(--color-accent-1);
+/* Inner content should usually inherit; keep this only if needed */
+:is(.mod-left-split, .mod-right-split)
+.workspace-tabs.mod-active
+.workspace-tab-header:is(.is-active, .has-active-menu)
+.workspace-tab-header-inner {
+	background-color: inherit;
 }
 
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .svg-icon,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.is-active .svg-icon,
-.mod-left-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .svg-icon,
-.mod-right-split .workspace-tabs.mod-active .workspace-tab-header-container .workspace-tab-header.has-active-menu .svg-icon {
-	color: var(--OT-color-on-accent-1);
-	stroke: currentColor;
-	fill: none;
+/* SVGs are the usual exception */
+:is(.mod-left-split, .mod-right-split)
+.workspace-tab-header:is(.is-active, .has-active-menu)
+.svg-icon {
+	color:	currentColor;
+	stroke:	currentColor;
+	fill:	none;
 }
-
 
 /* Vertical spacing for file navigator items */
 .filesNavigator-spacing-compact {
@@ -6208,13 +6257,6 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 }
 .filesNavigator-spacing-veryLoose {
 	--OT-nav-item-vertical-padding: var(--size-4-2);
-}
-
-/* Top tab bar background */
-.sidebar-toggle-button,
-.workspace-tabs.mod-top {
-	--tab-container-background: var(--titlebar-background);
-	--icon-color:				var(--tab-text-color);
 }
 
 /* Survol du nom du coffre (en bas de la sidebar de gauche) */
@@ -6259,17 +6301,17 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 	line-height: 1.2;
 }
 
-/* Texte légèrement plus petit dans les sidebars */
+/* Texte légèrement plus petit dans les sidebars
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split {
-	/*font-size: calc(var(--OT-UI-font-size) * 0.9);*/
-}
+	font-size: calc(var(--OT-UI-font-size) * 0.9);
+}*/
 
 /* Icônes un peu réduites */
 .workspace-split.mod-left-split .tree-item-icon .svg-icon,
 .workspace-split.mod-right-split .tree-item-icon .svg-icon {
-	width:  14px;
-	height: 14px;
+	width:	var(--icon-xs);
+	height:	var(--icon-xs);
 }
 
 /* Sous-titres (par ex. backlinks, search) plus discrets */
@@ -7330,23 +7372,11 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 
 		/* Tous les enfants visibles suivent l’inner */
 		.workspace-tab-header-inner-title,
-		.workspace-tab-header-inner-icon,
 		.workspace-tab-header-status-container,
-		.workspace-tab-header-status-icon,
 		.workspace-tab-header-inner-close-button,
 		.metadata-menu.fileclass-icon {
-			color: inherit;
-			background-color: transparent;
-		}
-
-		/* Les SVG suivent currentColor */
-		.workspace-tab-header-inner-icon .svg-icon,
-		.workspace-tab-header-status-icon .svg-icon,
-		.workspace-tab-header-inner-close-button .svg-icon,
-		.metadata-menu.fileclass-icon .svg-icon {
-			color: var(--icon-color);
-			stroke: currentColor;
-			fill: none;
+			color:				inherit;
+			background-color:	transparent;
 		}
 	}
 
@@ -7372,11 +7402,14 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 
-/* Icônes de header dans la title bar, fenêtre AVEC ou SANS focus */
-.view-header {
-	.clickable-icon {
-		color: var(--OT-clickable-icon-in-header);
-	}
+/* Icônes dans la tab bar */
+.workspace-tab-header-inner .workspace-tab-header-inner-icon {
+	color:	var(--OT-icon-color-tab-header);
+}
+
+/* Icônes dans la barre de titre */
+.view-header .clickable-icon {
+	color:	var(--OT-icon-color-view-header);
 }
 
 /* Région (3), fenêtre AVEC focus */
@@ -7882,13 +7915,6 @@ select {
 	background-color: var(--color-accent-2);
 }
 
-/* clickable icons dans les contrôles de raccourcis:
-   héritent de leur conteneur */
-.setting-item-control .clickable-icon {
-	color:            inherit;
-	background-color: inherit;
-}
-
 /* Hotkey filter pills */
 .hotkey-filter,
 .hotkey-filter-remove-button {
@@ -7974,18 +8000,18 @@ select {
 
 .text-icon-button.has-active-menu .text-button-icon,
 .text-icon-button.active .text-button-icon {
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
 }
 
 @media (hover: hover) {
 	.text-icon-button:hover {
-    color:            var(--OT-button-text-hover);
-    background-color: var(--OT-button-background-hover);
+    color:				var(--OT-button-text-hover);
+    background-color:	var(--OT-button-background-hover);
 	}
 
 	.text-icon-button:hover .text-button-icon {
-    color: var(--icon-color-hover);
+    color: 				var(--icon-color-hover);
 	}
 
 	.text-icon-button.has-active-menu:hover,
@@ -10998,11 +11024,12 @@ body.lists-horiz-generous {
 
 .metadata-input-longtext {
 	line-height: var(--line-height-tight);
-   }
+}
 
+/* Icône indiquant le type de propriété dans le panneau des métadonnées */
 .metadata-property-icon {
-	color:         var(--OT-metadata-property-icon);
-	border-radius: var(--button-radius);
+	color:			var(--OT-icon-color-metadata-property);
+	border-radius:	var(--button-radius);
 }
 
 /* Petit espace après l’icône (pour respirer avant le label) */
@@ -11834,7 +11861,7 @@ body:is(.theme-light.OT-colored-headings-lightMode,
 
 /* 1. Typo globale Metadata Menu */
 .plugin-metadata-menu {
-	--text-faint: var(--OT-metadata-property-icon);
+	--text-faint: var(--OT-icon-color-metadata-property);
 }
 
 /* 2. Bouton principal dans les propriétés (icône dans les champs) */
@@ -12145,7 +12172,7 @@ body.OT-canvas-dot-pattern-hidden {
 .canvas-card-menu .canvas-card-menu-button,
 .canvas-controls button,
 button.canvas-menu-item {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-collapsed);
+	color:	var(--OT-icon-color-ribbon-sidebar-closed);
 }
 
 .canvas-path-label {
@@ -12157,7 +12184,7 @@ button.canvas-menu-item {
 }
 
 .canvas-node-container :is(h1,h2,h3) {
-	font-family:	var(--OT-kanban-font);	/*	"Palatino Sans Com";	*/
+	font-family:	var(--OT-kanban-font);
 	font-weight:	var(--bold-weight);
 	border-bottom:	none;
 	padding-top:	0.2em;
@@ -12173,7 +12200,7 @@ button.canvas-menu-item {
 }
 
 .canvas-node-label {
-	color:	var(--OT-menu-text-muted);		/*	was --text-faint	*/
+	color:	var(--OT-menu-text-muted);
 	font-style:	italic;
 	font-size:	0.9em;
 }
@@ -12451,10 +12478,8 @@ body {
 
 /*  === === === OpSpl61 ———————————————————— Vertical Tabs plugin ———————————————————— */
 
-/* Couleur des icônes: la même que sur le ruban quand la sidebar de gauche est ouverte */
-.obsidian-vertical-tabs-toolbar .clickable-icon {
-	color:	var(--OT-ribbon-icon-color-sidebar-is-open);
-}
+/* .obsidian-vertical-tabs-toolbar .clickable-icon {
+}*/
 
 /* Vertical Tabs : garder une largeur de ligne stable malgré le zoom */
 
@@ -13587,11 +13612,11 @@ body {
 
 /* ---------- Bouton Dynamic Outline dans le header ---------- */
 
-/* État normal : suit la logique des clickable-icon de header */
+/* État normal : suit la logique des clickable-icon de header
 .view-header .dynamic-outline-button.clickable-icon.view-action {
-	color: var(--OT-clickable-icon-in-header);
+	color: var(--OT-icon-color-view-header);
 	background-color: transparent;
-}
+}*/
 
 /* Hover (normal + hovered) */
 .view-header .dynamic-outline-button.clickable-icon.view-action:hover {
@@ -13601,8 +13626,8 @@ body {
 
 /* Actif (outline ouvert, classe .button-active ajoutée par le plugin) */
 .view-header .dynamic-outline-button.clickable-icon.view-action.button-active {
-	color: var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
 	box-shadow: none;
 }
 
@@ -14355,7 +14380,7 @@ body {
 
 	/* Header buttons – icons at the top of both panes */
 	/* Default non‑active header icons */
-	--nn-theme-header-button-icon-color:          var(--OT-clickable-icon-in-header);
+	--nn-theme-header-button-icon-color:          var(--OT-icon-color-view-header);
 
 	/* Backgrounds for hover / active states */
 	--nn-theme-header-button-hover-bg:            var(--color-accent-1);
