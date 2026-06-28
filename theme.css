@@ -54,6 +54,7 @@ Post‑release tweaks
 2026-06-28
 	- vastly improved the icons coloring
 	- improved the appearance of the settings groups in the Style Settings pannel
+	- improved tab headers colors when main window isn’t focused
 2026-06-27
 	- refined the code of the tab bar + panes headers, icons comprised
 	- icons color when the window is UNfocused
@@ -73,7 +74,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl07:	text selection
 			OpSpl08:	définition des palettes pour le mode “light”
 			OpSpl09:	définition des palettes pour le mode “dark”
-			OpSpl10:	LIBRE
+			OpSpl10:	icônes
 			OpSpl11:	LIBRE
 			OpSpl12:	définition des couleurs du texte normal et des H1, H3 et H5
 			OpSpl13:	définition des couleurs des “Properties pills”
@@ -1255,86 +1256,90 @@ body {
    Émulation de Soft Paper / Nick Milo — Rosé Pine Dawn
    ============================================================ */
 
-   .theme-light.lightPalette-Ideaverse {
+.theme-light.lightPalette-Ideaverse {
+	/* Palette semi-fixe :
+	- panneau principal fixe
+	- sidebars / tab bar / title bar variables via le slider chroma
+	- accents variables via --OT-accent-c */
 
-     /* ── Identité palette ──────────────────────────────────────── */
-     /* Palette semi-fixe :
-        - panneau principal fixe
-        - sidebars / tab bar / title bar variables via le slider chroma
-        - accents variables via --OT-accent-c */
+	--OT-themeLight-h:		216;
+	--OT-themeLight-c-min:	0.009;
+	--OT-themeLight-c-max:	0.060;
 
-     --OT-themeLight-h:		216;
-     --OT-themeLight-c-min:	0.009;
-     --OT-themeLight-c-max:	0.060;
+	/* Variabilité réservée à l’interface périphérique */
+	--OT-theme-c-surface: var(--OT-themeLight-c);
+	--OT-theme-c-structure: var(--OT-themeLight-c);
 
-     /* Variabilité réservée à l’interface périphérique */
-     --OT-theme-c-surface: var(--OT-themeLight-c);
-     --OT-theme-c-structure: var(--OT-themeLight-c);
+	/* ── Accent Hues ───────────────────────────────────────────── */
+	--OT-accent-h:       216;
+	--OT-accent-h-alt-1: 276;
+	--OT-accent-h-alt-2: 156;
 
-     /* ── Accent Hues ───────────────────────────────────────────── */
-     --OT-accent-h:       216;
-     --OT-accent-h-alt-1: 276;
-     --OT-accent-h-alt-2: 156;
+	/* Accent variable, lié au slider comme Pistachio */
+	--OT-accent-c: var(--OT-themeLight-c);
 
-     /* Accent variable, lié au slider comme Pistachio */
-     --OT-accent-c: var(--OT-themeLight-c);
+	/* ── Bases fixes : panneau principal Rosé Pine Dawn ───────── */
+	--color-base-00: oklch(0.930 0.025 63);
+	/* ── Groupes de settings ──────────────────────────────────── */
+	--color-base-10: oklch(0.900 0.020 63);
 
-     /* ── Bases fixes : panneau principal Rosé Pine Dawn ───────── */
-     --color-base-00: oklch(0.930 0.025 63);
-     /* ── Groupes de settings ──────────────────────────────────── */
-     --color-base-10: oklch(0.900 0.020 63);
+	/* ── Bases variables : interface latérale / structure ─────── */
+	--color-base-05: oklch(55.4% 0.104 231deg);
+	--color-base-05: oklch(0.554 	calc(var(--OT-theme-c-surface) + 0.15)	 231);
+	--color-base-20: oklch(0.940 	var(--OT-theme-c-surface)	 63);
+	--color-base-25: oklch(0.880 	var(--OT-theme-c-structure)	 60);
+	--color-base-30: oklch(0.855 	var(--OT-theme-c-structure)	 58);
+	--color-base-35: oklch(0.835 	var(--OT-theme-c-structure)	 56);
+	--color-base-40: oklch(0.720 	var(--OT-theme-c-structure)	270);
 
-     /* ── Bases variables : interface latérale / structure ─────── */
-     --color-base-05: oklch(55.4% 0.104 231deg);
-     --color-base-05: oklch(0.554 	calc(var(--OT-theme-c-surface) + 0.15)	 231);
-     --color-base-20: oklch(0.940 	var(--OT-theme-c-surface)	 63);
-     --color-base-25: oklch(0.880 	var(--OT-theme-c-structure)	 60);
-     --color-base-30: oklch(0.855 	var(--OT-theme-c-structure)	 58);
-     --color-base-35: oklch(0.835 	var(--OT-theme-c-structure)	 56);
-     --color-base-40: oklch(0.720 	var(--OT-theme-c-structure)	270);
+	/* ── Texte fixe ────────────────────────────────────────────── */
+	--color-base-100: oklch(0.400 0.060 275);
+	--OT-syntax-markers: oklch(0.730 0.030 268);
+	--link-color: oklch(0.590 0.095 216);
 
-     /* ── Texte fixe ────────────────────────────────────────────── */
-     --color-base-100: oklch(0.400 0.060 275);
-     --OT-syntax-markers: oklch(0.730 0.030 268);
-     --link-color: oklch(0.590 0.095 216);
+	/* ── Tables, code, citations : fixes ──────────────────────── */
+	/* Le contenu ne doit pas suivre le slider */
+	--table-header-background:      oklch(0.898 0.025 62);
+	--OT-table-background:          oklch(0.946 0.020 64);
+	--OT-table-alt-background:      oklch(0.928 0.022 63);
+	--blockquote-background-color:  oklch(0.938 0.020 63);
+	--code-background:              oklch(0.952 0.016 64);
 
-     /* ── Tables, code, citations : fixes ──────────────────────── */
-     /* Le contenu ne doit pas suivre le slider */
-     --table-header-background:      oklch(0.898 0.025 62);
-     --OT-table-background:          oklch(0.946 0.020 64);
-     --OT-table-alt-background:      oklch(0.928 0.022 63);
-     --blockquote-background-color:  oklch(0.938 0.020 63);
-     --code-background:              oklch(0.952 0.016 64);
+	--tab-text-color-focused:		oklch(0.938 0.022 63);
+	/*--OT-icon-color-ribbon-sidebar-open:	var(--color-accent-1);*/
 
-     --tab-text-color-focused:		oklch(0.938 0.022 63);
-     --icon-color:					oklch(0.938 0.022 63);
-     --OT-icon-color-view-header:	var(--color-accent-1);
-     /*--OT-icon-color-ribbon-sidebar-open:	var(--color-accent-1);*/
+	/* ── Accents variables ─────────────────────────────────────── */
+	--color-accent-1: oklch(0.430 min(var(--OT-accent-c), 0.105) var(--OT-accent-h)) !important;
+	--color-accent-2: oklch(0.560 min(var(--OT-accent-c), 0.105) var(--OT-accent-h)) !important;
+	--color-accent-3: oklch(1.000 min(var(--OT-accent-c), 0.020) var(--OT-accent-h)) !important;
 
-     /* ── Accents variables ─────────────────────────────────────── */
-     --color-accent-1: oklch(0.430 min(var(--OT-accent-c), 0.105) var(--OT-accent-h)) !important;
-     --color-accent-2: oklch(0.560 min(var(--OT-accent-c), 0.105) var(--OT-accent-h)) !important;
-     --color-accent-3: oklch(1.000 min(var(--OT-accent-c), 0.020) var(--OT-accent-h)) !important;
+	/* ── Texte sur accent ─────────────────────────────────────── */
+	--OT-color-on-accent-1:        oklch(0.938 0.022 63);
+	--OT-color-muted-on-accent-1:  oklch(0.880 0.030 63);
+	--OT-color-on-accent-2:        oklch(0.930 0.025 63);
+	--OT-color-muted-on-accent-2:  oklch(0.870 0.028 63);
+	--OT-color-on-accent-3:        oklch(0.400 0.060 275);
 
-     /* ── Texte sur accent ─────────────────────────────────────── */
-     --OT-color-on-accent-1:        oklch(0.938 0.022 63);
-     --OT-color-muted-on-accent-1:  oklch(0.880 0.030 63);
-     --OT-color-on-accent-2:        oklch(0.930 0.025 63);
-     --OT-color-muted-on-accent-2:  oklch(0.870 0.028 63);
-     --OT-color-on-accent-3:        oklch(0.400 0.060 275);
+	/* ── Nav / menu muted : variables car zones latérales ─────── */
+	--OT-menu-text-muted: oklch(0.620 max(calc(var(--OT-theme-c-surface) * 0.6), 0.018) 270);
+	--OT-nav-item-muted:  oklch(0.620 max(calc(var(--OT-theme-c-surface) * 0.6), 0.018) 270);
 
-     /* ── Nav / menu muted : variables car zones latérales ─────── */
-     --OT-menu-text-muted: oklch(0.620 max(calc(var(--OT-theme-c-surface) * 0.6), 0.018) 270);
-     --OT-nav-item-muted:  oklch(0.620 max(calc(var(--OT-theme-c-surface) * 0.6), 0.018) 270);
+	/* ── Stabilo fixe ──────────────────────────────────────────── */
+	--OT-highlight-bg:	oklch(91%	0.12	50);
+	--OT-highlight-fg:	oklch(32%	0.08	50);
 
-     /* ── Stabilo fixe ──────────────────────────────────────────── */
-     --OT-highlight-bg:	oklch(91%	0.12	50);
-     --OT-highlight-fg:	oklch(32%	0.08	50);
+	/* ── Décorations fixes ─────────────────────────────────────── */
+	--bold-color:   oklch(0.520 0.100 15);
+	--italic-color: oklch(0.590 0.085 216);
 
-     /* ── Décorations fixes ─────────────────────────────────────── */
-     --bold-color:   oklch(0.520 0.100 15);
-     --italic-color: oklch(0.590 0.085 216);
-   }
+	/* ── Autres adaptations ─────────────────────────────────────── */
+	/*--icon-color:					oklch(0.938 0.022 63);*/
+	--OT-icon-color-tab-header:		oklch(0.938 0.022 63);
+	--OT-icon-color-pane-actions:	oklch(0.938 0.022 63);
+	/*--OT-icon-color-view-header:	var(--color-accent-1);*/
+	/*--OT-icon-color-settings-control:	var(--OT-setting-item-name);*/
+	/*--OT-icon-color-settings-control:	var(--color-accent-1);*/
+}
 
 /* ── Colored headings (optionnel, classe Style Settings) ──── */
 .theme-light.lightPalette-Ideaverse.OT-colored-headings-lightMode {
@@ -3729,7 +3734,10 @@ body {
 
 /*	quand la fenêtre principale n’a pas le focus */
 body:not(.is-focused) {
-	--icon-color:		var(--OT-icon-color-window-unfocused)	!important;
+	--icon-color:					var(--OT-icon-color-window-unfocused)	!important;
+	--OT-icon-color-tab-header:		var(--OT-icon-color-window-unfocused)	!important;
+	--OT-icon-color-pane-actions:	var(--OT-icon-color-window-unfocused)	!important;
+	--tab-container-background:		var(--background-secondary);
 	/*--text-normal:				red	!important;*/
 }
 
