@@ -52,7 +52,9 @@
 Post‑release tweaks
 -------------------
 2026-06-29
-	- small tweaks of “seccess” elements
+	- small tweaks of “success” elements
+	- some tweaks to icons
+	- improved the appearance of dropdown indicators inside buttons
 2026-06-28
 	- vastly improved the icons coloring
 	- improved the appearance of the settings groups in the Style Settings pannel
@@ -405,15 +407,15 @@ body {
 
 	--OT-folder-note-indicator-color:				var(--color-accent-2);	/* pour le plugin Folder Note		*/
 
-	--OT-icon-color-input-decorator:				var(--icon-color);
-	--OT-icon-color-list-item-part:					var(--icon-color);			/* je ne sais pas à quoi ça correspond */
+	--OT-icon-color-input-decorator:				var(--color-base-100);
+	--OT-icon-color-list-item-part:					var(--icon-color);
 	--OT-icon-color-metadata-property:				var(--icon-color);
 	--OT-icon-color-nav-buttons:					var(--icon-color);
 	--OT-icon-color-pane-actions:					var(--icon-color);
 	--OT-icon-color-ribbon-sidebar-closed:			var(--OT-icon-color-ribbon-sidebar-open);
 	--OT-icon-color-ribbon-sidebar-open:			var(--OT-icon-color-view-header);
 	--OT-icon-color-search-row:						var(--OT-tree-item-color);
-	--OT-icon-color-settings-control:				var(--icon-color);
+	--OT-icon-color-settings-control:				var(--OT-button-text-normal);
 	--OT-icon-color-tab-header:						var(--icon-color);
 	--OT-icon-color-tree-flair-action:				var(--icon-color);			/* boutons des noms de groupes dans le panneau du plugin Vertical Tabs */
 	--OT-icon-color-tree-item:						var(--icon-color);
@@ -718,24 +720,24 @@ body {
 									var(--OT-nav-item-vertical-padding)
 									var(--size-4-6);
 
-	--nav-tag-color-active:		var(--OT-color-on-accent-2);
-	--nav-tag-color-hover:		var(--OT-color-on-accent-1);
+	--nav-tag-color-active:			var(--OT-color-on-accent-2);
+	--nav-tag-color-hover:			var(--OT-color-on-accent-1);
 
-	--p-spacing:				var(--OT-blanc-petit);
+	--p-spacing:					var(--OT-blanc-petit);
 
-	--pill-background-hover:	var(--color-accent-1);
-	--pill-color-hover:			var(--OT-color-on-accent-1);
-	--pill-color-remove-hover:	var(--OT-color-on-accent-1);
-	--pill-color-remove:		var(--OT-pill-background);
+	--pill-background-hover:		var(--color-accent-1);
+	--pill-color-hover:				var(--OT-color-on-accent-1);
+	--pill-color-remove-hover:		var(--OT-color-on-accent-1);
+	--pill-color-remove:			var(--OT-pill-background);
 
-	--popover-font-size:	calc(var(--font-text-size) * 0.9);
-	--popover-height:		50vh;
-/*	--popover-max-height:	70vh;	*/
-	--popover-width:		46rem;
+	--popover-font-size:			calc(var(--font-text-size) * 0.9);
+	--popover-height:				50vh;
+/*	--popover-max-height:			70vh;	*/
+	--popover-width:				46rem;
 
-	--prompt-max-height:	80vh;
+	--prompt-max-height:			80vh;
 
-	--search-icon-color:			var(--OT-icon-color-view-header);
+	--search-icon-color:			var(--OT-icon-color-input-decorator);
 
 /*	--sidebar-markdown-font-size:	calc(var(--OT-readingMode-text-size) * 0.9);	*/
 
@@ -1150,10 +1152,9 @@ body {
 	--OT-highlight-fg:	oklch(90% 0.11 72);
 
 	/* ajustements*/
-	/*--tab-text-color-active:		red;*/
 	--tab-text-color-focused:		var(--color-base-20);
-	--icon-color:					var(--color-base-20);
-	--OT-icon-color-view-header:	var(--color-base-30);
+	--OT-icon-color-tab-header:		var(--color-base-20);
+	--OT-icon-color-pane-actions:	var(--color-base-20);
 }
 
 .theme-light.lightPalette-ArtDeco.accentColor-lightMode-shade {
@@ -1479,7 +1480,7 @@ body {
 	/* Texte */
 	--color-base-100:		oklch(40%	0.09	235deg);
 	--OT-syntax-markers:	oklch(70%	0.06	235);
-	--link-color:			oklch(60% 0.10 235deg);
+	--link-color:			oklch(60%	0.20	235deg);
 
 
 
@@ -1518,17 +1519,8 @@ body {
 	/* Autres composants */
 	--icon-color: oklch(70% 0.135 var(--OT-accent-h));
 	--tab-text-color-focused:		oklch(from var(--text-normal) 75% c h);
-
-
-	/*--OT-prominent-text:			oklch(0.610 0.125 var(--OT-accent-h));*/
+	--OT-nav-folder-title-color:	var(--nav-item-color);
 	--metadata-label-text-color:	oklch(50%	calc(var(--OT-theme-c-structure) * 0.95)	var(--OT-accent-h));
-/*
-	--OT-button-OFF-bg:						var(--color-accent-3);
-	--OT-button-ON-bg:						var(--color-accent-1);
-	--OT-search-settings-item-name:			var(--nav-item-color);
-	--OT-setting-item-description:			oklch(0.470 0.035 var(--OT-themeLight-h));
-	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
-*/
 }
 /*	↑ lightPalette-MetallicBlue ↑	*/
 
@@ -7827,6 +7819,25 @@ select {
 	background-color: var(--OT-button-background-normal);
 	border:				1px solid var(--color-accent-2);
 }
+/* recréation d’une plus jolie pastille pour signaler le dropdown */
+select.dropdown {
+	appearance:			none;
+	-webkit-appearance:	none;
+
+	--pill-size:		1.05rem;
+	--pill-offset:		0.45rem;
+
+	padding-inline-end:	2rem;
+
+	background-image: url("data:image/svg+xml;utf8,\
+						<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>\
+						<circle cx='10' cy='10' r='8' fill='%23888888'/>\
+						<path d='M7 8l3-3 3 3M7 12l3 3 3-3' fill='none' stroke='%23000000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/>\
+						</svg>");
+	background-repeat:		no-repeat;
+	background-position:	right var(--pill-offset) center;
+	background-size:		var(--pill-size) var(--pill-size);
+}
 
 @media (hover: hover) {
 	.dropdown:hover,
@@ -7911,15 +7922,10 @@ select {
 }
 
 /* 8. Settings Hotkey buttons */
-.setting-add-hotkey-button,
-.setting-restore-hotkey-button {
-	color:            var(--OT-button-text-hover);
-	background-color: var(--OT-button-background-hover);
-}
-
 .setting-hotkey {
-	color:            var(--OT-button-text-normal);
-	background-color: var(--OT-button-background-normal);
+	color:				var(--OT-button-text-normal);
+	background-color:	var(--OT-button-background-normal);
+	border:				solid var(--border-width) var(--OT-button-text-normal);
 }
 
 .setting-hotkey.mod-active {
@@ -12616,7 +12622,7 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
     background-color:	var(--color-accent-1);
 }
 .obsidian-vertical-tabs-container .is-group-slot .tree-item-self {
-	/*color:	red;*/
+	color:		var(--OT-menu-text-muted);
 }
 /* -------------------- ↑ Vertical Tabs plugin ↑ -------------------- */
 
