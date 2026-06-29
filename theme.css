@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-06-29
+	- small tweaks of “seccess” elements
 2026-06-28
 	- vastly improved the icons coloring
 	- improved the appearance of the settings groups in the Style Settings pannel
@@ -10813,7 +10815,7 @@ body.lists-horiz-generous {
    --------------------------------------------------------- */
 
 .status-bar-item .sync-status-icon.mod-success {
-  color: inherit;
+	color:	var(--text-success);
 }
 
 /*  Hover générique des items
@@ -11597,7 +11599,8 @@ body.lists-horiz-generous {
 /* Flair “changed” : version muted sur fond accentué */
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable .tree-item-flair-outer,
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable .tree-item-flair {
-	color: var(--OT-color-muted-on-accent-2);
+	color:				var(--text-success);
+	background-color:	var(--color-accent-3);
 }
 
 /* Hover sur la ligne fichier sélectionné */
