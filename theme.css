@@ -6228,27 +6228,42 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 	background-color:	var(--color-accent-1);
 }
 
-/* Règle prise de App.css: */
-body.is-focused .mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
-body.is-focused .mod-active .workspace-tab-header-container .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-	color:				var(--OT-color-on-accent-1);
+/* Sidebar pinned icon: active tab in left/right split */
+:is(.mod-left-split, .mod-right-split)
+.workspace-tab-header:is(.is-active, .has-active-menu)
+.workspace-tab-header-status-icon.mod-pinned {
+	color:				var(--OT-color-on-accent-2);
 }
 
-/* Inner content should usually inherit; keep this only if needed */
+/* Same, but when the tab group itself is focused */
 :is(.mod-left-split, .mod-right-split)
 .workspace-tabs.mod-active
 .workspace-tab-header:is(.is-active, .has-active-menu)
-.workspace-tab-header-inner {
-	background-color: inherit;
+.workspace-tab-header-status-icon.mod-pinned {
+	color:				var(--OT-color-on-accent-1);
 }
 
 /* SVGs are the usual exception */
 :is(.mod-left-split, .mod-right-split)
 .workspace-tab-header:is(.is-active, .has-active-menu)
 .svg-icon {
-	color:	currentColor;
-	stroke:	currentColor;
-	fill:	none;
+	color:		currentColor;
+	stroke:		currentColor;
+	fill:		none;
+}
+
+/* Sidebar tabs: focused + active => title, status container and icons on accent-1 */
+body.is-focused
+:is(.mod-left-split, .mod-right-split)
+.workspace-tabs.mod-active
+.workspace-tab-header:is(.is-active, .has-active-menu)
+:is(
+	.workspace-tab-header-inner-title,
+	.workspace-tab-header-inner-icon,
+	.workspace-tab-header-status-container,
+	.workspace-tab-header-status-icon
+) {
+	color:				var(--OT-color-on-accent-1);
 }
 
 /* Vertical spacing for file navigator items */
@@ -7380,6 +7395,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 		.workspace-tab-header-inner-title,
 		.workspace-tab-header-status-container,
 		.workspace-tab-header-inner-close-button,
+		.workspace-tab-header-status-icon.mod-pinned,
 		.metadata-menu.fileclass-icon {
 			color:				inherit;
 			background-color:	transparent;
@@ -7412,10 +7428,23 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 .workspace-tab-header-inner .workspace-tab-header-inner-icon {
 	color:	var(--OT-icon-color-tab-header);
 }
-/* Le “pinned icon” dans les sidebars prend la même couleur que les icônes */
+
+/* Pin des tabs de sidebar : même logique que l’icône du tab */
 .mod-left-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
 .mod-right-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
-  color: var(--OT-icon-color-tab-header);
+	color:		var(--OT-icon-color-tab-header);
+}
+
+/* Tab actif en sidebar, pane non focused */
+.mod-left-split .workspace-tab-header-container .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
+.mod-right-split .workspace-tab-header-container .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
+	color:		var(--OT-color-on-accent-2);
+}
+
+/* Tab actif en sidebar, pane focused */
+body.is-focused .mod-left-split .workspace-tab-header-container .workspace-tabs.mod-active .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
+body.is-focused .mod-right-split .workspace-tab-header-container .workspace-tabs.mod-active .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
+	color:		var(--OT-color-on-accent-1);
 }
 
 /* Icônes dans la barre de titre */
