@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-01
+	- corrected the “pinned icon” in sidebar tabs
 2026-06-29
 	- small tweaks of “success” elements
 	- some tweaks to icons
@@ -7410,6 +7412,11 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 .workspace-tab-header-inner .workspace-tab-header-inner-icon {
 	color:	var(--OT-icon-color-tab-header);
 }
+/* Le “pinned icon” dans les sidebars prend la même couleur que les icônes */
+.mod-left-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
+.mod-right-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
+  color: var(--OT-icon-color-tab-header);
+}
 
 /* Icônes dans la barre de titre */
 .view-header .clickable-icon {
@@ -7647,7 +7654,7 @@ body.is-focused {
 	}
 
 	/* Le bouton fermer n’existe pas visuellement dans les sidebars */
-.workspace-tab-header-inner-close-button {
+	.workspace-tab-header-inner-close-button {
 		display: none;
 	}
 }
@@ -7659,7 +7666,6 @@ body.is-focused {
 		pointer-events: none;
 	}
 }
-
 
 /* Hover sidebar, quel que soit l’état : accent-1 */
 @media (hover: hover) {
