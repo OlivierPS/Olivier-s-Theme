@@ -55,6 +55,8 @@ Post‑release tweaks
 	- rendered the theme immune to the “Font size” slider in Appearance
 	- improved the appearance of Properties
 	- improved the appearance of the icons of the Metadata Menu plugin
+	- complete overhaul of line lenghts settings (Preview + editing)
+	- complete overhaul + debugging of the line widths logic, in Preview mode in particular
 2026-07-01
 	- corrected the “pinned icon” in sidebar tabs
 2026-06-29
@@ -406,7 +408,7 @@ body {
 	--OT-icon-edit-mode-size: 			calc(1.2 * var(--OT-edit-text-size));
 
 	--OT-img-max-height-preview:					550px;			/* variables concernant les images */
-	--OT-img-max-height-live:						10rem;
+	--OT-img-max-height-live:						150px;
 
 	--OT-edit-ink-current:							var(--text-normal);		/* afin de pouvoir changer la couleur du texte édité, tout en gardant le `--text-normal` par défaut de la palette*/
 
@@ -572,7 +574,7 @@ body {
 	--checkbox-color:				var(--text-normal);
 	--checklist-done-decoration:	none;		/*	line-through;	*/
 	--checkbox-radius:				var(--radius-s);
-	--checkbox-size:				0.8rem;
+	--checkbox-size:				0.9em;
 	--checklist-done-color:			var(--OT-syntax-markers);
 
 	--code-background:		oklch(0.95	var(--accent-c)	var(--accent-h));
@@ -4926,104 +4928,144 @@ body.vertical-rythm-Bear {
 }*/
 /*	------------------------- ↑ Rythme vertical ↑ -------------------------	*/
 
+
 /*══════════════════════════════════════════════════════════════════
-  OpSpl17b — Minimal width logic transplanted into OT theme
+	OpSpl17b — Minimal width logic transplanted into OT theme
 ══════════════════════════════════════════════════════════════════*/
 
 body {
-	--OT-content-margin-reading:		auto;
-	--OT-content-margin-editing:		auto;
-	--OT-max-width:						88%;
-	--OT-content-margin-start-reading:	max(
-											calc(50% - var(--OT-line-width-reading)/2),
-											calc(50% - var(--OT-max-width)/2) );
-	--OT-content-margin-start-editing:	max(
-											calc(50% - var(--OT-line-width-editing)/2),
-											calc(50% - var(--OT-max-width)/2) );
-	--OT-line-width-wide-reading:		calc(var(--OT-line-width-reading) + 12.5%);
-	--OT-line-width-wide-editing:		calc(var(--OT-line-width-reading) + 12.5%);
-	--OT-content-line-width-reading:	min(var(--OT-line-width-reading), var(--OT-max-width));
-	--OT-content-line-width-editing:	min(var(--OT-line-width-editing), var(--OT-max-width));
-	--map-header-padding:				2px;
+	/* -----------------------------------------------------------------
+	   Reference scale
+	   100 = reference line inspired by the classic 80-column Courier 12.
+	   ----------------------------------------------------------------- */
+	--OT-reference-line-scale:						48.5;
+
+	/* -----------------------------------------------------------------
+	   User-facing factors
+	   ----------------------------------------------------------------- */
+	--OT-reading-line-width-factor:					100;
+	--OT-editing-line-width-factor:					100;
+
+	--OT-max-width:									88%;
+
+	/* -----------------------------------------------------------------
+	   Typographic measures derived from each mode's text size
+	   ----------------------------------------------------------------- */
+	--OT-readingMode-measure:						calc(
+														var(--OT-readingMode-text-size)
+														* var(--OT-reference-line-scale)
+														* var(--OT-reading-line-width-factor)
+														/ 100
+													);
+	--OT-editing-measure:							calc(
+														var(--OT-edit-text-size)
+														* var(--OT-reference-line-scale)
+														* var(--OT-editing-line-width-factor)
+														/ 100
+													);
+
+	/* -----------------------------------------------------------------
+	   Effective line widths
+	   ----------------------------------------------------------------- */
+	--OT-line-width-reading:						var(--OT-readingMode-measure);
+	--OT-line-width-editing:						var(--OT-editing-measure);
+
+	--OT-content-margin-reading:					auto;
+	--OT-content-margin-start-reading:				max(
+														calc(50% - var(--OT-line-width-reading) / 2),
+														calc(50% - var(--OT-max-width) / 2)
+													);
+	--OT-line-width-wide-reading:					calc(var(--OT-line-width-reading) + 12.5%);
+	--OT-content-line-width-reading:				min(var(--OT-line-width-reading), var(--OT-max-width));
+
+	--OT-content-margin-editing:					auto;
+	--OT-content-margin-start-editing:				max(
+														calc(50% - var(--OT-line-width-editing) / 2),
+														calc(50% - var(--OT-max-width) / 2)
+													);
+	--OT-line-width-wide-editing:					calc(var(--OT-line-width-editing) + 12.5%);
+	--OT-content-line-width-editing:				min(var(--OT-line-width-editing), var(--OT-max-width));
+
+	--map-header-padding:							2px;
 }
 
 /* Line widths ------------------------------------ */
 /* Set overall context to 100% width */
 .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer {
-  	max-width:		100%;
-  	margin-inline:	auto;
-  	width:			100%;
+	max-width:										100%;
+	margin-inline:									auto;
+	width:											100%;
 }
 
 /* Prevent x overflow when line numbers are on
 .markdown-source-view.mod-cm6 .cm-sizer {
-		overflow-x:	hidden;
+	overflow-x:										hidden;
 } */
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
-  	max-width:	100%;
-  	width:		100%;
+	max-width:										100%;
+	width:											100%;
 }
 
 /* Set inner content to line width */
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div {
-  	max-width:		var(--OT-max-width);
-  	width:			var(--OT-line-width-reading);
-  	margin-inline:	var(--OT-content-margin-reading) !important;
+	max-width:										var(--OT-max-width);
+	width:											var(--OT-line-width-reading);
+	margin-inline:									var(--OT-content-margin-reading) !important;
 }
 
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer > .inline-title,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer > .embedded-backlinks,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer > .metadata-container {
-	max-width:		var(--OT-max-width);
-	width:			var(--OT-line-width-editing);
-	margin-inline:	var(--OT-content-margin-editing) !important;
+	max-width:										var(--OT-max-width);
+	width:											var(--OT-line-width-editing);
+	margin-inline:									var(--OT-content-margin-editing) !important;
 }
 
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > *:not(div) {
-	max-width: var(--OT-content-line-width-editing);
-	margin-inline: var(--OT-content-margin-editing) !important;
+	max-width:										var(--OT-content-line-width-editing);
+	margin-inline:									var(--OT-content-margin-editing) !important;
 }
 
 /* File margins ------------------------------------ */
 .is-readable-line-width {
-  	--file-margins:	1rem 0 0 0;
+	--file-margins:									1rem 0 0 0;
 }
 
 .is-mobile .markdown-preview-view {
-  	--folding-offset:	0;
+	--folding-offset:								0;
 }
 
 /* With line numbers */
 .minimal-line-nums .workspace-leaf-content[data-type=markdown] {
-  	--file-margins:	var(--size-4-8) var(--size-4-8) var(--size-4-8) 48px;
+	--file-margins:									var(--size-4-8) var(--size-4-8) var(--size-4-8) 48px;
 }
 .minimal-line-nums .workspace-leaf-content[data-type=markdown].is-rtl {
-  	--file-margins:	var(--size-4-8) 48px var(--size-4-8) var(--size-4-8);
+	--file-margins:									var(--size-4-8) 48px var(--size-4-8) var(--size-4-8);
 }
 .minimal-line-nums .workspace-leaf-content[data-type=markdown] .is-readable-line-width {
-  	--file-margins:	1rem 0 0 var(--folding-offset);
+	--file-margins:									1rem 0 0 var(--folding-offset);
 }
 .minimal-line-nums .workspace-leaf-content[data-type=markdown] .is-readable-line-width.is-rtl {
-  	--file-margins:	1rem var(--folding-offset) 0 0;
+	--file-margins:									1rem var(--folding-offset) 0 0;
 }
 
 .minimal-line-nums .mod-right-split .markdown-preview-view,
 .minimal-line-nums .mod-right-split .markdown-source-view.mod-cm6 .cm-scroller,
 .minimal-line-nums .mod-left-split .markdown-preview-view,
 .minimal-line-nums .mod-left-split .markdown-source-view.mod-cm6 .cm-scroller {
-  	--file-margins:	var(--size-4-5) var(--size-4-5) var(--size-4-5) 48px;
+	--file-margins:									var(--size-4-5) var(--size-4-5) var(--size-4-5) 48px;
 }
 
 .view-content .reader-mode-content.is-readable-line-width .markdown-preview-sizer {
-  	max-width:	var(--OT-max-width);
-  	width:		var(--OT-line-width-reading);
+	max-width:										var(--OT-max-width);
+	width:											var(--OT-line-width-reading);
 }
 
 /* Embeds ------------------------------------ */
 .markdown-preview-view .inline-embed {
-  	--OT-max-width:	100%;
+	--OT-max-width:									100%;
 }
 
 /* Content rules ------------------------------------
@@ -5036,322 +5078,472 @@ body {
    like `.table-100.markdown-source-view...`
 */
 body {
-	--OT-container-table-width-reading:		var(--OT-line-width-reading);
-	--OT-container-table-width-editing:		var(--OT-line-width-editing);
-	--OT-container-table-max-width:			var(--OT-max-width);
-	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
-	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
-	--table-max-width:						100%;
-	--table-width:							auto;
-	--OT-table-margin-reading:				0;
-	--OT-table-margin-editing:				0;
-	--table-wrapper-width:					fit-content;
-	--table-drag-space:						16px;
-	--table-drag-padding:					0;
+	/* Tables */
+	--OT-container-table-width-reading:				var(--OT-line-width-reading);
+	--OT-container-table-width-editing:				var(--OT-line-width-editing);
+	--OT-container-table-max-width:					var(--OT-max-width);
+	--OT-container-table-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-table-margin-editing:			var(--OT-content-margin-editing);
 
-	--OT-container-bases-width-reading:      var(--OT-line-width-reading);
-	--OT-container-bases-width-editing:      var(--OT-line-width-editing);
-	--OT-container-bases-max-width:          var(--OT-max-width);
-	--OT-container-bases-margin-reading:     var(--OT-content-margin-reading);
-	--OT-container-bases-margin-editing:     var(--OT-content-margin-editing);
+	--table-max-width:								100%;
+	--table-width:									auto;
+	--OT-table-margin-reading:						0;
+	--OT-table-margin-editing:						0;
+	--table-wrapper-width:							fit-content;
+	--table-drag-space:								16px;
+	--table-drag-padding:							0;
 
-	--bases-embed-width:                     100%;
-	--bases-embed-max-width:                 100%;
-	--bases-embed-margin:                    0;
+	/* Bases */
+	--OT-container-bases-width-reading:				var(--OT-line-width-reading);
+	--OT-container-bases-width-editing:				var(--OT-line-width-editing);
+	--OT-container-bases-max-width:					var(--OT-max-width);
+	--OT-container-bases-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-bases-margin-editing:			var(--OT-content-margin-editing);
 
-	--container-dataview-table-width:		var(--OT-line-width-reading);
+	--bases-embed-width:							100%;
+	--bases-embed-max-width:						100%;
+	--bases-embed-margin:							0;
 
-	--container-img-width:					var(--OT-line-width-reading);
-	--container-img-max-width:				var(--OT-max-width);
-	--img-max-width:						100%;
-	--img-width:							auto;
-	/* because external images don't have a container */
-	--img-margin-start:				var(--OT-content-margin-start-reading);
-	--img-line-width:				var(--OT-content-line-width-reading);
-	--container-chart-width:		var(--OT-line-width-reading);
-	--container-chart-max-width:	var(--OT-max-width);
-	--chart-max-width:				none;
-	--chart-width:					auto;
-	--container-map-width:			var(--OT-line-width-reading);
-	--container-map-max-width:		var(--OT-max-width);
-	--map-max-width:				none;
-	--map-width:					auto;
-	--container-iframe-width:		var(--OT-line-width-reading);
-	--container-iframe-max-width:	var(--OT-max-width);
-	--iframe-max-width:				none;
-	--iframe-width:					auto;
-  /* Entire page */
+	/* Dataview tables */
+	--container-dataview-table-width:				var(--OT-line-width-reading);
+
+	/* Images */
+	--OT-container-img-width-reading:				var(--OT-line-width-reading);
+	--OT-container-img-width-editing:				var(--OT-line-width-editing);
+	--OT-container-img-max-width-reading:			var(--OT-max-width);
+	--OT-container-img-max-width-editing:			var(--OT-max-width);
+	--OT-container-img-margin-reading:				var(--OT-content-margin-reading);
+	--OT-container-img-margin-editing:				var(--OT-content-margin-editing);
+
+	--img-max-width:								100%;
+	--img-width:									100%;
+	--img-line-width:								var(--OT-content-line-width-reading);
+	--img-margin-start:								var(--OT-content-margin-start-reading);
+
+	/* Charts */
+	--OT-container-chart-width-reading:				var(--OT-line-width-reading);
+	--OT-container-chart-width-editing:				var(--OT-line-width-editing);
+	--OT-container-chart-max-width-reading:			var(--OT-max-width);
+	--OT-container-chart-max-width-editing:			var(--OT-max-width);
+	--OT-container-chart-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-chart-margin-editing:			var(--OT-content-margin-editing);
+
+	--chart-max-width:								100%;
+	--chart-width:									100%;
+
+	/* Maps */
+	--OT-container-map-width-reading:				var(--OT-line-width-reading);
+	--OT-container-map-width-editing:				var(--OT-line-width-editing);
+	--OT-container-map-max-width-reading:			var(--OT-max-width);
+	--OT-container-map-max-width-editing:			var(--OT-max-width);
+	--OT-container-map-margin-reading:				var(--OT-content-margin-reading);
+	--OT-container-map-margin-editing:				var(--OT-content-margin-editing);
+
+	--map-max-width:								100%;
+	--map-width:									100%;
+
+	/* Iframes + HTML embeds */
+	--OT-container-iframe-width-reading:			var(--OT-line-width-reading);
+	--OT-container-iframe-width-editing:			var(--OT-line-width-editing);
+	--OT-container-iframe-max-width-reading:		var(--OT-max-width);
+	--OT-container-iframe-max-width-editing:		var(--OT-max-width);
+	--OT-container-iframe-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-iframe-margin-editing:			var(--OT-content-margin-editing);
+
+	--iframe-max-width:								100%;
+	--iframe-width:									100%;
 }
 
 body .wide {
-	--table-drag-padding:					0;
-	--OT-line-width-reading:				var(--OT-line-width-wide-reading);
-	--OT-line-width-editing:				var(--OT-line-width-wide-editing);
-	--OT-container-table-width-reading:		var(--OT-line-width-wide-reading);
-	--OT-container-table-width-editing:		var(--OT-line-width-wide-editing);
-	--OT-container-table-max-width:			var(--OT-max-width);
-	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
-	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
-	--OT-container-bases-width-reading:		var(--OT-line-width-wide-reading);
-	--OT-container-bases-width-editing:		var(--OT-line-width-wide-editing);
-	--container-dataview-table-width:		var(--OT-line-width-wide-reading);
-	--container-img-width:					var(--OT-line-width-wide-reading);
-	--container-iframe-width:				var(--OT-line-width-wide-reading);
-	--container-map-width:					var(--OT-line-width-wide-reading);
-	--container-chart-width:				var(--OT-line-width-wide-reading);
+	--table-drag-padding:							0;
+
+	--OT-line-width-reading:						var(--OT-line-width-wide-reading);
+	--OT-line-width-editing:						var(--OT-line-width-wide-editing);
+
+	--OT-container-table-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-table-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-table-max-width:					var(--OT-max-width);
+	--OT-container-table-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-table-margin-editing:			var(--OT-content-margin-editing);
+
+	--OT-container-bases-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-bases-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-bases-max-width:					var(--OT-max-width);
+	--OT-container-bases-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-bases-margin-editing:			var(--OT-content-margin-editing);
+
+	--container-dataview-table-width:				var(--OT-line-width-wide-reading);
+
+	--OT-container-img-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-img-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-img-max-width-reading:			var(--OT-max-width);
+	--OT-container-img-max-width-editing:			var(--OT-max-width);
+	--OT-container-img-margin-reading:				var(--OT-content-margin-reading);
+	--OT-container-img-margin-editing:				var(--OT-content-margin-editing);
+
+	--OT-container-chart-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-chart-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-chart-max-width-reading:			var(--OT-max-width);
+	--OT-container-chart-max-width-editing:			var(--OT-max-width);
+	--OT-container-chart-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-chart-margin-editing:			var(--OT-content-margin-editing);
+
+	--OT-container-map-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-map-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-map-max-width-reading:			var(--OT-max-width);
+	--OT-container-map-max-width-editing:			var(--OT-max-width);
+	--OT-container-map-margin-reading:				var(--OT-content-margin-reading);
+	--OT-container-map-margin-editing:				var(--OT-content-margin-editing);
+
+	--OT-container-iframe-width-reading:			var(--OT-line-width-wide-reading);
+	--OT-container-iframe-width-editing:			var(--OT-line-width-wide-editing);
+	--OT-container-iframe-max-width-reading:		var(--OT-max-width);
+	--OT-container-iframe-max-width-editing:		var(--OT-max-width);
+	--OT-container-iframe-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-iframe-margin-editing:			var(--OT-content-margin-editing);
 }
 
-
 body .max {
-	--table-drag-padding:					0;
-	--OT-line-width-reading:				var(--OT-max-width);
-	--OT-line-width-editing:				var(--OT-max-width);
-	--OT-container-table-width-reading:		var(--OT-max-width);
-	--OT-container-table-width-editing:		var(--OT-max-width);
-	--OT-container-table-max-width:			var(--OT-max-width);
-	--OT-container-table-margin-reading:	var(--OT-content-margin-reading);
-	--OT-container-table-margin-editing:	var(--OT-content-margin-editing);
-	--OT-container-bases-width-reading:		var(--OT-max-width);
-	--OT-container-bases-width-editing:		var(--OT-max-width);
-	--container-dataview-table-width:		var(--OT-max-width);
-	--container-img-width:					var(--OT-max-width);
-	--container-iframe-width:				var(--OT-max-width);
-	--container-map-width:					var(--OT-max-width);
-	--container-chart-width:				var(--OT-max-width);
+	--table-drag-padding:							0;
+
+	--OT-line-width-reading:						var(--OT-max-width);
+	--OT-line-width-editing:						var(--OT-max-width);
+
+	--OT-container-table-width-reading:				var(--OT-max-width);
+	--OT-container-table-width-editing:				var(--OT-max-width);
+	--OT-container-table-max-width:					var(--OT-max-width);
+	--OT-container-table-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-table-margin-editing:			var(--OT-content-margin-editing);
+
+	--OT-container-bases-width-reading:				var(--OT-max-width);
+	--OT-container-bases-width-editing:				var(--OT-max-width);
+	--OT-container-bases-max-width:					var(--OT-max-width);
+	--OT-container-bases-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-bases-margin-editing:			var(--OT-content-margin-editing);
+
+	--container-dataview-table-width:				var(--OT-max-width);
+
+	--OT-container-img-width-reading:				var(--OT-max-width);
+	--OT-container-img-width-editing:				var(--OT-max-width);
+	--OT-container-img-max-width-reading:			var(--OT-max-width);
+	--OT-container-img-max-width-editing:			var(--OT-max-width);
+	--OT-container-img-margin-reading:				var(--OT-content-margin-reading);
+	--OT-container-img-margin-editing:				var(--OT-content-margin-editing);
+
+	--OT-container-chart-width-reading:				var(--OT-max-width);
+	--OT-container-chart-width-editing:				var(--OT-max-width);
+	--OT-container-chart-max-width-reading:			var(--OT-max-width);
+	--OT-container-chart-max-width-editing:			var(--OT-max-width);
+	--OT-container-chart-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-chart-margin-editing:			var(--OT-content-margin-editing);
+
+	--OT-container-map-width-reading:				var(--OT-max-width);
+	--OT-container-map-width-editing:				var(--OT-max-width);
+	--OT-container-map-max-width-reading:			var(--OT-max-width);
+	--OT-container-map-max-width-editing:			var(--OT-max-width);
+	--OT-container-map-margin-reading:				var(--OT-content-margin-reading);
+	--OT-container-map-margin-editing:				var(--OT-content-margin-editing);
+
+	--OT-container-iframe-width-reading:			var(--OT-max-width);
+	--OT-container-iframe-width-editing:			var(--OT-max-width);
+	--OT-container-iframe-max-width-reading:		var(--OT-max-width);
+	--OT-container-iframe-max-width-editing:		var(--OT-max-width);
+	--OT-container-iframe-margin-reading:			var(--OT-content-margin-reading);
+	--OT-container-iframe-margin-editing:			var(--OT-content-margin-editing);
 }
 
 table.dataview {
-  	--table-min-width:	min(var(--OT-line-width-reading),var(--OT-max-width));
+	--table-min-width:								min(var(--OT-line-width-reading), var(--OT-max-width));
 }
 
 .cards table.dataview {
-  	--table-width:		100%;
-  	--table-min-width:	none;
+	--table-width:									100%;
+	--table-min-width:								none;
 }
 
-
 .is-mobile {
-  	--table-drag-space:				16px;
-  	--OT-container-table-max-width:	calc(100% - var(--OT-container-table-margin-reading));
+	--table-drag-space:								16px;
+	--OT-container-table-max-width:					calc(100% - var(--OT-container-table-margin-reading));
 }
 
 .maximize-tables-auto {
-  	--OT-container-table-max-width:			100%;
-  	--OT-container-table-width-reading:		100%;
-  	--OT-container-table-width-editing:		100%;
-  	--container-dataview-table-width:		100%;
-  	--OT-container-table-margin-reading:	0;
-  	--OT-container-table-margin-editing:	0;
-  	--table-drag-padding:					0;
-  	--table-max-width:						100%;
-  	--OT-table-margin-reading:				var(--OT-content-margin-start-reading) auto;
-  	--OT-table-margin-editing:				var(--OT-content-margin-start-editing) auto;
-  	--table-width:							auto;
+	--OT-container-table-max-width:					100%;
+	--OT-container-table-width-reading:				100%;
+	--OT-container-table-width-editing:				100%;
+	--container-dataview-table-width:				100%;
+	--OT-container-table-margin-reading:			0;
+	--OT-container-table-margin-editing:			0;
+	--table-drag-padding:							0;
+	--table-max-width:								100%;
+	--OT-table-margin-reading:						var(--OT-content-margin-start-reading) auto;
+	--OT-table-margin-editing:						var(--OT-content-margin-start-editing) auto;
+	--table-width:									auto;
 }
 .maximize-tables-auto .cards {
-  	--OT-container-table-max-width:	var(--OT-max-width);
+	--OT-container-table-max-width:					var(--OT-max-width);
 }
 .maximize-tables-auto .cards .block-language-dataview {
-	--OT-table-margin-reading:	auto;
-  	--OT-table-margin-editing:	auto;
+	--OT-table-margin-reading:						auto;
+	--OT-table-margin-editing:						auto;
 }
 
 .maximize-tables {
-  	--OT-container-table-max-width:			100%;
-  	--OT-container-table-width-reading:				100%;
-  	--OT-container-table-margin-reading:	0;
-  	--table-drag-padding:					0;
-  	--table-min-width:						min(var(--OT-line-width-reading), var(--OT-max-width));
-  	--table-max-width:						100%;
-  	--OT-table-margin-reading:				auto;
-  	--OT-table-margin-editing:				auto;
-  	--table-width:							auto;
-  	--table-edge-cell-padding-first:		8px;
-  	--table-edge-cell-padding-last:			8px;
-  	--table-wrapper-width:					auto;
+	--OT-container-table-max-width:					100%;
+	--OT-container-table-width-reading:				100%;
+	--OT-container-table-margin-reading:			0;
+	--table-drag-padding:							0;
+	--table-min-width:								min(var(--OT-line-width-reading), var(--OT-max-width));
+	--table-max-width:								100%;
+	--OT-table-margin-reading:						auto;
+	--OT-table-margin-editing:						auto;
+	--table-width:									auto;
+	--table-edge-cell-padding-first:				8px;
+	--table-edge-cell-padding-last:					8px;
+	--table-wrapper-width:							auto;
 }
 
 .table-wide,
 .table-max,
 .table-100 {
-  	--table-max-width:	100%;
-  	--table-width:		auto;
-  	--OT-table-margin-reading:	0;
-  	--OT-table-margin-editing:	0;
-  	--table-drag-padding:	0;
-  	--table-wrapper-width:	fit-content;
+	--table-max-width:								100%;
+	--table-width:									auto;
+	--OT-table-margin-reading:						0;
+	--OT-table-margin-editing:						0;
+	--table-drag-padding:							0;
+	--table-wrapper-width:							fit-content;
 }
 
 .table-wide {
-	--OT-container-table-width-reading:		var(--OT-line-width-wide-reading);
-  	--OT-container-table-width-editing:		var(--OT-line-width-wide-editing);
-  	--OT-container-table-max-width:			var(--OT-max-width);
-  	--container-dataview-table-width:		var(--OT-line-width-wide-reading);
-  	--OT-container-table-margin-reading:	auto;
-  	--OT-container-table-margin-editing:	auto;
-  	--table-edge-cell-padding-first:		0px;
+	--OT-container-table-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-table-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-table-max-width:					var(--OT-max-width);
+	--container-dataview-table-width:				var(--OT-line-width-wide-reading);
+	--OT-container-table-margin-reading:			auto;
+	--OT-container-table-margin-editing:			auto;
+	--table-edge-cell-padding-first:				0px;
 }
 
 .table-max {
-	--OT-container-table-width-reading:		var(--OT-max-width);
-  	--OT-container-table-width-editing:		var(--OT-max-width);
-  	--OT-container-table-max-width:			var(--OT-max-width);
-  	--container-dataview-table-width:		var(--OT-max-width);
-  	--OT-container-table-margin-reading:	auto;
-  	--OT-container-table-margin-editing:	auto;
-  	--table-edge-cell-padding-first:		0px;
-  	--OT-table-margin-reading:				0;
-  	--OT-table-margin-editing:				0;
+	--OT-container-table-width-reading:				var(--OT-max-width);
+	--OT-container-table-width-editing:				var(--OT-max-width);
+	--OT-container-table-max-width:					var(--OT-max-width);
+	--container-dataview-table-width:				var(--OT-max-width);
+	--OT-container-table-margin-reading:			auto;
+	--OT-container-table-margin-editing:			auto;
+	--table-edge-cell-padding-first:				0px;
+	--OT-table-margin-reading:						0;
+	--OT-table-margin-editing:						0;
 }
 
 .table-100 {
-	--OT-container-table-width-reading:		100%;
-  	--OT-container-table-width-editing:		100%;
-  	--container-dataview-table-width:		100%;
-  	--OT-container-table-max-width:			100%;
-  	--OT-container-table-margin-reading:	0;
-  	--OT-container-table-margin-editing:	0;
-  	--table-edge-cell-padding-first:		16px;
-  	--table-edge-cell-padding-last:			16px;
-  	--OT-table-margin-reading:				0;
-  	--OT-table-margin-editing:				0;
-  	--table-drag-padding:					0;
-  	--table-wrapper-width:					fit-content;
+	--OT-container-table-width-reading:				100%;
+	--OT-container-table-width-editing:				100%;
+	--container-dataview-table-width:				100%;
+	--OT-container-table-max-width:					100%;
+	--OT-container-table-margin-reading:			0;
+	--OT-container-table-margin-editing:			0;
+	--table-edge-cell-padding-first:				16px;
+	--table-edge-cell-padding-last:					16px;
+	--OT-table-margin-reading:						0;
+	--OT-table-margin-editing:						0;
+	--table-drag-padding:							0;
+	--table-wrapper-width:							fit-content;
 }
 .table-100 .table-col-btn {
-  	cursor:				default !important;
-  	margin-top:			8px;
-  	height:				var(--table-header-size);
-  	inset-inline-start:	calc(100% - var(--table-drag-handle-size) - 4px) !important;
+	cursor:											default !important;
+	margin-top:										8px;
+	height:											var(--table-header-size);
+	inset-inline-start:								calc(100% - var(--table-drag-handle-size) - 4px) !important;
 }
-.table-100 .markdown-source-view.mod-cm6, .table-100.markdown-source-view.mod-cm6 {
-  	--table-drag-handle-background-active:	transparent;
+.table-100 .markdown-source-view.mod-cm6,
+.table-100.markdown-source-view.mod-cm6 {
+	--table-drag-handle-background-active:			transparent;
 }
-.table-100 .markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle, .table-100.markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle {
-  	inset-inline-end:	calc(100% - var(--table-drag-handle-size)) !important;
+.table-100 .markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle,
+.table-100.markdown-source-view.mod-cm6 .cm-table-widget .table-row-drag-handle {
+	inset-inline-end:								calc(100% - var(--table-drag-handle-size)) !important;
 }
 
 .img-wide,
 .img-max,
 .img-100 {
-  	--img-max-width:	100%;
-  	--img-width:		100%;
+	--img-max-width:								100%;
+	--img-width:									100%;
 }
 
 .img-wide {
-  	--container-img-width:	var(--OT-line-width-wide-reading);
-  	--img-line-width:		var(--OT-line-width-wide-reading);
-  	--img-margin-start:		calc(50% - var(--OT-line-width-wide-reading)/2);
+	--OT-container-img-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-img-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-img-max-width-reading:			var(--OT-max-width);
+	--OT-container-img-max-width-editing:			var(--OT-max-width);
+	--OT-container-img-margin-reading:				auto;
+	--OT-container-img-margin-editing:				auto;
+
+	--img-line-width:								var(--OT-line-width-wide-reading);
+	--img-margin-start:								calc(50% - var(--OT-line-width-wide-reading) / 2);
 }
 
 .img-max {
-  	--container-img-width:	var(--OT-max-width);
-  	--img-line-width:		var(--OT-max-width);
-  	--img-margin-start:		calc(50% - var(--OT-max-width)/2);
+	--OT-container-img-width-reading:				var(--OT-max-width);
+	--OT-container-img-width-editing:				var(--OT-max-width);
+	--OT-container-img-max-width-reading:			var(--OT-max-width);
+	--OT-container-img-max-width-editing:			var(--OT-max-width);
+	--OT-container-img-margin-reading:				auto;
+	--OT-container-img-margin-editing:				auto;
+
+	--img-line-width:								var(--OT-max-width);
+	--img-margin-start:								calc(50% - var(--OT-max-width) / 2);
 }
 
 .img-100 {
-  	--container-img-width:		100%;
-  	--container-img-max-width:	100%;
-  	--img-line-width:			100%;
-  	--img-margin-start:			0;
+	--OT-container-img-width-reading:				100%;
+	--OT-container-img-width-editing:				100%;
+	--OT-container-img-max-width-reading:			100%;
+	--OT-container-img-max-width-editing:			100%;
+	--OT-container-img-margin-reading:				0;
+	--OT-container-img-margin-editing:				0;
+
+	--img-line-width:								100%;
+	--img-margin-start:								0;
 }
 
 .map-wide,
 .map-max,
 .map-100 {
-  	--map-max-width:	100%;
-  	--map-width:		100%;
+	--map-max-width:								100%;
+	--map-width:									100%;
 }
 
 .map-wide {
-  	--container-map-width:	var(--OT-line-width-wide-reading);
+	--OT-container-map-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-map-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-map-max-width-reading:			var(--OT-max-width);
+	--OT-container-map-max-width-editing:			var(--OT-max-width);
+	--OT-container-map-margin-reading:				auto;
+	--OT-container-map-margin-editing:				auto;
 }
 
 .map-max {
-  	--container-map-width:	var(--OT-max-width);
+	--OT-container-map-width-reading:				var(--OT-max-width);
+	--OT-container-map-width-editing:				var(--OT-max-width);
+	--OT-container-map-max-width-reading:			var(--OT-max-width);
+	--OT-container-map-max-width-editing:			var(--OT-max-width);
+	--OT-container-map-margin-reading:				auto;
+	--OT-container-map-margin-editing:				auto;
 }
 
 .map-100 {
-  	--container-map-width:		100%;
-  	--container-map-max-width:	100%;
-  	--map-header-padding:		var(--size-4-2);
+	--OT-container-map-width-reading:				100%;
+	--OT-container-map-width-editing:				100%;
+	--OT-container-map-max-width-reading:			100%;
+	--OT-container-map-max-width-editing:			100%;
+	--OT-container-map-margin-reading:				0;
+	--OT-container-map-margin-editing:				0;
+
+	--map-header-padding:							var(--size-4-2);
 }
 .map-100 .bases-view[data-view-type=map] {
-  	--bases-embed-border-radius:	0;
+	--bases-embed-border-radius:					0;
 }
 
 .chart-wide,
 .chart-max,
 .chart-100 {
-  	--chart-max-width:	100%;
-  	--chart-width:		100%;
+	--chart-max-width:								100%;
+	--chart-width:									100%;
 }
 
 .chart-wide {
-  	--container-chart-width:	var(--OT-line-width-wide-reading);
+	--OT-container-chart-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-chart-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-chart-max-width-reading:			var(--OT-max-width);
+	--OT-container-chart-max-width-editing:			var(--OT-max-width);
+	--OT-container-chart-margin-reading:			auto;
+	--OT-container-chart-margin-editing:			auto;
 }
 
 .chart-max {
-  	--container-chart-width:	var(--OT-max-width);
+	--OT-container-chart-width-reading:				var(--OT-max-width);
+	--OT-container-chart-width-editing:				var(--OT-max-width);
+	--OT-container-chart-max-width-reading:			var(--OT-max-width);
+	--OT-container-chart-max-width-editing:			var(--OT-max-width);
+	--OT-container-chart-margin-reading:			auto;
+	--OT-container-chart-margin-editing:			auto;
 }
 
 .chart-100 {
-  	--container-chart-width:		100%;
-  	--container-chart-max-width:	100%;
+	--OT-container-chart-width-reading:				100%;
+	--OT-container-chart-width-editing:				100%;
+	--OT-container-chart-max-width-reading:			100%;
+	--OT-container-chart-max-width-editing:			100%;
+	--OT-container-chart-margin-reading:			0;
+	--OT-container-chart-margin-editing:			0;
 }
 
 .iframe-wide,
 .iframe-max,
 .iframe-100 {
-  	--iframe-max-width:	100%;
-  	--iframe-width:		100%;
+	--iframe-max-width:								100%;
+	--iframe-width:									100%;
 }
 
 .iframe-wide {
-  	--container-iframe-width:	var(--OT-line-width-wide-reading);
+	--OT-container-iframe-width-reading:			var(--OT-line-width-wide-reading);
+	--OT-container-iframe-width-editing:			var(--OT-line-width-wide-editing);
+	--OT-container-iframe-max-width-reading:		var(--OT-max-width);
+	--OT-container-iframe-max-width-editing:		var(--OT-max-width);
+	--OT-container-iframe-margin-reading:			auto;
+	--OT-container-iframe-margin-editing:			auto;
 }
 
 .iframe-max {
-  	--container-iframe-width:	var(--OT-max-width);
+	--OT-container-iframe-width-reading:			var(--OT-max-width);
+	--OT-container-iframe-width-editing:			var(--OT-max-width);
+	--OT-container-iframe-max-width-reading:		var(--OT-max-width);
+	--OT-container-iframe-max-width-editing:		var(--OT-max-width);
+	--OT-container-iframe-margin-reading:			auto;
+	--OT-container-iframe-margin-editing:			auto;
 }
 
 .iframe-100 {
-  	--container-iframe-width:		100%;
-  	--container-iframe-max-width:	100%;
+	--OT-container-iframe-width-reading:			100%;
+	--OT-container-iframe-width-editing:			100%;
+	--OT-container-iframe-max-width-reading:		100%;
+	--OT-container-iframe-max-width-editing:		100%;
+	--OT-container-iframe-margin-reading:			0;
+	--OT-container-iframe-margin-editing:			0;
 }
 
 .bases-wide {
-	--OT-container-bases-width-reading:    var(--OT-line-width-wide-reading);
-	--OT-container-bases-width-editing:    var(--OT-line-width-wide-editing);
-	--OT-container-bases-max-width:        var(--OT-max-width);
-	--OT-container-bases-margin-reading:   auto;
-	--OT-container-bases-margin-editing:   auto;
+	--OT-container-bases-width-reading:				var(--OT-line-width-wide-reading);
+	--OT-container-bases-width-editing:				var(--OT-line-width-wide-editing);
+	--OT-container-bases-max-width:					var(--OT-max-width);
+	--OT-container-bases-margin-reading:			auto;
+	--OT-container-bases-margin-editing:			auto;
 }
 
 .bases-max {
-	--OT-container-bases-width-reading:    var(--OT-max-width);
-	--OT-container-bases-width-editing:    var(--OT-max-width);
-	--OT-container-bases-max-width:        var(--OT-max-width);
-	--OT-container-bases-margin-reading:   auto;
-	--OT-container-bases-margin-editing:   auto;
+	--OT-container-bases-width-reading:				var(--OT-max-width);
+	--OT-container-bases-width-editing:				var(--OT-max-width);
+	--OT-container-bases-max-width:					var(--OT-max-width);
+	--OT-container-bases-margin-reading:			auto;
+	--OT-container-bases-margin-editing:			auto;
 }
 
 .bases-100 {
-	--OT-container-bases-width-reading:    100%;
-	--OT-container-bases-width-editing:    100%;
-	--OT-container-bases-max-width:        100%;
-	--OT-container-bases-margin-reading:   0;
-	--OT-container-bases-margin-editing:   0;
-	--bases-cards-embed-padding:			0 12px;
-  	--bases-header-padding-end:				var(--size-4-2);
-  	--bases-header-padding-start:			var(--size-4-2);
+	--OT-container-bases-width-reading:				100%;
+	--OT-container-bases-width-editing:				100%;
+	--OT-container-bases-max-width:					100%;
+	--OT-container-bases-margin-reading:			0;
+	--OT-container-bases-margin-editing:			0;
+	--bases-cards-embed-padding:					0 12px;
+	--bases-header-padding-end:						var(--size-4-2);
+	--bases-header-padding-start:					var(--size-4-2);
 }
 .bases-100 .bases-view[data-view-type=table] {
-  	--bases-embed-border-width:		0;
-  	--bases-embed-border-radius:	0;
+	--bases-embed-border-width:						0;
+	--bases-embed-border-radius:					0;
 }
-
 
 /* Block widths ------------------------------------
 
@@ -5361,192 +5553,215 @@ table.dataview {
 */
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .cm-table-widget,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(table) {
-	width:					var(--OT-container-table-width-reading);
-	max-width:				var(--OT-container-table-max-width);
-	margin-inline:			var(--OT-container-table-margin-reading) !important;
-	padding-inline-start:	var(--table-drag-padding);
-	padding-inline-end:		var(--table-drag-padding);
+	width:											var(--OT-container-table-width-reading);
+	max-width:										var(--OT-container-table-max-width);
+	margin-inline:									var(--OT-container-table-margin-reading) !important;
+	padding-inline-start:							var(--table-drag-padding);
+	padding-inline-end:								var(--table-drag-padding);
 	/*border-inline: 2px solid red;*/
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .cm-table-widget,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(table) {
-	width:					var(--OT-container-table-width-editing);
-	max-width:				var(--OT-container-table-max-width);
-	margin-inline:			var(--OT-container-table-margin-editing) !important;
-	padding-inline-start:	var(--table-drag-padding);
-	padding-inline-end:		var(--table-drag-padding);
+	width:											var(--OT-container-table-width-editing);
+	max-width:										var(--OT-container-table-max-width);
+	margin-inline:									var(--OT-container-table-margin-editing) !important;
+	padding-inline-start:							var(--table-drag-padding);
+	padding-inline-end:								var(--table-drag-padding);
 }
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .el-table {
-	margin-inline:			var(--OT-container-table-margin-reading) !important;
-	padding-inline-start:	var(--table-drag-padding);
-	padding-inline-end:		var(--table-drag-padding);
+	margin-inline:									var(--OT-container-table-margin-reading) !important;
+	padding-inline-start:							var(--table-drag-padding);
+	padding-inline-end:								var(--table-drag-padding);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .el-table {
-	margin-inline:			var(--OT-container-table-margin-editing) !important;
-	padding-inline-start:	var(--table-drag-padding);
-	padding-inline-end:		var(--table-drag-padding);
+	margin-inline:									var(--OT-container-table-margin-editing) !important;
+	padding-inline-start:							var(--table-drag-padding);
+	padding-inline-end:								var(--table-drag-padding);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .table-wrapper,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .table-wrapper {
-	width:		var(--table-wrapper-width);
-	max-width:	100%;
+	width:											var(--table-wrapper-width);
+	max-width:										100%;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > :has(> :is(.block-language-dataview, .block-language-dataviewjs) table),
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > :has(> :is(.block-language-dataview, .block-language-dataviewjs) table) {
-	width:		var(--container-dataview-table-width);
-	max-width:	var(--OT-container-table-max-width);
+	width:											var(--container-dataview-table-width);
+	max-width:										var(--OT-container-table-max-width);
 }
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .bases-embed,
-.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(:is(.block-language-base, .bases-embed)){
-	max-width:     var(--OT-container-bases-max-width);
-	width:         var(--OT-container-bases-width-reading);
-	margin-inline: var(--OT-container-bases-margin-reading) !important;
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(:is(.block-language-base, .bases-embed)) {
+	max-width:										var(--OT-container-bases-max-width);
+	width:											var(--OT-container-bases-width-reading);
+	margin-inline:									var(--OT-container-bases-margin-reading) !important;
 	/*border-inline: 2px solid lime;*/
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .bases-embed,
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(:is(.block-language-base, .bases-embed)){
-	max-width:     var(--OT-container-bases-max-width);
-	width:         var(--OT-container-bases-width-editing);
-	margin-inline: var(--OT-container-bases-margin-editing) !important;
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(:is(.block-language-base, .bases-embed)) {
+	max-width:										var(--OT-container-bases-max-width);
+	width:											var(--OT-container-bases-width-editing);
+	margin-inline:									var(--OT-container-bases-margin-editing) !important;
 }
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer table {
-	width:			var(--table-width);
-	max-width:		var(--table-max-width);
-	margin-inline:	var(--OT-table-margin-reading);
-	min-width:		var(--table-min-width);
+	width:											var(--table-width);
+	max-width:										var(--table-max-width);
+	margin-inline:									var(--OT-table-margin-reading);
+	min-width:										var(--table-min-width);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content table {
-	width:			var(--table-width);
-	max-width:		var(--table-max-width);
-	margin-inline:	var(--OT-table-margin-editing);
-	min-width:		var(--table-min-width);
+	width:											var(--table-width);
+	max-width:										var(--table-max-width);
+	margin-inline:									var(--OT-table-margin-editing);
+	min-width:										var(--table-min-width);
 }
 
 /* Source / RAW mode: raw Markdown table rows start at the left edge of the pane. */
 .markdown-source-view.mod-cm6:not(.is-live-preview).is-readable-line-width
-  .cm-contentContainer.cm-contentContainer
-  > .cm-content
-  > .HyperMD-table-row {
-	width:		100%;
-	max-width:	none;
-	margin-inline:	0 !important;
+	.cm-contentContainer.cm-contentContainer
+	> .cm-content
+	> .HyperMD-table-row {
+	width:											100%;
+	max-width:										none;
+	margin-inline:									0 !important;
 }
+
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .block-language-dataviewjs > :is(p, h1, h2, h3, h4, h5, h6) {
-	width:			var(--OT-line-width-reading);
-	margin-inline:	var(--OT-content-margin-reading);
+	width:											var(--OT-line-width-reading);
+	margin-inline:									var(--OT-content-margin-reading);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .block-language-dataviewjs > :is(p, h1, h2, h3, h4, h5, h6) {
-	width:			var(--OT-line-width-editing);
-	margin-inline:	var(--OT-content-margin-editing);
+	width:											var(--OT-line-width-editing);
+	margin-inline:									var(--OT-content-margin-editing);
 }
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .block-language-dataviewjs > .dataview-error {
-	margin:	0 auto;
-	width:	var(--OT-content-line-width-reading);
+	margin:											0 auto;
+	width:											var(--OT-content-line-width-reading);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .block-language-dataviewjs > .dataview-error {
-	margin:	0 auto;
-	width:	var(--OT-content-line-width-editing);
+	margin:											0 auto;
+	width:											var(--OT-content-line-width-editing);
 }
 
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer .dataview.dataview-error-box {
-	margin-inline:	var(--OT-table-margin-reading);
+	margin-inline:									var(--OT-table-margin-reading);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content .dataview.dataview-error-box {
-	margin-inline:	var(--OT-table-margin-editing);
+	margin-inline:									var(--OT-table-margin-editing);
 }
+
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .image-embed,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .image-embed {
-	padding-top:	0.25rem;
-	padding-bottom:	0.25rem;
+	padding-top:									0.25rem;
+	padding-bottom:									0.25rem;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .image-embed,
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(.image-embed),
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(.image-embed) {
+	width:											var(--OT-container-img-width-editing);
+	max-width:										var(--OT-container-img-max-width-editing);
+	margin-inline:									var(--OT-container-img-margin-editing) !important;
+}
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .image-embed,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(.image-embed) {
-	width:		var(--container-img-width);
-	max-width:	var(--container-img-max-width);
+	width:											var(--OT-container-img-width-reading);
+	max-width:										var(--OT-container-img-max-width-reading);
+	margin-inline:									var(--OT-container-img-margin-reading) !important;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > .image-embed img,
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(.image-embed) img,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > .image-embed img,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(.image-embed) img {
-  	max-width:	var(--img-max-width);
+	max-width:										var(--img-max-width);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > img,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > img {
-  	max-width:				var(--img-line-width);
-  	margin-inline-start:	var(--img-margin-start) !important;
+	max-width:										var(--img-line-width);
+	margin-inline-start:							var(--img-margin-start) !important;
 }
 
 /* Live Preview — aligner le conteneur image sur la colonne de texte,
    sans forcer l'image à remplir la colonne */
 .markdown-source-view.mod-cm6.is-readable-line-width.is-live-preview
 .cm-contentContainer .internal-embed.media-embed.image-embed {
-	display: block;
-	width: fit-content !important;
-	max-width: var(--OT-content-line-width-editing) !important;
-	margin-inline: 0 !important;
-	margin-inline-start: var(--OT-content-margin-start-editing) !important;
-	padding-inline: 0 !important;
-	overflow: visible !important;
+	display:										block;
+	width:											fit-content !important;
+	max-width:										var(--OT-content-line-width-editing) !important;
+	margin-inline:									0 !important;
+	/*margin-inline-start:							var(--OT-content-margin-start-editing) !important;*/
+	padding-inline:									0 !important;
+	overflow:										visible !important;
 }
 
 /* Le wrapper suit simplement le conteneur */
 .markdown-source-view.mod-cm6.is-readable-line-width.is-live-preview
 .cm-contentContainer .internal-embed.media-embed.image-embed .image-wrapper {
-	display: block;
-	width: fit-content !important;
-	max-width: 100% !important;
-	overflow: visible !important;
+	display:										block;
+	width:											fit-content !important;
+	max-width:										100% !important;
+	overflow:										visible !important;
 }
 
 /* Surcharge locale de la largeur forcée des image-embed en Live Preview */
 .markdown-source-view.mod-cm6.is-readable-line-width.is-live-preview
 .cm-contentContainer > .cm-content > .image-embed {
-	width: fit-content !important;
-	max-width: var(--OT-content-line-width-editing) !important;
+	width:											fit-content !important;
+	max-width:										var(--OT-content-line-width-editing) !important;
 }
 
-
-
-
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(> .block-language-dataviewjs canvas, > .block-language-chart),
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(> .block-language-dataviewjs canvas, > .block-language-chart) {
+	width:											var(--OT-container-chart-width-editing);
+	max-width:										var(--OT-container-chart-max-width-editing);
+	margin-inline:									var(--OT-container-chart-margin-editing) !important;
+}
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(> .block-language-dataviewjs canvas, > .block-language-chart) {
-  	width:		var(--container-chart-width);
-  	max-width:	var(--container-chart-max-width);
+	width:											var(--OT-container-chart-width-reading);
+	max-width:										var(--OT-container-chart-max-width-reading);
+	margin-inline:									var(--OT-container-chart-margin-reading) !important;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(> .block-language-dataviewjs canvas, > .block-language-chart) canvas,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(> .block-language-dataviewjs canvas, > .block-language-chart) canvas {
-  	max-width:	var(--chart-max-width);
+	max-width:										var(--chart-max-width);
 }
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(.bases-view[data-view-type=map]),
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(.bases-view[data-view-type=map]) {
+	width:											var(--OT-container-map-width-editing);
+	max-width:										var(--OT-container-map-max-width-editing);
+	margin-inline:									var(--OT-container-map-margin-editing) !important;
+	--bases-header-padding-end:						var(--map-header-padding);
+	--bases-header-padding-start:					var(--map-header-padding);
+}
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(.bases-view[data-view-type=map]) {
-  	width:							var(--container-map-width);
-  	max-width:						var(--container-map-max-width);
-  	--bases-header-padding-end:		var(--map-header-padding);
-  	--bases-header-padding-start:	var(--map-header-padding);
+	width:											var(--OT-container-map-width-reading);
+	max-width:										var(--OT-container-map-max-width-reading);
+	margin-inline:									var(--OT-container-map-margin-reading) !important;
+	--bases-header-padding-end:						var(--map-header-padding);
+	--bases-header-padding-start:					var(--map-header-padding);
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content div:has(.bases-view[data-view-type=map]) iframe,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer div:has(.bases-view[data-view-type=map]) iframe {
-  	max-width:	var(--map-max-width);
+	max-width:										var(--map-max-width);
 }
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(> :is(iframe, .cm-html-embed)),
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(> :is(iframe, .cm-html-embed)) {
+	width:											var(--OT-container-iframe-width-editing);
+	max-width:										var(--OT-container-iframe-max-width-editing);
+	margin-inline:									var(--OT-container-iframe-margin-editing) !important;
+}
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(> :is(iframe, .cm-html-embed)) {
-  	width:		var(--container-iframe-width);
-  	max-width:	var(--container-iframe-max-width);
+	width:											var(--OT-container-iframe-width-reading);
+	max-width:										var(--OT-container-iframe-max-width-reading);
+	margin-inline:									var(--OT-container-iframe-margin-reading) !important;
 }
 .markdown-source-view.mod-cm6.is-readable-line-width .cm-contentContainer.cm-contentContainer > .cm-content > div:has(> :is(iframe, .cm-html-embed)) iframe,
 .markdown-preview-view.is-readable-line-width .markdown-preview-sizer > div:has(> :is(iframe, .cm-html-embed)) iframe {
-  	max-width:	var(--iframe-max-width);
+	max-width:										var(--iframe-max-width);
 }
 
 .borders-none {
-  	--divider-width:		0px;
-  	--tab-outline-width:	0px;
+	--divider-width:								0px;
+	--tab-outline-width:							0px;
 }
 
-	body:is(.borders-none) .mod-root .workspace-tab-header-container:is(div, :hover) {
-  --tab-outline-width: 0px;
+body:is(.borders-none) .mod-root .workspace-tab-header-container:is(div, :hover) {
+	--tab-outline-width:							0px;
 }
 
 /* —————————————————————————————— ↑ Width system overhaul ↑ —————————————————————————————— */
@@ -9507,81 +9722,164 @@ body {
 	margin-block-end: var(--OT-space-below-h6);
 }
 
+/* ========================================================================== */
+/* Headings sizing system — reading / Live Preview / Raw mode                 */
+/* ========================================================================== */
+
 /* -------------------------------------------------------------------------- */
-/* 7. Progression des tailles — à conserver                                   */
+/* 1. READING MODE                                                            */
+/* Source of truth for rendered headings                                      */
 /* -------------------------------------------------------------------------- */
 
 body.headings-scaling-OpSpl {
-	--h1-size: 2.027em;
-	--h2-size: 1.802em;
-	--h3-size: 1.266em;
-	--h4-size: 1.125em;
-	--h5-size: 1.067em;
-	--h6-size: 1.000em;
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 2.027);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 1.802);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.266);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.125);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.067);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
 
 body.headings-scaling-Bear {
-	--h1-size: 2em;
-	--h2-size: 1.6em;
-	--h3-size: 1.2em;
-	--h4-size: 1.08em;
-	--h5-size: 1.04em;
-	--h6-size: 1.00em;
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 1.802);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 1.602);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.424);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.266);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.125);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
 
 body.headings-scaling-none {
-	--h1-size: var(--OT-readingMode-text-size);
-	--h2-size: var(--OT-readingMode-text-size);
-	--h3-size: var(--OT-readingMode-text-size);
-	--h4-size: var(--OT-readingMode-text-size);
-	--h5-size: var(--OT-readingMode-text-size);
-	--h6-size: var(--OT-readingMode-text-size);
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 1.000);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 1.000);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.000);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.000);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.000);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
 
 body.headings-scaling-slight {
-	--h1-size: clamp(1.125rem, 1.2vw + 0.9rem, 1.5rem);
-	--h2-size: clamp(1.125rem, 1.1vw + 0.88rem, 1.4rem);
-	--h3-size: clamp(1.125rem, 0.9vw + 0.86rem, 1.3rem);
-	--h4-size: clamp(1rem, 0.7vw + 0.84rem, 1.2rem);
-	--h5-size: clamp(1rem, 0.4vw + 0.82rem, 1.1rem);
-	--h6-size: 1rem;
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 1.500);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 1.400);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.300);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.200);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.100);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
 
 body.headings-scaling-minor-second {
-	--h1-size: 1.383em;
-	--h2-size: 1.296em;
-	--h3-size: 1.215em;
-	--h4-size: 1.138em;
-	--h5-size: 1.067em;
-	--h6-size: 1.000em;
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 1.383);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 1.296);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.215);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.138);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.067);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
 
 body.headings-scaling-major-second {
-	--h1-size: 1.802em;
-	--h2-size: 1.602em;
-	--h3-size: 1.424em;
-	--h4-size: 1.266em;
-	--h5-size: 1.125em;
-	--h6-size: 1.000em;
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 1.802);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 1.602);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.424);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.266);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.125);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
 
 body.headings-scaling-minor-third {
-	--h1-size: 2.488em;
-	--h2-size: 2.074em;
-	--h3-size: 1.728em;
-	--h4-size: 1.44em;
-	--h5-size: 1.2em;
-	--h6-size: 1.0em;
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 2.488);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 2.074);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.728);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.440);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.200);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
 
 body.headings-scaling-major-third {
-	--h1-size: 3.052em;
-	--h2-size: 2.441em;
-	--h3-size: 1.953em;
-	--h4-size: 1.563em;
-	--h5-size: 1.25em;
-	--h6-size: 1.00em;
+	--h1-size:					calc(var(--OT-readingMode-text-size) * 3.052);
+	--h2-size:					calc(var(--OT-readingMode-text-size) * 2.441);
+	--h3-size:					calc(var(--OT-readingMode-text-size) * 1.953);
+	--h4-size:					calc(var(--OT-readingMode-text-size) * 1.563);
+	--h5-size:					calc(var(--OT-readingMode-text-size) * 1.250);
+	--h6-size:					calc(var(--OT-readingMode-text-size) * 1.000);
 }
+
+/* -------------------------------------------------------------------------- */
+/* 2. LIVE PREVIEW                                                            */
+/* Source of truth for headings in edit mode                                  */
+/* -------------------------------------------------------------------------- */
+
+body.headings-scaling-OpSpl {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 2.027);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 1.802);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.266);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.125);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.067);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
+body.headings-scaling-Bear {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 1.802);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 1.602);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.424);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.266);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.125);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
+body.headings-scaling-none {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
+body.headings-scaling-slight {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 1.500);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 1.400);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.300);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.200);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.100);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
+body.headings-scaling-minor-second {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 1.383);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 1.296);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.215);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.138);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.067);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
+body.headings-scaling-major-second {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 1.802);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 1.602);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.424);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.266);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.125);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
+body.headings-scaling-minor-third {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 2.488);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 2.074);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.728);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.440);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.200);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
+body.headings-scaling-major-third {
+	--OT-edit-heading-h1-size-LP:			calc(var(--OT-edit-text-size) * 3.052);
+	--OT-edit-heading-h2-size-LP:			calc(var(--OT-edit-text-size) * 2.441);
+	--OT-edit-heading-h3-size-LP:			calc(var(--OT-edit-text-size) * 1.953);
+	--OT-edit-heading-h4-size-LP:			calc(var(--OT-edit-text-size) * 1.563);
+	--OT-edit-heading-h5-size-LP:			calc(var(--OT-edit-text-size) * 1.250);
+	--OT-edit-heading-h6-size-LP:			calc(var(--OT-edit-text-size) * 1.000);
+}
+
 
 /* Filet sous H1 et H2 */
 .markdown-preview-view :is(h1, h2) {
@@ -10713,6 +11011,9 @@ body.lists-horiz-generous {
 	margin-inline-end: var(--OT-checkbox-text-gap);
 }
 
+.markdown-preview-view .task-list-item-checkbox {
+		top:	0em;
+}
 /*
 .markdown-rendered .task-list-item > input[type="checkbox"] {
 	width:  var(--list-bullet-size);
@@ -11702,49 +12003,24 @@ body.lists-horiz-generous {
 /* -------------------- ↑ file navigation (tree items, etc.) ↑ -------------------- */
 
 /* ===========================
-=== === === OpSpl53 – Headings, EDIT / CM6
-   =========================== */
+	=== === === OpSpl53 – Headings, EDIT / CM6
+	=========================== */
 
-/* 1. Variables pour headings en EDIT (déjà définies en OpSpl02, rappel ici à titre de repère)*/
-
-body {
-	/*
-	--OT-edit-heading-h1-space-above: 1.8em;
-	--OT-edit-heading-h2-space-above: 1.4em;
-	--OT-edit-heading-h3-space-above: 1.1em;
-	--OT-edit-heading-h4-space-above: 0.9em;
-	--OT-edit-heading-h5-space-above: 0.8em;
-	--OT-edit-heading-h6-space-above: 0.7em;
-
-	--OT-edit-heading-h1-space-below: var(--OT-space-below-h1);
-	--OT-edit-heading-h2-space-below: var(--OT-space-below-h2);
-	--OT-edit-heading-h3-space-below: var(--OT-space-below-h3);
-	--OT-edit-heading-h4-space-below: var(--OT-space-below-h4);
-	--OT-edit-heading-h5-space-below: var(--OT-space-below-h5);
-	--OT-edit-heading-h6-space-below: var(--OT-space-below-h6);
-*/
-	/* Tailles LP qui pilotent --h*-size en mode édition */
-	--OT-edit-heading-h1-size-LP: var(--h1-size);
-	--OT-edit-heading-h2-size-LP: var(--h2-size);
-	--OT-edit-heading-h3-size-LP: var(--h3-size);
-	--OT-edit-heading-h4-size-LP: var(--h4-size);
-	--OT-edit-heading-h5-size-LP: var(--h5-size);
-	--OT-edit-heading-h6-size-LP: var(--h6-size);
-}
-*/
-
-/* 2. En EDIT, on mappe les tailles Live Preview sur les variables utilisées par app.css */
+/* -------------------------------------------------------------------------- */
+/* 3. LIVE PREVIEW MAPPING LAYER                                              */
+/* Local bridge to app.css variables                                           */
+/* -------------------------------------------------------------------------- */
 
 .markdown-source-view.cm-s-obsidian {
-	--h1-size: var(--OT-edit-heading-h1-size-LP);
-	--h2-size: var(--OT-edit-heading-h2-size-LP);
-	--h3-size: var(--OT-edit-heading-h3-size-LP);
-	--h4-size: var(--OT-edit-heading-h4-size-LP);
-	--h5-size: var(--OT-edit-heading-h5-size-LP);
-	--h6-size: var(--OT-edit-heading-h6-size-LP);
+	--h1-size:								var(--OT-edit-heading-h1-size-LP);
+	--h2-size:								var(--OT-edit-heading-h2-size-LP);
+	--h3-size:								var(--OT-edit-heading-h3-size-LP);
+	--h4-size:								var(--OT-edit-heading-h4-size-LP);
+	--h5-size:								var(--OT-edit-heading-h5-size-LP);
+	--h6-size:								var(--OT-edit-heading-h6-size-LP);
 }
 
-/* 3. Typographie commune des headings en EDIT */
+ /* 3. Typographie commune des headings en EDIT */
 
 .cm-s-obsidian .cm-header-1,
 .cm-s-obsidian .cm-header-2,
@@ -14769,6 +15045,17 @@ body {
 .folder-note-underline-path .has-folder-note.view-header-breadcrumb {
 	text-decoration:	none;
 }
+
+/* “Plugin Update Tracker” plugin — size of the pill indicator */
+.jzhQyS,
+.jixyFt {
+	font-size:	1em	!important;
+    left: 		0.08em						!important;
+    width:		0.8em						!important;
+    height:		0.8em						!important;
+    padding:	0.3em						!important;
+}
+
 /* —————————————————————————————— ↑ different plugins ↑  —————————————————————————————— */
 
 
@@ -15400,13 +15687,13 @@ settings:
 				label.fr:	"dans le style de Bear"
 				value:		headings-scaling-Bear
 			-
-				label:		"Slowly"
-				label.fr:	"Doucement"
-				value:		headings-scaling-slight
-			-
 				label:		"Minor second"
 				label.fr:	"Seconde mineure"
 				value:		headings-scaling-minor-second
+			-
+				label:		"Slowly"
+				label.fr:	"Doucement"
+				value:		headings-scaling-slight
 			-
 				label:		"Major second"
 				label.fr:	"Seconde majeure"
@@ -17088,14 +17375,16 @@ settings:
 			disableIF:
 				- OT-readingMode-natural-line-height
 	-
-			id:			OT-readingMode-measure
-			title:		Line length [ch]
-			title.fr:	Longueur de ligne [ch]
-			description:	Approximate number of characters per line in Reading mode.
-			description.fr:	Nombre approximatif de caractères par ligne en mode Lecture.
-			type:		variable-number
-			default:	68
-			format:		ch
+			id:				"OT-reading-line-width-factor"
+			title:			"Reading mode line width factor"
+			title.fr:		"Facteur de largeur de ligne en mode Lecture"
+			description:	"Controls the text column width in Reading mode. 100 corresponds to a reference width inspired by the classic 80-column Courier 12 line."
+			description.fr:	"Règle la largeur de la colonne de texte en mode Lecture. La valeur 100 correspond à une largeur de référence inspirée de la ligne classique de 80 colonnes en Courier 12."
+			type:			variable-number
+			default:		100
+			min:			60
+			max:			160
+			step:			1
 	-
 			id:				OT-readingMode-tableText-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
@@ -17424,14 +17713,16 @@ settings:
 			default:	1.5
 			format:		em
 	-
-			id:			OT-editing-measure
-			title:		Line length [ch]
-			title.fr:	Longueur de ligne [ch]
-			description:	Approximate number of characters per line in Editing mode.
-			description.fr:	Nombre approximatif de caractères par ligne en mode Écriture.
-			type:		variable-number
-			default:	74
-			format:		ch
+			id:				"OT-editing-line-width-factor"
+			title:			"Editing mode line width factor"
+			title.fr:		"Facteur de largeur de ligne en mode Écriture"
+			description:	"Controls the text column width in editing modes. 100 corresponds to a reference width inspired by the classic 80-column Courier 12 line."
+			description.fr:	"Règle la largeur de la colonne de texte dans les modes d’écriture. La valeur 100 correspond à une largeur de référence inspirée de la ligne classique de 80 colonnes en Courier 12."
+			type:			variable-number
+			default:		100
+			min:			60
+			max:			160
+			step:			1
 	-
 			id:				OT-edit-table-text-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
