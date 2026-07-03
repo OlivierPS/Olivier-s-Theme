@@ -51,6 +51,10 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-03
+	- rendered the theme immune to the “Font size” slider in Appearance
+	- improved the appearance of Properties
+	- improved the appearance of the icons of the Metadata Menu plugin
 2026-07-01
 	- corrected the “pinned icon” in sidebar tabs
 2026-06-29
@@ -111,6 +115,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 							autres adaptations
 			OpSpl25:	reading Mode
 							paper backgrounds
+			OpSpl25a	document links: internals, externals, unresolved, embeds
 			OpSpl26		tables
 			OpSpl27		bases
 			OpSpl28		en-têtes des panneaux (tab headers)
@@ -136,7 +141,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl48		tags
 			OpSpl49		lists
 			OpSpl50		status bar
-			OpSpl51		metadata and links
+			OpSpl51		metadata
 			OpSpl52		file navigation (tree items, etc.)
 			OpSpl53:	les headings en mode d’édition
 			OpSpl54		Metadata Menu plugin
@@ -362,8 +367,6 @@ body {
 	--OT-edit-font-family:							var(--OT-edit-font),
 	    												"Comic Sans MS",
 														var(--font-default);
-	--OT-edit-text-size:							17px;
-	--OT-line-width-editing:						44rem;
 	--OT-edit-line-height:							1.5em;
 	--OT-effective-edit-line-height: 				var(--OT-edit-line-height);
 	--OT-edit-letter-spacing:						0em;
@@ -446,8 +449,6 @@ body {
 	--OT-raw-heading-h5-scale:						1.0;
 	--OT-raw-heading-h6-scale:						1.0;
 
-	--OT-readingMode-text-size:						17px;
-	--OT-line-width-reading:						44rem;
 	--OT-readingMode-line-height:					1.5em;
 	--OT-readingMode-tableText-percent:				90;
 
@@ -504,6 +505,15 @@ body {
 	--OT-UI-font-size:								18px;
 	--OT-prominent-text: 							oklch(0.52  0.18  var(--OT-accent-h));
 	--OT-YAML-color:								oklch(0.58 calc(var(--OT-themeLight-c) * 3) var(--OT-themeLight-h));
+
+	/* ----- pour la typographie ----- */
+	--OT-readingMode-measure:		68ch;
+	--OT-editing-measure:			74ch;
+	--OT-edit-text-size:			17px;
+	--OT-line-width-editing:		var(--OT-editing-measure);
+	--OT-readingMode-text-size:		17px;
+	--OT-line-width-reading:		var(--OT-readingMode-measure);
+
 
 
 
@@ -613,7 +623,7 @@ body {
 	--font-ui-medium:	var(--OT-UI-font-size);
 	--font-ui-large:	calc(var(--font-ui-medium)/15*20);
 
-	--footnote-gap:				0.5rem;		/*	var(--size-4-1);	*/
+	/*--footnote-gap:				2rem;*/
 	--footnote-id-color:		var(--list-marker-color);
 	--footnote-id-delimiter:	")";	/*	".";	*/
 	--footnote-line-height:		var(--line-height-tight);
@@ -681,24 +691,29 @@ body {
 
     --menu-border-color:				var(--color-base-30);
 
-	--metadata-background: 				var(--color-base-00);
+/*	--metadata-background: 				color-mix(
+											in oklch,
+											var(--color-base-00)	80%,
+											oklch(85% 0.02 90)		20%
+											) ;
+	--metadata-background: 				oklch(93%	var(--OT-theme-c-surface)	var(--OT-themeLight-h));*/
+	--metadata-background: 				var(--background-primary-alt);
 	--metadata-border-color:			var(--color-base-30);		/*	le pourtour du tableau, quand “border-width” est plus que 0	*/
 	--metadata-border-radius:			7px;
-	--metadata-border-width:			1px;
-	--metadata-divider-color:			var(--color-base-30);		/*	le filet de séparation des différentes valeurs				*/
-	--metadata-divider-width:			1px;
-	--metadata-gap:						0rem;
+	--metadata-border-width:			0px;
+	--metadata-divider-color:			var(--metadata-background);		/*	pour faire disparaître le filet de séparation natif des différentes valeurs, mal aligné verticalement */
+	--metadata-gap:						0;
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
-	--metadata-input-height:			1rem;
-	--metadata-input-padding:			var(--size-2-1) var(--size-4-1) ;
+	--metadata-input-font-size:			var(--font-ui-small);
+	--metadata-input-height:			calc(var(--font-ui-small) * var(--line-height-tight));
+	--metadata-input-padding:			var(--size-1-1) var(--size-4-1);
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
+	--metadata-label-font-size:			var(--font-ui-small);
 	--metadata-label-font-weight:		var(--font-semibold);
 	--metadata-label-text-color:		var(--nav-item-color);
 	--metadata-label-width:				var(--OT-metadata-label-width);
-	--metadata-padding:					0;
-	--metadata-property-padding:		0em 0.2em 0em 0.1em;				/*	verticalement: compact; horizontalement: les lignes de séparation ne vont pas tout à fait jusqu’au bord de la boîte. Je trouve cela plus plaisant.	*/
-	--metadata-input-font-size:			var(--font-ui-small);
-	--metadata-label-font-size:			var(--font-ui-small);
+	--metadata-padding:					1;
+	--metadata-property-padding:		var(--size-2-1) var(--size-4-1);
 
 	--modal-height:		88vh;
 	--modal-max-height:	98vh;
@@ -732,7 +747,7 @@ body {
 	--pill-color-remove-hover:		var(--OT-color-on-accent-1);
 	--pill-color-remove:			var(--OT-pill-background);
 
-	--popover-font-size:			calc(var(--font-text-size) * 0.9);
+	--popover-font-size:			calc(var(--OT-readingMode-text-size) * 0.9);
 	--popover-height:				50vh;
 /*	--popover-max-height:			70vh;	*/
 	--popover-width:				46rem;
@@ -4904,11 +4919,11 @@ body.vertical-rythm-Bear {
 	margin-block-start: var(--OT-space-before-paragraph);
 	margin-block-end: var(--OT-space-after-paragraph);
 }
-
+/* règle « historique » qui a l’air parfaitement inutile aujourd’hui (2026-07-02)
 .markdown-rendered .markdown-preview-section .markdown-preview-pusher div:not(.mod-ui):first-child,
 .markdown-rendered .markdown-preview-section .mod-ui div:not(.mod-ui):first-child {
 	margin-bottom: calc(var(--OT-blanc-petit) - 0.12em);
-}
+}*/
 /*	------------------------- ↑ Rythme vertical ↑ -------------------------	*/
 
 /*══════════════════════════════════════════════════════════════════
@@ -6754,6 +6769,124 @@ body.OT-readingMode-natural-line-height {
 	background-color:	unset;
 }
 /* -------------------- ↑ Paper background -------------------- ↑ */
+
+/* ========================================================================== */
+/* OpSpl25a — Liens du document : internes, externes, unresolved, embeds      */
+/* ========================================================================== */
+
+/* ─────────────────────────────
+	1. Liens internes en mode lecture
+   ───────────────────────────── */
+
+.markdown-rendered .internal-link {
+	color:					var(--link-color);
+}
+
+.markdown-rendered .internal-link.is-unresolved {
+	color:					var(--link-unresolved-color);
+	opacity:				var(--link-unresolved-opacity);
+	filter:					var(--link-unresolved-filter);
+	text-decoration-style:	var(--link-unresolved-decoration-style);
+	text-decoration-color:	var(--link-unresolved-decoration-color);
+}
+
+/* ─────────────────────────────
+	2. Liens externes : icône et neutralisation du style natif
+   ───────────────────────────── */
+
+/* Icône 🔗 après les liens externes en mode lecture */
+.markdown-rendered .external-link::after {
+	content:				" 🔗";
+	display:				inline-block;
+	font-size:				0.8em;
+	line-height:			1;
+}
+
+/* Icône 🔗 en Live Preview (CM6) */
+.markdown-source-view.mod-cm6 .cm-link .cm-underline::after {
+	content:				" 🔗";
+	display:				inline-block;
+	font-size:				0.8em;
+	line-height:			1;
+}
+
+/* Désactive le background-image natif des liens externes */
+.external-link,
+.markdown-rendered .external-link,
+.metadata-property-value .external-link,
+.markdown-source-view.mod-cm6 .cm-link .cm-underline {
+	background-image:		none !important;
+	background-size:		0 !important;
+	padding-inline-end:		0 !important;
+}
+
+/* Optionnel : pas de soulignement supplémentaire en Live Preview */
+.markdown-source-view.mod-cm6 .cm-link .cm-underline {
+	text-decoration:		none;
+}
+
+/* Supprime le tiny icon span de CM6 (hmd-link-icon) */
+.cm-s-obsidian span.hmd-link-icon,
+.cm-s-obsidian span.hmd-link-icon::after {
+	width:					0 !important;
+	height:					0 !important;
+	opacity:				0 !important;
+	content:				"" !important;
+	background:				none !important;
+}
+
+/* ─────────────────────────────
+	3. Hover global des liens
+   ───────────────────────────── */
+
+@media (hover: hover) {
+	a:hover,
+	.external-link:hover,
+	.markdown-rendered .internal-link:hover,
+	.markdown-source-view.mod-cm6 .cm-link .cm-underline:hover,
+	.markdown-source-view.mod-cm6 .cm-url .cm-underline:hover,
+	.cm-s-obsidian span.cm-link:hover,
+	.cm-s-obsidian span.cm-hmd-internal-link:hover {
+		color:				var(--link-color-hover);
+		background-color:	var(--link-color);
+	}
+}
+
+/* ─────────────────────────────
+   4. Liens non résolus
+   ───────────────────────────── */
+
+@media (hover: hover) {
+	.metadata-container .internal-link.is-unresolved:hover,
+	.markdown-rendered .internal-link.is-unresolved:hover,
+	.markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
+		color:				var(--color-base-00);
+		background-color:	var(--link-unresolved-color);
+	}
+}
+
+/* ─────────────────────────────
+	5. Fichiers/embeds manquants
+   ───────────────────────────── */
+
+.file-embed.mod-empty-attachment,
+.file-embed.mod-generic,
+.file-embed.mod-empty {
+	color:					var(--color-base-00) !important;
+	background-color:		var(--link-unresolved-color);
+	margin-left:			25%;
+	margin-right:			25%;
+}
+
+@media (hover: hover) {
+	.file-embed.mod-empty-attachment:hover,
+	.file-embed.mod-generic:hover,
+	.file-embed.mod-empty:hover {
+		color:				var(--link-unresolved-color) !important;
+		background-color:	var(--color-base-00);
+	}
+}
+/*	-------------------- ↑ Document links ↑ --------------------  */
 
 
 /*	=== === === OpSpl26	—————————————————————————————— Tables —————————————————————————————— */
@@ -9292,11 +9425,11 @@ On lui donne donc le même rythme qu’à une image seule.
 /* -------------------------------------------------------------------------- */
 
 body {
-	--OT-h4-dot-offset: 0.8rem;
-	--OT-h4-dot-size: 0.26em;
+	--OT-h4-dot-offset: 0.8em;
+	--OT-h4-dot-size: 0.33em;
 	--OT-h4-dot-color: currentColor;
 	--OT-h4-dot-opacity: 0.35;
-	--OT-h4-LP-text-indent: 0.95rem;
+	--OT-h4-LP-text-indent: 0.95em;
 }
 .theme-dark {
 	--OT-h4-dot-opacity: 0.26;
@@ -9324,7 +9457,7 @@ body {
 .markdown-preview-section h4::before {
 	content: "";
 	position: absolute;
-	left: 0.05rem;
+	left: 0.05em;
 	top: 50%;
 	transform: translateY(-50%);
 	width: var(--OT-h4-dot-size);
@@ -9397,12 +9530,12 @@ body.headings-scaling-Bear {
 }
 
 body.headings-scaling-none {
-	--h1-size: var(--font-text-size);
-	--h2-size: var(--font-text-size);
-	--h3-size: var(--font-text-size);
-	--h4-size: var(--font-text-size);
-	--h5-size: var(--font-text-size);
-	--h6-size: var(--font-text-size);
+	--h1-size: var(--OT-readingMode-text-size);
+	--h2-size: var(--OT-readingMode-text-size);
+	--h3-size: var(--OT-readingMode-text-size);
+	--h4-size: var(--OT-readingMode-text-size);
+	--h5-size: var(--OT-readingMode-text-size);
+	--h6-size: var(--OT-readingMode-text-size);
 }
 
 body.headings-scaling-slight {
@@ -9986,8 +10119,8 @@ body.OT-sep-01 .markdown-source-view.mod-cm6:not(.sep-02):not(.sep-03):not(.sep-
 .markdown-preview-view .footnotes > hr,
 .view-content .markdown-rendered .footnotes > hr,
 .markdown-source-view.mod-cm6 .footnotes > hr {
-	margin-top:		var(--OT-blanc-grand);
-	margin-bottom:	var(--OT-blanc-mini);
+	margin-top:		var(--OT-blanc-large);
+	margin-bottom:	var(--OT-blanc-moyen);
 	border:			none;
 	height:			3px;
 	background:		linear-gradient(
@@ -11057,308 +11190,208 @@ body.lists-horiz-generous {
 /* -------------------- ↑ Status bar ↑ -------------------- */
 
 
-/*  === === === OpSpl51 —————————————————————————————— Metadata & links ——————————————————————————————  */
+/* === === === OpSpl51 ——————————————————————————————
+   Metadata & pills
+—————————————————————————————— */
 
-.metadata-property-key {
-	align-items: center;
-}
-.metadata-properties-title
-{
+.metadata-properties-title {
 	font-size:		var(--h4-size);
-	font-style: 	var(--h4-style);
+	font-style:		var(--h4-style);
 	font-weight:	var(--h4-weight);
 	color:			var(--h4-color);
 }
 
+.metadata-container {
+	margin-block-end: var(--OT-blanc-large);	/* annule les 2rem qu’il y a dans “app.css” */
+}
+
 
 /* ─────────────────────────────
-   1. Meta property icons
-   ───────────────────────────── */
+1. Structure & compacité
+───────────────────────────── */
+
+.metadata-property-key {
+	display:		flex;
+	align-items:	center;
+	gap:			0.35em;
+}
+
+.metadata-property-value {
+	padding-inline-start:	0.2em;
+}
 
 .metadata-input-longtext {
-	line-height: var(--line-height-tight);
+	line-height:	var(--line-height-tight);
 }
+
+.multi-select-pill-content {
+	margin-left:	0.5em;
+}
+
+/* pose d’une ligne discrète qui sépare les métadonnées tout en les laissant visuellement correctement alignées, verticalement */
+.metadata-property::after {
+	content:			"";
+	position:			absolute;
+	inset-inline:		0;
+	inset-block-end:	0;
+	border-bottom:		1px dotted var(--color-base-30);
+	pointer-events:		none;
+}
+
+/* redonner un peu d’espacement vertical dans le bloc de propriétés en haut des fiches */
+.metadata-container .metadata-property {
+	padding-block:		var(--size-2-1);
+	padding-inline:		var(--metadata-property-padding);
+}
+
+.metadata-container .metadata-show-source-button,
+.metadata-container .metadata-add-button {
+	margin-top:		0;
+}
+
+
+/* ─────────────────────────────
+2. Meta property icons
+───────────────────────────── */
 
 /* Icône indiquant le type de propriété dans le panneau des métadonnées */
 .metadata-property-icon {
 	color:			var(--OT-icon-color-metadata-property);
-	border-radius:	var(--button-radius);
+	border-radius:	var(--radius-s);
 }
 
-/* Petit espace après l’icône (pour respirer avant le label) */
-.metadata-property-icon::after {
-	content: "\200B";
-	width:   var(--size-4-1);
-}
-
-@media (hover: hover) {
-	.metadata-property-icon:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-	}
-
-	.metadata-property-icon:hover .svg-icon {
-    color: var(--OT-color-on-accent-1);
-	}
-
-	/* Icônes cliquables dans les valeurs (ex. “open file”) */
-	.metadata-property-value .clickable-icon:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-	}
-}
 
 /* ─────────────────────────────
-   2. Meta internal links & pills (dans les propriétés)
-   ───────────────────────────── */
+3. Meta internal links & pills
+───────────────────────────── */
 
 /* Liens internes dans les propriétés : palette de pills par défaut */
-.metadata-container .internal-link {
-	color:            var(--OT-pill-color);
-	background-color: var(--OT-pill-background);
+.metadata-container .internal-link,
+.metadata-container .metadata-property-value .internal-link {
+	color:				var(--OT-pill-color);
+	background-color:	var(--OT-pill-background);
 }
 
 /* Liens internes non résolus dans les propriétés */
-.metadata-container .internal-link.is-unresolved {
-	color:                 var(--link-unresolved-color);
-	opacity:               var(--link-unresolved-opacity);
-	filter:                var(--link-unresolved-filter);
-	text-decoration-style: var(--link-unresolved-decoration-style);
-	text-decoration-color: var(--link-unresolved-decoration-color);
-	background-color:      var(--color-accent-3);
+.metadata-container .internal-link.is-unresolved,
+.metadata-container .metadata-property-value .internal-link.is-unresolved,
+.markdown-rendered .internal-link.is-unresolved {
+	color:						var(--link-unresolved-color);
+	opacity:					var(--link-unresolved-opacity);
+	filter:						var(--link-unresolved-filter);
+	text-decoration-style:		var(--link-unresolved-decoration-style);
+	text-decoration-color:		var(--link-unresolved-decoration-color);
+	background-color:			var(--color-accent-3);
 }
 
 /* Pills multi-select (tags, aliases, listes, etc.) */
-.multi-select-pill {
-	color:            var(--OT-pill-color);
-	background-color: var(--OT-pill-background);
+.metadata-container .multi-select-pill {
+	color:				var(--OT-pill-color);
+	background-color:	var(--OT-pill-background);
 }
 
-.multi-select-pill-content {
-	margin-left: 0.6em;
-}
-
-/* Bouton de suppression suit la palette de pill */
+/* Bouton de suppression suit la palette de pill, mais reste invisible hors survol */
 .metadata-container .multi-select-pill-remove-button {
-	color: var(--pill-color-remove);
+	color:		var(--pill-color-remove);
+	opacity:	0;
 }
 
 /* Propriété “tags” : variables locales pour personnalisation future */
 .metadata-property[data-property-key="tags"] {
-	--pill-color:        var(--OT-pill-color);
-	--pill-background:   var(--OT-pill-background);
-	--pill-color-remove: var(--OT-pill-background);
+	--pill-color:				var(--OT-pill-color);
+	--pill-background:			var(--OT-pill-background);
+	--pill-color-remove:		var(--OT-pill-background);
 }
 
-/* Comportement hover dans les propriétés */
+
+/* ─────────────────────────────
+4. Hover states
+───────────────────────────── */
+
 @media (hover: hover) {
+
+	.metadata-property-icon:hover,
+	.metadata-property-value .clickable-icon:hover {
+		color:				var(--OT-color-on-accent-1);
+		background-color:	var(--color-accent-1);
+	}
+
+	.metadata-property-icon:hover .svg-icon {
+		color:	var(--OT-color-on-accent-1);
+	}
+
 	/* Hover sur la pill elle-même (résolue ou non) : palette de pill */
-	.multi-select-pill:hover {
-    --pill-color-remove: var(--pill-color-hover);
-    color:               var(--pill-color-hover);
-    background-color:    var(--pill-background-hover);
+	.metadata-container .multi-select-pill:hover {
+		--pill-color-remove:	var(--pill-color-hover);
+		color:					var(--pill-color-hover);
+		background-color:		var(--pill-background-hover);
 	}
 
 	/* Hover sur les liens internes dans les propriétés (y compris dans les pills) */
 	.metadata-container .internal-link:hover,
-	.metadata-property-value .internal-link:hover,
-	.multi-select-pill .internal-link:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-color);
+	.metadata-container .metadata-property-value .internal-link:hover,
+	.metadata-container .multi-select-pill .internal-link:hover {
+		color:				var(--link-color-hover);
+		background-color:	var(--link-color);
 	}
 
-	/* Hover sur liens internes non résolus (dans les propriétés / pills) */
+	/* Hover sur liens internes non résolus (dans les propriétés / pills + markdown) */
 	.metadata-container .internal-link.is-unresolved:hover,
-	.metadata-container .multi-select-pill .internal-link.is-unresolved:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-unresolved-color);
+	.metadata-container .metadata-property-value .internal-link.is-unresolved:hover,
+	.metadata-container .multi-select-pill .internal-link.is-unresolved:hover,
+	.markdown-rendered .internal-link.is-unresolved:hover {
+		color:				var(--link-color-hover);
+		background-color:	var(--link-unresolved-color);
+	}
+
+	/* Le bouton de suppression n’apparaît qu’au survol de la pill */
+	.metadata-container .multi-select-pill:hover .multi-select-pill-remove-button {
+		opacity:	1;
 	}
 
 	/* Hover sur bouton de suppression de pill */
 	.metadata-container .multi-select-pill-remove-button:hover {
-    color: var(--pill-color-remove-hover);
+		color:	var(--pill-color-remove-hover);
 	}
 }
 
-/* ── Renforcement de la palette pill dans les propriétés ─────────── */
 
-/* Re‑affirme la palette de pill pour les liens dans les valeurs de propriétés */
-.metadata-container .metadata-property-value .internal-link {
-	color:            var(--OT-pill-color);
-	background-color: var(--OT-pill-background);
-}
+/* ─────────────────────────────
+5. Final override : liens des propriétés
+   (renforcement face à app.css)
+───────────────────────────── */
 
-.metadata-container .metadata-property-value .internal-link.is-unresolved {
-	color:                 var(--link-unresolved-color);
-	opacity:               var(--link-unresolved-opacity);
-	filter:                var(--link-unresolved-filter);
-	text-decoration-style: var(--link-unresolved-decoration-style);
-	text-decoration-color: var(--link-unresolved-decoration-color);
-	background-color:      var(--color-accent-3);
-}
-
-@media (hover: hover) {
-	.metadata-container .metadata-property-value .internal-link:hover,
-	.metadata-container .multi-select-pill .internal-link:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-color);
-	}
-
-	.metadata-container .metadata-property-value .internal-link.is-unresolved:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-unresolved-color);
-	}
-}
-
-/* Final override : liens des propriétés (pour app.css) */
 .metadata-property-value .internal-link {
-	color:            var(--OT-pill-color);
-	background-color: var(--OT-pill-background);
+	color:				var(--OT-pill-color);
+	background-color:	var(--OT-pill-background);
 }
 
-/* Liens non résolus : propriétés + markdown */
 .metadata-property-value .internal-link.is-unresolved,
 .markdown-rendered .internal-link.is-unresolved {
-	color: var(--link-unresolved-color);
+	color:						var(--link-unresolved-color);
+	opacity:					var(--link-unresolved-opacity);
+	filter:						var(--link-unresolved-filter);
+	text-decoration-style:		var(--link-unresolved-decoration-style);
+	text-decoration-color:		var(--link-unresolved-decoration-color);
+	background-color:			var(--color-accent-3);
 }
 
 @media (hover: hover) {
+
 	/* Hover des liens des propriétés dans les pills multi-select */
 	.metadata-container .metadata-property-value .multi-select-pill .internal-link:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-color);
+		color:				var(--link-color-hover);
+		background-color:	var(--link-color);
 	}
 
 	/* Hover des liens non résolus (propriétés + markdown) */
 	.metadata-property-value .internal-link.is-unresolved:hover,
 	.markdown-rendered .internal-link.is-unresolved:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-unresolved-color) !important;
+		color:				var(--link-color-hover);
+		background-color:	var(--link-unresolved-color) !important;
 	}
 }
-
-/* ─────────────────────────────
-   3. Generic internal links (hors propriétés)
-   ───────────────────────────── */
-
-/* Liens internes en lecture (hors metadata) */
-.markdown-rendered .internal-link {
-	color: var(--link-color);
-}
-
-/* Liens internes non résolus en lecture */
-.markdown-rendered .internal-link.is-unresolved {
-	color:                 var(--link-unresolved-color);
-	opacity:               var(--link-unresolved-opacity);
-	filter:                var(--link-unresolved-filter);
-	text-decoration-style: var(--link-unresolved-decoration-style);
-	text-decoration-color: var(--link-unresolved-decoration-color);
-}
-
-@media (hover: hover) {
-	.markdown-rendered .internal-link:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-color);
-	}
-
-	.markdown-rendered .internal-link.is-unresolved:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-unresolved-color);
-	}
-}
-
-/* ─────────────────────────────
-   4. Generic links & hover (internal + external)
-   ───────────────────────────── */
-
-/* Icône 🔗 après les liens externes en mode lecture */
-.markdown-rendered .external-link::after {
-	content: " 🔗";         /* EN space + symbole lien */
-	display: inline-block;
-	font-size: 0.8em;
-	line-height: 1;
-}
-
-/* Icône 🔗 en Live Preview (CM6) */
-.markdown-source-view.mod-cm6 .cm-link .cm-underline::after {
-	content: " 🔗";
-	display: inline-block;
-	font-size: 0.8em;
-	line-height: 1;
-}
-
-/* Désactive le background natif des liens externes (lecture + metadata + éditeur) */
-.external-link,
-.markdown-rendered .external-link,
-.metadata-property-value .external-link,
-.markdown-source-view.mod-cm6 .cm-link .cm-underline {
-	background-image:    none !important;
-	background-size:     0 !important;
-	padding-inline-end:  0 !important;
-}
-
-/* Optionnel : pas de soulignement supplémentaire en Live Preview */
-.markdown-source-view.mod-cm6 .cm-link .cm-underline {
-	text-decoration: none;
-}
-
-/* Supprime le tiny icon span de CM6 (hmd-link-icon) */
-.cm-s-obsidian span.hmd-link-icon,
-.cm-s-obsidian span.hmd-link-icon::after {
-	width:    0 !important;
-	height:   0 !important;
-	opacity:  0 !important;
-	content:  "" !important;
-	background: none !important;
-}
-
-/* Hover global des liens (internes/externes, rendu + source) */
-@media (hover: hover) {
-	a:hover,
-	.external-link:hover,
-	.markdown-rendered .internal-link:hover,
-	.markdown-source-view.mod-cm6 .cm-link .cm-underline:hover,
-	.markdown-source-view.mod-cm6 .cm-url .cm-underline:hover,
-	.cm-s-obsidian span.cm-link:hover,
-	.cm-s-obsidian span.cm-hmd-internal-link:hover {
-    color:            var(--link-color-hover);
-    background-color: var(--link-color);
-	}
-}
-
-/* Hover des liens non résolus (rendu, source, propriétés) */
-@media (hover: hover) {
-	.metadata-container .internal-link.is-unresolved:hover,
-	.markdown-rendered .internal-link.is-unresolved:hover,
-	.markdown-source-view.mod-cm6 .is-unresolved .cm-underline:hover {
-    color:            white;
-    background-color: var(--link-unresolved-color);
-	}
-}
-
-/* ─────────────────────────────
-   5. “Missing file” embeds
-   ───────────────────────────── */
-
-/* Embed vers un fichier inexistant (image/attachment) */
-.file-embed.mod-empty-attachment,
-.file-embed.mod-generic,
-.file-embed.mod-empty {
-	color:            white !important;
-	background-color: var(--link-unresolved-color);
-	margin-left:      25%;
-	margin-right:     25%;
-}
-
-@media (hover: hover) {
-	.file-embed.mod-empty-attachment:hover,
-	.file-embed.mod-generic:hover,
-	.file-embed.mod-empty:hover {
-    color:            var(--link-unresolved-color) !important;
-    background-color: white;
-	}
-}
-
+/* -------------------- ↑ Metadata & pills ↑ -------------------- */
 
 
 /*  === === === OpSpl52 ————————————— file navigation (tree items, etc.) ————————————— */
@@ -11911,307 +11944,413 @@ body:is(.theme-light.OT-colored-headings-lightMode,
 /* -------------------- ↑ Headings in Edit mode ↑ -------------------- */
 
 
-/*  === === === OpSpl54 ———————————————————— Metadata Menu plugin ———————————————————— */
+/*	=== === === OpSpl54 ———————————————————— Metadata Menu plugin ———————————————————— */
 
-/* 1. Typo globale Metadata Menu */
+
+/*	1. Base plugin
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Note : ces métriques locales sont pensées comme une "mini-échelle UI" indépendante
+   du slider global de taille de police d'Obsidian. Elles servent de base à tous les
+   contrôles Metadata Menu (boutons, chips, add-ons). */
 .plugin-metadata-menu {
-	--text-faint: var(--OT-icon-color-metadata-property);
+	--text-faint:						var(--OT-icon-color-metadata-property);
+
+	/*	Métriques typographiques locales */
+	--OT-mm-font-size:					13px;	/* taille de base pour texte de contrôle */
+	--OT-mm-addon-size:					12px;	/* sous-texte léger, add-ons, infos secondaires */
+	--OT-mm-line-height:				16px;	/* line-height commune, assure l'alignement vertical */
+
+	/*	Métriques des boutons Metadata Menu */
+	--OT-mm-button-min-height:			20px;	/* hauteur "standard" dans la colonne centrale */
+	--OT-mm-button-min-height-side:		21px;	/* légère variation pour les splits latéraux */
+	--OT-mm-button-padding-inline:		6px;	/* padding horizontal commun aux boutons */
+
+	/*	Métriques des icônes (avant écrasement spécifique plus bas) */
+	--OT-mm-icon-box-width:				16px;
+	--OT-mm-icon-box-height:			16px;
+	--OT-mm-icon-scale:					1;
+	--OT-mm-icon-stroke-width:			1px;
+
+	/*	Métriques de la barre d’actions sous les propriétés */
+	--OT-mm-action-gap:					4px;	/* espace entre boutons d’action */
+	--OT-mm-action-padding-block:		1px;	/* padding vertical minimal pour compacité */
 }
 
-/* 2. Bouton principal dans les propriétés (icône dans les champs) */
+
+/*	2. Bouton principal dans les propriétés
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Bouton "Metadata Menu" dans les propriétés de document.
+   ATTENTION : ce bloc dépend fortement du DOM du plugin ; évite de fusionner ou
+   déplacer ces règles, la cascade avec le CSS du plugin est fragile. */
 .field-btn-container button.property-metadata-menu {
+	width:				17px;
+	min-width:			17px;
+	inline-size:		var(--OT-mm-icon-box-width);
+	min-inline-size:	var(--OT-mm-icon-box-width);
+
+	block-size:			var(--OT-mm-button-min-height);
+
 	display:			inline-flex;
-	align-items: 		center;
+	align-items:		center;
 	justify-content:	center;
-	color:         		var(--OT-color-on-accent-3);
-	background-color: 	transparent;
-	width:         		1.6em;
+
+	border-radius:		var(--radius-s);
+	padding:			0;
+	line-height:		1;
+
+	color:				var(--OT-color-on-accent-3);
+	background-color:	transparent;
 }
 
+
+/*	3. Hover du bouton principal
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Note : le media-query (hover: hover) permet de ne pas "polluer" le tactile
+   avec des états de hover qui ne seraient jamais vus sur iOS / iPadOS. */
 @media (hover: hover) {
 	.field-btn-container button.property-metadata-menu:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
+		color:							var(--OT-color-on-accent-1);
+		background-color:				var(--color-accent-1);
 	}
 }
-/* amélioration de la visibilité des icônes */
+
+
+/*	4. Icônes du bouton principal
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Métriques génériques des icônes dans le bouton.
+   Ces règles définissent la logique "théorique" basée sur les variables. */
 .field-btn-container button.property-metadata-menu .svg-icon {
-	transform: scale(1.3);        /* nettement plus grand */
-	transform-origin: center;
-	display: block;
-	width: 1.6em;                  /* élargir le bouton visuellement */
-	height: 1.4em;
-	stroke-width: 3px;           /* trait plus gras */
-	color: var(--OT-color-on-accent-3);  /* garde ta palette actuelle */
-	stroke: currentColor;
+	display:							block;
+	inline-size:						var(--OT-mm-icon-box-width);
+	block-size:							var(--OT-mm-icon-box-height);
+	transform:							scale(var(--OT-mm-icon-scale));
+	transform-origin:					center;
+	stroke-width:						var(--OT-mm-icon-stroke-width);
+	color:								var(--OT-color-on-accent-3);
+	stroke:								currentColor;
 }
 
+/*	Variante spécifique pour l'icône "triangle" (menu déroulant) */
+.field-btn-container button.property-metadata-menu .svg-icon.right-triangle {
+	transform:							scale(var(--OT-mm-icon-scale));
+	transform-origin:					center;
+	stroke-width:						var(--OT-mm-icon-stroke-width);
+}
+
+/*	ATTENTION : ce bloc écrase volontairement les métriques génériques ci-dessus
+   (width/height/transform/stroke-width). Il est nécessaire pour obtenir le rendu
+   actuel des icônes, cohérent avec le design global.
+   Ne pas déplacer ni fusionner ce bloc avec le précédent, sous peine de modifier
+   l'alignement ou l'épaisseur des traits. */
+.field-btn-container button.property-metadata-menu .svg-icon,
+.field-btn-container button.property-metadata-menu .svg-icon.right-triangle {
+	width:			17px;
+	height:			17px;
+	transform:		none;
+	stroke-width:	3px;
+}
+
+/*	Couleurs d'icône en hover : on suit la logique d'accent 1. */
 @media (hover: hover) {
-	.field-btn-container button.property-metadata-menu:hover .svg-icon {
-    color:  var(--OT-color-on-accent-1);
-    stroke: currentColor;
+	.field-btn-container button.property-metadata-menu:hover .svg-icon,
+	.field-btn-container button.property-metadata-menu:hover .svg-icon.right-triangle {
+		color:							var(--OT-color-on-accent-1);
+		stroke:							currentColor;
 	}
 }
-/* Chevron Metadata Menu : surcouche spécifique */
-.field-btn-container button.property-metadata-menu .svg-icon.right-triangle {
-	transform:			scale(1.3); /* agrandir le triangle lui-même */
-	transform-origin:	center;
-	stroke-width:		3px;
-}
 
-/* Optionnel : hover du chevron uniquement */
-.field-btn-container button.property-metadata-menu:hover .svg-icon.right-triangle {
-	color: var(--OT-color-on-accent-1);
-	stroke-width: 3px;
-}
 
-/* 3. Valeurs dans les modales / listes de valeurs */
+/*	5. Value containers — règles générales
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Note : les différentes combinaisons de .value-checked et .is-selected sont
+   délicates : ce sont des états posés par Metadata Menu lui-même.
+   L'ordre des règles ici doit rester tel quel pour conserver ta logique :
+
+   - état "checked + selected" : accent 2 (montrer la sélection)
+   - état "checked seul"      : accent 3 (montrer un marquage, mais plus discret)
+*/
 
 .value-container.value-checked,
 .value-container.value-checked.is-selected,
 .value-container.is-selected {
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
-}
-.value-container .item-with-add-on .add-on {
-	font-size: var(--font-ui-small);
+	color:								var(--OT-color-on-accent-2);
+	background-color:					var(--color-accent-2);
 }
 
-/* Hover sur un élément sélectionné = accent‑1 */
+.value-container.value-checked {
+	color:								var(--OT-color-on-accent-3);
+	background-color:					var(--color-accent-3);
+}
+
+/*	Add-on dans les value containers : réutilise la mini-échelle typographique
+   pour les sous-informations. */
+.value-container .item-with-add-on .add-on {
+	font-size:							var(--OT-mm-addon-size);
+	line-height:						var(--OT-mm-line-height);
+}
+
+/*	En hover sur un item sélectionné, tu appliques l'accent 1, en cohérence
+   avec ta logique générale des états : normal / hovered / active / active+hovered. */
 @media (hover: hover) {
 	.value-container.is-selected:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
+		color:							var(--OT-color-on-accent-1);
+		background-color:				var(--color-accent-1);
 	}
 }
 
-/* Override pour .value-checked seule (sans sélection) : revenir à accent‑3 */
-.value-container.value-checked {
-	color:            var(--OT-color-on-accent-3);
-	background-color: var(--color-accent-3);
+
+/*	6. Add property button
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Bouton “Add property” : inline, compact, sur accent 3. */
+.metadata-container .metadata-add-button {
+	display:							inline-flex;
+	align-items:						center;
+
+	min-block-size:						var(--OT-mm-button-min-height);
+	margin-top:							0;
+	padding:							0;
+
+	font-size:							var(--OT-mm-font-size);
+	line-height:						var(--OT-mm-line-height);
+
+	color:								var(--OT-button-text-normal);
+	background-color:					var(--color-accent-3);
 }
 
-/* 4. Bouton “Add property” dans le panneau de métadonnées */
-.metadata-container .metadata-add-button,
+/*	L’icône et le label reprennent couleur + background du bouton, pour garder
+   une surface unifiée. */
 .metadata-container .metadata-add-button .text-button-icon,
 .metadata-container .metadata-add-button .text-button-label {
-	color:            var(--OT-button-text-normal);
-	background-color: var(--color-accent-3);
-	margin-top:		0;
-	padding:			0;
+	color:								inherit;
+	background-color:					transparent;
+	line-height:						inherit;
 }
 
 @media (hover: hover) {
 	.metadata-container .metadata-add-button:hover {
-    color:            var(--OT-button-text-hover);
+		color:							var(--OT-color-on-accent-1);
+		background-color:				var(--color-accent-1);
 	}
+
 	.metadata-container .metadata-add-button:hover .text-button-icon,
 	.metadata-container .metadata-add-button:hover .text-button-label {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
+		color:								inherit;
+		background-color:					transparent;
 	}
 }
 
-/* 5. Boutons Metadata Menu dans les métadonnées note, vue preview */
+
+/*	7. Boutons Metadata Menu dans les métadonnées
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Note : ce bloc ajuste la marge verticale des "field-btn-container" dans les
+   différents contextes (source, preview, splits latéraux). */
 .markdown-source-view .metadata-container .field-btn-container,
-.markdown-preview-view .metadata-container .field-btn-container {
-	/* on garde la compacité horizontale, mais on laisse plus de vertical */
-	/*padding-block: 0.15rem;*/
-	margin-block: 0;
-}
-
-.markdown-source-view .metadata-container .field-btn-container button,
-.markdown-preview-view .metadata-container .field-btn-container button {
-	/* utiliser la hauteur d’input comme garde-fou minimal */
-	min-height:		var(--input-height);
-	height:			auto;
-	padding-inline:	0.35rem;
-	/* laisser la line-height suivre la police plutôt que 1 strict */
-	line-height:		normal;
-	display:			inline-flex;
-	align-items:		center;
-	justify-content:	center;
-}
-
-/* Boutons Metadata Menu dans la sidebar version légèrement plus haute */
+.markdown-preview-view .metadata-container .field-btn-container,
 .workspace-split.mod-left-split .metadata-container .field-btn-container,
 .workspace-split.mod-right-split .metadata-container .field-btn-container {
-	/*padding-block: 0.2rem;*/
-	margin-block: 0;
+	margin-block:						0;
+}
+
+/*	Boutons dans les containers : même logique typographique pour tous les contextes. */
+.markdown-source-view .metadata-container .field-btn-container button,
+.markdown-preview-view .metadata-container .field-btn-container button,
+.workspace-split.mod-left-split .metadata-container .field-btn-container button,
+.workspace-split.mod-right-split .metadata-container .field-btn-container button {
+	height:								auto;
+	display:							inline-flex;
+	align-items:						center;
+	justify-content:					center;
+	line-height:						var(--OT-mm-line-height);
+	font-size:							var(--OT-mm-font-size);
+}
+
+/*	Différenciation "centre" vs "splits" via min-height, mais même padding horizontal. */
+.markdown-source-view .metadata-container .field-btn-container button,
+.markdown-preview-view .metadata-container .field-btn-container button {
+	min-height:							var(--OT-mm-button-min-height);
+	padding-inline:						var(--OT-mm-button-padding-inline);
 }
 
 .workspace-split.mod-left-split .metadata-container .field-btn-container button,
 .workspace-split.mod-right-split .metadata-container .field-btn-container button {
-	min-height: calc(var(--input-height) * 1.05);
-	height: auto;
-	/*padding-inline: 0.4rem;*/
-	line-height: normal;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
+	min-height:							var(--OT-mm-button-min-height-side);
+	padding-inline:						var(--OT-mm-button-padding-inline);
 }
 
-/* 6. Barre d’actions sous les propriétés (Add field, fileclass, etc.) */
 
+/*	8. Barre d’actions sous les propriétés
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Barre d’actions : alignement horizontal + gap localisé par --OT-mm-action-gap. */
 .metadata-content .action-container {
-	display:        flex;
-	align-items:    center;
-	gap:           0.25rem;
-	padding-top:    0;
-	padding-bottom: 0;
-	/*line-height:    1em;*/
+	display:							flex;
+	align-items:						center;
+	gap:								var(--OT-mm-action-gap);
+	padding-top:						0;
+	padding-bottom:						0;
 }
 
-/* Conteneur de bouton fileclass = flex horizontal */
 .metadata-content .action-container .fileclass-btn-container {
-	display:     flex;
-	align-items: center;
+	display:							flex;
+	align-items:						center;
 }
 
+/*	Boutons FileClass : même échelle typographique locale. */
 .metadata-content .action-container .fileclass-btn-container button {
-	margin:        0;
-	padding-block: 0.05rem;
+	margin:								0;
+	padding-block:						var(--OT-mm-action-padding-block);
+	font-size:							var(--OT-mm-font-size);
+	line-height:						var(--OT-mm-line-height);
 }
 
-/* Bouton “Add field” (fileclass) */
+/*	Bouton “add-field” sur accent 3, en cohérence avec "Add property". */
 .metadata-content .action-container .fileclass-btn-container .add-field-button {
-	color:            var(--OT-color-on-accent-3);
-	background-color: var(--color-accent-3);
+	color:								var(--OT-color-on-accent-3);
+	background-color:					var(--color-accent-3);
 }
 
 @media (hover: hover) {
 	.metadata-content .action-container .fileclass-btn-container .add-field-button:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
+		color:							var(--OT-color-on-accent-1);
+		background-color:				var(--color-accent-1);
 	}
 }
 
-/* 7. Chips dans les vues fileclass (pills) */
 
+/*	9. Chips dans les vues fileclass
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Chips de FileClass : mêmes métriques que les autres contrôles Metadata Menu. */
 .metadata-menu.fileclass-view .fv-settings .settings-container .action .items .item.chip,
 .metadata-menu.fileclass-codeblock-view .fv-settings .settings-container .action .items .item.chip {
-	color:            var(--OT-pill-color);
-	background-color: var(--OT-pill-background);
+	color:								var(--OT-pill-color);
+	background-color:					var(--OT-pill-background);
+	font-size:							var(--OT-mm-font-size);
+	line-height:						var(--OT-mm-line-height);
 }
 
+/*	En hover, tu passes en logique accent 1 pour signaler l'interactivité. */
 @media (hover: hover) {
 	.metadata-menu.fileclass-view .fv-settings .settings-container .action .items .item.chip:hover,
-	.metadata-menu.fileclass-codeblock-view .fv-settings .settings-container .action .items .item.chip:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
-	}
-
+	.metadata-menu.fileclass-codeblock-view .fv-settings .settings-container .action .items .item.chip:hover,
 	.metadata-menu.fileclass-view .fv-settings .settings-container .action .items .item.chip .item-remove:hover,
 	.metadata-menu.fileclass-codeblock-view .fv-settings .settings-container .action .items .item.chip .item-remove:hover {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
+		color:							var(--OT-color-on-accent-1);
+		background-color:				var(--color-accent-1);
 	}
 }
 
-/* 8. Status bar: Metadata Menu item */
 
+/*	10. Status bar
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Icone de status Metadata Menu dans la status bar :
+   tu relies directement couleur et fond à accent 2 pour marquer l’état. */
 .plugin-metadata-menu .status-item-btn .sync-status-icon .svg-icon {
-	stroke:           var(--OT-color-on-accent-2);
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
+	stroke:								var(--OT-color-on-accent-2);
+	color:								var(--OT-color-on-accent-2);
+	background-color:					var(--color-accent-2);
+	inline-size:						16px;
+	block-size:							16px;
 }
 
 .plugin-metadata-menu .status-item-btn .sync-status-icon.indexed .check-mark {
-	stroke: var(--status-bar-text-color);
+	stroke:								var(--status-bar-text-color);
 }
 
+/*	En hover : logique accent 1, tout en conservant le stroke du check-mark. */
 @media (hover: hover) {
 	.status-bar-item.plugin-metadata-menu:hover,
 	.status-bar-item.plugin-metadata-menu:hover .status-item-btn,
 	.status-bar-item.plugin-metadata-menu:hover .svg-icon {
-    color:            var(--OT-color-on-accent-1);
-    stroke:           var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
+		color:							var(--OT-color-on-accent-1);
+		stroke:							var(--OT-color-on-accent-1);
+		background-color:				var(--color-accent-1);
 	}
 
 	.status-bar-item.plugin-metadata-menu:hover .check-mark {
-    stroke: var(--OT-color-on-accent-1) !important;
+		stroke:							var(--OT-color-on-accent-1) !important;
 	}
 }
 
-/* 9. Footer des modales Metadata Menu */
 
+/*	11. Footer des modales
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	Note : infos de footer en style "addon" (petite taille, ligne commune). */
 .metadata-menu.modal-container .footer-actions .info {
-	color:      var(--text-muted);
-	font-size:  var(--font-ui-small);
-	font-style: normal;
+	color:								var(--text-muted);
+	font-size:							var(--OT-mm-addon-size);
+	line-height:						var(--OT-mm-line-height);
+	font-style:							normal;
 }
 
-/* SECTION : Metadata Menu – value-container dans les modales */
+
+/*	12. Value containers dans les modales
+	———————————————————————————————————————————————————————————————————————————— */
+
+/*	ATTENTION : bloc très dépendant du DOM Metadata Menu pour les suggestions.
+   À ne pas réorganiser sans test visuel, car il interagit avec des règles
+   génériques du plugin sur .suggestion-item. */
 .metadata-menu.modal-container {
 	.suggestion-item.value-container {
-    /* mode normal */
-    background-color: transparent;
-    color: var(--text-normal);
+		font-size:						var(--OT-mm-font-size);
+		line-height:					var(--OT-mm-line-height);
+		background-color:				transparent;
+		color:							var(--text-normal);
 
-    .item-with-add-on {
-      display: flex;
-      flex-direction: column;
-    }
+		.item-with-add-on {
+			display:					flex;
+			flex-direction:				column;
+		}
 
-    /* texte principal */
-    > .item-with-add-on > div:first-child {
-      color: var(--text-normal);
-    }
+		> .item-with-add-on > div:first-child {
+			color:						var(--text-normal);
+		}
 
-    /* add-on = texte muted */
-    > .item-with-add-on > .add-on {
-      color: var(--OT-nav-item-muted);
-    }
+		> .item-with-add-on > .add-on {
+			color:						var(--OT-nav-item-muted);
+			font-size:					var(--OT-mm-addon-size);
+			line-height:				var(--OT-mm-line-height);
+		}
 
-    /* mode active (sélectionnée) */
-    &.is-selected {
-      background-color: var(--color-accent-2);
-      color: var(--OT-color-on-accent-2);
+		&.is-selected {
+			color:						var(--OT-color-on-accent-2);
+			background-color:			var(--color-accent-2);
 
-      > .item-with-add-on > div:first-child {
-        color: var(--OT-color-on-accent-2);
-      }
+			> .item-with-add-on > div:first-child {
+				color:					var(--OT-color-on-accent-2);
+			}
 
-      > .item-with-add-on > .add-on {
-        color: var(--OT-color-muted-on-accent-2);
-      }
-    }
+			> .item-with-add-on > .add-on {
+				color:					var(--OT-color-muted-on-accent-2);
+			}
+		}
 
-    /* active + hovered */
-    @media (hover: hover) {
-      &.is-selected:hover {
-        background-color: var(--color-accent-1);
-        color: var(--OT-color-on-accent-1);
+		@media (hover: hover) {
+			&.is-selected:hover,
+			&:not(.is-selected):hover {
+				color:					var(--OT-color-on-accent-1);
+				background-color:		var(--color-accent-1);
 
-        > .item-with-add-on > div:first-child {
-          color: var(--OT-color-on-accent-1);
-        }
+				> .item-with-add-on > div:first-child {
+					color:				var(--OT-color-on-accent-1);
+				}
 
-        > .item-with-add-on > .add-on {
-          color: var(--OT-color-muted-on-accent-1);
-        }
-      }
-
-      /* normal + hovered */
-      &:not(.is-selected):hover {
-        background-color: var(--color-accent-1);
-        color: var(--OT-color-on-accent-1);
-
-        > .item-with-add-on > div:first-child {
-          color: var(--OT-color-on-accent-1);
-        }
-
-        > .item-with-add-on > .add-on {
-          color: var(--OT-color-muted-on-accent-1);
-        }
-      }
-    }
+				> .item-with-add-on > .add-on {
+					color:				var(--OT-color-muted-on-accent-1);
+				}
+			}
+		}
 	}
 }
-
-
-/* -------------------- ↑ Metadata Menu plugin ↑ -------------------- */
 
 
 /*	=== === === OpSpl55	—————————————————————————————— Canvas —————————————————————————————— */
@@ -12433,7 +12572,7 @@ kbd {
 
 /*	=== === === OpSpl59	———————————————————— Empty pane	———————————————————— */
 .empty-state-action-list {
-	font-size:		var(--font-text-size);
+	font-size:		var(--OT-readingMode-text-size);
 	line-height:	var(--line-height-tight);
 	color:			var(--text-muted);
 	margin-top:		1.5em;
@@ -16949,12 +17088,14 @@ settings:
 			disableIF:
 				- OT-readingMode-natural-line-height
 	-
-			id:			OT-line-width-reading
-			title:		Line length [rem]
-			title.fr:	Longueur de la ligne [rem]
+			id:			OT-readingMode-measure
+			title:		Line length [ch]
+			title.fr:	Longueur de ligne [ch]
+			description:	Approximate number of characters per line in Reading mode.
+			description.fr:	Nombre approximatif de caractères par ligne en mode Lecture.
 			type:		variable-number
-			default:	44
-			format:		rem
+			default:	68
+			format:		ch
 	-
 			id:				OT-readingMode-tableText-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
@@ -17283,14 +17424,14 @@ settings:
 			default:	1.5
 			format:		em
 	-
-			id:				OT-line-width-editing
-			title:			Line length [rem]
-			title.fr:		Longueur de la ligne [rem]
-			description:	By default, you get longer lines than plain Obsidian.
-			description.fr:	Par défaut, une valeur un peu plus généreuse que le « défaut » d’Obsidian.
-			type:			variable-number
-			default:		44
-			format:			rem
+			id:			OT-editing-measure
+			title:		Line length [ch]
+			title.fr:	Longueur de ligne [ch]
+			description:	Approximate number of characters per line in Editing mode.
+			description.fr:	Nombre approximatif de caractères par ligne en mode Écriture.
+			type:		variable-number
+			default:	74
+			format:		ch
 	-
 			id:				OT-edit-table-text-percent
 			title:			Size of the text in table cells (% of body text size). 100 = same size
