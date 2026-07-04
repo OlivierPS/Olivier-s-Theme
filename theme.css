@@ -51,6 +51,10 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-04
+	- changed units for kanban lane widths (⭢ em)
+	- added code to improve the appearance of the Vault Spotlight plugin modal
+	- new values and new option for the vertical rythm
 2026-07-03
 	- rendered the theme immune to the “Font size” slider in Appearance
 	- improved the appearance of Properties
@@ -170,6 +174,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl74		Smart Connections plugin
 			OpSpl75		Notebook Navigator plugin
 			OpSpl76		Different plugins: Repeat, Folder Note
+			OpSpl76a	Vault Spotlight plugin
 			OpSpl77		Viewing modes icons
 			OpSpl78		Style Settings plugin
 
@@ -432,7 +437,7 @@ body {
 
 	--OT-kanban-font:								"Uberhand Pro";
 	--OT-kanban-font-size:							17px;
-	--OT-kanban-lane-width:							20rem;
+	--OT-kanban-lane-width:							16em;
 	--OT-kbd-background:							floralwhite;
 	--OT-kbd:										var(--color-base-100);
 	--OT-menu-text-color:							var(--nav-item-color);
@@ -772,7 +777,7 @@ body {
 
 	--tab-container-background:		var(--color-base-05);
 
-	--tab-divider-color:			var(--color-accent-2);
+	/*--tab-divider-color:			var(--color-accent-2);*/
 	--tab-divider-color:			var(--color-base-30);
 
 	--tab-stacked-text-transform:	rotate(180deg);
@@ -848,10 +853,10 @@ body {
 	--color-base-20:	oklch(0.960		var(--OT-theme-c-surface)					var(--OT-themeLight-h));
 
 	/* Paliers structurels : cartes, panneaux, headers, lignes de table */
-	--color-base-25:	oklch(0.890 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
-	--color-base-30:	oklch(0.850 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
-	--color-base-35:	oklch(0.790 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
-	--color-base-40:	oklch(0.700 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
+	--color-base-25:	oklch(0.89 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
+	--color-base-30:	oklch(0.85 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
+	--color-base-35:	oklch(0.79 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
+	--color-base-40:	oklch(0.70 var(--OT-theme-c-structure)		var(--OT-themeLight-h));
 
 	--color-base-100:	oklch(0.300	var(--OT-theme-c-text)		var(--OT-themeLight-h));
 
@@ -1207,7 +1212,7 @@ body {
 	--color-base-05:	oklch(0.92	var(--OT-themeLight-c)				var(--OT-themeLight-h));
 	--color-base-10:	oklch(0.96	var(--OT-themeLight-c)				var(--OT-themeLight-h));
 	--color-base-20:	oklch(0.95	var(--OT-themeLight-c)				var(--OT-themeLight-h));
-	--color-base-30:	oklch(0.90	calc(var(--OT-themeLight-c) * 1.3)	var(--OT-themeLight-h));
+	--color-base-30:	oklch(0.80	calc(var(--OT-themeLight-c) * 1.5)	var(--OT-themeLight-h));
 	--color-base-40:	oklch(0.88	calc(var(--OT-themeLight-c) * 2.5)	var(--OT-themeLight-h));
 	--color-base-100:	oklch(0.50	calc(var(--OT-themeLight-c) * 2.0)	var(--OT-themeLight-h));
 
@@ -4755,7 +4760,6 @@ body:not(.is-focused) {
 
 /* -------------------------------------------------------------------------- */
 /* 0. Base defaults                                                           */
-/* -------------------------------------------------------------------------- */
 
 body {
 	--OT-blanc-mini:  calc(0.16 * var(--OT-readingMode-line-height));
@@ -4790,14 +4794,13 @@ body {
 
 /* -------------------------------------------------------------------------- */
 /* 1. Tight                                                                   */
-/* -------------------------------------------------------------------------- */
 
 body.vertical-rythm-tight {
 	--OT-blanc-mini:  calc(0.10 * var(--OT-readingMode-line-height));
 	--OT-blanc-petit: calc(0.20 * var(--OT-readingMode-line-height));
-	--OT-blanc-moyen: calc(1.45 * var(--OT-blanc-petit));
-	--OT-blanc-grand: calc(1.45 * var(--OT-blanc-moyen));
-	--OT-blanc-large: calc(1.45 * var(--OT-blanc-grand));
+	--OT-blanc-moyen: calc(1.50 * var(--OT-blanc-petit));
+	--OT-blanc-grand: calc(1.50 * var(--OT-blanc-moyen));
+	--OT-blanc-large: calc(1.50 * var(--OT-blanc-grand));
 
 	--OT-space-above-h1: var(--OT-blanc-large);
 	--OT-space-below-h1: var(--OT-blanc-moyen);
@@ -4820,11 +4823,10 @@ body.vertical-rythm-tight {
 
 /* -------------------------------------------------------------------------- */
 /* 2. Normal                                                                  */
-/* -------------------------------------------------------------------------- */
 
 body.vertical-rythm-normal {
-	--OT-blanc-mini:  calc(0.16 * var(--OT-readingMode-line-height));
-	--OT-blanc-petit: calc(0.32 * var(--OT-readingMode-line-height));
+	--OT-blanc-mini:  calc(0.14 * var(--OT-readingMode-line-height));
+	--OT-blanc-petit: calc(0.28 * var(--OT-readingMode-line-height));
 	--OT-blanc-moyen: calc(1.618 * var(--OT-blanc-petit));
 	--OT-blanc-grand: calc(1.618 * var(--OT-blanc-moyen));
 	--OT-blanc-large: calc(1.618 * var(--OT-blanc-grand));
@@ -4848,16 +4850,44 @@ body.vertical-rythm-normal {
 	--OT-space-below-h6: 0;
 }
 
-/* -------------------------------------------------------------------------- */
 /* 3. Generous                                                                */
 /* -------------------------------------------------------------------------- */
 
 body.vertical-rythm-generous {
-	--OT-blanc-mini:  calc(0.24 * var(--OT-readingMode-line-height));
-	--OT-blanc-petit: calc(0.62 * var(--OT-readingMode-line-height));
-	--OT-blanc-moyen: calc(1.62 * var(--OT-blanc-petit));
-	--OT-blanc-grand: calc(1.62 * var(--OT-blanc-moyen));
-	--OT-blanc-large: calc(1.62 * var(--OT-blanc-grand));
+	--OT-blanc-mini:  calc(0.22 * var(--OT-readingMode-line-height));
+	--OT-blanc-petit: calc(0.44 * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen: calc(1.618 * var(--OT-blanc-petit));
+	--OT-blanc-grand: calc(1.618 * var(--OT-blanc-moyen));
+	--OT-blanc-large: calc(1.618 * var(--OT-blanc-grand));
+
+	--OT-space-above-h1: var(--OT-blanc-large);
+	--OT-space-below-h1: var(--OT-blanc-moyen);
+
+	--OT-space-above-h2: var(--OT-blanc-grand);
+	--OT-space-below-h2: var(--OT-blanc-moyen);
+
+	--OT-space-above-h3: var(--OT-blanc-grand);
+	--OT-space-below-h3: var(--OT-blanc-petit);
+
+	--OT-space-above-h4: var(--OT-blanc-moyen);
+	--OT-space-below-h4: var(--OT-blanc-mini);
+
+	--OT-space-above-h5: var(--OT-blanc-moyen);
+	--OT-space-below-h5: 0;
+
+	--OT-space-above-h6: var(--OT-blanc-moyen);
+	--OT-space-below-h6: 0;
+}
+
+/* 4. Very generous                                                                */
+/* -------------------------------------------------------------------------- */
+
+body.vertical-rythm-very-generous {
+	--OT-blanc-mini:  calc(0.32 * var(--OT-readingMode-line-height));
+	--OT-blanc-petit: calc(0.64 * var(--OT-readingMode-line-height));
+	--OT-blanc-moyen: calc(1.618 * var(--OT-blanc-petit));
+	--OT-blanc-grand: calc(1.618 * var(--OT-blanc-moyen));
+	--OT-blanc-large: calc(1.618 * var(--OT-blanc-grand));
 
 	--OT-space-above-h1: var(--OT-blanc-large);
 	--OT-space-below-h1: var(--OT-blanc-moyen);
@@ -4869,7 +4899,7 @@ body.vertical-rythm-generous {
 	--OT-space-below-h3: var(--OT-blanc-petit);
 
 	--OT-space-above-h4: var(--OT-blanc-grand);
-	--OT-space-below-h4: var(--OT-blanc-mini);
+	--OT-space-below-h4: var(--OT-blanc-petit);
 
 	--OT-space-above-h5: var(--OT-blanc-moyen);
 	--OT-space-below-h5: 0;
@@ -4878,8 +4908,7 @@ body.vertical-rythm-generous {
 	--OT-space-below-h6: 0;
 }
 
-/* -------------------------------------------------------------------------- */
-/* 4. Bear                                                                    */
+/* 5. Bear                                                                    */
 /* -------------------------------------------------------------------------- */
 
 body.vertical-rythm-Bear {
@@ -15048,15 +15077,66 @@ body {
 
 /* “Plugin Update Tracker” plugin — size of the pill indicator */
 .jzhQyS,
-.jixyFt {
-	font-size:	1em	!important;
-    left: 		0.08em						!important;
-    width:		0.8em						!important;
-    height:		0.8em						!important;
-    padding:	0.3em						!important;
+.jixyFt,
+.eJxoMP {
+	font-size:	0.9em	!important;
+    left: 		0.08em	!important;
+    width:		0.8em	!important;
+    height:		0.8em	!important;
+    padding:	0.3em	!important;
 }
-
 /* —————————————————————————————— ↑ different plugins ↑  —————————————————————————————— */
+
+/*  === === === OpSpl76  ——————————————————— Vault Spotlight plugin  ——————————————————— */
+.vault-spotlight-modal {
+	--vs-fz-badge:	calc(var(--font-ui-smaller) * 0.8);	/* 10px; */
+	--vs-fz-meta:	var(--font-ui-small);				/* 12px; */
+	--vs-fz-title:	var(--font-ui-medium);				/* 14px; */
+	--vs-fz-input:	var(--font-ui-medium);				/* 15px; */
+}
+.modal-container.vault-spotlight-container .modal {
+  width: clamp(680px, 50vw, 1000px);
+  max-width: calc(100vw - 24px);
+}
+.vault-spotlight-modal {
+	height:			84dvh;
+	min-height:		560px;
+	max-height:		calc(100dvh - 24px);
+}
+.vault-spotlight-hint {
+	font-size:		var(--font-ui-small);	/* 11px; */
+}
+.vault-spotlight-hint code,
+.vault-spotlight-footer kbd {
+	font-size:		var(--font-ui-small);	/* 10px; */
+}
+.vault-spotlight-starred-row button {
+	font-size:	var(--font-ui-smallest);	/* 11px; */
+}
+.vault-spotlight-item-time {
+	font-size:	var(--font-ui-smallest);	/* 11px; */
+}
+.vault-spotlight-footer {
+	font-size:	var(--font-ui-smallest);	/* 11px; */
+}
+.vault-spotlight-status {
+	font-size:	var(--font-ui-smallest);	/* 11px; */
+}
+.vault-spotlight-preview-body {
+	font-size:	var(--font-ui-medium);	/* 13px; */
+}
+.vault-spotlight-preview-empty {
+	font-size:	var(--font-ui-small);	/* 13px; */
+}
+.vault-spotlight-item-badge {
+	color:		var(--OT-color-on-accent-2);
+	background:	var(--color-accent-2);
+}
+.vault-spotlight-input-wrap input {
+	padding-left:	var(--size-4-2);
+}
+/* —————————————————————————————— ↑ Vault Spotlight plugin ↑  —————————————————————————————— */
+
 
 
 /*  === === === OpSpl77  ——————————————————— Viewing modes icons  ——————————————————— */
@@ -15732,6 +15812,10 @@ settings:
 				label.fr:	"Aéré"
 				value:		vertical-rythm-generous
 			-
+				label:		"Very generous"
+				label.fr:	"Très aéré"
+				value:		vertical-rythm-very-generous
+			-
 				label:		"Bear"
 				value:		vertical-rythm-Bear
 
@@ -15968,11 +16052,11 @@ settings:
 
 	-
 			id:			"OT-kanban-lane-width"
-			title:		"Kanbans: width of the lanes [rem]"
-			title.fr:	"Kanbans: largeur des colonnes [rem]"
+			title:		"Kanbans: width of the lanes [em]"
+			title.fr:	"Kanbans: largeur des colonnes [em]"
 			type:		variable-number
-			default:	20
-			format:		rem
+			default:	16
+			format:		em
 
 
 	# ===================
