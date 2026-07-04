@@ -55,6 +55,7 @@ Post‑release tweaks
 	- changed units for kanban lane widths (⭢ em)
 	- added code to improve the appearance of the Vault Spotlight plugin modal
 	- new values and new option for the vertical rythm
+	- tiny glitches…
 2026-07-03
 	- rendered the theme immune to the “Font size” slider in Appearance
 	- improved the appearance of Properties
@@ -15087,7 +15088,7 @@ body {
 }
 /* —————————————————————————————— ↑ different plugins ↑  —————————————————————————————— */
 
-/*  === === === OpSpl76  ——————————————————— Vault Spotlight plugin  ——————————————————— */
+/*  === === === OpSpl76a  ——————————————————— Vault Spotlight plugin  ——————————————————— */
 .vault-spotlight-modal {
 	--vs-fz-badge:	calc(var(--font-ui-smaller) * 0.8);	/* 10px; */
 	--vs-fz-meta:	var(--font-ui-small);				/* 12px; */
@@ -15111,16 +15112,16 @@ body {
 	font-size:		var(--font-ui-small);	/* 10px; */
 }
 .vault-spotlight-starred-row button {
-	font-size:	var(--font-ui-smallest);	/* 11px; */
+	font-size:	var(--font-ui-smaller);	/* 11px; */
 }
 .vault-spotlight-item-time {
-	font-size:	var(--font-ui-smallest);	/* 11px; */
+	font-size:	var(--font-ui-smaller);	/* 11px; */
 }
 .vault-spotlight-footer {
-	font-size:	var(--font-ui-smallest);	/* 11px; */
+	font-size:	var(--font-ui-smaller);	/* 11px; */
 }
 .vault-spotlight-status {
-	font-size:	var(--font-ui-smallest);	/* 11px; */
+	font-size:	var(--font-ui-smaller);	/* 11px; */
 }
 .vault-spotlight-preview-body {
 	font-size:	var(--font-ui-medium);	/* 13px; */
