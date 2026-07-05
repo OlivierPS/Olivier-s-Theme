@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-05
+	- small tweaks for Vault Spotlight plugin
 2026-07-04
 	- changed units for kanban lane widths (⭢ em)
 	- added code to improve the appearance of the Vault Spotlight plugin modal
@@ -505,7 +507,7 @@ body {
 	--OT-table-raw-separator-color:					var(--OT-syntax-markers);
 	--OT-tab-background-active-hover:				var(--color-accent-1);
 
-	--OT-themeLight-chromaHundredth:				40;		/* les valeurs de base pour la couleur du thème */
+	--OT-themeLight-chromaHundredth:				50;		/* les valeurs de base pour la couleur du thème */
 	--OT-themeLight-h:								64;
 
 	--OT-tree-item-flair-background:				var(--color-base-20);
@@ -15090,10 +15092,18 @@ body {
 
 /*  === === === OpSpl76a  ——————————————————— Vault Spotlight plugin  ——————————————————— */
 .vault-spotlight-modal {
-	--vs-fz-badge:	calc(var(--font-ui-smaller) * 0.8);	/* 10px; */
-	--vs-fz-meta:	var(--font-ui-small);				/* 12px; */
-	--vs-fz-title:	var(--font-ui-medium);				/* 14px; */
-	--vs-fz-input:	var(--font-ui-medium);				/* 15px; */
+	--vs-fz-badge:		calc(var(--font-ui-smaller) * 0.8);	/* 10px; */
+	--vs-fz-meta:		var(--font-ui-small);				/* 12px; */
+	--vs-fz-title:		var(--font-ui-medium);				/* 14px; */
+	--vs-fz-input:		var(--font-ui-medium);				/* 15px; */
+	--vs-highlight-bg:	color-mix(in oklch, var(--color-accent-2) 50%, var(--color-accent-1));
+	--vs-selected-bg:	color-mix(in oklch, var(--color-accent-2) 80%, var(--background-primary));
+	--vs-hover-bg:		color-mix(in oklch, var(--color-accent-1) 30%, transparent);
+}
+.theme-dark .vault-spotlight-modal {
+	--vs-highlight-bg:	color-mix(in oklch, var(--color-accent-2) 90%, var(--color-accent-1));
+	--vs-selected-bg:	color-mix(in oklch, var(--color-accent-2) 20%, var(--background-primary));
+	--vs-hover-bg:		color-mix(in oklch, var(--color-accent-1) 30%, transparent);
 }
 .modal-container.vault-spotlight-container .modal {
   width: clamp(680px, 50vw, 1000px);
@@ -15105,11 +15115,12 @@ body {
 	max-height:		calc(100dvh - 24px);
 }
 .vault-spotlight-hint {
-	font-size:		var(--font-ui-small);	/* 11px; */
+	font-size:	var(--font-ui-smaller);	/* 11px; */
+	/*color:		var(--OT-nav-item-muted);*/
 }
 .vault-spotlight-hint code,
 .vault-spotlight-footer kbd {
-	font-size:		var(--font-ui-small);	/* 10px; */
+	font-size:		var(--font-ui-smaller);	/* 10px; */
 }
 .vault-spotlight-starred-row button {
 	font-size:	var(--font-ui-smaller);	/* 11px; */
@@ -15119,22 +15130,41 @@ body {
 }
 .vault-spotlight-footer {
 	font-size:	var(--font-ui-smaller);	/* 11px; */
+	color:		var(--OT-nav-item-muted);
 }
 .vault-spotlight-status {
 	font-size:	var(--font-ui-smaller);	/* 11px; */
+	color:		var(--OT-nav-item-muted);
 }
 .vault-spotlight-preview-body {
 	font-size:	var(--font-ui-medium);	/* 13px; */
 }
 .vault-spotlight-preview-empty {
-	font-size:	var(--font-ui-small);	/* 13px; */
+	font-size:	var(--font-ui-medium);	/* 13px; */
 }
 .vault-spotlight-item-badge {
 	color:		var(--OT-color-on-accent-2);
 	background:	var(--color-accent-2);
 }
 .vault-spotlight-input-wrap input {
-	padding-left:	var(--size-4-2);
+	padding:		var(--input-padding);
+}
+.vault-spotlight-input-wrap input {
+    background: var(--background-modifier-form-field);
+}
+.vault-spotlight-search-icon,
+.vault-spotlight-pro-cta,
+.vault-spotlight-section-label,
+.vault-spotlight-item-icon-wrap {
+	color:		var(--OT-nav-item-muted);
+}
+.vault-spotlight-title {
+	color: 		var(--color-base-100);
+	font-size:	var(--font-ui-large);
+}
+.vault-spotlight-mode-badge {
+	color:		var(--OT-color-on-accent-2);
+	background:	var(--color-accent-2);
 }
 /* —————————————————————————————— ↑ Vault Spotlight plugin ↑  —————————————————————————————— */
 
