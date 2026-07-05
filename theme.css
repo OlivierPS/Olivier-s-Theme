@@ -716,7 +716,7 @@ body {
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
 	--metadata-input-font-size:			var(--font-ui-small);
 	--metadata-input-height:			calc(var(--font-ui-small) * var(--line-height-tight));
-	--metadata-input-padding:			var(--size-1-1) var(--size-4-1);
+	--metadata-input-padding:			var(--size-4-1) var(--size-4-1);
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
 	--metadata-label-font-size:			var(--font-ui-small);
 	--metadata-label-font-weight:		var(--font-semibold);
@@ -752,6 +752,7 @@ body {
 
 	--p-spacing:					var(--OT-blanc-petit);
 
+	--pill-background:				var(--OT-pill-background);
 	--pill-background-hover:		var(--color-accent-1);
 	--pill-color-hover:				var(--OT-color-on-accent-1);
 	--pill-color-remove-hover:		var(--OT-color-on-accent-1);
@@ -15092,10 +15093,6 @@ body {
 
 /*  === === === OpSpl76a  ——————————————————— Vault Spotlight plugin  ——————————————————— */
 .vault-spotlight-modal {
-	--vs-fz-badge:		calc(var(--font-ui-smaller) * 0.8);	/* 10px; */
-	--vs-fz-meta:		var(--font-ui-small);				/* 12px; */
-	--vs-fz-title:		var(--font-ui-medium);				/* 14px; */
-	--vs-fz-input:		var(--font-ui-medium);				/* 15px; */
 	--vs-highlight-bg:	color-mix(in oklch, var(--color-accent-2) 50%, var(--color-accent-1));
 	--vs-selected-bg:	color-mix(in oklch, var(--color-accent-2) 80%, var(--background-primary));
 	--vs-hover-bg:		color-mix(in oklch, var(--color-accent-1) 30%, transparent);
@@ -15105,42 +15102,19 @@ body {
 	--vs-selected-bg:	color-mix(in oklch, var(--color-accent-2) 20%, var(--background-primary));
 	--vs-hover-bg:		color-mix(in oklch, var(--color-accent-1) 30%, transparent);
 }
-.modal-container.vault-spotlight-container .modal {
-  width: clamp(680px, 50vw, 1000px);
-  max-width: calc(100vw - 24px);
-}
 .vault-spotlight-modal {
 	height:			84dvh;
 	min-height:		560px;
 	max-height:		calc(100dvh - 24px);
 }
 .vault-spotlight-hint {
-	font-size:	var(--font-ui-smaller);	/* 11px; */
-	/*color:		var(--OT-nav-item-muted);*/
-}
-.vault-spotlight-hint code,
-.vault-spotlight-footer kbd {
-	font-size:		var(--font-ui-smaller);	/* 10px; */
-}
-.vault-spotlight-starred-row button {
-	font-size:	var(--font-ui-smaller);	/* 11px; */
-}
-.vault-spotlight-item-time {
-	font-size:	var(--font-ui-smaller);	/* 11px; */
+	color:		var(--OT-nav-item-muted);
 }
 .vault-spotlight-footer {
-	font-size:	var(--font-ui-smaller);	/* 11px; */
 	color:		var(--OT-nav-item-muted);
 }
 .vault-spotlight-status {
-	font-size:	var(--font-ui-smaller);	/* 11px; */
 	color:		var(--OT-nav-item-muted);
-}
-.vault-spotlight-preview-body {
-	font-size:	var(--font-ui-medium);	/* 13px; */
-}
-.vault-spotlight-preview-empty {
-	font-size:	var(--font-ui-medium);	/* 13px; */
 }
 .vault-spotlight-item-badge {
 	color:		var(--OT-color-on-accent-2);
@@ -15150,7 +15124,7 @@ body {
 	padding:		var(--input-padding);
 }
 .vault-spotlight-input-wrap input {
-    background: var(--background-modifier-form-field);
+	background:		var(--background-modifier-form-field);
 }
 .vault-spotlight-search-icon,
 .vault-spotlight-pro-cta,
