@@ -51,6 +51,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-06
+	- correction of pill colors in bases
+	- bases in a sidebar in the Metallic Blue palette
 2026-07-05
 	- small tweaks for Vault Spotlight plugin
 2026-07-04
@@ -585,7 +588,7 @@ body {
 	--checkbox-size:				0.9em;
 	--checklist-done-color:			var(--OT-syntax-markers);
 
-	--code-background:		oklch(0.95	var(--accent-c)	var(--accent-h));
+	--code-background:		var(--OT-table-background);
 	--code-border-width:	1px;
 	--code-border-color:	var(--color-base-100);
 	--code-comment:			var(--OT-syntax-markers);
@@ -716,7 +719,7 @@ body {
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
 	--metadata-input-font-size:			var(--font-ui-small);
 	--metadata-input-height:			calc(var(--font-ui-small) * var(--line-height-tight));
-	--metadata-input-padding:			var(--size-4-1) var(--size-4-1);
+	--metadata-input-padding:			var(--size-4-1) var(--size-1-1);
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
 	--metadata-label-font-size:			var(--font-ui-small);
 	--metadata-label-font-weight:		var(--font-semibold);
@@ -754,6 +757,7 @@ body {
 
 	--pill-background:				var(--OT-pill-background);
 	--pill-background-hover:		var(--color-accent-1);
+	--pill-color:					var(--OT-pill-color);
 	--pill-color-hover:				var(--OT-color-on-accent-1);
 	--pill-color-remove-hover:		var(--OT-color-on-accent-1);
 	--pill-color-remove:			var(--OT-pill-background);
@@ -7707,6 +7711,11 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	}
 }
 
+/* Exception: Light Mode, palette “Metallic Blue”: une base posée dans un panneau latéral garde le fond “primary”  */
+.theme-light.lightPalette-MetallicBlue :is(.mod-right-split, .mod-left-split) .bases-view {
+	background:			var(--background-primary);
+}
+
 /* -------------------- ↑ Bases ↑ -------------------- */
 
 
@@ -11630,13 +11639,16 @@ body.lists-horiz-generous {
 	opacity:	0;
 }
 
+.metadata-property-value .multi-select-pill {
+	color:	var(--OT-pill-color);
+}
+
 /* Propriété “tags” : variables locales pour personnalisation future */
 .metadata-property[data-property-key="tags"] {
 	--pill-color:				var(--OT-pill-color);
 	--pill-background:			var(--OT-pill-background);
 	--pill-color-remove:		var(--OT-pill-background);
 }
-
 
 /* ─────────────────────────────
 4. Hover states
@@ -15102,6 +15114,10 @@ body {
 	--vs-selected-bg:	color-mix(in oklch, var(--color-accent-2) 20%, var(--background-primary));
 	--vs-hover-bg:		color-mix(in oklch, var(--color-accent-1) 30%, transparent);
 }
+.modal-container.vault-spotlight-container .modal {
+	width:		clamp(680px, 45vw, 1040px);
+	max-width:	calc(100vw - 24px);
+}
 .vault-spotlight-modal {
 	height:			84dvh;
 	min-height:		560px;
@@ -15131,6 +15147,10 @@ body {
 .vault-spotlight-section-label,
 .vault-spotlight-item-icon-wrap {
 	color:		var(--OT-nav-item-muted);
+}
+.vault-spotlight-item {
+	border-bottom:	1px solid var(--color-base-30);
+	border-radius:	0;
 }
 .vault-spotlight-title {
 	color: 		var(--color-base-100);
