@@ -51,6 +51,10 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-09
+	- small tweaks
+2026-07-07
+	- small adjustment in data positioning in bases
 2026-07-06
 	- correction of pill colors in bases
 	- bases in a sidebar in the Metallic Blue palette
@@ -719,7 +723,7 @@ body {
 	--metadata-input-background-active:	var(--metadata-label-background-active);		/*	le fond d’une valeur en train d’être éditée				*/
 	--metadata-input-font-size:			var(--font-ui-small);
 	--metadata-input-height:			calc(var(--font-ui-small) * var(--line-height-tight));
-	--metadata-input-padding:			var(--size-4-1) var(--size-1-1);
+	--metadata-input-padding:			1px var(--size-4-1);
 	--metadata-label-background-active:	var(--background-modifier-form-field);			/*	le fond d’un label en train d’être édité				*/
 	--metadata-label-font-size:			var(--font-ui-small);
 	--metadata-label-font-weight:		var(--font-semibold);
@@ -12516,6 +12520,7 @@ body:is(.theme-light.OT-colored-headings-lightMode,
 	gap:								var(--OT-mm-action-gap);
 	padding-top:						0;
 	padding-bottom:						0;
+	margin-top:							0;
 }
 
 .metadata-content .action-container .fileclass-btn-container {
@@ -15160,6 +15165,10 @@ body {
 	color:		var(--OT-color-on-accent-2);
 	background:	var(--color-accent-2);
 }
+.vault-spotlight-license-status.is-pro {
+	color:				var(--color-green);
+	background-color:	var(--color-base-00);
+}
 /* —————————————————————————————— ↑ Vault Spotlight plugin ↑  —————————————————————————————— */
 
 
@@ -16147,10 +16156,6 @@ settings:
 					label.fr:	Bleu
 					value:		lightPalette-Blue
 				-
-					label:		Green
-					label.fr:	Vert
-					value:		lightPalette-Green
-				-
 					label:		CRT 80s — Amber
 					label.fr:	Cathodique — Ambre
 					value:		lightPalette-crt80s-amber
@@ -16158,6 +16163,10 @@ settings:
 					label:		CRT 80s — Green
 					label.fr:	Cathodique — Vert
 					value:		lightPalette-crt80s-green
+				-
+					label:		Green
+					label.fr:	Vert
+					value:		lightPalette-Green
 				-
 					label:		Icy
 					label.fr:	Glacé
@@ -16842,10 +16851,6 @@ settings:
 					label.fr:	Bleu
 					value:		darkPalette-Blue
 				-
-					label:		metallic Blue
-					label.fr:	Bleu métallique
-					value:		darkPalette-MetallicBlue
-				-
 					label:		Brown
 					label.fr:	Brun
 					value:		darkPalette-Brown
@@ -16871,6 +16876,10 @@ settings:
 				-
 					label:		LYT
 					value:		darkPalette-LYT
+				-
+					label:		Metallic blue
+					label.fr:	Bleu métallique
+					value:		darkPalette-MetallicBlue
 				-
 					label:		Obsidian
 					value:		darkPalette-OBSIDIAN
