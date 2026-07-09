@@ -51,8 +51,11 @@
 /*
 Post‑release tweaks
 -------------------
+<<<<<<< HEAD
 2026-07-09
 	- small tweaks
+=======
+>>>>>>> 5a67abf988a5b4161dc8ae9cf2933145a53bc7c2
 2026-07-07
 	- small adjustment in data positioning in bases
 2026-07-06
@@ -16159,6 +16162,10 @@ settings:
 					label:		CRT 80s — Amber
 					label.fr:	Cathodique — Ambre
 					value:		lightPalette-crt80s-amber
+				-
+					label:		Green
+					label.fr:	Vert
+					value:		lightPalette-Green
 				-
 					label:		CRT 80s — Green
 					label.fr:	Cathodique — Vert
