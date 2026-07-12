@@ -51,6 +51,10 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-12
+	- styling of the modal of the Vault Spotlight plugin
+2026-07-09
+	- small tweaks
 2026-07-07
 	- small adjustment in data positioning in bases
 2026-07-06
@@ -12518,6 +12522,7 @@ body:is(.theme-light.OT-colored-headings-lightMode,
 	gap:								var(--OT-mm-action-gap);
 	padding-top:						0;
 	padding-bottom:						0;
+	margin-top:							0;
 }
 
 .metadata-content .action-container .fileclass-btn-container {
@@ -15158,6 +15163,10 @@ body {
 	color: 		var(--color-base-100);
 	font-size:	var(--font-ui-large);
 }
+.vault-spotlight-item-title mark {
+	color:				var(--OT-highlight-fg);
+	background-color:	var(--OT-highlight-bg);
+}
 .vault-spotlight-mode-badge {
 	color:		var(--OT-color-on-accent-2);
 	background:	var(--color-accent-2);
@@ -15165,6 +15174,19 @@ body {
 .vault-spotlight-license-status.is-pro {
 	color:				var(--color-green);
 	background-color:	var(--color-base-00);
+}
+.vault-spotlight-item.is-selected {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+	& .vault-spotlight-item-title		{ color:	inherit; }
+	& .vault-spotlight-item-icon-wrap	{ color:	inherit; }
+	& .vault-spotlight-item-badge 		{
+		color:				var(--color-accent-2);
+		background-color:	var(--OT-color-on-accent-2);
+	}
+	& .vault-spotlight-item-meta {
+		color:	var(--OT-color-muted-on-accent-2);
+	}
 }
 /* —————————————————————————————— ↑ Vault Spotlight plugin ↑  —————————————————————————————— */
 
@@ -16157,13 +16179,13 @@ settings:
 					label.fr:	Cathodique — Ambre
 					value:		lightPalette-crt80s-amber
 				-
-					label:		Green
-					label.fr:	Vert
-					value:		lightPalette-Green
-				-
 					label:		CRT 80s — Green
 					label.fr:	Cathodique — Vert
 					value:		lightPalette-crt80s-green
+				-
+					label:		Green
+					label.fr:	Vert
+					value:		lightPalette-Green
 				-
 					label:		Icy
 					label.fr:	Glacé
