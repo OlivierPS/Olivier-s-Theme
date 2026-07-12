@@ -15175,17 +15175,19 @@ body {
 	color:				var(--color-green);
 	background-color:	var(--color-base-00);
 }
+.vault-spotlight-check {
+	border-color:	var(--text-normal);
+}
 .vault-spotlight-item.is-selected {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
 	& .vault-spotlight-item-title		{ color:	inherit; }
 	& .vault-spotlight-item-icon-wrap	{ color:	inherit; }
+	& .vault-spotlight-check			{ border-color:	var(--OT-color-on-accent-2); }
+	& .vault-spotlight-item-meta		{ color:	var(--OT-color-muted-on-accent-2); }
 	& .vault-spotlight-item-badge 		{
 		color:				var(--color-accent-2);
 		background-color:	var(--OT-color-on-accent-2);
-	}
-	& .vault-spotlight-item-meta {
-		color:	var(--OT-color-muted-on-accent-2);
 	}
 }
 /* —————————————————————————————— ↑ Vault Spotlight plugin ↑  —————————————————————————————— */
