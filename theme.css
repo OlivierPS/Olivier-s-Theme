@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-18
+	- star button in the modal of the Vault Spotlight plugin
 2026-07-12
 	- styling of the modal of the Vault Spotlight plugin
 2026-07-09
@@ -15189,6 +15191,14 @@ body {
 		color:				var(--color-accent-2);
 		background-color:	var(--OT-color-on-accent-2);
 	}
+}
+.vault-spotlight-star-btn:hover {
+	color:		var(--OT-color-on-accent-1);
+	background:	var(--color-accent-1);
+}
+.vault-spotlight-item.is-starred .vault-spotlight-star-btn {
+	color:		var(--OT-color-on-accent-3);
+	background:	var(--color-accent-3);
 }
 /* —————————————————————————————— ↑ Vault Spotlight plugin ↑  —————————————————————————————— */
 
