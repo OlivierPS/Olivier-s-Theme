@@ -189,6 +189,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl75		Notebook Navigator plugin
 			OpSpl76		Different plugins: Repeat, Folder Note
 			OpSpl76a	Vault Spotlight plugin
+			OpSpl76b	Searchsaurus plugin
 			OpSpl77		Viewing modes icons
 			OpSpl78		Style Settings plugin
 
@@ -15202,6 +15203,477 @@ body {
 }
 /* —————————————————————————————— ↑ Vault Spotlight plugin ↑  —————————————————————————————— */
 
+/*  === === === OpSpl76b  ——————————————————— Searchsaurus plugin  ——————————————————— */
+/* ==========================================================================
+   Searchosaurus — OT refinement
+   --------------------------------------------------------------------------
+   Design logic:
+   - normal           : neutral surface / normal text / muted secondary
+   - hover            : accent 1 / on-accent-1 / muted-on-accent-1
+   - active           : accent 2 / on-accent-2 / muted-on-accent-2
+   - active + hover   : accent 1 / on-accent-1 / muted-on-accent-1
+   ========================================================================== */
+
+.searchosaurus-modal.prompt {
+	height:					84dvh;
+	min-height:				560px;
+	max-height:				calc(100dvh - 24px);
+	width:					clamp(900px, 50vw, 1500px);
+	max-width:				calc(100vw - 24px);
+
+	background-color:		var(--background-primary);
+	border:					1px solid var(--background-modifier-border);
+	border-radius:			var(--radius-l);
+	box-shadow:
+							0 18px 44px rgb(0 0 0 / 0.24),
+							0 2px 10px rgb(0 0 0 / 0.10);
+	overflow:				hidden;
+}
+
+.searchosaurus-modal .prompt-input-container {
+	background:				transparent;
+}
+
+.searchosaurus-modal .prompt-input {
+	background:				transparent;
+	padding:				var(--size-4-4);
+}
+
+
+/* —————————————————————————————— Filter row —————————————————————————————— */
+
+.searchosaurus-filter-row {
+	display:				flex;
+	align-items:			center;
+	justify-content:		space-between;
+	padding:				0 var(--size-4-3) var(--size-4-1);
+	border-bottom:			var(--border-width) solid var(--background-modifier-border);
+}
+
+.searchosaurus-filter-kinds {
+	position:				relative;
+	display:				flex;
+	gap:					var(--size-4-1);
+	isolation:				isolate;
+}
+
+.searchosaurus-filter-pill {
+	position:				absolute;
+	top:					0;
+	left:					0;
+	height:					100%;
+	width:					0;
+	border-radius:			var(--radius-s);
+	background-color:		color-mix(
+								in oklch,
+								var(--color-accent-1) 68%,
+								var(--background-primary)
+							);
+	box-shadow:				inset 0 0 0 1px color-mix(
+								in oklch,
+								var(--OT-color-on-accent-1) 10%,
+								transparent
+							);
+	opacity:					1;
+	transition:
+							transform 180ms cubic-bezier(0.3, 1, 0.4, 1),
+							width 180ms cubic-bezier(0.3, 1, 0.4, 1),
+							opacity 120ms ease;
+	pointer-events:			none;
+}
+
+.searchosaurus-filter-button,
+.searchosaurus-sort-button {
+	position:				relative;
+	display:				flex;
+	align-items:			center;
+	justify-content:		center;
+	padding:				var(--size-4-1) var(--size-4-2);
+	border:					none;
+	border-radius:			var(--radius-s);
+	background-color:		transparent;
+	box-shadow:				none;
+	color:					var(--text-faint);
+	cursor:					var(--cursor);
+	transition:
+							color 120ms ease,
+							background-color 120ms ease;
+}
+
+.searchosaurus-filter-button:hover,
+.searchosaurus-sort-button:hover {
+	color:					var(--OT-color-on-accent-1);
+	background-color:		var(--color-accent-1);
+}
+
+.searchosaurus-filter-button.is-active,
+.searchosaurus-sort-button.is-active {
+	color:					var(--OT-color-on-accent-2);
+	background-color:		var(--color-accent-2);
+}
+
+.searchosaurus-filter-button.is-active:hover,
+.searchosaurus-sort-button.is-active:hover {
+	color:					var(--OT-color-on-accent-1);
+	background-color:		var(--color-accent-1);
+}
+
+.searchosaurus-filter-button:focus-visible,
+.searchosaurus-sort-button:focus-visible {
+	outline:				none;
+	box-shadow:				0 0 0 2px color-mix(
+								in oklch,
+								var(--color-accent-2) 42%,
+								transparent
+							);
+}
+
+
+/* —————————————————————————————— Body layout —————————————————————————————— */
+
+.searchosaurus-body {
+	display:				flex;
+	min-height:				0;
+	flex:					1 1 auto;
+}
+
+.searchosaurus-modal .prompt-results {
+	flex:					1 1 48%;
+	min-width:				0;
+	padding:				var(--size-4-2);
+}
+
+.searchosaurus-preview {
+	flex:					1 1 52%;
+	min-width:				0;
+	display:				flex;
+	flex-direction:			column;
+	gap:					var(--size-4-2);
+	overflow-y:				auto;
+	padding:				var(--size-4-3);
+	border-left:			var(--border-width) solid var(--background-modifier-border);
+}
+
+.searchosaurus-preview.is-empty {
+	display:				none;
+}
+
+.searchosaurus-modal.is-preview-empty .prompt-results {
+	flex-basis:				100%;
+}
+
+
+/* —————————————————————————————— Result rows —————————————————————————————— */
+
+.suggestion-item.searchosaurus-result {
+	--result-bg:				transparent;
+	--result-fg:				var(--text-normal);
+	--result-muted:				var(--OT-menu-text-muted, var(--text-muted));
+	--result-icon:				var(--text-muted);
+	--result-index-border:		color-mix(
+									in oklch,
+									var(--background-modifier-border) 72%,
+									transparent
+								);
+
+	display:					grid;
+	grid-template-columns:		auto 1fr auto;
+	align-items:				center;
+	column-gap:					0.75rem;
+
+	background-color:			var(--result-bg);
+	color:						var(--result-fg);
+	border-radius:				var(--radius-m);
+	padding-block:				0.5rem;
+	padding-inline:				0.75rem;
+	transition:
+								background-color 120ms ease,
+								color 120ms ease;
+}
+
+.suggestion-item.searchosaurus-result .searchosaurus-result-text {
+	min-width:					0;
+}
+
+.suggestion-item.searchosaurus-result .searchosaurus-result-title,
+.suggestion-item.searchosaurus-result .searchosaurus-result-secondary {
+	overflow:					hidden;
+	text-overflow:				ellipsis;
+	white-space:				nowrap;
+}
+
+.suggestion-item.searchosaurus-result .searchosaurus-result-title {
+	color:						var(--result-fg);
+}
+
+.suggestion-item.searchosaurus-result .searchosaurus-result-icon {
+	color:						var(--result-icon);
+	opacity:						0.92;
+}
+
+.suggestion-item.searchosaurus-result .searchosaurus-result-secondary {
+	color:						var(--result-muted);
+	font-size:					var(--font-ui-smaller);
+}
+
+.suggestion-item.searchosaurus-result .searchosaurus-result-index {
+	min-width:					1.55em;
+	padding-inline:				var(--size-2-1);
+	color:						var(--result-muted);
+	font-size:					var(--font-ui-smaller);
+	font-variant-numeric:		tabular-nums;
+	border:						1px solid var(--result-index-border);
+	border-radius:				var(--radius-s);
+	background-color:			color-mix(
+									in oklch,
+									var(--background-primary) 78%,
+									transparent
+								);
+}
+
+.suggestion-item.searchosaurus-result:hover {
+	--result-bg:				var(--color-accent-1);
+	--result-fg:				var(--OT-color-on-accent-1);
+	--result-muted:				var(--OT-color-muted-on-accent-1);
+	--result-icon:				var(--OT-color-on-accent-1);
+	--result-index-border:		color-mix(
+									in oklch,
+									var(--OT-color-muted-on-accent-1) 78%,
+									transparent
+								);
+}
+
+.suggestion-item.searchosaurus-result.is-selected {
+	--result-bg:				var(--color-accent-2);
+	--result-fg:				var(--OT-color-on-accent-2);
+	--result-muted:				var(--OT-color-muted-on-accent-2);
+	--result-icon:				var(--OT-color-on-accent-2);
+	--result-index-border:		color-mix(
+									in oklch,
+									var(--OT-color-muted-on-accent-2) 78%,
+									transparent
+								);
+}
+
+.suggestion-item.searchosaurus-result.is-selected:hover {
+	--result-bg:				var(--color-accent-1);
+	--result-fg:				var(--OT-color-on-accent-1);
+	--result-muted:				var(--OT-color-muted-on-accent-1);
+	--result-icon:				var(--OT-color-on-accent-1);
+	--result-index-border:		color-mix(
+									in oklch,
+									var(--OT-color-muted-on-accent-1) 78%,
+									transparent
+								);
+}
+
+.suggestion-item.searchosaurus-result:hover .searchosaurus-result-index,
+.suggestion-item.searchosaurus-result.is-selected .searchosaurus-result-index,
+.suggestion-item.searchosaurus-result.is-selected:hover .searchosaurus-result-index {
+	background-color:			color-mix(
+									in oklch,
+									currentColor 10%,
+									transparent
+								);
+}
+
+
+/* —————————————————————————————— Special result rows —————————————————————————————— */
+
+.searchosaurus-result.is-ghost,
+.searchosaurus-result.is-create {
+	color:						var(--text-muted);
+	opacity:						0.9;
+}
+
+.searchosaurus-result.is-ghost .searchosaurus-result-icon,
+.searchosaurus-result.is-create .searchosaurus-result-icon {
+	color:						var(--text-faint);
+}
+
+
+/* —————————————————————————————— Preview —————————————————————————————— */
+
+.searchosaurus-preview-note {
+	font-size:					var(--font-ui-small);
+	line-height:				1.45;
+	overflow-wrap:				anywhere;
+}
+
+.searchosaurus-preview-note :is(h1, h2, h3, h4) {
+	margin-block:				0.65em 0.3em;
+	font-size:					1em;
+	font-weight:				var(--font-medium);
+	color:						var(--text-normal);
+}
+
+.searchosaurus-result-snippet mark,
+.searchosaurus-mark {
+	background-color:			color-mix(
+									in oklch,
+									var(--text-highlight-bg) 82%,
+									transparent
+								);
+	color:						inherit;
+	border-radius:				3px;
+	padding-inline:				0.08em;
+}
+
+.searchosaurus-preview-image img {
+	max-width:					100%;
+	border-radius:				var(--radius-m);
+}
+
+.searchosaurus-preview-file,
+.searchosaurus-preview-link {
+	display:					flex;
+	flex-direction:				column;
+	align-items:				flex-start;
+	gap:						var(--size-4-2);
+}
+
+.searchosaurus-preview-file-icon {
+	--icon-size:				28px;
+	color:						var(--text-muted);
+}
+
+.searchosaurus-preview-file-name {
+	font-weight:				var(--font-medium);
+	color:						var(--text-normal);
+	overflow-wrap:				anywhere;
+}
+
+.searchosaurus-preview-file-meta,
+.searchosaurus-preview-link-url,
+.searchosaurus-preview-path {
+	color:						var(--text-faint);
+	font-size:					var(--font-ui-smaller);
+	overflow-wrap:				anywhere;
+}
+
+.searchosaurus-preview-link-context {
+	padding-left:				var(--size-4-2);
+	border-left:				1px solid var(--background-modifier-border);
+	color:						var(--text-muted);
+	font-size:					var(--font-ui-small);
+}
+
+.searchosaurus-preview-path {
+	margin-top:					auto;
+	padding-top:				var(--size-4-2);
+}
+
+
+/* —————————————————————————————— Hint / pin —————————————————————————————— */
+
+.searchosaurus-hint {
+	display:					none;
+	padding:					var(--size-4-1) var(--size-4-3) var(--size-4-2);
+	color:						var(--text-faint);
+	font-size:					var(--font-ui-smaller);
+	text-align:					center;
+	white-space:				nowrap;
+	overflow:					hidden;
+	text-overflow:				ellipsis;
+}
+
+.searchosaurus-modal.is-empty-query .searchosaurus-hint {
+	display:					block;
+}
+
+.searchosaurus-pin-dot {
+	width:						4px;
+	height:						4px;
+	background-color:			var(--text-accent);
+	border-radius:				50%;
+	opacity:						0.82;
+}
+
+
+/* —————————————————————————————— Responsive —————————————————————————————— */
+
+@media (max-width: 700px) {
+	.searchosaurus-preview {
+		display:				none;
+	}
+}
+
+body.is-phone .searchosaurus-modal.prompt {
+	width:						100%;
+	max-height:					none;
+	border:						none;
+	border-radius:				var(--radius-l) var(--radius-l) 0 0;
+	background-color:			var(--background-primary);
+	box-shadow:					none;
+	-webkit-backdrop-filter:	none;
+	backdrop-filter:			none;
+}
+
+body.is-phone .searchosaurus-modal .prompt-input {
+	padding:					var(--size-4-3) var(--size-4-4);
+	font-size:					var(--font-ui-medium);
+}
+
+body.is-phone .searchosaurus-filter-row {
+	padding:					var(--size-4-2) var(--size-4-4);
+}
+
+body.is-phone .searchosaurus-filter-kinds {
+	gap:						var(--size-4-2);
+}
+
+body.is-phone .searchosaurus-modal .prompt-results {
+	padding:					var(--size-4-1) var(--size-4-2)
+								calc(var(--size-4-4) + env(safe-area-inset-bottom, 0px));
+	flex-basis:					100%;
+}
+
+body.is-phone .searchosaurus-result {
+	gap:						var(--size-4-3);
+	border-radius:				var(--radius-m);
+}
+
+body.is-phone .searchosaurus-result-title,
+body.is-phone .searchosaurus-result-secondary {
+	line-height:				1.35;
+}
+
+body.is-phone .searchosaurus-preview {
+	display:					none;
+}
+
+body.is-phone .searchosaurus-modal.prompt,
+body.is-phone .searchosaurus-modal.is-entering .suggestion-item {
+	animation:					none;
+}
+
+body.is-mobile .searchosaurus-result {
+	padding:					var(--size-4-3);
+}
+
+body.is-mobile .searchosaurus-filter-button,
+body.is-mobile .searchosaurus-sort-button {
+	padding:					var(--size-4-2) var(--size-4-3);
+	--icon-size:				var(--icon-l, 20px);
+}
+
+body.is-mobile .searchosaurus-hint,
+body.is-mobile .searchosaurus-result-index {
+	display:					none;
+}
+
+
+/* —————————————————————————————— Reduced motion —————————————————————————————— */
+
+@media (prefers-reduced-motion: reduce) {
+	.searchosaurus-modal.prompt,
+	.searchosaurus-modal.is-entering .suggestion-item,
+	.searchosaurus-filter-pill {
+		animation:				none;
+		transition:				none;
+	}
+}
+/* —————————————————————————————— ↑ SearchSaurus plugin ↑  —————————————————————————————— */
 
 
 /*  === === === OpSpl77  ——————————————————— Viewing modes icons  ——————————————————— */
