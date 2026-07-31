@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-07-31
+	- added rules for the Simple Gallery plugin
 2026-07-18
 	- star button in the modal of the Vault Spotlight plugin
 	- added code for styling the Searchsaurus plugin
@@ -191,6 +193,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl76		Different plugins: Repeat, Folder Note
 			OpSpl76a	Vault Spotlight plugin
 			OpSpl76b	Searchsaurus plugin
+			OpSpl76c	Simple Gallery plugin
 			OpSpl77		Viewing modes icons
 			OpSpl78		Style Settings plugin
 
@@ -15675,6 +15678,123 @@ body.is-mobile .searchosaurus-result-index {
 	}
 }
 /* —————————————————————————————— ↑ SearchSaurus plugin ↑  —————————————————————————————— */
+
+/*  === === === OpSpl76c  ——————————————————— Simple Gallery plugin  ——————————————————— */
+/* -------------------------------------------------------------------------- */
+/* 1. Réglages globaux                                                        */
+/* -------------------------------------------------------------------------- */
+
+/*	On calme les effets visuels natifs du plugin pour mieux les intégrer dans
+	la grammaire du thème :
+	- pas de zoom au survol,
+	- fond transparent (on laisse le papier d’OpSpl apparaître),
+	- légendes alignées avec le texte normal,
+	- rayon aligné sur ton système de rayons. */
+
+body {
+	--simple-gallery-hover-scale:	1.0;
+	--simple-gallery-background:	transparent;
+	--simple-gallery-caption-color:	var(--text-normal);
+	--simple-gallery-radius:		var(--radius-s);
+}
+
+/*	Neutralise l’ombre de la carte au survol : l’ombre sera gérée par le thème
+	(voir section images) plutôt que par le plugin. */
+.simple-gallery-item:hover {
+	box-shadow:		none;
+}
+
+/*	Rythme vertical : les galeries deviennent des blocs “sans blanc au-dessus”,
+	comme tes images simples avec `--OT-img-space-above-single: 0`. */
+.simple-gallery-img {
+	--OT-img-space-above-single:	0;
+}
+
+/*	Marge verticale de la galerie : on utilise les mêmes unités que pour
+	le rythme vertical du texte, afin de garder une respiration cohérente. */
+.simple-gallery-root {
+	position:						relative;
+	margin:							var(--OT-blanc-petit)
+									0
+									var(--OT-blanc-moyen)
+									0;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* 2. Typographie des légendes et champs d’édition                            */
+/* -------------------------------------------------------------------------- */
+
+/*	Légendes : italique discret, taille légèrement plus petite que le texte
+	courant, pour rappeler le style de tes captions d’images. */
+.simple-gallery-caption {
+	font-style:						italic;
+	font-size:						var(--font-smaller);
+}
+
+/*	Édition de légende : alignement à gauche pour rester cohérent avec les
+	captions rendues et le texte courant. */
+.simple-gallery-edit-input {
+	text-align:						left;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* 3. Intégration avec les CSSCLASSES d’images (ombre / cadre)               */
+/* -------------------------------------------------------------------------- */
+
+/*	Images avec ombre — version galerie Simple Gallery.
+	Équivalent fonctionnel de `.images-with-shadow img` et
+	`.images-with-frame-and-shadow img`, mais appliqué au wrapper
+	`.simple-gallery-photo` pour que l’ombre se place derrière l’image. */
+.images-with-shadow .simple-gallery-root .simple-gallery-photo,
+.images-with-frame-and-shadow .simple-gallery-root .simple-gallery-photo {
+	box-shadow:						6px 6px 6px rgba(0, 0, 0, 0.15);
+}
+
+/*	Option : on neutralise toute ombre de survol qui pourrait être ajoutée
+	par le plugin, afin de garder une ombre stable, indépendante du hover. */
+.images-with-shadow .simple-gallery-root .simple-gallery-item:hover .simple-gallery-photo,
+.images-with-frame-and-shadow .simple-gallery-root .simple-gallery-item:hover .simple-gallery-photo {
+	box-shadow:						6px 6px 6px rgba(0, 0, 0, 0.15);
+}
+
+/*	Images avec cadre — version galerie.
+	Équivalent de `.images-with-frame img` et
+	`.images-with-frame-and-shadow img`, appliqué au wrapper
+	pour inclure à la fois l’image et la légende éventuelle. */
+.images-with-frame .simple-gallery-root .simple-gallery-photo,
+.images-with-frame-and-shadow .simple-gallery-root .simple-gallery-photo {
+	border:							1px solid var(--text-normal);
+	padding:						2px;
+}
+
+/*	On garde le rayon du plugin sur l’image pour ne pas casser la carte,
+	en harmonisant avec `--simple-gallery-radius`. */
+.images-with-frame .simple-gallery-root .simple-gallery-img,
+.images-with-frame-and-shadow .simple-gallery-root .simple-gallery-img {
+	border-radius:					var(--simple-gallery-radius);
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* 4. Intégration avec la logique de largeur d’OpSpl (wide / max / 100 %)    */
+/* -------------------------------------------------------------------------- */
+
+/*	Aligne la largeur des galeries sur le système d’images d’OpSpl :
+	- même largeur effective que les images classiques,
+	- même max-width,
+	- même marge horizontale.
+	Ce sélecteur cible les div qui contiennent une galerie dans une
+	section de preview à largeur contrôlée. */
+.markdown-preview-view.is-readable-line-width
+.markdown-preview-sizer
+div:has(> .simple-gallery-root) {
+	width:							var(--OT-container-img-width-reading);
+	max-width:						var(--OT-container-img-max-width-reading);
+	margin-inline:					var(--OT-container-img-margin-reading) !important;
+}
+/* —————————————————————————————— ↑ Simple Gallery ↑  —————————————————————————————— */
 
 
 /*  === === === OpSpl77  ——————————————————— Viewing modes icons  ——————————————————— */
