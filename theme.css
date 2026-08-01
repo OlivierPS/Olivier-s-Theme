@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-08-01
+	- small tweaks to shadows in Simple Gallery galleries
 2026-07-31
 	- added rules for the Simple Gallery plugin
 2026-07-18
@@ -15702,6 +15704,7 @@ body {
 	(voir section images) plutôt que par le plugin. */
 .simple-gallery-item:hover {
 	box-shadow:		none;
+	cursor:			pointer;
 }
 
 /*	Rythme vertical : les galeries deviennent des blocs “sans blanc au-dessus”,
@@ -15714,7 +15717,7 @@ body {
 	le rythme vertical du texte, afin de garder une respiration cohérente. */
 .simple-gallery-root {
 	position:						relative;
-	margin:							var(--OT-blanc-petit)
+	margin:							var(--OT-blanc-moyen)
 									0
 									var(--OT-blanc-moyen)
 									0;
@@ -15749,6 +15752,10 @@ body {
 	`.simple-gallery-photo` pour que l’ombre se place derrière l’image. */
 .images-with-shadow .simple-gallery-root .simple-gallery-photo,
 .images-with-frame-and-shadow .simple-gallery-root .simple-gallery-photo {
+	/*box-shadow:						6px 6px 6px rgba(0, 0, 0, 0.15);*/
+}
+.images-with-shadow .simple-gallery-img,
+.images-with-frame-and-shadow .simple-gallery-img{
 	box-shadow:						6px 6px 6px rgba(0, 0, 0, 0.15);
 }
 
@@ -15756,7 +15763,7 @@ body {
 	par le plugin, afin de garder une ombre stable, indépendante du hover. */
 .images-with-shadow .simple-gallery-root .simple-gallery-item:hover .simple-gallery-photo,
 .images-with-frame-and-shadow .simple-gallery-root .simple-gallery-item:hover .simple-gallery-photo {
-	box-shadow:						6px 6px 6px rgba(0, 0, 0, 0.15);
+	/*box-shadow:						6px 6px 6px rgba(0, 0, 0, 0.15);*/
 }
 
 /*	Images avec cadre — version galerie.
