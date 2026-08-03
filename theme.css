@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-08-03
+	- added rules for the Power Explorer plugin
 2026-08-01
 	- small tweaks to shadows in Simple Gallery galleries
 2026-07-31
@@ -196,6 +198,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl76a	Vault Spotlight plugin
 			OpSpl76b	Searchsaurus plugin
 			OpSpl76c	Simple Gallery plugin
+			OpSpl76d	Power Explorer plugin
 			OpSpl77		Viewing modes icons
 			OpSpl78		Style Settings plugin
 
@@ -14886,6 +14889,9 @@ body {
 	--nn-theme-file-tag-color:                     var(--OT-pill-color);
 	--nn-theme-file-tag-bg:                        var(--OT-pill-background);
 
+	--nn-theme-file-property-color:					var(--OT-color-on-accent-3);
+	--nn-theme-file-property-bg:					var(--color-accent-3);
+
 	/* Active selection background – files pane focused */
 	--nn-theme-file-selected-bg:                   var(--color-accent-2);
 	--nn-theme-file-selected-name-color:           var(--OT-color-on-accent-2);
@@ -15803,6 +15809,255 @@ div:has(> .simple-gallery-root) {
 }
 /* —————————————————————————————— ↑ Simple Gallery ↑  —————————————————————————————— */
 
+
+/*  === === === OpSpl76d  ——————————————————— Power Explorer plugin  ——————————————————— */
+.pe-ghost {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13);
+}
+
+.pe-recent-row {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
+}
+
+.pe-page-sec {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-empty {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12.5);
+}
+
+.pe-pages-head {
+	font-size: calc(var(--font-ui-small) / 13.5 * 14);
+}
+
+.pe-pages-count {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-filter input {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12.5);
+}
+
+.pe-page.pe-sub {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13);
+}
+
+.pe-modal-desc {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13);
+}
+
+.pe-page {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
+}
+
+.pe-pages-more {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12);
+}
+
+.pe-back {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
+}
+
+.pe-drill-folder {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
+}
+
+.pe-drill-ico {
+	font-size: calc(var(--font-ui-small) / 13.5 * 14);
+}
+
+.pe-drill.pe-touch .pe-back {
+	font-size: calc(var(--font-ui-small) / 13.5 * 17);
+}
+
+.pe-drill.pe-touch .pe-drill-folder {
+	font-size: calc(var(--font-ui-small) / 13.5 * 17);
+}
+
+.pe-drill.pe-touch .pe-drill-ico {
+	font-size: calc(var(--font-ui-small) / 13.5 * 17);
+}
+
+.pe-drill.pe-touch .pe-page {
+	font-size: calc(var(--font-ui-small) / 13.5 * 17);
+}
+
+.pe-drill.pe-touch .pe-page.pe-sub {
+	font-size: calc(var(--font-ui-small) / 13.5 * 16);
+}
+
+.pe-drill.pe-touch .pe-pages-head {
+	font-size: calc(var(--font-ui-small) / 13.5 * 18);
+}
+
+.pe-drill.pe-touch .pe-filter input {
+	font-size: calc(var(--font-ui-small) / 13.5 * 16);
+}
+
+.pe-drill.pe-touch .pe-pages-more {
+	font-size: calc(var(--font-ui-small) / 13.5 * 14);
+}
+
+.pe-drill.pe-touch .pe-empty {
+	font-size: calc(var(--font-ui-small) / 13.5 * 15);
+}
+
+.pe-notebook {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
+}
+
+.pe-search-box input {
+	font-size: calc(var(--font-ui-small) / 13.5 * 15);
+}
+
+.pe-search-compact {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12);
+}
+
+.pe-search-scope {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11.5);
+}
+
+.pe-search-group {
+	/*		font-size: calc(var(--font-ui-small) / 13.5 * 11);	*/
+	font-size: var(--font-ui-medium);
+}
+
+.pe-search-section {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11.5);
+}
+
+.pe-search-title {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
+}
+
+.pe-search-head {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12);
+}
+
+.pe-search-snippet {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12);
+}
+
+.pe-search-badge {
+	font-size: calc(var(--font-ui-small) / 13.5 * 9.5);
+}
+
+.pe-search-meta {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-search-answer {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
+}
+
+.pe-tpl-ic {
+	font-size: calc(var(--font-ui-small) / 13.5 * 18);
+}
+
+.pe-tpl-badge {
+	font-size: calc(var(--font-ui-small) / 13.5 * 10);
+}
+
+.pe-tpl-desc {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12);
+}
+
+.pe-ask-label {
+	font-size: calc(var(--font-ui-small) / 13.5 * 13);
+}
+
+.pe-tpl-pick-pattern {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-tpl-filename {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-tpl-card-preview {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-tpl-card-preview :is(h1, h2, h3, h4, h5, h6) {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12);
+}
+
+.pe-tpl-ic-inline {
+	font-size: calc(var(--font-ui-small) / 13.5 * 15);
+}
+
+textarea.pe-tpl-seed {
+	font-size: calc(var(--font-ui-small) / 13.5 * 12);
+}
+
+.pe-icon-cat {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-icon-cell {
+	font-size: calc(var(--font-ui-small) / 13.5 * 20);
+}
+
+.pe-launcher-cat {
+	font-size: calc(var(--font-ui-small) / 13.5 * 11);
+}
+
+.pe-page {
+	padding-top:	1px;
+	padding-bottom:	1px;
+}
+
+.pe-notebook {
+	padding-top:	1px;
+	padding-bottom:	1px;
+}
+.pe-nb-chev svg {
+	width:	var(--font-ui-small);
+	height:	var(--font-ui-small);
+}
+
+.pe-notebook.is-active,
+.pe-recent-row.is-active,
+.pe-page.is-active {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+	& .pe-nb-chev		{ color: inherit;};
+	& .pe-page-sec		{ color: var(--OT-color-muted-on-accent-2);}
+}
+
+.pe-search-hit.is-selected {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+	& .pe-search-head	{ color: var(--OT-color-muted-on-accent-2); }
+}
+
+.pe-search-modal {
+// height:			84dvh;
+//	min-height:		560px;
+//	max-height:		calc(100dvh - 24px);
+	width:		clamp(680px, 45vw, 1040px);
+	max-width:	calc(100vw - 24px);
+}
+
+.pe-search-compact {
+	color:				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3);
+	border-color:		var(--OT-color-on-accent-3);
+}
+
+.pe-search-compact:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+}
+
+.pe-search-compact.is-active {
+	color:				var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+	border-color:		var(--OT-color-on-accent-2);
+}
+/* —————————————————————————————— ↑ Power Explorer ↑  —————————————————————————————— */
 
 /*  === === === OpSpl77  ——————————————————— Viewing modes icons  ——————————————————— */
 /* swaps the icons from "action buttons" to "status indicators/toggles", and adds an icon for Source mode */
