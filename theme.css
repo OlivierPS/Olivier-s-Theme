@@ -51,8 +51,9 @@
 /*
 Post‑release tweaks
 -------------------
-2026-08-03
-	- added rules for the Power Explorer plugin
+2026-08-23
+	- increased the width of the sync log modal + reduced font size = improved it’s legibility on large screens
+	- added a CSS class (“OT-lightbox-hide-titlebar”) and a switch in Style Settings for optionally hiding the filename in the lightbox mode
 2026-08-01
 	- small tweaks to shadows in Simple Gallery galleries
 2026-07-31
@@ -112,7 +113,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl08:	définition des palettes pour le mode “light”
 			OpSpl09:	définition des palettes pour le mode “dark”
 			OpSpl10:	icônes
-			OpSpl11:	LIBRE
+			OpSpl11:	modals
 			OpSpl12:	définition des couleurs du texte normal et des H1, H3 et H5
 			OpSpl13:	définition des couleurs des “Properties pills”
 			OpSpl14:	définition des couleurs pour le “highlight”
@@ -154,7 +155,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl34		settings panel
 			OpSpl35		footnotes
 			OpSpl36		images
-			OpSpl37		zoom-image
+			OpSpl37		zoom-image / lightbox
 			OpSpl38		PDFs
 			OpSpl39		other refinements
 			OpSpl40		blockquotes and codeblocks
@@ -198,7 +199,6 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl76a	Vault Spotlight plugin
 			OpSpl76b	Searchsaurus plugin
 			OpSpl76c	Simple Gallery plugin
-			OpSpl76d	Power Explorer plugin
 			OpSpl77		Viewing modes icons
 			OpSpl78		Style Settings plugin
 
@@ -464,6 +464,7 @@ body {
 	--OT-kanban-lane-width:							16em;
 	--OT-kbd-background:							floralwhite;
 	--OT-kbd:										var(--color-base-100);
+	--OT-modal-max-width-wide:						1500px;
 	--OT-menu-text-color:							var(--nav-item-color);
 	--OT-menu-text-muted:							var(--text-muted);
 	--OT-metadata-label-width:						7em;
@@ -572,7 +573,7 @@ body {
 	--bases-table-cell-background-disabled:	oklch(0.84 calc(var(--OT-themeLight-c) * 0.5) var(--OT-themeLight-h));
 	--bases-table-font-size:				var(--font-small);
 	--bases-table-group-background:			var(--OT-table-alt-background);
-	--bases-group-heading-value-size: 		1rem;
+	--bases-group-heading-value-size:		var(--font-small);
 	--bases-group-heading-property-display: none;
 	--bases-table-group-gap: 				20px;
 	--bases-table-header-background:		var(--table-header-background);
@@ -635,6 +636,9 @@ body {
 	--embed-border-bottom:		none;
 	--embed-padding:			0;	/*	0 0 0 var(--size-4-6);	*/
 
+	--flair-color:				var(--OT-color-on-accent-3);
+	--flair-background:			var(--color-accent-3);
+
 	--file-line-width:			var(--OT-line-width-reading);
 	--file-margins:				var(--size-4-8);
 	--file-header-font-size:	var(--font-ui-small);
@@ -683,8 +687,6 @@ body {
 	--h4-style:		italic;
 	--h5-style:		italic;
 	--h6-style:		italic;
-
-	--header-height:					2.4em;			/*	2026‑02‑06: raise header height for more legible tab bars.	*/
 
 	--heading-spacing:					0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
 	--icon-color-active:				var(--color-base-20);
@@ -1911,7 +1913,6 @@ body {
 	--OT-syntax-markers:					var(--color-stone-500);
 	--text-muted:							var(--color-stone-500);
 	--OT-setting-item-description:			var(--color-stone-500);
-	--OT-settings-group-title:				var(--color-stone-200);
 	--icon-color:							var(--color-stone-600);
 	/*--OT-prominent-text:					oklch(0.52  0.18  var(--OT-accent-h));*/
 	--OT-view-header-title-color-focused-active-current:	var(--color-stone-500);
@@ -2167,13 +2168,15 @@ body {
 	--OT-accent-c:       calc(var(--OT-themeDark-c) * 1.80);
 
 	/* ---- contenu principal fixe, hors slider ---- */
-	--color-base-00:     oklch(16.5% 0.020  72);   /* laque noire, reflet or */
-	--color-base-10:     oklch(20.5% 0.024  72);
-	--color-base-100:    oklch(88.0% 0.090  72);   /* crème ivoire chaud */
-	--text-muted:        oklch(65.0% 0.045  68);
-	--OT-syntax-markers: oklch(55.0% 0.028  76);
-	--link-color:        oklch(72.0% 0.105 210);   /* bleu-pétrole, écho Light */
-	--OT-prominent-text: oklch(82.0% 0.130  72);
+	--color-base-00:    	oklch(16.5% 0.020  72);   /* laque noire, reflet or */
+	--color-base-10:    	oklch(20.5% 0.024  72);
+	--color-base-100:   	oklch(88.0% 0.090  72);   /* crème ivoire chaud */
+	--text-muted:       	oklch(65.0% 0.045  68);
+	--OT-syntax-markers:	oklch(55.0% 0.028  76);
+	--link-color:       	oklch(72.0% 0.105 210);   /* bleu-pétrole, écho Light */
+	--OT-prominent-text:	oklch(82.0% 0.130  72);
+	--OT-kbd:				var(--color-base-00);
+	--OT-kbd-background:	var(--color-base-100);
 
 	/* ---- tables, metadata, citations, code fixes, hors slider ---- */
 	--table-header-background:       oklch(25.0% 0.032  72);
@@ -3787,7 +3790,15 @@ body:not(.is-focused) {
 
 /* ---------- ↑ icônes ↑ ---------- */
 
-/*	=== === === OpSpl11	—————————————————————————————— LIBRE —————————————————————————————— */
+/*	=== === === OpSpl11	—————————————————————————————— Modals —————————————————————————————— */
+.modal.mod-publish,
+.modal.mod-sync-log {
+  width: min(92vw, var(--OT-modal-max-width-wide));
+  max-width: var(--OT-modal-max-width-wide);
+}
+.modal.mod-sync-log .sync-log-container {
+	font-size:	calc(var(--font-ui-smaller) *0.9)											;
+}
 
 
 /*	=== === === OpSpl12	—————————————————————————————— Text Colors —————————————————————————————— */
@@ -6549,6 +6560,7 @@ body.is-focused
 	.workspace-tab-header-status-icon
 ) {
 	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
 }
 
 /* Vertical spacing for file navigator items */
@@ -8077,15 +8089,16 @@ body.is-focused {
 			.workspace-tab-header-inner-title,
 			.workspace-tab-header-inner-icon,
 			.workspace-tab-header-status-icon {
-				color: inherit;
-				background-color: transparent;
+				color:				var(--OT-color-on-accent-2);
+				background-color:	var(--color-accent-2);
 			}
 
 			.workspace-tab-header-inner-icon .svg-icon,
 			.workspace-tab-header-status-icon .svg-icon {
-				color: inherit;
-				stroke: currentColor;
-				fill: none;
+				color:				var(--OT-color-on-accent-2);
+				background-color:	var(--color-accent-2);
+				stroke:				currentColor;
+				fill:				none;
 			}
 		}
 	}
@@ -9001,6 +9014,15 @@ body:not(.is-phone) .horizontal-tab-nav-item.is-active:not(:hover) .horizontal-t
 	color: var(--OT-setting-item-description);
 }
 
+.setting-item-description a {
+	color:				var(--OT-color-on-accent-3);
+	background-color:	var(--color-accent-3)
+}
+.setting-item-description a:hover {
+	color:				var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1)
+}
+
 /* Selected community item = accent-3 (cohérent avec ta logique de 3e niveau) */
 body:not(.is-phone) .community-item.is-selected,
 body:not(.is-phone) .community-item.is-selected:hover {
@@ -9471,7 +9493,25 @@ On lui donne donc le même rythme qu’à une image seule.
 /* -------------------- ↑ Images, etc. -------------------- ↑ */
 
 
-/*	=== === === OpSpl37	 —————————————————————————————— Zoom-image —————————————————————————————— */
+/*	=== === === OpSpl37	 —————————————————————————————— Zoom-image / lightbox—————————————————————————————— */
+/* Optional: hide file name in image lightbox */
+
+/* Global switch via Style Settings */
+body.OT-lightbox-hide-titlebar {
+	--lightbox-titlebar-display:	none;
+}
+
+/* Per-note switch via cssclasses:
+   .lightbox is mounted beside #app-container, not inside the note view. */
+body:has(.workspace-leaf.mod-active .markdown-preview-view.OT-lightbox-hide-titlebar) .lightbox-titlebar,
+body:has(.workspace-leaf.mod-active .markdown-source-view.OT-lightbox-hide-titlebar) .lightbox-titlebar {
+	display:	none;
+}
+
+.markdown-preview-view .internal-embed img {
+	cursor:	zoom-in;
+}
+
 .markdown-preview-view .internal-embed img {
 	cursor:zoom-in;}
 .markdown-preview-view .internal-embed img:active {
@@ -13504,6 +13544,13 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 
 
 /*  === === === OpSpl66 ———————————————————— Omnisearch plugin  ———————————————————— */
+/* ce serait peut-être bien de m’occuper également de la taille des icônes */
+.omnisearch-result__body,
+.omnisearch-result__folder-path,
+.omnisearch-result__counter {
+	font-size:	var(--font-ui-smaller);
+	color:		var(--text-muted);
+}
 
 /* Highlight dans les extraits */
 .omnisearch-default-highlight {
@@ -14889,9 +14936,6 @@ body {
 	--nn-theme-file-tag-color:                     var(--OT-pill-color);
 	--nn-theme-file-tag-bg:                        var(--OT-pill-background);
 
-	--nn-theme-file-property-color:					var(--OT-color-on-accent-3);
-	--nn-theme-file-property-bg:					var(--color-accent-3);
-
 	/* Active selection background – files pane focused */
 	--nn-theme-file-selected-bg:                   var(--color-accent-2);
 	--nn-theme-file-selected-name-color:           var(--OT-color-on-accent-2);
@@ -15810,255 +15854,6 @@ div:has(> .simple-gallery-root) {
 /* —————————————————————————————— ↑ Simple Gallery ↑  —————————————————————————————— */
 
 
-/*  === === === OpSpl76d  ——————————————————— Power Explorer plugin  ——————————————————— */
-.pe-ghost {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13);
-}
-
-.pe-recent-row {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
-}
-
-.pe-page-sec {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-empty {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12.5);
-}
-
-.pe-pages-head {
-	font-size: calc(var(--font-ui-small) / 13.5 * 14);
-}
-
-.pe-pages-count {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-filter input {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12.5);
-}
-
-.pe-page.pe-sub {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13);
-}
-
-.pe-modal-desc {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13);
-}
-
-.pe-page {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
-}
-
-.pe-pages-more {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12);
-}
-
-.pe-back {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
-}
-
-.pe-drill-folder {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
-}
-
-.pe-drill-ico {
-	font-size: calc(var(--font-ui-small) / 13.5 * 14);
-}
-
-.pe-drill.pe-touch .pe-back {
-	font-size: calc(var(--font-ui-small) / 13.5 * 17);
-}
-
-.pe-drill.pe-touch .pe-drill-folder {
-	font-size: calc(var(--font-ui-small) / 13.5 * 17);
-}
-
-.pe-drill.pe-touch .pe-drill-ico {
-	font-size: calc(var(--font-ui-small) / 13.5 * 17);
-}
-
-.pe-drill.pe-touch .pe-page {
-	font-size: calc(var(--font-ui-small) / 13.5 * 17);
-}
-
-.pe-drill.pe-touch .pe-page.pe-sub {
-	font-size: calc(var(--font-ui-small) / 13.5 * 16);
-}
-
-.pe-drill.pe-touch .pe-pages-head {
-	font-size: calc(var(--font-ui-small) / 13.5 * 18);
-}
-
-.pe-drill.pe-touch .pe-filter input {
-	font-size: calc(var(--font-ui-small) / 13.5 * 16);
-}
-
-.pe-drill.pe-touch .pe-pages-more {
-	font-size: calc(var(--font-ui-small) / 13.5 * 14);
-}
-
-.pe-drill.pe-touch .pe-empty {
-	font-size: calc(var(--font-ui-small) / 13.5 * 15);
-}
-
-.pe-notebook {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
-}
-
-.pe-search-box input {
-	font-size: calc(var(--font-ui-small) / 13.5 * 15);
-}
-
-.pe-search-compact {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12);
-}
-
-.pe-search-scope {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11.5);
-}
-
-.pe-search-group {
-	/*		font-size: calc(var(--font-ui-small) / 13.5 * 11);	*/
-	font-size: var(--font-ui-medium);
-}
-
-.pe-search-section {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11.5);
-}
-
-.pe-search-title {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
-}
-
-.pe-search-head {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12);
-}
-
-.pe-search-snippet {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12);
-}
-
-.pe-search-badge {
-	font-size: calc(var(--font-ui-small) / 13.5 * 9.5);
-}
-
-.pe-search-meta {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-search-answer {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13.5);
-}
-
-.pe-tpl-ic {
-	font-size: calc(var(--font-ui-small) / 13.5 * 18);
-}
-
-.pe-tpl-badge {
-	font-size: calc(var(--font-ui-small) / 13.5 * 10);
-}
-
-.pe-tpl-desc {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12);
-}
-
-.pe-ask-label {
-	font-size: calc(var(--font-ui-small) / 13.5 * 13);
-}
-
-.pe-tpl-pick-pattern {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-tpl-filename {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-tpl-card-preview {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-tpl-card-preview :is(h1, h2, h3, h4, h5, h6) {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12);
-}
-
-.pe-tpl-ic-inline {
-	font-size: calc(var(--font-ui-small) / 13.5 * 15);
-}
-
-textarea.pe-tpl-seed {
-	font-size: calc(var(--font-ui-small) / 13.5 * 12);
-}
-
-.pe-icon-cat {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-icon-cell {
-	font-size: calc(var(--font-ui-small) / 13.5 * 20);
-}
-
-.pe-launcher-cat {
-	font-size: calc(var(--font-ui-small) / 13.5 * 11);
-}
-
-.pe-page {
-	padding-top:	1px;
-	padding-bottom:	1px;
-}
-
-.pe-notebook {
-	padding-top:	1px;
-	padding-bottom:	1px;
-}
-.pe-nb-chev svg {
-	width:	var(--font-ui-small);
-	height:	var(--font-ui-small);
-}
-
-.pe-notebook.is-active,
-.pe-recent-row.is-active,
-.pe-page.is-active {
-	color:				var(--OT-color-on-accent-2);
-	background-color:	var(--color-accent-2);
-	& .pe-nb-chev		{ color: inherit;};
-	& .pe-page-sec		{ color: var(--OT-color-muted-on-accent-2);}
-}
-
-.pe-search-hit.is-selected {
-	color:				var(--OT-color-on-accent-2);
-	background-color:	var(--color-accent-2);
-	& .pe-search-head	{ color: var(--OT-color-muted-on-accent-2); }
-}
-
-.pe-search-modal {
-// height:			84dvh;
-//	min-height:		560px;
-//	max-height:		calc(100dvh - 24px);
-	width:		clamp(680px, 45vw, 1040px);
-	max-width:	calc(100vw - 24px);
-}
-
-.pe-search-compact {
-	color:				var(--OT-color-on-accent-3);
-	background-color:	var(--color-accent-3);
-	border-color:		var(--OT-color-on-accent-3);
-}
-
-.pe-search-compact:hover {
-	color:				var(--OT-color-on-accent-1);
-	background-color:	var(--color-accent-1);
-}
-
-.pe-search-compact.is-active {
-	color:				var(--OT-color-on-accent-2);
-	background-color:	var(--color-accent-2);
-	border-color:		var(--OT-color-on-accent-2);
-}
-/* —————————————————————————————— ↑ Power Explorer ↑  —————————————————————————————— */
-
 /*  === === === OpSpl77  ——————————————————— Viewing modes icons  ——————————————————— */
 /* swaps the icons from "action buttons" to "status indicators/toggles", and adds an icon for Source mode */
 body.OT-viewing-mode-icons {
@@ -16644,6 +16439,16 @@ settings:
 		description.fr: Masque le nom du fichier en haut des notes et requêtes incluses.
 		type:			class-toggle
 		default:		true
+		addCommand:		true
+
+	-
+		id:				OT-lightbox-hide-titlebar
+		title:			"Hide lightbox file name"
+		title.fr:		"Masquer le nom du fichier dans la lightbox"
+		description:	"Hide the file name bar in image lightbox view."
+		description.fr:	"Masque la barre affichant le nom du fichier dans la vue lightbox des images."
+		type:			class-toggle
+		default:		false
 		addCommand:		true
 
 	-
