@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-08-25
+	- tweaks on slider thumbs and buttons
 2026-08-23
 	- increased the width of the sync log modal + reduced font size = improved it’s legibility on large screens
 	- added a CSS class (“OT-lightbox-hide-titlebar”) and a switch in Style Settings for optionally hiding the filename in the lightbox mode
@@ -383,7 +385,7 @@ body {
 	--OT-button-cta-background-normal:				var(--color-accent-2);
 	--OT-button-cta-text-normal:					var(--OT-color-on-accent-2);
 	--OT-button-OFF-bg: 							oklch(0.82 calc(var(--OT-themeLight-c) * 0.8) var(--OT-themeLight-h));
-	--OT-button-ON-bg:								var(--color-accent-2);
+	--OT-button-ON-bg:								var(--color-accent-3);
 	--OT-button-text-hover:							var(--OT-color-on-accent-1);
 	--OT-button-text-normal:						var(--OT-color-on-accent-3);
 	--OT-calendar-day-color:						var(--color-base-100);
@@ -793,8 +795,13 @@ body {
 
 /*	--sidebar-markdown-font-size:	calc(var(--OT-readingMode-text-size) * 0.9);	*/
 
-	--slider-thumb-border-color:	var(--color-accent-2);
-	--slider-track-background:		var(--color-base-30);
+	--slider-thumb-background-hover:	var(--color-accent-1);
+	--slider-thumb-border-color:		var(--color-accent-3);
+	--slider-track-background:			var(--color-base-30);
+	--slider-fill-background:			var(--color-accent-1);
+	--slider-thumb-background:			var(--toggle-thumb-color);
+	--slider-track-background:			var(--color-accent-2);
+
 
 	--status-bar-text-color:		var(--OT-color-on-accent-3);
 	--status-bar-background:		var(--color-accent-3);
@@ -839,7 +846,7 @@ body {
 	--titlebar-background:			var(--color-base-20);
 	--titlebar-background-focused:	var(--color-base-05);
 
-	--toggle-thumb-color:			var(--color-base-20);
+	--toggle-thumb-color:				var(--color-accent-2);
 
 	--vault-profile-color:			var(--OT-prominent-text);
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
@@ -1929,8 +1936,8 @@ body {
 
 	--OT-accent-h:		163.25;
 	--OT-accent-c:		0.01;
-	--color-accent-1:	var(--color-stone-400);
-	--color-accent-2:	var(--color-stone-200);
+	--color-accent-1:	var(--color-stone-600);
+	--color-accent-2:	var(--color-stone-400);
 	--color-accent-3:	var(--color-stone-100);
 
 	--OT-button-OFF-bg: 	var(--color-stone-300);
@@ -6416,6 +6423,16 @@ input[type=checkbox]:hover {
 	/*padding-top:	4pt		!important;				09.02.2026 je préfère un affichage compact	*/
 	padding-bottom:	0		!important;
 	line-height:	1.1em	!important;
+}
+
+/* Le survol des combobox dans les settings. Par ex.: celui pour choisir le thème */
+@media (hover: hover) {
+	select:not(:disabled):not(.mod-disabled):hover,
+	.combobox-button:not(:disabled):not(.mod-disabled):hover,
+	.dropdown:not(:disabled):not(.mod-disabled):hover {
+	    background-color:	var(--color-accent-1);
+	    color:				var(--OT-color-on-accent-1);
+	}
 }
 
 .publish-section-header,
