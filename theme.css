@@ -51,6 +51,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-08-29
+	- added an option to downsize, via a Style Settings switch, certain UI elements in sidebars
+	- tuned interface switches colors
 2026-08-25
 	- tweaks on slider thumbs and buttons
 2026-08-23
@@ -384,8 +387,8 @@ body {
 	--OT-button-background-normal:					var(--color-accent-3);
 	--OT-button-cta-background-normal:				var(--color-accent-2);
 	--OT-button-cta-text-normal:					var(--OT-color-on-accent-2);
-	--OT-button-OFF-bg: 							oklch(0.82 calc(var(--OT-themeLight-c) * 0.8) var(--OT-themeLight-h));
-	--OT-button-ON-bg:								var(--color-accent-3);
+	--OT-button-OFF-bg:								oklch(90%	calc(var(--OT-accent-c) * 0.18)	var(--OT-accent-h));
+	--OT-button-ON-bg:								oklch(80%	calc(var(--OT-accent-c) * 0.58)	var(--OT-accent-h));
 	--OT-button-text-hover:							var(--OT-color-on-accent-1);
 	--OT-button-text-normal:						var(--OT-color-on-accent-3);
 	--OT-calendar-day-color:						var(--color-base-100);
@@ -846,7 +849,7 @@ body {
 	--titlebar-background:			var(--color-base-20);
 	--titlebar-background-focused:	var(--color-base-05);
 
-	--toggle-thumb-color:				var(--color-accent-2);
+	--toggle-thumb-color:			oklch(97.5%	calc(var(--OT-accent-c) * 0.02)	var(--OT-accent-h));
 
 	--vault-profile-color:			var(--OT-prominent-text);
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
@@ -1075,6 +1078,11 @@ body {
 	--OT-color-on-accent-3:			oklch(92% 0.01 var(--OT-accent-h));
 
 	--OT-prominent-text: 			oklch(70%	0.18	var(--OT-accent-h));
+
+	/* settings switches*/
+	--OT-button-OFF-bg:		oklch(38%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
+	--OT-button-ON-bg:		oklch(50%	min(calc(var(--OT-accent-c) * 1.00), 0.100)	var(--OT-accent-h));
+	--toggle-thumb-color:	oklch(60%	min(calc(var(--OT-accent-c) * 0.75), 0.100)	var(--OT-accent-h));
 }
 
 .theme-dark.OT-colored-headings-darkMode {
@@ -1942,7 +1950,7 @@ body {
 
 	--OT-button-OFF-bg: 	var(--color-stone-300);
 	--OT-button-ON-bg:		var(--color-stone-100);
-	--toggle-thumb-color:	var(--color-stone-500);
+	--toggle-thumb-color:	var(--color-stone-400);
 
 }
 .theme-light.lightPalette-Stone.accentColor-lightMode-alternative-1 {
@@ -1955,6 +1963,8 @@ body {
 	--OT-color-muted-on-accent-1:	var(--color-stone-50);
 	--OT-color-on-accent-2:			var(--color-stone-800);
 	--OT-color-muted-on-accent-2:	var(--color-stone-500);
+
+	--OT-button-ON-bg:				var(--color-accent-3);
 }
 .theme-light.lightPalette-Stone.accentColor-lightMode-alternative-2 {
 	--OT-accent-h:					165 ;
@@ -1965,6 +1975,7 @@ body {
 	--OT-color-on-accent-1:			var(--color-stone-50);
 	--OT-color-on-accent-1:			white;
 	--OT-color-muted-on-accent-1:	var(--color-stone-100);
+	--OT-button-ON-bg:				var(--color-accent-3);
 }
 /* —————————————————————————————— ↑ Stone ↑ —————————————————————————————— */
 
@@ -2335,8 +2346,8 @@ body {
 
 
 	/* ---- boutons ---- */
-	--OT-button-OFF-bg                       : var(--color-neutral-700);
-	--OT-button-ON-bg                        : var(--color-neutral-800);
+	/*--OT-button-OFF-bg                       : var(--color-neutral-700);
+	--OT-button-ON-bg                        : var(--color-neutral-800);*/
 	--toggle-thumb-color                     : var(--color-neutral-400);
 
 	/* ---- stabilo ---- */
@@ -2349,6 +2360,7 @@ body {
 
 	--OT-kbd-background:					var(--color-neutral-800);
 }
+/* ---------- ↑ darkPalette-Black ↑ ---------- */
 
 /* ---- alternative-1 : Violet ---- */
 .theme-dark.darkPalette-Black.accentColor-darkMode-alternative-1,
@@ -2553,7 +2565,7 @@ body {
 	--OT-nav-item-muted:					oklch(59.0% max(calc(var(--OT-theme-c-surface) * 0.70), 0.018) var(--OT-themeLight-h));
 	--OT-tree-item-color:					oklch(67.0% calc(var(--OT-theme-c-structure) * 0.92) var(--OT-themeLight-h));
 	--menu-background:						oklch(27.0% calc(var(--OT-theme-c-surface) * 0.70) var(--OT-themeLight-h));
-	--toggle-thumb-color:					var(--color-base-10);
+	/*--toggle-thumb-color:					var(--color-base-10);*/
 	--OT-button-OFF-bg:						oklch(40%	0.034	72);
 
 	/* ------------------------------------------------------------------ */
@@ -2649,8 +2661,8 @@ body {
 
 	/* autres composants */
 	--icon-color:							oklch(79.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
-	--toggle-thumb-color:					oklch(30%	0.05	72);
-	--OT-button-OFF-bg:						oklch(40%	0.01	72);
+	/*--toggle-thumb-color:					oklch(30%	0.05	72);*/
+	/*--OT-button-OFF-bg:						oklch(40%	0.01	72);*/
 	--OT-prominent-text:					oklch(77.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
 	--OT-setting-item-description:			oklch(67.0% 0.050 var(--OT-themeDark-h));
@@ -2732,6 +2744,7 @@ body {
 	--OT-tree-item-color: oklch(66.0% calc(var(--OT-theme-c-structure) * 0.92) var(--OT-themeLight-h));
 	--menu-background: oklch(27.0% calc(var(--OT-theme-c-surface) * 0.70) var(--OT-themeLight-h));
 	--toggle-thumb-color: oklch(60.0% calc(var(--OT-theme-c-structure) * 1.00) var(--OT-themeLight-h));
+	--OT-button-OFF-bg:		oklch(20%	calc(var(--OT-accent-c) * 0.18)	var(--OT-accent-h));
 
 	/* ---------------------------------------------------------------------- */
 	/* accents : lumineux, mais moins extrêmes que le vrai dark               */
@@ -2762,6 +2775,7 @@ body {
 	--OT-highlight-fg: oklch(36.0% 0.105 128);
 	--text-selection: oklch(68.0% min(var(--OT-accent-c), 0.090) var(--OT-accent-h) / 0.30);
 }
+/* ---------- ↑ lightPalette-CRT80s-green ↑ ---------- */
 
 
 /* ========================================================================== */
@@ -2831,7 +2845,8 @@ body {
 
 	/* autres composants */
 	--icon-color: oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
-	--toggle-thumb-color: var(--color-accent-1);
+	--toggle-thumb-color: var(--color-accent-2);
+	--OT-button-OFF-bg:		oklch(15%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
 	--OT-prominent-text: oklch(76.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current: var(--color-accent-2);
 	--OT-setting-item-description: oklch(66.0% 0.050 var(--OT-themeDark-h));
@@ -2842,7 +2857,7 @@ body {
 	--OT-highlight-fg:	oklch(30.0% 0.075 136);
 		--text-selection: oklch(63.0% min(var(--OT-accent-c), 0.155) var(--OT-accent-h) / 0.34);
 }
-/*	↑	CRT80s Green	↑	*/
+/*	↑	Dark CRT80s Green	↑	*/
 
 /* —————————————————————————————— Icy —————————————————————————————— */
 .theme-dark.darkPalette-Icy,
@@ -3059,8 +3074,8 @@ body {
 	--OT-color-on-accent-3:				var(--color-base-100);
 
 	--icon-color:						var(--color-accent-1);
-	--OT-button-ON-bg:					var(--color-accent-2);
-	--OT-button-OFF-bg:					oklch(38.5%	0.0186											278deg);
+	/*--OT-button-ON-bg:					var(--color-accent-2);*/
+	/*--OT-button-OFF-bg:					oklch(38.5%	0.0186											278deg);*/
 
 	/* par défaut, titres = texte normal */
 	/* --h1-color:						var(--text-normal);
@@ -3074,6 +3089,8 @@ body {
 	--OT-highlight-bg:					oklch(98.8%	0.021											104deg);
 	--checklist-done-color:				oklch(49.9%	calc(var(--OT-themeDark-c) * 0.930)				210deg);
 }
+/* ---------- ↑ darkPalette-LYT ↑ ---------- */
+
 
 /* titres colorés seulement si le toggle est actif */
 .theme-dark.darkPalette-LYT.OT-colored-headings-darkMode,
@@ -3126,7 +3143,6 @@ body {
 	--OT-menu-text-color:					oklch(84% 0.040 var(--OT-themeDark-h));
 	--OT-menu-text-muted:					oklch(60% 0.020 var(--OT-themeDark-h));
 	--OT-tree-item-color:					oklch(72% 0.045 var(--OT-themeDark-h));
-	--toggle-thumb-color:					oklch(62% 0.080 var(--OT-themeDark-h));
 
 	/* Tables, code, métadonnées fixes, donc hors slider */
 	--table-header-background:				oklch(27% 0.018 235);
@@ -3491,8 +3507,8 @@ body {
 
 
 	/* ---- boutons ---- */
-	--OT-button-OFF-bg                       : var(--color-stone-700);
-	--OT-button-ON-bg                        : var(--color-emerald-800);
+	/*--OT-button-OFF-bg                       : var(--color-stone-700);
+	/*--OT-button-ON-bg                        : var(--color-emerald-800);*/*/
 	--toggle-thumb-color                     : var(--color-stone-400);
 
 	/* ---- stabilo ---- */
@@ -3542,6 +3558,7 @@ body {
 .theme-dark.darkPalette-Stone.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
 .theme-dark.lightPalette-Stone.darkPalette-Default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
 	--text-selection    : oklch(70%  0.18  165  /  0.40);
+	--OT-button-ON-bg                        : var(--color-emerald-800);
 }
 /*	↑	darkPalette-Stone	↑	*/
 
@@ -3614,6 +3631,7 @@ body {
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color               : oklch(78.0%  min(var(--OT-accent-c), 0.195)  var(--OT-accent-h));
 	--toggle-thumb-color       : var(--color-accent-1);
+	--OT-button-OFF-bg:			oklch(18%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current : var(--color-accent-2);
 	--OT-setting-item-description : oklch(66.0%  0.050  var(--OT-themeDark-h));
 	--metadata-label-text-color   : oklch(67.0%  calc(var(--OT-theme-c-structure-dark) * 0.95)  var(--OT-accent-h));
@@ -3624,6 +3642,7 @@ body {
 	--OT-highlight-fg  : oklch(28%  0.060  309);  /* texte sombre coordonné */
 	/*--text-selection           : oklch(63.0%  min(var(--OT-accent-c), 0.155)  var(--OT-accent-h))  0.34;*/
 }
+
 /* ---- alternative-1 : vert (h 152) ---- */
 .theme-dark.darkPalette-Violet.accentColor-darkMode-alternative-1,
 .theme-dark.lightPalette-Violet.darkPalette-Default.accentColor-darkMode-alternative-1 {
@@ -3714,6 +3733,7 @@ body {
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color                  : oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
 	--toggle-thumb-color          : var(--color-accent-1);
+	--OT-button-OFF-bg:				oklch(18%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current : var(--color-accent-2);
 	--OT-setting-item-description : oklch(66.0% 0.050 var(--OT-themeDark-h));
 	--metadata-label-text-color   : oklch(67.0% calc(var(--OT-theme-c-structure-dark) * 0.95) var(--OT-accent-h));
@@ -6715,6 +6735,18 @@ body.is-focused
 	.tree-item.search-result:hover .search-result-file-metadata {
 		color: var(--OT-color-muted-on-accent-1);
 	}
+}
+
+/*	Réduit certains éléments d’interface dans les sidebars.
+	Activé par le switch Style Settings “Reduce interface elements in sidebars”.	*/
+body.OT-reduce-sidebar-ui :is(.mod-left-split, .mod-right-split),
+body.OT-reduce-sidebar-ui .workspace-leaf-content[data-type="bases"] .bases-view:is([data-view-type="list"], [data-view-type="table"]) {
+	--bases-table-font-size:	var(--font-ui-smaller);
+}
+
+/*	Les noms des tabs dans le panneau du plugin Vertical Tabs peuvent être plus petits afin d’être moins tronqués.	*/
+body.OT-reduce-sidebar-ui :is(.mod-left-split, .mod-right-split) .obsidian-vertical-tabs-container {
+	--nav-item-size:			var(--font-ui-smaller);
 }
 /* -------------------- ↑ Sidebars ↑ -------------------- */
 
@@ -16457,6 +16489,15 @@ settings:
 		type:			class-toggle
 		default:		true
 		addCommand:		true
+
+	-
+		id:				OT-reduce-sidebar-ui
+		title: 			Reduce interface elements in sidebars
+		title.fr:		Diminution de certains éléments d’interface dans les barres latérales.
+		description: 	Use smaller UI text for supported elements displayed in the sidebars.
+		description.fr:	Utilsation d’une petite fonte d’interface pour certains éléments dans les barres latérales.
+		type: 			class-toggle
+		default:		false
 
 	-
 		id:				OT-lightbox-hide-titlebar
