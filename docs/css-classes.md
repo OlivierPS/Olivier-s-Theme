@@ -1,43 +1,50 @@
 # CSS classes reference
 
-This page lists the **cssclasses provided by Olivier’s Theme**, with a short description for each family.
+This page lists the `cssclasses` provided by Olivier’s Theme.
 
-In version 3, this area has grown: existing classes are more coherent, and new ones make it easier to control note‑specific layouts, spacing, Bases, tables, and images without changing your global settings.
-
-Some classes are also compatible with other themes that use similar conventions (for example, table and chart width helpers inspired by the Minimal theme).
-
-For a more narrative guide focused on how to use these classes in practice, see [Niceties & cssclasses](niceties-and-cssclasses.md).
-
----
-
-## Base layout: Bases headers
-
-These cssclasses control whether the **Bases header** is visible in Reading mode for a given note.
-
-### `bases-header-on`
-
-Shows the Bases header in Reading mode, even if the global setting “Bases: hide header in Preview” is enabled.  
-Use this when you normally hide Bases headers, but want to keep them visible in a specific note.
-
-Example frontmatter:
+Add a class to a note’s `cssclasses` property to change that note without affecting the rest of the vault.
 
 ```yaml
 ***
 cssclasses:
-  - bases-header-on
+  - example-class
 ***
 ```
 
-Visual idea: a note where the Bases header is clearly visible above the main content.
+Some classes apply to the whole note. Others are placed directly on an element within the note.
 
-<!-- [image] -->
+For practical examples, see [Niceties & cssclasses](niceties-and-cssclasses.md).
 
-### `bases-clean`
+---
 
-Hides the Bases header in Reading mode for this note, even if the global setting would normally show it.  
-Use this when you prefer a clean, uninterrupted reading flow, where the note reads like continuous text with just a table or a list.
+## Text column width
 
-Example frontmatter:
+The text column can be made wider than the width set by the **line width factor**, on a note-by-note basis.
+
+| Class | Effect |
+|---|---|
+| `wide` | Makes the text column slightly wider than usual |
+| `max` | Lets the text column use most of the available pane width |
+
+```yaml
+***
+cssclasses:
+  - wide
+***
+```
+
+---
+
+## Bases
+
+### Base headers
+
+Use these classes to override the global **Bases: hide header in Preview** setting for one note.
+
+| Class | Effect |
+|---|---|
+| `bases-header-on` | Shows the Base header in Reading mode, even when it is globally hidden |
+| `bases-clean` | Hides the Base header in Reading mode, even when it is globally visible |
 
 ```yaml
 ***
@@ -46,38 +53,19 @@ cssclasses:
 ***
 ```
 
-If you want to see how these classes change a real note, the [Displaying Bases](displaying-bases.md) page shows concrete examples with screenshots.
+Base headers remain available in Live Preview, where they are useful for editing.
 
----
+See [Displaying Bases](displaying-bases.md) for examples.
 
-## Bases width
+### Base width
 
-These classes control **the width of Bases** in a given note, without changing your global settings. They mirror the behaviour of similar width helpers for tables in other themes.
+| Class | Effect |
+|---|---|
+| `bases-wide` | Makes Bases wider than the text column |
+| `bases-max` | Lets Bases use most of the available width |
+| `bases-100` | Lets Bases use the full available width |
 
-### `bases-wide`
-
-- Makes the Base wider than the default text column.  
-- Useful when a Base is the main focus of the note and you want more horizontal space for columns.
-
-Example frontmatter:
-
-```yaml
-***
-cssclasses:
-  - bases-wide
-***
-```
-
-Visual idea: a note where the Base extends further than the main text column, but still leaves margins on both sides.
-
-<!-- [image] -->
-
-### `bases-max`
-
-- Expands the Base to the maximum width available in the note.  
-- Best suited for very wide Bases, dashboards, or when you want the table to read like a full‑width view.
-
-Example frontmatter:
+Use `bases-wide` for a Base that needs a little more room. Use `bases-max` for dashboards or Bases with many columns.
 
 ```yaml
 ***
@@ -86,52 +74,76 @@ cssclasses:
 ***
 ```
 
-Visual idea: a Base aligned with the note margins, using all horizontal space in Reading mode.
+---
 
-<!-- [image] -->
+## Tables
+
+### Table style
+
+Use these classes to override the global table style for one note.
+
+| Class | Effect |
+|---|---|
+| `table-flat` | Keeps tables free of alternating row backgrounds |
+| `tables-striped` | Adds alternating row backgrounds to tables |
+
+```yaml
+***
+cssclasses:
+  - table-flat
+***
+```
+
+### Table width
+
+The theme also provides table-width helpers. Use them when a table needs more room than the surrounding prose.
+
+| Class | Effect |
+|---|---|
+| `table-wide` | Makes tables wider than the text column |
+| `table-max` | Lets tables use most of the available width |
+| `table-100` | Lets tables use the full available width |
 
 ---
 
-## Image sizing
+## Images
 
-These classes control **how large images appear** in Reading mode (and, depending on your settings, in Live Preview).
+### Relative sizes
 
-### Relative sizes: `img-XS`, `img-S`, `img-M`, `img-L`, `img-XL`
+Use one of these classes to set a note-wide relative image size.
 
-- `img-XS` and `img-S` make images behave like small illustrations or thumbnails, leaving plenty of space for text beside them.  
-- `img-M` is a balanced, medium size suitable for most screenshots or figures.  
-- `img-L` and `img-XL` make images more prominent, useful when the image is the main focus.
+| Class | Use |
+|---|---|
+| `img-XS` | Small thumbnails and minor illustrations |
+| `img-S` | Small images within text-heavy notes |
+| `img-M` | A balanced default size |
+| `img-L` | Prominent screenshots and figures |
+| `img-XL` | Large illustrations and detailed visuals |
 
-Visual idea: same image repeated five times, from very small (`img-XS`) to very large (`img-XL`).
+### Fixed heights
 
-<!-- [image] -->
+These classes set the maximum image height in pixels:
 
-### Fixed widths: `img-300` … `img-1000`
+`img-300`, `img-350`, `img-400`, `img-450`, `img-500`, `img-600`, `img-700`, `img-800`, `img-900`, `img-1000`
 
-- `img-300`, `img-350`, `img-400`, `img-450`, `img-500` set the image width to a fixed pixel value in the 300–500 px range.  
-- `img-600`, `img-700`, `img-800`, `img-900`, `img-1000` do the same for larger images, up to a full‑width illustration.
+```yaml
+***
+cssclasses:
+  - img-600
+***
+```
 
-Practical uses:
+### Wide images
 
-- smaller widths for inline figures in text‑heavy notes,  
-- larger widths for diagrams, tables exported as images, or slide‑like content.
+| Class | Effect |
+|---|---|
+| `img-wide` | Makes images wider than the text column |
+| `img-max` | Lets images use most of the available width |
+| `img-100` | Lets images use the full available width |
 
-Visual idea: a row or column of the same image rendered at 300, 500, 700 and 1000 px.
+### Left-aligned images
 
-<!-- [image] -->
-
----
-
-## Advanced image layouts
-
-These classes complement the existing `img-…` sizes by controlling **image position and layout**.
-
-### `img-left`
-
-- Floats the image to the left of the text in Reading mode.  
-- Works best for small or medium images paired with short paragraphs.
-
-Example frontmatter:
+`img-left` aligns images with the left edge of the text column.
 
 ```yaml
 ***
@@ -141,34 +153,11 @@ cssclasses:
 ***
 ```
 
-Visual idea: an image aligned to the left, with text flowing neatly on the right.
+It is useful for small illustrations, screenshots, and notes where centred images feel too formal. It does not make text wrap around the image.
 
-<!-- [image] -->
+### Image grids
 
-### `img-wide` and `img-max`
-
-- `img-wide` makes images slightly wider than the main text column, without going all the way to the edges.  
-- `img-max` pushes images to the maximum width available in the note, ideal for screenshots, diagrams, or full‑bleed illustrations.
-
-Example frontmatter:
-
-```yaml
-***
-cssclasses:
-  - img-wide
-***
-```
-
-Visual idea: the same image rendered at normal width, then wider, then full‑width.
-
-<!-- [image] -->
-
-### `img-grid-ratio`
-
-- Adjusts the aspect ratio of images arranged in a grid, so they line up cleanly.  
-- Useful when you have several screenshots or photos in the same note and want a more consistent gallery‑like layout.
-
-Example frontmatter:
+`img-grid-ratio` gives images in a grid a consistent aspect ratio.
 
 ```yaml
 ***
@@ -177,45 +166,64 @@ cssclasses:
 ***
 ```
 
-Visual idea: a grid of images with matching proportions, instead of mixed heights.
+Use it for galleries, collections of screenshots, or image-heavy reference notes.
 
-<!-- [image] -->
+### Image lightbox
 
----
+In **Style Settings → Olivier’s Theme → GENERAL settings → Interface**, the **Hide lightbox file name** option hides the file-name bar in Obsidian’s image lightbox globally.
 
-## Horizontal rulers
+The `OT-lightbox-hide-titlebar` CSS class applies the same behaviour to the current note only. Use it when you do not want to enable the global option.
 
-All the rulers available in the **Style Settings** interface (**GENERAL settings > Typography > Text separators**) can be used on a per-note basis. Here’s the table of the available classes and the corresponding rulers:
+```yaml
+***
+cssclasses:
+  - OT-lightbox-hide-titlebar
+***
+```
 
-| CSS class | Visual result       |
-| :-------- | :------------------ |
-| `sep-01`  | simple line         |
-| `sep-02`  | tapered line        |
-| `sep-03`  | minimal triple dots |
-| `sep-04`  | bubbles             |
-| `sep-05`  | diamonds            |
-| `sep-06`  | geometric Art Déco  |
-| `sep-07`  | light fleuron       |
-| `sep-08`  | decorative fleuron  |
+Use it when the image is sufficient and the file name is visually distracting.
 
 ---
 
-## Reading‑mode text size
+## Horizontal rules
 
-These classes adjust **text size in Reading mode only**, without affecting Editing mode.
+Choose a separator globally in **GENERAL settings → Typography → Text separators**, then override it for a specific note with one of these classes.
 
-### `readingMode-text-smaller` and `readingMode-text-small`
+| Class | Separator |
+|---|---|
+| `sep-01` | Simple line |
+| `sep-02` | Tapered line |
+| `sep-03` | Minimal triple dots |
+| `sep-04` | Bubbles |
+| `sep-05` | Diamonds |
+| `sep-06` | Geometric Art Deco |
+| `sep-07` | Light fleuron |
+| `sep-08` | Decorative fleuron |
 
-- Slightly reduce the text size in Reading mode.  
-- Good for very dense notes, reference material, or whenever you want more content on screen.
+```yaml
+***
+cssclasses:
+  - sep-07
+***
+```
 
-### `readingMode-text-big`, `readingMode-text-bigger`, `readingMode-text-biggest`
+The selected separator is used in both Reading mode and Live Preview.
 
-- Progressively increase the text size in Reading mode.  
-- Great for lecture notes, coaching sessions, or when you are reading at a distance from the screen.  
-- They can also make the text feel closer to a printed book when combined with generous line height.
+For the visual catalogue, see [Horizontal rules and decorative separators](horizontal-rulers.md).
 
-Example frontmatter:
+---
+
+## Reading text size
+
+These classes change the text size in Reading mode only.
+
+| Class | Effect |
+|---|---|
+| `readingMode-text-smaller` | Slightly smaller text |
+| `readingMode-text-small` | Smaller text |
+| `readingMode-text-big` | Larger text |
+| `readingMode-text-bigger` | Still larger text |
+| `readingMode-text-biggest` | Largest text |
 
 ```yaml
 ***
@@ -224,81 +232,15 @@ cssclasses:
 ***
 ```
 
-Visual idea: the same note rendered with progressively larger body text in Reading mode.
-
-<!-- [image] -->
+Use smaller sizes for dense reference notes and larger sizes for sustained reading or distance viewing.
 
 ---
 
-## Table styles
+## Lists
 
-These classes change how **Markdown tables** and embedded HTML tables are rendered, without touching the underlying content.
+### Arrow bullets
 
-### `OT-tables-native`
-
-- Keeps table styling close to Obsidian’s native look, while still aligning borders and spacing with the theme.  
-- A good default if you prefer a subtle, familiar appearance.
-
-Example frontmatter:
-
-```yaml
-***
-cssclasses:
-  - OT-tables-native
-***
-```
-
-Visual idea: a table that looks similar to Obsidian’s default, but with slightly cleaner borders and alignment.
-
-<!-- [image] -->
-
-### `OT-tables-improved`
-
-- Applies a more refined table layout: clearer separation between columns, consistent internal borders, and improved header styling.  
-- Useful for notes where tables are the main structure and need to be easy to scan.
-
-Example frontmatter:
-
-```yaml
-***
-cssclasses:
-  - OT-tables-improved
-***
-```
-
-Visual idea: the same table rendered once with the default style and once with improved borders and headers.
-
-<!-- [image] -->
-
-### `OT-tables-alternate-rows`
-
-- Adds alternating row backgrounds on top of the improved table styling.  
-- Helps with long tables where it is easy to lose track of which row you are reading.
-
-Example frontmatter:
-
-```yaml
-***
-cssclasses:
-  - OT-tables-alternate-rows
-***
-```
-
-Visual idea: a striped table where every other row has a slightly tinted background.
-
-<!-- [image] -->
-
----
-
-## Lists and bullets
-
-### `arrow-bullets`
-
-- Replaces the default list markers with arrow‑style bullets in Reading mode.  
-- Works on regular lists only.
-- Typical use : MOCs, index notes, etc.
-
-Example frontmatter:
+`arrow-bullets` replaces standard unordered-list bullets with arrows.
 
 ```yaml
 ***
@@ -307,7 +249,39 @@ cssclasses:
 ***
 ```
 
-Visual idea: a list where each bullet is a subtle arrow instead of a dot.
+It works in Reading mode and Live Preview. It is particularly suitable for MOCs, navigation notes, and short index lists.
 
-<!-- [image] -->
+---
 
+## Board View
+
+`board-show-row-header` shows the titles of Board View groups.
+
+```yaml
+***
+cssclasses:
+  - board-show-row-header
+***
+```
+
+Use it when group titles carry useful information and should remain visible in the board.
+
+---
+
+## Vertical spacers
+
+These classes create deliberate vertical space inside a note.
+
+| Class | Space |
+|---|---|
+| `tiny-spacer` | Small |
+| `half-spacer` | Medium |
+| `full-spacer` | Large |
+
+Unlike the other classes on this page, spacers are applied to an element in the note body, not to the note’s `cssclasses` property.
+
+```html
+<div class="half-spacer"></div>
+```
+
+Use them sparingly, for example between distinct visual blocks that need more separation than a normal paragraph break.

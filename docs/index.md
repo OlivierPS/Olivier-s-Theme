@@ -1,23 +1,79 @@
 # Olivier’s Theme 3.0 ⬩ User Guide
 
-Olivier’s Theme is an Obsidian theme focused on legibility, calm color palettes, and a clear separation between reading and writing.
+Olivier’s Theme is an Obsidian theme built for legibility, calm colour palettes, and a deliberate separation between reading and writing.
 
-This guide explains how to configure the theme, from global interface settings to typography, color palettes, and per-note cssclasses. It assumes you already know the basics of Obsidian and want to tune your workspace efficiently.
+It provides a coherent typographic and colour system for the whole application, while leaving room for precise adjustments: global workspace settings, dedicated Reading and Writing environments, and note-level cssclasses.
 
-## What’s new in version 3
+This guide explains how to configure the theme efficiently. It assumes that you already know the basics of Obsidian and want to shape a workspace that supports sustained reading, structured thinking, and focused writing.
 
-Version 3 brings a broader and more structured customization system.
+## What makes Olivier’s Theme distinctive
 
-- A full OKLCH color engine for more predictable hue and contrast handling. [^oklch]
-- Improved palettes with calmer accents and better balance.
-- New palettes, including one with access to the full 360° hue range.
-- Adjustable color intensity in most palettes.
-- More layout options for Bases headers, table width, and Bases width.
-- Refined vertical rhythm and new typographic separators.
-- Reorganised settings, with clearer sections for Interface, Typography, and Kanban.
-- More CSS classes for note-level customization.
+Olivier’s Theme is designed for people who spend substantial time thinking, reading, writing, and organising material in Obsidian.
 
-It also includes many smaller visual refinements and clean-ups across the theme.
+It treats the application as two connected environments:
+
+- a **reading space**, designed to feel calm, legible, and typographically coherent;
+- a **writing space**, designed to remain practical, structured, and adaptable while you edit.
+
+The theme does not try to make every part of Obsidian look identical. Instead, it gives Reading mode and Writing mode their own visual logic, while keeping the workspace recognisable and consistent.
+
+### Typography before decoration
+
+Typography is the main organising principle of the theme.
+
+Text size, line length, line height, heading scale, list spacing, indentation, table width, and vertical rhythm can all be adjusted independently. The aim is not to make notes look ornate, but to make long notes easier to read, scan, and write.
+
+Reading mode can feel like a carefully set page. Writing mode can remain denser, more technical, or more personal, without compromising the appearance of the finished note.
+
+For a closer look at this distinction, see [Reading vs. Writing — mental modes](reading-vs-writing.md).
+
+### A colour system, not isolated palettes
+
+The theme uses a structured OKLCH-based colour system to keep backgrounds, text, accents, interface states, and semantic colours visually related.
+
+Light mode and dark mode can use different palettes. Most palettes also let you adjust their intensity, so you can move from a quiet, nearly neutral interface to a more expressive one without losing the theme’s internal balance.
+
+The result is not simply a collection of colour schemes: it is a system intended to keep the workspace legible and coherent across panes, tabs, controls, notes, code blocks, tables, and plugins.
+
+### Global settings, local exceptions
+
+Most choices can be made globally through Style Settings: interface density, typography, colors, Reading mode, Writing mode, and Kanban presentation.
+
+When one note needs a different treatment, you do not have to change the whole vault. Theme-specific `cssclasses` let you make controlled local adjustments, such as:
+
+- widening the text column, tables, Bases, or images;
+- changing the appearance of tables or horizontal rules;
+- adjusting image size and alignment;
+- changing Reading mode text size for a single note;
+- showing or hiding Base headers in Reading mode.
+
+This makes it possible to keep a coherent default environment while accommodating dashboards, long-form notes, image-heavy pages, reference sheets, and specialised layouts.
+
+See the [CSS classes reference](css-classes.md) for the complete list.
+
+### A colour system, not isolated palettes
+
+The theme uses a structured OKLCH-based colour system to keep backgrounds, text, accents, interface states, and semantic colours visually related.
+
+Light mode and dark mode can use different palettes. Most palettes also let you adjust their intensity, so you can move from a quiet, nearly neutral interface to a more expressive one without losing the theme’s internal balance.
+
+The result is not simply a collection of colour schemes: it is a system intended to keep the workspace legible and coherent across panes, tabs, controls, notes, code blocks, tables, and plugins.
+
+### Global settings, local exceptions
+
+Most choices can be made globally through Style Settings: interface density, typography, colors, Reading mode, Writing mode, and Kanban presentation.
+
+When one note needs a different treatment, you do not have to change the whole vault. Theme-specific `cssclasses` let you make controlled local adjustments, such as:
+
+- widening the text column, tables, Bases, or images;
+- changing the appearance of tables or horizontal rules;
+- adjusting image size and alignment;
+- changing Reading mode text size for a single note;
+- showing or hiding Base headers in Reading mode.
+
+This makes it possible to keep a coherent default environment while accommodating dashboards, long-form notes, image-heavy pages, reference sheets, and specialised layouts.
+
+See the [CSS classes reference](css-classes.md) for the complete list.
 
 ______________________________________________________________________
 
@@ -35,19 +91,14 @@ If some Obsidian terms feel unclear, see the [Glossary](glossary.md).
 
 ______________________________________________________________________
 
-## Coverage of settings
-
-This documentation is organised around the main sections of the theme and is meant to cover all user-facing options available in Style Settings, plus the main note-level cssclasses.
-
-Some pages are fully illustrated, while others are still being expanded. Even when screenshots are missing, the goal is to document what each option does and when it is useful.
-
-______________________________________________________________________
+The guide covers the theme’s Style Settings and its note-level cssclasses.
 
 ## How to use this guide
 
 You do not need to read everything in order.
 
-- Go to **[General](general.md)** for interface, typography, and Kanban settings.
+- Go to **[Interface](interface.md)** to adjust the workspace, sidebars, tabs, Properties, embeds, and Canvas.
+- Go to **[General](general.md)** for typography and Kanban settings.
 - Go to **[Light mode colors](light-mode-colors.md)** to choose a palette for light mode.
 - Go to **[Dark mode colors](dark-mode-colors.md)** if you want a different palette in dark mode.
 - Go to **[Reading mode](reading-mode.md)** for a more book-like reading experience.
@@ -58,7 +109,8 @@ You do not need to read everything in order.
 
 ## If you want to…
 
-- Make the interface larger, denser, or easier to read: start with [General](general.md).
+- Make the interface larger, denser, or easier to navigate: start with [Interface](interface.md).
+- Adjust headings, vertical spacing, separators, lists, or Kanban boards: see [General](general.md).
 - Choose the overall color atmosphere of the theme: see [Light mode colors](light-mode-colors.md) and [Dark mode colors](dark-mode-colors.md).
 - Fine-tune links, highlights, and inline text colors: see [Text colors](text-colors.md).
 - Improve long-form reading comfort: see [Reading mode](reading-mode.md).
@@ -77,7 +129,7 @@ This section only covers the settings that usually make the biggest difference f
 Open **GENERAL settings > Interface** and start with:
 
 - “Base size for the interface texts (px)”
-- “Spacing for the files listing”
+- “Spacing for items in sidepanels and settings panel”
 
 These two settings already change how comfortable the whole interface feels in everyday use.
 

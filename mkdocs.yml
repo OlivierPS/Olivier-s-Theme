@@ -12,6 +12,7 @@ nav:
   - Home: index.md
   - General:
     - General settings: general.md
+    - Interface settings: interface.md
     - glossary.md
   - Colors:
     - Light mode colors: light-mode-colors.md
@@ -25,8 +26,8 @@ nav:
     - Displaying Bases: displaying-bases.md
     - Decorative separators: horizontal-rulers.md
   - cssclasses:
-    - Visual catalogue of CSS classes: css-classes.md
     - Niceties & cssclasses: niceties-and-cssclasses.md
+    - Visual catalogue of CSS classes: css-classes.md
   - samples:
     - color-samples-light.md
     - color-samples-dark.md
