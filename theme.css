@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-08-31
+	- added code to compact also the Recent Notes plugin when "Reduce interface elements in sidebars" is ON
 2026-08-29
 	- added an option to downsize, via a Style Settings switch, certain UI elements in sidebars
 	- tuned interface switches colors
@@ -6748,6 +6750,27 @@ body.OT-reduce-sidebar-ui .workspace-leaf-content[data-type="bases"] .bases-view
 body.OT-reduce-sidebar-ui :is(.mod-left-split, .mod-right-split) .obsidian-vertical-tabs-container {
 	--nav-item-size:			var(--font-ui-smaller);
 }
+/*	Réduit la taille de l’interface du plugin Recent Notes dans les sidebars.
+	Activé par le switch Style Settings “Reduce interface elements in sidebars”.	*/
+body.OT-reduce-sidebar-ui :is(.mod-left-split, .mod-right-split) .recent-notes-view {
+	h6,
+	.recent-note-title,
+	.recent-note-preview,
+	.recent-note-preview-line {
+		font-size:	var(--font-ui-small);
+	}
+
+	.recent-note-date,
+	.recent-note-date-compact,
+	.recent-note-folder,
+	.recent-note-info {
+		font-size:	var(--font-ui-smaller);
+	}
+}
+body.OT-reduce-sidebar-ui[data-recent-notes-density="compact"] div.recent-note-item-wrapper {
+	padding-block:	0;
+	border-top:		1px dotted var(--background-modifier-border-hover);
+}
 /* -------------------- ↑ Sidebars ↑ -------------------- */
 
 /*  === === === OpSpl22f ————————————————————— search pane, nav metadata, sync history ————————————————— */
@@ -13299,183 +13322,165 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 .recent-notes-view {
 	/* Titre de la vue */
 	h6 {
-    color: var(--vault-profile-color);
-    font-weight: 700;
-    font-size: var(--font-ui-normal);
+		color:			var(--vault-profile-color);
+		font-weight:	700;
+		font-size:		var(--font-ui-normal);
 	}
 
-	/* =============================================================== */
-	/* 1. ITEMS EN MODE NORMAL                                         */
-	/* =============================================================== */
+	/* 1. ITEMS EN MODE NORMAL */
 	.recent-note-item {
-    /* mode = normal */
-    background-color: var(--background-secondary);
-    color: var(--nav-item-color);
+		/* mode = normal */
+		background-color:	var(--background-secondary);
+		color:				var(--nav-item-color);
 
-    .recent-note-title {
-      color: var(--nav-item-color);
-      font-weight: var(--font-medium);
-    }
+		.recent-note-title {
+			color:			var(--nav-item-color);
+			font-weight:	var(--font-medium);
+		}
 
-    .recent-note-date,
-    .recent-note-date-compact,
-    .recent-note-folder,
-    .recent-note-info,
-    .recent-note-preview,
-    .recent-note-preview-line {
-      /* muted */
-      color: var(--OT-nav-item-muted);
-    }
-
-    /* ------------------------------------------------------------- */
-    /* 2. HOVER NORMAL (normal + hovered)                            */
-    /* ------------------------------------------------------------- */
-    &:hover:not(.is-active) {
-      /* mode = normal + hovered */
-      background-color: var(--color-accent-1);
-      color: var(--OT-color-on-accent-1);
-
-      .recent-note-title {
-        color: var(--OT-color-on-accent-1);
-      }
-
-      .recent-note-date,
-      .recent-note-date-compact,
+		.recent-note-date,
+		.recent-note-date-compact,
 		.recent-note-folder,
-      .recent-note-info,
-      .recent-note-preview,
-      .recent-note-preview-line {
-        /* muted */
-        color: var(--OT-color-muted-on-accent-1);
-      }
-    }
+		.recent-note-info,
+		.recent-note-preview,
+		.recent-note-preview-line {
+			/* muted */
+			color:	var(--OT-nav-item-muted);
+		}
 
-    /* ------------------------------------------------------------- */
-    /* 3. ACTIVE (sans hover)                                        */
-    /* ------------------------------------------------------------- */
-    &.is-active {
-      /* mode = active */
-      background-color: var(--color-accent-2);
-      color: var(--OT-color-on-accent-2);
+		/* 2. HOVER NORMAL (normal + hovered) */
+		&:hover:not(.is-active) {
+			background-color:	var(--color-accent-1);
+			color:				var(--OT-color-on-accent-1);
 
-      .recent-note-title {
-        color: var(--OT-color-on-accent-2);
-      }
+			.recent-note-title {
+				color:	var(--OT-color-on-accent-1);
+			}
 
-      .recent-note-date,
-      .recent-note-date-compact,
-		.recent-note-folder,
-      .recent-note-info,
-      .recent-note-preview,
-      .recent-note-preview-line {
-        /* muted */
-        color: var(--OT-color-muted-on-accent-2);
-      }
-    }
+			.recent-note-date,
+			.recent-note-date-compact,
+			.recent-note-folder,
+			.recent-note-info,
+			.recent-note-preview,
+			.recent-note-preview-line {
+				color:	var(--OT-color-muted-on-accent-1);
+			}
+		}
 
-    /* ------------------------------------------------------------- */
-    /* 4. ACTIVE + HOVER                                             */
-    /* ------------------------------------------------------------- */
-    &.is-active:hover {
-      /* mode = active + hovered */
-      background-color: var(--color-accent-1);
-      color: var(--OT-color-on-accent-1);
+		/* 3. ACTIVE (sans hover) */
+		&.is-active {
+			background-color:	var(--color-accent-2);
+			color:				var(--OT-color-on-accent-2);
 
-      .recent-note-title {
-        color: var(--OT-color-on-accent-1);
-      }
+			.recent-note-title {
+				color:	var(--OT-color-on-accent-2);
+			}
 
-      .recent-note-date,
-      .recent-note-date-compact,
-		.recent-note-folder,
-      .recent-note-info,
-      .recent-note-preview,
-      .recent-note-preview-line {
-        /* muted */
-        color: var(--OT-color-muted-on-accent-1);
-      }
-    }
+			.recent-note-date,
+			.recent-note-date-compact,
+			.recent-note-folder,
+			.recent-note-info,
+			.recent-note-preview,
+			.recent-note-preview-line {
+				color:	var(--OT-color-muted-on-accent-2);
+			}
+		}
+
+		/* 4. ACTIVE + HOVER */
+		&.is-active:hover {
+			background-color:	var(--color-accent-1);
+			color:				var(--OT-color-on-accent-1);
+
+			.recent-note-title {
+				color:	var(--OT-color-on-accent-1);
+			}
+
+			.recent-note-date,
+			.recent-note-date-compact,
+			.recent-note-folder,
+			.recent-note-info,
+			.recent-note-preview,
+			.recent-note-preview-line {
+				color:	var(--OT-color-muted-on-accent-1);
+			}
+		}
 	}
 
-	/* =============================================================== */
-	/* 5. MODE COMPACT                                                 */
-	/* =============================================================== */
-
+	/* 5. MODE COMPACT */
 	body[data-recent-notes-density="compact"] & {
-    .recent-note-item {
-      /* mode = normal (compact) */
-      background-color: var(--background-secondary);
-      color: var(--nav-item-color);
-      padding: 1px 0; /* ton choix très compact */
+		.recent-note-item {
+			/* mode = normal (compact) */
+			background-color:	var(--background-secondary);
+			color:				var(--nav-item-color);
+			padding:			1px 0;
 
-      .recent-note-title {
-        color: var(--nav-item-color);
-        font-weight: var(--font-medium);
-      }
+			.recent-note-title {
+				color:			var(--nav-item-color);
+				font-weight:	var(--font-medium);
+			}
 
-      .recent-note-date,
-		.recent-note-folder,
-      .recent-note-date-compact {
-        /* recent-note-date-compact = muted compact */
-        color: var(--OT-nav-item-muted);
-        font-size: var(--font-ui-small);
-      }
+			.recent-note-date,
+			.recent-note-folder,
+			.recent-note-date-compact {
+				color:		var(--OT-nav-item-muted);
+				font-size:	var(--font-ui-small);
+			}
 
-      .recent-note-preview {
-        color: var(--OT-nav-item-muted);
-      }
+			.recent-note-preview {
+				color:	var(--OT-nav-item-muted);
+			}
 
-      /* HOVER NORMAL (compact) = normal + hovered */
-      &:hover:not(.is-active) {
-        background-color: var(--color-accent-1);
-        color: var(--OT-color-on-accent-1);
+			/* HOVER NORMAL (compact) = normal + hovered */
+			&:hover:not(.is-active) {
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
 
-        .recent-note-title {
-          color: var(--OT-color-on-accent-1);
-        }
+				.recent-note-title {
+					color:	var(--OT-color-on-accent-1);
+				}
 
-        .recent-note-date,
-		.recent-note-folder,
-        .recent-note-date-compact,
-        .recent-note-preview {
-          color: var(--OT-color-muted-on-accent-1);
-        }
-      }
+				.recent-note-date,
+				.recent-note-folder,
+				.recent-note-date-compact,
+				.recent-note-preview {
+					color:	var(--OT-color-muted-on-accent-1);
+				}
+			}
 
-      /* ACTIVE (compact) */
-      &.is-active {
-        background-color: var(--color-accent-2);
-        color: var(--OT-color-on-accent-2);
+			/* ACTIVE (compact) */
+			&.is-active {
+				background-color:	var(--color-accent-2);
+				color:				var(--OT-color-on-accent-2);
 
-        .recent-note-title {
-          color: var(--OT-color-on-accent-2);
-        }
+				.recent-note-title {
+					color:	var(--OT-color-on-accent-2);
+				}
 
-        .recent-note-date,
-		.recent-note-folder,
-        .recent-note-date-compact,
-        .recent-note-preview {
-          color: var(--OT-color-muted-on-accent-2);
-        }
-      }
+				.recent-note-date,
+				.recent-note-folder,
+				.recent-note-date-compact,
+				.recent-note-preview {
+					color:	var(--OT-color-muted-on-accent-2);
+				}
+			}
 
-      /* ACTIVE + HOVER (compact) */
-      &.is-active:hover {
-        background-color: var(--color-accent-1);
-        color: var(--OT-color-on-accent-1);
+			/* ACTIVE + HOVER (compact) */
+			&.is-active:hover {
+				background-color:	var(--color-accent-1);
+				color:				var(--OT-color-on-accent-1);
 
-        .recent-note-title {
-          color: var(--OT-color-on-accent-1);
-        }
+				.recent-note-title {
+					color:	var(--OT-color-on-accent-1);
+				}
 
-        .recent-note-date,
-		.recent-note-folder,
-        .recent-note-date-compact,
-        .recent-note-preview {
-          color: var(--OT-color-muted-on-accent-1);
-        }
-      }
-    }
+				.recent-note-date,
+				.recent-note-folder,
+				.recent-note-date-compact,
+				.recent-note-preview {
+					color:	var(--OT-color-muted-on-accent-1);
+				}
+			}
+		}
 	}
 }
 /* ---- END OpSpl63 ---- */
