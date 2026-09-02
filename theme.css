@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-09-02
+	- added code to improve text sizes in the Workspace++ plugin
 2026-08-31
 	- added code to compact also the Recent Notes plugin when "Reduce interface elements in sidebars" is ON
 2026-08-29
@@ -206,6 +208,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl76a	Vault Spotlight plugin
 			OpSpl76b	Searchsaurus plugin
 			OpSpl76c	Simple Gallery plugin
+			OpSpl76d	Worspace++ plugin
 			OpSpl77		Viewing modes icons
 			OpSpl78		Style Settings plugin
 
@@ -15906,6 +15909,40 @@ div:has(> .simple-gallery-root) {
 	margin-inline:					var(--OT-container-img-margin-reading) !important;
 }
 /* —————————————————————————————— ↑ Simple Gallery ↑  —————————————————————————————— */
+
+/*  === === === OpSpl76d  ——————————————————— Workspace++ plugin  ——————————————————— */
+/*	—————————————————————————————————————— normalisation de l’échelle typographique */
+/* Niveau très secondaire : index, compteurs, raccourcis,
+   horodatages, badges, informations de statut. */
+.wpp-session-index,
+.wpp-active-badge,
+.wpp-qs-modified {
+	font-size:	var(--font-ui-smaller);
+}
+
+/* Niveau secondaire : pied de fenêtre, compteurs de sessions,
+   raccourcis et métadonnées de l’overlay. */
+.wpp-modal-footer,
+.wpp-switch-count,
+.wpp-switch-hotkey,
+.wpp-switch-footer {
+	font-size:	var(--font-ui-small);
+}
+
+/* Niveau principal compact : intitulés des espaces dans
+   le sélecteur d’espaces hors mode recherche. */
+.wpp-switch-name {
+	font-size:	var(--font-ui-medium);
+}
+
+/* Titres de sections repliables des réglages : suppression
+   de la valeur de secours fixe 1.05rem. */
+.wpp-advanced-summary,
+.wpp-dev-summary {
+	font-size:	var(--font-ui-large);
+}
+/* —————————————————————————————— ↑ Workspace++ plugin ↑  —————————————————————————————— */
+
 
 
 /*  === === === OpSpl77  ——————————————————— Viewing modes icons  ——————————————————— */
