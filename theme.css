@@ -52,7 +52,7 @@
 Post‑release tweaks
 -------------------
 2026-09-04
-	- support for Obsidian 1.14
+	- support for Obsidian 1.14: improvements to kanban views + adaptations for the new hihglighting system
 2026-09-02
 	- added code to improve text sizes in the Workspace++ plugin
 2026-08-31
@@ -7823,7 +7823,62 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	background:			var(--background-primary);
 }
 
-/* -------------------- ↑ Bases ↑ -------------------- */
+/* -------------------- kanban view -------------------- */
+.bases-kanban-container {
+	/*--bases-kanban-column-min-width:	var(--OT-kanban-lane-width) !important;*/
+	--bases-group-heading-value-weight:	800;
+	font-family:	var(--OT-kanban-font, var(--font-interface));
+	/*font-style:		italic;*/
+}
+
+.workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"], .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] {
+    /*height: var(--bases-embed-height, auto);*/
+	/*height:					1000px;*/
+	flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /*--bases-embed-height:	1000px;*/
+}
+.bases-kanban-card {
+	font-size:		var(--OT-kanban-font-size);
+	--metadata-input-padding: 0 var(--size-4-2);
+	--font-adaptive-normal:	16px;
+}
+.bases-kanban-card-property.mod-title .bases-kanban-card-line {
+	font-family:	var(--OT-kanban-font, var(--font-interface));
+	font-size:		var(--OT-kanban-font-size,16px);
+}
+.bases-group-value {
+	/*--bases-group-heading-value-size:	var(--table-header-size);*/
+}
+.OT-bases-suppress-card-label .bases-kanban-card-label {
+	display:	none;
+}
+
+/* increasing height of embeded kanbans, taking viewport into account */
+ .block-language-base .bases-view[data-view-type="kanban"],
+ .bases-embed .bases-view[data-view-type="kanban"] {
+	--bases-embed-height:	clamp(30rem, 70dvh, 72rem);
+ }
+
+ /* compacting cards vertically */
+ .workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"],
+ .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] {
+	--bases-kanban-line-height:	20px;
+	--bases-kanban-card-space:	4px;
+ }
+ .workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"] .bases-kanban-card,
+ .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] .bases-kanban-card {
+	padding-block:	var(--bases-kanban-card-space);
+	gap:			var(--bases-kanban-card-space);
+ }
+ .workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"] .bases-kanban-column-inner,
+ .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] .bases-kanban-column-inner {
+	gap:	var(--bases-kanban-card-space);
+ }
+
+ /* -------------------- ↑ Bases ↑ -------------------- */
 
 
 /*  === === === OpSpl28 ——————————————————————————————
@@ -10833,6 +10888,12 @@ body {
 	border-bottom: none;
 	line-height:	normal;
 }
+.board-header-chip {
+	font-weight:	800;
+	font-size:		var(--bases-group-heading-value-size);
+	font-size:		calc( var(--OT-kanban-font-size)*1.1);
+	font-family:	var(--OT-kanban-font, var(--font-interface));
+}
 
 .board-card .metadata-input-longtext {
 	border-top: 1px solid var(--text-muted) !important;
@@ -13051,45 +13112,91 @@ kbd {
 /*	-------------------- ↑ Empty pane ↑	-------------------- */
 
 /*	=== === === OpSpl60	———————————————————— Text highlighting ————————————————————	*/
+
 body {
-	--OT-ink-active:			var(--text-normal);
+	/*	Encre de référence :
+		elle devient celle du panneau d’édition dans Live Preview.	*/
+	--OT-ink-active:					var(--text-normal);
 
-	--OT-highlight-bg:			var(--text-highlight-bg);
+	/*	Repli global :
+		utilisé si aucune palette ni aucun preset Style Settings
+		ne fournit une valeur plus spécifique.	*/
+	--OT-highlight-bg:					oklch(92% 0.13 95deg);
 
-	--OT-highlight-fg-auto:		color-mix(
+	/*	Le seul pont vers le nouveau système Obsidian :
+		il pilote exclusivement le highlight Markdown « Default ».	*/
+	--highlight-background:				var(--OT-highlight-bg);
+
+	/*	Conserver le mécanisme actuel de choix de l’encre.	*/
+	--OT-highlight-fg-auto:				color-mix(
 											in oklab,
 											var(--OT-ink-active) 72%,
-											color-mix(in oklab, var(--OT-highlight-bg) 35%, black) 28%
-											);
+											color-mix(
+												in oklab,
+												var(--OT-highlight-bg) 35%,
+												black
+											) 28%
+										);
 
-	--OT-highlight-fg:			var(--OT-highlight-fg-manual, var(--OT-highlight-fg-auto));
+	--OT-highlight-fg:					var(
+											--OT-highlight-fg-manual,
+											var(--OT-highlight-fg-auto)
+										);
 }
 
 .markdown-source-view.mod-cm6 {
-  --OT-ink-active: 				var(--OT-edit-ink-current);
+	--OT-ink-active:					var(--OT-edit-ink-current);
 }
 
-.is-flashing,
-.community-item .suggestion-highlight,
-.textLayer .mod-focused,
-.markdown-rendered mark,
-.annotationLayer .mod-focused,
-.search-result-file-matched-text,
-.cm-s-obsidian span.cm-formatting-highlight,
-.cm-s-obsidian span.cm-highlight,
-.markdown-preview-view mark {
-	color: 				var(--OT-highlight-fg) !important;
-	background-color:	var(--OT-highlight-bg) !important;
-	padding:			0px 4px;				/* un peu d’espace horizontal pour respirer	*/
+/*	Markdown highlight « Default » :
+	Obsidian gère le fond via --highlight-background.
+	La couleur définie dans --text-highlight-bg est donc automatiquement appliquée.	*/
+
+.markdown-rendered mark:not([data-highlight]),
+.markdown-preview-view mark:not([data-highlight]),
+.cm-s-obsidian span.cm-formatting-highlight:not(
+	.cm-formatting-highlight-red,
+	.cm-formatting-highlight-orange,
+	.cm-formatting-highlight-yellow,
+	.cm-formatting-highlight-green,
+	.cm-formatting-highlight-blue,
+	.cm-formatting-highlight-purple
+),
+.cm-s-obsidian span.cm-highlight:not(
+	.cm-highlight-red,
+	.cm-highlight-orange,
+	.cm-highlight-yellow,
+	.cm-highlight-green,
+	.cm-highlight-blue,
+	.cm-highlight-purple
+) {
+	color:							var(--OT-highlight-fg) !important;
+	/*padding-left:					2px;*/
+	/*padding-right:					2px;*/
 }
+
+/*	Lien interne compris dans un highlight Markdown — Reading view.	*/
 .markdown-rendered mark .internal-link {
-	color:						var(--OT-highlight-fg);
-	background-color:			var(--OT-highlight-bg);
-	text-decoration-line:		underline;
-	text-decoration-style:		dotted;
-	text-decoration-color:		var(--OT-highlight-fg);
-	text-decoration-thickness:	2px;
-	padding:					0px 4px;				/* un peu d’espace horizontal pour respirer	*/
+	color:							inherit;
+	background-color:				transparent;
+	text-decoration-line:			underline;
+	text-decoration-style:			dotted;
+	text-decoration-color:			currentColor;
+	text-decoration-thickness:		2px;
+	/*padding-left:					2px;*/
+	/*padding-right:					2px;*/
+}
+
+/*	Lien interne compris dans un highlight Markdown — Live Preview.	*/
+.markdown-source-view.mod-cm6 .cm-highlight.cm-hmd-internal-link {
+	color:							var(--OT-highlight-fg);
+}
+.markdown-source-view.mod-cm6 .cm-highlight.cm-hmd-internal-link .cm-underline {
+	text-decoration-line:			underline !important;
+	text-decoration-style:			dotted !important;
+	text-decoration-color:			currentColor !important;
+	text-decoration-thickness:		2px !important;
+	text-underline-offset:			0.14em;
 }
 
 
@@ -16878,12 +16985,23 @@ settings:
 			format:		px
 
 	-
-			id:			"OT-kanban-lane-width"
-			title:		"Kanbans: width of the lanes [em]"
-			title.fr:	"Kanbans: largeur des colonnes [em]"
-			type:		variable-number
-			default:	16
-			format:		em
+			id:				"OT-kanban-lane-width"
+			title:			"Kanbans: width of the lanes [em]"
+			title.fr:		"Kanbans: largeur des colonnes [em]"
+			description:	"Doesn’t currently work in Bases official kanban view."
+			description.fr:	"Ne fonctionne actuellement pas dans la vue kanban officielle des Bases."
+			type:			variable-number
+			default:		16
+			format:			em
+
+	-
+			id:				OT-bases-suppress-card-label
+			title:			Don’t display labels on Bases card
+			title.fr:		"Ne pas afficher les noms de champs sur les cartes des kanbans."
+			type:			class-toggle
+			default:		false
+			addCommand:		true
+
 
 
 	# ===================
