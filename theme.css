@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-09-04
+	- support for Obsidian 1.14
 2026-09-02
 	- added code to improve text sizes in the Workspace++ plugin
 2026-08-31
@@ -3796,7 +3798,7 @@ body {
 }
 
 /* Icônes du ruban quand la sidebar gauche est repliée */
-.workspace-ribbon.mod-left.is-collapsed .clickable-icon {
+.workspace-ribbon.mod-primary.is-collapsed .clickable-icon {
 	color:	var(--OT-icon-color-ribbon-sidebar-closed);
 }
 
@@ -5149,10 +5151,10 @@ body {
 	--file-margins:									1rem var(--folding-offset) 0 0;
 }
 
-.minimal-line-nums .mod-right-split .markdown-preview-view,
-.minimal-line-nums .mod-right-split .markdown-source-view.mod-cm6 .cm-scroller,
-.minimal-line-nums .mod-left-split .markdown-preview-view,
-.minimal-line-nums .mod-left-split .markdown-source-view.mod-cm6 .cm-scroller {
+.minimal-line-nums .mod-secondary-split .markdown-preview-view,
+.minimal-line-nums .mod-secondary-split .markdown-source-view.mod-cm6 .cm-scroller,
+.minimal-line-nums .mod-primary-split .markdown-preview-view,
+.minimal-line-nums .mod-primary-split .markdown-source-view.mod-cm6 .cm-scroller {
 	--file-margins:									var(--size-4-5) var(--size-4-5) var(--size-4-5) 48px;
 }
 
@@ -6552,14 +6554,14 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 /* Sidebar tabs */
 
 /* Sidebar tab headers: active tab in left/right split */
-:is(.mod-left-split, .mod-right-split)
+:is(.mod-primary-split, .mod-secondary-split)
 .workspace-tab-header:is(.is-active, .has-active-menu) {
 	color:				var(--OT-color-on-accent-2);
 	background-color:	var(--color-accent-2);
 }
 
 /* Same, but when the tab group itself is focused */
-:is(.mod-left-split, .mod-right-split)
+:is(.mod-primary-split, .mod-secondary-split)
 .workspace-tabs.mod-active
 .workspace-tab-header:is(.is-active, .has-active-menu) {
 	color:				var(--OT-color-on-accent-1);
@@ -6567,14 +6569,14 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 }
 
 /* Sidebar pinned icon: active tab in left/right split */
-:is(.mod-left-split, .mod-right-split)
+:is(.mod-primary-split, .mod-secondary-split)
 .workspace-tab-header:is(.is-active, .has-active-menu)
 .workspace-tab-header-status-icon.mod-pinned {
 	color:				var(--OT-color-on-accent-2);
 }
 
 /* Same, but when the tab group itself is focused */
-:is(.mod-left-split, .mod-right-split)
+:is(.mod-primary-split, .mod-secondary-split)
 .workspace-tabs.mod-active
 .workspace-tab-header:is(.is-active, .has-active-menu)
 .workspace-tab-header-status-icon.mod-pinned {
@@ -6582,7 +6584,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 }
 
 /* SVGs are the usual exception */
-:is(.mod-left-split, .mod-right-split)
+:is(.mod-primary-split, .mod-secondary-split)
 .workspace-tab-header:is(.is-active, .has-active-menu)
 .svg-icon {
 	color:		currentColor;
@@ -6592,7 +6594,7 @@ input[type='datetime-local'].is-empty::-webkit-datetime-edit-year-field,
 
 /* Sidebar tabs: focused + active => title, status container and icons on accent-1 */
 body.is-focused
-:is(.mod-left-split, .mod-right-split)
+:is(.mod-primary-split, .mod-secondary-split)
 .workspace-tabs.mod-active
 .workspace-tab-header:is(.is-active, .has-active-menu)
 :is(
@@ -6622,7 +6624,7 @@ body.is-focused
 /* Survol du nom du coffre (en bas de la sidebar de gauche) */
 @media (hover: hover) {
 	body:not(.is-mobile)
-	.workspace-split.mod-left-split
+	.workspace-split.mod-primary-split
 	.workspace-sidedock-vault-profile
 	.workspace-drawer-vault-switcher:hover {
 		color:            var(--OT-color-on-accent-1);
@@ -6630,7 +6632,7 @@ body.is-focused
 	}
 
 	body:not(.is-mobile)
-	.workspace-split.mod-left-split
+	.workspace-split.mod-primary-split
 	.workspace-sidedock-vault-profile
 	.workspace-drawer-vault-switcher:hover
 	.workspace-drawer-vault-switcher-icon {
@@ -6662,14 +6664,14 @@ body.is-focused
 }
 
 /* Texte légèrement plus petit dans les sidebars
-.workspace-split.mod-left-split,
-.workspace-split.mod-right-split {
+.workspace-split.mod-primary-split,
+.workspace-split.mod-secondary-split {
 	font-size: calc(var(--OT-UI-font-size) * 0.9);
 }*/
 
 /* Icônes un peu réduites */
-.workspace-split.mod-left-split .tree-item-icon .svg-icon,
-.workspace-split.mod-right-split .tree-item-icon .svg-icon {
+.workspace-split.mod-primary-split .tree-item-icon .svg-icon,
+.workspace-split.mod-secondary-split .tree-item-icon .svg-icon {
 	width:	var(--icon-xs);
 	height:	var(--icon-xs);
 }
@@ -6744,18 +6746,18 @@ body.is-focused
 
 /*	Réduit certains éléments d’interface dans les sidebars.
 	Activé par le switch Style Settings “Reduce interface elements in sidebars”.	*/
-body.OT-reduce-sidebar-ui :is(.mod-left-split, .mod-right-split),
+body.OT-reduce-sidebar-ui :is(.mod-primary-split, .mod-secondary-split),
 body.OT-reduce-sidebar-ui .workspace-leaf-content[data-type="bases"] .bases-view:is([data-view-type="list"], [data-view-type="table"]) {
 	--bases-table-font-size:	var(--font-ui-smaller);
 }
 
 /*	Les noms des tabs dans le panneau du plugin Vertical Tabs peuvent être plus petits afin d’être moins tronqués.	*/
-body.OT-reduce-sidebar-ui :is(.mod-left-split, .mod-right-split) .obsidian-vertical-tabs-container {
+body.OT-reduce-sidebar-ui :is(.mod-primary-split, .mod-secondary-split) .obsidian-vertical-tabs-container {
 	--nav-item-size:			var(--font-ui-smaller);
 }
 /*	Réduit la taille de l’interface du plugin Recent Notes dans les sidebars.
 	Activé par le switch Style Settings “Reduce interface elements in sidebars”.	*/
-body.OT-reduce-sidebar-ui :is(.mod-left-split, .mod-right-split) .recent-notes-view {
+body.OT-reduce-sidebar-ui :is(.mod-primary-split, .mod-secondary-split) .recent-notes-view {
 	h6,
 	.recent-note-title,
 	.recent-note-preview,
@@ -7471,8 +7473,8 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 /* Quand une base se trouve dans une sidebar, il faut adapter la couleur du texte de certains éléments. */
-.mod-left-split .bases-view .bases-rendered-value,
-.mod-right-split .bases-view .bases-rendered-value {
+.mod-primary-split .bases-view .bases-rendered-value,
+.mod-secondary-split .bases-view .bases-rendered-value {
 	color:	var(--nav-item-color);
 }
 
@@ -7817,7 +7819,7 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 /* Exception: Light Mode, palette “Metallic Blue”: une base posée dans un panneau latéral garde le fond “primary”  */
-.theme-light.lightPalette-MetallicBlue :is(.mod-right-split, .mod-left-split) .bases-view {
+.theme-light.lightPalette-MetallicBlue :is(.mod-secondary-split, .mod-primary-split) .bases-view {
 	background:			var(--background-primary);
 }
 
@@ -7925,20 +7927,20 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 /* Pin des tabs de sidebar : même logique que l’icône du tab */
-.mod-left-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
-.mod-right-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
+.mod-primary-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
+.mod-secondary-split .workspace-tab-header-container .workspace-tab-header:has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
 	color:		var(--OT-icon-color-tab-header);
 }
 
 /* Tab actif en sidebar, pane non focused */
-.mod-left-split .workspace-tab-header-container .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
-.mod-right-split .workspace-tab-header-container .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
+.mod-primary-split .workspace-tab-header-container .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
+.mod-secondary-split .workspace-tab-header-container .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
 	color:		var(--OT-color-on-accent-2);
 }
 
 /* Tab actif en sidebar, pane focused */
-body.is-focused .mod-left-split .workspace-tab-header-container .workspace-tabs.mod-active .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
-body.is-focused .mod-right-split .workspace-tab-header-container .workspace-tabs.mod-active .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
+body.is-focused .mod-primary-split .workspace-tab-header-container .workspace-tabs.mod-active .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned,
+body.is-focused .mod-secondary-split .workspace-tab-header-container .workspace-tabs.mod-active .workspace-tab-header:is(.is-active, .has-active-menu):has(.mod-pinned) .workspace-tab-header-status-icon.mod-pinned {
 	color:		var(--OT-color-on-accent-1);
 }
 
@@ -8151,8 +8153,8 @@ body.is-focused {
 /* -------------------- Sidebars -------------------- */
 
 /* Actif / menu ouvert : accent-2 */
-.mod-left-split,
-.mod-right-split {
+.mod-primary-split,
+.mod-secondary-split {
 	.workspace-tab-header {
 		&.is-active,
 		&.has-active-menu {
@@ -8185,8 +8187,8 @@ body.is-focused {
 }
 
 @media (hover: hover) {
-	.mod-left-split .workspace-tab-header:hover .workspace-tab-header-inner-close-button,
-	.mod-right-split .workspace-tab-header:hover .workspace-tab-header-inner-close-button {
+	.mod-primary-split .workspace-tab-header:hover .workspace-tab-header-inner-close-button,
+	.mod-secondary-split .workspace-tab-header:hover .workspace-tab-header-inner-close-button {
 		display: none !important;
 		pointer-events: none;
 	}
@@ -8194,8 +8196,8 @@ body.is-focused {
 
 /* Hover sidebar, quel que soit l’état : accent-1 */
 @media (hover: hover) {
-	.mod-left-split,
-	.mod-right-split {
+	.mod-primary-split,
+	.mod-secondary-split {
 		.workspace-tab-header:hover .workspace-tab-header-inner {
 			background-color: var(--color-accent-1);
 			color: var(--OT-color-on-accent-1);
@@ -12607,16 +12609,16 @@ body:is(.theme-light.OT-colored-headings-lightMode,
    différents contextes (source, preview, splits latéraux). */
 .markdown-source-view .metadata-container .field-btn-container,
 .markdown-preview-view .metadata-container .field-btn-container,
-.workspace-split.mod-left-split .metadata-container .field-btn-container,
-.workspace-split.mod-right-split .metadata-container .field-btn-container {
+.workspace-split.mod-primary-split .metadata-container .field-btn-container,
+.workspace-split.mod-secondary-split .metadata-container .field-btn-container {
 	margin-block:						0;
 }
 
 /*	Boutons dans les containers : même logique typographique pour tous les contextes. */
 .markdown-source-view .metadata-container .field-btn-container button,
 .markdown-preview-view .metadata-container .field-btn-container button,
-.workspace-split.mod-left-split .metadata-container .field-btn-container button,
-.workspace-split.mod-right-split .metadata-container .field-btn-container button {
+.workspace-split.mod-primary-split .metadata-container .field-btn-container button,
+.workspace-split.mod-secondary-split .metadata-container .field-btn-container button {
 	height:								auto;
 	display:							inline-flex;
 	align-items:						center;
@@ -12632,8 +12634,8 @@ body:is(.theme-light.OT-colored-headings-lightMode,
 	padding-inline:						var(--OT-mm-button-padding-inline);
 }
 
-.workspace-split.mod-left-split .metadata-container .field-btn-container button,
-.workspace-split.mod-right-split .metadata-container .field-btn-container button {
+.workspace-split.mod-primary-split .metadata-container .field-btn-container button,
+.workspace-split.mod-secondary-split .metadata-container .field-btn-container button {
 	min-height:							var(--OT-mm-button-min-height-side);
 	padding-inline:						var(--OT-mm-button-padding-inline);
 }
@@ -16094,7 +16096,7 @@ button.sync-history-button,
 /* 1.a États ACTIFS (ON / selected / mobile-tap) */
 
 .view-header-title-parent .view-header-breadcrumb.has-active-menu,
-body:not(.is-mobile) .workspace-split.mod-left-split
+body:not(.is-mobile) .workspace-split.mod-primary-split
 	.workspace-sidedock-vault-profile .workspace-drawer-vault-switcher.has-active-menu,
 .list-item.mod-selectable.mobile-tap,
 .formula-editor .cm-tooltip.cm-tooltip-autocomplete > ul > li.is-selected,
@@ -16114,7 +16116,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active,
 	background-color: var(--OT-active-bg);
 }
 
-body:not(.is-mobile) .workspace-split.mod-left-split
+body:not(.is-mobile) .workspace-split.mod-primary-split
 	.workspace-sidedock-vault-profile .workspace-drawer-vault-switcher.has-active-menu
 	.workspace-drawer-vault-switcher-icon {
 	color: var(--OT-active-muted-fg);
@@ -16151,7 +16153,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 	.status-bar-item.plugin-sync:hover,
 	.titlebar-button:hover,
 	.titlebar-button.mod-close:hover,
-	body:not(.is-mobile) .workspace-split.mod-left-split
+	body:not(.is-mobile) .workspace-split.mod-primary-split
     .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher:hover,
 	.list-item.mod-selectable:hover,
 	.clickable-icon:hover,
@@ -16187,7 +16189,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 
 	/* 2.b Icônes à l’intérieur de certains conteneurs */
 
-	body:not(.is-mobile) .workspace-split.mod-left-split
+	body:not(.is-mobile) .workspace-split.mod-primary-split
     .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher:hover
     .workspace-drawer-vault-switcher-icon {
     color: var(--OT-color-muted-on-accent-1);
