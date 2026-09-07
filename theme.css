@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-09-07
+	- simplification of the highlighting system; it should be more practical
 2026-09-04
 	- support for Obsidian 1.14: improvements to kanban views + adaptations for the new hihglighting system
 2026-09-02
@@ -442,6 +444,9 @@ body {
 
 	--OT-effective-reading-line-height:				var(--OT-readingMode-line-height);		/* Interligne effectif pour le Reading mode */
 
+	--OT-highlight-bg:								var(--stabilo-jaune-clair);
+	--OT-highlight-fg:								var(--text-normal);
+
 	--OT-icon-live-preview:				url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-tool-icon lucide-pen-tool"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"/><path d="m2.3 2.3 7.286 7.286"/><circle cx="11" cy="11" r="2"/></svg>');
 	--OT-icon-live-preview-rotation:	-90deg;
 	--OT-icon-raw-source:				url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml-icon lucide-code-xml"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>');
@@ -532,8 +537,6 @@ body {
 	--OT-space-above-h6: var(--OT-blanc-petit);
 	--OT-space-below-h6: 0;
 
-
-	--OT-highlight-fg:								var(--text-normal);
 	--OT-status-bar-padding:						6px;
 
 	--OT-table-border-color:						var(--color-base-100);
@@ -700,7 +703,10 @@ body {
 	--h5-style:		italic;
 	--h6-style:		italic;
 
-	--heading-spacing:					0;		/*	cette nouvelle variable, apparue subrepticement, me contrarie grandement, car c’est la même pour tous les niveaux!	*/
+	--heading-spacing:					0;
+
+	--highlight-background:				var(--OT-highlight-bg);
+
 	--icon-color-active:				var(--color-base-20);
 	--icon-color-hover:					var(--OT-color-on-accent-1);
 	--icon-color:						oklch(0.60	clamp(0.15, var(--OT-accent-c),		0.33)	var(--OT-accent-h)) ;
@@ -849,9 +855,6 @@ body {
 	--tag-background:		var(--OT-pill-background);
 	--tag-color-hover:		var(--OT-color-on-accent-1);
 	--tag-background-hover:	var(--color-accent-1);
-
-	--OT-highlight-bg:			var(--stabilo-jaune-clair);
-	/*--text-selection:				hsla(var(--OT-theme-HueHSL), var(--OT-theme-s), 40%, 0.2);*/
 
 	--titlebar-background:			var(--color-base-20);
 	--titlebar-background-focused:	var(--color-base-05);
@@ -1221,9 +1224,9 @@ body {
 	--blockquote-background-color:	oklch(96.2% 0.020 84);
 	--code-background:				oklch(95.8% 0.018 86);
 
-	/* stabilo : ambre chic */
-	--OT-highlight-bg:	oklch(34% 0.06	72);
-	--OT-highlight-fg:	oklch(90% 0.11 72);
+	/* stabilo */
+	/*--OT-highlight-bg:	oklch(34% 0.06	72);*/
+	--OT-highlight-bg:	oklch(94% 20% 80deg);
 
 	/* ajustements*/
 	--tab-text-color-focused:		var(--color-base-20);
@@ -4201,7 +4204,7 @@ body:not(.is-focused) {
 
 .theme-light.highlight-color-strongBlue {
 	--OT-highlight-bg:			oklch(0.72		0.13	210);
-	--OT-highlight-fg-manual:	oklch(0.88		0.06	210);
+	--OT-highlight-fg:	oklch(0.88		0.06	210);
 }
 
 .theme-light.highlight-color-strongYellow {
@@ -4211,22 +4214,22 @@ body:not(.is-focused) {
 
 .theme-light.highlight-color-strongOrange {
 	--OT-highlight-bg:			oklch(0.76		0.17	55);
-	--OT-highlight-fg-manual:	oklch(0.96		0.04	55);
+	--OT-highlight-fg:	oklch(0.96		0.04	55);
 }
 
 .theme-light.highlight-color-strongRose {
 	--OT-highlight-bg:			oklch(0.68		0.16	350);
-	--OT-highlight-fg-manual:	oklch(0.91		0.06	350);
+	--OT-highlight-fg:	oklch(0.91		0.06	350);
 }
 
 .theme-light.highlight-color-strongGreen {
 	--OT-highlight-bg:			oklch(0.78		0.19	145);
-	--OT-highlight-fg-manual:	oklch(0.90		0.10	145);
+	--OT-highlight-fg:	oklch(0.90		0.10	145);
 }
 
 .theme-light.highlight-color-strongViolet {
 	--OT-highlight-bg:		oklch(0.60		0.18	330);
-	--OT-highlight-fg-manual:	oklch(0.91		0.06	330);
+	--OT-highlight-fg:	oklch(0.91		0.06	330);
 }
 
 
@@ -4238,64 +4241,64 @@ body:not(.is-focused) {
 
 .theme-dark.highlight-color-dark-lightBlue {
 	--OT-highlight-bg:			oklch(0.87		0.09	210);
-	--OT-highlight-fg-manual:	oklch(0.18		0.15	210);
+	--OT-highlight-fg:	oklch(0.18		0.15	210);
 }
 
 .theme-dark.highlight-color-dark-lightYellow {
 	--OT-highlight-bg:			oklch(0.90		0.12	95);
-	--OT-highlight-fg-manual:	oklch(0.02		0.15	95);
+	--OT-highlight-fg:	oklch(0.02		0.15	95);
 }
 
 .theme-dark.highlight-color-dark-lightOrange {
 	--OT-highlight-bg:			oklch(0.84		0.13	55);
-	--OT-highlight-fg-manual:	oklch(0.12		0.02	55);
+	--OT-highlight-fg:	oklch(0.12		0.02	55);
 }
 
 .theme-dark.highlight-color-dark-lightRose {
 	--OT-highlight-bg:			oklch(0.85		0.09	350);
-	--OT-highlight-fg-manual:	oklch(0.12		0.02	350);
+	--OT-highlight-fg:	oklch(0.12		0.02	350);
 }
 
 .theme-dark.highlight-color-dark-lightGreen {
 	--OT-highlight-bg:			oklch(0.87		0.09	145);
-	--OT-highlight-fg-manual:	oklch(0.12		0.02	145);
+	--OT-highlight-fg:	oklch(0.12		0.02	145);
 }
 
 .theme-dark.highlight-color-dark-lightViolet {
 	--OT-highlight-bg:			oklch(0.79		0.07	300);
-	--OT-highlight-fg-manual:	oklch(0.22		0.08	300);
+	--OT-highlight-fg:	oklch(0.22		0.08	300);
 }
 
 /* Vifs ("fluo") --------------------------------------------- */
 
 .theme-dark.highlight-color-dark-strongBlue {
 	--OT-highlight-bg:			oklch(0.68		0.13	210);
-	--OT-highlight-fg-manual:	oklch(0.87		0.06	210);
+	--OT-highlight-fg:	oklch(0.87		0.06	210);
 }
 
 .theme-dark.highlight-color-dark-strongYellow {
 	--OT-highlight-bg:			oklch(0.80		0.16	95);
-	--OT-highlight-fg-manual:	oklch(0.17		0.05	95);
+	--OT-highlight-fg:	oklch(0.17		0.05	95);
 }
 
 .theme-dark.highlight-color-dark-strongOrange {
 	--OT-highlight-bg:			oklch(0.74		0.16	55);
-	--OT-highlight-fg-manual:	oklch(0.12		0.02	55);
+	--OT-highlight-fg:	oklch(0.12		0.02	55);
 }
 
 .theme-dark.highlight-color-dark-strongRose {
 	--OT-highlight-bg:			oklch(0.64		0.15	350);
-	--OT-highlight-fg-manual:	oklch(0.12		0.02	350);
+	--OT-highlight-fg:	oklch(0.12		0.02	350);
 }
 
 .theme-dark.highlight-color-dark-strongGreen {
 	--OT-highlight-bg:			oklch(0.73		0.18	145);
-	--OT-highlight-fg-manual:	oklch(0.12		0.02	145);
+	--OT-highlight-fg:	oklch(0.12		0.02	145);
 }
 
 .theme-dark.highlight-color-dark-strongViolet {
 	--OT-highlight-bg:			oklch(0.57		0.17	330);
-	--OT-highlight-fg-manual:	oklch(0.82		0.02	330);
+	--OT-highlight-fg:	oklch(0.82		0.02	330);
 }
 
 /* -------------------- ↑ Highlight Colors ↑ -------------------- */
@@ -13112,120 +13115,34 @@ kbd {
 /*	-------------------- ↑ Empty pane ↑	-------------------- */
 
 /*	=== === === OpSpl60	———————————————————— Text highlighting ————————————————————	*/
-
-body {
-	/*	Encre de référence :
-		elle devient celle du panneau d’édition dans Live Preview.	*/
-	--OT-ink-active:					var(--text-normal);
-
-	/*	Repli global :
-		utilisé si aucune palette ni aucun preset Style Settings
-		ne fournit une valeur plus spécifique.	*/
-	--OT-highlight-bg:					oklch(92% 0.13 95deg);
-
-	/*	Le seul pont vers le nouveau système Obsidian :
-		il pilote exclusivement le highlight Markdown « Default ».	*/
-	--highlight-background:				var(--OT-highlight-bg);
-
-	/*	Conserver le mécanisme actuel de choix de l’encre.	*/
-	--OT-highlight-fg-auto:				color-mix(
-											in oklab,
-											var(--OT-ink-active) 72%,
-											color-mix(
-												in oklab,
-												var(--OT-highlight-bg) 35%,
-												black
-											) 28%
-										);
-
-	--OT-highlight-fg:					var(
-											--OT-highlight-fg-manual,
-											var(--OT-highlight-fg-auto)
-										);
+/*		Tout ceci est là “just in case”. Pour le moment (07.09.2026), je me contente de quelque chose de très simple.
+.is-flashing {
+	background-color:	var(--highlight-background) !important;
+	color:				var(--OT-highlight-fg);
+	mix-blend-mode:		var(--highlight-mix-blend-mode);
 }
-
-.markdown-source-view.mod-cm6 {
-	--OT-ink-active:					var(--OT-edit-ink-current);
+.community-item .suggestion-highlight {
+	color:				var(--OT-highlight-fg);
+	background-color:	var(--highlight-background);
 }
-
-/*	Markdown highlight « Default » :
-	Obsidian gère le fond via --highlight-background.
-	La couleur définie dans --text-highlight-bg est donc automatiquement appliquée.	*/
-
-.markdown-rendered mark:not([data-highlight]),
-.markdown-preview-view mark:not([data-highlight]),
-.cm-s-obsidian span.cm-formatting-highlight:not(
-	.cm-formatting-highlight-red,
-	.cm-formatting-highlight-orange,
-	.cm-formatting-highlight-yellow,
-	.cm-formatting-highlight-green,
-	.cm-formatting-highlight-blue,
-	.cm-formatting-highlight-purple
-),
-.cm-s-obsidian span.cm-highlight:not(
-	.cm-highlight-red,
-	.cm-highlight-orange,
-	.cm-highlight-yellow,
-	.cm-highlight-green,
-	.cm-highlight-blue,
-	.cm-highlight-purple
-) {
-	color:							var(--OT-highlight-fg) !important;
-	/*padding-left:					2px;*/
-	/*padding-right:					2px;*/
+.markdown-rendered mark {
+	color:				var(--OT-highlight-fg);
+	background-color:	var(--highlight-background);
 }
-
-/*	Lien interne compris dans un highlight Markdown — Reading view.	*/
-.markdown-rendered mark .internal-link {
-	color:							inherit;
-	background-color:				transparent;
-	text-decoration-line:			underline;
-	text-decoration-style:			dotted;
-	text-decoration-color:			currentColor;
-	text-decoration-thickness:		2px;
-	/*padding-left:					2px;*/
-	/*padding-right:					2px;*/
+.cm-s-obsidian span.cm-formatting-highlight,
+.cm-s-obsidian span.cm-highlight {
+	color:				var(--OT-highlight-fg);
+	background-color:	var(--highlight-background);
 }
-
-/*	Lien interne compris dans un highlight Markdown — Live Preview.	*/
-.markdown-source-view.mod-cm6 .cm-highlight.cm-hmd-internal-link {
-	color:							var(--OT-highlight-fg);
+.cm-s-obsidian .cm-highlight-color-widget {
+	color:				var(--OT-highlight-fg);
+	background-color:	var(--highlight-background);
 }
-.markdown-source-view.mod-cm6 .cm-highlight.cm-hmd-internal-link .cm-underline {
-	text-decoration-line:			underline !important;
-	text-decoration-style:			dotted !important;
-	text-decoration-color:			currentColor !important;
-	text-decoration-thickness:		2px !important;
-	text-underline-offset:			0.14em;
+.search-result-file-matched-text {
+	color:				var(--OT-highlight-fg);
+	background-color:	var(--highlight-background);
 }
-
-
-/*	———————————————————— Mise en évidence du texte trouvé (“search match”) dans les panneaux d’édition	———————————————————— */
-/* Read */
-.markdown-rendered .search-highlight > div {
-	box-shadow:			0 0 0px 1px var(--color-accent-2);
-	/*opacity:			0.5;
-	color:				var(--OT-highlight-fg) !important;
-	background-color:	var(--OT-highlight-bg) !important;*/
-}
-.markdown-rendered .search-highlight > div.is-active {
-	box-shadow:	0 0 0px 2px var(--color-accent-1);
-	/*opacity:	0.7;*/
-}
-.cm-s-obsidian span.obsidian-search-match-highlight {
-	box-shadow:		0 0 0px 2px var(--color-accent-1);
-}
-/* Edit */
-.cm-s-obsidian span.cm-highlight.obsidian-search-match-highlight {
-    color:				var(--OT-highlight-fg) !important;
-    background-color:	var(--OT-highlight-bg) !important;
-}
-
-.obsidian-search-match-highlight {
-    color:				var(--OT-highlight-fg) !important;
-    background-color:	var(--OT-highlight-bg) !important;
-}
-/*	---------- ↑ search match ↑ ----------	*/
+*/
 /* —————————————————————————————— ↑ Text highlighting ↑ —————————————————————————————— */
 
 
@@ -13718,13 +13635,13 @@ body.vt-enable-tab-zoom .workspace-leaf.vt-apply-tab-zoom.wide-page
 	color:		var(--text-muted);
 }
 
-/* Highlight dans les extraits */
+/* Highlight dans les extraits
 .omnisearch-default-highlight {
 	color:            var(--OT-highlight-fg);
 	background-color: var(--OT-highlight-bg);
 	text-decoration:  none;
 }
-
+*/
 /* Séparation visuelle des résultats (fiche par fiche) */
 .svelte-lazy {
 	border-top:    1px dotted var(--color-base-100);
@@ -15388,10 +15305,12 @@ body {
 	color: 		var(--color-base-100);
 	font-size:	var(--font-ui-large);
 }
+/*
 .vault-spotlight-item-title mark {
 	color:				var(--OT-highlight-fg);
 	background-color:	var(--OT-highlight-bg);
 }
+*/
 .vault-spotlight-mode-badge {
 	color:		var(--OT-color-on-accent-2);
 	background:	var(--color-accent-2);
