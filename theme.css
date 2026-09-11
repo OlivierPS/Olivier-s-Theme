@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-09-11
+	- improvements to suggestion menus
 2026-09-07
 	- simplification of the highlighting system; it should be more practical
 2026-09-04
@@ -6843,125 +6845,142 @@ body.OT-reduce-sidebar-ui[data-recent-notes-density="compact"] div.recent-note-i
 
 
 
-/*  === === === OpSpl23a ————————————————————— suggestion items: états communs ————————————————————— */
+/*  === === === OpSpl23a ————————————————————— suggestion items : états communs ————————————————————— */
 
-/* Base selected / mobile-tap state for suggestion items (accent-2) */
-.suggestion-item.is-selected,
-.suggestion-item.mobile-tap {
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
+.suggestion-item {
+	background-color:	transparent;
+	color:				var(--text-normal);
+
+	.suggestion-title,
+	.better-links-suggest__title,
+	.suggestion-highlight {
+		color:			inherit;
+	}
+
+	.suggestion-note,
+	.better-links-suggest__path,
+	.search-suggest-info-text {
+		color:			var(--OT-menu-text-muted, var(--OT-nav-item-muted, var(--text-muted)));
+	}
+
+	.suggestion-aux {
+		color:			var(--OT-menu-text-muted, var(--OT-nav-item-muted, var(--text-muted)));
+
+		& :is(.clickable-icon, .svg-icon, svg) {
+			color:		currentColor;
+		}
+	}
+
+	&:is(:hover, .mobile-tap) {
+		background-color:	var(--color-accent-1);
+		color:				var(--OT-color-on-accent-1);
+
+		.suggestion-title,
+		.better-links-suggest__title,
+		.suggestion-highlight {
+			color:			inherit;
+		}
+
+		.suggestion-note,
+		.better-links-suggest__path,
+		.search-suggest-info-text,
+		.suggestion-aux {
+			color:			var(--OT-color-muted-on-accent-1);
+		}
+	}
+
+	&.is-selected {
+		--checkbox-border-color:	var(--OT-color-on-accent-2);
+		--checkbox-marker-color:	var(--OT-color-on-accent-2);
+
+		background-color:			var(--color-accent-2);
+		color:						var(--OT-color-on-accent-2);
+
+		.suggestion-title,
+		.better-links-suggest__title,
+		.suggestion-highlight {
+			color:					inherit;
+		}
+
+		.suggestion-note,
+		.better-links-suggest__path,
+		.search-suggest-info-text,
+		.suggestion-aux {
+			color:					var(--OT-color-muted-on-accent-2);
+		}
+	}
+
+	&.is-selected:is(:hover, .mobile-tap) {
+		--checkbox-border-color:	var(--OT-color-on-accent-1);
+		--checkbox-marker-color:	var(--OT-color-on-accent-1);
+
+		background-color:			var(--color-accent-1);
+		color:						var(--OT-color-on-accent-1);
+
+		.suggestion-title,
+		.better-links-suggest__title,
+		.suggestion-highlight {
+			color:					inherit;
+		}
+
+		.suggestion-note,
+		.better-links-suggest__path,
+		.search-suggest-info-text,
+		.suggestion-aux {
+			color:					var(--OT-color-muted-on-accent-1);
+		}
+	}
 }
 
-/* Selected suggestion items (incl. checkboxes + toolbar content) */
+/* Exceptions structurelles : Bases, icônes, hotkeys et plugins. */
 .suggestion-item.is-selected {
-	--checkbox-border-color: var(--OT-color-on-accent-2);
-	--checkbox-marker-color: var(--OT-color-on-accent-2);
-
-	& .bases-toolbar-menu-item-name {
-		color:            var(--OT-color-on-accent-2);
-		background-color: var(--color-accent-2);
+	.bases-toolbar-menu-item-name {
+		color:						inherit;
+		background-color:			transparent;
 	}
 
-	& .bases-toolbar-menu-item-info-icon,
-	& .clickable-icon {
-		color: var(--OT-color-on-accent-2);
+	.bases-toolbar-menu-item-info-icon,
+	.clickable-icon {
+		color:						inherit;
 	}
 }
 
-/* Selected + hover state = accent-1 */
-@media (hover: hover) {
-	.suggestion-item.is-selected:hover {
-		--checkbox-border-color: var(--OT-color-on-accent-1);
-		--checkbox-marker-color: var(--color-accent-1);
-		color:                   var(--OT-color-on-accent-1);
-		background-color:        var(--color-accent-1);
+.suggestion-item.is-selected:is(:hover, .mobile-tap) {
+	input[type="checkbox"] {
+		color:						var(--color-accent-1);
+		background-color:			var(--OT-color-on-accent-1);
+	}
 
-		& .bases-toolbar-menu-item-name {
-			color:            var(--OT-color-on-accent-1);
-			background-color: var(--color-accent-1);
-		}
+	.another-quick-switcher__item,
+	.another-quick-switcher__item__directory {
+		color:						var(--OT-color-muted-on-accent-1);
+		background-color:			transparent;
+	}
 
-		& .bases-toolbar-menu-item-info-icon {
-			color:            var(--OT-color-on-accent-1);
-			background-color: var(--color-accent-1);
-		}
-
-		& input[type="checkbox"] {
-			color:            var(--color-accent-1);
-			background-color: var(--OT-color-on-accent-1);
-		}
-		& .another-quick-switcher__item {
-			color:				var(--OT-color-on-accent-1);
-			background-color:	var(--color-accent-1);
-		}
-		& .another-quick-switcher__item__description {
-			color:				var(--OT-color-muted-on-accent-1);
-			background-color:	var(--color-accent-1);
-		}
-		& .another-quick-switcher__item__directory {
-			color:				var(--OT-color-muted-on-accent-1);
-			background-color:	var(--color-accent-1);
-		}
-		/* This is supposed to care for the color of the star, but, as of 05.06.2026, it doesn’t work because the star is an image and not a vector */
-		& .another-quick-switcher__starred_item::before {
-			color:				var(--OT-color-on-accent-1);
-			stroke:				var(--OT-color-on-accent-1);
-			background-color:	var(--color-accent-1);
-		}
+	.another-quick-switcher__starred_item::before {
+		color:						var(--OT-color-on-accent-1);
+		stroke:						currentColor;
+		background-color:			transparent;
 	}
 }
-/* ------------------------------ ↑ suggestion items: états communs ↑ ------------------------------ */
 
-
-/*  === === === OpSpl23b ————————————————————— suggestion items complexes + autocomplete ————————————————— */
-/* Complex suggestion items — selected (accent-2) */
 .suggestion-item.mod-complex.is-selected {
-	background-color: var(--color-accent-2);
-
-	& .suggestion-title,
-	& .suggestion-aux,
-	& .clickable-icon,
-	& .suggestion-flair {
-		color: var(--OT-color-on-accent-2);
+	.suggestion-hotkey {
+		color:						var(--OT-color-on-accent-3);
+		background-color:			var(--color-accent-3);
+		border-color:				var(--OT-color-on-accent-2);
 	}
 
-	& .search-suggest-info-text,
-	& .suggestion-note {
-		color: var(--OT-color-muted-on-accent-2);
-	}
-
-	& .suggestion-hotkey {
-		color:            var(--OT-color-on-accent-3);
-		background-color: var(--color-accent-3);
-		border-color:     var(--OT-color-on-accent-2);
+	.suggestion-icon,
+	.suggestion-icon .suggestion-flair {
+		color:						inherit;
+		background-color:			transparent;
 	}
 }
 
-/* Complex suggestion icon / flair when selected */
-.suggestion-item.mod-complex.is-selected .suggestion-icon,
-.suggestion-item.mod-complex.is-selected .suggestion-icon .suggestion-flair {
-	color:            var(--OT-color-on-accent-2);
-	background-color: var(--color-accent-2);
-}
-
-/* Complex suggestion items — selected + hover (accent-1) */
-@media (hover: hover) {
-	.suggestion-item.mod-complex.is-selected:hover {
-		background-color: var(--color-accent-1);
-
-		& .suggestion-title,
-		& .suggestion-aux,
-		& .clickable-icon,
-		& .suggestion-icon,
-		& .suggestion-flair {
-			color:            var(--OT-color-on-accent-1);
-			background-color: var(--color-accent-1);
-		}
-
-		& .search-suggest-info-text,
-		& .suggestion-note {
-			color: var(--OT-color-muted-on-accent-1);
-		}
+.suggestion-item.mod-complex.is-selected:is(:hover, .mobile-tap) {
+	.suggestion-hotkey {
+		border-color:				var(--OT-color-on-accent-1);
 	}
 }
 
