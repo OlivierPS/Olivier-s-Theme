@@ -51,6 +51,10 @@
 /*
 Post‑release tweaks
 -------------------
+2026-09-21
+	- added gallery callout (fluid image galleries inside a callout)
+	- improved ON / OFF toggles in settings
+	- tweeked links in highlighted text
 2026-09-11
 	- improvements to suggestion menus
 2026-09-07
@@ -170,6 +174,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl34		settings panel
 			OpSpl35		footnotes
 			OpSpl36		images
+			OpSpl36a	gallery callout (Reading view)
 			OpSpl37		zoom-image / lightbox
 			OpSpl38		PDFs
 			OpSpl39		other refinements
@@ -398,8 +403,6 @@ body {
 	--OT-button-background-normal:					var(--color-accent-3);
 	--OT-button-cta-background-normal:				var(--color-accent-2);
 	--OT-button-cta-text-normal:					var(--OT-color-on-accent-2);
-	--OT-button-OFF-bg:								oklch(90%	calc(var(--OT-accent-c) * 0.18)	var(--OT-accent-h));
-	--OT-button-ON-bg:								oklch(80%	calc(var(--OT-accent-c) * 0.58)	var(--OT-accent-h));
 	--OT-button-text-hover:							var(--OT-color-on-accent-1);
 	--OT-button-text-normal:						var(--OT-color-on-accent-3);
 	--OT-calendar-day-color:						var(--color-base-100);
@@ -408,7 +411,7 @@ body {
 													var(--OT-table-alt-background) 96%,
 														transparent   );
 	--OT-callout-preamble-color:					var(--OT-YAML-color);
-	--OT-callout-gallery-gap:						5px;
+	--OT-callout-gallery-gap:						6px;
 
 	--OT-edit-font:									var(--font-text);
 	--OT-edit-font-family:							var(--OT-edit-font),
@@ -481,8 +484,8 @@ body {
 	--OT-kanban-font:								"Uberhand Pro";
 	--OT-kanban-font-size:							17px;
 	--OT-kanban-lane-width:							16em;
-	--OT-kbd-background:							floralwhite;
 	--OT-kbd:										var(--color-base-100);
+	--OT-kbd-background:							floralwhite;
 	--OT-modal-max-width-wide:						1500px;
 	--OT-menu-text-color:							var(--nav-item-color);
 	--OT-menu-text-muted:							var(--text-muted);
@@ -510,6 +513,17 @@ body {
 	--OT-settings-submenu-chevron-color:			var(--text-muted);
 	--OT-settings-tab-nav-item:						var(--nav-item-color);
 	--OT-settings-group-title:						var(--OT-settings-tab-nav-item);
+
+	--OT-toggle-settings-bg-off:			oklch(90% calc(var(--OT-accent-c) * 0.18) var(--OT-accent-h));
+	--OT-toggle-settings-bg-off-hover:		var(--color-accent-1);
+	--OT-toggle-settings-bg-on:				oklch(70% clamp(0.042, calc(var(--OT-accent-c) * 0.88), 0.100) var(--OT-accent-h));
+	--OT-toggle-settings-bg-on-hover:		var(--color-accent-1);
+	--OT-toggle-settings-thumb:				var(--OT-setting-item-name);
+	--OT-toggle-settings-thumb-hover:		var(--OT-setting-item-name);
+	--OT-toggle-settings-thumb-active:		oklch(from var(--OT-setting-item-name) 93% c h);
+	--OT-toggle-settings-focus:				oklch(70% 0.11 252deg / 0.45);
+	--OT-toggle-settings-shadow-inset:		inset 0 4px 10px oklch(0% 0 0deg / 0.10);
+	--OT-toggle-settings-thumb-shadow:		0 1px 2px oklch(0% 0 0deg / 0.18);
 
 	--OT-sidebarTab-background-active-hover:		var(--color-accent-1);
 	--OT-sidebarTab-background-active:				var(--color-accent-2);
@@ -861,8 +875,8 @@ body {
 	--titlebar-background:			var(--color-base-20);
 	--titlebar-background-focused:	var(--color-base-05);
 
-	--toggle-thumb-color:			oklch(97.5%	calc(var(--OT-accent-c) * 0.02)	var(--OT-accent-h));
-
+	/*--toggle-thumb-color:			oklch(97.5%	calc(var(--OT-accent-c) * 0.02)	var(--OT-accent-h));*/
+	--toggle-thumb-color:			var(--OT-setting-item-name);
 	--vault-profile-color:			var(--OT-prominent-text);
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
 	--vault-profile-font-size:		var(--font-ui-large);
@@ -1060,12 +1074,6 @@ body {
 	--OT-menu-text-muted:	oklch(58% calc(var(--OT-theme-c-text-dark) * 0.7) var(--OT-themeDark-h));
 	--OT-nav-item-muted:	var(--OT-menu-text-muted);
 
-	--OT-accent-h:			var(--OT-themeDark-h);
-	--OT-accent-h-alt-1:	calc(var(--OT-themeDark-h) + 90);
-	--OT-accent-h-alt-2:	calc(var(--OT-themeDark-h) - 90);
-
-	--OT-accent-c:			calc(var(--OT-themeDark-c) * 1.55);
-
 	/* Accent fallback */
 	--OT-accent-h:			var(--OT-themeDark-h);
 	--OT-accent-h-alt-1:	calc(var(--OT-themeDark-h) + 90);
@@ -1092,9 +1100,7 @@ body {
 	--OT-prominent-text: 			oklch(70%	0.18	var(--OT-accent-h));
 
 	/* settings switches*/
-	--OT-button-OFF-bg:		oklch(38%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
-	--OT-button-ON-bg:		oklch(50%	min(calc(var(--OT-accent-c) * 1.00), 0.100)	var(--OT-accent-h));
-	--toggle-thumb-color:	oklch(60%	min(calc(var(--OT-accent-c) * 0.75), 0.100)	var(--OT-accent-h));
+	--OT-toggle-settings-bg-off:	oklch(32% min(calc(var(--OT-accent-c) * 0.30), 0.032) var(--OT-accent-h));
 }
 
 .theme-dark.OT-colored-headings-darkMode {
@@ -1285,7 +1291,8 @@ body {
 
 	--OT-highlight-bg:	var(--stabilo-bleu-clair);
 } /*	↑ lightPalette-Blue ↑	*/
-/*	----------------------------------------------	*/
+
+/* —————————————————————————————— Green —————————————————————————————— */
 .theme-light.lightPalette-Green {
 	--OT-themeLight-h:   141;
 	--OT-themeLight-c-max: 0.12; /* vert demande une chroma un peu plus forte */
@@ -1294,7 +1301,7 @@ body {
 	--link-color: oklch(0.50 0.12 291);	/* 🟢 Contraste violet/vert — intentionnel */
 	/* ── Stabilo ────────────────────────────────────────── */
 
-	--OT-highlight-bg:	var(--stabilo-vert-clair);
+	--OT-highlight-bg:		var(--stabilo-vert-clair);
 
 	/* ── Accent ──────────────────────────────────────── */
 	--OT-accent-h-alt-2:	calc(var(--OT-themeLight-h) + 180);
@@ -1421,6 +1428,7 @@ body {
 	/*--OT-icon-color-view-header:	var(--color-accent-1);*/
 	/*--OT-icon-color-settings-control:	var(--OT-setting-item-name);*/
 	/*--OT-icon-color-settings-control:	var(--color-accent-1);*/
+	--OT-toggle-settings-bg-on:				oklch(80%	0.075	var(--OT-accent-h));
 }
 
 /* ── Colored headings (optionnel, classe Style Settings) ──── */
@@ -1897,11 +1905,12 @@ body {
 	--OT-color-on-accent-2:			oklch(0.929		calc(0.041 + var(--OT-delta-c))		 95.1) !important;	/* base2	*/
 	--OT-color-on-accent-3:			oklch(0.589		calc(0.039 + var(--OT-delta-c))		222.1) !important;	/* base01	*/
 	--OT-color-muted-on-accent-1:	oklch(0.929		calc(0.041 + var(--OT-delta-c))		 95.1) !important;	/* base2	*/
+	--OT-toggle-settings-thumb:		var(--solarized-base02);
 }
 
 .theme-light.lightPalette-Solarized.accentColor-lightMode-alternative-1 {
-	--OT-accent-h:					248.8;
 	--OT-accent-h-alt-1:			248.8;
+	--OT-toggle-settings-bg-on:		var(--solarized-blue);
 	--color-accent-1:				oklch(0.632		calc(0.153 + var(--OT-delta-c))		274.4)	!important;	/* violet	*/
 	--color-accent-2:				oklch(0.657		calc(0.181 + var(--OT-delta-c))		248.8)	!important;	/* blue		*/
 	--OT-color-on-accent-2:			oklch(0.968		calc(0.030 + var(--OT-delta-c))		 95.0)	!important;	/* base3	*/
@@ -1909,8 +1918,8 @@ body {
 }
 
 .theme-light.lightPalette-Solarized.accentColor-lightMode-alternative-2 {
-	--OT-accent-h:					274.4;
 	--OT-accent-h-alt-2:			274.4;
+	--OT-toggle-settings-bg-on:		var(--solarized-violet);
 	--color-accent-1:				oklch(0.657		calc(0.181 + var(--OT-delta-c))		248.8)	!important;	/* blue		*/
 	--color-accent-2:				oklch(0.632		calc(0.153 + var(--OT-delta-c))		274.4)	!important;	/* violet	*/
 	--OT-color-on-accent-1:			oklch(0.968		calc(0.030 + var(--OT-delta-c))		 95.0)	!important;	/* base3	*/
@@ -1941,8 +1950,6 @@ body {
 	--text-muted:							var(--color-stone-500);
 	--OT-setting-item-description:			var(--color-stone-500);
 	--icon-color:							var(--color-stone-600);
-	/*--OT-prominent-text:					oklch(0.52  0.18  var(--OT-accent-h));*/
-	--OT-view-header-title-color-focused-active-current:	var(--color-stone-500);
 
 	--table-header-background:		var(--color-stone-300);
 	--OT-table-background:			var(--color-stone-100);
@@ -1954,19 +1961,19 @@ body {
 	/* Stabilo */
 	--OT-highlight-bg:	var(--stabilo-jaune-clair);
 
-	--OT-accent-h:		163.25;
-	--OT-accent-c:		0.01;
+	--OT-accent-h:		163.25;		/* pour le `--OT-prominent-text`*/
+	--OT-accent-c:		0.0;
 	--color-accent-1:	var(--color-stone-600);
 	--color-accent-2:	var(--color-stone-400);
 	--color-accent-3:	var(--color-stone-100);
 
-	--OT-button-OFF-bg: 	var(--color-stone-300);
-	--OT-button-ON-bg:		var(--color-stone-100);
-	--toggle-thumb-color:	var(--color-stone-400);
+	--OT-toggle-settings-bg-off: 	var(--color-stone-100);
+	--OT-toggle-settings-bg-on:		var(--color-stone-400);
+	/*--toggle-thumb-color:	var(--color-stone-400);*/
 
 }
 .theme-light.lightPalette-Stone.accentColor-lightMode-alternative-1 {
-	--OT-accent-h:					186 ;
+	--OT-prominent-text:			var(--color-teal-600);
 	--OT-accent-c:					0.096;
 	--color-accent-1:				var(--color-teal-400);
 	--color-accent-2:				var(--color-teal-200);
@@ -1976,10 +1983,10 @@ body {
 	--OT-color-on-accent-2:			var(--color-stone-800);
 	--OT-color-muted-on-accent-2:	var(--color-stone-500);
 
-	--OT-button-ON-bg:				var(--color-accent-3);
+	--OT-toggle-settings-bg-on:				var(--color-teal-200);
 }
 .theme-light.lightPalette-Stone.accentColor-lightMode-alternative-2 {
-	--OT-accent-h:					165 ;
+	--OT-prominent-text:			var(--color-emerald-600);
 	--OT-accent-c:					0.093;
 	--color-accent-1:				var(--color-emerald-400);
 	--color-accent-2:				var(--color-emerald-200);
@@ -1987,7 +1994,7 @@ body {
 	--OT-color-on-accent-1:			var(--color-stone-50);
 	--OT-color-on-accent-1:			white;
 	--OT-color-muted-on-accent-1:	var(--color-stone-100);
-	--OT-button-ON-bg:				var(--color-accent-3);
+	--OT-toggle-settings-bg-on:		var(--color-emerald-200);
 }
 /* —————————————————————————————— ↑ Stone ↑ —————————————————————————————— */
 
@@ -2169,7 +2176,7 @@ body {
 	--OT-accent-h-alt-1:	calc(var(--OT-themeDark-h) - 30);
 	--OT-accent-h-alt-2:	calc(var(--OT-themeDark-h) + 30);
 
-	--toggle-thumb-color:	var(--color-accent-1);
+	/*--toggle-thumb-color:	var(--color-accent-1);*/
 }
 /*	↑ darkPalette-OBSIDIAN ↑	*/
 
@@ -2242,7 +2249,6 @@ body {
 
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color:                           oklch(78.0% min(var(--OT-accent-c), 0.190)  var(--OT-accent-h));
-	--toggle-thumb-color:                   var(--color-accent-1);
 	--OT-view-header-title-color-focused-active-current:  var(--color-accent-2);
 	--OT-setting-item-description:          oklch(66.0% 0.045  var(--OT-themeDark-h));
 	--metadata-label-text-color:            oklch(67.0% calc(var(--OT-theme-c-structure-dark) * 0.95)  var(--OT-accent-h));
@@ -2357,10 +2363,8 @@ body {
 	--OT-color-muted-on-accent-2             : var(--color-neutral-400);
 
 
-	/* ---- boutons ---- */
-	/*--OT-button-OFF-bg                       : var(--color-neutral-700);
-	--OT-button-ON-bg                        : var(--color-neutral-800);*/
-	--toggle-thumb-color                     : var(--color-neutral-400);
+	/* ---- boutons ON / OFF dans les settings ---- */
+	--OT-toggle-settings-bg-on:				oklch(60% min(calc(var(--OT-accent-c) * 1.00), 0.100) var(--OT-accent-h));
 
 	/* ---- stabilo ---- */
 	--OT-highlight-bg:						var(--obsidian-violet);
@@ -2388,7 +2392,6 @@ body {
 	--OT-color-muted-on-accent-2             : var(--color-neutral-300);
 
 	--OT-prominent-text                      : var(--color-violet-500);
-	--OT-button-ON-bg                        : var(--color-violet-800);
 }
 .theme-dark.darkPalette-Black.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
 .theme-dark.lightPalette-Black.darkPalette-Default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
@@ -2497,7 +2500,7 @@ body {
 
 	/* détails dépendants de l’accent */
 	--icon-color:						oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
-	--toggle-thumb-color:				var(--color-accent-1);
+	/*--toggle-thumb-color:				var(--color-accent-1);*/
 	--OT-prominent-text:				oklch(76.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current:
 										var(--color-accent-2);
@@ -2578,7 +2581,8 @@ body {
 	--OT-tree-item-color:					oklch(67.0% calc(var(--OT-theme-c-structure) * 0.92) var(--OT-themeLight-h));
 	--menu-background:						oklch(27.0% calc(var(--OT-theme-c-surface) * 0.70) var(--OT-themeLight-h));
 	/*--toggle-thumb-color:					var(--color-base-10);*/
-	--OT-button-OFF-bg:						oklch(40%	0.034	72);
+	--OT-toggle-settings-bg-off:			oklch(40%	0.034	72);
+	--OT-toggle-settings-bg-on:						oklch(40%	0.1	72);
 
 	/* ------------------------------------------------------------------ */
 	/* accents lumineux, mais moins extrêmes que le vrai dark             */
@@ -2673,8 +2677,6 @@ body {
 
 	/* autres composants */
 	--icon-color:							oklch(79.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
-	/*--toggle-thumb-color:					oklch(30%	0.05	72);*/
-	/*--OT-button-OFF-bg:						oklch(40%	0.01	72);*/
 	--OT-prominent-text:					oklch(77.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
 	--OT-setting-item-description:			oklch(67.0% 0.050 var(--OT-themeDark-h));
@@ -2756,7 +2758,7 @@ body {
 	--OT-tree-item-color: oklch(66.0% calc(var(--OT-theme-c-structure) * 0.92) var(--OT-themeLight-h));
 	--menu-background: oklch(27.0% calc(var(--OT-theme-c-surface) * 0.70) var(--OT-themeLight-h));
 	--toggle-thumb-color: oklch(60.0% calc(var(--OT-theme-c-structure) * 1.00) var(--OT-themeLight-h));
-	--OT-button-OFF-bg:		oklch(20%	calc(var(--OT-accent-c) * 0.18)	var(--OT-accent-h));
+	--OT-toggle-settings-bg-off:		oklch(20%	calc(var(--OT-accent-c) * 0.18)	var(--OT-accent-h));
 
 	/* ---------------------------------------------------------------------- */
 	/* accents : lumineux, mais moins extrêmes que le vrai dark               */
@@ -2858,7 +2860,6 @@ body {
 	/* autres composants */
 	--icon-color: oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
 	--toggle-thumb-color: var(--color-accent-2);
-	--OT-button-OFF-bg:		oklch(15%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
 	--OT-prominent-text: oklch(76.0% min(var(--OT-accent-c), 0.185) var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current: var(--color-accent-2);
 	--OT-setting-item-description: oklch(66.0% 0.050 var(--OT-themeDark-h));
@@ -3086,8 +3087,6 @@ body {
 	--OT-color-on-accent-3:				var(--color-base-100);
 
 	--icon-color:						var(--color-accent-1);
-	/*--OT-button-ON-bg:					var(--color-accent-2);*/
-	/*--OT-button-OFF-bg:					oklch(38.5%	0.0186											278deg);*/
 
 	/* par défaut, titres = texte normal */
 	/* --h1-color:						var(--text-normal);
@@ -3098,8 +3097,8 @@ body {
 	--h6-color:							var(--text-normal); */
 
 	/* highlight et done */
-	--OT-highlight-bg:					oklch(98.8%	0.021											104deg);
-	--checklist-done-color:				oklch(49.9%	calc(var(--OT-themeDark-c) * 0.930)				210deg);
+	--OT-highlight-bg:			oklch(98.8%	0.021											104deg);
+	--checklist-done-color:		oklch(49.9%	calc(var(--OT-themeDark-c) * 0.930)				210deg);
 }
 /* ---------- ↑ darkPalette-LYT ↑ ---------- */
 
@@ -3180,21 +3179,19 @@ body {
 	--tab-text-color-focused:				oklch(from var(--text-normal) 75% c h);
 	--OT-prominent-text:					oklch(76% 0.125 var(--OT-accent-h));
 	--metadata-label-text-color:			oklch(67% calc(var(--OT-theme-c-structure-dark) * 0.95) var(--OT-accent-h));
-	/*--OT-button-OFF-bg:						var(--color-accent-3);*/
-	/*--OT-button-ON-bg:						var(--color-accent-1);*/
 	--OT-search-settings-item-name:			var(--nav-item-color);
 	--OT-setting-item-description:			oklch(66% 0.035 var(--OT-themeDark-h));
 	--OT-view-header-title-color-focused-active-current:	var(--color-accent-2);
 
-		/* Fond des panneaux : acier sombre, moins noir */
-		--color-base-00:		oklch(22% 0.012 235);
-		--color-base-10:		oklch(26% 0.018 235);
+	/* Fond des panneaux : acier sombre, moins noir */
+	--color-base-00:		oklch(22% 0.012 235);
+	--color-base-10:		oklch(26% 0.018 235);
 
-		/* Stabilo : bleu acier clair, lisible en dark */
-		--OT-highlight-bg:		oklch(66% 0.080 225);
-		--OT-highlight-fg:		oklch(24% 0.035 235);
+	/* Stabilo : bleu acier clair, lisible en dark */
+	--OT-highlight-bg:		oklch(66% 0.080 225);
+	--OT-highlight-fg:		oklch(24% 0.035 235);
 
-		--OT-kbd-background:	var(--code-background);
+	--OT-kbd-background:	var(--code-background);
 }
 /*	↑	darkPalette-MetallicBlue	↑	*/
 
@@ -3519,8 +3516,6 @@ body {
 
 
 	/* ---- boutons ---- */
-	/*--OT-button-OFF-bg                       : var(--color-stone-700);
-	/*--OT-button-ON-bg                        : var(--color-emerald-800);*/*/
 	--toggle-thumb-color                     : var(--color-stone-400);
 
 	/* ---- stabilo ---- */
@@ -3549,7 +3544,7 @@ body {
 
 	--OT-prominent-text                      : oklch(52% 0.18 163.225);
 	--OT-prominent-text                      : var(--color-amber-600);
-	--OT-button-ON-bg                        : var(--color-amber-800);
+	--OT-toggle-settings-bg-on               : var(--color-amber-800);
 }
 .theme-dark.darkPalette-Stone.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode,
 .theme-dark.lightPalette-Stone.darkPalette-Default.accentColor-darkMode-alternative-1.textSelection-takesAccentColor-darkMode {
@@ -3569,8 +3564,8 @@ body {
 }
 .theme-dark.darkPalette-Stone.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode,
 .theme-dark.lightPalette-Stone.darkPalette-Default.accentColor-darkMode-alternative-2.textSelection-takesAccentColor-darkMode {
-	--text-selection    : oklch(70%  0.18  165  /  0.40);
-	--OT-button-ON-bg                        : var(--color-emerald-800);
+	--text-selection:			oklch(70%  0.18  165  /  0.40);
+	--OT-toggle-settings-bg-on:	var(--color-emerald-800);
 }
 /*	↑	darkPalette-Stone	↑	*/
 
@@ -3643,7 +3638,6 @@ body {
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color               : oklch(78.0%  min(var(--OT-accent-c), 0.195)  var(--OT-accent-h));
 	--toggle-thumb-color       : var(--color-accent-1);
-	--OT-button-OFF-bg:			oklch(18%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current : var(--color-accent-2);
 	--OT-setting-item-description : oklch(66.0%  0.050  var(--OT-themeDark-h));
 	--metadata-label-text-color   : oklch(67.0%  calc(var(--OT-theme-c-structure-dark) * 0.95)  var(--OT-accent-h));
@@ -3719,6 +3713,8 @@ body {
 	--blockquote-background-color : oklch(21.5% 0.032 80);
 	--metadata-background         : oklch(21.5% 0.032 80);
 	--code-background             : oklch(20.0% 0.028 80);
+	--OT-kbd:						var(--color-base-00);
+	--OT-kbd-background:			var(--color-base-100);
 
 	/* ---- interface latérale variable ---- */
 	--color-base-05               : oklch(15.0% 0.028 80);
@@ -3745,7 +3741,6 @@ body {
 	/* ---- détails dépendants de l'accent ---- */
 	--icon-color                  : oklch(78.0% min(var(--OT-accent-c), 0.195) var(--OT-accent-h));
 	--toggle-thumb-color          : var(--color-accent-1);
-	--OT-button-OFF-bg:				oklch(18%	min(calc(var(--OT-accent-c) * 0.30), 0.032)	var(--OT-accent-h));
 	--OT-view-header-title-color-focused-active-current : var(--color-accent-2);
 	--OT-setting-item-description : oklch(66.0% 0.050 var(--OT-themeDark-h));
 	--metadata-label-text-color   : oklch(67.0% calc(var(--OT-theme-c-structure-dark) * 0.95) var(--OT-accent-h));
@@ -6849,12 +6844,12 @@ body.OT-reduce-sidebar-ui[data-recent-notes-density="compact"] div.recent-note-i
 
 .suggestion-item {
 	background-color:	transparent;
-	color:				var(--text-normal);
+	color:				var(--OT-tree-item-color, var(--nav-item-color));
 
 	.suggestion-title,
 	.better-links-suggest__title,
 	.suggestion-highlight {
-		color:			inherit;
+		color:			var(--OT-tree-item-color, var(--nav-item-color));
 	}
 
 	.suggestion-note,
@@ -6878,7 +6873,7 @@ body.OT-reduce-sidebar-ui[data-recent-notes-density="compact"] div.recent-note-i
 		.suggestion-title,
 		.better-links-suggest__title,
 		.suggestion-highlight {
-			color:			inherit;
+			color:			var(--OT-color-on-accent-1);
 		}
 
 		.suggestion-note,
@@ -6899,7 +6894,7 @@ body.OT-reduce-sidebar-ui[data-recent-notes-density="compact"] div.recent-note-i
 		.suggestion-title,
 		.better-links-suggest__title,
 		.suggestion-highlight {
-			color:					inherit;
+			color:					var(--OT-color-on-accent-2);
 		}
 
 		.suggestion-note,
@@ -6920,7 +6915,7 @@ body.OT-reduce-sidebar-ui[data-recent-notes-density="compact"] div.recent-note-i
 		.suggestion-title,
 		.better-links-suggest__title,
 		.suggestion-highlight {
-			color:					inherit;
+			color:					var(--OT-color-on-accent-1);
 		}
 
 		.suggestion-note,
@@ -7003,6 +6998,14 @@ body.OT-reduce-sidebar-ui[data-recent-notes-density="compact"] div.recent-note-i
 }
 [data-type="tlfItemView"].workspace-leaf-content {
 /*		background-color:	var(--background-secondary-alt);	*/
+}
+/*	----------------------------------------------	*/
+
+
+/*	=== === === OpSpl24a	—————————————————————————————— pour le plugin “Better Links” —————————————————————————————— */
+.better-links-popover__badge {
+	color:		var(--OT-color-on-accent-3);
+	background: var(--color-accent-3);
 }
 /*	----------------------------------------------	*/
 
@@ -8375,7 +8378,7 @@ body.is-focused {
 }
 
 
-/*  === === === OpSpl30 ————————————— Boutons ————————————— */
+/*  === === === OpSpl30 ————————————— Buttons ————————————— */
 
 /* 1. Generic button styles */
 button,
@@ -8558,22 +8561,45 @@ select.dropdown {
 }
 
 /* 9. Checkbox containers (UI Obsidian) */
-.checkbox-container,
-.checkbox-container:hover {
-	background-color: var(--OT-button-OFF-bg);
-	box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--color-accent-2) 80%, black 20%),
-    inset 0 2px 4px rgba(0, 0, 0, 0.12);
-	outline: 0 solid var(--color-accent-2);
+/* Réglages natifs */
+.setting-item-control > .checkbox-container {
+	background-color:							var(--OT-toggle-settings-bg-off);
+	box-shadow:									var(--OT-toggle-settings-shadow-inset);
 	transition:
-    box-shadow 0.15s ease-in-out,
-    outline 0.15s ease-in-out,
-    border 0.15s ease-in-out,
-    opacity 0.15s ease-in-out;
+		background-color						0.15s ease-in-out,
+		box-shadow								0.15s ease-in-out,
+		outline-color							0.15s ease-in-out,
+		opacity									0.15s ease-in-out;
 }
 
-.checkbox-container.is-enabled {
-	background-color: var(--OT-button-ON-bg);
+/*.setting-item-control > .checkbox-container:hover {
+	background-color:							var(--OT-toggle-settings-bg-off-hover);
+}
+*/
+.setting-item-control > .checkbox-container.is-enabled {
+	background-color:							var(--OT-toggle-settings-bg-on);
+}
+
+/*.setting-item-control > .checkbox-container.is-enabled:hover {
+	background-color:							var(--OT-toggle-settings-bg-on-hover);
+}
+*/
+
+.setting-item-control > .checkbox-container:after {
+	background-color:							var(--OT-toggle-settings-thumb);
+	box-shadow:									var(--OT-toggle-settings-thumb-shadow);
+}
+
+/*.setting-item-control > .checkbox-container:hover:after {
+	background-color:							var(--OT-toggle-settings-thumb-hover);
+}
+*/
+.setting-item-control > .checkbox-container:not(.is-disabled):active:after {
+	background-color:							var(--OT-toggle-settings-thumb-active);
+}
+
+.setting-item-control > .checkbox-container:focus-visible {
+	outline-color:								var(--OT-toggle-settings-focus);
 }
 
 /* 10. Style Settings plugin command buttons */
@@ -9338,10 +9364,11 @@ body:not(.is-phone) .community-item.is-selected:hover .flair {
 /* ========================================================================== */
 
 .markdown-preview-view.img-XS  { --OT-img-max-height-preview: 300px; }
-.markdown-preview-view.img-S   { --OT-img-max-height-preview: 350px; }
-.markdown-preview-view.img-M   { --OT-img-max-height-preview: 450px; }
-.markdown-preview-view.img-L   { --OT-img-max-height-preview: 600px; }
-.markdown-preview-view.img-XL  { --OT-img-max-height-preview: var(--OT-img-max-height); }
+.markdown-preview-view.img-S   { --OT-img-max-height-preview: 380px; }
+.markdown-preview-view.img-M   { --OT-img-max-height-preview: 481px; }
+.markdown-preview-view.img-L   { --OT-img-max-height-preview: 609px; }
+.markdown-preview-view.img-XL  { --OT-img-max-height-preview: 771px; }
+/*	anciennes valeurs: 300 | 350 | 450 | 600 | 800 */
 
 .markdown-preview-view.img-300  { --OT-img-max-height-preview: 300px; }
 .markdown-preview-view.img-350  { --OT-img-max-height-preview: 350px; }
@@ -9643,8 +9670,75 @@ On lui donne donc le même rythme qu’à une image seule.
 	margin-block-start: var(--OT-img-space-above-single);
 	margin-block-end:   var(--OT-img-space-below-single);
 }
-
 /* -------------------- ↑ Images, etc. -------------------- ↑ */
+
+/*	=== === === OpSpl36a	—————————————————————————————— Gallery callout (Reading view) —————————————————————————————— */
+
+/*	Callout Markdown attendu :
+
+	> [!gallery]+
+
+	> ![[Image-01.jpg]]
+	> ![[Image-02.jpg]]
+	> ![[Image-03.jpg]]
+
+	Logique :
+	- la grille vit uniquement en Reading view ;
+	- les images héritent des styles de base définis dans OpSpl36 ;
+	- l’espacement vertical suit le système de blancs du thème.
+*/
+
+.markdown-preview-view .callout[data-callout="gallery"] {
+	--OT-gallery-ratio:				0.75;	/* largeur ÷ hauteur ; paysage 3:2 */
+	--OT-gallery-target-width:		calc(var(--OT-img-max-height-preview) * var(--OT-gallery-ratio));
+
+	padding:						0;
+	margin-top:						var(--OT-blanc-petit);
+	margin-bottom:					var(--OT-blanc-normal);
+	background:						transparent;
+	border:							0;
+	box-shadow:						none;
+}
+
+.markdown-preview-view .callout[data-callout="gallery"] > .callout-title {
+	display:						none;
+}
+
+.markdown-preview-view .callout[data-callout="gallery"] > .callout-content {
+	display:						grid;
+	grid-template-columns:			repeat(
+										auto-fit,
+										minmax(
+											min(100%, var(--OT-gallery-target-width)),
+											var(--OT-gallery-target-width)
+										)
+									);
+	justify-content:				center;
+	gap:							var(--OT-callout-gallery-gap);
+	padding:						0;
+	margin:							0;
+}
+
+.markdown-preview-view .callout[data-callout="gallery"] > .callout-content > p {
+	display:						contents;
+	margin:							0;
+}
+
+.markdown-preview-view .callout[data-callout="gallery"] .internal-embed.image-embed {
+	display:						block;
+	min-inline-size:				0;
+	margin:							0;
+}
+
+.markdown-preview-view .callout[data-callout="gallery"] .internal-embed.image-embed img {
+	display:						block;
+	inline-size:					100%;
+	max-inline-size:				100%;
+	block-size:						auto;
+	margin:							0;
+}
+
+
 
 
 /*	=== === === OpSpl37	 —————————————————————————————— Zoom-image / lightbox—————————————————————————————— */
@@ -13134,6 +13228,17 @@ kbd {
 /*	-------------------- ↑ Empty pane ↑	-------------------- */
 
 /*	=== === === OpSpl60	———————————————————— Text highlighting ————————————————————	*/
+.markdown-rendered mark :is(.internal-link, .external-link) {
+	color:				var(--text-normal);
+	text-decoration:	underline;
+	text-decoration-style:dotted;
+}
+.markdown-source-view.mod-cm6 .cm-highlight:is(.cm-hmd-internal-link, .cm-link) .cm-underline {
+	color:				var(--text-normal);
+	text-decoration:	underline;
+	text-decoration-style:dotted;
+}
+
 /*		Tout ceci est là “just in case”. Pour le moment (07.09.2026), je me contente de quelque chose de très simple.
 .is-flashing {
 	background-color:	var(--highlight-background) !important;
