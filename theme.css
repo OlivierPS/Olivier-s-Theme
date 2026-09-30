@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-09-30
+	- corrected the hovering of the “changed” labels in the Publish modal
 2026-09-21
 	- added gallery callout (fluid image galleries inside a callout)
 	- improved ON / OFF toggles in settings
@@ -12124,20 +12126,20 @@ body.lists-horiz-generous {
 	body:not(.is-grabbing) .tree-item-self.is-clickable:hover .tree-item-flair-outer,
 	body:not(.is-grabbing) .tree-item-self.is-clickable:hover .nav-file-tag,
 	body:not(.is-grabbing) .tree-item-self.is-clickable:hover .metadata-menu.fileclass-icon {
-    color: var(--OT-color-on-accent-1);
+		color: var(--OT-color-on-accent-1);
 	}
 
 	/* Chevron (right-triangle) sur hover : force la couleur accent-on */
 	body:not(.is-grabbing)
 	.tree-item-self.is-clickable:hover
 	.tree-item-icon .svg-icon.right-triangle {
-    color: var(--OT-color-on-accent-1);
+		color: var(--OT-color-on-accent-1);
 	}
 
 	/* Flair sur hover: fond accent‑1 pour bien ressortir */
 	body:not(.is-grabbing) .tree-item-self.is-clickable:hover .tree-item-flair {
-    color:            var(--OT-color-on-accent-1);
-    background-color: var(--color-accent-1);
+		color:            var(--OT-color-on-accent-1);
+		background-color: var(--color-accent-1);
 	}
 }
 
@@ -12262,22 +12264,23 @@ body.lists-horiz-generous {
 
 /* Tout le contenu du header au hover */
 .publish-section-header:hover {
-	background-color: var(--color-accent-1);
-	color: var(--OT-color-on-accent-1);
+	background-color:	var(--color-accent-1);
+	color:				var(--OT-color-on-accent-1);
 }
 
 /* Icône chevron dans le header */
 .publish-section-header:hover .publish-section-header-toggle-collapsed-button.collapse-icon .svg-icon {
-	color: inherit;
-	stroke: currentColor;
+	color:				var(--OT-color-on-accent-1);
+	stroke:				currentColor;
 }
 
-/* Texte "Changed" + compteur 1/1 + "selected" */
+/* Texte “Changed” + compteur + “selected” */
 .publish-section-header:hover .publish-section-header-text,
 .publish-section-header:hover .publish-section-header-selected,
 .publish-section-header:hover .publish-section-header-selected-count {
-	color: inherit;
+	color:				var(--OT-color-on-accent-1);
 }
+
 
 /* Ne pas modifier les boutons : ils gardent leur logique propre */
 
@@ -12293,7 +12296,6 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable .file-tree-item-icon,
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable .tree-item-icon.collapse-icon .svg-icon {
 	color: var(--OT-color-on-accent-2);
-	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 
@@ -12309,13 +12311,12 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable:hover .file-tree-item-icon,
 .file-tree .tree-item-self.mod-collapsible.mod-folder.is-selected.is-clickable:hover .tree-item-icon.collapse-icon .svg-icon {
 	color: var(--OT-color-on-accent-1);
-	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 /* Fichier sélectionné + changed */
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable {
-	background-color: var(--color-accent-2);
-	color: var(--OT-color-on-accent-2);
+	background-color:	var(--color-accent-2);
+	color:				var(--OT-color-on-accent-2);
 }
 
 /* Propagation aux éléments principaux (titre + icônes fichier + icône “Compare”) */
@@ -12323,9 +12324,8 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable .file-tree-item-title,
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable .file-tree-item-icon,
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable .clickable-icon .svg-icon {
-	color: var(--OT-color-on-accent-2);
-	/*fill: currentColor;*/
-	stroke: currentColor;
+	color:	var(--OT-color-on-accent-2);
+	stroke:	currentColor;
 }
 
 /* Flair “changed” : version muted sur fond accentué */
@@ -12347,7 +12347,6 @@ body.lists-horiz-generous {
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable:hover .file-tree-item-icon,
 .file-tree .tree-item-self.mod-file.mod-changed.is-selected.is-clickable:hover .clickable-icon .svg-icon {
 	color: var(--OT-color-on-accent-1);
-	/*fill: currentColor;*/
 	stroke: currentColor;
 }
 
@@ -12357,6 +12356,14 @@ body.lists-horiz-generous {
 	color: var(--OT-color-muted-on-accent-1);
 }
 
+@media (hover: hover) {
+	.modal.mod-publish .tree-item-self.is-clickable:hover {
+		& .tree-item-inner.file-tree-item .tree-item-flair {
+			color:				var(--OT-color-on-accent-3);
+			background-color:	var(--color-accent-3);
+		}
+	}
+}
 /* -------------------- ↑ file navigation (tree items, etc.) ↑ -------------------- */
 
 /* ===========================
