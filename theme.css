@@ -54,6 +54,7 @@ Post‑release tweaks
 2026-10-03
 	- corrected horizontal scroll in the kanban view of transcluded bases
 	- color tweaks in Art Deco palette
+	- support for the “Kanban Bases View” plugin
 2026-09-30
 	- corrected the hovering of the “changed” labels in the Publish modal
 2026-09-21
@@ -189,6 +190,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl43		contextual typography
 			OpSpl44		Kanban plugin
 			OpSpl45		Board View plugin
+			OpSpl45.1	Kanban Bases View plugin
 			OpSpl46		transcludes
 			OpSpl47		syntax markers
 			OpSpl48		tags
@@ -11077,6 +11079,440 @@ body {
 	background-color:	var(--color-accent-1);
 }
 /* -------------------- ↑ Board View plugin -------------------- ↑ */
+
+/*	=== === === OpSpl45.1	—————————————————————————————— Kanban Bases View plugin —————————————————————————————— */
+.obk-view-container {
+	--OT-obk-font:								var(--OT-kanban-font, var(--font-text));
+	--OT-obk-font-size:							var(--OT-kanban-font-size, 1rem);
+	--OT-obk-lane-width:						var(--OT-kanban-lane-width, 16em);
+
+	--OT-obk-title-font:						var(--font-interface);
+	--OT-obk-title-size:						var(--OT-kanban-font-size, 1rem);
+	--OT-obk-ui-size:							calc(var(--OT-kanban-font-size, 1rem) * 0.94);
+	--OT-obk-meta-size:							calc(var(--OT-kanban-font-size, 1rem) * 0.88);
+	--OT-obk-count-size:						calc(var(--OT-kanban-font-size, 1rem) * 0.82);
+
+	--OT-obk-column-radius:						var(--radius-l);
+	--OT-obk-card-radius:						var(--radius-m);
+	--OT-obk-chip-radius:						999px;
+
+	--OT-obk-surface-1:							var(--background-primary);
+	--OT-obk-surface-2:							var(--background-secondary);
+	--OT-obk-surface-3:							var(--background-secondary-alt);
+	--OT-obk-border:							var(--background-modifier-border);
+
+	--OT-obk-text-normal:						var(--text-normal);
+	--OT-obk-text-muted:						var(--OT-menu-text-muted, var(--text-muted));
+	--OT-obk-text-muted-alt:					var(--OT-nav-item-muted, var(--text-muted));
+
+	--OT-obk-hover-bg:							var(--color-accent-1);
+	--OT-obk-hover-fg:							var(--OT-color-on-accent-1);
+	--OT-obk-hover-muted:						var(--OT-color-muted-on-accent-1);
+
+	--OT-obk-active-bg:							var(--color-accent-2);
+	--OT-obk-active-fg:							var(--OT-color-on-accent-2);
+	--OT-obk-active-muted:						var(--OT-color-muted-on-accent-2);
+
+	--OT-obk-card-border-normal:				color-mix(in oklch, var(--obk-column-accent-color, transparent) 18%, var(--OT-obk-border));
+	--OT-obk-card-border-hover:					var(--OT-obk-active-bg);
+	--OT-obk-card-border-active:				var(--OT-obk-active-bg);
+
+	--OT-obk-card-bg-normal:					var(--OT-obk-surface-1);
+	--OT-obk-card-bg-hover:						var(--OT-obk-hover-bg);
+	--OT-obk-card-bg-active:					var(--OT-obk-active-bg);
+	--OT-obk-card-bg-active-hover:				var(--OT-obk-hover-bg);
+
+	--OT-obk-card-title-normal:					var(--OT-obk-text-normal);
+	--OT-obk-card-title-hover:					var(--OT-obk-hover-fg);
+	--OT-obk-card-title-active:					var(--OT-obk-active-fg);
+
+	--OT-obk-card-label-normal:					var(--OT-obk-text-muted-alt);
+	--OT-obk-card-label-hover:					var(--OT-obk-hover-muted);
+	--OT-obk-card-label-active:					var(--OT-obk-active-muted);
+
+	--OT-obk-card-value-normal:					var(--OT-obk-text-muted);
+	--OT-obk-card-value-hover:					var(--OT-obk-hover-fg);
+	--OT-obk-card-value-active:					var(--OT-obk-active-fg);
+
+	--OT-obk-card-preview-normal:				var(--OT-obk-text-muted);
+	--OT-obk-card-preview-hover:				var(--OT-obk-hover-muted);
+	--OT-obk-card-preview-active:				var(--OT-obk-active-muted);
+
+	font-family:								var(--OT-obk-font);
+	font-size:									var(--OT-obk-font-size);
+	color:										var(--OT-obk-text-normal);
+	background:									var(--OT-obk-surface-1);
+	padding:									var(--size-4-3);
+}
+
+/* densité générale */
+.obk-board,
+.obk-board--with-swimlanes {
+	gap:										var(--size-4-3);
+}
+
+.obk-board {
+	padding-bottom:								var(--size-4-2);
+}
+
+.obk-property-selector,
+.obk-swimlane-body,
+.obk-column-body,
+.obk-card {
+	padding:									var(--size-4-3);
+}
+
+.obk-property-selector,
+.obk-swimlane-body,
+.obk-column-body,
+.obk-quick-add-form {
+	gap:										var(--size-4-2);
+}
+
+.obk-column-header,
+.obk-swimlane-header {
+	padding:									var(--size-4-2) var(--size-4-4);
+	gap:										var(--size-4-2);
+}
+
+/* typographie */
+.obk-view-container :is(
+	.obk-property-label,
+	.obk-property-select,
+	.obk-card,
+	.obk-card-preview,
+	.obk-card-property,
+	.obk-card-property-value,
+	.obk-empty-state,
+	.obk-swimlane-count,
+	.obk-column-count
+) {
+	font-family:								var(--OT-obk-font);
+}
+
+.obk-view-container :is(
+	.obk-column-title,
+	.obk-swimlane-header
+) {
+	font-family:								var(--OT-obk-title-font);
+	font-size:									var(--OT-obk-title-size);
+	font-weight:								700;
+	line-height:								1.25;
+}
+
+.obk-property-label,
+.obk-property-select,
+.obk-card-title,
+.obk-quick-add-input,
+.obk-quick-add-actions {
+	font-size:									var(--OT-obk-ui-size);
+	line-height:								1.35;
+}
+
+.obk-card-preview,
+.obk-card-property,
+.obk-card-property-label,
+.obk-card-property-value,
+.obk-empty-state {
+	font-size:									var(--OT-obk-meta-size);
+	line-height:								1.35;
+}
+
+.obk-column-count,
+.obk-swimlane-count {
+	font-size:									var(--OT-obk-count-size);
+	line-height:								1.2;
+}
+
+/* surfaces */
+.obk-property-selector,
+.obk-column {
+	background:									var(--OT-obk-surface-2);
+}
+
+.obk-swimlane {
+	background:									var(--OT-obk-surface-3);
+}
+
+/* colonnes */
+.obk-column {
+	--OT-obk-column-header-text:				var(--color-base-100);
+	--OT-obk-column-count-bg:					var(--background-primary);
+	--OT-obk-column-count-border:				var(--background-modifier-border);
+	--OT-obk-column-count-text:					var(--OT-obk-column-header-text);
+	--OT-obk-column-color-btn-border:			var(--OT-obk-column-header-text);
+	--OT-obk-column-header-bg:					transparent;
+	--OT-obk-column-header-border:				transparent;
+
+	flex:										0 0 var(--OT-obk-lane-width);
+	min-width:									var(--OT-obk-lane-width);
+	max-width:									var(--OT-obk-lane-width);
+	min-height:									200px;
+	border-radius:								var(--OT-obk-column-radius);
+	border:										1px solid var(--OT-obk-border);
+	overflow:									hidden;
+}
+
+/* colonnes colorées */
+.obk-column[style*="--obk-column-accent-color"] {
+	--OT-obk-column-header-text:				var(--obk-column-accent-color);
+	--OT-obk-column-count-text:					var(--obk-column-accent-color);
+
+	--OT-obk-column-header-bg:					oklch(
+													from var(--obk-column-accent-color)
+													91% calc(c * 0.26) h
+												);
+	--OT-obk-column-header-border:				oklch(
+													from var(--obk-column-accent-color)
+													74% calc(c * 0.62) h
+												);
+	--OT-obk-column-count-bg:					oklch(
+													from var(--obk-column-accent-color)
+													95% calc(c * 0.14) h
+												);
+	--OT-obk-column-count-border:				oklch(
+													from var(--obk-column-accent-color)
+													76% calc(c * 0.62) h
+												);
+	--OT-obk-column-color-btn-border:			oklch(
+													from var(--obk-column-accent-color)
+													88% calc(c * 0.82) h
+												);
+}
+
+.obk-column-header {
+	background:									var(--OT-obk-column-header-bg);
+	border-top:									3px solid var(--OT-obk-column-header-border);
+	border-bottom:								1px solid color-mix(
+													in oklch,
+													var(--OT-obk-column-header-border) 38%,
+													var(--OT-obk-border)
+												);
+}
+
+.obk-column-title,
+.obk-column-drag-handle {
+	color:										var(--OT-obk-column-header-text);
+}
+
+.obk-column-count {
+	padding:									0.1em 0.65em;
+	border-radius:								var(--OT-obk-chip-radius);
+	background:									var(--OT-obk-column-count-bg);
+	border:										1px solid var(--OT-obk-column-count-border);
+	color:										var(--OT-obk-column-count-text);
+}
+
+.obk-column-color-btn {
+	border-color:								var(--OT-obk-column-color-btn-border);
+}
+
+/* cartes */
+.obk-card {
+	background:									var(--OT-obk-card-bg-normal) !important;
+	border:										1px solid var(--OT-obk-card-border-normal) !important;
+	border-radius:								var(--OT-obk-card-radius);
+	box-shadow:									none !important;
+	transition:
+		background-color 120ms ease,
+		border-color 120ms ease,
+		color 120ms ease !important;
+
+	& .obk-card-title {
+		color:									var(--OT-obk-card-title-normal) !important;
+		font-weight:							500;
+	}
+
+	& .obk-card-property {
+		display:								flex;
+		align-items:								baseline;
+		gap:									6px;
+	}
+
+	& .obk-card-property-label {
+		color:									var(--OT-obk-card-label-normal) !important;
+		font-family:							var(--metadata-label-font);
+		font-weight:							var(--metadata-label-font-weight);
+	}
+
+	& .obk-card-property-value {
+		min-width:								0;
+		color:									var(--OT-obk-card-value-normal) !important;
+	}
+
+	& .obk-card-preview {
+		color:									var(--OT-obk-card-preview-normal) !important;
+	}
+
+	& .obk-card-property-value p {
+		display:								inline;
+		margin:									0;
+		color:									inherit !important;
+	}
+}
+
+/* carte survolée */
+.obk-card:is(:hover, .obk-card--hover) {
+	background:									var(--OT-obk-card-bg-hover) !important;
+	border-color:								var(--OT-obk-card-border-hover) !important;
+	box-shadow:									none !important;
+
+	& .obk-card-title {
+		color:									var(--OT-obk-card-title-hover) !important;
+	}
+
+	& .obk-card-property-label {
+		color:									var(--OT-obk-card-label-hover) !important;
+	}
+
+	& .obk-card-property-value,
+	& .obk-card-property-value p,
+	& .obk-card-property-value a,
+	& .obk-card-property-value span {
+		color:									var(--OT-obk-card-value-hover) !important;
+	}
+
+	& .obk-card-preview {
+		color:									var(--OT-obk-card-preview-hover) !important;
+	}
+}
+
+/* carte active */
+.obk-card.obk-card--active {
+	background:									var(--OT-obk-card-bg-active) !important;
+	border-color:								var(--OT-obk-card-border-active) !important;
+	box-shadow:									none !important;
+
+	& .obk-card-title {
+		color:									var(--OT-obk-card-title-active) !important;
+	}
+
+	& .obk-card-property-label {
+		color:									var(--OT-obk-card-label-active) !important;
+	}
+
+	& .obk-card-property-value,
+	& .obk-card-property-value p,
+	& .obk-card-property-value a,
+	& .obk-card-property-value span {
+		color:									var(--OT-obk-card-value-active) !important;
+	}
+
+	& .obk-card-preview {
+		color:									var(--OT-obk-card-preview-active) !important;
+	}
+}
+
+/* carte active + survolée = hovered */
+.obk-card.obk-card--active:is(:hover, .obk-card--hover) {
+	background:									var(--OT-obk-card-bg-active-hover) !important;
+	border-color:								var(--OT-obk-card-border-hover) !important;
+
+	& .obk-card-title {
+		color:									var(--OT-obk-card-title-hover) !important;
+	}
+
+	& .obk-card-property-label {
+		color:									var(--OT-obk-card-label-hover) !important;
+	}
+
+	& .obk-card-property-value,
+	& .obk-card-property-value p,
+	& .obk-card-property-value a,
+	& .obk-card-property-value span {
+		color:									var(--OT-obk-card-value-hover) !important;
+	}
+
+	& .obk-card-preview {
+		color:									var(--OT-obk-card-preview-hover) !important;
+	}
+}
+
+/* sélecteur et boutons */
+.obk-property-select,
+.obk-column-add-btn,
+.obk-column-remove-btn,
+.obk-swimlane-toggle,
+.obk-column-color-btn,
+.obk-column-color-swatch {
+	border-radius:								var(--OT-obk-card-radius);
+}
+
+.obk-property-select {
+	border:										1px solid var(--OT-obk-border);
+	background:									var(--OT-obk-surface-1);
+	color:										var(--OT-obk-text-normal);
+}
+
+.obk-property-select:hover,
+.obk-column-add-btn:hover,
+.obk-column-remove-btn:hover,
+.obk-swimlane-toggle:hover,
+.obk-column-color-btn:hover,
+.obk-column-color-swatch:hover {
+	background:									var(--OT-obk-hover-bg);
+	color:										var(--OT-obk-hover-fg);
+	border-color:								var(--OT-obk-hover-bg);
+}
+
+.obk-property-select:focus-visible,
+.obk-swimlane-toggle:focus-visible,
+.obk-column-add-btn:focus-visible,
+.obk-column-remove-btn:focus-visible,
+.obk-column-color-btn:focus-visible,
+.obk-column-color-swatch:focus-visible,
+.obk-card:focus-visible {
+	outline:									2px solid var(--OT-obk-hover-bg);
+	outline-offset:								2px;
+	box-shadow:									none;
+}
+
+/* poignées */
+.obk-swimlane-drag-handle,
+.obk-column-drag-handle {
+	opacity:									0.65;
+}
+
+.obk-swimlane-drag-handle:hover,
+.obk-column-drag-handle:hover {
+	opacity:									1;
+	color:										var(--OT-obk-text-normal);
+}
+
+/* popover de couleurs */
+.obk-column-color-popover {
+	background:									var(--OT-obk-surface-1);
+	border:										1px solid var(--OT-obk-border);
+	border-radius:								var(--OT-obk-column-radius);
+	box-shadow:									none;
+}
+
+.obk-column-color-swatch--active {
+	border-color:								var(--OT-obk-active-bg);
+}
+
+.obk-column-color-none {
+	background:									var(--OT-obk-border);
+}
+
+/* état vide */
+.obk-empty-state {
+	color:										var(--OT-obk-text-muted);
+	font-style:									italic;
+}
+
+/* masquage local des labels de propriétés */
+.OT-bases-suppress-card-label {
+	& .obk-card-property-label {
+		display:								none;
+	}
+
+	& .obk-card-property {
+		gap:									0;
+	}
+}
+/* -------------------- ↑ Kanban Bases View plugin ↑ -------------------- */
+
 
 
 /*	=== === === OpSpl46	—————————————————————————————— transcludes —————————————————————————————— */
