@@ -51,6 +51,9 @@
 /*
 Post‑release tweaks
 -------------------
+2026-10-03
+	- corrected horizontal scroll in the kanban view of transcluded bases
+	- color tweaks in Art Deco palette
 2026-09-30
 	- corrected the hovering of the “changed” labels in the Publish modal
 2026-09-21
@@ -1238,10 +1241,6 @@ body {
 	/*--OT-highlight-bg:	oklch(34% 0.06	72);*/
 	--OT-highlight-bg:	oklch(94% 20% 80deg);
 
-	/* ajustements*/
-	--tab-text-color-focused:		var(--color-base-20);
-	--OT-icon-color-tab-header:		var(--color-base-20);
-	--OT-icon-color-pane-actions:	var(--color-base-20);
 }
 
 .theme-light.lightPalette-ArtDeco.accentColor-lightMode-shade {
@@ -7862,7 +7861,9 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
     /*height: var(--bases-embed-height, auto);*/
 	/*height:					1000px;*/
 	flex: 1;
-    overflow: hidden;
+	/* preserve horizontal scrolling for embedded kanban boards */
+    overflow-x: auto;
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
     /*--bases-embed-height:	1000px;*/
