@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-10-05
+	- some tweaks
 2026-10-03
 	- corrected horizontal scroll in the kanban view of transcluded bases
 	- color tweaks in Art Deco palette
@@ -3835,6 +3837,7 @@ body:not(.is-focused) {
 }
 .modal.mod-sync-log .sync-log-container {
 	font-size:	calc(var(--font-ui-smaller) *0.9)											;
+	color:		var(--nav-item-color);
 }
 
 
@@ -11145,6 +11148,30 @@ body {
 	padding:									var(--size-4-3);
 }
 
+.theme-dark .obk-column[style*="--obk-column-accent-color"] {
+	--OT-obk-column-header-bg:					oklch(
+													from var(--obk-column-accent-color)
+													32% calc(c * 0.34) h
+												);
+	--OT-obk-column-header-border:				oklch(
+													from var(--obk-column-accent-color)
+													58% calc(c * 0.78) h
+												);
+	--OT-obk-column-count-bg:					oklch(
+													from var(--obk-column-accent-color)
+													38% calc(c * 0.22) h
+												);
+	--OT-obk-column-count-border:				oklch(
+													from var(--obk-column-accent-color)
+													62% calc(c * 0.72) h
+												);
+	--OT-obk-column-color-btn-border:			oklch(
+													from var(--obk-column-accent-color)
+													68% calc(c * 0.78) h
+												);
+}
+
+
 /* densité générale */
 .obk-board,
 .obk-board--with-swimlanes {
@@ -11188,6 +11215,10 @@ body {
 	.obk-column-count
 ) {
 	font-family:								var(--OT-obk-font);
+}
+.obk-swimlane-count {
+	color:				var(--background-primary-alt);
+	/*		background-color:	var(--OT-obk-text-normal);	*/
 }
 
 .obk-view-container :is(
@@ -11237,7 +11268,7 @@ body {
 
 /* colonnes */
 .obk-column {
-	--OT-obk-column-header-text:				var(--color-base-100);
+	--OT-obk-column-header-text:				var(--OT-nav-folder-title-color);	/* parce que le fond est --background-secondary */
 	--OT-obk-column-count-bg:					var(--background-primary);
 	--OT-obk-column-count-border:				var(--background-modifier-border);
 	--OT-obk-column-count-text:					var(--OT-obk-column-header-text);
@@ -17353,12 +17384,12 @@ settings:
 	# Kanban plugin + Board View plugin
 	-
 			id:				"OT-kanban-settings"
-			title:			"Kanbans (plugin + Board View)"
+			title:			"Kanbans"
 			type:			heading
 			level:			3
 			collapsed:		true
-			description:	"Kanbans oriented settings."
-			description.fr:	"Réglages pour les kanbans"
+			description:	"Kanbans oriented settings. Please note that it doesn’t work with every kanban view plugin."
+			description.fr:	"Réglages pour les kanbans. Notez bien que cela ne fonctionne pas avec tous les plugins proposant une vue kanban."
 
 	-
 			id:				"OT-kanban-font"
