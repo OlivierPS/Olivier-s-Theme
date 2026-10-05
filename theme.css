@@ -53,6 +53,7 @@ Post‑release tweaks
 -------------------
 2026-10-05
 	- some tweaks
+	- improved colors of the “Kanban Bases View” plugin
 2026-10-03
 	- corrected horizontal scroll in the kanban view of transcluded bases
 	- color tweaks in Art Deco palette
@@ -11099,10 +11100,7 @@ body {
 	--OT-obk-card-radius:						var(--radius-m);
 	--OT-obk-chip-radius:						999px;
 
-	--OT-obk-surface-1:							var(--background-primary);
-	--OT-obk-surface-2:							var(--background-secondary);
-	--OT-obk-surface-3:							var(--background-secondary-alt);
-	--OT-obk-border:							var(--background-modifier-border);
+	--OT-obk-border:							var(--color-base-30);
 
 	--OT-obk-text-normal:						var(--text-normal);
 	--OT-obk-text-muted:						var(--OT-menu-text-muted, var(--text-muted));
@@ -11120,7 +11118,7 @@ body {
 	--OT-obk-card-border-hover:					var(--OT-obk-active-bg);
 	--OT-obk-card-border-active:				var(--OT-obk-active-bg);
 
-	--OT-obk-card-bg-normal:					var(--OT-obk-surface-1);
+	--OT-obk-card-bg-normal:					var(--background-primary);
 	--OT-obk-card-bg-hover:						var(--OT-obk-hover-bg);
 	--OT-obk-card-bg-active:					var(--OT-obk-active-bg);
 	--OT-obk-card-bg-active-hover:				var(--OT-obk-hover-bg);
@@ -11144,7 +11142,7 @@ body {
 	font-family:								var(--OT-obk-font);
 	font-size:									var(--OT-obk-font-size);
 	color:										var(--OT-obk-text-normal);
-	background:									var(--OT-obk-surface-1);
+	background:									var(--background-primary);
 	padding:									var(--size-4-3);
 }
 
@@ -11257,13 +11255,15 @@ body {
 }
 
 /* surfaces */
-.obk-property-selector,
+.obk-property-selector {
+	background:									var(--menu-color);
+}
 .obk-column {
-	background:									var(--OT-obk-surface-2);
+	background:									var(--background-secondary);
 }
 
 .obk-swimlane {
-	background:									var(--OT-obk-surface-3);
+	background:									var(--background-secondary-alt);
 }
 
 /* colonnes */
@@ -11472,8 +11472,8 @@ body {
 
 .obk-property-select {
 	border:										1px solid var(--OT-obk-border);
-	background:									var(--OT-obk-surface-1);
-	color:										var(--OT-obk-text-normal);
+	background:									var(--menu-background);
+	color:										var(--OT-menu-text-color);
 }
 
 .obk-property-select:hover,
@@ -11513,8 +11513,8 @@ body {
 
 /* popover de couleurs */
 .obk-column-color-popover {
-	background:									var(--OT-obk-surface-1);
-	border:										1px solid var(--OT-obk-border);
+	background:									var(--menu-background);
+	border:										1px solid var(--menu-border-color);
 	border-radius:								var(--OT-obk-column-radius);
 	box-shadow:									none;
 }
