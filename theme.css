@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-10-13
+	- improved the thumbs of sliders and of ON/OFF switches
 2026-10-05
 	- some tweaks
 	- improved colors of the “Kanban Bases View” plugin
@@ -528,7 +530,7 @@ body {
 	--OT-toggle-settings-bg-off-hover:		var(--color-accent-1);
 	--OT-toggle-settings-bg-on:				oklch(70% clamp(0.042, calc(var(--OT-accent-c) * 0.88), 0.100) var(--OT-accent-h));
 	--OT-toggle-settings-bg-on-hover:		var(--color-accent-1);
-	--OT-toggle-settings-thumb:				var(--OT-setting-item-name);
+	--OT-toggle-settings-thumb:				var(--background-primary);
 	--OT-toggle-settings-thumb-hover:		var(--OT-setting-item-name);
 	--OT-toggle-settings-thumb-active:		oklch(from var(--OT-setting-item-name) 93% c h);
 	--OT-toggle-settings-focus:				oklch(70% 0.11 252deg / 0.45);
@@ -841,9 +843,10 @@ body {
 	--slider-thumb-border-color:		var(--color-accent-3);
 	--slider-track-background:			var(--color-base-30);
 	--slider-fill-background:			var(--color-accent-1);
-	--slider-thumb-background:			var(--toggle-thumb-color);
+	--slider-thumb-background:			var(--OT-toggle-settings-thumb);
 	--slider-track-background:			var(--color-accent-2);
-
+	--slider-thumb-border-color:		var(--color-accent-2);
+	--slider-thumb-border-width:		1px !important;
 
 	--status-bar-text-color:		var(--OT-color-on-accent-3);
 	--status-bar-background:		var(--color-accent-3);
@@ -886,7 +889,7 @@ body {
 	--titlebar-background-focused:	var(--color-base-05);
 
 	/*--toggle-thumb-color:			oklch(97.5%	calc(var(--OT-accent-c) * 0.02)	var(--OT-accent-h));*/
-	--toggle-thumb-color:			var(--OT-setting-item-name);
+	--toggle-thumb-color:			var(--OT-toggle-settings-thumb);
 	--vault-profile-color:			var(--OT-prominent-text);
 	--vault-profile-color-hover:	var(--OT-color-on-accent-1);
 	--vault-profile-font-size:		var(--font-ui-large);
@@ -1911,7 +1914,7 @@ body {
 	--OT-color-on-accent-2:			oklch(0.929		calc(0.041 + var(--OT-delta-c))		 95.1) !important;	/* base2	*/
 	--OT-color-on-accent-3:			oklch(0.589		calc(0.039 + var(--OT-delta-c))		222.1) !important;	/* base01	*/
 	--OT-color-muted-on-accent-1:	oklch(0.929		calc(0.041 + var(--OT-delta-c))		 95.1) !important;	/* base2	*/
-	--OT-toggle-settings-thumb:		var(--solarized-base02);
+	--OT-toggle-settings-thumb:		var(--solarized-base2);
 }
 
 .theme-light.lightPalette-Solarized.accentColor-lightMode-alternative-1 {
