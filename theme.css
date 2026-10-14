@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-10-14
+	- corrected color bug in the Ideaverse palette
 2026-10-13
 	- improved the thumbs of sliders and of ON/OFF switches
 2026-10-05
@@ -1403,7 +1405,7 @@ body {
 	--blockquote-background-color:  oklch(0.938 0.020 63);
 	--code-background:              oklch(0.952 0.016 64);
 
-	--tab-text-color-focused:		oklch(0.938 0.022 63);
+	/*--tab-text-color-focused:		oklch(0.938 0.022 63);*/
 	/*--OT-icon-color-ribbon-sidebar-open:	var(--color-accent-1);*/
 
 	/* ── Accents variables ─────────────────────────────────────── */
@@ -1432,12 +1434,13 @@ body {
 
 	/* ── Autres adaptations ─────────────────────────────────────── */
 	/*--icon-color:					oklch(0.938 0.022 63);*/
-	--OT-icon-color-tab-header:		oklch(0.938 0.022 63);
+	/*--OT-icon-color-tab-header:		oklch(0.938 0.022 63);*/
 	--OT-icon-color-pane-actions:	oklch(0.938 0.022 63);
 	/*--OT-icon-color-view-header:	var(--color-accent-1);*/
 	/*--OT-icon-color-settings-control:	var(--OT-setting-item-name);*/
 	/*--OT-icon-color-settings-control:	var(--color-accent-1);*/
 	--OT-toggle-settings-bg-on:				oklch(80%	0.075	var(--OT-accent-h));
+	--icon-color:	var(--h5-color);
 }
 
 /* ── Colored headings (optionnel, classe Style Settings) ──── */
