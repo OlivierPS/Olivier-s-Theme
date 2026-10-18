@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-10-18
+	- improved the official kanban view for bases
 2026-10-15
 	- corrected checkboxes in bases dropdown menus
 2026-10-14
@@ -7890,64 +7892,106 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 	background:			var(--background-primary);
 }
 
-/* -------------------- kanban view -------------------- */
+/* -------------------- vue kanban officielle des Bases -------------------- */
 .bases-kanban-container {
-	/*--bases-kanban-column-min-width:	var(--OT-kanban-lane-width) !important;*/
 	--bases-group-heading-value-weight:	800;
-	font-family:	var(--OT-kanban-font, var(--font-interface));
-	/*font-style:		italic;*/
+	font-family:						var(--OT-kanban-font, var(--font-interface));
+	font-size:							var(--OT-kanban-font-size, 16px);
 }
 
-.workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"], .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] {
-    /*height: var(--bases-embed-height, auto);*/
-	/*height:					1000px;*/
-	flex: 1;
-	/* preserve horizontal scrolling for embedded kanban boards */
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-    /*--bases-embed-height:	1000px;*/
-}
 .bases-kanban-card {
-	font-size:		var(--OT-kanban-font-size);
-	--metadata-input-padding: 0 var(--size-4-2);
-	--font-adaptive-normal:	16px;
-}
-.bases-kanban-card-property.mod-title .bases-kanban-card-line {
-	font-family:	var(--OT-kanban-font, var(--font-interface));
-	font-size:		var(--OT-kanban-font-size,16px);
-}
-.bases-group-value {
-	/*--bases-group-heading-value-size:	var(--table-header-size);*/
-}
-.OT-bases-suppress-card-label .bases-kanban-card-label {
-	display:	none;
+	--metadata-input-padding:			0 var(--size-4-2);
+	--font-adaptive-normal:				16px;
+	font-size:							var(--OT-kanban-font-size);
 }
 
-/* increasing height of embeded kanbans, taking viewport into account */
- .block-language-base .bases-view[data-view-type="kanban"],
- .bases-embed .bases-view[data-view-type="kanban"] {
-	--bases-embed-height:	clamp(30rem, 70dvh, 72rem);
- }
+.workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"],
+.workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] {
+	--bases-kanban-line-height:			1.1em;
+	--bases-kanban-card-space:			4px;
+}
 
- /* compacting cards vertically */
- .workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"],
- .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] {
-	--bases-kanban-line-height:	20px;
-	--bases-kanban-card-space:	4px;
- }
- .workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"] .bases-kanban-card,
- .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] .bases-kanban-card {
-	padding-block:	var(--bases-kanban-card-space);
-	gap:			var(--bases-kanban-card-space);
- }
- .workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"] .bases-kanban-column-inner,
- .workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] .bases-kanban-column-inner {
-	gap:	var(--bases-kanban-card-space);
- }
+/* masquage optionnel des labels de propriétés
+   Quand l’option correspondante est activée dans Style Settings,
+   les labels sont supprimés. Si, de plus, la valeur est vide,
+   on supprime aussi le tiret de remplacement ainsi que la ligne entière. */
+.OT-bases-suppress-card-label .bases-view[data-view-type="kanban"] .bases-kanban-card-label {
+	display:							none;
+}
 
- /* -------------------- ↑ Bases ↑ -------------------- */
+.OT-bases-suppress-card-label .bases-view[data-view-type="kanban"] .bases-kanban-card-line:empty::before,
+.OT-bases-suppress-card-label .bases-view[data-view-type="kanban"] .bases-kanban-card-line:empty::after {
+	content:							none;
+}
+
+.OT-bases-suppress-card-label .bases-view[data-view-type="kanban"] .bases-kanban-card-line:empty,
+.OT-bases-suppress-card-label .bases-view[data-view-type="kanban"] .bases-kanban-card-property:has(.bases-kanban-card-line:empty) {
+	display:							none;
+}
+
+/* valeurs de propriétés sur plusieurs lignes
+   Par défaut, Obsidian impose aux lignes des cartes kanban une ligne unique,
+   avec overflow masqué et troncature par ellipsis.
+   On rétablit ici le retour à la ligne pour les valeurs effectivement rendues. */
+.bases-view[data-view-type="kanban"] .bases-kanban-card-property {
+	overflow:			visible;
+}
+
+.bases-view[data-view-type="kanban"] .bases-kanban-card-line.bases-rendered-value {
+	height:				auto;
+	overflow:			visible;
+	white-space:		normal;
+	text-overflow:		clip;
+	overflow-wrap:		anywhere;
+	font-weight:		var(--font-normal);
+}
+
+/* viewport interne des colonnes
+   Le padding inférieur de .bases-kanban-column-content déclenche parfois
+   un ascenseur résiduel de quelques pixels. On le supprime.
+   Le mask-image natif est également retiré, car il estompe la dernière
+   carte même en l’absence de scrolling. */
+.bases-view[data-view-type="kanban"] .bases-kanban-column-content {
+	padding-bottom:						0;
+	mask-image:							none;
+}
+
+/* en-tête des colonnes
+   ⭢ intitulé centré
+   ⭢ compteur poussé à droite
+   ⭢ valeur du groupe légèrement agrandie */
+.bases-view[data-view-type="kanban"] .bases-kanban-column-header {
+	display:							grid;
+	grid-template-columns:				1fr auto auto;
+	align-items:						center;
+	column-gap:							var(--size-4-2);
+}
+
+.bases-view[data-view-type="kanban"] .bases-group-heading {
+	grid-column:						1 / 2;
+	justify-self:						center;
+	text-align:							center;
+	min-width:							0;
+}
+
+.bases-view[data-view-type="kanban"] .bases-group-value {
+	font-size:							1.08em;
+	font-weight:						700;
+	line-height:						1.2;
+}
+
+.bases-view[data-view-type="kanban"] .bases-kanban-column-count {
+	grid-column:						2 / 3;
+	justify-self:						end;
+	text-align:							right;
+	font-variant-numeric:				tabular-nums;
+}
+
+.bases-view[data-view-type="kanban"] .bases-kanban-column-create {
+	grid-column:						3 / 4;
+	justify-self:						end;
+}
+/* -------------------- ↑ Bases ↑ -------------------- */
 
 
 /*  === === === OpSpl28 ——————————————————————————————
