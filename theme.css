@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-10-19
+	- further improvements to the official kanban view for bases
 2026-10-18
 	- improved the official kanban view for bases
 2026-10-15
@@ -618,6 +620,7 @@ body {
 	--background-modifier-success-rgb:	106, 245, 161;						/* pour les progress bars, je préfère une nuance de vert un peu plus claire */
 	--background-modifier-success:		oklch(87.2% 0.169 154deg);
 
+	--bases-kanban-line-height:				calc(var(--OT-kanban-font-size) * 2.1);
 	--bases-embed-border-color:				var(--color-base-100);
 	--bases-table-cell-background-disabled:	oklch(0.84 calc(var(--OT-themeLight-c) * 0.5) var(--OT-themeLight-h));
 	--bases-table-font-size:				var(--font-small);
@@ -7893,22 +7896,23 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 /* -------------------- vue kanban officielle des Bases -------------------- */
+
 .bases-kanban-container {
-	--bases-group-heading-value-weight:	800;
 	font-family:						var(--OT-kanban-font, var(--font-interface));
 	font-size:							var(--OT-kanban-font-size, 16px);
 }
 
 .bases-kanban-card {
 	--metadata-input-padding:			0 var(--size-4-2);
-	--font-adaptive-normal:				16px;
-	font-size:							var(--OT-kanban-font-size);
 }
 
-.workspace-leaf-content[data-type="markdown"] .block-language-base .bases-view[data-view-type="kanban"],
-.workspace-leaf-content[data-type="markdown"] .bases-embed .bases-view[data-view-type="kanban"] {
-	--bases-kanban-line-height:			1.1em;
-	--bases-kanban-card-space:			4px;
+.bases-kanban-column-count {
+	color:			var(--icon-color);
+}
+
+.bases-view[data-view-type="kanban"] .bases-kanban-card-line.bases-rendered-value {
+	line-height: 1.1;
+    font-size: var(--OT-kanban-font-size);
 }
 
 /* masquage optionnel des labels de propriétés
@@ -7975,8 +7979,8 @@ body.OT-table-cell-edit-size-lock .markdown-source-view.mod-cm6.is-live-preview 
 }
 
 .bases-view[data-view-type="kanban"] .bases-group-value {
-	font-size:							1.08em;
-	font-weight:						700;
+	font-size:							calc(var(--OT-kanban-font-size)*1.15);
+	font-weight:						var(--font-extrabold);
 	line-height:						1.2;
 }
 
