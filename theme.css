@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-10-26
+	- “font preferred size” takes the size of the Reading Mode font size
 2026-10-19
 	- further improvements to the official kanban view for bases
 2026-10-18
@@ -703,12 +705,13 @@ body {
 	--floating-toc-header-background-color:	var(--background-primary)	!important;
 	--floating-toc-hover-color:				var(--text-accent-hover);
 
-	--font-text-size:	var(--OT-readingMode-text-size);
+	--font-text-size:		var(--OT-readingMode-text-size);
+	--font-preferred-size:	var(--OT-readingMode-text-size);
 
-	--font-ui-smaller:	calc(var(--font-ui-medium)/15*12);
-	--font-ui-small:	calc(var(--font-ui-medium)/15*13);
-	--font-ui-medium:	var(--OT-UI-font-size);
-	--font-ui-large:	calc(var(--font-ui-medium)/15*20);
+	--font-ui-smaller:		calc(var(--font-ui-medium)/15*12);
+	--font-ui-small:		calc(var(--font-ui-medium)/15*13);
+	--font-ui-medium:		var(--OT-UI-font-size);
+	--font-ui-large:		calc(var(--font-ui-medium)/15*20);
 
 	/*--footnote-gap:				2rem;*/
 	--footnote-id-color:		var(--list-marker-color);
