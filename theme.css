@@ -51,6 +51,8 @@
 /*
 Post‑release tweaks
 -------------------
+2026-11-01
+	- adaptations for the Starlane Kanban plugin
 2026-10-26
 	- “font preferred size” takes the size of the Reading Mode font size
 2026-10-19
@@ -11224,6 +11226,21 @@ body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 .cm-scro
 body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 .cm-content {
 	font-family:			var(--OT-kanban-font) !important;
 	font-size:				var(--OT-kanban-font-size) !important;
+}
+
+/* Starlane — mode List : libellés des colonnes Kanban */
+
+body .kanban-starlane__table-cell-wrapper
+.kanban-starlane__markdown-preview-wrapper:has(+ .kanban-starlane__lane-menu)
+> .kanban-starlane__markdown-preview-view {
+	font-family:	var(--font-interface);
+	font-size:		var(--OT-kanban-font-size);
+	padding-top:	0;
+}
+/* Starlane : largeur des colonnes définie par le thème */
+
+body .kanban-starlane {
+	--lane-width:	var(--OT-kanban-lane-width);
 }
 
 
