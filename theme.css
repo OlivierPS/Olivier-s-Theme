@@ -204,6 +204,7 @@ Bookmarks:	OpSpl01:	définition des couleurs
 			OpSpl42		horizontal rule
 			OpSpl43		contextual typography
 			OpSpl44		Kanban plugin
+			OpSpl44.1	Kanban Starlane plugin
 			OpSpl45		Board View plugin
 			OpSpl45.1	Kanban Bases View plugin
 			OpSpl46		transcludes
@@ -11086,6 +11087,145 @@ body:not(.is-mobile) .kanban-plugin__grow-wrap>textarea:focus{
 }
 
 /* -------------------- ↑ Kanban plugin -------------------- ↑ */
+
+/* ==========================================================================
+	OpSpl44.1	Starlane Kanban — intégration typographique à Olivier’s Theme
+=========================================================================== */
+
+/* 1. Interface générale du tableau */
+
+body .kanban-starlane {
+	font-family:		var(--font-interface);
+	font-size:			var(--font-ui-small);
+}
+
+
+/* 2. Cartes : affichage et édition */
+
+body .kanban-starlane__item {
+	font-size:			var(--OT-kanban-font-size, var(--font-ui-small));
+}
+
+body .kanban-starlane__item-title .kanban-starlane__markdown-preview-wrapper,
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 {
+	--font-text-size:	var(--OT-kanban-font-size, var(--font-ui-small));
+}
+
+body .kanban-starlane__item-title .kanban-starlane__markdown-preview-view,
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 {
+	--font-text:		var(--OT-kanban-font);
+
+	font-family:		var(--OT-kanban-font);
+	font-size:			var(--OT-kanban-font-size, var(--font-ui-small));
+}
+
+
+/* 3. Titres des colonnes : affichage et saisie */
+
+body .kanban-starlane__lane-title,
+body .kanban-starlane__lane-title-text .kanban-starlane__markdown-preview-view,
+body .kanban-starlane__lane-input {
+	font-family:				var(--font-interface);
+	font-size:					var(--font-ui-medium);
+}
+
+body .kanban-starlane__lane-title {
+	font-weight:				var(--font-bold);
+}
+
+body .kanban-starlane__lane-title-text .kanban-starlane__markdown-preview-wrapper,
+body .kanban-starlane__lane-input {
+	--font-text-size:			var(--font-ui-medium);
+}
+
+
+/* 4. Corrections du rendu Markdown et centrage des titres */
+
+body .kanban-starlane__item-title .kanban-starlane__markdown-preview-view,
+body .kanban-starlane__lane-title-text .kanban-starlane__markdown-preview-view {
+	padding-block-start:		0;
+}
+
+body .kanban-starlane__lane-title-text .kanban-starlane__markdown-preview-wrapper .kanban-starlane__markdown-preview-view > *:last-child {
+	text-align:					center;
+}
+
+
+/* 5. Descriptions des colonnes : affichage et saisie */
+
+body .kanban-starlane__lane-description .kanban-starlane__markdown-preview-wrapper,
+body .kanban-starlane__lane-description-input .kanban-starlane__lane-input {
+	--font-text-size:			var(--font-ui-small);
+}
+
+body .kanban-starlane__lane-description .kanban-starlane__markdown-preview-view,
+body .kanban-starlane__lane-description-input .kanban-starlane__lane-input {
+	font-family:				var(--font-interface);
+	font-size:					var(--font-ui-small);
+}
+
+
+/* 6. Métadonnées, compteurs et tags */
+
+body .kanban-starlane__item-metadata,
+body .kanban-starlane__meta-table,
+body .kanban-starlane__lane-title-count,
+body .kanban-starlane__item-tags .kanban-starlane__item-tag,
+body .kanban-starlane__item-metadata .kanban-starlane__markdown-preview-view,
+body .kanban-starlane__meta-table .kanban-starlane__markdown-preview-view {
+	font-family:				var(--font-interface);
+	font-size:					var(--font-ui-smaller);
+}
+
+body .kanban-starlane__item-metadata .kanban-starlane__markdown-preview-view,
+body .kanban-starlane__meta-table .kanban-starlane__markdown-preview-view {
+	--font-text-size:			var(--font-ui-smaller);
+}
+/* ——————————————————————————————  —————————————————————————————— */
+/* Starlane : neutraliser les fonds des rendus Markdown internes */
+
+body .kanban-starlane__markdown-preview-view {
+	background:		none !important;
+}
+
+/* Starlane : retirer le papier, sans neutraliser les couleurs d’édition */
+
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6,
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 .cm-line {
+	background-image:	none !important;
+}
+
+/* Starlane : reprendre la couleur d’encre du mode Édition */
+
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6,
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 .cm-content {
+	color:				var(--OT-edit-ink-current, var(--text-normal));
+}
+
+/* Starlane : supprimer la plume indiquant le mode d’édition */
+
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6::before {
+	content:		none;
+}
+
+/* Starlane : conserver la typographie Kanban pendant la saisie */
+
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 {
+	--OT-edit-font:			var(--OT-kanban-font);
+	--OT-edit-font-family:	var(--OT-kanban-font);
+	--OT-edit-text-size:		var(--OT-kanban-font-size);
+
+	--font-text:			var(--OT-kanban-font);
+	--font-text-size:		var(--OT-kanban-font-size);
+}
+
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6,
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 .cm-scroller,
+body .kanban-starlane__item-input-wrapper .markdown-source-view.mod-cm6 .cm-content {
+	font-family:			var(--OT-kanban-font) !important;
+	font-size:				var(--OT-kanban-font-size) !important;
+}
+
 
 
 /*	=== === === OpSpl45	—————————————————————————————— Board View plugin —————————————————————————————— */
